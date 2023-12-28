@@ -1,7 +1,7 @@
 WPMozo Addons for Elementor Lite
 ================================
 
-> Copyright (C) 2023 Elicus Technologies Private Limited
+> Copyright (C) 2024 Elicus Technologies Private Limited
 
 Third Party Code Credits
 ========================

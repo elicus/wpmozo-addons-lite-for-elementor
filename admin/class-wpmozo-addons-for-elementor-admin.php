@@ -4,7 +4,7 @@
  *
  * @since      1.0.0
  * @author     Elicus <hello@elicus.com>
- * @copyright  2023 Elicus Technologies Private Limited
+ * @copyright  2024 Elicus Technologies Private Limited
  */
 
 class WPMOZO_Addons_For_Elementor_Admin {
