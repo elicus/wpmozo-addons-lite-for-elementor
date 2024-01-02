@@ -42,7 +42,7 @@ class WPMOZO_AE_Interactive_Image_Card extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Interactive Image Card', 'wpmozo-addons-for-elementor-lite' );
+		return esc_html__( 'Interactive Image Card', 'wpmozo-addons-lite-for-elementor' );
 	}
 
 	/**

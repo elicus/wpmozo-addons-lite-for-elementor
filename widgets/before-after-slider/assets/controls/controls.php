@@ -7,7 +7,7 @@ use \Elementor\Group_Control_Background;
 
 $this->start_controls_section( 'before_after_slider_settings',
 	array(
-		'label' => esc_html__('Slider Content', 'wpmozo-addons-for-elementor-lite'),
+		'label' => esc_html__('Slider Content', 'wpmozo-addons-lite-for-elementor'),
 		'tab'	=> Controls_Manager::TAB_CONTENT,
 	)
 );
@@ -18,14 +18,14 @@ $this->start_controls_section( 'before_after_slider_settings',
 		//Before image settings
 		$this->start_controls_tab( 'before_state_tab',
 			array(
-				'label' => esc_html__( 'Before', 'wpmozo-addons-for-elementor-lite' ),
+				'label' => esc_html__( 'Before', 'wpmozo-addons-lite-for-elementor' ),
 			)
 		);
 
 			//Settings for before tab
 			$this->add_control( 'before_state_image',
 				array(
-					'label'   => esc_html__( 'Before Image', 'wpmozo-addons-for-elementor-lite' ),
+					'label'   => esc_html__( 'Before Image', 'wpmozo-addons-lite-for-elementor' ),
 					'type'    => Controls_Manager::MEDIA,
 					'dynamic' => array(
 						'active' => true,
@@ -39,11 +39,11 @@ $this->start_controls_section( 'before_after_slider_settings',
 
 			$this->add_control( 'before_label_show_switcher',
 				array(
-					'label'        => esc_html__( 'Show Label', 'wpmozo-addons-for-elementor-lite' ),
+					'label'        => esc_html__( 'Show Label', 'wpmozo-addons-lite-for-elementor' ),
 					'separator'    => 'before',
 					'type'         => Controls_Manager::SWITCHER,
-					'label_off'    => esc_html__( 'NO', 'wpmozo-addons-for-elementor-lite' ),
-					'label_on'     => esc_html__( 'YES', 'wpmozo-addons-for-elementor-lite' ),
+					'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
+					'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
 					'return_value' => 'yes',//return value when the switch is on
 					'default'      => 'no',
 					'selectors_dictionary' 	=> array(
@@ -55,16 +55,16 @@ $this->start_controls_section( 'before_after_slider_settings',
 
 			$this->add_control ( 'before_label_hover_show_switcher', 
 				array(
-					'label' => esc_html__( 'Show Label Only on Hover', 'wpmozo-addons-for-elementor-lite' ),
+					'label' => esc_html__( 'Show Label Only on Hover', 'wpmozo-addons-lite-for-elementor' ),
 					'type' => Controls_Manager::CHOOSE,
 					'label_block'=>true,
 					'options' => array(
 						'1' => array(
-							'title' => esc_html__( 'No', 'wpmozo-addons-for-elementor-lite' ),
+							'title' => esc_html__( 'No', 'wpmozo-addons-lite-for-elementor' ),
 							'icon' => 'eicon-close',
 						),
 						'0' => array(
-							'title' => esc_html__( 'Yes', 'wpmozo-addons-for-elementor-lite' ),
+							'title' => esc_html__( 'Yes', 'wpmozo-addons-lite-for-elementor' ),
 							'icon' => 'eicon-check',
 						)
 					),
@@ -83,18 +83,18 @@ $this->start_controls_section( 'before_after_slider_settings',
 			// Before label
 			$this->add_control( 'before_label_text',
 				array(
-					'label'       => __( 'Enter Lable', 'wpmozo-addons-for-elementor-lite' ),
+					'label'       => __( 'Enter Lable', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'type'        => Controls_Manager::TEXT,
 					'dynamic'     => array( 'active' => true ),
-					'placeholder' => __( 'Enter Label For Before Image', 'wpmozo-addons-for-elementor-lite' ),
+					'placeholder' => __( 'Enter Label For Before Image', 'wpmozo-addons-lite-for-elementor' ),
 					'condition'   => array( 'before_label_show_switcher' => 'yes' ),
 				)
 			);
 
 			$this->add_control( 'before_label_background_color',
 				array(
-					'label'       => esc_html__( 'Label Background Color', 'wpmozo-addons-for-elementor-lite' ),
+					'label'       => esc_html__( 'Label Background Color', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '#0000006E',
@@ -110,14 +110,14 @@ $this->start_controls_section( 'before_after_slider_settings',
 		//After image settings
 		$this->start_controls_tab( 'after_state_tab',
 			array(
-				'label' => esc_html__( 'After', 'wpmozo-addons-for-elementor-lite' ),
+				'label' => esc_html__( 'After', 'wpmozo-addons-lite-for-elementor' ),
 			)
 		);
 
 			//Settings for after tab
 			$this->add_control( 'after_state_image',
 				array(
-					'label'   => esc_html__( 'After Image', 'wpmozo-addons-for-elementor-lite' ),
+					'label'   => esc_html__( 'After Image', 'wpmozo-addons-lite-for-elementor' ),
 					'type'    => Controls_Manager::MEDIA,
 					'dynamic' => array(
 						'active' => true,
@@ -131,11 +131,11 @@ $this->start_controls_section( 'before_after_slider_settings',
 
 			$this->add_control( 'after_label_show_switcher',
 				array(
-					'label'                 => esc_html__( 'Show Label', 'wpmozo-addons-for-elementor-lite' ),
+					'label'                 => esc_html__( 'Show Label', 'wpmozo-addons-lite-for-elementor' ),
 					'separator'             => 'before',
 					'type'                  => Controls_Manager::SWITCHER,
-					'label_off'             => esc_html__( 'NO', 'wpmozo-addons-for-elementor-lite' ),
-					'label_on'              => esc_html__( 'YES', 'wpmozo-addons-for-elementor-lite' ),
+					'label_off'             => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
+					'label_on'              => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
 					'return_value'          => 'yes',//return value when the switch is on
 					'default'               => 'no',
 					'selectors_dictionary' 	=> array(
@@ -147,16 +147,16 @@ $this->start_controls_section( 'before_after_slider_settings',
 
 			$this->add_control ( 'after_label_hover_show_switcher', 
 				array(
-					'label' => esc_html__( 'Show Label Only on Hover', 'wpmozo-addons-for-elementor-lite' ),
+					'label' => esc_html__( 'Show Label Only on Hover', 'wpmozo-addons-lite-for-elementor' ),
 					'type' => Controls_Manager::CHOOSE,
 					'label_block'=>true,
 					'options' => array(
 						'1' => array(
-							'title' => esc_html__( 'No', 'wpmozo-addons-for-elementor-lite' ),
+							'title' => esc_html__( 'No', 'wpmozo-addons-lite-for-elementor' ),
 							'icon' => 'eicon-close',
 						),
 						'0' => array(
-							'title' => esc_html__( 'Yes', 'wpmozo-addons-for-elementor-lite' ),
+							'title' => esc_html__( 'Yes', 'wpmozo-addons-lite-for-elementor' ),
 							'icon' => 'eicon-check',
 						)
 					),
@@ -174,18 +174,18 @@ $this->start_controls_section( 'before_after_slider_settings',
 			//After label
 			$this->add_control( 'after_label_text',
 				array(
-					'label'       => __( 'Enter Lable', 'wpmozo-addons-for-elementor-lite' ),
+					'label'       => __( 'Enter Lable', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'type'        => Controls_Manager::TEXT,
 					'dynamic'     => array( 'active' => true ),
-					'placeholder' => __( 'Enter Label For After Image', 'wpmozo-addons-for-elementor-lite' ),
+					'placeholder' => __( 'Enter Label For After Image', 'wpmozo-addons-lite-for-elementor' ),
 					'condition'   => array( 'after_label_show_switcher' => 'yes' ),
 				)
 			);
 
 			$this->add_control( 'after_label_background_color',
 				array(
-					'label'       => esc_html__( 'Label Background Color', 'wpmozo-addons-for-elementor-lite' ),
+					'label'       => esc_html__( 'Label Background Color', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '#0000006E',
@@ -207,19 +207,19 @@ $this->end_controls_section();
 //Gallery Styling
 $this->start_controls_section( 'before_after_slider_styling_section',
 	array(
-		'label' => esc_html__( 'Slider Styling', 'wpmozo-addons-for-elementor-lite' ),
+		'label' => esc_html__( 'Slider Styling', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	)
 );
 
 	$this->add_control( 'slider_orientation_select',
 		array(
-			'label'       => __( 'Slider Orientation', 'wpmozo-addons-for-elementor-lite' ),
+			'label'       => __( 'Slider Orientation', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				''          => __( 'Horizontal', 'wpmozo-addons-for-elementor-lite' ),
-				'vertical'  => __( 'Vertical', 'wpmozo-addons-for-elementor-lite' ),
+				''          => __( 'Horizontal', 'wpmozo-addons-lite-for-elementor' ),
+				'vertical'  => __( 'Vertical', 'wpmozo-addons-lite-for-elementor' ),
 			),
 			'default'     => '',
 		)
@@ -228,7 +228,7 @@ $this->start_controls_section( 'before_after_slider_styling_section',
 	$this->add_responsive_control( 'handle_position_slider',
 		array(
 			'type'  => Controls_Manager::SLIDER,
-			'label' => esc_html__( 'Handle Offset ', 'wpmozo-addons-for-elementor-lite' ),
+			'label' => esc_html__( 'Handle Offset ', 'wpmozo-addons-lite-for-elementor' ),
 			'range' => array(
 				'%' => array(
 					'min'  => 0.0,
@@ -245,11 +245,11 @@ $this->start_controls_section( 'before_after_slider_styling_section',
 
 	$this->add_control( 'move_handle_on_hover_switcher',
 		array(
-			'label'                => esc_html__( 'Move Handle On Hover', 'wpmozo-addons-for-elementor-lite' ),
+			'label'                => esc_html__( 'Move Handle On Hover', 'wpmozo-addons-lite-for-elementor' ),
 			'separator'            => 'before',
 			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor-lite' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor-lite' ),
+			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
+			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
 			'return_value'         => 'yes',//return value when the switch is on
 			'default'              => 'no',
 			'selectors_dictionary' => array(
@@ -262,11 +262,11 @@ $this->start_controls_section( 'before_after_slider_styling_section',
 
 	$this->add_control( 'move_handle_on_click_switcher',
 		array(
-			'label'                => esc_html__( 'Move Handle On Click', 'wpmozo-addons-for-elementor-lite' ),
+			'label'                => esc_html__( 'Move Handle On Click', 'wpmozo-addons-lite-for-elementor' ),
 			'separator'            => 'before',
 			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor-lite' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor-lite' ),
+			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
+			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
 			'return_value'         => 'yes',//return value when the switch is on
 			'default'              => 'no',
 			'selectors_dictionary' => array(
@@ -279,7 +279,7 @@ $this->start_controls_section( 'before_after_slider_styling_section',
 
 	$this->add_control( 'handle_color',
 		array(
-			'label'       => esc_html__( 'Handle Color', 'wpmozo-addons-for-elementor-lite' ),
+			'label'       => esc_html__( 'Handle Color', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'separator'   => 'before',
 			'type'        => Controls_Manager::COLOR,
@@ -296,11 +296,11 @@ $this->start_controls_section( 'before_after_slider_styling_section',
 
 	$this->add_control( 'overlay_on_hover_switcher',
 		array(
-			'label'                => esc_html__( 'Overlay On Hover', 'wpmozo-addons-for-elementor-lite' ),
+			'label'                => esc_html__( 'Overlay On Hover', 'wpmozo-addons-lite-for-elementor' ),
 			'separator'            => 'before',
 			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor-lite' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor-lite' ),
+			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
+			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
 			'return_value'         => 'yes',//return value when the switch is on
 			'default'              => 'no',
 			'selectors_dictionary' => array(
@@ -314,7 +314,7 @@ $this->start_controls_section( 'before_after_slider_styling_section',
 		Group_Control_Background::get_type(),
 		array(
 			'name'      => 'overlay_color',
-			'label'     => esc_html__( 'Overlay Color', 'wpmozo-addons-for-elementor-lite' ),
+			'label'     => esc_html__( 'Overlay Color', 'wpmozo-addons-lite-for-elementor' ),
 			'types'     => array( 'classic', 'gradient' ),
 			'exclude'   => array('image'),
 			'selector'  => '{{WRAPPER}} .twentytwenty-overlay:hover',
@@ -327,7 +327,7 @@ $this->end_controls_section();
 
 $this->start_controls_section( 'slider_label_text_styling',
 	array(
-		'label' => esc_html__( 'Label Text Settings', 'wpmozo-addons-for-elementor-lite' ),
+		'label' => esc_html__( 'Label Text Settings', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 		'conditions' => array(
 			'relation' => 'or',
@@ -349,7 +349,7 @@ $this->start_controls_section( 'slider_label_text_styling',
 
 	$this->add_control( 'label_text_color',
 		array(
-			'label'       => esc_html__( 'Label Text Color', 'wpmozo-addons-for-elementor-lite' ),
+			'label'       => esc_html__( 'Label Text Color', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'separator'   => 'after',
@@ -361,7 +361,7 @@ $this->start_controls_section( 'slider_label_text_styling',
 	$this->add_group_control(
 		Group_Control_Typography::get_type(),
 		array(
-		    'label'       => esc_html__( 'Label Typography', 'wpmozo-addons-for-elementor-lite' ),
+		    'label'       => esc_html__( 'Label Typography', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => true,
 			'name'        => 'label_text_typography',
 			'separator'   => 'after',
@@ -374,7 +374,7 @@ $this->start_controls_section( 'slider_label_text_styling',
 		Group_Control_Text_Shadow::get_type(),
 		array(
 			'name'      => 'label_text_shadow',
-			'label'     => esc_html__( 'Label Text Shadow', 'wpmozo-addons-for-elementor-lite' ),
+			'label'     => esc_html__( 'Label Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 			'separator' => 'after',
 			'selector'  => '{{WRAPPER}} .twentytwenty-before-label:before, {{WRAPPER}} .twentytwenty-after-label:before',
 			'separator' => 'before',

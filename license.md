@@ -1,4 +1,4 @@
-WPMozo Addons for Elementor Lite
+WPMozo Addons Lite for Elementor
 ================================
 
 > Copyright (C) 2024 Elicus Technologies Private Limited
@@ -8,7 +8,7 @@ Third Party Code Credits
 
 Magnific Popup
 --------------
-- File Location: /wpmozo-addons-for-elementor-lite/assets/js/magnificPopup.min.js
+- File Location: /wpmozo-addons-lite-for-elementor/assets/js/magnificPopup.min.js
 - License: Apache
 
 The MIT License (MIT)
@@ -34,19 +34,19 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Isotope
 ------
-- File Location: /wpmozo-addons-for-elementor-lite/assets/js/isotope.pkgd.min.js
+- File Location: /wpmozo-addons-lite-for-elementor/assets/js/isotope.pkgd.min.js
 - License: GPLv3
 - License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 imagesLoaded
 ------------
-- File Location: /wpmozo-addons-for-elementor-lite/assets/js/imagesloaded.pkgd.min.js
+- File Location: /wpmozo-addons-lite-for-elementor/assets/js/imagesloaded.pkgd.min.js
 - License: MIT
 - License URI: https://opensource.org/licenses/MIT
 
 TwentyTwenty
 -------------
-- File Location: /wpmozo-addons-for-elementor-lite/assets/js/jquery_twentytwenty.min.js
+- File Location: /wpmozo-addons-lite-for-elementor/assets/js/jquery_twentytwenty.min.js
 - License: ISC License
 - License URI: https://www.isc.org/licenses/
 Copyright 2018 zurb
@@ -55,7 +55,7 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 
 jquery.event.move
 -----------------
-- File Location: /wpmozo-addons-for-elementor-lite/assets/js/jquery_event_move.pkgd.min.js
+- File Location: /wpmozo-addons-lite-for-elementor/assets/js/jquery_event_move.pkgd.min.js
 - License: WTFPL
 - License URI: https://plugins.jquery.com/event.move/  http://www.wtfpl.net/txt/copying/
 

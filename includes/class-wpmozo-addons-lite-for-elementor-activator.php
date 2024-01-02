@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
-class WPMOZO_Addons_For_Elementor_Activator {
+class WPMOZO_Addons_Lite_For_Elementor_Activator {
 
 	/**
      * Runs when plugin is activated
@@ -22,7 +22,7 @@ class WPMOZO_Addons_For_Elementor_Activator {
      * @return void
      */
 	public static function activate() {
-        add_option( 'wpmozo_addons_for_elementor_activated', 'yes' );
+        add_option( 'wpmozo_addons_lite_for_elementor_activated', 'yes' );
 	}
 
 }

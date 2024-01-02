@@ -6,7 +6,7 @@
  * @version     1.0.0
  */
 
-class WPMOZO_Addons_For_Elementor_Lite{
+class WPMOZO_Addons_Lite_For_Elementor{
 
     /**
      * The loader that's responsible for maintaining and registering all hooks that power
@@ -25,7 +25,7 @@ class WPMOZO_Addons_For_Elementor_Lite{
      * @access   protected
      * @var      string    $plugin_name    The string used to uniquely identify this plugin.
      */
-    protected $plugin_name = WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_SLUG;
+    protected $plugin_name = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_SLUG;
 
     /**
      * The current version of the plugin.
@@ -34,7 +34,7 @@ class WPMOZO_Addons_For_Elementor_Lite{
      * @access   protected
      * @var      string    $version    The current version of the plugin.
      */
-    protected $plugin_version = WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_VERSION;
+    protected $plugin_version = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION;
 
     /**
      * Plugin option name.
@@ -43,7 +43,7 @@ class WPMOZO_Addons_For_Elementor_Lite{
      * @access   protected
      * @var      string    $plugin_option    The plugin option name where all the settings are stored.
      */
-    protected $plugin_option = WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_OPTION;
+    protected $plugin_option = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION;
 
     /**
      * Define the core functionality of the plugin.
@@ -85,30 +85,30 @@ class WPMOZO_Addons_For_Elementor_Lite{
          * The class responsible for orchestrating the actions and filters of the
          * core plugin.
          */
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wpmozo-addons-for-elementor-loader.php';
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wpmozo-addons-lite-for-elementor-loader.php';
 
         /**
          * The class responsible for defining internationalization functionality
          * of the plugin.
          */
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wpmozo-addons-for-elementor-i18n.php';
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wpmozo-addons-lite-for-elementor-i18n.php';
 
         /**
          * The class responsible for defining all actions that occur in the admin area.
          */
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wpmozo-addons-for-elementor-admin.php';
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wpmozo-addons-lite-for-elementor-admin.php';
 
         /**
          * The class responsible for defining all settings that occur on the settings page in the admin area.
          */
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/settings/class-wpmozo-addons-for-elementor-settings.php';
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/settings/class-wpmozo-addons-lite-for-elementor-settings.php';
 
         /**
          * The class responsible for defining all actions that occur in the public-facing side of the site.
          */
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wpmozo-addons-for-elementor-public.php';
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wpmozo-addons-lite-for-elementor-public.php';
 
-        $this->loader = new WPMOZO_addons_For_Elementor_Loader();
+        $this->loader = new WPMOZO_Addons_Lite_For_Elementor_Loader();
 
     }
 
@@ -123,7 +123,7 @@ class WPMOZO_Addons_For_Elementor_Lite{
      */
     private function set_locale() {
 
-        $plugin_i18n = new WPMOZO_addons_For_Elementor_i18n();
+        $plugin_i18n = new WPMOZO_Addons_Lite_For_Elementor_i18n();
 
         $this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -140,9 +140,9 @@ class WPMOZO_Addons_For_Elementor_Lite{
     private function define_admin_hooks() {
         global $wp_version;
 
-        $settings       = new WPMOZO_addons_For_Elementor_Settings( $this->get_plugin_option() );
-        $plugin_admin   = new WPMOZO_addons_For_Elementor_Admin( $settings );
-        $action_hook    = 'in_plugin_update_message-' . WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_BASENAME;
+        $settings       = new WPMOZO_Addons_Lite_For_Elementor_Settings( $this->get_plugin_option() );
+        $plugin_admin   = new WPMOZO_Addons_Lite_For_Elementor_Admin( $settings );
+        $action_hook    = 'in_plugin_update_message-' . WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME;
 
         $this->loader->add_action( 'wp_loaded', $plugin_admin, 'wp_loaded' );
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
@@ -160,7 +160,7 @@ class WPMOZO_Addons_For_Elementor_Lite{
         $this->loader->add_action( 'delete_site_transient', $plugin_admin, 'delete_update_transient' );
         $this->loader->add_filter( 'pre_set_site_transient_update_plugins', $plugin_admin, 'check_update' );
         $this->loader->add_filter( 'plugins_api', $plugin_admin, 'check_info', 10, 3 );
-        $this->loader->add_filter( 'plugin_action_links_' . WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_BASENAME, $plugin_admin, 'plugin_action_links' );
+        $this->loader->add_filter( 'plugin_action_links_' . WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME, $plugin_admin, 'plugin_action_links' );
         $this->loader->add_filter( 'plugin_row_meta', $plugin_admin, 'plugin_row_meta', 10, 4 );
 
     }
@@ -174,7 +174,7 @@ class WPMOZO_Addons_For_Elementor_Lite{
      */
     private function define_public_hooks() {
 
-        $plugin_public = new WPMOZO_addons_For_Elementor_Public();
+        $plugin_public = new WPMOZO_Addons_Lite_For_Elementor_Public();
         $this->loader->add_action( 'elementor/init', $plugin_public, 'init' );
     }
 

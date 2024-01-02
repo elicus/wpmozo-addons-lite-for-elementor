@@ -7,7 +7,7 @@
  * @since      1.0.0
  * @author     Elicus <hello@elicus.com>
  */
-class WPMOZO_Addons_For_Elementor_Deactivator {
+class WPMOZO_Addons_Lite_For_Elementor_Deactivator {
 
 	/**
      * Plugin Name.
@@ -16,7 +16,7 @@ class WPMOZO_Addons_For_Elementor_Deactivator {
      * @access   public
      * @var      string
      */
-    public static $plugin_name = WPMOZO_ADDONS_FOR_ELEMENTOR_SLUG;
+    public static $plugin_name = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_SLUG;
 
     /**
      * Metadata Url.

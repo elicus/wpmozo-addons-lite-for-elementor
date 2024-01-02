@@ -9,7 +9,7 @@
  * @since      1.0.0
  * @author     Elicus <hello@elicus.com>
  */
-class WPMOZO_Addons_For_Elementor_Loader {
+class WPMOZO_Addons_Lite_For_Elementor_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

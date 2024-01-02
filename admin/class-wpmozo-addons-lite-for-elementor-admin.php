@@ -7,7 +7,7 @@
  * @copyright  2024 Elicus Technologies Private Limited
  */
 
-class WPMOZO_Addons_For_Elementor_Admin {
+class WPMOZO_Addons_Lite_For_Elementor_Admin {
 
 	/**
      * The unique identifier of this plugin.
@@ -150,16 +150,16 @@ class WPMOZO_Addons_For_Elementor_Admin {
 	 * @since    1.0.0
 	 */
 	public function __construct( $settings ) {
-		$this->page_title				= esc_html__( 'WPMozo Addons for Elementor', 'wpmozo-addons-for-elementor' );
-        $this->menu_title   			= esc_html__( 'WPMozo Addons', 'wpmozo-addons-for-elementor' );
-        $this->menu_slug    			= WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_SLUG;
-        $this->plugin_name 				= WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_SLUG;
-		$this->plugin_version 			= WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_VERSION;
-        $this->plugin_option 			= WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_OPTION;
-        $this->plugin_basename			= WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_BASENAME;
-        $this->last_checked_option 		= 'wpmozo_addons_for_elementor_last_checked';
-        $this->license_key_option		= 'wpmozo_addons_for_elementor_license_key';
-        $this->upgrade_transient    	= 'upgrade_wpmozo_addons_for_elementor';
+		$this->page_title				= esc_html__( 'WPMozo Addons Lite for Elementor', 'wpmozo-addons-lite-for-elementor' );
+        $this->menu_title   			= esc_html__( 'WPMozo Addons', 'wpmozo-addons-lite-for-elementor' );
+        $this->menu_slug    			= WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_SLUG;
+        $this->plugin_name 				= WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_SLUG;
+		$this->plugin_version 			= WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION;
+        $this->plugin_option 			= WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION;
+        $this->plugin_basename			= WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME;
+        $this->last_checked_option 		= 'wpmozo_addons_lite_for_elementor_last_checked';
+        $this->license_key_option		= 'wpmozo_addons_lite_for_elementor_license_key';
+        $this->upgrade_transient    	= 'upgrade_wpmozo_addons_lite_for_elementor';
         $this->metadata_url 			= 'https://cdn.wpmozo.com';
         $this->last_checked 			= get_site_option( $this->last_checked_option, 0 );
         $this->settings 				= $settings;
@@ -278,8 +278,8 @@ class WPMOZO_Addons_For_Elementor_Admin {
 	 */
 	public function plugin_row_meta( $links, $plugin_file, $plugin_data, $status ) {
 		if ( strpos( $plugin_file, $this->plugin_name . '.php' ) !== false ) {
-			$links[] = '<a href="' . esc_url( admin_url( '?page=' . $this->plugin_name ) ) . '">' . esc_html__( 'Settings', 'wpmozo-addons-for-elementor' ) . '</a>';
-			$links[] = '<a href="' . esc_url( 'https://documentation.wpmozo.com/' . $this->plugin_name ) . '">' . esc_html__( 'Documentation', 'wpmozo-addons-for-elementor' ) . '</a>';
+			$links[] = '<a href="' . esc_url( admin_url( '?page=' . $this->plugin_name ) ) . '">' . esc_html__( 'Settings', 'wpmozo-addons-lite-for-elementor' ) . '</a>';
+			$links[] = '<a href="' . esc_url( 'https://documentation.wpmozo.com/' . $this->plugin_name ) . '">' . esc_html__( 'Documentation', 'wpmozo-addons-lite-for-elementor' ) . '</a>';
 		}
 		return $links;
 	}
@@ -299,7 +299,7 @@ class WPMOZO_Addons_For_Elementor_Admin {
 			wp_send_json(
 				array(
 					'success' => false,
-					'message' => esc_html__( 'Key must not be empty', 'wpmozo-addons-for-elementor' ),
+					'message' => esc_html__( 'Key must not be empty', 'wpmozo-addons-lite-for-elementor' ),
 				)
 			);
 			exit;
@@ -340,7 +340,7 @@ class WPMOZO_Addons_For_Elementor_Admin {
 		    wp_send_json(
     			array(
     				'success' => false,
-    				'message' => esc_html__( $request->get_error_message(), 'wpmozo-addons-for-elementor' ),
+    				'message' => esc_html__( $request->get_error_message(), 'wpmozo-addons-lite-for-elementor' ),
     			)
     		);
 		}
@@ -393,7 +393,7 @@ class WPMOZO_Addons_For_Elementor_Admin {
 		    wp_send_json(
     			array(
     				'success' => false,
-    				'message' => esc_html__( $request->get_error_message(), 'wpmozo-addons-for-elementor' ),
+    				'message' => esc_html__( $request->get_error_message(), 'wpmozo-addons-lite-for-elementor' ),
     			)
     		);
 		}
@@ -566,8 +566,8 @@ class WPMOZO_Addons_For_Elementor_Admin {
 	 * @since    1.0.0
 	 */
 	public function wp_loaded() {
-		if ( 'yes' === get_option('wpmozo_addons_for_elementor_activated') ) {
-			delete_option('wpmozo_addons_for_elementor_activated');
+		if ( 'yes' === get_option('wpmozo_addons_lite_for_elementor_activated') ) {
+			delete_option('wpmozo_addons_lite_for_elementor_activated');
 			$this->add_plugin_installs();
 		}
 	}

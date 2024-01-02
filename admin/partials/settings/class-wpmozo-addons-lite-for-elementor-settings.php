@@ -7,7 +7,7 @@
  * @since      1.0.0
  * @author     Elicus <hello@elicus.com>
  */
-class WPMOZO_Addons_For_Elementor_Settings {
+class WPMOZO_Addons_Lite_For_Elementor_Settings {
 
     /**
      * Plugin option name.
@@ -25,7 +25,7 @@ class WPMOZO_Addons_For_Elementor_Settings {
      * @access   private
      * @var      string    $license_key_option The license key option name where all the license key is stored.
      */
-    private $license_key_option = 'wpmozo_addons_for_elementor_license_key';
+    private $license_key_option = 'wpmozo_addons_lite_for_elementor_license_key';
 
     /**
      * Initialize the class and set its properties.

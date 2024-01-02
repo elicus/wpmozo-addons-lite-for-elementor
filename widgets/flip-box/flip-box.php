@@ -41,7 +41,7 @@ class WPMOZO_AE_Flip_Box extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Flip Box', 'wpmozo-addons-for-elementor-lite' );
+		return __( 'Flip Box', 'wpmozo-addons-lite-for-elementor' );
 	}
 
 	/**
@@ -100,7 +100,7 @@ class WPMOZO_AE_Flip_Box extends Widget_Base {
 	 * @return array Element scripts dependencies.
 	 */
 	public function get_script_depends() {
-		wp_register_script( 'wpmozo-ae-flipbox-script', plugins_url( 'assets/js/flip-box-custom.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_VERSION, true );
+		wp_register_script( 'wpmozo-ae-flipbox-script', plugins_url( 'assets/js/flip-box-custom.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
 			return array( 'wpmozo-ae-flipbox-script' );
 	}

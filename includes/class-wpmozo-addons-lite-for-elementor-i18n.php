@@ -8,7 +8,7 @@
  * @since      1.0.0
  * @author     Elicus <hello@elicus.com>
  */
-class WPMOZO_Addons_For_Elementor_i18n {
+class WPMOZO_Addons_Lite_For_Elementor_i18n {
 
 	/**
 	 * Load the plugin text domain for translation.
@@ -18,7 +18,7 @@ class WPMOZO_Addons_For_Elementor_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'wpmozo-addons-for-elementor-lite',
+			'wpmozo-addons-lite-for-elementor',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

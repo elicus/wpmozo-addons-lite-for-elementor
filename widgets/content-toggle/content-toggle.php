@@ -46,7 +46,7 @@ class WPMOZO_AE_Content_Toggle extends Widget_Base {
 	 */
 	
 	public function get_title() {
-		return esc_html__( 'Content Toggle', 'wpmozo-addons-for-elementor-lite' );
+		return esc_html__( 'Content Toggle', 'wpmozo-addons-lite-for-elementor' );
 	}
 
 	/**
@@ -108,7 +108,7 @@ class WPMOZO_AE_Content_Toggle extends Widget_Base {
 	 */
     
     public function get_script_depends() {
-		wp_register_script( 'wpmozo-content-toggle-for-elementor-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_VERSION, true );
+		wp_register_script( 'wpmozo-content-toggle-for-elementor-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 		
 		return array( 'wpmozo-content-toggle-for-elementor-script' );
 	}
@@ -142,11 +142,11 @@ class WPMOZO_AE_Content_Toggle extends Widget_Base {
 		$toggle_one_type         = esc_attr( $settings[ 'wpmozo_toggle_one_type' ] );
 		$toggle_two_type         = esc_attr( $settings[ 'wpmozo_toggle_two_type' ] );
 		$toggle_one_title        = sprintf(
-			esc_html__( '%s', 'wpmozo-addons-for-elementor-lite' ),
+			esc_html__( '%s', 'wpmozo-addons-lite-for-elementor' ),
 			$settings[ 'wpmozo_toggle_one_title' ]
 		) ;
 		$toggle_two_title        = sprintf(
-			esc_html__( '%s', 'wpmozo-addons-for-elementor-lite' ),
+			esc_html__( '%s', 'wpmozo-addons-lite-for-elementor' ),
 			$settings[ 'wpmozo_toggle_two_title' ]
 		) ;
 		$toggle_one_text_content = isset( $settings[ 'wpmozo_toggle_one_content' ]) ? wp_kses_post( $settings[ 'wpmozo_toggle_one_content' ] ) : '';

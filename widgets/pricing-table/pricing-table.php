@@ -41,7 +41,7 @@ class WPMOZO_AE_Pricing_Table extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Pricing Table', 'wpmozo-addons-for-elementor-lite' );
+		return esc_html__( 'Pricing Table', 'wpmozo-addons-lite-for-elementor' );
 	}
 
 	/**

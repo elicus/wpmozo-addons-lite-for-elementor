@@ -44,7 +44,7 @@ class WPMOZO_AE_Tilt_Image extends Widget_Base {
 	 */
 	
 	public function get_title() {
-		return esc_html__( 'Tilt Image', 'wpmozo-addons-for-elementor-lite' );
+		return esc_html__( 'Tilt Image', 'wpmozo-addons-lite-for-elementor' );
 	}
 
 	/**
@@ -105,7 +105,7 @@ class WPMOZO_AE_Tilt_Image extends Widget_Base {
 	 */
     
     public function get_script_depends() {
-		wp_register_script( 'wpmozo-ae-tiltimage-script', plugins_url( 'assets/js/tilt-image-custom.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_VERSION, true );
+		wp_register_script( 'wpmozo-ae-tiltimage-script', plugins_url( 'assets/js/tilt-image-custom.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
 		return array( 'wpmozo-ae-tiltimage-script' );
 	}

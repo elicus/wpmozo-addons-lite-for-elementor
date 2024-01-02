@@ -80,4 +80,4 @@ $flipbox_content =  '<div class="wpmozo_ae_flipbox_wrapper '.$settings['flipbox_
 								'</div>
 							</div>
 						</div>
-					</div><script src="http://localhost:10004/wp-content/plugins/wpmozo-addons-for-elementor-lite/widgets/flip-box/assets/js/flip-box-custom.js?ver=6.0.2" id="wpmozo-ae-flipbox-script-js"></script>';
+					</div><script src="http://localhost:10004/wp-content/plugins/wpmozo-addons-lite-for-elementor-lite/widgets/flip-box/assets/js/flip-box-custom.js?ver=6.0.2" id="wpmozo-ae-flipbox-script-js"></script>';

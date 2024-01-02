@@ -44,7 +44,7 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 	 */
 	
 	public function get_title() {
-		return esc_html__( 'Logo Slider', 'wpmozo-addons-for-elementor-lite' );
+		return esc_html__( 'Logo Slider', 'wpmozo-addons-lite-for-elementor' );
 	}
 
 	/**
@@ -106,7 +106,7 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 	 */
     
     public function get_script_depends() {
-		wp_register_script( 'wpmozo-ae-logo-slider-script', plugins_url( 'assets/js/logo_slider_script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_VERSION, true );
+		wp_register_script( 'wpmozo-ae-logo-slider-script', plugins_url( 'assets/js/logo_slider_script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 		
 		return array( 'wpmozo-ae-logo-slider-script', 'wpmozo-ae-swiper' );
 	}
@@ -469,10 +469,10 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 			?> 
 				<div class="entry">
 					<h1>
-						<?php echo esc_html__( 'No Result Found!', 'wpmozo-addons-for-elementor-lite' ); ?>
+						<?php echo esc_html__( 'No Result Found!', 'wpmozo-addons-lite-for-elementor' ); ?>
 					</h1>
 					<p>
-						<?php echo esc_html__( 'The swipler layout you requested could not be found try changing your module settings or add some new cards.', 'wpmozo-addons-for-elementor-lite' ); ?> 
+						<?php echo esc_html__( 'The swipler layout you requested could not be found try changing your module settings or add some new cards.', 'wpmozo-addons-lite-for-elementor' ); ?> 
 					</p>
 				</div>
 			<?php

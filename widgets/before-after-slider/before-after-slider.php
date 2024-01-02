@@ -43,7 +43,7 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 */
 	
 	public function get_title() {
-		return esc_html__( 'Before After Slider', 'wpmozo-addons-for-elementor-lite' );
+		return esc_html__( 'Before After Slider', 'wpmozo-addons-lite-for-elementor' );
 	}
 
 	/**

@@ -5,7 +5,7 @@
  * @copyright   2024 Elicus Technologies Private Limited
  * @version     1.0.0
  */
-class WPMOZO_Addons_For_Elementor_Public {
+class WPMOZO_Addons_Lite_For_Elementor_Public {
 
     public function init() {
 
@@ -37,17 +37,17 @@ class WPMOZO_Addons_For_Elementor_Public {
      */
     public function register_frontend_scripts() {
 
-        wp_register_script( 'wpmozo-ae-isotope', plugins_url( 'assets/js/isotope.pkgd.min.js', plugin_dir_path( __FILE__) ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_VERSION, false );
+        wp_register_script( 'wpmozo-ae-isotope', plugins_url( 'assets/js/isotope.pkgd.min.js', plugin_dir_path( __FILE__) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-        wp_register_script( 'wpmozo-ae-imagesloaded', plugins_url( 'assets/js/imagesloaded.pkgd.min.js', plugin_dir_path( __FILE__) ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_VERSION, false );
+        wp_register_script( 'wpmozo-ae-imagesloaded', plugins_url( 'assets/js/imagesloaded.pkgd.min.js', plugin_dir_path( __FILE__) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-        wp_register_script( 'wpmozo-ae-move-event', plugins_url( 'assets/js/jquery_event_move.min.js', plugin_dir_path( __FILE__) ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_VERSION, false );
+        wp_register_script( 'wpmozo-ae-move-event', plugins_url( 'assets/js/jquery_event_move.min.js', plugin_dir_path( __FILE__) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-        wp_register_script( 'wpmozo-ae-twenty-twenty', plugins_url( 'assets/js/jquery_twentytwenty.min.js', plugin_dir_path( __FILE__) ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_VERSION, false );
+        wp_register_script( 'wpmozo-ae-twenty-twenty', plugins_url( 'assets/js/jquery_twentytwenty.min.js', plugin_dir_path( __FILE__) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-        wp_register_script( 'wpmozo-ae-mfp', plugins_url( 'assets/js/magnificPopup.min.js', plugin_dir_path( __FILE__) ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_VERSION, false );
+        wp_register_script( 'wpmozo-ae-mfp', plugins_url( 'assets/js/magnificPopup.min.js', plugin_dir_path( __FILE__) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-        wp_register_script( 'wpmozo-ae-swiper', plugins_url( 'assets/js/swiper.min.js', plugin_dir_path( __FILE__) ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_VERSION, false );
+        wp_register_script( 'wpmozo-ae-swiper', plugins_url( 'assets/js/swiper.min.js', plugin_dir_path( __FILE__) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
     }
 
@@ -56,7 +56,7 @@ class WPMOZO_Addons_For_Elementor_Public {
         $elements_manager->add_category(
             'wpmozo',
             [
-                'title' => esc_html__( 'WPMozo', 'wpmozo-addons-for-elementor-lite' ),
+                'title' => esc_html__( 'WPMozo', 'wpmozo-addons-lite-for-elementor-lite' ),
                 'icon' => 'fa fa-plug',
             ]
         );

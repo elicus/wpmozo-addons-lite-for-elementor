@@ -40,7 +40,7 @@ class WPMOZO_AE_Fancy_Text extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Fancy Text', 'wpmozo-addons-for-elementor-lite' );
+		return esc_html__( 'Fancy Text', 'wpmozo-addons-lite-for-elementor' );
 	}
 
 	/**

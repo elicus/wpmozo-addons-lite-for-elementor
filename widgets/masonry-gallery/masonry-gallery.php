@@ -44,7 +44,7 @@ class WPMOZO_AE_Masonry_Gallery extends Widget_Base {
 	 */
 
 	public function get_title() {
-		return esc_html__( 'Masonry Gallery', 'wpmozo-addons-for-elementor-lite' );
+		return esc_html__( 'Masonry Gallery', 'wpmozo-addons-lite-for-elementor' );
 	}
 
 	/**
@@ -107,7 +107,7 @@ class WPMOZO_AE_Masonry_Gallery extends Widget_Base {
 
 	public function get_script_depends() {
 
-		wp_register_script( 'wpmozo-ae-masonry-gallery-script', plugins_url( 'assets/js/masonryGallery.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_LITE_VERSION, false );
+		wp_register_script( 'wpmozo-ae-masonry-gallery-script', plugins_url( 'assets/js/masonryGallery.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
 		return array( 'wpmozo-ae-mfp', 'wpmozo-ae-isotope', 'wpmozo-ae-imagesloaded', 'wpmozo-ae-masonry-gallery-script' );
 	}

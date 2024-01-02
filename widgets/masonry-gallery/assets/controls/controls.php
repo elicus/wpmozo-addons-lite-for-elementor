@@ -12,14 +12,14 @@ use \Elementor\Group_Control_Box_Shadow;
 // Gallery items.
 $this->start_controls_section( 'masonry_gallery_settings',
 	array(
-		'label' => esc_html__( 'Gallery Setting', 'wpmozo-addons-for-elementor-lite' ),
+		'label' => esc_html__( 'Gallery Setting', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
 	)
 );
 
 	$this->add_control( 'gallery',
 		array(
-			'label'      => esc_html__( 'Add Gallery Images', 'wpmozo-addons-for-elementor-lite' ),
+			'label'      => esc_html__( 'Add Gallery Images', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => Controls_Manager::GALLERY,
 			'show_label' => false,
 			'dynamic'    => array(
@@ -60,7 +60,7 @@ $this->start_controls_section( 'masonry_gallery_settings',
 
 	$this->add_responsive_control( 'select_number_of_column',
 		array(
-			'label'          => __( 'Number Of Columns', 'wpmozo-addons-for-elementor-lite' ),
+			'label'          => __( 'Number Of Columns', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block'    => false,
 			'type'           => Controls_Manager::SELECT,
 			'options'        => $gallery_columns,
@@ -75,7 +75,7 @@ $this->start_controls_section( 'masonry_gallery_settings',
 
 	$this->add_responsive_control( 'column_spacing_slider',
 		array(
-			'label'          => esc_html__( 'Column Spacing', 'wpmozo-addons-for-elementor-lite' ),
+			'label'          => esc_html__( 'Column Spacing', 'wpmozo-addons-lite-for-elementor' ),
 			'type'           => Controls_Manager::SLIDER,
 			'range'          => array(
 				'px' => array(
@@ -111,18 +111,18 @@ $this->end_controls_section();
 // Gallery elements
 $this->start_controls_section( 'masonry_gallery_elements_settings',
 	array(
-		'label' => esc_html__( 'Elements', 'wpmozo-addons-for-elementor-lite' ),
+		'label' => esc_html__( 'Elements', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
 	)
 );
 
 	$this->add_control( 'image_title_switcher',
 		array(
-			'label'                => esc_html__( 'Show Title', 'wpmozo-addons-for-elementor-lite' ),
+			'label'                => esc_html__( 'Show Title', 'wpmozo-addons-lite-for-elementor' ),
 			'separator'            => 'before',
 			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor-lite' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor-lite' ),
+			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
+			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
 			'return_value'         => 'yes', // return value when the switch is on
 			'default'              => 'no',
 			'selectors_dictionary' => array(
@@ -134,13 +134,13 @@ $this->start_controls_section( 'masonry_gallery_elements_settings',
 
 	$this->add_control( 'title_show_select',
 		array(
-			'label'       => __( 'Show Title in', 'wpmozo-addons-for-elementor-lite' ),
+			'label'       => __( 'Show Title in', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'wpmozo_title_lightbox_only' => __( 'Lightbox', 'wpmozo-addons-for-elementor-lite' ),
-				'wpmozo_title_gallery_only'  => __( 'Gallery', 'wpmozo-addons-for-elementor-lite' ),
-				'wpmozo_title_both'          => __( 'Both', 'wpmozo-addons-for-elementor-lite' ),
+				'wpmozo_title_lightbox_only' => __( 'Lightbox', 'wpmozo-addons-lite-for-elementor' ),
+				'wpmozo_title_gallery_only'  => __( 'Gallery', 'wpmozo-addons-lite-for-elementor' ),
+				'wpmozo_title_both'          => __( 'Both', 'wpmozo-addons-lite-for-elementor' ),
 			),
 			'default'     => 'wpmozo_title_both',
 			'condition'   => array( 'image_title_switcher' => 'yes' ),
@@ -149,11 +149,11 @@ $this->start_controls_section( 'masonry_gallery_elements_settings',
 
 	$this->add_control( 'caption_switcher',
 		array(
-			'label'                => esc_html__( 'Show Caption', 'wpmozo-addons-for-elementor-lite' ),
+			'label'                => esc_html__( 'Show Caption', 'wpmozo-addons-lite-for-elementor' ),
 			'separator'            => 'before',
 			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor-lite' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor-lite' ),
+			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
+			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
 			'return_value'         => 'yes', // return value when the switch is on
 			'default'              => 'no',
 			'selectors_dictionary' => array(
@@ -165,13 +165,13 @@ $this->start_controls_section( 'masonry_gallery_elements_settings',
 
 	$this->add_control( 'caption_show_select',
 		array(
-			'label'       => __( 'Show Caption in', 'wpmozo-addons-for-elementor-lite' ),
+			'label'       => __( 'Show Caption in', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'wpmozo_caption_lightbox_only' => __( 'Lightbox', 'wpmozo-addons-for-elementor-lite' ),
-				'wpmozo_caption_gallery_only'  => __( 'Gallery', 'wpmozo-addons-for-elementor-lite' ),
-				'wpmozo_caption_both'          => __( 'Both', 'wpmozo-addons-for-elementor-lite' ),
+				'wpmozo_caption_lightbox_only' => __( 'Lightbox', 'wpmozo-addons-lite-for-elementor' ),
+				'wpmozo_caption_gallery_only'  => __( 'Gallery', 'wpmozo-addons-lite-for-elementor' ),
+				'wpmozo_caption_both'          => __( 'Both', 'wpmozo-addons-lite-for-elementor' ),
 			),
 			'default'     => 'wpmozo_caption_both',
 			'condition'   => array( 'caption_switcher' => 'yes' ),
@@ -180,11 +180,11 @@ $this->start_controls_section( 'masonry_gallery_elements_settings',
 
 	$this->add_control( 'lightbox_switcher',
 		array(
-			'label'                => esc_html__( 'Enable Lightbox', 'wpmozo-addons-for-elementor-lite' ),
+			'label'                => esc_html__( 'Enable Lightbox', 'wpmozo-addons-lite-for-elementor' ),
 			'separator'            => 'before',
 			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor-lite' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor-lite' ),
+			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
+			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
 			'default'              => 'no',
 			'selectors_dictionary' => array(
 				'yes' => 'yes',
@@ -195,12 +195,12 @@ $this->start_controls_section( 'masonry_gallery_elements_settings',
 
 	$this->add_control( 'title_caption_style_select',
 		array(
-			'label'       => __( 'Title & Caption Style in Lightbox', 'wpmozo-addons-for-elementor-lite' ),
+			'label'       => __( 'Title & Caption Style in Lightbox', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'wpmozo_ae_masonry_gallery_img_ovl' => __( 'Image Overlay', 'wpmozo-addons-for-elementor-lite' ),
-				'wpmozo_ae_masonry_gallery_img_blw' => __( 'Below Image', 'wpmozo-addons-for-elementor-lite' ),
+				'wpmozo_ae_masonry_gallery_img_ovl' => __( 'Image Overlay', 'wpmozo-addons-lite-for-elementor' ),
+				'wpmozo_ae_masonry_gallery_img_blw' => __( 'Below Image', 'wpmozo-addons-lite-for-elementor' ),
 			),
 			'default'     => 'wpmozo_ae_masonry_gallery_img_blw',
 			'condition'   => array( 'lightbox_switcher' => 'yes' ),
@@ -209,11 +209,11 @@ $this->start_controls_section( 'masonry_gallery_elements_settings',
 
 	$this->add_control( 'overlay_on_hover_switcher',
 		array(
-			'label'                => esc_html__( 'Overlay on Hover', 'wpmozo-addons-for-elementor-lite' ),
+			'label'                => esc_html__( 'Overlay on Hover', 'wpmozo-addons-lite-for-elementor' ),
 			'separator'            => 'before',
 			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor-lite' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor-lite' ),
+			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
+			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
 			'return_value'         => 'yes', // return value when the switch is on
 			'default'              => 'no',
 			'selectors_dictionary' => array(
@@ -225,7 +225,7 @@ $this->start_controls_section( 'masonry_gallery_elements_settings',
 
 	$this->add_control( 'overlay_icon_select',
 		array(
-			'label'     => esc_html__( 'Overlay Icon', 'wpmozo-addons-for-elementor-lite' ),
+			'label'     => esc_html__( 'Overlay Icon', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::ICONS,
 			'default'   => array(
 				'value'   => 'fas fa-image',
@@ -241,7 +241,7 @@ $this->end_controls_section();
 // Gallery styling.
 $this->start_controls_section( 'gallery_styling_section',
 	array(
-		'label' => esc_html__( 'Gallery Styling', 'wpmozo-addons-for-elementor-lite' ),
+		'label' => esc_html__( 'Gallery Styling', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	)
 );
@@ -255,7 +255,7 @@ $this->start_controls_section( 'gallery_styling_section',
 
 	$this->add_responsive_control( 'gallery_image_border_radius',
 		array(
-			'label'      => esc_html__( 'Image Rounded Corners', 'wpmozo-addons-for-elementor-lite' ),
+			'label'      => esc_html__( 'Image Rounded Corners', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'selectors'  => array(
@@ -276,7 +276,7 @@ $this->end_controls_section();
 // Title styling
 $this->start_controls_section( 'title_styling_section',
 	array(
-		'label' => esc_html__( 'Title', 'wpmozo-addons-for-elementor-lite' ),
+		'label' => esc_html__( 'Title', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 		'condition' => array( 'image_title_switcher' => 'yes')
 	)
@@ -284,39 +284,39 @@ $this->start_controls_section( 'title_styling_section',
 
 	$this->add_control( 'title_heading_level',
 		array(
-			'label'       => esc_html__( 'Title Heading Level', 'wpmozo-addons-for-elementor-lite' ),
+			'label'       => esc_html__( 'Title Heading Level', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => true,
 			'options'     =>
 			array(
 				'h1' =>
 					array(
-						'title' => esc_html__( 'H1', 'wpmozo-addons-for-elementor-lite' ),
+						'title' => esc_html__( 'H1', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-editor-h1',
 					),
 				'h2' =>
 					array(
-						'title' => esc_html__( 'H2', 'wpmozo-addons-for-elementor-lite' ),
+						'title' => esc_html__( 'H2', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-editor-h2',
 					),
 				'h3' =>
 					array(
-						'title' => esc_html__( 'H3', 'wpmozo-addons-for-elementor-lite' ),
+						'title' => esc_html__( 'H3', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-editor-h3',
 					),
 				'h4' =>
 					array(
-						'title' => esc_html__( 'H4', 'wpmozo-addons-for-elementor-lite' ),
+						'title' => esc_html__( 'H4', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-editor-h4',
 					),
 				'h5' =>
 					array(
-						'title' => esc_html__( 'H5', 'wpmozo-addons-for-elementor-lite' ),
+						'title' => esc_html__( 'H5', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-editor-h5',
 					),
 				'h6' =>
 					array(
-						'title' => esc_html__( 'H6', 'wpmozo-addons-for-elementor-lite' ),
+						'title' => esc_html__( 'H6', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-editor-h6',
 					),
 			),
@@ -332,14 +332,14 @@ $this->start_controls_section( 'title_styling_section',
 		// Tab 1
 		$this->start_controls_tab( 'title_normal_state_tab',
 			array(
-				'label' => esc_html__( 'Normal', 'wpmozo-addons-for-elementor-lite' ),
+				'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
 			)
 		);
 
 			// Settings for first tab
 			$this->add_control( 		'title_text_color',
 				array(
-					'label'       => esc_html__( 'Text Color', 'wpmozo-addons-for-elementor-lite' ),
+					'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '#222',
@@ -349,7 +349,7 @@ $this->start_controls_section( 'title_styling_section',
 
 			$this->add_group_control( 		Group_Control_Typography::get_type(),
 				array(
-					'label'       => esc_html__( 'Title Typography', 'wpmozo-addons-for-elementor-lite' ),
+					'label'       => esc_html__( 'Title Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'name'        => 'title_text_typography',
 					'selector'    => '{{WRAPPER}} .wpmozo_ae_masonry_gallery_item_title',
@@ -359,7 +359,7 @@ $this->start_controls_section( 'title_styling_section',
 			$this->add_group_control( 		Group_Control_Text_Shadow::get_type(),
 				array(
 					'name'      => 'title_text_shadow',
-					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-for-elementor-lite' ),
+					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 					'selector'  => '{{WRAPPER}} .wpmozo_ae_masonry_gallery_item_title',
 					'separator' => 'before',
 				)
@@ -370,14 +370,14 @@ $this->start_controls_section( 'title_styling_section',
 		// Tab 2
 		$this->start_controls_tab( 'title_hover_state_tab',
 			array(
-				'label' => esc_html__( 'Hover', 'wpmozo-addons-for-elementor-lite' ),
+				'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
 			)
 		);
 
 			// Settings for second tab
 			$this->add_control( 'title_text_hover_state_color',
 				array(
-					'label'       => esc_html__( 'Title Text Color', 'wpmozo-addons-for-elementor-lite' ),
+					'label'       => esc_html__( 'Title Text Color', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
@@ -389,7 +389,7 @@ $this->start_controls_section( 'title_styling_section',
 
 			$this->add_group_control( Group_Control_Typography::get_type(),
 				array(
-					'label'       => esc_html__( 'Title Typography', 'wpmozo-addons-for-elementor-lite' ),
+					'label'       => esc_html__( 'Title Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'name'        => 'title_text_hover_state_typography',
 					'selector'    => '{{WRAPPER}} .wpmozo_ae_masonry_gallery_item_title:hover',
@@ -399,7 +399,7 @@ $this->start_controls_section( 'title_styling_section',
 			$this->add_group_control( Group_Control_Text_Shadow::get_type(),
 				array(
 					'name'      => 'title_text_hover_state_shadow',
-					'label'     => esc_html__( 'Title Text Shadow', 'wpmozo-addons-for-elementor-lite' ),
+					'label'     => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 					'selector'  => '{{WRAPPER}} .wpmozo_ae_masonry_gallery_item_title:hover',
 					'separator' => 'before',
 				)
@@ -408,7 +408,7 @@ $this->start_controls_section( 'title_styling_section',
 			$this->add_responsive_control( 'title_transition_duration',
 				array(
 					'type'      => Controls_Manager::SLIDER,
-					'label'     => esc_html__( 'Transition Duration (ms) ', 'wpmozo-addons-for-elementor-lite' ),
+					'label'     => esc_html__( 'Transition Duration (ms) ', 'wpmozo-addons-lite-for-elementor' ),
 					'range'     => array(
 						'ms' => array(
 							'min'  => 0,
@@ -432,20 +432,20 @@ $this->start_controls_section( 'title_styling_section',
 
 	$this->add_control( 'title_text_alignment',
 		array(
-			'label'       => esc_html__( 'Title Alignment', 'wpmozo-addons-for-elementor-lite' ),
+			'label'       => esc_html__( 'Title Alignment', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => true,
 			'options'     => array(
 				'left'   => array(
-					'title' => esc_html__( 'Left', 'wpmozo-addons-for-elementor-lite' ),
+					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-left',
 				),
 				'center' => array(
-					'title' => esc_html__( 'Center', 'wpmozo-addons-for-elementor-lite' ),
+					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-center',
 				),
 				'right'  => array(
-					'title' => esc_html__( 'Right', 'wpmozo-addons-for-elementor-lite' ),
+					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-right',
 				),
 			),
@@ -458,7 +458,7 @@ $this->start_controls_section( 'title_styling_section',
 
 	$this->add_control( 'title_padding_margin_heading',
 		array(
-			'label' => esc_html__( 'Title Padding and Margin', 'wpmozo-addons-for-elementor-lite' ),
+			'label' => esc_html__( 'Title Padding and Margin', 'wpmozo-addons-lite-for-elementor' ),
 			'type'  => Controls_Manager::HEADING,
 
 		)
@@ -470,14 +470,14 @@ $this->start_controls_section( 'title_styling_section',
 		// Tab 1
 		$this->start_controls_tab( 'title_padding_tab',
 			array(
-				'label' => esc_html__( 'Padding', 'wpmozo-addons-for-elementor-lite' ),
+				'label' => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 			)
 		);
 
 			// Settings for first tab.
 			$this->add_responsive_control( 'title_padding',
 				array(
-					'label'      => esc_html__( 'Padding', 'wpmozo-addons-for-elementor-lite' ),
+					'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', 'em', '%' ),
 					'default'    => array(
@@ -497,14 +497,14 @@ $this->start_controls_section( 'title_styling_section',
 		// Tab 2
 		$this->start_controls_tab( 'title_margin_tab',
 			array(
-				'label' => esc_html__( 'Margin', 'wpmozo-addons-for-elementor-lite' ),
+				'label' => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
 			)
 		);
 
 			// Settings for second tab.
 			$this->add_responsive_control( 'title_margin',
 				array(
-					'label'      => esc_html__( 'Margin', 'wpmozo-addons-for-elementor-lite' ),
+					'label'      => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', 'em', '%' ),
 					'default'    => array(
@@ -528,7 +528,7 @@ $this->end_controls_section();
 // Caption styling
 $this->start_controls_section( 'caption_styling_section',
 	array(
-		'label' => esc_html__( 'Caption', 'wpmozo-addons-for-elementor-lite' ),
+		'label' => esc_html__( 'Caption', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 		'condition' => array( 'caption_switcher' => 'yes' )
 	)
@@ -540,14 +540,14 @@ $this->start_controls_section( 'caption_styling_section',
 		// Tab 1
 		$this->start_controls_tab( 'caption_normal_state_tab',
 			array(
-				'label' => esc_html__( 'Normal', 'wpmozo-addons-for-elementor-lite' ),
+				'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
 			)
 		);
 
 			// Settings for FIRST tab.
 			$this->add_control( 'caption_text_color',
 				array(
-					'label'       => esc_html__( 'Caption Text Color', 'wpmozo-addons-for-elementor-lite' ),
+					'label'       => esc_html__( 'Caption Text Color', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '#222',
@@ -557,7 +557,7 @@ $this->start_controls_section( 'caption_styling_section',
 
 			$this->add_group_control( Group_Control_Typography::get_type(),
 				array(
-					'label'       => esc_html__( 'Caption Typography', 'wpmozo-addons-for-elementor-lite' ),
+					'label'       => esc_html__( 'Caption Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'name'        => 'caption_text_typography',
 					'selector'    => '{{WRAPPER}} .wpmozo_ae_masonry_gallery_item_caption',
@@ -567,7 +567,7 @@ $this->start_controls_section( 'caption_styling_section',
 			$this->add_group_control( Group_Control_Text_Shadow::get_type(),
 				array(
 					'name'      => 'caption_text_shadow',
-					'label'     => esc_html__( 'Caption Text Shadow', 'wpmozo-addons-for-elementor-lite' ),
+					'label'     => esc_html__( 'Caption Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 					'selector'  => '{{WRAPPER}} .wpmozo_ae_masonry_gallery_item_caption',
 					'separator' => 'before',
 				)
@@ -578,14 +578,14 @@ $this->start_controls_section( 'caption_styling_section',
 		// Tab 2.
 		$this->start_controls_tab( 'caption_hover_state_tab',
 			array(
-				'label' => esc_html__( 'Hover', 'wpmozo-addons-for-elementor-lite' ),
+				'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
 			)
 		);
 
 			// Settings for second tab.
 			$this->add_control( 'caption_text_hover_state_color',
 				array(
-					'label'       => esc_html__( 'Caption Text Color', 'wpmozo-addons-for-elementor-lite' ),
+					'label'       => esc_html__( 'Caption Text Color', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
@@ -597,7 +597,7 @@ $this->start_controls_section( 'caption_styling_section',
 
 			$this->add_group_control( Group_Control_Typography::get_type(),
 				array(
-					'label'       => esc_html__( 'Caption Typography', 'wpmozo-addons-for-elementor-lite' ),
+					'label'       => esc_html__( 'Caption Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'name'        => 'caption_text_hover_state_typography',
 					'selector'    => '{{WRAPPER}} .wpmozo_ae_masonry_gallery_item_caption:hover',
@@ -607,7 +607,7 @@ $this->start_controls_section( 'caption_styling_section',
 			$this->add_group_control( Group_Control_Text_Shadow::get_type(),
 				array(
 					'name'      => 'caption_text_hover_state_shadow',
-					'label'     => esc_html__( 'Caption Text Shadow', 'wpmozo-addons-for-elementor-lite' ),
+					'label'     => esc_html__( 'Caption Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 					'selector'  => '{{WRAPPER}} .wpmozo_ae_masonry_gallery_item_caption:hover',
 					'separator' => 'before',
 				)
@@ -616,7 +616,7 @@ $this->start_controls_section( 'caption_styling_section',
 			$this->add_responsive_control( 'caption_transition_duration',
 				array(
 					'type'      => Controls_Manager::SLIDER,
-					'label'     => esc_html__( 'Transition Duration (ms) ', 'wpmozo-addons-for-elementor-lite' ),
+					'label'     => esc_html__( 'Transition Duration (ms) ', 'wpmozo-addons-lite-for-elementor' ),
 					'range'     => array(
 						'ms' => array(
 							'min'  => 0,
@@ -640,20 +640,20 @@ $this->start_controls_section( 'caption_styling_section',
 
 	$this->add_control( 'caption_text_alignment',
 		array(
-			'label'       => esc_html__( 'Caption Alignment', 'wpmozo-addons-for-elementor-lite' ),
+			'label'       => esc_html__( 'Caption Alignment', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => true,
 			'options'     => array(
 				'left'   => array(
-					'caption' => esc_html__( 'Left', 'wpmozo-addons-for-elementor-lite' ),
+					'caption' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'    => 'eicon-text-align-left',
 				),
 				'center' => array(
-					'caption' => esc_html__( 'Center', 'wpmozo-addons-for-elementor-lite' ),
+					'caption' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'    => 'eicon-text-align-center',
 				),
 				'right'  => array(
-					'caption' => esc_html__( 'Right', 'wpmozo-addons-for-elementor-lite' ),
+					'caption' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'    => 'eicon-text-align-right',
 				),
 			),
@@ -666,7 +666,7 @@ $this->start_controls_section( 'caption_styling_section',
 
 	$this->add_control( 'caption_padding_margin_heading',
 		array(
-			'label' => esc_html__( 'Caption Padding and Margin', 'wpmozo-addons-for-elementor-lite' ),
+			'label' => esc_html__( 'Caption Padding and Margin', 'wpmozo-addons-lite-for-elementor' ),
 			'type'  => Controls_Manager::HEADING,
 
 		)
@@ -678,14 +678,14 @@ $this->start_controls_section( 'caption_styling_section',
 		// Tab 1.
 		$this->start_controls_tab( 'caption_padding_tab',
 			array(
-				'label' => esc_html__( 'Padding', 'wpmozo-addons-for-elementor-lite' ),
+				'label' => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 			)
 		);
 
 			// Settings for first tab.
 			$this->add_responsive_control( 		'caption_padding',
 				array(
-					'label'      => esc_html__( 'Padding', 'wpmozo-addons-for-elementor-lite' ),
+					'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', 'em', '%' ),
 					'default'    => array(
@@ -705,14 +705,14 @@ $this->start_controls_section( 'caption_styling_section',
 		// Tab 2.
 		$this->start_controls_tab( 'caption_margin_tab',
 			array(
-				'label' => esc_html__( 'Margin', 'wpmozo-addons-for-elementor-lite' ),
+				'label' => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
 			),
 		);
 
 			// Settings for second tab.
 			$this->add_responsive_control( 'caption_margin',
 				array(
-					'label'      => esc_html__( 'Margin', 'wpmozo-addons-for-elementor-lite' ),
+					'label'      => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', 'em', '%' ),
 					'default'    => array(
@@ -736,7 +736,7 @@ $this->end_controls_section();
 // Lightbox styling.
 $this->start_controls_section( 'lightbox_styling_section',
 	array(
-		'label'     => esc_html__( 'Lightbox', 'wpmozo-addons-for-elementor-lite' ),
+		'label'     => esc_html__( 'Lightbox', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'       => Controls_Manager::TAB_STYLE,
 		'condition' => array( 'lightbox_switcher!' => '' ),
 	)
@@ -744,7 +744,7 @@ $this->start_controls_section( 'lightbox_styling_section',
 
 	$this->add_control( 'lightbox_background_color',
 		array(
-			'label'       => esc_html__( 'Lightbox Background Color', 'wpmozo-addons-for-elementor-lite' ),
+			'label'       => esc_html__( 'Lightbox Background Color', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#0000006E',
@@ -756,7 +756,7 @@ $this->start_controls_section( 'lightbox_styling_section',
 
 	$this->add_control( 'exit_icon_color',
 		array(
-			'label'       => esc_html__( 'Exit Icon Color', 'wpmozo-addons-for-elementor-lite' ),
+			'label'       => esc_html__( 'Exit Icon Color', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#ffffff',
@@ -768,7 +768,7 @@ $this->start_controls_section( 'lightbox_styling_section',
 
 	$this->add_control( 'arrows_color',
 		array(
-			'label'       => esc_html__( 'Arrow Color', 'wpmozo-addons-for-elementor-lite' ),
+			'label'       => esc_html__( 'Arrow Color', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#ffffff',
@@ -781,7 +781,7 @@ $this->start_controls_section( 'lightbox_styling_section',
 
 	$this->add_control( 'arrow_border_color',
 		array(
-			'label'       => esc_html__( 'Arrow Border Color', 'wpmozo-addons-for-elementor-lite' ),
+			'label'       => esc_html__( 'Arrow Border Color', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#FFFFFF75',
@@ -794,7 +794,7 @@ $this->start_controls_section( 'lightbox_styling_section',
 
 	$this->add_control( 'title_and_caption_color',
 		array(
-			'label'       => esc_html__( 'Title & Caption Background Color', 'wpmozo-addons-for-elementor-lite' ),
+			'label'       => esc_html__( 'Title & Caption Background Color', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#FFFFFF75',
@@ -809,7 +809,7 @@ $this->end_controls_section();
 // Overlay styling.
 $this->start_controls_section( 'overlay_styling_section',
 	array(
-		'label'     => esc_html__( 'Overlay', 'wpmozo-addons-for-elementor-lite' ),
+		'label'     => esc_html__( 'Overlay', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'       => Controls_Manager::TAB_STYLE,
 		'condition' => array( 'overlay_on_hover_switcher' => 'yes' ),
 	)
@@ -817,7 +817,7 @@ $this->start_controls_section( 'overlay_styling_section',
 
 	$this->add_responsive_control( 'overlay_icon_size_slider',
 		array(
-			'label'      => esc_html__( 'Icon Size', 'wpmozo-addons-for-elementor-lite' ),
+			'label'      => esc_html__( 'Icon Size', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => Controls_Manager::SLIDER,
 			'range'      => array(
 				'px' => array(
@@ -851,7 +851,7 @@ $this->start_controls_section( 'overlay_styling_section',
 
 	$this->add_control( 'overlay_icon_color',
 		array(
-			'label'       => esc_html__( 'Overlay Icon Color', 'wpmozo-addons-for-elementor-lite' ),
+			'label'       => esc_html__( 'Overlay Icon Color', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#ffffff',
@@ -864,7 +864,7 @@ $this->start_controls_section( 'overlay_styling_section',
 
 	$this->add_control( 'image_overlay_color',
 		array(
-			'label'       => esc_html__( 'Overlay Background Color', 'wpmozo-addons-for-elementor-lite' ),
+			'label'       => esc_html__( 'Overlay Background Color', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#0000006E',
