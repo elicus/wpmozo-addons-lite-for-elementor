@@ -6,8 +6,8 @@
  * @version     1.0.0
  */
 
-//if this file is called directly, abort.
-if( !defined( 'ABSPATH' ) ){
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -26,7 +26,7 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 *
 	 * @return string Widget name.
 	 */
-	
+
 	public function get_name() {
 		return 'wpmozo_ae_before_after_slider';
 	}
@@ -41,7 +41,7 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 *
 	 * @return string Widget title.
 	 */
-	
+
 	public function get_title() {
 		return esc_html__( 'Before After Slider', 'wpmozo-addons-lite-for-elementor' );
 	}
@@ -56,7 +56,7 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-	
+
 	public function get_icon() {
 		return 'eicon-image-before-after';
 	}
@@ -71,7 +71,7 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 *
 	 * @return array Widget categories.
 	 */
-	
+
 	public function get_categories() {
 		return array( 'wpmozo' );
 	}
@@ -86,10 +86,10 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 *
 	 * @return style handle.
 	 */
-	
+
 	public function get_style_depends() {
 		wp_register_style( 'wpmozo-ae-before-after-slider-style', plugins_url( 'assets/css/style.min.css', __FILE__ ) );
-		return array('wpmozo-ae-before-after-slider-style');
+		return array( 'wpmozo-ae-before-after-slider-style' );
 	}
 
 	/**
@@ -102,12 +102,12 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 *
 	 * @return array Element scripts dependencies.
 	 */
-    
-    public function get_script_depends() {
-		return array( 'wpmozo-ae-twenty-twenty', 'wpmozo-ae-move-event' ) ;
+
+	public function get_script_depends() {
+		return array( 'wpmozo-ae-twenty-twenty', 'wpmozo-ae-move-event' );
 	}
 
-			/**
+	/**
 	 * Register widget controls.
 	 *
 	 * Adds different input fields to allow the user to change and customize the widget settings.
@@ -115,10 +115,10 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 * @since 1.0.0
 	 * @access protected
 	 */
-	
+
 	protected function register_controls() {
 
-		//Seprate file containing all the code for registering controls.
+		// Seprate file containing all the code for registering controls.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'before-after-slider/assets/controls/controls.php';
 	}
 
@@ -133,45 +133,45 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 
-		//Before image
-		if( ! empty( $settings[ 'before_state_image' ][ 'url' ] ) ) {   
-            $before_image           = $settings[ 'before_state_image' ];  
-            $before_image_attach_id = $before_image[ 'id' ];
-            $before_img_url         = ( 'default-image-id' !== $before_image_attach_id ) ? wp_get_attachment_image_src($before_image_attach_id,'full')[0] : $before_image[ 'url' ];
-            
+		// Before image
+		if ( ! empty( $settings['before_state_image']['url'] ) ) {
+			$before_image           = $settings['before_state_image'];
+			$before_image_attach_id = $before_image['id'];
+			$before_img_url         = ( 'default-image-id' !== $before_image_attach_id ) ? wp_get_attachment_image_src( $before_image_attach_id, 'full' )[0] : $before_image['url'];
 
-            $this->add_render_attribute( 'before_image',
-                array(
-                 'src'   => $before_img_url, 
-                 'class' => array( 'wpmozo-ae-before-state-image' ), 
-                 'title' => Control_Media::get_image_title( $before_image ), 
-                 'alt'   => Control_Media::get_image_alt( $before_image ),
-                ) 
-            );
-        }
+			$this->add_render_attribute(
+				'before_image',
+				array(
+					'src'   => $before_img_url,
+					'class' => array( 'wpmozo-ae-before-state-image' ),
+					'title' => Control_Media::get_image_title( $before_image ),
+					'alt'   => Control_Media::get_image_alt( $before_image ),
+				)
+			);
+		}
 
-		//After image
-		if( ! empty( $settings[ 'after_state_image' ][ 'url' ] ) ) {
-            $after_image           = $settings[ 'after_state_image' ];  
-            $after_image_attach_id = $after_image[ 'id' ];
-            $after_img_url         = ( 'default-image-id' !== $after_image_attach_id ) ? wp_get_attachment_image_src($after_image_attach_id,'full')[0] : $after_image[ 'url' ];
-            
+		// After image
+		if ( ! empty( $settings['after_state_image']['url'] ) ) {
+			$after_image           = $settings['after_state_image'];
+			$after_image_attach_id = $after_image['id'];
+			$after_img_url         = ( 'default-image-id' !== $after_image_attach_id ) ? wp_get_attachment_image_src( $after_image_attach_id, 'full' )[0] : $after_image['url'];
 
-            $this->add_render_attribute( 'after_image',
-                array(
-                 'src'   => $after_img_url, 
-                 'class' => array( 'wpmozo-ae-after-state-image' ), 
-                 'title' => Control_Media::get_image_title( $after_image ), 
-                 'alt'   => Control_Media::get_image_alt( $after_image ),
-                ) 
-            );
-        }
+			$this->add_render_attribute(
+				'after_image',
+				array(
+					'src'   => $after_img_url,
+					'class' => array( 'wpmozo-ae-after-state-image' ),
+					'title' => Control_Media::get_image_title( $after_image ),
+					'alt'   => Control_Media::get_image_alt( $after_image ),
+				)
+			);
+		}
 
-		$offset               =  ( '' !== $settings[ 'handle_position_slider' ] ) ? ($settings[ 'handle_position_slider'][ 'size' ]) : 0.5 ;
+		$offset               = ( '' !== $settings['handle_position_slider'] ) ? ( $settings['handle_position_slider']['size'] ) : 0.5;
 		$orientation          = ( '' !== $settings['slider_orientation_select'] ) ? $settings['slider_orientation_select'] : 'horizontal';
 		$move_slider_on_hover = ( 'yes' === $settings['move_handle_on_hover_switcher'] ) ? true : false;
 		$click_to_move        = ( 'yes' === $settings['move_handle_on_click_switcher'] && ! $move_slider_on_hover ) ? true : false;
-		$order_class          = 'elementor-element-'.$this->get_id();
+		$order_class          = 'elementor-element-' . $this->get_id();
 
 		if ( 'yes' === $settings['before_label_show_switcher'] ) {
 			$before_label = ( '' !== $settings['before_label_text'] ) ? sprintf( esc_html( '%s' ), esc_html( $settings['before_label_text'] ) ) : '';
@@ -187,21 +187,21 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 		?>
 			<div class="wpmozo-ae-before-after-slider-wrapper">
 				<div class="wpmozo-ae-before-after-image-wrapper">
-					<img <?php echo $this->get_render_attribute_string( 'before_image' ); ?> />
-					<img <?php echo $this->get_render_attribute_string( 'after_image' ); ?> />
+					<img <?php echo wp_kses_post( $this->get_render_attribute_string( 'before_image' ) ); ?> />
+					<img <?php echo wp_kses_post( $this->get_render_attribute_string( 'after_image' ) ); ?> />
 				</div>
 			</div>
 			<!-- Slider script -->
 			<script type="text/javascript">
 				jQuery(function($) {
 					$(".<?php echo esc_attr( $order_class ); ?> .wpmozo-ae-before-after-image-wrapper").twentytwenty({
-					    default_offset_pct: "<?php echo esc_attr( $offset ); ?>",
-					    orientation: "<?php echo esc_attr( $orientation ); ?>",
-					    before_label: "<?php echo esc_attr( $before_label ); ?>",
-					    after_label: "<?php echo esc_attr( $after_label ); ?>",
-					    move_slider_on_hover: "<?php echo boolval( $move_slider_on_hover ); ?>",
-					    move_with_handle_only: true,
-					    click_to_move: "<?php echo boolval( $click_to_move ); ?>"
+						default_offset_pct: "<?php echo esc_attr( $offset ); ?>",
+						orientation: "<?php echo esc_attr( $orientation ); ?>",
+						before_label: "<?php echo esc_attr( $before_label ); ?>",
+						after_label: "<?php echo esc_attr( $after_label ); ?>",
+						move_slider_on_hover: "<?php echo boolval( $move_slider_on_hover ); ?>",
+						move_with_handle_only: true,
+						click_to_move: "<?php echo boolval( $click_to_move ); ?>"
 					});
 				});
 			</script>

@@ -58,7 +58,6 @@ class WPMOZO_Addons_Lite_For_Elementor{
 
         $this->load_dependencies();
         $this->set_locale();
-        $this->define_admin_hooks();
         $this->define_public_hooks();
 
     }
@@ -94,16 +93,6 @@ class WPMOZO_Addons_Lite_For_Elementor{
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wpmozo-addons-lite-for-elementor-i18n.php';
 
         /**
-         * The class responsible for defining all actions that occur in the admin area.
-         */
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wpmozo-addons-lite-for-elementor-admin.php';
-
-        /**
-         * The class responsible for defining all settings that occur on the settings page in the admin area.
-         */
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/settings/class-wpmozo-addons-lite-for-elementor-settings.php';
-
-        /**
          * The class responsible for defining all actions that occur in the public-facing side of the site.
          */
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wpmozo-addons-lite-for-elementor-public.php';
@@ -126,42 +115,6 @@ class WPMOZO_Addons_Lite_For_Elementor{
         $plugin_i18n = new WPMOZO_Addons_Lite_For_Elementor_i18n();
 
         $this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
-    }
-
-
-    /**
-     * Register all of the hooks related to the admin area functionality
-     * of the plugin.
-     *
-     * @since    1.0.0
-     * @access   private
-     */
-    private function define_admin_hooks() {
-        global $wp_version;
-
-        $settings       = new WPMOZO_Addons_Lite_For_Elementor_Settings( $this->get_plugin_option() );
-        $plugin_admin   = new WPMOZO_Addons_Lite_For_Elementor_Admin( $settings );
-        $action_hook    = 'in_plugin_update_message-' . WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME;
-
-        $this->loader->add_action( 'wp_loaded', $plugin_admin, 'wp_loaded' );
-        $this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
-        $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-        $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-        $this->loader->add_action( 'wp_ajax_wpmozo_ae_panel_activate_license', $plugin_admin, 'activate_license' );
-        $this->loader->add_action( 'wp_ajax_wpmozo_ae_panel_deactivate_license', $plugin_admin, 'deactivate_license' );
-        $this->loader->add_filter( 'upgrader_package_options', $plugin_admin, 'check_upgrading_product' );
-        if ( version_compare( $wp_version, '5.5.0', '>=' ) ) {
-            $this->loader->add_filter( 'upgrader_pre_download', $plugin_admin, 'update_error_message', 20, 4 );
-        } else {
-            $this->loader->add_filter( 'upgrader_pre_download', $plugin_admin, 'update_error_message', 20, 3 );
-        }
-        $this->loader->add_action( $action_hook, $plugin_admin, 'append_custom_notification', 10, 2 );
-        $this->loader->add_action( 'delete_site_transient', $plugin_admin, 'delete_update_transient' );
-        $this->loader->add_filter( 'pre_set_site_transient_update_plugins', $plugin_admin, 'check_update' );
-        $this->loader->add_filter( 'plugins_api', $plugin_admin, 'check_info', 10, 3 );
-        $this->loader->add_filter( 'plugin_action_links_' . WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME, $plugin_admin, 'plugin_action_links' );
-        $this->loader->add_filter( 'plugin_row_meta', $plugin_admin, 'plugin_row_meta', 10, 4 );
 
     }
 

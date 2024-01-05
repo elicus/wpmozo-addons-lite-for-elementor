@@ -82,9 +82,8 @@ class WPMOZO_AE_Fancy_Heading extends Widget_Base {
 	 *
 	 * @return style handle.
 	 */
-	public function get_style_depends() 
-	{
-		wp_register_style( 'wpmozo-ae-fancyheading-style', plugins_url( 'assets/css/style.min.css', __FILE__  ) );
+	public function get_style_depends() {
+		wp_register_style( 'wpmozo-ae-fancyheading-style', plugins_url( 'assets/css/style.min.css', __FILE__ ) );
 
 		return array( 'wpmozo-ae-fancyheading-style' );
 	}
@@ -99,7 +98,7 @@ class WPMOZO_AE_Fancy_Heading extends Widget_Base {
 	 */
 	protected function register_controls() {
 
-		//Seprate file containing all the code for registering controls.
+		// Seprate file containing all the code for registering controls.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'fancy-heading/assets/controls/controls.php';
 	}
 
@@ -114,12 +113,12 @@ class WPMOZO_AE_Fancy_Heading extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 
-		$pre_heading          = esc_attr( '' !== $settings[ 'pre_heading' ] ? $settings[ 'pre_heading' ] : '' );
-		$heading              = esc_attr( '' !== $settings[ 'heading' ] ? $settings[ 'heading' ] : '' );
-		$post_heading         = esc_attr( '' !== $settings[ 'post_heading' ] ? $settings[ 'post_heading' ] : '' );
-		$display_inline       = esc_attr( $settings[ 'display_inline' ] );
-		$global_heading_level = esc_attr( $settings[ 'global_heading_level' ] );
-		$display_inline       = esc_attr( $settings[ 'display_inline' ] );
+		$pre_heading          = esc_attr( '' !== $settings['pre_heading'] ? $settings['pre_heading'] : '' );
+		$heading              = esc_attr( '' !== $settings['heading'] ? $settings['heading'] : '' );
+		$post_heading         = esc_attr( '' !== $settings['post_heading'] ? $settings['post_heading'] : '' );
+		$display_inline       = esc_attr( $settings['display_inline'] );
+		$global_heading_level = esc_attr( $settings['global_heading_level'] );
+		$display_inline       = esc_attr( $settings['display_inline'] );
 
 		$this->add_render_attribute( 'heading_wrapper', 'class', 'wpmozo_ae_text_wrapper' );
 		$this->add_render_attribute( 'heading_wrapper_inner', 'class', 'wpmozo_ae_text_wrapper_inner' );
@@ -146,17 +145,17 @@ class WPMOZO_AE_Fancy_Heading extends Widget_Base {
 			$heading = '<span ' . $this->get_render_attribute_string( 'heading' ) . '>' . $heading . '</span>';
 		}
 
-		if ( '' !== $post_heading ) {		
+		if ( '' !== $post_heading ) {
 			$post_heading = '<span ' . $this->get_render_attribute_string( 'post_heading' ) . '>' . $post_heading . '</span>';
-		}	
+		}
 
 		?>
 		<div <?php echo $this->get_render_attribute_string( 'heading_wrapper' ); ?> >
-			<<?php echo ('' !== $global_heading_level ? $global_heading_level : 'h2'); ?> <?php echo $this->get_render_attribute_string( 'heading_wrapper_inner' ); ?> >
+			<<?php echo ( '' !== $global_heading_level ? $global_heading_level : 'h2' ); ?> <?php echo $this->get_render_attribute_string( 'heading_wrapper_inner' ); ?> >
 				<?php echo $pre_heading; ?>
 				<?php echo $heading; ?>
 				<?php echo $post_heading; ?>
-			</<?php echo ('' !== $global_heading_level ? $global_heading_level : 'h2'); ?>>
+			</<?php echo ( '' !== $global_heading_level ? $global_heading_level : 'h2' ); ?>>
 		</div>
 		<?php
 	}

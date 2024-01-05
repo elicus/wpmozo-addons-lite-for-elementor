@@ -45,33 +45,6 @@ define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME', plugin_basename( __FILE__ )
 define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION', 'wpmozo-addons-lite-for-elementor' );
 
 /**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-wpmozo-addons-for-elementor-activator.php
- * 
- * @return void
- * @since  1.0.0
- */
-function activate_wpmozo_addons_lite_for_elementor() {
-    include_once plugin_dir_path(__FILE__) . 'includes/class-wpmozo-addons-lite-for-elementor-activator.php';
-    WPMozo_Addons_Lite_For_Elementor_Activator::activate();
-}
-
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-wpmozo-addons-for-elementor-deactivator.php
- * 
- * @return void
- * @since  1.0.0
- */
-function deactivate_wpmozo_addons_lite_for_elementor() {
-    include_once plugin_dir_path(__FILE__) . 'includes/class-wpmozo-addons-lite-for-elementor-deactivator.php';
-    WPMozo_Addons_Lite_For_Elementor_Deactivator::deactivate();
-}
-
-register_activation_hook(__FILE__, 'activate_wpmozo_addons_lite_for_elementor');
-register_deactivation_hook(__FILE__, 'deactivate_wpmozo_addons_lite_for_elementor');
-
-/**
  * Admin notice
  *
  * Warning when the site doesn't have Elementor installed or activated.

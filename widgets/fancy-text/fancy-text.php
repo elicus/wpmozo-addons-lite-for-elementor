@@ -97,7 +97,7 @@ class WPMOZO_AE_Fancy_Text extends Widget_Base {
 	 */
 	protected function register_controls() {
 
-		//Seprate file containing all the code for registering controls.
+		// Seprate file containing all the code for registering controls.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'fancy-text/assets/controls/controls.php';
 	}
 
@@ -123,15 +123,15 @@ class WPMOZO_AE_Fancy_Text extends Widget_Base {
 		}
 
 		if ( 'none' !== $settings['clip_overlay'] ) {
-			 ?>
+			?>
 			 <style type="text/css">
-            	#wpmozo_ae_clipping-<?php echo  $this->get_id(); ?> .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner::before,
-	            #wpmozo_ae_clipping-<?php echo  $this->get_id(); ?> .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner::after {
-	                content: "";
-	            }
-            </style>
+				#wpmozo_ae_clipping-<?php echo esc_attr( $this->get_id() ); ?> .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner::before,
+				#wpmozo_ae_clipping-<?php echo esc_attr( $this->get_id() ); ?> .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner::after {
+					content: "";
+				}
+			</style>
 			<?php
-		}		
+		}
 		?>
 			<div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?> >
 				<div <?php echo $this->get_render_attribute_string( 'text-wrapper' ); ?> >

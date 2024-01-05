@@ -6,8 +6,8 @@
  * @version     1.0.0
  */
 
-//if this file is called directly, abort.
-if( !defined( 'ABSPATH' ) ){
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -84,7 +84,7 @@ class WPMOZO_AE_Interactive_Image_Card extends Widget_Base {
 	 * @return style handle.
 	 */
 	public function get_style_depends() {
-		wp_register_style( 'wpmozo-ae-interactiveimagecard-style', plugins_url( 'assets/css/style.min.css', __FILE__  ) );
+		wp_register_style( 'wpmozo-ae-interactiveimagecard-style', plugins_url( 'assets/css/style.min.css', __FILE__ ) );
 
 		return array( 'wpmozo-ae-interactiveimagecard-style' );
 	}
@@ -98,8 +98,8 @@ class WPMOZO_AE_Interactive_Image_Card extends Widget_Base {
 	 * @access protected
 	 */
 	protected function register_controls() {
-	
-		//Seprate file containing all the code for registering controls.
+
+		// Seprate file containing all the code for registering controls.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'interactive-image-card/assets/controls/controls.php';
 	}
 
@@ -112,29 +112,29 @@ class WPMOZO_AE_Interactive_Image_Card extends Widget_Base {
 	 * @access protected
 	 */
 	protected function render() {
-		$settings            = $this->get_settings_for_display();
+		$settings = $this->get_settings_for_display();
 
-		$image              	= array_map( 'esc_attr', $settings[ 'image' ] );
-		$title_text         	= esc_attr( $settings[ 'title_text' ] );
-		$title_heading_level	= esc_attr( $settings[ 'title_heading_level' ] );
-		$content_text      		= esc_attr( $settings[ 'content_text' ] );
-		$select_layout 			= esc_attr($settings['select_layout']);		
-		
+		$image               = array_map( 'esc_attr', $settings['image'] );
+		$title_text          = esc_attr( $settings['title_text'] );
+		$title_heading_level = esc_attr( $settings['title_heading_level'] );
+		$content_text        = esc_attr( $settings['content_text'] );
+		$select_layout       = esc_attr( $settings['select_layout'] );
+
 		$this->add_inline_editing_attributes( 'title_text', 'none' );
 		$this->add_render_attribute( 'title_text', 'class', 'wpmozo_ae_interactive_image_card_title' );
 		$this->add_inline_editing_attributes( 'content_text', 'none' );
 		$this->add_render_attribute( 'content_text', 'class', 'wpmozo_ae_interactive_image_card_wrapper_content' );
 
-		//Interactive image card image
-		if( !empty($image) ) {
-			$image = wp_get_attachment_image( $settings[ 'image' ][ 'id' ], 'full', '', array( 'loading' => 'eager' ) );
+		// Interactive image card image
+		if ( ! empty( $image ) ) {
+			$image = wp_get_attachment_image( $settings['image']['id'], 'full', '', array( 'loading' => 'eager' ) );
 		}
-		if( ! empty( $settings['image']['url'] ) ) {
-			$size = esc_attr( $settings['image_size_size'] );
+		if ( ! empty( $settings['image']['url'] ) ) {
+			$size         = esc_attr( $settings['image_size_size'] );
 			$image_sizing = 'attachment-' . $size . ' size-' . $size;
-			$image = $settings['image'];
-			$attach_id = absint( $image['id'] );
-			$img_url = Group_Control_Image_Size::get_attachment_image_src( $attach_id, 'image_size', $settings );			
+			$image        = $settings['image'];
+			$attach_id    = absint( $image['id'] );
+			$img_url      = Group_Control_Image_Size::get_attachment_image_src( $attach_id, 'image_size', $settings );
 			if ( empty( $img_url ) ) {
 				$img_url = esc_url( $settings['image']['url'] );
 			}
@@ -149,20 +149,19 @@ class WPMOZO_AE_Interactive_Image_Card extends Widget_Base {
 			);
 			$image = '<img ' . $this->get_render_attribute_string( 'image' ) . ' />';
 		}
-		
 
-		//Interactive image card title
-		if( !empty($title_text) ) {
-			$title_text = '<' . $title_heading_level . ' ' . $this->get_render_attribute_string( 'title_text' ) . '>' . $title_text . '</' . $title_heading_level . '>';
-		}		
+		// Interactive image card title
+		if ( ! empty( $title_text ) ) {
+			$title_text = '<' . esc_html( $title_heading_level ) . ' ' . $this->get_render_attribute_string( 'title_text' ) . '>' . $title_text . '</' . esc_html( $title_heading_level ) . '>';
+		}
 
 		// //Interactive image card content
-		if( !empty($content_text) ) {
+		if ( ! empty( $content_text ) ) {
 			$content_text = '<div ' . $this->get_render_attribute_string( 'content_text' ) . '>' . $content_text . '</div>';
 		}
 		?>
 		<div class="wpmozo_ae_interactive_image_card_wrapper">
-			<figure class="effect-<?php echo $select_layout; ?>">
+			<figure class="effect-<?php echo esc_attr( $select_layout ); ?>">
 				<?php echo $image; ?>
 				<figcaption>
 					<div class="wpmozo_ae_interactive_image_card_wrapper_inner">
@@ -172,7 +171,7 @@ class WPMOZO_AE_Interactive_Image_Card extends Widget_Base {
 				</figcaption>
 			</figure>
 		</div>
-		<?php	
+		<?php
 	}
 
 	/**
