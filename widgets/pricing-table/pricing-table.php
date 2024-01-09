@@ -83,7 +83,7 @@ class WPMOZO_AE_Pricing_Table extends Widget_Base {
 	 * @return style handle.
 	 */
 	public function get_style_depends() {
-		wp_register_style( 'wpmozo-ae-pricingtable-style', plugins_url( 'assets/css/style.min.css', __FILE__ ) );
+		wp_register_style( 'wpmozo-ae-pricingtable-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
 		return array( 'wpmozo-ae-pricingtable-style' );
 	}
@@ -143,20 +143,20 @@ class WPMOZO_AE_Pricing_Table extends Widget_Base {
 
 		$settings = $this->get_settings_for_display();
 
-		$table_title            = esc_attr( $settings['table_title_text'] );
+		$table_title            = esc_html( $settings['table_title_text'] );
 		$title_heading_level    = esc_attr( $settings['title_heading_level'] );
-		$currency_symbol        = esc_attr( $settings['currency_symbol'] );
-		$currency_symbol_custom = esc_attr( $settings['currency_symbol_custom'] );
-		$table_price            = esc_attr( $settings['table_price'] );
-		$pricing_period         = esc_attr( $settings['pricing_period'] );
-		$button_text            = esc_attr( $settings['button_text'] );
+		$currency_symbol        = esc_html( $settings['currency_symbol'] );
+		$currency_symbol_custom = esc_html( $settings['currency_symbol_custom'] );
+		$table_price            = absint( $settings['table_price'] );
+		$pricing_period         = esc_html( $settings['pricing_period'] );
+		$button_text            = esc_html( $settings['button_text'] );
 		$features_list          = $this->get_settings_for_display( 'features_list' );
-		$header_graphics        = esc_attr( $settings['header_graphics'] );
-		$table_subtitle         = esc_attr( $settings['table_subtitle_text'] );
-		$currency_position      = esc_attr( $settings['currency_position'] );
+		$header_graphics        = esc_html( $settings['header_graphics'] );
+		$table_subtitle         = esc_html( $settings['table_subtitle_text'] );
+		$currency_position      = esc_html( $settings['currency_position'] );
 		$list_icon              = '';
 
-		// pricing table icon migration settings
+		// pricing table icon migration settings.
 
 		if ( '' !== $settings['header_icon'] ) {
 			$icon = Icons_Manager::try_get_icon_html(

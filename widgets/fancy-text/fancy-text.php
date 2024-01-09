@@ -83,7 +83,7 @@ class WPMOZO_AE_Fancy_Text extends Widget_Base {
 	 */
 	public function get_style_depends() {
 
-		wp_register_style( 'wpmozo-ae-fancytext-style', plugins_url( 'assets/css/style.min.css', __FILE__ ) );
+		wp_register_style( 'wpmozo-ae-fancytext-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 		return array( 'wpmozo-ae-fancytext-style' );
 	}
 
@@ -124,19 +124,19 @@ class WPMOZO_AE_Fancy_Text extends Widget_Base {
 
 		if ( 'none' !== $settings['clip_overlay'] ) {
 			?>
-			 <style type="text/css">
-				#wpmozo_ae_clipping-<?php echo esc_attr( $this->get_id() ); ?> .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner::before,
-				#wpmozo_ae_clipping-<?php echo esc_attr( $this->get_id() ); ?> .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner::after {
+			<style type="text/css">
+				#wpmozo_ae_clipping-<?php echo wp_kses_post( $this->get_id() ); ?> .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner::before,
+				#wpmozo_ae_clipping-<?php echo wp_kses_post( $this->get_id() ); ?> .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner::after {
 					content: "";
 				}
 			</style>
 			<?php
 		}
 		?>
-			<div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?> >
-				<div <?php echo $this->get_render_attribute_string( 'text-wrapper' ); ?> >
-					<div <?php echo $this->get_render_attribute_string( 'inner-text-wrapper' ); ?> <?php echo $this->get_render_attribute_string( 'image' ); ?> >
-						<?php echo $this->parse_text_editor( $settings['fancy_text'] ); ?>
+			<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wrapper' ) ); ?> >
+				<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'text-wrapper' ) ); ?> >
+					<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'inner-text-wrapper' ) ); ?> <?php echo wp_kses_post( $this->get_render_attribute_string( 'image' ) ); ?> >
+						<?php echo esc_textarea( $this->parse_text_editor( $settings['fancy_text'] ) ); ?>
 					</div>
 				</div>
 			</div>

@@ -27,7 +27,6 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 	 *
 	 * @return string Widget name.
 	 */
-
 	public function get_name() {
 		return 'wpmozo_ae_logo_slider_for_elementor';
 	}
@@ -42,7 +41,6 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 	 *
 	 * @return string Widget title.
 	 */
-
 	public function get_title() {
 		return esc_html__( 'Logo Slider', 'wpmozo-addons-lite-for-elementor' );
 	}
@@ -57,7 +55,6 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-
 	public function get_icon() {
 		return 'eicon-slides';
 	}
@@ -72,7 +69,6 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 	 *
 	 * @return array Widget categories.
 	 */
-
 	public function get_categories() {
 		return array( 'wpmozo' );
 	}
@@ -87,9 +83,8 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 	 *
 	 * @return style handle.
 	 */
-
 	public function get_style_depends() {
-		wp_register_style( 'wpmozo-ae-logo-slider-style', plugins_url( 'assets/css/style.css', __FILE__ ) );
+		wp_register_style( 'wpmozo-ae-logo-slider-style', plugins_url( 'assets/css/style.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
 		return array( 'wpmozo-ae-logo-slider-style', 'wpmozo-ae-swiper-style' );
 	}
@@ -104,7 +99,6 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 	 *
 	 * @return array Element scripts dependencies.
 	 */
-
 	public function get_script_depends() {
 		wp_register_script( 'wpmozo-ae-logo-slider-script', plugins_url( 'assets/js/logo_slider_script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
@@ -119,25 +113,28 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 	 * @since 1.0.0
 	 * @access protected
 	 */
-
 	protected function register_controls() {
 		// Seprate file containing all the code for registering controls.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'logo-slider/assets/controls/controls.php';
 	}
 
-
+	/**
+	 * This function dynamically creates script parameters according to the user settings
+	 *
+	 * @return string
+	 * */
 	public function wpmozo_ae_render_slider_script() {
 		$order_class         = 'elementor-element-' . $this->get_id();
 		$swiper              = str_replace( '-', '_', $order_class );
 		$settings            = $this->get_settings_for_display();
-		$slide_effect        = esc_attr( $settings['slide_effect'] );
-		$show_arrow          = esc_attr( $settings['show_arrow'] );
-		$show_control_dot    = esc_attr( $settings['show_control_dot'] );
-		$loop                = esc_attr( $settings['slider_loop'] );
-		$autoplay            = esc_attr( $settings['autoplay'] );
-		$autoplay_speed      = intval( $settings['autoplay_speed'] );
-		$transition_duration = intval( $settings['slide_transition_duration'] );
-		$pause_on_hover      = esc_attr( $settings['pause_on_hover'] );
+		$slide_effect        = esc_html( $settings['slide_effect'] );
+		$show_arrow          = $settings['show_arrow'];
+		$show_control_dot    = $settings['show_control_dot'];
+		$loop                = $settings['slider_loop'];
+		$autoplay            = $settings['autoplay'];
+		$autoplay_speed      = absint( $settings['autoplay_speed'] );
+		$transition_duration = absint( $settings['slide_transition_duration'] );
+		$pause_on_hover      = $settings['pause_on_hover'];
 		$dynamic_bullets     = 'yes' === $settings['enable_dynamic_dots'] && in_array( $settings['control_dot_style'], array( 'solid_dot', 'transparent_dot', 'square_dot' ), true ) ? 'true' : 'false';
 
 		if ( 'coverflow' === $slide_effect || 'slide' === $slide_effect ) {
@@ -145,32 +142,32 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 			$slides_per_group        = $settings['slides_per_group'];
 			$space_between_slides    = $settings['space_between_slides']['size'];
 			$enable_coverflow_shadow = 'yes' === $settings['enable_coverflow_shadow'] ? 'true' : 'false';
-			$coverflow_rotate        = 'coverflow' === $slide_effect ? intval( $settings['coverflow_rotate']['size'] ) : '';
-			$coverflow_depth         = 'coverflow' === $slide_effect ? intval( $settings['coverflow_depth']['size'] ) : '';
+			$coverflow_rotate        = 'coverflow' === $slide_effect ? absint( $settings['coverflow_rotate']['size'] ) : '';
+			$coverflow_depth         = 'coverflow' === $slide_effect ? absint( $settings['coverflow_depth']['size'] ) : '';
 		}
 
-		$autoplay_speed       = '' !== $autoplay_speed || 0 !== $autoplay_speed ? $autoplay_speed : 3000;
-		$transition_duration  = '' !== $transition_duration || 0 !== $transition_duration ? $transition_duration : 1000;
-		$loop                 = 'yes' === $loop ? 'true' : 'false';
-		$arrows               = 'false';
-		$dots                 = 'false';
-		$autoplaySlides       = 0;
-		$cube                 = 'false';
-		$coverflow            = 'false';
-		$slidesPerGroup       = 1;
-		$slidesPerGroupSkip   = 0;
-		$slidesPerGroup       = 1;
-		$slidesPerGroupIpad   = 1;
-		$slidesPerGroupMobile = 1;
-		$slidesPerGroupSkip   = 0;
+		$autoplay_speed           = '' !== $autoplay_speed || 0 !== $autoplay_speed ? $autoplay_speed : 3000;
+		$transition_duration      = '' !== $transition_duration || 0 !== $transition_duration ? $transition_duration : 1000;
+		$loop                     = 'yes' === $loop ? 'true' : 'false';
+		$arrows                   = 'false';
+		$dots                     = 'false';
+		$autoplay_slides          = 0;
+		$cube                     = 'false';
+		$coverflow                = 'false';
+		$slides_each_group        = 1;
+		$slides_each_group_skip   = 0;
+		$slides_each_group        = 1;
+		$slides_each_group_ipad   = 1;
+		$slides_each_group_mobile = 1;
+		$slides_each_group_skip   = 0;
 
 		if ( in_array( $slide_effect, array( 'slide', 'coverflow' ), true ) ) {
 			$cards_per_view      = $cards_per_slide;
 			$cards_space_between = $space_between_slides;
-			$slidesPerGroup      = $slides_per_group;
+			$slides_each_group   = $slides_per_group;
 
-			if ( $cards_per_view > $slidesPerGroup && 1 !== $slidesPerGroup ) {
-				$slidesPerGroupSkip = $cards_per_view - $slidesPerGroup;
+			if ( $cards_per_view > $slides_each_group && 1 !== $slides_each_group ) {
+				$slides_each_group_skip = $cards_per_view - $slides_each_group;
 			}
 		} else {
 			$cards_per_view      = 1;
@@ -194,12 +191,12 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 
 		if ( 'yes' === $autoplay ) {
 			if ( 'yes' === $pause_on_hover ) {
-				$autoplaySlides = '{
+				$autoplay_slides = '{
                                 delay:' . $autoplay_speed . ',
                                 disableOnInteraction: true,
                             }';
 			} else {
-				$autoplaySlides = '{
+				$autoplay_slides = '{
                                 delay:' . $autoplay_speed . ',
                                 disableOnInteraction: false,
                             }';
@@ -228,8 +225,8 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 		$script .= 'var ' . esc_attr( $swiper ) . '_swiper = new Swiper(\'.' . esc_attr( $order_class ) . ' .swiper-container\', {
                             effect: "' . $slide_effect . '",
                             slidesPerView: ' . $cards_per_view . ',
-                            slidesPerGroup: ' . $slidesPerGroup . ',
-                            autoplay: ' . $autoplaySlides . ',
+                            slidesPerGroup: ' . $slides_each_group . ',
+                            autoplay: ' . $autoplay_slides . ',
                             spaceBetween: ' . intval( $cards_space_between ) . ',
                             cubeEffect: ' . $cube . ',
                             coverflowEffect: ' . $coverflow . ',
@@ -242,7 +239,7 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
                             	981: {
 		                          	slidesPerView: ' . $cards_per_view . ',
 		                          	spaceBetween: ' . intval( $cards_space_between ) . ',
-                            		slidesPerGroup: ' . $slidesPerGroup . ',
+                            		slidesPerGroup: ' . $slides_each_group . ',
 		                        }
 		                    },
                     });';
@@ -340,10 +337,9 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 										)
 									);
 									?>
-										 
-											<div <?php echo $this->get_render_attribute_string( 'swiper_layout_item' . $index ); ?> >
+											<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'swiper_layout_item' . sanitize_key( $index ) ) ); ?> >
 												<div class="single-image">
-													<img src="<?php echo $swiper_layout_items[ $index ]['logo_image']['url']; ?> " alt=" <?php echo $swiper_layout_items[ $index ]['logo_alt_text']; ?> ">
+													<img src="<?php echo esc_url( $swiper_layout_items[ $index ]['logo_image']['url'] ); ?> " alt=" <?php echo esc_attr( $swiper_layout_items[ $index ]['logo_alt_text'] ); ?> ">
 												</div>
 											</div>
 										<?php
@@ -379,24 +375,12 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 				);
 
 				?>
-					 
-						<div class="wpmozo_ae_swiper_navigation" <?php echo ! empty( $arrows_position ) ? $arrows_position_data : ''; ?> >
+
+						<div class="wpmozo_ae_swiper_navigation" <?php echo ! empty( $arrows_position ) ? wp_kses_post( $arrows_position_data ) : ''; ?> >
 							<?php
 							if ( 'svg' !== $settings['next_slide_arrow']['library'] ) {
-									echo Icons_Manager::try_get_icon_html(
-										$settings['next_slide_arrow'],
-										array(
-											'aria-hidden' => 'true',
-											'class'       => array( 'wpmozo_ae_swiper_layout_icon_next', 'swiper-button-next' ),
-											'data-next_slide_arrow' => $settings['next_slide_arrow']['value'],
-										),
-										'span'
-									);
-							} else {
-								?>
-										<div <?php echo $this->get_render_attribute_string( 'swiper_arrow_next' ); ?> >
-									<?php
-										echo Icons_Manager::try_get_icon_html(
+									echo wp_kses_post(
+										Icons_Manager::try_get_icon_html(
 											$settings['next_slide_arrow'],
 											array(
 												'aria-hidden' => 'true',
@@ -404,35 +388,55 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 												'data-next_slide_arrow' => $settings['next_slide_arrow']['value'],
 											),
 											'span'
+										)
+									);
+							} else {
+								?>
+										<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'swiper_arrow_next' ) ); ?> >
+									<?php
+										echo wp_kses_post(
+											Icons_Manager::try_get_icon_html(
+												$settings['next_slide_arrow'],
+												array(
+													'aria-hidden' => 'true',
+													'class' => array( 'wpmozo_ae_swiper_layout_icon_next', 'swiper-button-next' ),
+													'data-next_slide_arrow' => $settings['next_slide_arrow']['value'],
+												),
+												'span'
+											)
 										);
 									?>
-											
+
 										</div>
 										<?php
 							}
 
 							if ( 'svg' !== $settings['previous_slide_arrow']['library'] ) {
-								echo Icons_Manager::try_get_icon_html(
-									$settings['previous_slide_arrow'],
-									array(
-										'aria-hidden' => 'true',
-										'class'       => array( 'wpmozo_ae_swiper_layout_icon_prev', 'swiper-button-prev' ),
-										'data-next_slide_arrow' => $settings['previous_slide_arrow']['value'],
-									),
-									'span'
+								echo wp_kses_post(
+									Icons_Manager::try_get_icon_html(
+										$settings['previous_slide_arrow'],
+										array(
+											'aria-hidden' => 'true',
+											'class'       => array( 'wpmozo_ae_swiper_layout_icon_prev', 'swiper-button-prev' ),
+											'data-next_slide_arrow' => $settings['previous_slide_arrow']['value'],
+										),
+										'span'
+									)
 								);
 							} else {
 								?>
-										<div <?php echo $this->get_render_attribute_string( 'swiper_arrow_prev' ); ?> >
+										<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'swiper_arrow_prev' ) ); ?> >
 									<?php
-										echo Icons_Manager::try_get_icon_html(
-											$settings['previous_slide_arrow'],
-											array(
-												'aria-hidden' => 'true',
-												'class' => array( 'wpmozo_ae_swiper_layout_icon_prev', 'swiper-button-prev' ),
-												'data-previous_slide_arrow' => $settings['previous_slide_arrow']['value'],
-											),
-											'span'
+										echo wp_kses_post(
+											Icons_Manager::try_get_icon_html(
+												$settings['previous_slide_arrow'],
+												array(
+													'aria-hidden' => 'true',
+													'class' => array( 'wpmozo_ae_swiper_layout_icon_prev', 'swiper-button-prev' ),
+													'data-previous_slide_arrow' => $settings['previous_slide_arrow']['value'],
+												),
+												'span'
+											)
 										);
 									?>
 										</div>
@@ -499,7 +503,6 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 				?>
 						<div class="wpmozo_ae_swiper_pagination">
 							<div class="swiper-pagination <?php echo esc_attr( $control_dot_style ); ?>">
-								
 							</div>
 						</div>
 					<?php
@@ -510,7 +513,7 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 
 		} else {
 			?>
-			 
+
 				<div class="entry">
 					<h1>
 						<?php echo esc_html__( 'No Result Found!', 'wpmozo-addons-lite-for-elementor' ); ?>
@@ -521,6 +524,6 @@ class WPMOZO_AE_Logo_Slider extends Widget_Base {
 				</div>
 			<?php
 		}
-		echo( $this->wpmozo_ae_render_slider_script() );
+		echo( wp_kses( $this->wpmozo_ae_render_slider_script(), array( 'script' => true ) ) );
 	}
 }

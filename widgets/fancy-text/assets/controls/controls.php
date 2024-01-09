@@ -1,17 +1,17 @@
-<?php 
+<?php
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Background;
 use \Elementor\Group_Control_Typography;
 use \Elementor\Group_Control_Text_Shadow;
 
-//CONTENT TAB
+// Content tab.
 $this->start_controls_section(
-		'content_section',
-		array(
-			'label' => esc_html__( 'Fancy Text Content', 'wpmozo-addons-lite-for-elementor' ),
-			'tab'   => Controls_Manager::TAB_CONTENT,
-		)
-	);
+	'content_section',
+	array(
+		'label' => esc_html__( 'Fancy Text Content', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'   => Controls_Manager::TAB_CONTENT,
+	)
+);
 	$this->add_control(
 		'text_style',
 		array(
@@ -34,10 +34,10 @@ $this->start_controls_section(
 			'default'     => esc_html__( 'Here you can set text.', 'wpmozo-addons-lite-for-elementor' ),
 		)
 	);
-$this->end_controls_section();
+	$this->end_controls_section();
 
-//STYLE TAB
-$this->start_controls_section(
+	// Style tab.
+	$this->start_controls_section(
 		'fancy_text_settings',
 		array(
 			'label' => esc_html__( 'Fancy Text Styling', 'wpmozo-addons-lite-for-elementor' ),
@@ -228,10 +228,10 @@ $this->start_controls_section(
 			),
 		)
 	);
-$this->end_controls_section();
+	$this->end_controls_section();
 
-// Fancy text typography controls start here
-$this->start_controls_section(
+	// Fancy text typography controls start here.
+	$this->start_controls_section(
 		'fancy_text_typography',
 		array(
 			'label' => esc_html__( 'Fancy Text Typography', 'wpmozo-addons-lite-for-elementor' ),
@@ -253,4 +253,4 @@ $this->start_controls_section(
 			'selector' => '{{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h1, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h2, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h3, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h4, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h5, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h6, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner',
 		)
 	);
-$this->end_controls_section();
+	$this->end_controls_section();

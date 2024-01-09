@@ -84,7 +84,7 @@ class WPMOZO_AE_Interactive_Image_Card extends Widget_Base {
 	 * @return style handle.
 	 */
 	public function get_style_depends() {
-		wp_register_style( 'wpmozo-ae-interactiveimagecard-style', plugins_url( 'assets/css/style.min.css', __FILE__ ) );
+		wp_register_style( 'wpmozo-ae-interactiveimagecard-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
 		return array( 'wpmozo-ae-interactiveimagecard-style' );
 	}
@@ -125,7 +125,7 @@ class WPMOZO_AE_Interactive_Image_Card extends Widget_Base {
 		$this->add_inline_editing_attributes( 'content_text', 'none' );
 		$this->add_render_attribute( 'content_text', 'class', 'wpmozo_ae_interactive_image_card_wrapper_content' );
 
-		// Interactive image card image
+		// Interactive image card image.
 		if ( ! empty( $image ) ) {
 			$image = wp_get_attachment_image( $settings['image']['id'], 'full', '', array( 'loading' => 'eager' ) );
 		}
@@ -150,35 +150,27 @@ class WPMOZO_AE_Interactive_Image_Card extends Widget_Base {
 			$image = '<img ' . $this->get_render_attribute_string( 'image' ) . ' />';
 		}
 
-		// Interactive image card title
+		// Interactive image card title.
 		if ( ! empty( $title_text ) ) {
 			$title_text = '<' . esc_html( $title_heading_level ) . ' ' . $this->get_render_attribute_string( 'title_text' ) . '>' . $title_text . '</' . esc_html( $title_heading_level ) . '>';
 		}
 
-		// //Interactive image card content
+		// Interactive image card content.
 		if ( ! empty( $content_text ) ) {
 			$content_text = '<div ' . $this->get_render_attribute_string( 'content_text' ) . '>' . $content_text . '</div>';
 		}
 		?>
 		<div class="wpmozo_ae_interactive_image_card_wrapper">
 			<figure class="effect-<?php echo esc_attr( $select_layout ); ?>">
-				<?php echo $image; ?>
+				<?php echo wp_kses_post( $image ); ?>
 				<figcaption>
 					<div class="wpmozo_ae_interactive_image_card_wrapper_inner">
-						<?php echo $title_text; ?>
-						<?php echo $content_text; ?>
+						<?php echo wp_kses_post( $title_text ); ?>
+						<?php echo wp_kses_post( $content_text ); ?>
 					</div>
 				</figcaption>
 			</figure>
 		</div>
 		<?php
 	}
-
-	/**
-	 * Live widget output.
-	 *
-	 * @since 1.0.0
-	 * @access protected
-	 */
-	protected function content_template() {}
 }

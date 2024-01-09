@@ -84,7 +84,7 @@ class WPMOZO_AE_Flip_Box extends Widget_Base {
 	 */
 	public function get_style_depends() {
 
-		wp_register_style( 'wpmozo-ae-flipbox-style', plugins_url( 'assets/css/style.min.css', __FILE__ ) );
+		wp_register_style( 'wpmozo-ae-flipbox-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 		return array( 'wpmozo-ae-flipbox-style' );
 
 	}
@@ -141,7 +141,7 @@ class WPMOZO_AE_Flip_Box extends Widget_Base {
 		$front_image                      = '';
 		$back_icon                        = '';
 		$back_image                       = '';
-		$button_text                      = esc_attr( $settings['button_text'] );
+		$button_text                      = esc_html( $settings['button_text'] );
 
 		$allowed_html_tags = array(
 			'h1'     => array(
@@ -210,284 +210,319 @@ class WPMOZO_AE_Flip_Box extends Widget_Base {
 			$this->add_link_attributes( 'button_text', $settings['button_url'] );
 		}
 
-		// Button icon HTML
-
-		/*
-		$this->add_render_attribute( 'wrapper', 'id', esc_attr( $settings['text_style'] .'-'. $this->get_id()) );
-		$this->add_render_attribute( 'text-wrapper', 'class', 'wpmozo_ae_text_wrapper' );
-		$this->add_render_attribute( 'inner-text-wrapper', 'class', ['wpmozo_ae_text_wrapper_inner', esc_attr( $settings['text_style'] ).'_text' ] );
-		*/
+		// Button icon HTML.
 		$this->add_render_attribute( 'flipbox_title', 'class', 'wpmozo_ae_flipbox_heading' );
 		$this->add_render_attribute( 'flipbox_content', 'class', 'wpmozo_ae_flipbox_description' );
 
-		if ( '' !== $settings['button_icon'] ) {
-			$button_icon = Icons_Manager::try_get_icon_html(
-				$settings['button_icon'],
-				array(
-					'aria-hidden' => 'true',
-					'class'       => 'wpmozo_button_icon ',
-				)
-			);
-		}
+		?>
+			<div class="wpmozo_ae_flipbox_wrapper <?php echo esc_attr( $settings['flipbox_layout'] ); ?>" flip-direction="<?php echo 'layout1' === $settings['flipbox_layout'] ? esc_attr( $settings['layout1_flip_style'] ) : esc_attr( $settings['layout2_flip_style'] ); ?>">
+						<div class="wpmozo_ae_flipbox_side wpmozo_ae_flipbox_front wpmozo_ae_flipbox_position_<?php echo esc_attr( $settings['front_icon_placement'] ); ?> wpmozo_ae_flipbox_content_<?php echo esc_attr( $settings['front_content_align'] ); ?> ">
+							<div class="wpmozo_ae_flipbox_inner">
+							<?php
+							if ( 'image' === $settings['front_use_icon_image'] && '' !== $settings['front_image'] && '' !== $settings['front_image']['url'] ) {
+								?>
+										<div class="wpmozo_ae_flipbox_image">
+											<img src="<?php echo esc_url( $settings['front_image']['url'] ); ?>" alt="<?php echo esc_attr( $settings['front_image_alt'] ); ?>"/>
+										</div>
+									<?php
+							}
+							if ( 'icon' === $settings['front_use_icon_image'] && '' !== $settings['front_icon_new'] ) {
+								if ( 'yes' === $settings['front_style_icon'] ) {
 
-		// Button HTML
+									$icon_class  = 'wpmozo_ae_icon_' . $settings['front_icon_shape'];
+									$icon_style .= 'background-color:' . esc_attr( $settings['front_shape_color'] ) . ';';
+									if ( 'hexagon' === $settings['front_icon_shape'] ) {
+										?>
+												<div class="wpmozo_ae_flipbox_icon">
+													<div class="wpmozo_ae_hexagon <?php echo ( 'yes' === $settings['front_use_shape_border'] ? ' wpmozo_ae_icon_shape_border' : '' ); ?> ">
+														<div class="wpmozo_ae_hexagon_shape">
+														<?php
+															echo wp_kses_post(
+																Icons_Manager::try_get_icon_html(
+																	$settings['front_icon_new'],
+																	array(
+																		'aria-hidden' => 'true',
+																		'class'       => $icon_class,
+																	)
+																)
+															);
+														?>
+														</div>
+													</div>
+												</div>
+											<?php
+									} else {
+										if ( 'yes' === $settings['front_use_shape_border'] && 'hexagon' !== $settings['front_icon_shape'] ) {
+											$icon_class .= ' wpmozo_ae_icon_shape_border';
 
-		$button_html = '
-		<div class="wpmozo_ae_flip_box_button_wrapper">';
-		if ( $button_text && 'after' === $settings['button_icon_position'] ) {
-			$button_html .= '
-		    <div ' . $this->get_render_attribute_string( 'wpmozo_button_wrapper' ) . ' >
-		        <div ' . $this->get_render_attribute_string( 'wpmozo_ae_flip_box_button_wrapper_inner' ) . ' >
-		            <a ' . $this->get_render_attribute_string( 'button_text' ) . ' >
-		                ' . $button_text . '
-		            </a>
-		            ' . ( '' !== $button_icon ? ( '&nbsp;' . $button_icon ) : '' ) . '
-		        </div>
-		    </div>';
-		} elseif ( $button_text && 'before' === $settings['button_icon_position'] ) {
-			$button_html .= '
-		    <div ' . $this->get_render_attribute_string( 'wpmozo_button_wrapper' ) . ' >
-		        <div ' . $this->get_render_attribute_string( 'wpmozo_ae_flip_box_button_wrapper_inner' ) . ' >
-		            ' . ( '' !== $button_icon ? ( $button_icon . '&nbsp;' ) : '' ) . '
-		            <a ' . $this->get_render_attribute_string( 'button_text' ) . ' >
-		                ' . $button_text . '
-		            </a>
-		        </div>
-		    </div>';
-		} elseif ( $button_text ) {
-			$button_html .= '
-		    <div ' . $this->get_render_attribute_string( 'wpmozo_button_wrapper' ) . ' >
-		        <div ' . $this->get_render_attribute_string( 'wpmozo_ae_flip_box_button_wrapper_inner' ) . ' >
-		            ' . ( '' !== $button_icon ? ( $button_icon . '&nbsp;' ) : '' ) . '
-		            <a ' . $this->get_render_attribute_string( 'button_text' ) . ' >
-		                ' . $button_text . '
-		            </a>
-		        </div>
-		    </div>';
-		}
-		$button_html .= '
-		</div>';
-
-		// FLIPBOX FRONT TITLE
-
-		if ( '' !== $settings['front_title'] ) {
-
-			$front_title = '<' . $settings['front_heading_level'] . ' class="wpmozo_ae_flipbox_title">
-								' . $this->parse_text_editor( wp_kses( $settings['front_title'], $allowed_html_tags ) ) . '
-							</' . $settings['front_heading_level'] . '>';
-		}
-
-		// FLIPBOX FRONT CONTENT
-
-		if ( '' !== $settings['front_content'] ) {
-			$front_content = $this->parse_text_editor( $settings['front_content'] );
-		}
-
-		// FLIPBOX BACK TITLE
-
-		if ( '' !== $settings['back_title'] ) {
-			$back_title = '<' . $settings['back_heading_level'] . ' class="wpmozo_ae_flipbox_title">
-								' . $this->parse_text_editor( wp_kses( $settings['back_title'], $allowed_html_tags ) ) . '
-							</' . $settings['back_heading_level'] . '>';
-		}
-
-		// FLIPBOX BACK CONTENT
-
-		if ( '' !== $settings['back_content'] ) {
-			$back_content = $this->parse_text_editor( $settings['back_content'] );
-		}
-
-		// FLIPBOX FRONT ICON
-
-		$migration_allowed = Icons_Manager::is_migration_allowed();
-		$f_migrated        = isset( $settings['__fa4_migrated']['front_icon_new'] );
-		$f_is_new          = empty( $settings['front_icon_old'] ) && $migration_allowed;
-		$b_migrated        = isset( $settings['__fa4_migrated']['back_icon_new'] );
-		$b_is_new          = empty( $settings['back_icon_old'] ) && $migration_allowed;
-
-		// FRONT ICON DISPLAY
-
-		if ( 'image' === $settings['front_use_icon_image'] && '' !== $settings['front_image'] ) {
-
-			$front_image = ( '' !== $settings['front_image']['url'] ) ? '<div class="wpmozo_ae_flipbox_image"><img src="' . $settings['front_image']['url'] . '" alt="' . esc_attr( $settings['front_image_alt'] ) . '"/></div>' : '';
-
-		}
-
-		if ( 'icon' === $settings['front_use_icon_image'] && '' !== $settings['front_icon_new'] ) {
-
-			$icon_html = '';
-			if ( $f_is_new || $f_migrated ) {
-				if ( 'yes' === $settings['front_style_icon'] ) {
-
-					$icon_class  = 'wpmozo_ae_icon_' . $settings['front_icon_shape'];
-					$icon_style .= 'background-color:' . esc_attr( $settings['front_shape_color'] ) . ';';
-					if ( 'hexagon' === $settings['front_icon_shape'] ) {
-						ob_start();
-						Icons_Manager::render_icon(
-							$settings['front_icon_new'],
-							array(
-								'aria-hidden' => 'true',
-								'class'       => $icon_class,
-							)
-						);
-						$icon = ob_get_clean();
-
-						$icon_html =
-							'<div class="wpmozo_ae_hexagon' . ( 'yes' === $settings['front_use_shape_border'] ? ' wpmozo_ae_icon_shape_border' : '' ) . '">
-								<div class="wpmozo_ae_hexagon_shape">' . $icon . '
+											?>
+													<div class="wpmozo_ae_flipbox_icon">
+													<?php
+														echo wp_kses_post(
+															Icons_Manager::try_get_icon_html(
+																$settings['front_icon_new'],
+																array(
+																	'aria-hidden' => 'true',
+																	'class'       => $icon_class,
+																	'style'       => $icon_style,
+																)
+															)
+														);
+													?>
+													</div>
+												<?php
+										} else {
+											?>
+													<div class="wpmozo_ae_flipbox_icon">
+													<?php
+														echo wp_kses_post(
+															Icons_Manager::try_get_icon_html(
+																$settings['front_icon_new'],
+																array(
+																	'aria-hidden' => 'true',
+																	'class'       => $icon_class,
+																	'style'       => $icon_style,
+																)
+															)
+														);
+													?>
+													</div>
+												<?php
+										}
+									}
+								} else {
+									?>
+											<div class="wpmozo_ae_flipbox_icon">
+											<?php
+												echo wp_kses_post(
+													Icons_Manager::try_get_icon_html(
+														$settings['front_icon_new'],
+														array(
+															'aria-hidden' => 'true',
+														)
+													)
+												);
+											?>
+											</div>
+										<?php
+								}
+							}
+							?>
+								<div class="wpmozo_ae_flipbox_front_content_wrapper">
+									<?php
+									if ( '' !== $settings['front_title'] ) {
+										?>
+											<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'flipbox_title' ) ); ?> >
+												<<?php echo esc_html( $settings['front_heading_level'] ); ?> class="wpmozo_ae_flipbox_title">
+													<?php echo wp_kses_post( $this->parse_text_editor( $settings['front_title'] ), $allowed_html_tags ); ?>
+												</<?php echo esc_html( $settings['front_heading_level'] ); ?> >
+											</div>
+										<?php
+									}
+									if ( '' !== $settings['front_content'] ) {
+										?>
+											<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'flipbox_content' ) ); ?> >
+												<?php echo wp_kses_post( $this->parse_text_editor( $settings['front_content'] ) ); ?>
+											</div>
+										<?php
+									}
+									?>
 								</div>
-							</div>';
-					} else {
-						if ( 'yes' === $settings['front_use_shape_border'] && 'hexagon' !== $settings['front_icon_shape'] ) {
-							$icon_class .= ' wpmozo_ae_icon_shape_border';
-							ob_start();
-							Icons_Manager::render_icon(
-								$settings['front_icon_new'],
-								array(
-									'aria-hidden' => 'true',
-									'class'       => $icon_class,
-									'style'       => $icon_style,
-								)
-							);
-							$icon_html = ob_get_clean();
-						} else {
-							ob_start();
-							Icons_Manager::render_icon(
-								$settings['front_icon_new'],
-								array(
-									'aria-hidden' => 'true',
-									'class'       => $icon_class,
-									'style'       => $icon_style,
-								)
-							);
-							$icon_html = ob_get_clean();
-						}
-					}
-				} else {
-					ob_start();
-					Icons_Manager::render_icon(
-						$settings['front_icon_new'],
-						array(
-							'aria-hidden' => 'true',
-						)
-					);
-					$icon_html = ob_get_clean();
-				}
-			} else {
-				ob_start();
-				Icons_Manager::render_icon(
-					$settings['front_icon_old'],
-					array(
-						'aria-hidden' => 'true',
-					)
-				);
-				$icon_html = ob_get_clean();
-			}
-
-			$front_icon = '<div class="wpmozo_ae_flipbox_icon">' . $icon_html . '</div>';
-		}
-
-		// BACK ICON DISPLAY
-
-		if ( 'image' === $settings['back_use_icon_image'] && '' !== $settings['back_image'] ) {
-
-			$back_image = ( '' !== $settings['back_image']['url'] ) ? '<div class="wpmozo_ae_flipbox_image"><img src="' . esc_url( $settings['back_image']['url'] ) . '" alt="' . esc_attr( $settings['back_image_alt'] ) . '"/></div>' : '';
-
-		}
-
-		if ( 'icon' === $settings['back_use_icon_image'] && '' !== $settings['back_icon_new'] ) {
-
-			$icon_html = '';
-			if ( $b_is_new || $b_migrated ) {
-				if ( 'yes' === $settings['back_style_icon'] ) {
-
-					$icon_class  = 'wpmozo_ae_icon_' . $settings['back_icon_shape'];
-					$icon_style .= 'background-color: ' . esc_attr( $settings['back_shape_color'] ) . ';';
-					if ( 'hexagon' === $settings['back_icon_shape'] ) {
-						ob_start();
-						Icons_Manager::render_icon(
-							$settings['back_icon_new'],
-							array(
-								'aria-hidden' => 'true',
-								'class'       => $icon_class,
-							)
-						);
-						$icon      = ob_get_clean();
-						$icon_html =
-						'<div class="wpmozo_ae_hexagon ' . ( 'yes' === $settings['back_use_shape_border'] ? 'wpmozo_ae_icon_shape_border' : '' ) . '">
-							<div class="wpmozo_ae_hexagon_shape">' . $icon . '
 							</div>
-						</div>';
+						</div>
+						<div class="wpmozo_ae_flipbox_side wpmozo_ae_flipbox_back wpmozo_ae_flipbox_position_<?php echo esc_attr( $settings['back_icon_placement'] ); ?> wpmozo_ae_flipbox_content_<?php echo esc_attr( $settings['back_content_align'] ); ?> ">
+							<div class="wpmozo_ae_flipbox_inner">
+							<?php
+							if ( 'image' === $settings['back_use_icon_image'] && '' !== $settings['back_image'] && '' !== $settings['back_image']['url'] ) {
+								?>
+									<div class="wpmozo_ae_flipbox_image">
+										<img src="<?php echo esc_url( $settings['back_image']['url'] ); ?>" alt="<?php echo esc_attr( $settings['back_image_alt'] ); ?>"/>
+									</div>
+								<?php
+							}
+							if ( 'icon' === $settings['back_use_icon_image'] && '' !== $settings['back_icon_new'] ) {
+								if ( 'yes' === $settings['back_style_icon'] ) {
 
-					} else {
-						if ( 'yes' === $settings['back_use_shape_border'] && 'hexagon' !== $settings['back_icon_shape'] ) {
-							$icon_class .= ' wpmozo_ae_icon_shape_border';
-							ob_start();
-							Icons_Manager::render_icon(
-								$settings['back_icon_new'],
-								array(
-									'aria-hidden' => 'true',
-									'class'       => $icon_class,
-									'style'       => $icon_style,
-								)
-							);
-							$icon_html = ob_get_clean();
-						} else {
-							ob_start();
-							Icons_Manager::render_icon(
-								$settings['front_icon_new'],
-								array(
-									'aria-hidden' => 'true',
-									'class'       => $icon_class,
-									'style'       => $icon_style,
-								)
-							);
-							$icon_html = ob_get_clean();
-						}
-					}
-				} else {
-					ob_start();
-					Icons_Manager::render_icon(
-						$settings['back_icon_new'],
-						array(
-							'aria-hidden' => 'true',
-						)
-					);
-					$icon_html = ob_get_clean();
-				}
-			} else {
-				ob_start();
-				Icons_Manager::render_icon(
-					$settings['back_icon_old'],
-					array(
-						'aria-hidden' => 'true',
-					)
-				);
-				$icon_html = ob_get_clean();
-			}
+									$icon_class  = 'wpmozo_ae_icon_' . $settings['back_icon_shape'];
+									$icon_style .= 'background-color:' . esc_attr( $settings['back_shape_color'] ) . ';';
+									if ( 'hexagon' === $settings['back_icon_shape'] ) {
+										?>
+											<div class="wpmozo_ae_flipbox_icon">
+												<div class="wpmozo_ae_hexagon <?php echo ( 'yes' === $settings['back_use_shape_border'] ? ' wpmozo_ae_icon_shape_border' : '' ); ?> ">
+													<div class="wpmozo_ae_hexagon_shape">
+														<?php
+														echo wp_kses_post(
+															Icons_Manager::try_get_icon_html(
+																$settings['back_icon_new'],
+																array(
+																	'aria-hidden' => 'true',
+																	'class'       => $icon_class,
+																)
+															)
+														);
+														?>
+													</div>
+												</div>
+											</div>
+										<?php
+									} else {
+										if ( 'yes' === $settings['back_use_shape_border'] && 'hexagon' !== $settings['back_icon_shape'] ) {
+											$icon_class .= ' wpmozo_ae_icon_shape_border';
 
-			$back_icon = '<div class="wpmozo_ae_flipbox_icon">' . $icon_html . '</div>';
-		}
+											?>
+												<div class="wpmozo_ae_flipbox_icon">
+													<?php
+													echo wp_kses_post(
+														Icons_Manager::try_get_icon_html(
+															$settings['back_icon_new'],
+															array(
+																'aria-hidden' => 'true',
+																'class'       => $icon_class,
+																'style'       => $icon_style,
+															)
+														)
+													);
+													?>
+												</div>
+											<?php
+										} else {
+											?>
+												<div class="wpmozo_ae_flipbox_icon">
+													<?php
+													echo wp_kses_post(
+														Icons_Manager::try_get_icon_html(
+															$settings['back_icon_new'],
+															array(
+																'aria-hidden' => 'true',
+																'class'       => $icon_class,
+																'style'       => $icon_style,
+															)
+														)
+													);
+													?>
+												</div>
+											<?php
+										}
+									}
+								} else {
+									?>
+										<div class="wpmozo_ae_flipbox_icon">
+											<?php
+											echo wp_kses_post(
+												Icons_Manager::try_get_icon_html(
+													$settings['back_icon_new'],
+													array(
+														'aria-hidden' => 'true',
+													)
+												)
+											);
+											?>
+										</div>
+									<?php
+								}
+							}
+							?>
+								<div class="wpmozo_ae_flipbox_back_content_wrapper">
+								<?php
+								if ( '' !== $settings['back_title'] ) {
+									?>
+											<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'flipbox_title' ) ); ?> >
+												<<?php echo esc_html( $settings['back_heading_level'] ); ?> class="wpmozo_ae_flipbox_title">
+												<?php echo wp_kses_post( $this->parse_text_editor( $settings['back_title'], $allowed_html_tags ), $allowed_html_tags ); ?>
+												</<?php echo esc_html( $settings['back_heading_level'] ); ?> >
+											</div>
+										<?php
+								}
+								if ( '' !== $settings['back_content'] ) {
+									?>
+											<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'flipbox_content' ) ); ?> >
+											<?php echo wp_kses_post( $this->parse_text_editor( $settings['back_content'] ) ); ?>
+											</div>
+										<?php
+								}
+								if ( 'yes' === $settings['show_button_switcher'] ) {
+									?>
+										<div class="wpmozo_ae_flipbox_button_back">
+											<div class="wpmozo_ae_flip_box_button_wrapper">
+											<?php
+											if ( $button_text && 'after' === $settings['button_icon_position'] ) {
+												?>
+														<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_button_wrapper' ) ); ?> >
+															<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_ae_flip_box_button_wrapper_inner' ) ); ?> >
+																<a <?php echo wp_kses_post( $this->get_render_attribute_string( 'button_text' ) ); ?> >
+																<?php echo esc_html( $button_text ); ?>
+															<?php
+															echo wp_kses_post(
+																'' !== $settings['button_icon'] ? ( '&nbsp;' . Icons_Manager::try_get_icon_html(
+																	$settings['button_icon'],
+																	array(
+																		'aria-hidden' => 'true',
+																		'class'       => 'wpmozo_button_icon ',
+																	)
+																) ) : ''
+															);
+															?>
+															</a>
+															</div>
+														</div>
+													<?php
+											} elseif ( $button_text && 'before' === $settings['button_icon_position'] ) {
+												?>
+														<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_button_wrapper' ) ); ?> >
+															<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_ae_flip_box_button_wrapper_inner' ) ); ?> >
+																<a <?php echo wp_kses_post( $this->get_render_attribute_string( 'button_text' ) ); ?> >
+															<?php
+															echo wp_kses_post(
+																'' !== $settings['button_icon'] ? ( Icons_Manager::try_get_icon_html(
+																	$settings['button_icon'],
+																	array(
+																		'aria-hidden' => 'true',
+																		'class'       => 'wpmozo_button_icon ',
+																	)
+																) . '&nbsp;' ) : ''
+															);
+															?>
+																<?php echo esc_html( $button_text ); ?>
+																</a>
+															</div>
+														</div>
+													<?php
+											} elseif ( $button_text ) {
+												?>
+														<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_button_wrapper' ) ); ?> >
+															<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_ae_flip_box_button_wrapper_inner' ) ); ?> >
+																<a <?php echo wp_kses_post( $this->get_render_attribute_string( 'button_text' ) ); ?> >
+															<?php
+															echo wp_kses_post(
+																'' !== $settings['button_icon'] ? ( Icons_Manager::try_get_icon_html(
+																	$settings['button_icon'],
+																	array(
+																		'aria-hidden' => 'true',
+																		'class'       => 'wpmozo_button_icon ',
+																	)
+																) . '&nbsp;' ) : ''
+															);
+															?>
+																<?php echo esc_html( $button_text ); ?>
+																</a>
+															</div>
+														</div>
+													<?php
+											}
+											?>
+											</div>
+										</div>
+									<?php
 
-		if ( file_exists( plugin_dir_path( __FILE__ ) . 'assets/layouts/' . $settings['flipbox_layout'] . '.php' ) ) {
-			include plugin_dir_path( __FILE__ ) . 'assets/layouts/' . $settings['flipbox_layout'] . '.php';
-		}
-
-		echo $flipbox_content;
+								} else {
+									echo '';
+								}
+								?>
+								</div>
+							</div>
+						</div>
+					</div>
+		<?php
 	}
-
-
-
-
-
-	/**
-	 * Live widget output.
-	 *
-	 * @since 1.0.0
-	 * @access protected
-	 */
-	protected function content_template() {
-	}
-
 }
 

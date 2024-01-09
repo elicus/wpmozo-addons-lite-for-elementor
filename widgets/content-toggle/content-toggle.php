@@ -29,7 +29,6 @@ class WPMOZO_AE_Content_Toggle extends Widget_Base {
 	 *
 	 * @return string Widget name.
 	 */
-
 	public function get_name() {
 		return 'wpmozo_ae_content_toggle_for_elementor';
 	}
@@ -44,7 +43,6 @@ class WPMOZO_AE_Content_Toggle extends Widget_Base {
 	 *
 	 * @return string Widget title.
 	 */
-
 	public function get_title() {
 		return esc_html__( 'Content Toggle', 'wpmozo-addons-lite-for-elementor' );
 	}
@@ -59,7 +57,6 @@ class WPMOZO_AE_Content_Toggle extends Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-
 	public function get_icon() {
 		return 'eicon-dual-button';
 	}
@@ -74,7 +71,6 @@ class WPMOZO_AE_Content_Toggle extends Widget_Base {
 	 *
 	 * @return array Widget categories.
 	 */
-
 	public function get_categories() {
 		return array( 'wpmozo' );
 	}
@@ -89,9 +85,8 @@ class WPMOZO_AE_Content_Toggle extends Widget_Base {
 	 *
 	 * @return style handle.
 	 */
-
 	public function get_style_depends() {
-		wp_register_style( 'wpmozo-content-toggle-for-elementor-style', plugins_url( 'assets/css/style.min.css', __FILE__ ) );
+		wp_register_style( 'wpmozo-content-toggle-for-elementor-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
 		return array( 'wpmozo-content-toggle-for-elementor-style' );
 	}
@@ -106,7 +101,6 @@ class WPMOZO_AE_Content_Toggle extends Widget_Base {
 	 *
 	 * @return array Element scripts dependencies.
 	 */
-
 	public function get_script_depends() {
 		wp_register_script( 'wpmozo-content-toggle-for-elementor-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
@@ -121,7 +115,6 @@ class WPMOZO_AE_Content_Toggle extends Widget_Base {
 	 * @since 1.0.0
 	 * @access protected
 	 */
-
 	protected function register_controls() {
 		// Seprate file containing all the code for registering controls.
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'content-toggle/assets/controls/controls.php';
@@ -137,18 +130,13 @@ class WPMOZO_AE_Content_Toggle extends Widget_Base {
 	 */
 	protected function render() {
 
-		$settings                = $this->get_settings_for_display();
-		$toggle_switch_type      = esc_attr( $settings['wpmozo_toggle_switch_layout'] );
-		$toggle_one_type         = esc_attr( $settings['wpmozo_toggle_one_type'] );
-		$toggle_two_type         = esc_attr( $settings['wpmozo_toggle_two_type'] );
-		$toggle_one_title        = sprintf(
-			esc_html__( '%s', 'wpmozo-addons-lite-for-elementor' ),
-			$settings['wpmozo_toggle_one_title']
-		);
-		$toggle_two_title        = sprintf(
-			esc_html__( '%s', 'wpmozo-addons-lite-for-elementor' ),
-			$settings['wpmozo_toggle_two_title']
-		);
+		$settings           = $this->get_settings_for_display();
+		$toggle_switch_type = esc_attr( $settings['wpmozo_toggle_switch_layout'] );
+		$toggle_one_type    = esc_attr( $settings['wpmozo_toggle_one_type'] );
+		$toggle_two_type    = esc_attr( $settings['wpmozo_toggle_two_type'] );
+		$toggle_one_title   = esc_html( $settings['wpmozo_toggle_one_title'] );
+		$toggle_two_title   = esc_html( $settings['wpmozo_toggle_two_title'] );
+
 		$toggle_one_text_content = isset( $settings['wpmozo_toggle_one_content'] ) ? wp_kses_post( $settings['wpmozo_toggle_one_content'] ) : '';
 		$toggle_two_text_content = isset( $settings['wpmozo_toggle_two_content'] ) ? wp_kses_post( $settings['wpmozo_toggle_two_content'] ) : '';
 		$toggle_one_template_id  = isset( $settings['wpmozo_toggle_one_select_template'] ) ? intval( $settings['wpmozo_toggle_one_select_template'] ) : 0;
@@ -202,8 +190,8 @@ class WPMOZO_AE_Content_Toggle extends Widget_Base {
 							} else {
 								$elementor_instance = Plugin::$instance;
 
-								// Get and render the elementor content
-								if ( in_array( $toggle_one_page_id, self::$toggle_one_page_ids ) && isset( self::$toggle_one_page_ids[1] ) ) {
+								// Get and render the elementor content.
+								if ( in_array( $toggle_one_page_id, self::$toggle_one_page_ids, true ) && isset( self::$toggle_one_page_ids[1] ) ) {
 									$toggle_one_content = sprintf(
 										'Recursion found! Ensure "%s" page doesn\'t include this page in toggle one.',
 										esc_html( get_the_title( self::$toggle_one_page_ids[0] ) )
@@ -220,13 +208,13 @@ class WPMOZO_AE_Content_Toggle extends Widget_Base {
 							if ( 0 === $toggle_one_template_id ) {
 								$toggle_one_content = 'Please select a template.';
 							} else {
-								$pluginElementor    = Plugin::instance();
-								$toggle_one_content = $pluginElementor->frontend->get_builder_content_for_display( $toggle_one_template_id, true );
+								$plugin_elementor   = Plugin::instance();
+								$toggle_one_content = $plugin_elementor->frontend->get_builder_content_for_display( $toggle_one_template_id, true );
 							}
 						} else {
 							$toggle_one_content = $toggle_one_text_content;
 						}
-							echo $toggle_one_content;
+							echo $toggle_one_content;// phpcs:ignore WordPress.Security.EscapeOutput 
 						?>
 					</div>
 					<div class="wpmozo_content_two_toggle wpmozo_content_container wpmozo_content_toggle_<?php echo esc_attr( $toggle_two_type ); ?>">
@@ -238,8 +226,8 @@ class WPMOZO_AE_Content_Toggle extends Widget_Base {
 							} else {
 								$elementor_instance = Plugin::$instance;
 
-								// Get and render the elementor content
-								if ( in_array( $toggle_two_page_id, self::$toggle_two_page_ids ) && isset( self::$toggle_two_page_ids[1] ) ) {
+								// Get and render the elementor content.
+								if ( in_array( $toggle_two_page_id, self::$toggle_two_page_ids, true ) && isset( self::$toggle_two_page_ids[1] ) ) {
 									$toggle_two_content = sprintf(
 										'Recursion found! Ensure "%s" page doesn\'t include this page in toggle two.',
 										esc_html( get_the_title( self::$toggle_two_page_ids[0] ) )
@@ -257,13 +245,13 @@ class WPMOZO_AE_Content_Toggle extends Widget_Base {
 							if ( 0 === $toggle_two_template_id ) {
 								$toggle_two_content = 'Please select a template.';
 							} else {
-								$pluginElementor    = Plugin::instance();
-								$toggle_two_content = $pluginElementor->frontend->get_builder_content_for_display( $toggle_two_template_id, true );
+								$plugin_elementor   = Plugin::instance();
+								$toggle_two_content = $plugin_elementor->frontend->get_builder_content_for_display( $toggle_two_template_id, true );
 							}
 						} else {
 							$toggle_two_content = $toggle_two_text_content;
 						}
-							echo $toggle_two_content;
+							echo $toggle_two_content; // phpcs:ignore WordPress.Security.EscapeOutput 
 						?>
 					</div>
 				</div>

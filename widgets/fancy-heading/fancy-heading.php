@@ -83,7 +83,7 @@ class WPMOZO_AE_Fancy_Heading extends Widget_Base {
 	 * @return style handle.
 	 */
 	public function get_style_depends() {
-		wp_register_style( 'wpmozo-ae-fancyheading-style', plugins_url( 'assets/css/style.min.css', __FILE__ ) );
+		wp_register_style( 'wpmozo-ae-fancyheading-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
 		return array( 'wpmozo-ae-fancyheading-style' );
 	}
@@ -150,12 +150,12 @@ class WPMOZO_AE_Fancy_Heading extends Widget_Base {
 		}
 
 		?>
-		<div <?php echo $this->get_render_attribute_string( 'heading_wrapper' ); ?> >
-			<<?php echo ( '' !== $global_heading_level ? $global_heading_level : 'h2' ); ?> <?php echo $this->get_render_attribute_string( 'heading_wrapper_inner' ); ?> >
-				<?php echo $pre_heading; ?>
-				<?php echo $heading; ?>
-				<?php echo $post_heading; ?>
-			</<?php echo ( '' !== $global_heading_level ? $global_heading_level : 'h2' ); ?>>
+		<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'heading_wrapper' ) ); ?> >
+			<<?php echo esc_html( ( '' !== $global_heading_level ? $global_heading_level : 'h2' ) ); ?> <?php echo wp_kses_post( $this->get_render_attribute_string( 'heading_wrapper_inner' ) ); ?> >
+				<?php echo wp_kses_post( $pre_heading ); ?>
+				<?php echo wp_kses_post( $heading ); ?>
+				<?php echo wp_kses_post( $post_heading ); ?>
+			</<?php echo esc_html( ( '' !== $global_heading_level ? $global_heading_level : 'h2' ) ); ?>>
 		</div>
 		<?php
 	}

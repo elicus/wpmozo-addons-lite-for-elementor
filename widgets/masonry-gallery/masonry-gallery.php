@@ -27,7 +27,6 @@ class WPMOZO_AE_Masonry_Gallery extends Widget_Base {
 	 *
 	 * @return string Widget name.
 	 */
-
 	public function get_name() {
 		return 'wpmozo_ae_masonry_gallery';
 	}
@@ -42,7 +41,6 @@ class WPMOZO_AE_Masonry_Gallery extends Widget_Base {
 	 *
 	 * @return string Widget title.
 	 */
-
 	public function get_title() {
 		return esc_html__( 'Masonry Gallery', 'wpmozo-addons-lite-for-elementor' );
 	}
@@ -57,7 +55,6 @@ class WPMOZO_AE_Masonry_Gallery extends Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-
 	public function get_icon() {
 		return 'eicon-gallery-masonry';
 	}
@@ -72,7 +69,6 @@ class WPMOZO_AE_Masonry_Gallery extends Widget_Base {
 	 *
 	 * @return array Widget categories.
 	 */
-
 	public function get_categories() {
 		return array( 'wpmozo' );
 	}
@@ -87,11 +83,10 @@ class WPMOZO_AE_Masonry_Gallery extends Widget_Base {
 	 *
 	 * @return style handle.
 	 */
-
 	public function get_style_depends() {
 
-		wp_register_style( 'wpmozo-ae-masonrygallery-style', plugins_url( 'assets/css/style.min.css', __FILE__ ) );
-		wp_register_style( 'magnific-popup-style', plugins_url( 'assets/css/magnificPopup.min.css', __FILE__ ) );
+		wp_register_style( 'wpmozo-ae-masonrygallery-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+		wp_register_style( 'magnific-popup-style', plugins_url( 'assets/css/magnificPopup.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 		return array( 'wpmozo-ae-masonrygallery-style', 'magnific-popup-style' );
 	}
 	/**
@@ -104,7 +99,6 @@ class WPMOZO_AE_Masonry_Gallery extends Widget_Base {
 	 *
 	 * @return array Element scripts dependencies.
 	 */
-
 	public function get_script_depends() {
 
 		wp_register_script( 'wpmozo-ae-masonry-gallery-script', plugins_url( 'assets/js/masonryGallery.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
@@ -120,7 +114,6 @@ class WPMOZO_AE_Masonry_Gallery extends Widget_Base {
 	 * @since 1.0.0
 	 * @access protected
 	 */
-
 	protected function register_controls() {
 
 		// Seprate file containing all the code for registering controls.
@@ -135,21 +128,20 @@ class WPMOZO_AE_Masonry_Gallery extends Widget_Base {
 	 * @since 1.0.0
 	 * @access protected
 	 */
-
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 
-		$enable_lightbox                  = esc_attr( $settings['lightbox_switcher'] );
+		$enable_lightbox                  = boolval( $settings['lightbox_switcher'] );
 		$gallery_items                    = is_array( $settings['gallery'] ) ? $settings['gallery'] : array();
-		$enable_overlay                   = $settings['overlay_on_hover_switcher'];
-		$show_title                       = $settings['image_title_switcher'];
-		$title_area                       = esc_attr( $settings['title_show_select'] );
-		$show_caption                     = $settings['caption_switcher'];
-		$caption_area                     = esc_attr( $settings['caption_show_select'] );
-		$lightbox_title_and_caption_style = esc_attr( $settings['title_caption_style_select'] );
-		$title_level                      = esc_attr( $settings['title_heading_level'] );
-		$column_count                     = intval( $settings['select_number_of_column'] );
-		$column_spacing                   = esc_attr( $settings ['column_spacing_slider']['size'] . $settings ['column_spacing_slider']['unit'] );
+		$enable_overlay                   = boolval( $settings['overlay_on_hover_switcher'] );
+		$show_title                       = boolval( $settings['image_title_switcher'] );
+		$title_area                       = esc_html( $settings['title_show_select'] );
+		$show_caption                     = boolval( $settings['caption_switcher'] );
+		$caption_area                     = boolval( $settings['caption_show_select'] );
+		$lightbox_title_and_caption_style = esc_html( $settings['title_caption_style_select'] );
+		$title_level                      = esc_html( $settings['title_heading_level'] );
+		$column_count                     = absint( $settings['select_number_of_column'] );
+		$column_spacing                   = esc_html( $settings ['column_spacing_slider']['size'] . $settings ['column_spacing_slider']['unit'] );
 		$gallery_images                   = '';
 		$overlay_output                   = '';
 		$image_title                      = '';
@@ -166,7 +158,7 @@ class WPMOZO_AE_Masonry_Gallery extends Widget_Base {
 		$this->add_render_attribute( 'gallery_item_gutter', 'class', 'wpmozo_ae_masonry_gallery_item_gutter' );
 		$this->add_render_attribute( 'title_caption_wrapper', 'class', array( 'wpmozo_ae_masonry_gallery_title_caption_wrapper', $lightbox_title_and_caption_style ) );
 
-		$gutter = esc_attr( $settings ['column_spacing_slider']['size'] );
+		$gutter = absint( $settings ['column_spacing_slider']['size'] );
 
 		$item_width_percentage = 100 / $column_count;
 		$item_width_spacing    = $gutter * ( $column_count - 1 ) / $column_count;
@@ -187,76 +179,74 @@ class WPMOZO_AE_Masonry_Gallery extends Widget_Base {
 		}
 
 		// Main output.
-		?> <div <?php echo $this->get_render_attribute_string( 'gallery_wrapper' ); ?>  data-post_id="<?php echo intval( get_the_id() ); ?> ">
-				<div <?php echo $this->get_render_attribute_string( 'gallery_item_gutter' ); ?> ></div>
+		?> <div <?php echo wp_kses_post( $this->get_render_attribute_string( 'gallery_wrapper' ) ); ?>  data-post_id="<?php echo absint( get_the_id() ); ?> ">
+				<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'gallery_item_gutter' ) ); ?> ></div>
 					<?php
 					foreach ( $gallery_items as $items ) {
-						// Masonry gallery image title
+						// Masonry gallery image title.
 						if ( '' !== get_the_title( $items['id'] ) && 'yes' === $show_title && 'default-image-id' !== $items['id'] ) {
 							$image_title = '<' . $title_level . ' ' . $this->get_render_attribute_string( 'image_title' ) . '>' . get_the_title( $items['id'] ) . '</' . $title_level . '>';
 						} else {
 							$image_title = '';
 						}
-						// Masonary gallery image catption
+						// Masonary gallery image catption.
 						if ( '' !== wp_get_attachment_caption( $items['id'] ) && 'yes' === $show_caption && 'default-image-id' !== $items['id'] ) {
 							$image_caption = '<p ' . $this->get_render_attribute_string( 'image_caption' ) . '>' . wp_get_attachment_caption( $items['id'] ) . '</p>';
 						} else {
 							$image_caption = '';
 						}
 
-						// Masonry gallery images if lightbox is on
+						// Masonry gallery images if lightbox is on.
 						if ( 'yes' === $enable_lightbox ) {
 							?>
-									<div <?php echo $this->get_render_attribute_string( 'gallery_item_with_lightbox' ); ?> data-mfp-src="<?php echo esc_url( $items['url'] ); ?> ">
-										<div <?php echo $this->get_render_attribute_string( 'image_wrapper' ); ?>  >
+									<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'gallery_item_with_lightbox' ) ); ?> data-mfp-src="<?php echo esc_url( $items['url'] ); ?> ">
+										<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'image_wrapper' ) ); ?>  >
 										<?php
 										if ( 'default-image-id' === $items['id'] ) {
 											?>
-													 <img src="<?php echo esc_url( Utils::get_placeholder_image_src() ); ?>" >
-												<?php
+												<img src="<?php echo esc_url( Utils::get_placeholder_image_src() ); ?>" >
+											<?php
 										} else {
 											echo wp_get_attachment_image( $items['id'], $settings['masonry_gallery_image_size_size'], false, array( 'loading' => 'eager' ) );
 										}
 										?>
-											  <?php echo $overlay_output; ?> 
+											<?php echo wp_kses( $overlay_output ); ?> 
 										</div>
 										<?php
 										if ( '' !== $image_title || '' !== $image_caption ) {
 											?>
-												<div <?php echo $this->get_render_attribute_string( 'title_caption_wrapper' ); ?> >
-													<?php echo $image_title; ?> 
-													<?php echo $image_caption; ?> 
+												<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'title_caption_wrapper' ) ); ?> >
+													<?php echo esc_html( $image_title ); ?> 
+													<?php echo esc_html( $image_caption ); ?> 
 												</div>
 											<?php
 										} else {
 											$title_caption_wrapper = '';
 										}
 										?>
-										 
 									</div>
 								<?php
 						} else {
 							?>
-									<div <?php echo $this->get_render_attribute_string( 'gallery_item_no_lightbox' ); ?> >
-										<div <?php echo $this->get_render_attribute_string( 'image_wrapper' ); ?> >
+									<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'gallery_item_no_lightbox' ) ); ?> >
+										<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'image_wrapper' ) ); ?> >
 									<?php
 									if ( 'default-image-id' === $items['id'] ) {
 										?>
-													 <img src=" <?php echo esc_url( Utils::get_placeholder_image_src() ); ?> " >
-											<?php
+											<img src=" <?php echo esc_url( Utils::get_placeholder_image_src() ); ?> " >
+										<?php
 									} else {
 										echo wp_get_attachment_image( $items['id'], $settings['masonry_gallery_image_size_size'], false, array( 'loading' => 'eager' ) );
 									}
 									?>
-										 
-										 <?php echo 'yes' === $enable_overlay ? $overlay_output : ''; ?>
+										<?php echo 'yes' === $enable_overlay ? wp_kses( $overlay_output ) : ''; ?>
 										</div>
 										<?php
 										if ( '' !== $image_title || '' !== $image_caption ) {
 											?>
-												<div <?php echo $this->get_render_attribute_string( 'title_caption_wrapper' ); ?> >
-													<?php echo $image_title; ?> 
-													<?php echo $image_caption; ?> 
+												<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'title_caption_wrapper' ) ); ?> >
+													<?php echo esc_html( $image_title ); ?> 
+													<?php echo esc_html( $image_caption ); ?> 
 												</div>
 											<?php
 										} else {
@@ -268,7 +258,6 @@ class WPMOZO_AE_Masonry_Gallery extends Widget_Base {
 						}
 					}
 					?>
-					 
 				</div>
 		<?php
 

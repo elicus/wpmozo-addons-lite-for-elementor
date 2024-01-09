@@ -26,7 +26,6 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 *
 	 * @return string Widget name.
 	 */
-
 	public function get_name() {
 		return 'wpmozo_ae_before_after_slider';
 	}
@@ -41,7 +40,6 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 *
 	 * @return string Widget title.
 	 */
-
 	public function get_title() {
 		return esc_html__( 'Before After Slider', 'wpmozo-addons-lite-for-elementor' );
 	}
@@ -56,7 +54,6 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-
 	public function get_icon() {
 		return 'eicon-image-before-after';
 	}
@@ -71,7 +68,6 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 *
 	 * @return array Widget categories.
 	 */
-
 	public function get_categories() {
 		return array( 'wpmozo' );
 	}
@@ -86,9 +82,8 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 *
 	 * @return style handle.
 	 */
-
 	public function get_style_depends() {
-		wp_register_style( 'wpmozo-ae-before-after-slider-style', plugins_url( 'assets/css/style.min.css', __FILE__ ) );
+		wp_register_style( 'wpmozo-ae-before-after-slider-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 		return array( 'wpmozo-ae-before-after-slider-style' );
 	}
 
@@ -102,7 +97,6 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 *
 	 * @return array Element scripts dependencies.
 	 */
-
 	public function get_script_depends() {
 		return array( 'wpmozo-ae-twenty-twenty', 'wpmozo-ae-move-event' );
 	}
@@ -115,7 +109,6 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 * @since 1.0.0
 	 * @access protected
 	 */
-
 	protected function register_controls() {
 
 		// Seprate file containing all the code for registering controls.
@@ -133,7 +126,7 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 
-		// Before image
+		// Before image.
 		if ( ! empty( $settings['before_state_image']['url'] ) ) {
 			$before_image           = $settings['before_state_image'];
 			$before_image_attach_id = $before_image['id'];
@@ -150,7 +143,7 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 			);
 		}
 
-		// After image
+		// After image.
 		if ( ! empty( $settings['after_state_image']['url'] ) ) {
 			$after_image           = $settings['after_state_image'];
 			$after_image_attach_id = $after_image['id'];
@@ -199,9 +192,9 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 						orientation: "<?php echo esc_attr( $orientation ); ?>",
 						before_label: "<?php echo esc_attr( $before_label ); ?>",
 						after_label: "<?php echo esc_attr( $after_label ); ?>",
-						move_slider_on_hover: "<?php echo boolval( $move_slider_on_hover ); ?>",
+						move_slider_on_hover: "<?php echo esc_attr( $move_slider_on_hover ); ?>",
 						move_with_handle_only: true,
-						click_to_move: "<?php echo boolval( $click_to_move ); ?>"
+						click_to_move: "<?php echo esc_attr( $click_to_move ); ?>"
 					});
 				});
 			</script>
