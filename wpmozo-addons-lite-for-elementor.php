@@ -8,7 +8,6 @@
  * Version: 1.0.0
  * Author: Elicus
  * Author URI: https://elicus.com/
- * Update URI: https://wpmozo.com/
  * License: GPL v3 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: wpmozo-addons-lite-for-elementor
