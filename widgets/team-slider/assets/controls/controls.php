@@ -74,7 +74,7 @@ $this->start_controls_section(
 			'type'        => Controls_Manager::SELECT2,
 			'label_block' => true,
 			'multiple'    => true,
-			'options'     => wpmozo_team_slider_for_elementor_get_team_member_categories(),
+			'options'     => wpmozo_ale_team_slider_for_elementor_get_team_member_categories(),
 		)
 	);
 	$this->add_control(
@@ -1436,7 +1436,7 @@ $this->start_controls_section(
 
 
 			/** Custom functions **/
-			function wpmozo_team_slider_for_elementor_get_team_member_categories() {
+			function wpmozo_ale_team_slider_for_elementor_get_team_member_categories() {
 				$terms           = get_terms(
 					array(
 						'taxonomy'   => 'wpmozo-team-member-category',
