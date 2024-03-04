@@ -1,21 +1,24 @@
 <?php
+defined( 'ABSPATH' ) || die( 'No script kiddies please!' );
 /**
- * @author      Elicus <hello@elicus.com>
- * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
- * @version     1.0.0
+ * @author    Elicus <hello@elicus.com>
+ * @link      https://www.elicus.com/
+ * @copyright 2024 Elicus Technologies Private Limited
+ * @version   1.0.0
  */
 
 // if this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
 use \Elementor\Widget_Base;
 use \Elementor\Group_Control_Image_Size;
 use \Elementor\Icons_Manager;
 use \Elementor\Control_Media;
 
-class WPMOZO_AE_Tilt_Image extends Widget_Base {
+class WPMOZO_ALE_Tilt_Image extends Widget_Base {
+
 
 	/**
 	 * Get widget name.
@@ -28,7 +31,7 @@ class WPMOZO_AE_Tilt_Image extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpmozo_ae_tilt_image';
+		return 'wpmozo_ale_tilt_image';
 	}
 
 	/**
@@ -56,7 +59,7 @@ class WPMOZO_AE_Tilt_Image extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-image-rollover';
+		return 'eicon-image-rollover wpmozo-ale-brandicon';
 	}
 
 	/**
@@ -70,7 +73,9 @@ class WPMOZO_AE_Tilt_Image extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return array( 'wpmozo' );
+		return array(
+			'wpmozo',
+		);
 	}
 
 	/**
@@ -85,8 +90,10 @@ class WPMOZO_AE_Tilt_Image extends Widget_Base {
 	 */
 	public function get_style_depends() {
 
-		wp_register_style( 'wpmozo-ae-tiltimage-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
-		return array( 'wpmozo-ae-tiltimage-style' );
+		wp_register_style( 'wpmozo-ale-tiltimage-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+		return array(
+			'wpmozo-ale-tiltimage-style',
+		);
 	}
 	/**
 	 * Get script dependencies.
@@ -99,11 +106,20 @@ class WPMOZO_AE_Tilt_Image extends Widget_Base {
 	 * @return array Element scripts dependencies.
 	 */
 	public function get_script_depends() {
-		wp_register_script( 'wpmozo-ae-tiltimage-script', plugins_url( 'assets/js/tilt-image-custom.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
+		wp_register_script(
+			'wpmozo-ale-tiltimage-script',
+			plugins_url( 'assets/js/script.min.js', __FILE__ ),
+			array(
+				'jquery',
+			),
+			WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION,
+			true
+		);
 
-		return array( 'wpmozo-ae-tiltimage-script' );
+		return array(
+			'wpmozo-ale-tiltimage-script',
+		);
 	}
-
 
 	/**
 	 * Register widget controls.
@@ -128,22 +144,22 @@ class WPMOZO_AE_Tilt_Image extends Widget_Base {
 	protected function render() {
 		$settings            = $this->get_settings_for_display();
 		$image               = '';
-		$title_text          = esc_html( $settings['title_text'] );
-		$title_heading_level = esc_attr( $settings['title_heading_level'] );
-		$description_text    = esc_html( $settings['description_text'] );
-		$button_text         = esc_html( $settings['button_text'] );
-		$tilt_max            = absint( $settings['max_rotation_slider']['size'] );
-		$icon_shape          = esc_html( $settings['select_icon_shape'] );
-		$content_alignment   = esc_html( $settings['content_alignment_selector'] );
-		$content_animation   = esc_html( $settings['content_animation_selector'] );
+		$title_text          = $settings['title_text'];
+		$title_heading_level = $settings['title_heading_level'];
+		$description_text    = $settings['description_text'];
+		$button_text         = $settings['button_text'];
+		$tilt_max            = $settings['max_rotation_slider']['size'];
+		$icon_shape          = $settings['select_icon_shape'];
+		$content_alignment   = $settings['content_alignment_selector'];
+		$content_animation   = $settings['content_animation_selector'];
 
-		$tilt_perspective  = absint( $settings['perspective_slider']['size'] );
-		$tilt_scale        = floatval( $settings['scale_on_hover_slider']['size'] );
-		$tilt_speed        = absint( $settings['speed_slider']['size'] );
-		$tilt_mobile       = boolval( $settings['disable_on_mobile_switcher'] );
-		$use_glare         = boolval( $settings['use_glare_switcher'] );
-		$use_disable_axis  = boolval( $settings['use_disable_xy_axis_switcher'] );
-		$tilt_disable_axis = boolval( $settings['disable_x/y_axis_select'] );
+		$tilt_perspective  = $settings['perspective_slider']['size'];
+		$tilt_scale        = $settings['scale_on_hover_slider']['size'];
+		$tilt_speed        = $settings['speed_slider']['size'];
+		$tilt_mobile       = $settings['disable_on_mobile_switcher'];
+		$use_glare         = $settings['use_glare_switcher'];
+		$use_disable_axis  = $settings['use_disable_xy_axis_switcher'];
+		$tilt_disable_axis = $settings['disable_x/y_axis_select'];
 		$icon              = '';
 
 		if ( 'on' === $settings['use_glare_switcher'] ) {
@@ -155,20 +171,27 @@ class WPMOZO_AE_Tilt_Image extends Widget_Base {
 		$tilt_scale       = '' !== $tilt_scale ? 'data-tilt-scale="' . $tilt_scale . '"' : '';
 		$tilt_speed       = '' !== $tilt_speed ? 'data-tilt-speed="' . $tilt_speed . '"' : '';
 
-		$this->add_render_attribute( 'contents_animations', 'class', 'wpmozo_ae_tilt_content_wrapper' );
+		$this->add_render_attribute( 'contents_animations', 'class', 'wpmozo_ale_tilt_content_wrapper' );
 
 		if ( '' !== $settings['content_on_hover_switcher'] ) {
 			$this->add_render_attribute( 'contents_animations', 'class', $content_animation );
 		}
 
 		$this->add_inline_editing_attributes( 'title_text', 'none' );
-		$this->add_render_attribute( 'title_text', 'class', 'wpmozo_ae_tilt_title' );
+		$this->add_render_attribute( 'title_text', 'class', 'wpmozo_ale_tilt_title' );
 		$this->add_inline_editing_attributes( 'description_text', 'none' );
-		$this->add_render_attribute( 'description_text', 'class', 'wpmozo_ae_tilt_desc' );
-		$this->add_render_attribute( 'icon_wrapper', 'class', 'wpmozo_ae_tilt_image_icon_wrapper' );
-		$this->add_render_attribute( 'icon_wrapper_shape', 'class', array( 'wpmozo_ae_tilt_image_icon_wrapper', 'wpmozo_icon_shape_' . $icon_shape . '_container' ) );
-		$this->add_render_attribute( 'wpmozo_button_wrapper', 'class', 'wpmozo_ae_tilt_image_button_wrapper' );
-		$this->add_render_attribute( 'wpmozo_ae_tilt_image_button_wrapper_inner', 'class', 'wpmozo_ae_tilt_image_button_wrapper_inner' );
+		$this->add_render_attribute( 'description_text', 'class', 'wpmozo_ale_tilt_desc' );
+		$this->add_render_attribute( 'icon_wrapper', 'class', 'wpmozo_ale_tilt_image_icon_wrapper' );
+		$this->add_render_attribute(
+			'icon_wrapper_shape',
+			'class',
+			array(
+				'wpmozo_ale_tilt_image_icon_wrapper',
+				'wpmozo_icon_shape_' . $icon_shape . '_container',
+			)
+		);
+		$this->add_render_attribute( 'wpmozo_button_wrapper', 'class', 'wpmozo_ale_tilt_image_button_wrapper' );
+		$this->add_render_attribute( 'wpmozo_ale_tilt_image_button_wrapper_inner', 'class', 'wpmozo_ale_tilt_image_button_wrapper_inner' );
 		$this->add_render_attribute(
 			'button_text',
 			array(
@@ -179,7 +202,7 @@ class WPMOZO_AE_Tilt_Image extends Widget_Base {
 		$this->add_inline_editing_attributes( 'button_text', 'none' );
 
 		if ( '' !== $settings['button_hover_animation'] ) {
-			$this->add_render_attribute( 'wpmozo_ae_tilt_image_button_wrapper_inner', 'class', 'elementor-animation-' . $settings['button_hover_animation'] );
+			$this->add_render_attribute( 'wpmozo_ale_tilt_image_button_wrapper_inner', 'class', 'elementor-animation-' . $settings['button_hover_animation'] );
 		}
 
 		if ( ! empty( $settings['button_url']['url'] ) ) {
@@ -198,13 +221,13 @@ class WPMOZO_AE_Tilt_Image extends Widget_Base {
 		}
 
 		// Tilt attributes.
-			$tilt_attr = 'data-tilt ' . $tilt_max . ' ' . $tilt_perspective . ' ' . $tilt_scale . ' ' . $tilt_speed . ' ' . $tilt_mobile . ' ' . ( 'on' === $use_glare ? wp_kses_post( " data-tilt-glare=true data-tilt-max-glare=$tilt_max_glare" ) : '' ) . ' ' . ( 'on' === $use_disable_axis ? wp_kses_post( " data-tilt-axis=$tilt_disable_axis" ) : '' );
+		$tilt_attr = 'data-tilt ' . $tilt_max . ' ' . $tilt_perspective . ' ' . $tilt_scale . ' ' . $tilt_speed . ' ' . $tilt_mobile . ' ' . ( 'on' === $use_glare ? wp_kses_post( " data-tilt-glare=true data-tilt-max-glare=$tilt_max_glare" ) : '' ) . ' ' . ( 'on' === $use_disable_axis ? wp_kses_post( " data-tilt-axis=$tilt_disable_axis" ) : '' );
 
 		// Main output.
 
 		?>
-			<div class="wpmozo_ae_tilt_image_wrapper <?php echo '' !== $content_alignment ? 'wpmozo_ae_tilt_align_' . esc_attr( $content_alignment ) : ''; ?>" <?php echo wp_kses_post( $tilt_attr ); ?> >
-				<div class="wpmozo_ae_tilt_image_inner_wrapper"> 
+			<div class="wpmozo_ale_tilt_image_wrapper <?php echo '' !== $content_alignment ? 'wpmozo_ale_tilt_align_' . esc_attr( $content_alignment ) : ''; ?>" <?php echo wp_kses_post( $tilt_attr ); ?> >
+				<div class="wpmozo_ale_tilt_image_inner_wrapper"> 
 					<?php
 					if ( ! empty( $settings['tilt_image_image']['url'] ) ) {
 						$size         = $settings['tilt_image_size_size'];
@@ -222,119 +245,164 @@ class WPMOZO_AE_Tilt_Image extends Widget_Base {
 							'image',
 							array(
 								'src'   => $img_url,
-								'class' => array( 'wpmozo_ae_tilt_image_image', $image_sizing ),
+								'class' => array(
+									'wpmozo_ale_tilt_image_image',
+									$image_sizing,
+								),
 								'title' => Control_Media::get_image_title( $image ),
 								'alt'   => Control_Media::get_image_alt( $image ),
 							)
 						);
 						?>
-								<img <?php echo wp_kses_post( $this->get_render_attribute_string( 'image' ) ); ?> />
+								<img <?php $this->print_render_attribute_string( 'image' ); ?> />
 							<?php
 					}
 					?>
-					<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'contents_animations' ) ); ?> >
+					<div <?php $this->print_render_attribute_string( 'contents_animations' ); ?> >
 						<?php
-							// Tilt image icon.
+						// Tilt image icon.
 						if ( 'yes' === $settings['use_icon_switcher'] ) {
 							if ( 'yes' !== $settings['icon_style_switcher'] && '' !== $settings['select_icon']['value'] ) {
 								?>
-										<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'icon_wrapper' ) ); ?> >
-										<?php
-											echo wp_kses_post(
-												Icons_Manager::try_get_icon_html(
-													$settings['select_icon'],
-													array(
-														'aria-hidden' => 'true',
-														'class' => 'wpmozo_ae_tilt-image_icon ',
-													),
-													'span'
-												)
-											);
-										?>
-										</div>
+									<div <?php $this->print_render_attribute_string( 'icon_wrapper' ); ?> >
 									<?php
+									echo wp_kses_post(
+										Icons_Manager::try_get_icon_html(
+											$settings['select_icon'],
+											array(
+												'aria-hidden' => 'true',
+												'class' => 'wpmozo_ale_tilt-image_icon ',
+											),
+											'span'
+										)
+									);
+									?>
+									</div>
+												<?php
 							}
 							if ( '' !== $settings['select_icon']['value'] && '' !== $settings['select_icon_shape'] ) {
 								if ( 'svg' === $settings['select_icon']['library'] ) {
 									?>
-											<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'icon_wrapper_shape' ) ); ?> >
-											<?php
-												echo wp_kses_post(
-													Icons_Manager::try_get_icon_html(
-														$settings['select_icon'],
-														array(
-															'aria-hidden' => 'true',
-															'class' => array( 'wpmozo_ae_tilt_image_icon', 'wpmozo_icon_shape_' . $icon_shape ),
-														),
-														'span'
-													)
-												);
-											?>
-											</div>
+										<div <?php $this->print_render_attribute_string( 'icon_wrapper_shape' ); ?> >
 										<?php
+										Icons_Manager::render_icon(
+											$settings['select_icon'],
+											array(
+												'aria-hidden' => 'true',
+												'class' => array(
+													'wpmozo_ale_tilt_image_icon',
+													'wpmozo_icon_shape_' . $icon_shape,
+												),
+											),
+											'span'
+										);
+										?>
+										</div>
+													<?php
 								}
 							}
 						}
-							// Tilt image title.
+						// Tilt image title.
 						if ( '' !== $title_text ) {
 							?>
-									<<?php echo sanitize_key( $title_heading_level ); ?> <?php echo wp_kses_post( $this->get_render_attribute_string( 'title_text' ) ); ?> >
+									<<?php echo sanitize_key( $title_heading_level ); ?> <?php $this->print_render_attribute_string( 'title_text' ); ?> >
 									<?php echo esc_textarea( $title_text ); ?> 
 									</<?php echo sanitize_key( $title_heading_level ); ?> >
 								<?php
 						}
-							// Tilt image description.
+						// Tilt image description.
 						if ( '' !== $description_text ) {
 							?>
-									<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'description_text' ) ); ?> >
+									<div <?php $this->print_render_attribute_string( 'description_text' ); ?> >
 										<p> <?php echo esc_textarea( $description_text ); ?> </p>
 									</div>
 								<?php
 						}
 						?>
-								<div class="wpmozo_ae_tilt_image_button_wrapper">
-									<?php
-										// Tilt image button.
-									if ( $button_text && 'after' === $settings['button_icon_position'] ) {
+							<div class="wpmozo_ale_tilt_image_button_wrapper">
+								<?php
+								// Tilt image button.
+								if ( $button_text && 'after' === $settings['button_icon_position'] ) {
 
-										?>
-												<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_button_wrapper' ) ); ?> >
-													<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_ae_tilt_image_button_wrapper_inner' ) ); ?> >
-														<a <?php echo wp_kses_post( $this->get_render_attribute_string( 'button_text' ) ); ?> >
-														<?php echo wp_kses_post( $button_text ); ?>
-														</a>
-													<?php echo wp_kses_post( '' !== $button_icon ? ( '&nbsp;' . $button_icon ) : '' ); ?>
-													</div>
-												</div>
-											<?php
-									} elseif ( $button_text && 'before' === $settings['button_icon_position'] ) {
-										?>
-												<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_button_wrapper' ) ); ?> >
-													<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_ae_tilt_image_button_wrapper_inner' ) ); ?> >
-													<?php echo wp_kses_post( '' !== $button_icon ? ( $button_icon . '&nbsp;' ) : '' ); ?>
-														<a <?php echo wp_kses_post( $this->get_render_attribute_string( 'button_text' ) ); ?> >
-														<?php echo wp_kses_post( $button_text ); ?>
-														</a>						
-													</div>
-												</div>
-											<?php
-									} elseif ( $button_text ) {
-										?>
-												<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_button_wrapper' ) ); ?> >
-													<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_ae_tilt_image_button_wrapper_inner' ) ); ?> >
-													<?php echo wp_kses_post( '' !== $button_icon ? ( $button_icon . '&nbsp;' ) : '' ); ?>
-														<a <?php echo wp_kses_post( $this->get_render_attribute_string( 'button_text' ) ); ?> >
-														<?php echo wp_kses_post( $button_text ); ?>
-														</a>						
-													</div>
-												</div>
-											<?php
-									}
 									?>
-								</div>
-												</div>
+										<div <?php $this->print_render_attribute_string( 'wpmozo_button_wrapper' ); ?> >
+											<div <?php $this->print_render_attribute_string( 'wpmozo_ale_tilt_image_button_wrapper_inner' ); ?> >
+												<a <?php $this->print_render_attribute_string( 'button_text' ); ?> >
+												<?php echo wp_kses_post( $button_text ); ?>
+												</a>
+												<?php
+												if ( '' !== $button_icon ) {
+													echo '&nbsp;';
+													Icons_Manager::render_icon(
+														$settings['button_icon'],
+														array(
+															'aria-hidden' => 'true',
+															'class'       => 'wpmozo_button_icon ',
+														)
+													);
+
+												} else {
+													echo '';
+												}
+												?>
+											</div>
+										</div>
+									<?php
+								} elseif ( $button_text && 'before' === $settings['button_icon_position'] ) {
+									?>
+										<div <?php $this->print_render_attribute_string( 'wpmozo_button_wrapper' ); ?> >
+											<div <?php $this->print_render_attribute_string( 'wpmozo_ale_tilt_image_button_wrapper_inner' ); ?> >
+												<?php
+												if ( '' !== $button_icon ) {
+													Icons_Manager::render_icon(
+														$settings['button_icon'],
+														array(
+															'aria-hidden' => 'true',
+															'class'       => 'wpmozo_button_icon ',
+														)
+													);
+													echo '&nbsp;';
+												} else {
+													echo '';
+												}
+												?>
+												<a <?php $this->print_render_attribute_string( 'button_text' ); ?> >
+												<?php echo wp_kses_post( $button_text ); ?>
+												</a>						
+											</div>
+										</div>
+									<?php
+								} elseif ( $button_text ) {
+									?>
+										<div <?php $this->print_render_attribute_string( 'wpmozo_button_wrapper' ); ?> >
+											<div <?php $this->print_render_attribute_string( 'wpmozo_ale_tilt_image_button_wrapper_inner' ); ?> >
+												<?php
+												if ( '' !== $button_icon ) {
+													Icons_Manager::render_icon(
+														$settings['button_icon'],
+														array(
+															'aria-hidden' => 'true',
+															'class'       => 'wpmozo_button_icon ',
+														)
+													);
+													echo '&nbsp;';
+												} else {
+													echo '';
+												}
+												?>
+												<a <?php $this->print_render_attribute_string( 'button_text' ); ?> >
+												<?php echo wp_kses_post( $button_text ); ?>
+												</a>						
+											</div>
+										</div>
+									<?php
+								}
+								?>
+							</div>
+						</div>
 				</div>
 			</div>
 		<?php
 	}
 }
+

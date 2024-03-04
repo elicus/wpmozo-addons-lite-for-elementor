@@ -37,16 +37,16 @@ $this->start_controls_section(
 			'default'     => 'Your content goes here. Edit this text inline or in the widget Content settings. You can also style every aspect of this content in the widget Design settings.',
 		)
 	);
-	$this->end_controls_section();
+$this->end_controls_section();
 
-	// Image controls.
-	$this->start_controls_section(
-		'image_setting',
-		array(
-			'label' => esc_html__( 'Image', 'wpmozo-addons-lite-for-elementor' ),
-			'tab'   => Controls_Manager::TAB_CONTENT,
-		)
-	);
+// Image controls.
+$this->start_controls_section(
+	'image_setting',
+	array(
+		'label' => esc_html__( 'Image', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'   => Controls_Manager::TAB_CONTENT,
+	)
+);
 	$this->add_control(
 		'image',
 		array(
@@ -68,17 +68,17 @@ $this->start_controls_section(
 			'default' => 'full',
 		)
 	);
-	$this->end_controls_section();
+$this->end_controls_section();
 
-	// Style tab.
-	// Layout selection controls.
-	$this->start_controls_section(
-		'layout_selection_section',
-		array(
-			'label' => esc_html__( 'Select Layout', 'wpmozo-addons-lite-for-elementor' ),
-			'tab'   => Controls_Manager::TAB_STYLE,
-		)
-	);
+// Style tab.
+// Layout selection controls.
+$this->start_controls_section(
+	'layout_selection_section',
+	array(
+		'label' => esc_html__( 'Select Layout', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'   => Controls_Manager::TAB_STYLE,
+	)
+);
 	$this->add_control(
 		'select_layout',
 		array(
@@ -100,16 +100,16 @@ $this->start_controls_section(
 			'default'     => 'lily',
 		)
 	);
-	$this->end_controls_section();
+$this->end_controls_section();
 
-	// Layout style controls.
-	$this->start_controls_section(
-		'layout_styling_section',
-		array(
-			'label' => esc_html__( 'Layout Settings', 'wpmozo-addons-lite-for-elementor' ),
-			'tab'   => Controls_Manager::TAB_STYLE,
-		)
-	);
+// Layout style controls.
+$this->start_controls_section(
+	'layout_styling_section',
+	array(
+		'label' => esc_html__( 'Layout Settings', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'   => Controls_Manager::TAB_STYLE,
+	)
+);
 	$this->add_control(
 		'border_color',
 		array(
@@ -118,8 +118,8 @@ $this->start_controls_section(
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#000',
 			'selectors'   => array(
-				'{{WRAPPER}} figure.effect-roxy figcaption::before, {{WRAPPER}} figure.effect-bubba figcaption::before, {{WRAPPER}} figure.effect-bubba figcaption::after, {{WRAPPER}} figure.effect-layla figcaption::before, {{WRAPPER}} figure.effect-layla figcaption::after, {{WRAPPER}} figure.effect-oscar figcaption::before, {{WRAPPER}} figure.effect-ruby .wpmozo_ae_interactive_image_card_wrapper_content, {{WRAPPER}} figure.effect-milo .wpmozo_ae_interactive_image_card_wrapper_content' => 'border-color: {{VALUE}};',
-				'{{WRAPPER}} figure.effect-romeo figcaption::before, {{WRAPPER}} figure.effect-romeo figcaption::after, {{WRAPPER}} figure.effect-marley .wpmozo_ae_interactive_image_card_title::after' => 'background-color: {{VALUE}};',
+				'{{WRAPPER}} figure.effect-roxy figcaption::before, {{WRAPPER}} figure.effect-bubba figcaption::before, {{WRAPPER}} figure.effect-bubba figcaption::after, {{WRAPPER}} figure.effect-layla figcaption::before, {{WRAPPER}} figure.effect-layla figcaption::after, {{WRAPPER}} figure.effect-oscar figcaption::before, {{WRAPPER}} figure.effect-ruby .wpmozo_ale_interactive_image_card_wrapper_content, {{WRAPPER}} figure.effect-milo .wpmozo_ale_interactive_image_card_wrapper_content' => 'border-color: {{VALUE}};',
+				'{{WRAPPER}} figure.effect-romeo figcaption::before, {{WRAPPER}} figure.effect-romeo figcaption::after, {{WRAPPER}} figure.effect-marley .wpmozo_ale_interactive_image_card_title::after' => 'background-color: {{VALUE}};',
 			),
 			'condition'   =>
 			array(
@@ -161,7 +161,7 @@ $this->start_controls_section(
 			array(
 				'{{WRAPPER}} figure.effect-roxy figcaption::before,
 				{{WRAPPER}} figure.effect-oscar figcaption::before,
-				{{WRAPPER}} figure.effect-ruby .wpmozo_ae_interactive_image_card_wrapper_content'
+				{{WRAPPER}} figure.effect-ruby .wpmozo_ale_interactive_image_card_wrapper_content'
 				=> 'border-width: {{SIZE}}{{UNIT}};',
 
 				'{{WRAPPER}} figure.effect-bubba figcaption::before, 
@@ -174,12 +174,12 @@ $this->start_controls_section(
 
 				'{{WRAPPER}} figure.effect-bubba figcaption::after, 
 				{{WRAPPER}} figure.effect-layla figcaption::after, 
-				{{WRAPPER}} figure.effect-milo .wpmozo_ae_interactive_image_card_wrapper_content'
+				{{WRAPPER}} figure.effect-milo .wpmozo_ale_interactive_image_card_wrapper_content'
 				=> 'border-right-width: {{SIZE}}{{UNIT}};',
 
 				'{{WRAPPER}} figure.effect-romeo figcaption::after,
 				{{WRAPPER}} figure.effect-romeo figcaption::before,
-				{{WRAPPER}} figure.effect-marley figcaption .wpmozo_ae_interactive_image_card_title::after'
+				{{WRAPPER}} figure.effect-marley figcaption .wpmozo_ale_interactive_image_card_title::after'
 				=> 'height: {{SIZE}}{{UNIT}};',
 			),
 			'condition'  =>
@@ -213,21 +213,20 @@ $this->start_controls_section(
 			),
 		)
 	);
-	$this->end_controls_section();
+$this->end_controls_section();
 
-	// Overlay style controls.
-	$this->start_controls_section(
-		'image_overlay_color_section',
-		array(
-			'label'     => esc_html__( 'Overlay Color', 'wpmozo-addons-lite-for-elementor' ),
-			'tab'       => Controls_Manager::TAB_STYLE,
-			'condition' =>
-					array(
-						'select_layout' =>
-														array( 'lily', 'sadie', 'roxy', 'bubba', 'layla', 'oscar', 'ruby', 'milo' ),
-					),
-		)
-	);
+// Overlay style controls.
+$this->start_controls_section(
+	'image_overlay_color_section',
+	array(
+		'label'     => esc_html__( 'Overlay Color', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'       => Controls_Manager::TAB_STYLE,
+		'condition' =>
+			array(
+				'select_layout' => array( 'lily', 'sadie', 'roxy', 'bubba', 'layla', 'oscar', 'ruby', 'milo' ),
+			),
+	)
+);
 	$this->add_control(
 		'image_overlay_color',
 		array(
@@ -240,16 +239,16 @@ $this->start_controls_section(
 			),
 		)
 	);
-	$this->end_controls_section();
+$this->end_controls_section();
 
-	// Title style controls.
-	$this->start_controls_section(
-		'title_styling_section',
-		array(
-			'label' => esc_html__( 'Title', 'wpmozo-addons-lite-for-elementor' ),
-			'tab'   => Controls_Manager::TAB_STYLE,
-		)
-	);
+// Title style controls.
+$this->start_controls_section(
+	'title_styling_section',
+	array(
+		'label' => esc_html__( 'Title', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'   => Controls_Manager::TAB_STYLE,
+	)
+);
 	$this->add_control(
 		'title_heading_level',
 		array(
@@ -311,7 +310,7 @@ $this->start_controls_section(
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '#222',
 					'selectors'   => array(
-						'{{WRAPPER}} .wpmozo_ae_interactive_image_card_title' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .wpmozo_ale_interactive_image_card_title' => 'color: {{VALUE}}',
 					),
 				)
 			);
@@ -321,7 +320,7 @@ $this->start_controls_section(
 					'label'       => esc_html__( 'Title Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'name'        => 'title_text_typography',
-					'selector'    => '{{WRAPPER}} .wpmozo_ae_interactive_image_card_title',
+					'selector'    => '{{WRAPPER}} .wpmozo_ale_interactive_image_card_title',
 				)
 			);
 			$this->add_group_control(
@@ -329,28 +328,28 @@ $this->start_controls_section(
 				array(
 					'name'      => 'title_text_shadow',
 					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_interactive_image_card_title',
+					'selector'  => '{{WRAPPER}} .wpmozo_ale_interactive_image_card_title',
 					'separator' => 'before',
 				)
 			);
-			$this->end_controls_tab();
+		$this->end_controls_tab();
 
-			// Title hover tab.
-			$this->start_controls_tab(
-				'title_hover_state_tab',
-				array(
-					'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
-				)
-			);
+		// Title hover tab.
+		$this->start_controls_tab(
+			'title_hover_state_tab',
+			array(
+				'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
+			)
+		);
 			$this->add_control(
 				'title_text_hover_state_color',
 				array(
 					'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
-					'default'     => '#000',
+					'default'     => '',
 					'selectors'   => array(
-						'{{WRAPPER}} figure:hover .wpmozo_ae_interactive_image_card_title' => 'color: {{VALUE}}',
+						'{{WRAPPER}} figure:hover .wpmozo_ale_interactive_image_card_title' => 'color: {{VALUE}}',
 					),
 				)
 			);
@@ -360,7 +359,7 @@ $this->start_controls_section(
 					'label'       => esc_html__( 'Title Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'name'        => 'title_text_hover_state_typography',
-					'selector'    => '{{WRAPPER}} figure:hover .wpmozo_ae_interactive_image_card_title',
+					'selector'    => '{{WRAPPER}} figure:hover .wpmozo_ale_interactive_image_card_title',
 				)
 			);
 			$this->add_group_control(
@@ -368,151 +367,151 @@ $this->start_controls_section(
 				array(
 					'name'      => 'title_text_hover_state_shadow',
 					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} figure:hover .wpmozo_ae_interactive_image_card_title',
+					'selector'  => '{{WRAPPER}} figure:hover .wpmozo_ale_interactive_image_card_title',
 					'separator' => 'before',
 				)
 			);
-			$this->end_controls_tab();
-			$this->end_controls_tabs();
-			$this->add_control(
-				'title_text_alignment',
-				array(
-					'label'       => esc_html__( 'Title Alignment', 'wpmozo-addons-lite-for-elementor' ),
-					'type'        => Controls_Manager::CHOOSE,
-					'label_block' => true,
-					'options'     => array(
-						'left'    => array(
-							'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
-							'icon'  => 'eicon-text-align-left',
-						),
-						'center'  => array(
-							'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
-							'icon'  => 'eicon-text-align-center',
-						),
-						'right'   => array(
-							'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
-							'icon'  => 'eicon-text-align-right',
-						),
-						'justify' => array(
-							'title' => esc_html__( 'Justify', 'wpmozo-addons-lite-for-elementor' ),
-							'icon'  => 'eicon-text-align-justify',
-						),
-					),
-					'default'     => 'center',
-					'toggle'      => true, // Behave like toggle or not.
-					'separator'   => 'before',
-					'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_interactive_image_card_title' => 'text-align: {{VALUE}};' ),
-					'condition'   => array( 'select_layout' => array( 'lily', 'sadie', 'roxy', 'bubba', 'romeo', 'layla', 'oscar', 'marley', 'ruby' ) ),
-				)
-			);
-			$this->end_controls_section();
+		$this->end_controls_tab();
+	$this->end_controls_tabs();
+	$this->add_control(
+		'title_text_alignment',
+		array(
+			'label'       => esc_html__( 'Title Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'type'        => Controls_Manager::CHOOSE,
+			'label_block' => true,
+			'options'     => array(
+				'left'    => array(
+					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-left',
+				),
+				'center'  => array(
+					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-center',
+				),
+				'right'   => array(
+					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-right',
+				),
+				'justify' => array(
+					'title' => esc_html__( 'Justify', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-justify',
+				),
+			),
+			'default'     => 'center',
+			'toggle'      => true, // Behave like toggle or not.
+			'separator'   => 'before',
+			'selectors'   => array( '{{WRAPPER}} .wpmozo_ale_interactive_image_card_title' => 'text-align: {{VALUE}};' ),
+			'condition'   => array( 'select_layout' => array( 'lily', 'sadie', 'roxy', 'bubba', 'romeo', 'layla', 'oscar', 'marley', 'ruby' ) ),
+		)
+	);
+$this->end_controls_section();
 
-			// Content style controls.
-			$this->start_controls_section(
-				'content_text_styling_section',
-				array(
-					'label' => esc_html__( 'Content', 'wpmozo-addons-lite-for-elementor' ),
-					'tab'   => Controls_Manager::TAB_STYLE,
-				)
-			);
-			$this->add_control(
-				'content_text_color',
-				array(
-					'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
-					'label_block' => false,
-					'type'        => Controls_Manager::COLOR,
-					'default'     => '#222',
-					'selectors'   => array(
-						'{{WRAPPER}} .wpmozo_ae_interactive_image_card_wrapper_content' => 'color: {{VALUE}};',
-					),
-				)
-			);
-			$this->add_group_control(
-				Group_Control_Typography::get_type(),
-				array(
-					'label'       => esc_html__( 'Content Typography', 'wpmozo-addons-lite-for-elementor' ),
-					'label_block' => true,
-					'name'        => 'content_text_typography',
-					'selector'    => '{{WRAPPER}} .wpmozo_ae_interactive_image_card_wrapper_content',
-				)
-			);
-			$this->add_group_control(
-				Group_Control_Text_Shadow::get_type(),
-				array(
-					'name'      => 'content_text_shadow',
-					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_interactive_image_card_wrapper_content',
-					'separator' => 'before',
-				)
-			);
-			$this->add_control(
-				'content_text_alignment',
-				array(
-					'label'       => esc_html__( 'Content Alignment', 'wpmozo-addons-lite-for-elementor' ),
-					'type'        => Controls_Manager::CHOOSE,
-					'label_block' => true,
-					'options'     => array(
-						'left'    => array(
-							'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
-							'icon'  => 'eicon-text-align-left',
-						),
-						'center'  => array(
-							'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
-							'icon'  => 'eicon-text-align-center',
-						),
-						'right'   => array(
-							'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
-							'icon'  => 'eicon-text-align-right',
-						),
-						'justify' => array(
-							'title' => esc_html__( 'Justify', 'wpmozo-addons-lite-for-elementor' ),
-							'icon'  => 'eicon-text-align-justify',
-						),
-					),
-					'default'     => 'center',
-					'toggle'      => true, // Behave like toggle or not.
-					'separator'   => 'before',
-					'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_interactive_image_card_wrapper_content' => 'text-align: {{VALUE}};' ),
-					'condition'   => array( 'select_layout' => array( 'lily', 'sadie', 'roxy', 'bubba', 'romeo', 'layla', 'oscar', 'marley', 'ruby' ) ),
-				)
-			);
-			$this->end_controls_section();
+// Content style controls.
+$this->start_controls_section(
+	'content_text_styling_section',
+	array(
+		'label' => esc_html__( 'Content', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'   => Controls_Manager::TAB_STYLE,
+	)
+);
+	$this->add_control(
+		'content_text_color',
+		array(
+			'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label_block' => false,
+			'type'        => Controls_Manager::COLOR,
+			'default'     => '#222',
+			'selectors'   => array(
+				'{{WRAPPER}} .wpmozo_ale_interactive_image_card_wrapper_content' => 'color: {{VALUE}};',
+			),
+		)
+	);
+	$this->add_group_control(
+		Group_Control_Typography::get_type(),
+		array(
+			'label'       => esc_html__( 'Content Typography', 'wpmozo-addons-lite-for-elementor' ),
+			'label_block' => true,
+			'name'        => 'content_text_typography',
+			'selector'    => '{{WRAPPER}} .wpmozo_ale_interactive_image_card_wrapper_content',
+		)
+	);
+	$this->add_group_control(
+		Group_Control_Text_Shadow::get_type(),
+		array(
+			'name'      => 'content_text_shadow',
+			'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+			'selector'  => '{{WRAPPER}} .wpmozo_ale_interactive_image_card_wrapper_content',
+			'separator' => 'before',
+		)
+	);
+	$this->add_control(
+		'content_text_alignment',
+		array(
+			'label'       => esc_html__( 'Content Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'type'        => Controls_Manager::CHOOSE,
+			'label_block' => true,
+			'options'     => array(
+				'left'    => array(
+					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-left',
+				),
+				'center'  => array(
+					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-center',
+				),
+				'right'   => array(
+					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-right',
+				),
+				'justify' => array(
+					'title' => esc_html__( 'Justify', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-justify',
+				),
+			),
+			'default'     => 'center',
+			'toggle'      => true, // Behave like toggle or not.
+			'separator'   => 'before',
+			'selectors'   => array( '{{WRAPPER}} .wpmozo_ale_interactive_image_card_wrapper_content' => 'text-align: {{VALUE}};' ),
+			'condition'   => array( 'select_layout' => array( 'lily', 'sadie', 'roxy', 'bubba', 'romeo', 'layla', 'oscar', 'marley', 'ruby' ) ),
+		)
+	);
+$this->end_controls_section();
 
-			// Interactive Image controls.
-			$this->start_controls_section(
-				'interactive_image_alignment',
-				array(
-					'label'     => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
-					'tab'       => Controls_Manager::TAB_ADVANCED,
-					'condition' => array(
-						'image_size_size!' => 'full',
-						'image_size_size!' => 'custom',
-					),
-				)
-			);
-			$this->add_control(
-				'layout_alignment',
-				array(
-					'label'       => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
-					'type'        => Controls_Manager::CHOOSE,
-					'label_block' => true,
-					'options'     => array(
-						'left'   => array(
-							'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
-							'icon'  => 'eicon-text-align-left',
-						),
-						'center' => array(
-							'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
-							'icon'  => 'eicon-text-align-center',
-						),
-						'right'  => array(
-							'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
-							'icon'  => 'eicon-text-align-right',
-						),
-					),
-					'default'     => 'center',
-					'toggle'      => true, // Behave like toggle or not.
-					'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_interactive_image_card_wrapper' => 'justify-content: {{VALUE}};' ),
-				)
-			);
-			$this->end_controls_section();
+// Interactive Image controls.
+$this->start_controls_section(
+	'interactive_image_alignment',
+	array(
+		'label'     => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'       => Controls_Manager::TAB_ADVANCED,
+		'condition' => array(
+			'image_size_size!' => 'full',
+			'image_size_size!' => 'custom',
+		),
+	)
+);
+	$this->add_control(
+		'layout_alignment',
+		array(
+			'label'       => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'type'        => Controls_Manager::CHOOSE,
+			'label_block' => true,
+			'options'     => array(
+				'left'   => array(
+					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-left',
+				),
+				'center' => array(
+					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-center',
+				),
+				'right'  => array(
+					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-right',
+				),
+			),
+			'default'     => 'center',
+			'toggle'      => true, // Behave like toggle or not.
+			'selectors'   => array( '{{WRAPPER}} .wpmozo_ale_interactive_image_card_wrapper' => 'justify-content: {{VALUE}};' ),
+		)
+	);
+$this->end_controls_section();

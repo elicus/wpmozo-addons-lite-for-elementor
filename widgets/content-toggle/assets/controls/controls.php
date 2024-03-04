@@ -5,7 +5,6 @@ use \Elementor\Group_Control_Text_Shadow;
 use \Elementor\Group_Control_Typography;
 use \Elementor\Plugin;
 
-// Content tab starts here.
 // Content One section starts.
 $this->start_controls_section(
 	'wpmozo_toggle_one',
@@ -23,6 +22,52 @@ $this->start_controls_section(
 			'default'     => 'Content One',
 			'type'        => Controls_Manager::TEXT,
 			'placeholder' => esc_html__( 'Enter Title', 'wpmozo-addons-lite-for-elementor' ),
+		)
+	);
+	$this->add_control(
+		'toggle_one_selected_icon',
+		array(
+			'label'                  => esc_html__( 'Icon', 'wpmozo-addons-lite-for-elementor' ),
+			'type'                   => Controls_Manager::ICONS,
+			'skin'                   => 'inline',
+			'label_block'            => false,
+			'exclude_inline_options' => array( 'svg' ),
+			'separator'              => 'before',
+		)
+	);
+
+	$this->add_control(
+		'toggle_one_icon_align',
+		array(
+			'label'     => esc_html__( 'Icon Position', 'wpmozo-addons-lite-for-elementor' ),
+			'type'      => Controls_Manager::SELECT,
+			'default'   => 'left',
+			'options'   => array(
+				'left'  => esc_html__( 'Before', 'wpmozo-addons-lite-for-elementor' ),
+				'right' => esc_html__( 'After', 'wpmozo-addons-lite-for-elementor' ),
+			),
+			'condition' => array( 'toggle_one_selected_icon[value]!' => '' ),
+		)
+	);
+	$this->add_control(
+		'toggle_one_icon_indent',
+		array(
+			'label'     => esc_html__( 'Icon Spacing', 'elementor' ),
+			'type'      => Controls_Manager::SLIDER,
+			'range'     => array(
+				'px' => array(
+					'max' => 50,
+				),
+			),
+			'default'   => array(
+				'unit' => 'px',
+				'size' => 10,
+			),
+			'separator' => 'after',
+			'selectors' => array(
+				'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_off_value' => 'gap: {{SIZE}}{{UNIT}};',
+			),
+			'condition' => array( 'toggle_one_selected_icon[value]!' => '' ),
 		)
 	);
 
@@ -58,7 +103,7 @@ $this->start_controls_section(
 			'label'     => esc_html__( 'Select Template', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::SELECT,
 			'default'   => '0', // Set the default value as needed.
-			'options'   => wpmozo_ae_get_elementor_templates_as_options(), // Use the function to fetch template IDs and names.
+			'options'   => wpmozo_ale_get_elementor_templates_as_options(), // Use the function to fetch template IDs and names.
 			'condition' => array(
 				'wpmozo_toggle_one_type' => 'template',
 			),
@@ -70,7 +115,7 @@ $this->start_controls_section(
 			'label'       => esc_html__( 'Select Page', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::SELECT,
 			'default'     => 0, // Set the default value as needed.
-			'options'     => wpmozo_ae_get_pages_as_options(), // Use the function to fetch template IDs and names.
+			'options'     => wpmozo_ale_get_pages_as_options(), // Use the function to fetch template IDs and names.
 			'condition'   => array(
 				'wpmozo_toggle_one_type' => 'page',
 			),
@@ -79,7 +124,7 @@ $this->start_controls_section(
 	);
 	$this->end_controls_section();
 
-	// Content two section starts.
+	// Content Two section starts.
 	$this->start_controls_section(
 		'wpmozo_toggle_two',
 		array(
@@ -99,6 +144,51 @@ $this->start_controls_section(
 		)
 	);
 	$this->add_control(
+		'toggle_two_selected_icon',
+		array(
+			'label'                  => esc_html__( 'Icon', 'wpmozo-addons-lite-for-elementor' ),
+			'type'                   => Controls_Manager::ICONS,
+			'skin'                   => 'inline',
+			'label_block'            => false,
+			'exclude_inline_options' => array( 'svg' ),
+			'separator'              => 'before',
+		)
+	);
+	$this->add_control(
+		'toggle_two_icon_align',
+		array(
+			'label'     => esc_html__( 'Icon Position', 'wpmozo-addons-lite-for-elementor' ),
+			'type'      => Controls_Manager::SELECT,
+			'default'   => 'right',
+			'options'   => array(
+				'left'  => esc_html__( 'Before', 'wpmozo-addons-lite-for-elementor' ),
+				'right' => esc_html__( 'After', 'wpmozo-addons-lite-for-elementor' ),
+			),
+			'condition' => array( 'toggle_two_selected_icon[value]!' => '' ),
+		)
+	);
+	$this->add_control(
+		'toggle_two_icon_indent',
+		array(
+			'label'     => esc_html__( 'Icon Spacing', 'elementor' ),
+			'type'      => Controls_Manager::SLIDER,
+			'range'     => array(
+				'px' => array(
+					'max' => 50,
+				),
+			),
+			'default'   => array(
+				'unit' => 'px',
+				'size' => 10,
+			),
+			'separator' => 'after',
+			'selectors' => array(
+				'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_on_value' => 'gap: {{SIZE}}{{UNIT}};',
+			),
+			'condition' => array( 'toggle_two_selected_icon[value]!' => '' ),
+		)
+	);
+	$this->add_control(
 		'wpmozo_toggle_two_type',
 		array(
 			'label'   => esc_html__( 'Content Type', 'wpmozo-addons-lite-for-elementor' ),
@@ -115,7 +205,7 @@ $this->start_controls_section(
 		'wpmozo_toggle_two_content',
 		array(
 			'label'       => esc_html__( 'Content', 'wpmozo-addons-lite-for-elementor' ),
-			'type'        => Controls_Manager::TEXTAREA,
+			'type'        => Controls_Manager::WYSIWYG,
 			'default'     => esc_html__( 'Default content', 'wpmozo-addons-lite-for-elementor' ),
 			'placeholder' => esc_html__( 'Type your content here', 'wpmozo-addons-lite-for-elementor' ),
 			'condition'   => array(
@@ -130,7 +220,7 @@ $this->start_controls_section(
 			'label'     => esc_html__( 'Select Template', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::SELECT,
 			'default'   => '0', // Set the default value as needed.
-			'options'   => wpmozo_ae_get_elementor_templates_as_options(), // Use the function to fetch template IDs and names.
+			'options'   => wpmozo_ale_get_elementor_templates_as_options(), // Use the function to fetch template IDs and names.
 			'condition' => array(
 				'wpmozo_toggle_two_type' => 'template',
 			),
@@ -143,7 +233,7 @@ $this->start_controls_section(
 			'label'     => esc_html__( 'Select Page', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::SELECT,
 			'default'   => 0, // Set the default value as needed.
-			'options'   => wpmozo_ae_get_pages_as_options(), // Use the function to fetch template IDs and names.
+			'options'   => wpmozo_ale_get_pages_as_options(), // Use the function to fetch template IDs and names.
 			'condition' => array(
 				'wpmozo_toggle_two_type' => 'page',
 			),
@@ -153,11 +243,11 @@ $this->start_controls_section(
 	$this->end_controls_section();
 
 	// Style tab starts here.
-	// Toggle Switch Styling controls starts here.
+	// Toggle Switch controls start here.
 	$this->start_controls_section(
-		'wpmozo_toggle_switch_style',
+		'wpmozo_toggle_switch',
 		array(
-			'label' => esc_html__( 'Toggle Switch Styling', 'wpmozo-addons-lite-for-elementor' ),
+			'label' => esc_html__( 'Toggle Switch', 'wpmozo-addons-lite-for-elementor' ),
 			'tab'   => Controls_Manager::TAB_STYLE,
 		)
 	);
@@ -378,165 +468,40 @@ $this->start_controls_section(
 
 			$this->end_controls_section();
 
+			// Animation controls section start here.
+			$this->start_controls_section(
+				'wpmozo_toggle_animation',
+				array(
+					'label' => esc_html__( 'Toggle Animation', 'wpmozo-addons-lite-for-elementor' ),
+					'tab'   => Controls_Manager::TAB_STYLE,
+				)
+			);
+			$this->add_control(
+				'entrance_animation',
+				array(
+					'label'       => esc_html__( 'Animation', 'wpmozo-addons-lite-for-elementor' ),
+					'type'        => Controls_Manager::ANIMATION,
+					'render_type' => 'template',
+				)
+			);
+
+			$this->end_controls_section();
 			// Toggle label normal state styling starts here.
 			$this->start_controls_section(
-				'wpmozo_toggle_label_style',
+				'active_label_section',
 				array(
-					'label'     => esc_html__( 'Toggle Label Text Settings', 'wpmozo-addons-lite-for-elementor' ),
+					'label'     => esc_html__( 'Active Label', 'wpmozo-addons-lite-for-elementor' ),
 					'tab'       => Controls_Manager::TAB_STYLE,
 					'condition' => array( 'wpmozo_toggle_switch_layout' => 'wpmozo_toggle_layout_two' ),
 				)
 			);
 
 			$this->start_controls_tabs(
-				'wpmozo_toggle_label_active_and_inactive_state_control_tab'
+				'active_label_normal_and_hover_tabs'
 			);
 
 			$this->start_controls_tab(
-				'wpmozo_toggle_label_text_active_state_tab',
-				array(
-					'label' => esc_html__( 'Active Toggle', 'wpmozo-addons-lite-for-elementor' ),
-				)
-			);
-
-			$this->add_group_control(
-				Group_Control_Typography::get_type(),
-				array(
-					'name'     => 'wpmozo_toggle_active_label_normal_typography',
-					'selector' => '{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_trigger.wpmozo_active',
-				)
-			);
-
-			$this->add_control(
-				'wpmozo_toggle_active_label_normal_state_text_color',
-				array(
-					'label'     => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => array(
-						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_trigger.wpmozo_active' => 'color: {{VALUE}}',
-						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_trigger.wpmozo_active:hover' => 'color: {{wpmozo_toggle_active_label_hover_state_text_color.VALUE}}',
-					),
-				)
-			);
-
-			$this->end_controls_tab();
-
-			$this->start_controls_tab(
-				'wpmozo_toggle_label_text_inactive_state_tab',
-				array(
-					'label' => esc_html__( 'Inactive Toggle', 'wpmozo-addons-lite-for-elementor' ),
-				)
-			);
-
-			$this->add_group_control(
-				Group_Control_Typography::get_type(),
-				array(
-					'name'     => 'wpmozo_toggle_inactive_label_normal_typography',
-					'selector' => '{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_trigger.wpmozo_inactive',
-				)
-			);
-
-			$this->add_control(
-				'wpmozo_toggle_inactive_label_normal_state_text_color',
-				array(
-					'label'     => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => array(
-						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_trigger.wpmozo_inactive' => 'color: {{VALUE}}',
-					),
-				)
-			);
-
-			$this->end_controls_tab();
-
-			$this->end_controls_tabs();
-
-			$this->end_controls_section();
-
-			// Toggle label hover state styling starts here.
-			$this->start_controls_section(
-				'wpmozo_toggle_label_hover_style',
-				array(
-					'label'     => esc_html__( 'Toggle Label Hover State Text Settings', 'wpmozo-addons-lite-for-elementor' ),
-					'tab'       => Controls_Manager::TAB_STYLE,
-					'condition' => array( 'wpmozo_toggle_switch_layout' => 'wpmozo_toggle_layout_two' ),
-				)
-			);
-
-			$this->start_controls_tabs(
-				'wpmozo_toggle_label_active_and_inactive_hover_state_control_tab'
-			);
-			$this->start_controls_tab(
-				'wpmozo_toggle_label_active_hover_state_tab',
-				array(
-					'label' => esc_html__( 'Active Toggle', 'wpmozo-addons-lite-for-elementor' ),
-				)
-			);
-
-			$this->add_group_control(
-				Group_Control_Typography::get_type(),
-				array(
-					'label'    => esc_html__( 'Hover State Typography', 'wpmozo-addons-lite-for-elementor' ),
-					'name'     => 'wpmozo_toggle_active_label_hover_typography',
-					'selector' => '{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_trigger.wpmozo_active:hover',
-				)
-			);
-
-			$this->add_control(
-				'wpmozo_toggle_active_label_hover_state_text_color',
-				array(
-					'label'     => esc_html__( 'Hover State Text Color', 'wpmozo-addons-lite-for-elementor' ),
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => array(
-						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_trigger.wpmozo_active:hover' => 'color: {{VALUE}}',
-					),
-				)
-			);
-
-			$this->end_controls_tab();
-			$this->start_controls_tab(
-				'wpmozo_toggle_label_inactive_hover_state_tab',
-				array(
-					'label' => esc_html__( 'Inactive Toggle', 'wpmozo-addons-lite-for-elementor' ),
-				)
-			);
-			$this->add_group_control(
-				Group_Control_Typography::get_type(),
-				array(
-					'label'    => esc_html__( 'Hover State Typography', 'wpmozo-addons-lite-for-elementor' ),
-					'name'     => 'wpmozo_toggle_inactive_label_hover_typography',
-					'selector' => '{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_trigger.wpmozo_inactive:hover',
-				)
-			);
-			$this->add_control(
-				'wpmozo_toggle_inactive_label_hover_state_text_color',
-				array(
-					'label'     => esc_html__( 'Hover State Text Color', 'wpmozo-addons-lite-for-elementor' ),
-					'type'      => Controls_Manager::COLOR,
-					'selectors' => array(
-						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_trigger.wpmozo_inactive:hover' => 'color: {{VALUE}}',
-					),
-				)
-			);
-			$this->end_controls_tab();
-			$this->end_controls_tabs();
-			$this->end_controls_section();
-
-			// Toggle title text styling starts here.
-			$this->start_controls_section(
-				'wpmozo_toggle_title_text_style',
-				array(
-					'label'     => esc_html__( 'Toggle Switch Text Settings', 'wpmozo-addons-lite-for-elementor' ),
-					'tab'       => Controls_Manager::TAB_STYLE,
-					'condition' => array( 'wpmozo_toggle_switch_layout' => 'wpmozo_toggle_layout_one' ),
-				)
-			);
-
-			$this->start_controls_tabs(
-				'wpmozo_toggle_title_text_normal_and_hover_state_control_tab'
-			);
-			$this->start_controls_tab(
-				'wpmozo_toggle_title_text_normal_state_tab',
+				'active_label_normal_tab',
 				array(
 					'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
 				)
@@ -544,26 +509,53 @@ $this->start_controls_section(
 			$this->add_group_control(
 				Group_Control_Typography::get_type(),
 				array(
-					'name'     => 'wpmozo_toggle_title_normal_typography',
-					'selector' => '{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_title',
+					'name'     => 'active_label_normal_typography',
+					'selector' => '{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_trigger.wpmozo_active .wpmozo_toggle_title',
 				)
 			);
-			// text color control was not given so added here.
 			$this->add_control(
-				'wpmozo_toggle_title_text_color',
+				'active_label_normal_text_color',
 				array(
 					'label'     => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_title, {{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_one::before ' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_trigger.wpmozo_active .wpmozo_toggle_title' => 'color: {{VALUE}}',
+
 					),
 				)
 			);
-
+			$this->add_control(
+				'active_label_icon_size',
+				array(
+					'label'     => esc_html__( 'Icon Size', 'elementor' ),
+					'type'      => Controls_Manager::SLIDER,
+					'range'     => array(
+						'px' => array(
+							'max' => 200,
+						),
+					),
+					'default'   => array(
+						'unit' => 'px',
+						'size' => 30,
+					),
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_switch .wpmozo_active .icon-wrapper i' => 'font-size: {{SIZE}}{{UNIT}};',
+					),
+				)
+			);
+			$this->add_control(
+				'active_label_icon_color',
+				array(
+					'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_switch .wpmozo_active .icon-wrapper i' => 'color: {{VALUE}}; transition: all 300ms;',
+					),
+				)
+			);
 			$this->end_controls_tab();
-
 			$this->start_controls_tab(
-				'wpmozo_toggle_title_text_hover_state_tab',
+				'active_label_hover_tab',
 				array(
 					'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
 				)
@@ -571,22 +563,412 @@ $this->start_controls_section(
 			$this->add_group_control(
 				Group_Control_Typography::get_type(),
 				array(
-					'name'     => 'wpmozo_toggle_title_hover_typography',
+					'name'     => 'active_label_hover_typography',
+					'selector' => '{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_trigger.wpmozo_active:hover .wpmozo_toggle_title',
+				)
+			);
+
+			$this->add_control(
+				'active_label_hover_text_color',
+				array(
+					'label'     => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_trigger.wpmozo_active:hover .wpmozo_toggle_title' => 'color: {{VALUE}};transition:all 300ms;',
+					),
+				)
+			);
+			$this->add_control(
+				'active_label_hover_icon_size',
+				array(
+					'label'     => esc_html__( 'Icon Size', 'elementor' ),
+					'type'      => Controls_Manager::SLIDER,
+					'range'     => array(
+						'px' => array(
+							'max' => 200,
+						),
+					),
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_active:hover .icon-wrapper i' => 'font-size: {{SIZE}}{{UNIT}};transition:all 300ms;',
+					),
+				)
+			);
+			$this->add_control(
+				'active_label_hover_icon_color',
+				array(
+					'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_switch .wpmozo_active:hover .icon-wrapper i' => 'color: {{VALUE}}',
+					),
+				)
+			);
+			$this->end_controls_tab();
+			$this->end_controls_tabs();
+			$this->end_controls_section();
+
+			// Toggle label hover state styling starts here.
+			$this->start_controls_section(
+				'inactive_label_section',
+				array(
+					'label'     => esc_html__( 'Inactive Label', 'wpmozo-addons-lite-for-elementor' ),
+					'tab'       => Controls_Manager::TAB_STYLE,
+					'condition' => array( 'wpmozo_toggle_switch_layout' => 'wpmozo_toggle_layout_two' ),
+				)
+			);
+
+			$this->start_controls_tabs(
+				'inactive_label_normal_and_hover_tabs'
+			);
+			$this->start_controls_tab(
+				'inactive_label_hover_tab',
+				array(
+					'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
+				)
+			);
+
+			$this->add_group_control(
+				Group_Control_Typography::get_type(),
+				array(
+					'name'     => 'inactive_label_normal_typography',
+					'selector' => '{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_trigger.wpmozo_inactive',
+				)
+			);
+
+			$this->add_control(
+				'inactive_label_normal_text_color',
+				array(
+					'label'     => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_trigger.wpmozo_inactive' => 'color: {{VALUE}}; transition: 300ms;',
+					),
+				)
+			);
+			$this->add_control(
+				'inactive_label_icon_size',
+				array(
+					'label'     => esc_html__( 'Icon Size', 'elementor' ),
+					'type'      => Controls_Manager::SLIDER,
+					'range'     => array(
+						'px' => array(
+							'max' => 200,
+						),
+					),
+					'default'   => array(
+						'unit' => 'px',
+						'size' => 30,
+					),
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_switch .wpmozo_inactive .icon-wrapper i' => 'font-size: {{SIZE}}{{UNIT}}; transition: 300ms;',
+					),
+				)
+			);
+			$this->add_control(
+				'inactive_label_icon_color',
+				array(
+					'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_switch .wpmozo_inactive .icon-wrapper i' => 'color: {{VALUE}}',
+					),
+				)
+			);
+
+			$this->end_controls_tab();
+			$this->start_controls_tab(
+				'label_inactive_hover_state_tab',
+				array(
+					'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
+				)
+			);
+			$this->add_group_control(
+				Group_Control_Typography::get_type(),
+				array(
+					'name'     => 'inactive_label_hover_typography',
+					'selector' => '{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_trigger.wpmozo_inactive:hover',
+				)
+			);
+			$this->add_control(
+				'inactive_label_hover_text_color',
+				array(
+					'label'     => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_trigger.wpmozo_inactive:hover' => 'color: {{VALUE}}',
+					),
+				)
+			);
+			$this->add_control(
+				'inactive_label_hover_icon_size',
+				array(
+					'label'     => esc_html__( 'Icon Size', 'elementor' ),
+					'type'      => Controls_Manager::SLIDER,
+					'range'     => array(
+						'px' => array(
+							'max' => 200,
+						),
+					),
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_switch .wpmozo_inactive:hover .icon-wrapper i' => 'font-size: {{SIZE}}{{UNIT}};',
+					),
+				)
+			);
+			$this->add_control(
+				'inactive_label_hover_icon_color',
+				array(
+					'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_switch .wpmozo_inactive:hover .icon-wrapper i ' => 'color: {{VALUE}}',
+					),
+				)
+			);
+			$this->end_controls_tab();
+			$this->end_controls_tabs();
+			$this->end_controls_section();
+
+			// Toggle One Label controls star here.
+			$this->start_controls_section(
+				'toggle_one_label_section',
+				array(
+					'label'     => esc_html__( 'Label One', 'wpmozo-addons-lite-for-elementor' ),
+					'tab'       => Controls_Manager::TAB_STYLE,
+					'condition' => array( 'wpmozo_toggle_switch_layout' => 'wpmozo_toggle_layout_one' ),
+				)
+			);
+
+			$this->start_controls_tabs(
+				'toggle_one__label_normal_and_hover_tabs'
+			);
+			$this->start_controls_tab(
+				'toggle_one_normal_tab',
+				array(
+					'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
+				)
+			);
+			$this->add_group_control(
+				Group_Control_Typography::get_type(),
+				array(
+					'name'     => 'toggle_one_label_normal_typography',
+					'selector' => '{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_off_value .wpmozo_toggle_title',
+				)
+			);
+			// text color control was not given so added here.
+			$this->add_control(
+				'toggle_one_label_color',
+				array(
+					'label'     => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_off_value .wpmozo_toggle_title, {{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_one::before ' => 'color: {{VALUE}}; transition: all 300ms;',
+					),
+				)
+			);
+			$this->add_control(
+				'toggle_one_icon_size',
+				array(
+					'label'     => esc_html__( 'Icon Size', 'elementor' ),
+					'type'      => Controls_Manager::SLIDER,
+					'range'     => array(
+						'px' => array(
+							'max' => 200,
+						),
+					),
+					'default'   => array(
+						'unit' => 'px',
+						'size' => 30,
+					),
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_off_value .icon-wrapper i' => 'font-size: {{SIZE}}{{UNIT}};',
+					),
+				)
+			);
+			$this->add_control(
+				'toggle_one_icon_color',
+				array(
+					'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_off_value .icon-wrapper i' => 'color: {{VALUE}}; transition: all 300ms;',
+					),
+				)
+			);
+
+			$this->end_controls_tab();
+
+			$this->start_controls_tab(
+				'toggle_one_hover_tab',
+				array(
+					'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
+				)
+			);
+			$this->add_group_control(
+				Group_Control_Typography::get_type(),
+				array(
+					'name'     => 'toggle_one_label_hover_typography',
 					'selector' => '{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_title:hover',
 				)
 			);
 			// text color control was not given so added here.
 			$this->add_control(
-				'wpmozo_toggle_title_hover_text_color',
+				'toggle_one_label_hover_color',
 				array(
 					'label'     => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_title:hover, {{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_two::before ' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_off_value:hover .wpmozo_toggle_title, {{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_two::before ' => 'color: {{VALUE}}',
+					),
+				)
+			);
+			$this->add_control(
+				'toggle_one_hover_icon_size',
+				array(
+					'label'     => esc_html__( 'Icon Size', 'elementor' ),
+					'type'      => Controls_Manager::SLIDER,
+					'range'     => array(
+						'px' => array(
+							'max' => 200,
+						),
+					),
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_off_value:hover .icon-wrapper i' => 'font-size: {{SIZE}}{{UNIT}};',
+					),
+				)
+			);
+			$this->add_control(
+				'toggle_one_hover_icon_color',
+				array(
+					'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_off_value:hover .icon-wrapper i' => 'color: {{VALUE}};',
 					),
 				)
 			);
 
+			$this->end_controls_tab();
+			$this->end_controls_tabs();
+			$this->end_controls_section();
+
+			// Toggle Two Label controls star here.
+			$this->start_controls_section(
+				'toggle_two_label_section',
+				array(
+					'label'     => esc_html__( 'Label Two', 'wpmozo-addons-lite-for-elementor' ),
+					'tab'       => Controls_Manager::TAB_STYLE,
+					'condition' => array( 'wpmozo_toggle_switch_layout' => 'wpmozo_toggle_layout_one' ),
+				)
+			);
+
+			$this->start_controls_tabs(
+				'toggle_two__label_normal_and_hover_tabs'
+			);
+			$this->start_controls_tab(
+				'toggle_two_normal_tab',
+				array(
+					'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
+				)
+			);
+			$this->add_group_control(
+				Group_Control_Typography::get_type(),
+				array(
+					'name'     => 'toggle_two_label_normal_typography',
+					'selector' => '{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_title',
+				)
+			);
+			// text color control was not given so added here.
+			$this->add_control(
+				'toggle_two_label_color',
+				array(
+					'label'     => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_title, {{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_one::before ' => 'color: {{VALUE}}; transition: all 300ms;',
+					),
+				)
+			);
+			$this->add_control(
+				'toggle_two_icon_size',
+				array(
+					'label'     => esc_html__( 'Icon Size', 'elementor' ),
+					'type'      => Controls_Manager::SLIDER,
+					'range'     => array(
+						'px' => array(
+							'max' => 200,
+						),
+					),
+					'default'   => array(
+						'unit' => 'px',
+						'size' => 30,
+					),
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_on_value .icon-wrapper i' => 'font-size: {{SIZE}}{{UNIT}};',
+					),
+				)
+			);
+			$this->add_control(
+				'toggle_two_icon_color',
+				array(
+					'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_on_value .icon-wrapper i' => 'color: {{VALUE}}; transition: 300ms;',
+					),
+				)
+			);
+
+			$this->end_controls_tab();
+
+			$this->start_controls_tab(
+				'toggle_two_hover_tab',
+				array(
+					'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
+				)
+			);
+			$this->add_group_control(
+				Group_Control_Typography::get_type(),
+				array(
+					'name'     => 'toggle_two_label_hover_typography',
+					'selector' => '{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_title:hover',
+				)
+			);
+			// text color control was not given so added here.
+			$this->add_control(
+				'toggle_two_label_hover_color',
+				array(
+					'label'     => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_on_value:hover .wpmozo_toggle_title, {{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_switch_two::before ' => 'color: {{VALUE}};',
+					),
+				)
+			);
+			$this->add_control(
+				'toggle_two_hover_icon_size',
+				array(
+					'label'     => esc_html__( 'Icon Size', 'elementor' ),
+					'type'      => Controls_Manager::SLIDER,
+					'range'     => array(
+						'px' => array(
+							'max' => 200,
+						),
+					),
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_on_value:hover .icon-wrapper i' => 'font-size: {{SIZE}}{{UNIT}};',
+					),
+				)
+			);
+			$this->add_control(
+				'toggle_two_hover_icon_color',
+				array(
+					'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_on_value:hover .icon-wrapper i' => 'color: {{VALUE}};',
+					),
+				)
+			);
 
 			$this->end_controls_tab();
 			$this->end_controls_tabs();
@@ -594,9 +976,9 @@ $this->start_controls_section(
 
 			// Content One text styling starts here.
 			$this->start_controls_section(
-				'wpmozo_toggle_one_style',
+				'wpmozo_toggle_one_section',
 				array(
-					'label' => esc_html__( 'Content One Text Settings', 'wpmozo-addons-lite-for-elementor' ),
+					'label' => esc_html__( 'Content One', 'wpmozo-addons-lite-for-elementor' ),
 					'tab'   => Controls_Manager::TAB_STYLE,
 				)
 			);
@@ -617,7 +999,7 @@ $this->start_controls_section(
 					'label'     => esc_html__( 'Content one Text Color', 'wpmozo-addons-lite-for-elementor' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_content_one_toggle.wpmozo_content_toggle_text' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_content_one_toggle.wpmozo_content_toggle_text' => 'color: {{VALUE}}; transition: all 300ms;',
 					),
 				)
 			);
@@ -751,9 +1133,9 @@ $this->start_controls_section(
 
 			// Content Two text settings starts here.
 			$this->start_controls_section(
-				'wpmozo_toggle_two_style',
+				'wpmozo_toggle_two_section',
 				array(
-					'label' => esc_html__( 'Content Two Text Settings', 'wpmozo-addons-lite-for-elementor' ),
+					'label' => esc_html__( 'Content Two', 'wpmozo-addons-lite-for-elementor' ),
 					'tab'   => Controls_Manager::TAB_STYLE,
 				)
 			);
@@ -772,7 +1154,7 @@ $this->start_controls_section(
 					'label'     => esc_html__( 'Content Two Text Color', 'wpmozo-addons-lite-for-elementor' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_content_two_toggle.wpmozo_content_toggle_text' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_content_two_toggle.wpmozo_content_toggle_text' => 'color: {{VALUE}}; transition: all 300ms;',
 					),
 				)
 			);
@@ -903,39 +1285,4 @@ $this->start_controls_section(
 
 			$this->end_controls_section();
 
-			/**
-			 * Function to get Elementor templates as options.
-			 * **/
-			function wpmozo_ae_get_elementor_templates_as_options() {
-				$templates        = Plugin::$instance->templates_manager->get_source( 'local' )->get_items();
-				$template_options = array();
-				// Add the "Select Template" option with an empty value as the first item.
-				$template_options[0] = esc_html__( 'Select Template', 'wpmozo-addons-lite-for-elementor' );
-				foreach ( $templates as $template ) {
-					// Use the template's ID as the key and the title as the value.
-					$template_options[ $template['template_id'] ] = $template['title'];
-				}
-				return $template_options;
-			}
 
-			/**
-			 * Function to get a list of pages as options.
-			 * **/
-			function wpmozo_ae_get_pages_as_options() {
-				$pages        = get_pages();
-				$page_options = array();
-				global $post;
-
-				$current_post_id = $post->ID;
-
-				// Add the "Select Page" option with an empty value as the first item.
-				$page_options[0] = esc_html__( 'Select Page', 'wpmozo-addons-lite-for-elementor' );
-
-				foreach ( $pages as $page ) {
-					if ( $current_post_id !== $page->ID ) {
-						$page_options[ $page->ID ] = $page->post_title;
-					}
-				}
-
-				return $page_options;
-			}

@@ -1,9 +1,9 @@
 <?php
 /**
- * @author      Elicus <hello@elicus.com>
- * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
- * @version     1.0.0
+ * @author    Elicus <hello@elicus.com>
+ * @link      https://www.elicus.com/
+ * @copyright 2024 Elicus Technologies Private Limited
+ * @version   1.0.0
  */
 
 // if this file is called directly, abort.
@@ -15,7 +15,7 @@ use \Elementor\Widget_Base;
 use \Elementor\Group_Control_Image_Size;
 use \Elementor\Control_Media;
 
-class WPMOZO_AE_Interactive_Image_Card extends Widget_Base {
+class WPMOZO_ALE_Interactive_Image_Card extends Widget_Base {
 
 	/**
 	 * Get widget name.
@@ -28,7 +28,7 @@ class WPMOZO_AE_Interactive_Image_Card extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpmozo_ae_interactive_image_card';
+		return 'wpmozo_ale_interactive_image_card';
 	}
 
 	/**
@@ -56,7 +56,7 @@ class WPMOZO_AE_Interactive_Image_Card extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-image-rollover';
+		return 'eicon-image-rollover wpmozo-ale-brandicon';
 	}
 
 	/**
@@ -84,9 +84,9 @@ class WPMOZO_AE_Interactive_Image_Card extends Widget_Base {
 	 * @return style handle.
 	 */
 	public function get_style_depends() {
-		wp_register_style( 'wpmozo-ae-interactiveimagecard-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+		wp_register_style( 'wpmozo-ale-interactive-imagecard-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
-		return array( 'wpmozo-ae-interactiveimagecard-style' );
+		return array( 'wpmozo-ale-interactive-imagecard-style' );
 	}
 
 	/**
@@ -115,15 +115,15 @@ class WPMOZO_AE_Interactive_Image_Card extends Widget_Base {
 		$settings = $this->get_settings_for_display();
 
 		$image               = array_map( 'esc_attr', $settings['image'] );
-		$title_text          = esc_attr( $settings['title_text'] );
-		$title_heading_level = esc_attr( $settings['title_heading_level'] );
-		$content_text        = esc_attr( $settings['content_text'] );
-		$select_layout       = esc_attr( $settings['select_layout'] );
+		$title_text          = $settings['title_text'];
+		$title_heading_level = $settings['title_heading_level'];
+		$content_text        = $settings['content_text'];
+		$select_layout       = $settings['select_layout'];
 
 		$this->add_inline_editing_attributes( 'title_text', 'none' );
-		$this->add_render_attribute( 'title_text', 'class', 'wpmozo_ae_interactive_image_card_title' );
+		$this->add_render_attribute( 'title_text', 'class', 'wpmozo_ale_interactive_image_card_title' );
 		$this->add_inline_editing_attributes( 'content_text', 'none' );
-		$this->add_render_attribute( 'content_text', 'class', 'wpmozo_ae_interactive_image_card_wrapper_content' );
+		$this->add_render_attribute( 'content_text', 'class', 'wpmozo_ale_interactive_image_card_wrapper_content' );
 
 		// Interactive image card image.
 		if ( ! empty( $image ) ) {
@@ -142,7 +142,7 @@ class WPMOZO_AE_Interactive_Image_Card extends Widget_Base {
 				'image',
 				array(
 					'src'   => $img_url,
-					'class' => array( 'wpmozo_ae_interactive_image_card_image', $image_sizing ),
+					'class' => array( 'wpmozo_ale_interactive_image_card_image', $image_sizing ),
 					'title' => esc_attr( Control_Media::get_image_title( $image ) ),
 					'alt'   => esc_attr( Control_Media::get_image_alt( $image ) ),
 				)
@@ -160,11 +160,11 @@ class WPMOZO_AE_Interactive_Image_Card extends Widget_Base {
 			$content_text = '<div ' . $this->get_render_attribute_string( 'content_text' ) . '>' . $content_text . '</div>';
 		}
 		?>
-		<div class="wpmozo_ae_interactive_image_card_wrapper">
+		<div class="wpmozo_ale_interactive_image_card_wrapper">
 			<figure class="effect-<?php echo esc_attr( $select_layout ); ?>">
 				<?php echo wp_kses_post( $image ); ?>
 				<figcaption>
-					<div class="wpmozo_ae_interactive_image_card_wrapper_inner">
+					<div class="wpmozo_ale_interactive_image_card_wrapper_inner">
 						<?php echo wp_kses_post( $title_text ); ?>
 						<?php echo wp_kses_post( $content_text ); ?>
 					</div>

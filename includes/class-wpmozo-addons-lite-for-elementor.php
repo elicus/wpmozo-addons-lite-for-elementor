@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || die( 'No script kiddies please!' );
 /**
  * @author      Elicus Technologies <hello@elicus.com>
  * @link        https://www.elicus.com/
@@ -111,7 +112,7 @@ class WPMOZO_Addons_Lite_For_Elementor {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new WPMOZO_Addons_Lite_For_Elementor_i18n();
+		$plugin_i18n = new WPMOZO_Addons_Lite_For_Elementor_I18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 

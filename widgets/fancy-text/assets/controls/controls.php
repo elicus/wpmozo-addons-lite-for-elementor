@@ -19,10 +19,10 @@ $this->start_controls_section(
 			'label_block' => true,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'wpmozo_ae_gradient' => esc_html__( 'Gradient', 'wpmozo-addons-lite-for-elementor' ),
-				'wpmozo_ae_clipping' => esc_html__( 'Background Clipping', 'wpmozo-addons-lite-for-elementor' ),
+				'wpmozo_ale_gradient' => esc_html__( 'Gradient', 'wpmozo-addons-lite-for-elementor' ),
+				'wpmozo_ale_clipping' => esc_html__( 'Background Clipping', 'wpmozo-addons-lite-for-elementor' ),
 			),
-			'default'     => 'wpmozo_ae_gradient',
+			'default'     => 'wpmozo_ale_gradient',
 		)
 	);
 	$this->add_control(
@@ -62,9 +62,9 @@ $this->start_controls_section(
 					'default' => '#9401D9',
 				),
 			),
-			'selector'       => '{{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner',
+			'selector'       => '{{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner',
 			'condition'      => array(
-				'text_style' => 'wpmozo_ae_gradient',
+				'text_style' => 'wpmozo_ale_gradient',
 			),
 		)
 	);
@@ -78,7 +78,7 @@ $this->start_controls_section(
 				'url' => 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA4MCIgaGVpZ2h0PSI1NDAiIHZpZXdCb3g9IjAgMCAxMDgwIDU0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0VCRUJFQiIgZD0iTTAgMGgxMDgwdjU0MEgweiIvPgogICAgICAgIDxwYXRoIGQ9Ik00NDUuNjQ5IDU0MGgtOTguOTk1TDE0NC42NDkgMzM3Ljk5NSAwIDQ4Mi42NDR2LTk4Ljk5NWwxMTYuMzY1LTExNi4zNjVjMTUuNjItMTUuNjIgNDAuOTQ3LTE1LjYyIDU2LjU2OCAwTDQ0NS42NSA1NDB6IiBmaWxsLW9wYWNpdHk9Ii4xIiBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz4KICAgICAgICA8Y2lyY2xlIGZpbGwtb3BhY2l0eT0iLjA1IiBmaWxsPSIjMDAwIiBjeD0iMzMxIiBjeT0iMTQ4IiByPSI3MCIvPgogICAgICAgIDxwYXRoIGQ9Ik0xMDgwIDM3OXYxMTMuMTM3TDcyOC4xNjIgMTQwLjMgMzI4LjQ2MiA1NDBIMjE1LjMyNEw2OTkuODc4IDU1LjQ0NmMxNS42Mi0xNS42MiA0MC45NDgtMTUuNjIgNTYuNTY4IDBMMTA4MCAzNzl6IiBmaWxsLW9wYWNpdHk9Ii4yIiBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz4KICAgIDwvZz4KPC9zdmc+Cg==',
 			),
 			'condition'   => array(
-				'text_style' => 'wpmozo_ae_clipping',
+				'text_style' => 'wpmozo_ale_clipping',
 			),
 		)
 	);
@@ -95,10 +95,10 @@ $this->start_controls_section(
 			),
 			'default'     => 'cover',
 			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_clipping_text:before' => 'background-size: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner, {{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_clipping_text:before' => 'background-size: {{VALUE}};',
 			),
 			'condition'   => array(
-				'text_style' => 'wpmozo_ae_clipping',
+				'text_style' => 'wpmozo_ale_clipping',
 			),
 		)
 	);
@@ -122,10 +122,10 @@ $this->start_controls_section(
 			),
 			'default'     => 'center',
 			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_clipping_text:before' => 'background-position: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner, {{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_clipping_text:before' => 'background-position: {{VALUE}};',
 			),
 			'condition'   => array(
-				'text_style' => 'wpmozo_ae_clipping',
+				'text_style' => 'wpmozo_ale_clipping',
 			),
 		)
 	);
@@ -146,10 +146,10 @@ $this->start_controls_section(
 			),
 			'default'     => 'initial',
 			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_clipping_text:before' => 'background-repeat: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner, {{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_clipping_text:before' => 'background-repeat: {{VALUE}};',
 			),
 			'condition'   => array(
-				'text_style' => 'wpmozo_ae_clipping',
+				'text_style' => 'wpmozo_ale_clipping',
 			),
 		)
 	);
@@ -167,7 +167,7 @@ $this->start_controls_section(
 			),
 			'default'     => 'none',
 			'condition'   => array(
-				'text_style' => 'wpmozo_ae_clipping',
+				'text_style' => 'wpmozo_ale_clipping',
 			),
 		)
 	);
@@ -178,10 +178,10 @@ $this->start_controls_section(
 			'label'     => esc_html__( 'Clip Background Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner:after' => 'background-color: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner:after' => 'background-color: {{VALUE}};',
 			),
 			'condition' => array(
-				'text_style'   => 'wpmozo_ae_clipping',
+				'text_style'   => 'wpmozo_ale_clipping',
 				'clip_overlay' => 'color',
 			),
 		)
@@ -205,9 +205,9 @@ $this->start_controls_section(
 					'default' => '#9401D9',
 				),
 			),
-			'selector'       => '{{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner::after',
+			'selector'       => '{{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner::after',
 			'condition'      => array(
-				'text_style'   => 'wpmozo_ae_clipping',
+				'text_style'   => 'wpmozo_ale_clipping',
 				'clip_overlay' => 'gradient',
 			),
 		)
@@ -220,12 +220,45 @@ $this->start_controls_section(
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => array( 'px', 'em', '%' ),
 			'selectors'  => array(
-				'{{WRAPPER}} .wpmozo_ae_text_wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_ale_text_wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			),
 			'condition'  => array(
-				'text_style'   => 'wpmozo_ae_clipping',
+				'text_style'   => 'wpmozo_ale_clipping',
 				'clip_overlay' => array( 'color', 'gradient' ),
 			),
+		)
+	);
+	$this->add_responsive_control(
+		'fancy_text_alignment',
+		array(
+			'label'       => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'type'        => Controls_Manager::CHOOSE,
+			'label_block' => false,
+			'options'     => array(
+				'left'    =>
+				array(
+					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-left',
+				),
+				'center'  =>
+				array(
+					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-center',
+				),
+				'right'   =>
+				array(
+					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-right',
+				),
+				'justify' =>
+				array(
+					'title' => esc_html__( 'Justify', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-justify',
+				),
+			),
+			'default'     => 'center',
+			'toggle'      => true,
+			'selectors'   => array( '{{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner' => 'text-align: {{VALUE}};' ),
 		)
 	);
 	$this->end_controls_section();
@@ -241,16 +274,16 @@ $this->start_controls_section(
 	$this->add_group_control(
 		Group_Control_Typography::get_type(),
 		array(
-			'name'     => 'wpmozo_ae_fancy_text_typography',
-			'selector' => '{{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h1, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h2, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h3, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h4, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h5, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h6, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner',
+			'name'     => 'wpmozo_ale_fancy_text_typography',
+			'selector' => '{{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner h1, {{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner h2, {{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner h3, {{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner h4, {{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner h5, {{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner h6, {{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner',
 		)
 	);
 
 	$this->add_group_control(
 		Group_Control_Text_Shadow::get_type(),
 		array(
-			'name'     => 'wpmozo_ae_fancy_text_shadow',
-			'selector' => '{{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h1, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h2, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h3, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h4, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h5, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner h6, {{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner',
+			'name'     => 'wpmozo_ale_fancy_text_shadow',
+			'selector' => '{{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner h1, {{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner h2, {{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner h3, {{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner h4, {{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner h5, {{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner h6, {{WRAPPER}} .wpmozo_ale_text_wrapper .wpmozo_ale_text_wrapper_inner',
 		)
 	);
 	$this->end_controls_section();

@@ -178,10 +178,10 @@ $this->start_controls_section(
 			'return_value' => 'yes',
 			'default'      => '',
 			'selectors'    => array(
-				'{{WRAPPER}} .wpmozo_button_icon, {{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner svg' => 'opacity:0; transition:opacity 300ms;',
-				'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner .wpmozo_button' => 'margin-left:-{{button_font_size.SIZE}}{{button_font_size.UNIT}}; margin-right: calc( calc( {{button_font_size.SIZE}}{{button_font_size.UNIT}} / 2 ) - 5% );',
-				'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover .wpmozo_button_icon, {{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover svg' => 'opacity:1;',
-				'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover .wpmozo_button' => ' margin-left:0;',
+				'{{WRAPPER}} .wpmozo_button_icon, {{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner svg' => 'opacity:0; transition:opacity 300ms;',
+				'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner .wpmozo_button' => 'margin-left:-{{button_font_size.SIZE}}{{button_font_size.UNIT}}; margin-right: calc( calc( {{button_font_size.SIZE}}{{button_font_size.UNIT}} / 2 ) - 5% );',
+				'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover .wpmozo_button_icon, {{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover svg' => 'opacity:1;',
+				'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover .wpmozo_button' => ' margin-left:0;',
 			),
 			'condition'    => array(
 				'button_icon_position' => 'before',
@@ -200,10 +200,10 @@ $this->start_controls_section(
 			'return_value' => 'yes',
 			'default'      => '',
 			'selectors'    => array(
-				'{{WRAPPER}} .wpmozo_button_icon, {{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner svg' => 'opacity:0; transition:opacity 300ms;',
+				'{{WRAPPER}} .wpmozo_button_icon, {{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner svg' => 'opacity:0; transition:opacity 300ms;',
 				'{{WRAPPER}} .wpmozo_button' => 'margin-right:-{{button_font_size.SIZE}}{{button_font_size.UNIT}}; margin-left: calc( calc( {{button_font_size.SIZE}}{{button_font_size.UNIT}} / 2 ) - 5% );',
-				'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover .wpmozo_button_icon, {{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover svg' => 'opacity:1;',
-				'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover .wpmozo_button' => ' margin-right:0;',
+				'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover .wpmozo_button_icon, {{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover svg' => 'opacity:1;',
+				'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover .wpmozo_button' => ' margin-right:0;',
 			),
 			'condition'    => array(
 				'button_icon_position' => 'after',
@@ -345,7 +345,7 @@ $this->start_controls_section(
 				''    => 'none',
 			),
 			'selectors'            => array(
-				'{{WRAPPER}} .wpmozo_ae_tilt_image_wrapper, {{WRAPPER}} .wpmozo_ae_tilt_image_inner_wrapper' => 'transform-style: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ale_tilt_image_wrapper, {{WRAPPER}} .wpmozo_ale_tilt_image_inner_wrapper' => 'transform-style: {{VALUE}};',
 			),
 		)
 	);
@@ -366,7 +366,7 @@ $this->start_controls_section(
 				'unit' => 'px',
 			),
 			'selectors'  => array(
-				'{{WRAPPER}} .wpmozo_ae_tilt_content_wrapper' => 'transform: translateZ( {{SIZE}}{{UNIT}} );',
+				'{{WRAPPER}} .wpmozo_ale_tilt_content_wrapper' => 'transform: translateZ( {{SIZE}}{{UNIT}} );',
 			),
 			'size_units' => array( 'px' ),
 			'condition'  => array( 'use_3d_effect_switcher' => 'yes' ),
@@ -428,7 +428,7 @@ $this->start_controls_section(
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#0000006E',
 			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ae_tilt_image_inner_wrapper:before' => 'background-color: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ale_tilt_image_inner_wrapper:before' => 'background-color: {{VALUE}};',
 			),
 			'condition'   => array( 'overlay_switcher' => 'yes' ),
 		)
@@ -474,8 +474,8 @@ $this->start_controls_section(
 			'return_value' => 'yes',
 			'default'      => '',
 			'selectors'    => array(
-				'{{WRAPPER}} .wpmozo_ae_tilt_content_wrapper' => 'opacity:0;',
-				'{{WRAPPER}} .wpmozo_ae_tilt_image_inner_wrapper:hover .wpmozo_ae_tilt_content_wrapper' => 'opacity:1;',
+				'{{WRAPPER}} .wpmozo_ale_tilt_content_wrapper' => 'opacity:0;',
+				'{{WRAPPER}} .wpmozo_ale_tilt_image_inner_wrapper:hover .wpmozo_ale_tilt_content_wrapper' => 'opacity:1;',
 			),
 		)
 	);
@@ -493,7 +493,7 @@ $this->start_controls_section(
 				'wpmozofadeInTopLeft'     => __( 'Fade In Top-Left', 'wpmozo-addons-lite-for-elementor' ),
 				'wpmozofadeInTopRight'    => __( 'Fade In Top-Right', 'wpmozo-addons-lite-for-elementor' ),
 				'wpmozofadeInBottomLeft'  => __( 'Fade In Bottom-Left', 'wpmozo-addons-lite-for-elementor' ),
-				'wpmozofadeInBottomRight' => __( 'Fade In Bottom-Left', 'wpmozo-addons-lite-for-elementor' ),
+				'wpmozofadeInBottomRight' => __( 'Fade In Bottom-Right', 'wpmozo-addons-lite-for-elementor' ),
 				''                        => __( 'No Animation', 'wpmozo-addons-lite-for-elementor' ),
 			),
 			'default'     => '',
@@ -522,8 +522,8 @@ $this->start_controls_section(
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '',
 			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ae_tilt_image_icon_wrapper span' => 'color: {{VALUE}}',
-				'{{WRAPPER}} .wpmozo_ae_tilt_image_icon_wrapper svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ale_tilt_image_icon_wrapper span' => 'color: {{VALUE}}',
+				'{{WRAPPER}} .wpmozo_ale_tilt_image_icon_wrapper svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
 			),
 		)
 	);
@@ -558,8 +558,8 @@ $this->start_controls_section(
 				'unit' => 'px',
 			),
 			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ae_tilt_image_icon_wrapper span' => 'font-size: {{SIZE}}{{UNIT}}',
-				'{{WRAPPER}} .wpmozo_ae_tilt_image_icon_wrapper svg' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_ale_tilt_image_icon_wrapper span' => 'font-size: {{SIZE}}{{UNIT}}',
+				'{{WRAPPER}} .wpmozo_ale_tilt_image_icon_wrapper svg' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
 			),
 		)
 	);
@@ -585,7 +585,7 @@ $this->start_controls_section(
 			'toggle'    => true,
 			'default'   => '',
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_ae_tilt_image_icon_wrapper' => 'align-self: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ale_tilt_image_icon_wrapper' => 'align-self: {{VALUE}};',
 			),
 			'separator' => 'before',
 		)
@@ -630,7 +630,7 @@ $this->start_controls_section(
                     {{WRAPPER}} .wpmozo_icon_shape_circle,
                     {{WRAPPER}} .wpmozo_icon_shape_square_container svg,
                     {{WRAPPER}} .wpmozo_icon_shape_circle_container svg, 
-                    {{WRAPPER}} .wpmozo_ae_tilt_image_icon_wrapper svg' => 'background-color: {{VALUE}};',
+                    {{WRAPPER}} .wpmozo_ale_tilt_image_icon_wrapper svg' => 'background-color: {{VALUE}};',
 				),
 
 			'condition'   => array(
@@ -657,9 +657,9 @@ $this->start_controls_section(
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '',
 			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ae_tilt_image_icon.wpmozo_icon_shape_square,
-                    {{WRAPPER}} .wpmozo_ae_tilt_image_icon.wpmozo_icon_shape_circle,
-                    {{WRAPPER}} .wpmozo_ae_tilt_image_icon_wrapper > svg' => 'border: 2px solid {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ale_tilt_image_icon.wpmozo_icon_shape_square,
+                    {{WRAPPER}} .wpmozo_ale_tilt_image_icon.wpmozo_icon_shape_circle,
+                    {{WRAPPER}} .wpmozo_ale_tilt_image_icon_wrapper > svg' => 'border: 2px solid {{VALUE}};',
 			),
 			'condition'   => array(
 				'icon_border_switcher' => 'yes',
@@ -694,9 +694,9 @@ $this->start_controls_section(
 						'left'   => 0,
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_image_icon.wpmozo_icon_shape_square,
-                        {{WRAPPER}} .wpmozo_ae_tilt_image_icon.wpmozo_icon_shape_circle, 
-                        {{WRAPPER}} .wpmozo_ae_tilt_image_icon_wrapper svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_tilt_image_icon.wpmozo_icon_shape_square,
+                        {{WRAPPER}} .wpmozo_ale_tilt_image_icon.wpmozo_icon_shape_circle, 
+                        {{WRAPPER}} .wpmozo_ale_tilt_image_icon_wrapper svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -715,9 +715,9 @@ $this->start_controls_section(
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', 'em', '%' ),
 					'selectors'  => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_image_icon.wpmozo_icon_shape_square,
-                        {{WRAPPER}} .wpmozo_ae_tilt_image_icon.wpmozo_icon_shape_circle,
-                        {{WRAPPER}} .wpmozo_ae_tilt_image_icon_wrapper > svg' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_tilt_image_icon.wpmozo_icon_shape_square,
+                        {{WRAPPER}} .wpmozo_ale_tilt_image_icon.wpmozo_icon_shape_circle,
+                        {{WRAPPER}} .wpmozo_ale_tilt_image_icon_wrapper > svg' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -795,7 +795,7 @@ $this->start_controls_section(
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '#222',
 					'selectors'   => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_title' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .wpmozo_ale_tilt_title' => 'color: {{VALUE}}',
 					),
 				)
 			);
@@ -805,7 +805,7 @@ $this->start_controls_section(
 					'label'       => esc_html__( 'Title Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'name'        => 'title_text_typography',
-					'selector'    => '{{WRAPPER}} .wpmozo_ae_tilt_title',
+					'selector'    => '{{WRAPPER}} .wpmozo_ale_tilt_title',
 				)
 			);
 			$this->add_group_control(
@@ -813,7 +813,7 @@ $this->start_controls_section(
 				array(
 					'name'      => 'title_text_shadow',
 					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_tilt_title',
+					'selector'  => '{{WRAPPER}} .wpmozo_ale_tilt_title',
 					'separator' => 'before',
 				)
 			);
@@ -833,7 +833,7 @@ $this->start_controls_section(
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
 					'selectors'   => array(
-						'{{WRAPPER}} div:hover .wpmozo_ae_tilt_title' => 'color: {{VALUE}}',
+						'{{WRAPPER}} div:hover .wpmozo_ale_tilt_title' => 'color: {{VALUE}}',
 					),
 				)
 			);
@@ -843,7 +843,7 @@ $this->start_controls_section(
 					'label'       => esc_html__( 'Title Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'name'        => 'title_text_hover_state_typography',
-					'selector'    => '{{WRAPPER}} div:hover .wpmozo_ae_tilt_title',
+					'selector'    => '{{WRAPPER}} div:hover .wpmozo_ale_tilt_title',
 				)
 			);
 			$this->add_group_control(
@@ -851,7 +851,7 @@ $this->start_controls_section(
 				array(
 					'name'      => 'title_text_hover_state_shadow',
 					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} div:hover .wpmozo_ae_tilt_title',
+					'selector'  => '{{WRAPPER}} div:hover .wpmozo_ale_tilt_title',
 					'separator' => 'before',
 				)
 			);
@@ -872,7 +872,7 @@ $this->start_controls_section(
 						'unit' => 'ms',
 					),
 					'selectors' => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_title' => 'transition: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_tilt_title' => 'transition: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -901,7 +901,7 @@ $this->start_controls_section(
 					'default'     => is_rtl() ? 'right' : 'left',
 					'toggle'      => true,
 					'separator'   => 'before',
-					'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_tilt_title' => 'align-self: {{VALUE}};' ),
+					'selectors'   => array( '{{WRAPPER}} .wpmozo_ale_tilt_title' => 'align-self: {{VALUE}};' ),
 				)
 			);
 
@@ -935,7 +935,7 @@ $this->start_controls_section(
 						'left'   => 5,
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_tilt_title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -960,7 +960,7 @@ $this->start_controls_section(
 						'left'   => 0,
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_tilt_title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -998,7 +998,7 @@ $this->start_controls_section(
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '#222',
 					'selectors'   => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_desc' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .wpmozo_ale_tilt_desc' => 'color: {{VALUE}}',
 					),
 				)
 			);
@@ -1008,7 +1008,7 @@ $this->start_controls_section(
 					'label'       => esc_html__( 'Description Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'name'        => 'description_text_typography',
-					'selector'    => '{{WRAPPER}} .wpmozo_ae_tilt_desc',
+					'selector'    => '{{WRAPPER}} .wpmozo_ale_tilt_desc',
 				)
 			);
 			$this->add_group_control(
@@ -1016,7 +1016,7 @@ $this->start_controls_section(
 				array(
 					'name'      => 'description_text_shadow',
 					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_tilt_desc',
+					'selector'  => '{{WRAPPER}} .wpmozo_ale_tilt_desc',
 					'separator' => 'before',
 				)
 			);
@@ -1036,7 +1036,7 @@ $this->start_controls_section(
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
 					'selectors'   => array(
-						'{{WRAPPER}} div:hover .wpmozo_ae_tilt_desc' => 'color: {{VALUE}}',
+						'{{WRAPPER}} div:hover .wpmozo_ale_tilt_desc' => 'color: {{VALUE}}',
 					),
 				)
 			);
@@ -1046,7 +1046,7 @@ $this->start_controls_section(
 					'label'       => esc_html__( 'Description Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'name'        => 'description_text_hover_state_typography',
-					'selector'    => '{{WRAPPER}} div:hover .wpmozo_ae_tilt_desc',
+					'selector'    => '{{WRAPPER}} div:hover .wpmozo_ale_tilt_desc',
 				)
 			);
 			$this->add_group_control(
@@ -1054,7 +1054,7 @@ $this->start_controls_section(
 				array(
 					'name'      => 'description_text_hover_state_shadow',
 					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} div:hover .wpmozo_ae_tilt_desc',
+					'selector'  => '{{WRAPPER}} div:hover .wpmozo_ale_tilt_desc',
 					'separator' => 'before',
 				)
 			);
@@ -1075,7 +1075,7 @@ $this->start_controls_section(
 						'unit' => 'ms',
 					),
 					'selectors' => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_desc' => 'transition: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_tilt_desc' => 'transition: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -1105,7 +1105,7 @@ $this->start_controls_section(
 					'default'     => is_rtl() ? 'right' : 'left',
 					'toggle'      => true,
 					'separator'   => 'before',
-					'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_tilt_desc' => 'align-self: {{VALUE}};' ),
+					'selectors'   => array( '{{WRAPPER}} .wpmozo_ale_tilt_desc' => 'align-self: {{VALUE}};' ),
 				)
 			);
 			$this->add_control(
@@ -1138,7 +1138,7 @@ $this->start_controls_section(
 						'left'   => 5,
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_desc p' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_tilt_desc p' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -1163,7 +1163,7 @@ $this->start_controls_section(
 						'left'   => 0,
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_desc p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_tilt_desc p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -1198,8 +1198,8 @@ $this->start_controls_section(
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '#000000',
 					'selectors'   => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner, {{WRAPPER}} .wpmozo_button' => 'color: {{VALUE}}',
-						'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
+						'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner, {{WRAPPER}} .wpmozo_button' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
 					),
 				)
 			);
@@ -1209,7 +1209,7 @@ $this->start_controls_section(
 					'label'       => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'name'        => 'button_text_normal_state_typography',
-					'selector'    => '{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner',
+					'selector'    => '{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner',
 					'exclude'     => array( 'font_size' ),
 				)
 			);
@@ -1243,8 +1243,8 @@ $this->start_controls_section(
 					),
 					'size_units' => array( 'px', '%', 'vw', 'vh' ),
 					'selectors'  => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner' => 'font-size: {{SIZE}}{{UNIT}};',
-						'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner' => 'font-size: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -1253,7 +1253,7 @@ $this->start_controls_section(
 				array(
 					'name'      => 'button_text_shadow_normal_state',
 					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner',
+					'selector'  => '{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner',
 					'separator' => 'before',
 				)
 			);
@@ -1262,7 +1262,7 @@ $this->start_controls_section(
 				array(
 					'name'           => 'button_box_shadow_normal_state',
 					'label'          => esc_html__( 'Box Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'       => '{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner',
+					'selector'       => '{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner',
 					'fields_options' => array(
 						'box_shadow_type' => array(
 							'default' => 'yes',
@@ -1284,7 +1284,7 @@ $this->start_controls_section(
 				array(
 					'name'           => 'button_border_normal_state',
 					'label'          => esc_html__( 'Border', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'       => '{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner',
+					'selector'       => '{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner',
 					'fields_options' => array(
 						'border' => array( 'default' => 'solid' ),
 						'width'  => array(
@@ -1313,7 +1313,7 @@ $this->start_controls_section(
 						'left'   => 5,
 					),
 					'selectors'   => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -1323,7 +1323,7 @@ $this->start_controls_section(
 					'name'     => 'button_background_normal_state',
 					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
 					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner',
+					'selector' => '{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner',
 				)
 			);
 			$this->end_controls_tab();
@@ -1343,8 +1343,8 @@ $this->start_controls_section(
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
 					'selectors'   => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover, {{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover .wpmozo_button' => 'color: {{VALUE}}',
-						'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover, {{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
+						'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover, {{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover .wpmozo_button' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover, {{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
 					),
 				)
 			);
@@ -1354,12 +1354,12 @@ $this->start_controls_section(
 					'label'          => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block'    => false,
 					'name'           => 'button_text_hover_state_typography',
-					'selector'       => '{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover',
+					'selector'       => '{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover',
 					'fields_options' => array(
 						'font_size' => array(
 							'selectors' => array(
-								'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-								'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover' => 'font-size:{{SIZE}}{{UNIT}};',
+								'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+								'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover' => 'font-size:{{SIZE}}{{UNIT}};',
 							),
 							'default'   => array( 'size' => 18 ),
 						),
@@ -1371,7 +1371,7 @@ $this->start_controls_section(
 				array(
 					'name'      => 'button_text_shadow_hover_state',
 					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover',
+					'selector'  => '{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover',
 					'separator' => 'before',
 				)
 			);
@@ -1381,7 +1381,7 @@ $this->start_controls_section(
 				array(
 					'name'     => 'button_box_shadow_hover_state',
 					'label'    => esc_html__( 'Box Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector' => '{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover',
+					'selector' => '{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover',
 				)
 			);
 
@@ -1390,7 +1390,7 @@ $this->start_controls_section(
 				array(
 					'name'     => 'button_border_hover_state',
 					'label'    => esc_html__( 'Border', 'wpmozo-addons-lite-for-elementor' ),
-					'selector' => '{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover',
+					'selector' => '{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover',
 				)
 			);
 
@@ -1401,7 +1401,7 @@ $this->start_controls_section(
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', 'em', '%' ),
 					'selectors'  => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -1412,7 +1412,7 @@ $this->start_controls_section(
 					'name'     => 'button_background_hover_state',
 					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
 					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner:hover',
+					'selector' => '{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner:hover',
 				)
 			);
 
@@ -1443,9 +1443,9 @@ $this->start_controls_section(
 						'unit' => 'ms',
 					),
 					'selectors' => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner, {{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner .wpmozo_button' => 'transition: color {{SIZE}}{{UNIT}}, border {{SIZE}}{{UNIT}}, background {{SIZE}}{{UNIT}}, text-shadow {{SIZE}}{{UNIT}}, border-radius {{SIZE}}{{UNIT}}, transform {{SIZE}}{{UNIT}}, font {{SIZE}}{{UNIT}}, size {{SIZE}}{{UNIT}}, letter-spacing {{SIZE}}{{UNIT}}, word-spacing {{SIZE}}{{UNIT}}, margin 300ms; animation-duration:{{SIZE}}{{UNIT}}; transition-timing-function: linear;',
+						'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner, {{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner .wpmozo_button' => 'transition: color {{SIZE}}{{UNIT}}, border {{SIZE}}{{UNIT}}, background {{SIZE}}{{UNIT}}, text-shadow {{SIZE}}{{UNIT}}, border-radius {{SIZE}}{{UNIT}}, transform {{SIZE}}{{UNIT}}, font {{SIZE}}{{UNIT}}, size {{SIZE}}{{UNIT}}, letter-spacing {{SIZE}}{{UNIT}}, word-spacing {{SIZE}}{{UNIT}}, margin 300ms; animation-duration:{{SIZE}}{{UNIT}}; transition-timing-function: linear;',
 
-						'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner svg' => 'transition: color {{SIZE}}{{UNIT}}, fill {{SIZE}}{{UNIT}}, text-shadow {{SIZE}}{{UNIT}}, transform {{SIZE}}{{UNIT}}, height {{SIZE}}{{UNIT}}, width {{SIZE}}{{UNIT}}, opacity 300ms; animation-duration:{{SIZE}}{{UNIT}}; transition-timing-function: linear;',
+						'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner svg' => 'transition: color {{SIZE}}{{UNIT}}, fill {{SIZE}}{{UNIT}}, text-shadow {{SIZE}}{{UNIT}}, transform {{SIZE}}{{UNIT}}, height {{SIZE}}{{UNIT}}, width {{SIZE}}{{UNIT}}, opacity 300ms; animation-duration:{{SIZE}}{{UNIT}}; transition-timing-function: linear;',
 					),
 				)
 			);
@@ -1473,7 +1473,7 @@ $this->start_controls_section(
 					'toggle'    => true,
 					'default'   => 'center',
 					'selectors' => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper' => 'align-self: {{VALUE}};',
+						'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper' => 'align-self: {{VALUE}};',
 					),
 					'separator' => 'before',
 				)
@@ -1506,7 +1506,7 @@ $this->start_controls_section(
 						'left'   => 5,
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -1525,7 +1525,7 @@ $this->start_controls_section(
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', 'em', '%' ),
 					'selectors'  => array(
-						'{{WRAPPER}} .wpmozo_ae_tilt_image_button_wrapper_inner' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_tilt_image_button_wrapper_inner' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 					'default'    => array(
 						'top'    => 10,
@@ -1573,7 +1573,7 @@ $this->start_controls_section(
 					),
 					'default'     => 'center',
 					'toggle'      => true, // Behave like toggle or not.
-					'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_tilt_image_inner_wrapper' => 'justify-content: {{VALUE}};' ),
+					'selectors'   => array( '{{WRAPPER}} .wpmozo_ale_tilt_image_inner_wrapper' => 'justify-content: {{VALUE}};' ),
 				)
 			);
 			$this->end_controls_section();

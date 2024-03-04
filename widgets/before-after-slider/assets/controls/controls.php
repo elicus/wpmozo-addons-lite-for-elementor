@@ -377,7 +377,7 @@ $this->start_controls_section(
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'separator'   => 'after',
-					'default'     => '#222',
+					'default'     => '#fff',
 					'selectors'   => array( '{{WRAPPER}} .twentytwenty-before-label:before, {{WRAPPER}} .twentytwenty-after-label:before' => 'color : {{VALUE}};' ),
 				)
 			);

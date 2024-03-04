@@ -182,5 +182,5 @@ jQuery( window ).on(
                 });
             },
         });
-        elementorFrontend.elementsHandler.attachHandler('wpmozo_ae_tilt_image', WPMOZOAETiltImage);
+        elementorFrontend.elementsHandler.attachHandler('wpmozo_ale_tilt_image', WPMOZOWFETiltImage);
     });

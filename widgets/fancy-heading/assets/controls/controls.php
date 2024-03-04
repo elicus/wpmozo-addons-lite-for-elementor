@@ -57,7 +57,7 @@ $this->start_controls_section(
 			'return_value' => 'column',
 			'default'      => '',
 			'selectors'    => array(
-				'{{WRAPPER}} .wpmozo_ae_text_wrapper_inner' => 'flex-direction: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ale_text_wrapper_inner' => 'flex-direction: {{VALUE}};',
 			),
 		)
 	);
@@ -144,7 +144,7 @@ $this->start_controls_section(
 			),
 			'default'     => 'center',
 			'toggle'      => true,
-			'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_text_wrapper_inner' => 'align-items: {{VALUE}};' ),
+			'selectors'   => array( '{{WRAPPER}} .wpmozo_ale_text_wrapper_inner' => 'align-items: {{VALUE}};' ),
 			'condition'   => array( 'display_inline' => 'column' ),
 		)
 	);
@@ -175,7 +175,7 @@ $this->start_controls_section(
 			),
 			'default'     => 'center',
 			'toggle'      => true,
-			'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_text_wrapper_inner' => 'justify-content: {{VALUE}};' ),
+			'selectors'   => array( '{{WRAPPER}} .wpmozo_ale_text_wrapper_inner' => 'justify-content: {{VALUE}};' ),
 			'condition'   => array( 'display_inline' => '' ),
 		)
 	);
@@ -187,7 +187,7 @@ $this->start_controls_section(
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#000',
 			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ae_pre_text,{{WRAPPER}} .wpmozo_ae_main_text,{{WRAPPER}} .wpmozo_ae_post_text' => 'color: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ale_pre_text,{{WRAPPER}} .wpmozo_ale_main_text,{{WRAPPER}} .wpmozo_ale_post_text' => 'color: {{VALUE}};',
 			),
 		)
 	);
@@ -197,7 +197,7 @@ $this->start_controls_section(
 			'name'     => 'global_text_background',
 			'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
 			'types'    => array( 'classic', 'gradient' ),
-			'selector' => '{{WRAPPER}} .wpmozo_ae_pre_text,{{WRAPPER}} .wpmozo_ae_main_text,{{WRAPPER}} .wpmozo_ae_post_text',
+			'selector' => '{{WRAPPER}} .wpmozo_ale_pre_text,{{WRAPPER}} .wpmozo_ale_main_text,{{WRAPPER}} .wpmozo_ale_post_text',
 		)
 	);
 	$this->end_controls_section();
@@ -216,7 +216,7 @@ $this->start_controls_section(
 			'label'       => esc_html__( 'Pre Typography', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => true,
 			'name'        => 'pre_text_typography',
-			'selector'    => '{{WRAPPER}} .wpmozo_ae_pre_text',
+			'selector'    => '{{WRAPPER}} .wpmozo_ale_pre_text',
 		)
 	);
 
@@ -247,7 +247,7 @@ $this->start_controls_section(
 			),
 			'default'     => 'none',
 			'toggle'      => true,
-			'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_pre_text' => 'align-self: {{VALUE}};' ),
+			'selectors'   => array( '{{WRAPPER}} .wpmozo_ale_pre_text' => 'align-self: {{VALUE}};' ),
 			'condition'   => array( 'display_inline' => 'column' ),
 		)
 	);
@@ -277,7 +277,7 @@ $this->start_controls_section(
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
 					'selectors'   => array(
-						'{{WRAPPER}} .wpmozo_ae_pre_text' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .wpmozo_ale_pre_text' => 'color: {{VALUE}}',
 					),
 				)
 			);
@@ -287,7 +287,7 @@ $this->start_controls_section(
 					'name'     => 'pre_text_background',
 					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
 					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} .wpmozo_ae_pre_text',
+					'selector' => '{{WRAPPER}} .wpmozo_ale_pre_text',
 				)
 			);
 			$this->add_control(
@@ -302,7 +302,7 @@ $this->start_controls_section(
 				array(
 					'name'      => 'pre_text_shadow',
 					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_pre_text',
+					'selector'  => '{{WRAPPER}} .wpmozo_ale_pre_text',
 					'separator' => 'before',
 				)
 			);
@@ -323,7 +323,7 @@ $this->start_controls_section(
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
 					'selectors'   => array(
-						'{{WRAPPER}} .wpmozo_ae_pre_text:hover' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .wpmozo_ale_pre_text:hover' => 'color: {{VALUE}}',
 					),
 				)
 			);
@@ -333,7 +333,7 @@ $this->start_controls_section(
 					'name'     => 'pre_text_hover_state_background',
 					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
 					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} .wpmozo_ae_pre_text:hover',
+					'selector' => '{{WRAPPER}} .wpmozo_ale_pre_text:hover',
 				)
 			);
 			$this->add_control(
@@ -348,7 +348,7 @@ $this->start_controls_section(
 				array(
 					'name'      => 'pre_text_hover_state_shadow',
 					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_pre_text:hover',
+					'selector'  => '{{WRAPPER}} .wpmozo_ale_pre_text:hover',
 					'separator' => 'before',
 				)
 			);
@@ -369,7 +369,7 @@ $this->start_controls_section(
 						'unit' => 'ms',
 					),
 					'selectors' => array(
-						'{{WRAPPER}} .wpmozo_ae_pre_text' => 'transition: color {{SIZE}}{{UNIT}}, text-shadow {{SIZE}}{{UNIT}}, background {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_pre_text' => 'transition: color {{SIZE}}{{UNIT}}, text-shadow {{SIZE}}{{UNIT}}, background {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -399,7 +399,7 @@ $this->start_controls_section(
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', 'em', '%' ),
 					'selectors'  => array(
-						'{{WRAPPER}} .wpmozo_ae_pre_text' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_pre_text' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -418,7 +418,7 @@ $this->start_controls_section(
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', 'em', '%' ),
 					'selectors'  => array(
-						'{{WRAPPER}} .wpmozo_ae_pre_text' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_pre_text' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -440,7 +440,7 @@ $this->start_controls_section(
 					'label'       => esc_html__( 'Main Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'name'        => 'main_text_typography',
-					'selector'    => '{{WRAPPER}} .wpmozo_ae_main_text',
+					'selector'    => '{{WRAPPER}} .wpmozo_ale_main_text',
 				)
 			);
 			$this->add_responsive_control(
@@ -471,7 +471,7 @@ $this->start_controls_section(
 					'default'     => 'none',
 					'toggle'      => true,
 					'selectors'   => array(
-						'{{WRAPPER}} .wpmozo_ae_main_text' => 'align-self: {{VALUE}};',
+						'{{WRAPPER}} .wpmozo_ale_main_text' => 'align-self: {{VALUE}};',
 					),
 					'condition'   => array( 'display_inline' => 'column' ),
 				)
@@ -503,7 +503,7 @@ $this->start_controls_section(
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
 					'selectors'   => array(
-						'{{WRAPPER}} .wpmozo_ae_main_text' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .wpmozo_ale_main_text' => 'color: {{VALUE}}',
 					),
 				)
 			);
@@ -513,7 +513,7 @@ $this->start_controls_section(
 					'name'     => 'main_text_background',
 					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
 					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} .wpmozo_ae_main_text',
+					'selector' => '{{WRAPPER}} .wpmozo_ale_main_text',
 				)
 			);
 			$this->add_control(
@@ -528,7 +528,7 @@ $this->start_controls_section(
 				array(
 					'name'      => 'main_text_shadow',
 					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_main_text',
+					'selector'  => '{{WRAPPER}} .wpmozo_ale_main_text',
 					'separator' => 'before',
 				)
 			);
@@ -549,7 +549,7 @@ $this->start_controls_section(
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
 					'selectors'   => array(
-						'{{WRAPPER}} .wpmozo_ae_main_text:hover' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .wpmozo_ale_main_text:hover' => 'color: {{VALUE}}',
 					),
 				)
 			);
@@ -559,7 +559,7 @@ $this->start_controls_section(
 					'name'     => 'main_text_hover_state_background',
 					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
 					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} .wpmozo_ae_main_text:hover',
+					'selector' => '{{WRAPPER}} .wpmozo_ale_main_text:hover',
 				)
 			);
 			$this->add_control(
@@ -574,7 +574,7 @@ $this->start_controls_section(
 				array(
 					'name'      => 'main_text_hover_state_shadow',
 					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_main_text:hover',
+					'selector'  => '{{WRAPPER}} .wpmozo_ale_main_text:hover',
 					'separator' => 'before',
 				)
 			);
@@ -595,7 +595,7 @@ $this->start_controls_section(
 						'unit' => 'ms',
 					),
 					'selectors' => array(
-						'{{WRAPPER}} .wpmozo_ae_main_text' => 'transition: color {{SIZE}}{{UNIT}}, text-shadow {{SIZE}}{{UNIT}}, background {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_main_text' => 'transition: color {{SIZE}}{{UNIT}}, text-shadow {{SIZE}}{{UNIT}}, background {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -627,7 +627,7 @@ $this->start_controls_section(
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', 'em', '%' ),
 					'selectors'  => array(
-						'{{WRAPPER}} .wpmozo_ae_main_text' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_main_text' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -647,7 +647,7 @@ $this->start_controls_section(
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', 'em', '%' ),
 					'selectors'  => array(
-						'{{WRAPPER}} .wpmozo_ae_main_text' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_main_text' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -669,7 +669,7 @@ $this->start_controls_section(
 					'label'       => esc_html__( 'Post Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'name'        => 'post_typography',
-					'selector'    => '{{WRAPPER}} .wpmozo_ae_post_text',
+					'selector'    => '{{WRAPPER}} .wpmozo_ale_post_text',
 				)
 			);
 			$this->add_responsive_control(
@@ -700,7 +700,7 @@ $this->start_controls_section(
 					'default'     => 'none',
 					'toggle'      => true,
 					'selectors'   => array(
-						'{{WRAPPER}} .wpmozo_ae_post_text' => 'align-self: {{VALUE}};',
+						'{{WRAPPER}} .wpmozo_ale_post_text' => 'align-self: {{VALUE}};',
 					),
 					'condition'   => array( 'display_inline' => 'column' ),
 				)
@@ -732,7 +732,7 @@ $this->start_controls_section(
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
 					'selectors'   => array(
-						'{{WRAPPER}} .wpmozo_ae_post_text' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .wpmozo_ale_post_text' => 'color: {{VALUE}}',
 					),
 				)
 			);
@@ -742,7 +742,7 @@ $this->start_controls_section(
 					'name'     => 'post_text_background',
 					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
 					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} .wpmozo_ae_post_text',
+					'selector' => '{{WRAPPER}} .wpmozo_ale_post_text',
 				)
 			);
 			$this->add_control(
@@ -757,7 +757,7 @@ $this->start_controls_section(
 				array(
 					'name'      => 'post_text_shadow',
 					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_post_text',
+					'selector'  => '{{WRAPPER}} .wpmozo_ale_post_text',
 					'separator' => 'before',
 				)
 			);
@@ -778,7 +778,7 @@ $this->start_controls_section(
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
 					'selectors'   => array(
-						'{{WRAPPER}} .wpmozo_ae_post_text:hover' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .wpmozo_ale_post_text:hover' => 'color: {{VALUE}}',
 					),
 				)
 			);
@@ -788,7 +788,7 @@ $this->start_controls_section(
 					'name'     => 'post_text_hover_state_background',
 					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
 					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} .wpmozo_ae_post_text:hover',
+					'selector' => '{{WRAPPER}} .wpmozo_ale_post_text:hover',
 				)
 			);
 			$this->add_control(
@@ -803,7 +803,7 @@ $this->start_controls_section(
 				array(
 					'name'      => 'post_text_hover_state_shadow',
 					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_post_text:hover',
+					'selector'  => '{{WRAPPER}} .wpmozo_ale_post_text:hover',
 					'separator' => 'before',
 				)
 			);
@@ -826,7 +826,7 @@ $this->start_controls_section(
 					),
 
 					'selectors' => array(
-						'{{WRAPPER}} .wpmozo_ae_post_text' => 'transition: color {{SIZE}}{{UNIT}}, text-shadow {{SIZE}}{{UNIT}}, background {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ale_post_text' => 'transition: color {{SIZE}}{{UNIT}}, text-shadow {{SIZE}}{{UNIT}}, background {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -850,37 +850,37 @@ $this->start_controls_section(
 					'label' => __( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 				)
 			);
-				$this->add_responsive_control(
-					'post_text_padding',
-					array(
-						'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
-						'type'       => Controls_Manager::DIMENSIONS,
-						'size_units' => array( 'px', 'em', '%' ),
-						'selectors'  => array(
-							'{{WRAPPER}} .wpmozo_ae_post_text' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-						),
-					)
-				);
-				$this->end_controls_tab();
+			$this->add_responsive_control(
+				'post_text_padding',
+				array(
+					'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
+					'type'       => Controls_Manager::DIMENSIONS,
+					'size_units' => array( 'px', 'em', '%' ),
+					'selectors'  => array(
+						'{{WRAPPER}} .wpmozo_ale_post_text' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					),
+				)
+			);
+			$this->end_controls_tab();
 
-				// Post text margin tab.
-				$this->start_controls_tab(
-					'post_text_margin_tab',
-					array(
-						'label' => __( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
-					)
-				);
-				$this->add_responsive_control(
-					'post_text_margin',
-					array(
-						'label'      => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
-						'type'       => Controls_Manager::DIMENSIONS,
-						'size_units' => array( 'px', 'em', '%' ),
-						'selectors'  => array(
-							'{{WRAPPER}} .wpmozo_ae_post_text' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-						),
-					)
-				);
-				$this->end_controls_tab();
-				$this->end_controls_tabs();
-				$this->end_controls_section();
+			// Post text margin tab.
+			$this->start_controls_tab(
+				'post_text_margin_tab',
+				array(
+					'label' => __( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
+				)
+			);
+			$this->add_responsive_control(
+				'post_text_margin',
+				array(
+					'label'      => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
+					'type'       => Controls_Manager::DIMENSIONS,
+					'size_units' => array( 'px', 'em', '%' ),
+					'selectors'  => array(
+						'{{WRAPPER}} .wpmozo_ale_post_text' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					),
+				)
+			);
+			$this->end_controls_tab();
+			$this->end_controls_tabs();
+			$this->end_controls_section();

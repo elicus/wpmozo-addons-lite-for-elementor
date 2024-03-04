@@ -1,20 +1,19 @@
 <?php
 /**
- * @author      Elicus <hello@elicus.com>
- * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
- * @version     1.0.0
+ * @author    Elicus <hello@elicus.com>
+ * @link      https://www.elicus.com/
+ * @copyright 2024 Elicus Technologies Private Limited
+ * @version   1.0.0
  */
 
-/** If this file is called directly, abort. **/
-
+// if this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 use \Elementor\Widget_Base;
 
-class WPMOZO_AE_Fancy_Heading extends Widget_Base {
+class WPMOZO_ALE_Fancy_Heading extends Widget_Base {
 
 	/**
 	 * Get widget name.
@@ -27,7 +26,7 @@ class WPMOZO_AE_Fancy_Heading extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpmozo_ae_fancy_heading';
+		return 'wpmozo_ale_fancy_heading';
 	}
 
 	/**
@@ -55,7 +54,7 @@ class WPMOZO_AE_Fancy_Heading extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-heading';
+		return 'eicon-heading wpmozo-ale-brandicon';
 	}
 
 	/**
@@ -83,9 +82,9 @@ class WPMOZO_AE_Fancy_Heading extends Widget_Base {
 	 * @return style handle.
 	 */
 	public function get_style_depends() {
-		wp_register_style( 'wpmozo-ae-fancyheading-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+		wp_register_style( 'wpmozo-ale-fancyheading-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
-		return array( 'wpmozo-ae-fancyheading-style' );
+		return array( 'wpmozo-ale-fancyheading-style' );
 	}
 
 	/**
@@ -113,29 +112,29 @@ class WPMOZO_AE_Fancy_Heading extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 
-		$pre_heading          = esc_attr( '' !== $settings['pre_heading'] ? $settings['pre_heading'] : '' );
-		$heading              = esc_attr( '' !== $settings['heading'] ? $settings['heading'] : '' );
-		$post_heading         = esc_attr( '' !== $settings['post_heading'] ? $settings['post_heading'] : '' );
-		$display_inline       = esc_attr( $settings['display_inline'] );
-		$global_heading_level = esc_attr( $settings['global_heading_level'] );
-		$display_inline       = esc_attr( $settings['display_inline'] );
+		$pre_heading          = '' !== $settings['pre_heading'] ? $settings['pre_heading'] : '';
+		$heading              = '' !== $settings['heading'] ? $settings['heading'] : '';
+		$post_heading         = '' !== $settings['post_heading'] ? $settings['post_heading'] : '';
+		$display_inline       = $settings['display_inline'];
+		$global_heading_level = $settings['global_heading_level'];
+		$display_inline       = $settings['display_inline'];
 
-		$this->add_render_attribute( 'heading_wrapper', 'class', 'wpmozo_ae_text_wrapper' );
-		$this->add_render_attribute( 'heading_wrapper_inner', 'class', 'wpmozo_ae_text_wrapper_inner' );
-		$this->add_render_attribute( 'pre_text_wrapper', 'class', 'wpmozo_ae_pre_text_wrapper' );
-		$this->add_render_attribute( 'main_text_wrapper', 'class', 'wpmozo_ae_main_text_wrapper' );
-		$this->add_render_attribute( 'post_text_wrapper', 'class', 'wpmozo_ae_post_text_wrapper' );
+		$this->add_render_attribute( 'heading_wrapper', 'class', 'wpmozo_ale_text_wrapper' );
+		$this->add_render_attribute( 'heading_wrapper_inner', 'class', 'wpmozo_ale_text_wrapper_inner' );
+		$this->add_render_attribute( 'pre_text_wrapper', 'class', 'wpmozo_ale_pre_text_wrapper' );
+		$this->add_render_attribute( 'main_text_wrapper', 'class', 'wpmozo_ale_main_text_wrapper' );
+		$this->add_render_attribute( 'post_text_wrapper', 'class', 'wpmozo_ale_post_text_wrapper' );
 
 		$this->add_inline_editing_attributes( 'pre_heading', 'none' );
-		$this->add_render_attribute( 'pre_heading', 'class', 'wpmozo_ae_pre_text' );
+		$this->add_render_attribute( 'pre_heading', 'class', 'wpmozo_ale_pre_text' );
 
 		$this->add_inline_editing_attributes( 'heading', 'none' );
-		$this->add_render_attribute( 'heading', 'class', 'wpmozo_ae_main_text' );
+		$this->add_render_attribute( 'heading', 'class', 'wpmozo_ale_main_text' );
 
 		$this->add_inline_editing_attributes( 'post_heading', 'none' );
-		$this->add_render_attribute( 'post_heading', 'class', 'wpmozo_ae_post_text' );
+		$this->add_render_attribute( 'post_heading', 'class', 'wpmozo_ale_post_text' );
 
-		$this->add_render_attribute( 'text_wrapper', 'class', 'wpmozo_ae_global_text_wrapper' );
+		$this->add_render_attribute( 'text_wrapper', 'class', 'wpmozo_ale_global_text_wrapper' );
 
 		if ( '' !== $pre_heading ) {
 			$pre_heading = '<span ' . $this->get_render_attribute_string( 'pre_heading' ) . '>' . $pre_heading . '</span>';
@@ -150,8 +149,8 @@ class WPMOZO_AE_Fancy_Heading extends Widget_Base {
 		}
 
 		?>
-		<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'heading_wrapper' ) ); ?> >
-			<<?php echo esc_html( ( '' !== $global_heading_level ? $global_heading_level : 'h2' ) ); ?> <?php echo wp_kses_post( $this->get_render_attribute_string( 'heading_wrapper_inner' ) ); ?> >
+		<div <?php $this->print_render_attribute_string( 'heading_wrapper' ); ?> >
+			<<?php echo esc_html( ( '' !== $global_heading_level ? $global_heading_level : 'h2' ) ); ?> <?php $this->print_render_attribute_string( 'heading_wrapper_inner' ); ?> >
 				<?php echo wp_kses_post( $pre_heading ); ?>
 				<?php echo wp_kses_post( $heading ); ?>
 				<?php echo wp_kses_post( $post_heading ); ?>

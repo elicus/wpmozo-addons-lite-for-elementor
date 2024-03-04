@@ -19,7 +19,7 @@ if ( '' !== $header_graphics ) {
 			'image',
 			array(
 				'src'   => $img_url,
-				'class' => array( 'wpmozo_ae_header_image', $image_sizing ),
+				'class' => array( 'wpmozo_ale_header_image', $image_sizing ),
 				'title' => \Elementor\Control_Media::get_image_title( $image ),
 				'alt'   => \Elementor\Control_Media::get_image_alt( $image ),
 			)
@@ -30,16 +30,25 @@ if ( '' !== $header_graphics ) {
 
 if ( isset( $header_icon ) ) {
 	?>
-		<div class="wpmozo_ae_pricing_table_header_graphic">
-			<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'header_graphics_div' ) ); ?> > 
-				<?php echo wp_kses_post( $icon ); ?>
+		<div class="wpmozo_ale_pricing_table_header_graphic">
+			<div <?php $this->print_render_attribute_string( 'header_graphics_div' ); ?> > 
+				<?php if ( '' !== $settings['header_icon'] ) {
+					Icons_Manager::render_icon(
+						$settings['header_icon'],
+						array(
+							'aria-hidden' => 'true',
+							'class'       => 'wpmozo_ale_header_icon',
+						),
+						'span'
+					);
+				} ?>
 			</div>
 		</div>
 	<?php
 } elseif ( isset( $header_image ) ) {
 	?>
-		<div class="wpmozo_ae_pricing_table_header_graphic">
-			<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'header_graphics_div' ) ); ?> > 
+		<div class="wpmozo_ale_pricing_table_header_graphic">
+			<div <?php $this->print_render_attribute_string( 'header_graphics_div' ); ?> > 
 				<?php echo wp_kses_post( $header_image ); ?>
 			</div>
 		</div>
@@ -47,20 +56,20 @@ if ( isset( $header_icon ) ) {
 }
 
 if ( '' !== $table_title ) {
-	$this->add_render_attribute( 'wpmozo_ae_pricing_table_heading', 'class', 'wpmozo_ae_pricing_table_heading' );
+	$this->add_render_attribute( 'wpmozo_ale_pricing_table_heading', 'class', 'wpmozo_ale_pricing_table_heading' );
 	?>
-		<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_ae_pricing_table_heading' ) ); ?> >
-			<<?php echo esc_html( $title_heading_level ); ?> <?php echo wp_kses_post( $this->get_render_attribute_string( 'table_title_text' ) ); ?> >
+		<div <?php $this->print_render_attribute_string( 'wpmozo_ale_pricing_table_heading' ); ?> >
+			<<?php echo esc_html( $title_heading_level ); ?> <?php $this->print_render_attribute_string( 'table_title_text' ); ?> >
 				<?php echo esc_html( $table_title ); ?>
 			</<?php echo esc_html( $title_heading_level ); ?>>
 			<?php
 			if ( '' !== $table_subtitle ) {
 				?>
-						<span <?php echo wp_kses_post( $this->get_render_attribute_string( 'table_subtitle_text' ) ); ?> >
+						<span <?php $this->print_render_attribute_string( 'table_subtitle_text' ); ?> >
 						<?php echo esc_html( $table_subtitle ); ?>
 						</span>
-						<span class="wpmozo_ae_bar_container">
-							<hr class="wpmozo_ae_bar" />
+						<span class="wpmozo_ale_bar_container">
+							<hr class="wpmozo_ale_bar" />
 						</span>
 					<?php
 			}
@@ -71,7 +80,7 @@ if ( '' !== $table_title ) {
 
 if ( '' !== $symbol ) {
 
-	$symbol = '<span class="wpmozo_ae_pricing_table_currency_symbol"> ' . $symbol . ' </span>';
+	$symbol = '<span class="wpmozo_ale_pricing_table_currency_symbol"> ' . $symbol . ' </span>';
 }
 
 if ( '' !== $table_price ) {
@@ -86,7 +95,7 @@ if ( '' !== $table_price ) {
 if ( '' !== $pricing_period ) {
 
 	$pricing_period = '
-        <span class="wpmozo_ae_period_slash"> 
+        <span class="wpmozo_ale_period_slash"> 
             /
         </span>
         <span ' . $this->get_render_attribute_string( 'pricing_period' ) . ' >
@@ -97,7 +106,7 @@ if ( '' !== $pricing_period ) {
 
 if ( '' !== $symbol || '' !== $table_price || '' !== $pricing_period ) {
 	?>
-		<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_ae_pricing_table_pricing' ) ); ?> >
+		<div <?php $this->print_render_attribute_string( 'wpmozo_ale_pricing_table_pricing' ); ?> >
 			<?php echo wp_kses_post( 'before' === $currency_position ? $symbol : $table_price ); ?>
 			<?php echo wp_kses_post( 'before' === $currency_position ? $table_price : $symbol ); ?>
 			<?php echo wp_kses_post( $pricing_period ); ?>   
@@ -107,33 +116,33 @@ if ( '' !== $symbol || '' !== $table_price || '' !== $pricing_period ) {
 
 if ( '' !== $features_list ) {
 	?>
-	<dl class="wpmozo_ae_pricing_table_features">
+	<dl class="wpmozo_ale_pricing_table_features">
 		<?php
 		foreach ( $features_list as $index => $item ) {
 			$tab_count = $index + 1;
-			if ( '' !== $item['list_icon']['value'] ) {
-				$list_icon = Icons_Manager::try_get_icon_html(
-					$item['list_icon'],
-					array(
-						'aria-hidden' => 'true',
-						'class'       => 'wpmozo_ae_pricing_table_feature_icon',
-					),
-					'i'
-				);
-			}
-
 			$pricing_table_features_setting_key = $this->get_repeater_setting_key( 'list_feature', 'features_list', $index );
 
-			$this->add_render_attribute( $pricing_table_features_setting_key, 'class', 'wpmozo_ae_pricing_table_feature_text' );
+			$this->add_render_attribute( $pricing_table_features_setting_key, 'class', 'wpmozo_ale_pricing_table_feature_text' );
 			$this->add_inline_editing_attributes( $pricing_table_features_setting_key, 'none' );
 			?>
-			<dt class="wpmozo_ae_pricing_table_features_list elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-				<?php echo wp_kses_post( '' !== $list_icon ? $list_icon : '' ); ?>
-				<span <?php echo wp_kses_post( $this->get_render_attribute_string( $pricing_table_features_setting_key ) ); ?>>
+			<dt class="wpmozo_ale_pricing_table_features_list elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+				<?php if ( '' !== $item['list_icon']['value'] ) {
+					Icons_Manager::render_icon(
+						$item['list_icon'],
+						array(
+							'aria-hidden' => 'true',
+							'class'       => 'wpmozo_ale_pricing_table_feature_icon',
+						),
+						'i'
+					);
+				}else {
+					echo '';
+				}?>
+				<span <?php $this->print_render_attribute_string( $pricing_table_features_setting_key ); ?>>
 					<?php echo wp_kses_post( $item['list_feature'] ); ?>
 				</span>
 			</dt>
-				<hr class="wpmozo_ae_divider" />
+				<hr class="wpmozo_ale_divider" />
 			<?php
 		}
 		?>
@@ -144,20 +153,43 @@ if ( '' !== $features_list ) {
 // Pricing table image button.
 if ( $button_text && 'after' === $settings['button_icon_position'] ) {
 	?>
-		<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_ae_button_wrapper' ) ); ?> >
-			<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_ae_pricing_table_button_wrapper_inner' ) ); ?> >
-				<a <?php echo wp_kses_post( $this->get_render_attribute_string( 'button_text' ) ); ?> >
+		<div <?php $this->print_render_attribute_string( 'wpmozo_ale_button_wrapper' ); ?> >
+			<div <?php $this->print_render_attribute_string( 'wpmozo_ale_pricing_table_button_wrapper_inner' ); ?> >
+				<a <?php $this->print_render_attribute_string( 'button_text' ); ?> >
 					<?php echo wp_kses_post( $button_text ); ?>
-				</a><?php echo wp_kses_post( '' !== $button_icon ? ( '&nbsp;' . $button_icon ) : '' ); ?>
+				</a>
+				<?php if( '' !== $settings['button_icon'] ) {
+					echo '&nbsp;';
+					Icons_Manager::render_icon(
+						$settings['button_icon'],
+						array(
+							'aria-hidden' => 'true',
+							'class'       => 'wpmozo_ale_button_icon',
+						)
+					); 
+				} else{
+					echo '';
+				} ?>
 			</div>
 		</div>
 	<?php
 } elseif ( $button_text && 'before' === $settings['button_icon_position'] ) {
 	?>
-		<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_ae_button_wrapper' ) ); ?> >
-			<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_ae_pricing_table_button_wrapper_inner' ) ); ?> >
-				<?php echo wp_kses_post( '' !== $button_icon ? $button_icon . '&nbsp;' : '' ); ?>
-				<a <?php echo wp_kses_post( $this->get_render_attribute_string( 'button_text' ) ); ?> >
+		<div <?php $this->print_render_attribute_string( 'wpmozo_ale_button_wrapper' ); ?> >
+			<div <?php $this->print_render_attribute_string( 'wpmozo_ale_pricing_table_button_wrapper_inner' ); ?> >
+				<?php if( '' !== $settings['button_icon'] ) {
+					Icons_Manager::render_icon(
+						$settings['button_icon'],
+						array(
+							'aria-hidden' => 'true',
+							'class'       => 'wpmozo_ale_button_icon',
+						)
+					); 
+					echo '&nbsp;';
+				} else{
+					echo '';
+				} ?>
+				<a <?php $this->print_render_attribute_string( 'button_text' ); ?> >
 					<?php echo wp_kses_post( $button_text ); ?> 
 				</a> 
 			</div>
@@ -165,10 +197,21 @@ if ( $button_text && 'after' === $settings['button_icon_position'] ) {
 	<?php
 } elseif ( $button_text ) {
 	?>
-		<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_ae_button_wrapper' ) ); ?>>
-			<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wpmozo_ae_pricing_table_button_wrapper_inner' ) ); ?>>
-				<?php echo wp_kses_post( '' !== $button_icon ? $button_icon . '&nbsp;' : '' ); ?>
-				<a <?php echo wp_kses_post( $this->get_render_attribute_string( 'button_text' ) ); ?> >
+		<div <?php $this->print_render_attribute_string( 'wpmozo_ale_button_wrapper' ); ?>>
+			<div <?php $this->print_render_attribute_string( 'wpmozo_ale_pricing_table_button_wrapper_inner' ); ?>>
+				<?php if( '' !== $settings['button_icon'] ) {
+					Icons_Manager::render_icon(
+						$settings['button_icon'],
+						array(
+							'aria-hidden' => 'true',
+							'class'       => 'wpmozo_ale_button_icon',
+						)
+					); 
+					echo '&nbsp;';
+				} else{
+					echo '';
+				} ?>
+				<a <?php $this->print_render_attribute_string( 'button_text' ); ?> >
 					<?php echo wp_kses_post( $button_text ); ?>
 				</a> 
 			</div>

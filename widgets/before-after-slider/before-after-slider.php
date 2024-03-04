@@ -1,9 +1,9 @@
 <?php
 /**
- * @author      Elicus <hello@elicus.com>
- * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
- * @version     1.0.0
+ * @author    Elicus <hello@elicus.com>
+ * @link      https://www.elicus.com/
+ * @copyright 2024 Elicus Technologies Private Limited
+ * @version   1.0.0
  */
 
 // if this file is called directly, abort.
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use \Elementor\Widget_Base;
 use \Elementor\Control_Media;
 
-class WPMOZO_AE_Before_After_Slider extends Widget_Base {
+class WPMOZO_ALE_Before_After_Slider extends Widget_Base {
 
 	/**
 	 * Get widget name.
@@ -27,7 +27,7 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpmozo_ae_before_after_slider';
+		return 'wpmozo_ale_before_after_slider';
 	}
 
 	/**
@@ -55,7 +55,7 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-image-before-after';
+		return 'eicon-image-before-after wpmozo-ale-brandicon';
 	}
 
 	/**
@@ -83,8 +83,8 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 * @return style handle.
 	 */
 	public function get_style_depends() {
-		wp_register_style( 'wpmozo-ae-before-after-slider-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
-		return array( 'wpmozo-ae-before-after-slider-style' );
+		wp_register_style( 'wpmozo-ale-before-after-slider-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+		return array( 'wpmozo-ale-before-after-slider-style' );
 	}
 
 	/**
@@ -98,7 +98,7 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 	 * @return array Element scripts dependencies.
 	 */
 	public function get_script_depends() {
-		return array( 'wpmozo-ae-twenty-twenty', 'wpmozo-ae-move-event' );
+		return array( 'wpmozo-ale-twenty-twenty', 'wpmozo-ale-move-event' );
 	}
 
 	/**
@@ -136,7 +136,7 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 				'before_image',
 				array(
 					'src'   => $before_img_url,
-					'class' => array( 'wpmozo-ae-before-state-image' ),
+					'class' => array( 'wpmozo-ale-before-state-image' ),
 					'title' => Control_Media::get_image_title( $before_image ),
 					'alt'   => Control_Media::get_image_alt( $before_image ),
 				)
@@ -153,7 +153,7 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 				'after_image',
 				array(
 					'src'   => $after_img_url,
-					'class' => array( 'wpmozo-ae-after-state-image' ),
+					'class' => array( 'wpmozo-ale-after-state-image' ),
 					'title' => Control_Media::get_image_title( $after_image ),
 					'alt'   => Control_Media::get_image_alt( $after_image ),
 				)
@@ -178,16 +178,16 @@ class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 			$after_label = '';
 		}
 		?>
-			<div class="wpmozo-ae-before-after-slider-wrapper">
-				<div class="wpmozo-ae-before-after-image-wrapper">
-					<img <?php echo wp_kses_post( $this->get_render_attribute_string( 'before_image' ) ); ?> />
-					<img <?php echo wp_kses_post( $this->get_render_attribute_string( 'after_image' ) ); ?> />
+			<div class="wpmozo-ale-before-after-slider-wrapper">
+				<div class="wpmozo-ale-before-after-image-wrapper">
+					<img <?php $this->print_render_attribute_string( 'before_image' ); ?> />
+					<img <?php $this->print_render_attribute_string( 'after_image' ); ?> />
 				</div>
 			</div>
 			<!-- Slider script -->
 			<script type="text/javascript">
 				jQuery(function($) {
-					$(".<?php echo esc_attr( $order_class ); ?> .wpmozo-ae-before-after-image-wrapper").twentytwenty({
+					$(".<?php echo esc_attr( $order_class ); ?> .wpmozo-ale-before-after-image-wrapper").twentytwenty({
 						default_offset_pct: "<?php echo esc_attr( $offset ); ?>",
 						orientation: "<?php echo esc_attr( $orientation ); ?>",
 						before_label: "<?php echo esc_attr( $before_label ); ?>",
