@@ -48,5 +48,5 @@ jQuery(window).on("elementor/frontend/init", function () {
             });
         },
     });    
-    elementorFrontend.elementsHandler.attachHandler("wpmozo_ale_image_hotspot", e);
+    elementorFrontend.elementsHandler.attachHandler("wpmozo_ae_image_hotspot", e);
 });

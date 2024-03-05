@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use \Elementor\Widget_Base;
 
-class WPMOZO_ALE_Fancy_Heading extends Widget_Base {
+class WPMOZO_AE_Fancy_Heading extends Widget_Base {
 
 	/**
 	 * Get widget name.
@@ -26,7 +26,7 @@ class WPMOZO_ALE_Fancy_Heading extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpmozo_ale_fancy_heading';
+		return 'wpmozo_ae_fancy_heading';
 	}
 
 	/**
@@ -40,7 +40,7 @@ class WPMOZO_ALE_Fancy_Heading extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Fancy Heading', 'wpmozo-addons-lite-for-elementor' );
+		return esc_html__( 'Fancy Heading', 'wpmozo-addons-for-elementor' );
 	}
 
 	/**
@@ -54,7 +54,7 @@ class WPMOZO_ALE_Fancy_Heading extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-heading wpmozo-ale-brandicon';
+		return 'eicon-heading wpmozo-ae-brandicon';
 	}
 
 	/**
@@ -119,22 +119,22 @@ class WPMOZO_ALE_Fancy_Heading extends Widget_Base {
 		$global_heading_level = $settings['global_heading_level'];
 		$display_inline       = $settings['display_inline'];
 
-		$this->add_render_attribute( 'heading_wrapper', 'class', 'wpmozo_ale_text_wrapper' );
-		$this->add_render_attribute( 'heading_wrapper_inner', 'class', 'wpmozo_ale_text_wrapper_inner' );
-		$this->add_render_attribute( 'pre_text_wrapper', 'class', 'wpmozo_ale_pre_text_wrapper' );
-		$this->add_render_attribute( 'main_text_wrapper', 'class', 'wpmozo_ale_main_text_wrapper' );
-		$this->add_render_attribute( 'post_text_wrapper', 'class', 'wpmozo_ale_post_text_wrapper' );
+		$this->add_render_attribute( 'heading_wrapper', 'class', 'wpmozo_ae_text_wrapper' );
+		$this->add_render_attribute( 'heading_wrapper_inner', 'class', 'wpmozo_ae_text_wrapper_inner' );
+		$this->add_render_attribute( 'pre_text_wrapper', 'class', 'wpmozo_ae_pre_text_wrapper' );
+		$this->add_render_attribute( 'main_text_wrapper', 'class', 'wpmozo_ae_main_text_wrapper' );
+		$this->add_render_attribute( 'post_text_wrapper', 'class', 'wpmozo_ae_post_text_wrapper' );
 
 		$this->add_inline_editing_attributes( 'pre_heading', 'none' );
-		$this->add_render_attribute( 'pre_heading', 'class', 'wpmozo_ale_pre_text' );
+		$this->add_render_attribute( 'pre_heading', 'class', 'wpmozo_ae_pre_text' );
 
 		$this->add_inline_editing_attributes( 'heading', 'none' );
-		$this->add_render_attribute( 'heading', 'class', 'wpmozo_ale_main_text' );
+		$this->add_render_attribute( 'heading', 'class', 'wpmozo_ae_main_text' );
 
 		$this->add_inline_editing_attributes( 'post_heading', 'none' );
-		$this->add_render_attribute( 'post_heading', 'class', 'wpmozo_ale_post_text' );
+		$this->add_render_attribute( 'post_heading', 'class', 'wpmozo_ae_post_text' );
 
-		$this->add_render_attribute( 'text_wrapper', 'class', 'wpmozo_ale_global_text_wrapper' );
+		$this->add_render_attribute( 'text_wrapper', 'class', 'wpmozo_ae_global_text_wrapper' );
 
 		if ( '' !== $pre_heading ) {
 			$pre_heading = '<span ' . $this->get_render_attribute_string( 'pre_heading' ) . '>' . $pre_heading . '</span>';

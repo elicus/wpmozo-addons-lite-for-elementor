@@ -14,6 +14,6 @@
                 });
             },
         });
-        elementorFrontend.elementsHandler.attachHandler("wpmozo_ale_image_magnifier", WPMOZOImageMagnifier);
+        elementorFrontend.elementsHandler.attachHandler("wpmozo_ae_image_magnifier", WPMOZOImageMagnifier);
     });
 })(jQuery);

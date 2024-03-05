@@ -13,11 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use Elementor\Widget_Base;
 
-class WPMOZO_ALE_Bar_Counter extends Widget_Base {
-
-
-
-
+class WPMOZO_AE_Bar_Counter extends Widget_Base {
 
 	/**
 	 * Get widget name.
@@ -30,7 +26,7 @@ class WPMOZO_ALE_Bar_Counter extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpmozo_ale_bar_counter';
+		return 'wpmozo_ae_bar_counter';
 	}
 
 	/**
@@ -44,7 +40,7 @@ class WPMOZO_ALE_Bar_Counter extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Bar Counter', 'wpmozo-addons-lite-for-elementor' );
+		return esc_html__( 'Bar Counter', 'wpmozo-addons-for-elementor' );
 	}
 
 	/**
@@ -58,7 +54,7 @@ class WPMOZO_ALE_Bar_Counter extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-skill-bar wpmozo-ale-brandicon';
+		return 'eicon-skill-bar wpmozo-ae-brandicon';
 	}
 
 	/**

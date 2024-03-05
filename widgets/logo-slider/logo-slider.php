@@ -15,7 +15,7 @@ use \Elementor\Widget_Base;
 use \Elementor\Icons_Manager;
 use \Elementor\Controls_Manager;
 
-class WPMOZO_ALE_Logo_Slider extends Widget_Base {
+class WPMOZO_AE_Logo_Slider extends Widget_Base {
 
 	/**
 	 * Get widget name.
@@ -28,7 +28,7 @@ class WPMOZO_ALE_Logo_Slider extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpmozo_ale_logo_slider';
+		return 'wpmozo_ae_logo_slider';
 	}
 
 	/**
@@ -42,7 +42,7 @@ class WPMOZO_ALE_Logo_Slider extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Logo Slider', 'wpmozo-addons-lite-for-elementor' );
+		return esc_html__( 'Logo Slider', 'wpmozo-addons-for-elementor' );
 	}
 
 	/**
@@ -56,7 +56,7 @@ class WPMOZO_ALE_Logo_Slider extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-slides wpmozo-ale-brandicon';
+		return 'eicon-slides wpmozo-ae-brandicon';
 	}
 
 	/**
@@ -123,7 +123,7 @@ class WPMOZO_ALE_Logo_Slider extends Widget_Base {
 	 *
 	 * @return string
 	 * */
-	public function wpmozo_ale_render_slider_script() {
+	public function wpmozo_ae_render_slider_script() {
 		$order_class         = 'elementor-element-' . $this->get_id();
 		$swiper              = str_replace( '-', '_', $order_class );
 		$settings            = $this->get_settings_for_display();
@@ -312,27 +312,27 @@ class WPMOZO_ALE_Logo_Slider extends Widget_Base {
 		$icon_wrapper                        = '';
 		$content_warpper                     = '';
 
-		$this->add_render_attribute( 'wpmozo_ale_swiper_layout_title', 'class', 'wpmozo_ale_swiper_layout_title' );
-		$this->add_render_attribute( 'wpmozo_ale_swiper_layout_description', 'class', 'wpmozo_ale_swiper_layout_description' );
-		$this->add_render_attribute( 'button_text', 'class', 'wpmozo_ale_button' );
-		$this->add_render_attribute( 'button_wrapper', 'class', 'wpmozo_ale_swiper_layout_button_wrapper' );
-		$this->add_render_attribute( 'button_wrapper_inner', 'class', 'wpmozo_ale_swiper_layout_button_inner_wrapper' );
+		$this->add_render_attribute( 'wpmozo_ae_swiper_layout_title', 'class', 'wpmozo_ae_swiper_layout_title' );
+		$this->add_render_attribute( 'wpmozo_ae_swiper_layout_description', 'class', 'wpmozo_ae_swiper_layout_description' );
+		$this->add_render_attribute( 'button_text', 'class', 'wpmozo_ae_button' );
+		$this->add_render_attribute( 'button_wrapper', 'class', 'wpmozo_ae_swiper_layout_button_wrapper' );
+		$this->add_render_attribute( 'button_wrapper_inner', 'class', 'wpmozo_ae_swiper_layout_button_inner_wrapper' );
 
 		if ( '' !== $swiper_layout_items ) {
 			?>
-				<div class="wpmozo_ale_swiper_wrapper">
-					<div class="wpmozo_ale_swiper_layout_layout wpmozo_ale_swiper_inner_wrap">
+				<div class="wpmozo_ae_swiper_wrapper">
+					<div class="wpmozo_ae_swiper_layout_layout wpmozo_ae_swiper_inner_wrap">
 						<div class="swiper-container">
 							<div class="swiper-wrapper">
 								<?php
 								foreach ( $swiper_layout_items as $index => $item ) {
 									$logo_setting_key = $this->get_repeater_setting_key( 'logo_image', 'logo_list', $index );
-									$logo_link        = '' !== $item['logo_link']['url'] ? 'wpmozo_ale_clickable' : '';
+									$logo_link        = '' !== $item['logo_link']['url'] ? 'wpmozo_ae_clickable' : '';
 
 									$this->add_render_attribute(
 										'swiper_layout_item' . $index,
 										array(
-											'class'   => array( 'wpmozo_ale_wrapper', 'wpmozo_ale_swiper_layout_item_' . $index, 'swiper-slide', 'elementor-repeater-item-' . $item['_id'], $logo_link ),
+											'class'   => array( 'wpmozo_ae_wrapper', 'wpmozo_ae_swiper_layout_item_' . $index, 'swiper-slide', 'elementor-repeater-item-' . $item['_id'], $logo_link ),
 											'onclick' => ( 'window.open(\'' . $item['logo_link']['url'] . '\',\'' . $item['logo_link_target'] . '\')' ),
 										)
 									);
@@ -359,7 +359,7 @@ class WPMOZO_ALE_Logo_Slider extends Widget_Base {
 				$this->add_render_attribute(
 					'swiper_arrow_next',
 					array(
-						'class'                 => array( 'wpmozo_ale_swiper_layout_icon_next', 'swiper-button-next' ),
+						'class'                 => array( 'wpmozo_ae_swiper_layout_icon_next', 'swiper-button-next' ),
 						'aria-hidden'           => 'true',
 						'data-next_slide_arrow' => $settings['next_slide_arrow']['value'],
 					)
@@ -368,7 +368,7 @@ class WPMOZO_ALE_Logo_Slider extends Widget_Base {
 				$this->add_render_attribute(
 					'swiper_arrow_prev',
 					array(
-						'class'                     => array( 'wpmozo_ale_swiper_layout_icon_prev', 'swiper-button-prev' ),
+						'class'                     => array( 'wpmozo_ae_swiper_layout_icon_prev', 'swiper-button-prev' ),
 						'aria-hidden'               => 'true',
 						'data-previous_slide_arrow' => $settings['previous_slide_arrow']['value'],
 					)
@@ -376,7 +376,7 @@ class WPMOZO_ALE_Logo_Slider extends Widget_Base {
 
 				?>
 
-						<div class="wpmozo_ale_swiper_navigation" <?php echo ! empty( $arrows_position ) ? wp_kses_post( $arrows_position_data ) : ''; ?> >
+						<div class="wpmozo_ae_swiper_navigation" <?php echo ! empty( $arrows_position ) ? wp_kses_post( $arrows_position_data ) : ''; ?> >
 							<?php
 							if ( 'svg' !== $settings['next_slide_arrow']['library'] ) {
 									echo wp_kses_post(
@@ -384,7 +384,7 @@ class WPMOZO_ALE_Logo_Slider extends Widget_Base {
 											$settings['next_slide_arrow'],
 											array(
 												'aria-hidden' => 'true',
-												'class' => array( 'wpmozo_ale_swiper_layout_icon_next', 'swiper-button-next' ),
+												'class' => array( 'wpmozo_ae_swiper_layout_icon_next', 'swiper-button-next' ),
 												'data-next_slide_arrow' => $settings['next_slide_arrow']['value'],
 											),
 											'span'
@@ -399,7 +399,7 @@ class WPMOZO_ALE_Logo_Slider extends Widget_Base {
 												$settings['next_slide_arrow'],
 												array(
 													'aria-hidden' => 'true',
-													'class' => array( 'wpmozo_ale_swiper_layout_icon_next', 'swiper-button-next' ),
+													'class' => array( 'wpmozo_ae_swiper_layout_icon_next', 'swiper-button-next' ),
 													'data-next_slide_arrow' => $settings['next_slide_arrow']['value'],
 												),
 												'span'
@@ -417,7 +417,7 @@ class WPMOZO_ALE_Logo_Slider extends Widget_Base {
 										$settings['previous_slide_arrow'],
 										array(
 											'aria-hidden' => 'true',
-											'class'       => array( 'wpmozo_ale_swiper_layout_icon_prev', 'swiper-button-prev' ),
+											'class'       => array( 'wpmozo_ae_swiper_layout_icon_prev', 'swiper-button-prev' ),
 											'data-next_slide_arrow' => $settings['previous_slide_arrow']['value'],
 										),
 										'span'
@@ -432,7 +432,7 @@ class WPMOZO_ALE_Logo_Slider extends Widget_Base {
 												$settings['previous_slide_arrow'],
 												array(
 													'aria-hidden' => 'true',
-													'class' => array( 'wpmozo_ale_swiper_layout_icon_prev', 'swiper-button-prev' ),
+													'class' => array( 'wpmozo_ae_swiper_layout_icon_prev', 'swiper-button-prev' ),
 													'data-previous_slide_arrow' => $settings['previous_slide_arrow']['value'],
 												),
 												'span'
@@ -449,47 +449,47 @@ class WPMOZO_ALE_Logo_Slider extends Widget_Base {
 					if ( 'yes' === $show_arrow_on_hover ) {
 						?>
 							<style> 
-							.<?php echo esc_attr( $order_class ); ?> .wpmozo_ale_swiper_navigation .swiper-button-prev { 
+							.<?php echo esc_attr( $order_class ); ?> .wpmozo_ae_swiper_navigation .swiper-button-prev { 
 								visibility: hidden; 
 								opacity: 0; 
 								transition: all 300ms ease; 
 							}
-							.<?php echo esc_attr( $order_class ); ?> .wpmozo_ale_swiper_navigation .swiper-button-next {
+							.<?php echo esc_attr( $order_class ); ?> .wpmozo_ae_swiper_navigation .swiper-button-next {
 								visibility: hidden; 
 								opacity: 0; 
 								transition: all 300ms ease;
 							}
-							.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ale_swiper_navigation .swiper-button-prev, 
-							.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ale_swiper_navigation .swiper-button-next {
+							.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ae_swiper_navigation .swiper-button-prev, 
+							.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ae_swiper_navigation .swiper-button-next {
 								visibility: visible;
 								opacity: 1;
 							}
-							.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ale_swiper_navigation .swiper-button-prev.swiper-button-disabled, 
-							.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ale_swiper_navigation .swiper-button-next.swiper-button-disabled {
+							.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ae_swiper_navigation .swiper-button-prev.swiper-button-disabled, 
+							.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ae_swiper_navigation .swiper-button-next.swiper-button-disabled {
 								opacity: 0.35;
 							}
-							.<?php echo esc_attr( $order_class ); ?> .wpmozo_ale_arrows_outside .swiper-button-prev {
+							.<?php echo esc_attr( $order_class ); ?> .wpmozo_ae_arrows_outside .swiper-button-prev {
 								'declaration' => 'left: 50px;
 							}
-							.<?php echo esc_attr( $order_class ); ?> .wpmozo_ale_arrows_outside .swiper-button-next {
+							.<?php echo esc_attr( $order_class ); ?> .wpmozo_ae_arrows_outside .swiper-button-next {
 								right: 50px;
 							}
-							.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ale_arrows_outside .swiper-button-prev {
+							.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ae_arrows_outside .swiper-button-prev {
 								'declaration' => 'left: 0;
 							}
-							.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ale_arrows_outside .swiper-button-next {
+							.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ae_arrows_outside .swiper-button-next {
 								right: 0;
 							}
-							.<?php echo esc_attr( $order_class ); ?> .wpmozo_ale_arrows_inside .swiper-button-prev 
+							.<?php echo esc_attr( $order_class ); ?> .wpmozo_ae_arrows_inside .swiper-button-prev 
 								left: -50px;
 							}
-							.<?php echo esc_attr( $order_class ); ?> .wpmozo_ale_arrows_inside .swiper-button-next {
+							.<?php echo esc_attr( $order_class ); ?> .wpmozo_ae_arrows_inside .swiper-button-next {
 								right: -50px;
 							}
-							.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ale_arrows_inside .swiper-button-prev {
+							.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ae_arrows_inside .swiper-button-prev {
 								left: 0;
 							}
-							.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ale_arrows_inside .swiper-button-next {
+							.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ae_arrows_inside .swiper-button-next {
 								right: 0;
 							}
 							</style>
@@ -497,18 +497,18 @@ class WPMOZO_ALE_Logo_Slider extends Widget_Base {
 					}
 			}
 			?>
-					</div> <!-- wpmozo_ale_swiper_layout_layout -->
+					</div> <!-- wpmozo_ae_swiper_layout_layout -->
 			<?php
 			if ( 'yes' === $show_control_dot ) {
 				?>
-						<div class="wpmozo_ale_swiper_pagination">
+						<div class="wpmozo_ae_swiper_pagination">
 							<div class="swiper-pagination <?php echo esc_attr( $control_dot_style ); ?>">
 							</div>
 						</div>
 					<?php
 			}
 			?>
-				</div> <!-- wpmozo_ale_swiper_wrapper -->
+				</div> <!-- wpmozo_ae_swiper_wrapper -->
 			<?php
 
 		} else {
@@ -516,14 +516,14 @@ class WPMOZO_ALE_Logo_Slider extends Widget_Base {
 
 				<div class="entry">
 					<h1>
-						<?php echo esc_html__( 'No Result Found!', 'wpmozo-addons-lite-for-elementor' ); ?>
+						<?php echo esc_html__( 'No Result Found!', 'wpmozo-addons-for-elementor' ); ?>
 					</h1>
 					<p>
-						<?php echo esc_html__( 'The swipler layout you requested could not be found try changing your module settings or add some new cards.', 'wpmozo-addons-lite-for-elementor' ); ?> 
+						<?php echo esc_html__( 'The swipler layout you requested could not be found try changing your module settings or add some new cards.', 'wpmozo-addons-for-elementor' ); ?> 
 					</p>
 				</div>
 			<?php
 		}
-		echo( wp_kses( $this->wpmozo_ale_render_slider_script(), array( 'script' => true ) ) );
+		echo( wp_kses( $this->wpmozo_ae_render_slider_script(), array( 'script' => true ) ) );
 	}
 }

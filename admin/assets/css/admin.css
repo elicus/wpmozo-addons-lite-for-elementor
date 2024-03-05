@@ -1,4 +1,4 @@
-#wpmozo_ale_team_member_metabox h2,
+#wpmozo_ae_team_member_metabox h2,
 #wpmozo_testimonial_metabox h2 {
     position: relative;
     justify-content: flex-start;
@@ -13,7 +13,7 @@
     background-color: #fff;
     color: #000;
 }
-/*#wpmozo_ale_team_member_metabox h2:before,
+/*#wpmozo_ae_team_member_metabox h2:before,
 #wpmozo_testimonial_metabox h2:before {
     display: inline-block;
     speak: none;
@@ -33,24 +33,24 @@
     text-align: center;
     padding: 5px;
 }*/
-#wpmozo_ale_team_member_metabox .handle-actions,
+#wpmozo_ae_team_member_metabox .handle-actions,
 #wpmozo_testimonial_metabox .handle-actions {
     background-color: #fff;
 }
-#wpmozo_ale_team_member_metabox .handle-actions button:hover,
+#wpmozo_ae_team_member_metabox .handle-actions button:hover,
 #wpmozo_testimonial_metabox .handle-actions button:hover {
     background: #eee;
 }
-#wpmozo_ale_team_member_metabox .handle-actions button:focus,
+#wpmozo_ae_team_member_metabox .handle-actions button:focus,
 #wpmozo_testimonial_metabox .handle-actions button:focus {
     box-shadow: none;
     outline: 0;
 }
-#wpmozo_ale_team_member_metabox .handle-actions button,
+#wpmozo_ae_team_member_metabox .handle-actions button,
 #wpmozo_testimonial_metabox .handle-actions button {
     color: #000;
 }
-#wpmozo_ale_team_member_metabox .handlediv,
+#wpmozo_ae_team_member_metabox .handlediv,
 #wpmozo_testimonial_metabox .handlediv {
     z-index: 9;
     position: relative;
@@ -62,65 +62,65 @@
     width: auto;
     height: auto;
 }
-.js #wpmozo_ale_team_member_metabox .handlediv:focus .toggle-indicator:before,
+.js #wpmozo_ae_team_member_metabox .handlediv:focus .toggle-indicator:before,
 .js #wpmozo_testimonial_metabox .handlediv:focus .toggle-indicator:before {
     box-shadow: none;
 }
-.js #wpmozo_ale_team_member_metabox .wpmozo_ale_meta_image{
+.js #wpmozo_ae_team_member_metabox .wpmozo_ae_meta_image{
     width: 65px;
     margin-right: 20px;
 }
-#wpmozo_ale_team_member_metabox .handlediv:hover,
+#wpmozo_ae_team_member_metabox .handlediv:hover,
 #wpmozo_testimonial_metabox .handlediv:hover {
     background: #57ba65;
 }
-#wpmozo_ale_team_member_metabox .handlediv .toggle-indicator,
+#wpmozo_ae_team_member_metabox .handlediv .toggle-indicator,
 #wpmozo_testimonial_metabox .handlediv .toggle-indicator {
     color: #000;
 }
-#wpmozo_ale_team_member_metabox .inside,
+#wpmozo_ae_team_member_metabox .inside,
 #wpmozo_testimonial_metabox .inside {
     margin: 0 27px 15px;
 }
-#side-sortables #wpmozo_ale_team_member_metabox h2,
+#side-sortables #wpmozo_ae_team_member_metabox h2,
 #side-sortables #wpmozo_testimonial_metabox h2 {
     padding: 10px;
     font-size: 18px;
     line-height: 1.2;
 }
-#side-sortables #wpmozo_ale_team_member_metabox h2:before,
+#side-sortables #wpmozo_ae_team_member_metabox h2:before,
 #side-sortables #wpmozo_testimonial_metabox h2:before {
     width: 16px;
     height: 16px;
     margin-right: 10px;
     font-size: 16px;
 }
-#side-sortables #wpmozo_ale_team_member_metabox .handle-actions,
+#side-sortables #wpmozo_ae_team_member_metabox .handle-actions,
 #side-sortables #wpmozo_testimonial_metabox .handle-actions {
     display: flex;
     align-items: stretch;
     justify-content: flex-end;
     background-color: #622aa9;
 }
-#side-sortables #wpmozo_ale_team_member_metabox .postbox-header,
+#side-sortables #wpmozo_ae_team_member_metabox .postbox-header,
 #side-sortables #wpmozo_testimonial_metabox .postbox-header {
     display: block;
 }
-#side-sortables #wpmozo_ale_team_member_metabox .handlediv,
+#side-sortables #wpmozo_ae_team_member_metabox .handlediv,
 #side-sortables #wpmozo_testimonial_metabox .handlediv {
     padding: 0 10px;
     font-size: 20px;
 }
-#side-sortables #wpmozo_ale_team_member_metabox .inside,
+#side-sortables #wpmozo_ae_team_member_metabox .inside,
 #side-sortables #wpmozo_testimonial_metabox .inside {
     margin: 0 15px 15px;
 }
 
-#wpmozo_ale_team_member_metabox .wpmozo_meta_fields {
+#wpmozo_ae_team_member_metabox .wpmozo_meta_fields {
     margin: 20px 0;
     overflow: hidden;
 }
-#wpmozo_ale_team_member_metabox .wpmozo_meta_fields label {
+#wpmozo_ae_team_member_metabox .wpmozo_meta_fields label {
     font-size: 16px;
     font-weight: 600;
     display: block;
@@ -130,9 +130,9 @@
     margin-right: 30px;
     padding-top: 8px;
 }
-#wpmozo_ale_team_member_metabox .wpmozo_meta_fields input,
-#wpmozo_ale_team_member_metabox .wpmozo_meta_fields select,
-#wpmozo_ale_team_member_metabox .wpmozo_meta_fields textarea {
+#wpmozo_ae_team_member_metabox .wpmozo_meta_fields input,
+#wpmozo_ae_team_member_metabox .wpmozo_meta_fields select,
+#wpmozo_ae_team_member_metabox .wpmozo_meta_fields textarea {
     width: 50%;
     height: 40px;
     margin: 0;
@@ -145,35 +145,35 @@
     line-height: 1.5;
     color: #32373c;
 }
-#wpmozo_ale_team_member_metabox .wpmozo_meta_fields input:focus,
-#wpmozo_ale_team_member_metabox .wpmozo_meta_fields select:focus,
-#wpmozo_ale_team_member_metabox .wpmozo_meta_fields textarea:focus {
+#wpmozo_ae_team_member_metabox .wpmozo_meta_fields input:focus,
+#wpmozo_ae_team_member_metabox .wpmozo_meta_fields select:focus,
+#wpmozo_ae_team_member_metabox .wpmozo_meta_fields textarea:focus {
     outline: 0;
     box-shadow: none;
 }
-#wpmozo_ale_team_member_metabox .wpmozo_repeator_meta_fields {
+#wpmozo_ae_team_member_metabox .wpmozo_repeator_meta_fields {
     width: 50%;
     float: left;
 }
-#wpmozo_ale_team_member_metabox .wpmozo_repeator_meta_field input,
-#wpmozo_ale_team_member_metabox .wpmozo_repeator_meta_field select,
-#wpmozo_ale_team_member_metabox .wpmozo_repeator_meta_field textarea {
+#wpmozo_ae_team_member_metabox .wpmozo_repeator_meta_field input,
+#wpmozo_ae_team_member_metabox .wpmozo_repeator_meta_field select,
+#wpmozo_ae_team_member_metabox .wpmozo_repeator_meta_field textarea {
     width: 100%;
 }
-#wpmozo_ale_team_member_metabox .wpmozo_repeator_meta_field input:not(:last-child),
-#wpmozo_ale_team_member_metabox .wpmozo_repeator_meta_field select:not(:last-child),
-#wpmozo_ale_team_member_metabox .wpmozo_repeator_meta_field textarea:not(:last-child) {
+#wpmozo_ae_team_member_metabox .wpmozo_repeator_meta_field input:not(:last-child),
+#wpmozo_ae_team_member_metabox .wpmozo_repeator_meta_field select:not(:last-child),
+#wpmozo_ae_team_member_metabox .wpmozo_repeator_meta_field textarea:not(:last-child) {
     margin-bottom: 10px;
 }
-#wpmozo_ale_team_member_metabox .wpmozo_repeator_meta_field_row {
+#wpmozo_ae_team_member_metabox .wpmozo_repeator_meta_field_row {
     position: relative;
     background: #fcfcfc;
     padding: 10px;
 }
-#wpmozo_ale_team_member_metabox .wpmozo_repeator_meta_field_row:not(:last-child) {
+#wpmozo_ae_team_member_metabox .wpmozo_repeator_meta_field_row:not(:last-child) {
     border-bottom: 2px solid #f1f5f9;
 }
-#wpmozo_ale_team_member_metabox .wpmozo_repeator_meta_field_row_controls {
+#wpmozo_ae_team_member_metabox .wpmozo_repeator_meta_field_row_controls {
     position: absolute;
     top: 50%;
     left: calc(100% + 10px);
@@ -181,7 +181,7 @@
     text-align: center;
     transform: translateY(-50%);
 }
-#wpmozo_ale_team_member_metabox .wpmozo_repeator_meta_field_add_row_control {
+#wpmozo_ae_team_member_metabox .wpmozo_repeator_meta_field_add_row_control {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -193,17 +193,17 @@
     line-height: 1.6;
     cursor: pointer;
 }
-#wpmozo_ale_team_member_metabox .wpmozo_repeator_meta_field_add_row_control:not(:last-child) {
+#wpmozo_ae_team_member_metabox .wpmozo_repeator_meta_field_add_row_control:not(:last-child) {
     margin-bottom: 10px;
 }
-#wpmozo_ale_team_member_metabox .wpmozo_meta_fields textarea {
+#wpmozo_ae_team_member_metabox .wpmozo_meta_fields textarea {
     min-height: 80px;
 }
-#wpmozo_ale_team_member_metabox .wpmozo_meta_fields .ed_button {
+#wpmozo_ae_team_member_metabox .wpmozo_meta_fields .ed_button {
     width: auto;
     height: auto;
 }
-#wpmozo_ale_team_member_metabox .wpmozo_meta_fields .info {
+#wpmozo_ae_team_member_metabox .wpmozo_meta_fields .info {
     display: block;
     margin-left: 230px;
     font-size: 12px;

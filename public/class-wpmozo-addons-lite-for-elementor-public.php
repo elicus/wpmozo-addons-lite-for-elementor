@@ -16,10 +16,11 @@ class WPMOZO_Addons_Lite_For_Elementor_Public {
 		add_action( 'elementor/frontend/after_register_scripts', array( $this, 'register_frontend_scripts' ) );
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'wpmozo_ale_editor_enqueue_scripts' ) );
 		$this->include_files();
+
 	}
 
 	public function include_files() {
-		require_once __DIR__ . '/wpmozo-ale-helper-functions.php';
+		require_once plugin_dir_path( __DIR__ ) . 'includes/wpmozo-helper-functions.php';
 
 	}
 
@@ -34,7 +35,7 @@ class WPMOZO_Addons_Lite_For_Elementor_Public {
 
 		wp_enqueue_style(
 			'wpmozo-icons',
-			plugins_url( 'assets/css/wpmozoicon.css', plugin_dir_path( __FILE__ ) ),
+			plugins_url( 'assets/css/wpmozoicon.min.css', plugin_dir_path( __FILE__ ) ),
 			false,
 			WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION
 		);
@@ -55,6 +56,8 @@ class WPMOZO_Addons_Lite_For_Elementor_Public {
 
 		wp_register_style( 'wpmozo-ale-font-awesome-style', plugins_url( 'assets/css/font-awesome.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
+		wp_register_style( 'wpmozo-ale-mfp-style', plugins_url( 'assets/css/magnificPopup.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+
 	}
 
 	/**
@@ -67,6 +70,7 @@ class WPMOZO_Addons_Lite_For_Elementor_Public {
 	public function register_frontend_scripts() {
 
 		wp_register_script( 'wpmozo-ale-isotope', plugins_url( 'assets/js/isotope.pkgd.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+		wp_register_script( 'wpmozo-ale-masonry', plugins_url( 'assets/js/masonry.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 		wp_register_script( 'wpmozo-ale-magnify', plugins_url( 'assets/js/magnify.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
 		wp_register_script( 'wpmozo-ale-popper', plugins_url( 'assets/js/popper.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
@@ -90,7 +94,7 @@ class WPMOZO_Addons_Lite_For_Elementor_Public {
 		$elements_manager->add_category(
 			'wpmozo',
 			array(
-				'title' => esc_html__( 'WPMozo', 'wpmozo-addons-lite-for-elementor-lite' ),
+				'title' => esc_html__( 'WPMozo', 'wpmozo-addons-for-elementor' ),
 				'icon'  => 'fa fa-plug',
 			)
 		);
@@ -98,40 +102,48 @@ class WPMOZO_Addons_Lite_For_Elementor_Public {
 	}
 
 	public function register_oembed_widget( $widgets_manager ) {
-		$modules = glob( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_PATH . 'widgets/*', GLOB_ONLYDIR );
-		if ( is_array( $modules ) && ! empty( $modules ) ) {
-			$modules      = array_map( 'basename', $modules );
-			$modules_list = array();
-			function capitalizeAfterUnderscore( $string ) {
-				$words  = explode( '_', $string );
-				$result = '';
+		global $pro_version;
+		$plugin_option = get_option( 'wpmozo-addons-for-elementor' );
 
-				foreach ( $words as $word ) {
-					$result .= ucfirst( $word ) . '_';
+		if ( false !== $plugin_option && false !== $pro_version ) {
+			$modules = array_map( 'basename', explode( ',', $plugin_option['wpmozo_widgets'] ) );
+
+			if ( ! empty( $modules ) && is_array( $modules ) ) {
+				$modules_list = array();
+				foreach ( $modules as $module ) {
+					$mod                  = trim( preg_replace( '/[A-Z]([A-Z](?![a-z]))*/', ' $0', $module ) );
+					$key                  = '\WPMOZO_AE_' . ucwords( strtolower( str_replace( '-', '_', $mod ) ) );
+					$modules_list[ $key ] = esc_html( $mod );
 				}
-
-				// Remove the trailing underscore.
-				$result = rtrim( $result, '_' );
-
-				return $result;
+				$this->include_widgets( $modules_list );
+				foreach ( $modules_list as $key => $value ) {
+					$widgets_manager->register( new $key() );
+				}
 			}
-			foreach ( $modules as $module ) {
-				$mod                  = trim( preg_replace( '/[A-Z]([A-Z](?![a-z]))*/', ' $0', $module ) );
-				$key                  = sanitize_text_field( '\WPMOZO_ALE_' . capitalizeAfterUnderscore( strtolower( str_replace( '-', '_', $mod ) ) ) );
-				$modules_list[ $key ] = esc_html( $mod );
+		} else {
+
+			$widgets_path = plugin_dir_path( __DIR__ ) . '/widgets/';
+			$modules      = glob( $widgets_path . '*', GLOB_ONLYDIR );
+
+			if ( ! empty( $modules ) ) {
+				foreach ( $modules as $module ) {
+					$module_name = basename( $module );
+					$class_name  = 'WPMOZO_AE_' . str_replace( '-', '_', ucwords( $module_name, '-' ) );
+					require_once $module . '/' . $module_name . '.php';
+					$widgets_manager->register( new $class_name() );
+				}
 			}
 		}
-		$this->include_widgets( $modules_list );
-		foreach ( $modules_list as $key => $value ) {
-			$widgets_manager->register( new $key() );
-		}
+
 	}
-
 	public function include_widgets( $widgets ) {
-
 		foreach ( $widgets as $key => $value ) {
-			require_once plugin_dir_path( __DIR__ ) . '/widgets/' . $value . '/' . $value . '.php';
+			$widget_path = plugin_dir_path( __DIR__ ) . '/widgets/' . $value . '/' . $value . '.php';
+			if ( file_exists( $widget_path ) ) {
+				require_once $widget_path;
+			}
 		}
 	}
+
 
 }

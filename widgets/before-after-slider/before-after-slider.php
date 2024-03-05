@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use \Elementor\Widget_Base;
 use \Elementor\Control_Media;
 
-class WPMOZO_ALE_Before_After_Slider extends Widget_Base {
+class WPMOZO_AE_Before_After_Slider extends Widget_Base {
 
 	/**
 	 * Get widget name.
@@ -27,7 +27,7 @@ class WPMOZO_ALE_Before_After_Slider extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpmozo_ale_before_after_slider';
+		return 'wpmozo_ae_before_after_slider';
 	}
 
 	/**
@@ -41,7 +41,7 @@ class WPMOZO_ALE_Before_After_Slider extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Before After Slider', 'wpmozo-addons-lite-for-elementor' );
+		return esc_html__( 'Before After Slider', 'wpmozo-addons-for-elementor' );
 	}
 
 	/**
@@ -55,7 +55,7 @@ class WPMOZO_ALE_Before_After_Slider extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-image-before-after wpmozo-ale-brandicon';
+		return 'eicon-image-before-after wpmozo-ae-brandicon';
 	}
 
 	/**

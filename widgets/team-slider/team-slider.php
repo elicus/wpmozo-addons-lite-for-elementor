@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use \Elementor\Widget_Base;
 use \Elementor\Icons_Manager;
 
-class WPMOZO_ALE_Team_Slider extends Widget_Base {
+class WPMOZO_AE_Team_Slider extends Widget_Base {
 
 	/**
 	 * Get widget name.
@@ -28,7 +28,7 @@ class WPMOZO_ALE_Team_Slider extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpmozo_ale_team_slider';
+		return 'wpmozo_ae_team_slider';
 	}
 
 	/**
@@ -42,7 +42,7 @@ class WPMOZO_ALE_Team_Slider extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Team Slider', 'wpmozo-addons-lite-for-elementor' );
+		return esc_html__( 'Team Slider', 'wpmozo-addons-for-elementor' );
 	}
 
 	/**
@@ -56,7 +56,7 @@ class WPMOZO_ALE_Team_Slider extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-slides  wpmozo-ale-brandicon';
+		return 'eicon-slides  wpmozo-ae-brandicon';
 	}
 
 	/**
@@ -119,7 +119,7 @@ class WPMOZO_ALE_Team_Slider extends Widget_Base {
 	}
 
 
-	public function wpmozo_ale_render_slider_script() {
+	public function wpmozo_ae_render_slider_script() {
 		$order_class         = 'elementor-element-' . $this->get_id();
 		$swiper              = str_replace( '-', '_', $order_class );
 		$settings            = $this->get_settings_for_display();
@@ -370,7 +370,7 @@ class WPMOZO_ALE_Team_Slider extends Widget_Base {
 		$this->add_render_attribute( 'button_wrapper_inner', 'class', 'wpmozo_swiper_layout_button_inner_wrapper' );
 
 		$args = array(
-			'post_type'      => 'wpmozo-alteam-member',
+			'post_type'      => 'wpmozoae-team-member',
 			'posts_per_page' => $number_of_members,
 			'orderby'        => $team_order_by,
 			'order'          => $team_order,
@@ -378,7 +378,7 @@ class WPMOZO_ALE_Team_Slider extends Widget_Base {
 		if ( is_array( $select_categories ) && count( $select_categories ) >= 1 ) {
 			$args['tax_query'] = array(
 				array(
-					'taxonomy' => 'wpmozo-ale-team-member-category',
+					'taxonomy' => 'wpmozo-ae-team-member-category',
 					'field'    => 'term_id',
 					'terms'    => $select_categories,
 					'operator' => 'IN',
@@ -538,10 +538,10 @@ class WPMOZO_ALE_Team_Slider extends Widget_Base {
 			?>
 			<div class="entry">
 				<h1> <?php echo esc_html( $no_result_text ); ?> </h1>
-				<p><?php echo esc_html__( 'Try changing your widget settings or add some new tem member.', 'wpmozo-addons-lite-for-elementor' ); ?></p>
+				<p><?php echo esc_html__( 'Try changing your widget settings or add some new tem member.', 'wpmozo-addons-for-elementor' ); ?></p>
 			</div>
 			<?php
 		}
-		$this->wpmozo_ale_render_slider_script();
+		$this->wpmozo_ae_render_slider_script();
 	}
 }

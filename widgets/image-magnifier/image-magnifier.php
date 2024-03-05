@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use Elementor\Widget_Base;
 use \Elementor\Group_Control_Image_Size;
 
-class WPMOZO_ALE_Image_Magnifier extends Widget_Base {
+class WPMOZO_AE_Image_Magnifier extends Widget_Base {
 
 
 	/**
@@ -28,7 +28,7 @@ class WPMOZO_ALE_Image_Magnifier extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpmozo_ale_image_magnifier';
+		return 'wpmozo_ae_image_magnifier';
 	}
 
 	/**
@@ -42,7 +42,7 @@ class WPMOZO_ALE_Image_Magnifier extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Image Magnifier', 'wpmozo-addons-lite-for-elementor' );
+		return esc_html__( 'Image Magnifier', 'wpmozo-addons-for-elementor' );
 	}
 
 	/**
@@ -56,7 +56,7 @@ class WPMOZO_ALE_Image_Magnifier extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-zoom-in wpmozo-ale-brandicon';
+		return 'eicon-zoom-in wpmozo-ae-brandicon';
 	}
 
 	/**
@@ -137,7 +137,7 @@ class WPMOZO_ALE_Image_Magnifier extends Widget_Base {
 
 		?>
 		<style>
-			.elementor-widget-wpmozo_ale_image_magnifier .wpmozo_image_magnifier .magnify > .magnify-lens{
+			.elementor-widget-wpmozo_ae_image_magnifier .wpmozo_image_magnifier .magnify > .magnify-lens{
 				box-shadow: 0 0 0 <?php echo esc_html( $lense_border_width['size'] ); ?>px <?php echo esc_html( $lense_border_color ); ?>;
 			}
 		</style>

@@ -18,7 +18,7 @@ class WPMOZO_Addons_Lite_For_Elementor_I18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'wpmozo-addons-lite-for-elementor',
+			'wpmozo-addons-for-elementor',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

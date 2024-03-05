@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use \Elementor\Widget_Base;
 use \Elementor\Control_Media;
 
-class WPMOZO_ALE_Floating_Image extends Widget_Base {
+class WPMOZO_AE_Floating_Image extends Widget_Base {
 
 	/**
 	 * Get widget name.
@@ -27,7 +27,7 @@ class WPMOZO_ALE_Floating_Image extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpmozo_ale_floating_image';
+		return 'wpmozo_ae_floating_image';
 	}
 
 	/**
@@ -41,7 +41,7 @@ class WPMOZO_ALE_Floating_Image extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Floating Image', 'wpmozo-addons-lite-for-elementor' );
+		return esc_html__( 'Floating Image', 'wpmozo-addons-for-elementor' );
 	}
 
 	/**
@@ -55,7 +55,7 @@ class WPMOZO_ALE_Floating_Image extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-image-box wpmozo-ale-brandicon';
+		return 'eicon-image-box wpmozo-ae-brandicon';
 	}
 
 	/**

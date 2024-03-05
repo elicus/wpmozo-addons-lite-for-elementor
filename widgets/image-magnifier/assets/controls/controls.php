@@ -7,14 +7,14 @@ use \Elementor\Group_Control_Image_Size;
 $this->start_controls_section(
 	'image_section',
 	array(
-		'label' => __( 'Image', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => __( 'Image', 'wpmozo-addons-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
 	)
 );
 	$this->add_control(
 		'image',
 		array(
-			'label'   => esc_html__( 'Choose Image', 'wpmozo-addons-lite-for-elementor' ),
+			'label'   => esc_html__( 'Choose Image', 'wpmozo-addons-for-elementor' ),
 			'type'    => Controls_Manager::MEDIA,
 			'default' => array(
 				'url' => Utils::get_placeholder_image_src(),
@@ -31,7 +31,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'image_alt_text',
 		array(
-			'label'       => __( 'Image Alt Text', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => __( 'Image Alt Text', 'wpmozo-addons-for-elementor' ),
 			'type'        => Controls_Manager::TEXT,
 			'label_block' => true,
 		)
@@ -42,30 +42,30 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'image_alignment_section',
 	array(
-		'label' => esc_html__( 'Image Settings', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Image Settings', 'wpmozo-addons-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	)
 );
 	$this->add_responsive_control(
 		'image_alignment',
 		array(
-			'label'       => esc_html__( 'Image Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Image Alignment', 'wpmozo-addons-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => true,
 			'options'     => array(
 				'left'   =>
 					array(
-						'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+						'title' => esc_html__( 'Left', 'wpmozo-addons-for-elementor' ),
 						'icon'  => 'eicon-text-align-left',
 					),
 				'center' =>
 					array(
-						'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+						'title' => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
 						'icon'  => 'eicon-text-align-center',
 					),
 				'right'  =>
 					array(
-						'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+						'title' => esc_html__( 'Right', 'wpmozo-addons-for-elementor' ),
 						'icon'  => 'eicon-text-align-right',
 					),
 			),
@@ -80,7 +80,7 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'magnifier_settings',
 	array(
-		'label' => esc_html__( 'Lens Settings', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Lens Settings', 'wpmozo-addons-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	)
 );
@@ -88,7 +88,7 @@ $this->start_controls_section(
 		'width',
 		array(
 			'type'           => Controls_Manager::SLIDER,
-			'label'          => esc_html__( 'Width', 'wpmozo-addons-lite-for-elementor' ),
+			'label'          => esc_html__( 'Width', 'wpmozo-addons-for-elementor' ),
 			'range'          => array(
 				'px' => array(
 					'min' => 100,
@@ -117,7 +117,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'lense_speed',
 		array(
-			'label'       => esc_html__( 'Transition Speed', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Transition Speed', 'wpmozo-addons-for-elementor' ),
 			'type'        => Controls_Manager::SLIDER,
 			'range'       => array(
 				'%' => array(
@@ -140,7 +140,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'lense_border_width',
 		array(
-			'label'       => esc_html__( 'Border Width', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Border Width', 'wpmozo-addons-for-elementor' ),
 			'type'        => Controls_Manager::SLIDER,
 			'range'       => array(
 				'px' => array(
@@ -158,7 +158,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'lense_border_color',
 		array(
-			'label'       => esc_html__( 'Border Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Border Color', 'wpmozo-addons-for-elementor' ),
 			'type'        => Controls_Manager::COLOR,
 			'render_type' => 'template',
 		)
@@ -169,14 +169,14 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'image_size_section',
 	array(
-		'label' => esc_html__( 'Sizing', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Sizing', 'wpmozo-addons-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	)
 	);
 	$this->add_responsive_control(
 		'image_width',
 		array(
-			'label'       => esc_html__( 'Image Width', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Image Width', 'wpmozo-addons-for-elementor' ),
 			'type'        => Controls_Manager::SLIDER,
 			'range'       => array(
 				'%' => array(
@@ -197,7 +197,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'image_max_width',
 		array(
-			'label'       => esc_html__( 'Image Max Width', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Image Max Width', 'wpmozo-addons-for-elementor' ),
 			'type'        => Controls_Manager::SLIDER,
 			'range'       => array(
 				'%' => array(
@@ -222,14 +222,14 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'spacing_section',
 	array(
-		'label' => esc_html__( 'Spacing', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Spacing', 'wpmozo-addons-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	)
 );
 	$this->add_responsive_control(
 		'padding',
 		array(
-			'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
+			'label'      => esc_html__( 'Padding', 'wpmozo-addons-for-elementor' ),
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => array( 'px', 'em', '%' ),
 			'selectors'  => array(
@@ -241,7 +241,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'margin',
 		array(
-			'label'      => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
+			'label'      => esc_html__( 'Margin', 'wpmozo-addons-for-elementor' ),
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => array( 'px', 'em', '%' ),
 			'selectors'  => array(
@@ -256,7 +256,7 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'border_section',
 	array(
-		'label' => esc_html__( 'Border', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Border', 'wpmozo-addons-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	)
 );

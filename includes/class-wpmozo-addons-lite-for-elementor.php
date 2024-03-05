@@ -58,6 +58,7 @@ class WPMOZO_Addons_Lite_For_Elementor {
 
 		$this->load_dependencies();
 		$this->set_locale();
+		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
 	}
@@ -91,6 +92,10 @@ class WPMOZO_Addons_Lite_For_Elementor {
 		 * of the plugin.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wpmozo-addons-lite-for-elementor-i18n.php';
+		/**
+		 * The class responsible for defining all actions that occur in the admin area.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wpmozo-addons-lite-for-elementor-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing side of the site.
@@ -115,6 +120,29 @@ class WPMOZO_Addons_Lite_For_Elementor {
 		$plugin_i18n = new WPMOZO_Addons_Lite_For_Elementor_I18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+
+	}
+
+	/**
+	 * Register all of the hooks related to the admin area functionality
+	 * of the plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function define_admin_hooks() {
+		global $wp_version;
+
+		$plugin_admin = new WPMOZO_Addons_Lite_For_Elementor_Admin();
+
+		$this->loader->add_action( 'init', $plugin_admin, 'wpmozo_register_post_types' );
+		$this->loader->add_action( 'init', $plugin_admin, 'wpmozo_register_taxonomies' );
+		// Hook to add meta box.
+		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'wpmozo_add_team_member_metabox' );
+		// Hook to save meta box data.
+		$this->loader->add_action( 'save_post', $plugin_admin, 'wpmozo_save_team_member_meta_fields' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 
 	}
 

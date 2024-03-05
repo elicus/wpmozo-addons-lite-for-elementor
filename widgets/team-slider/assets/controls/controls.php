@@ -7,19 +7,19 @@ use \Elementor\Group_Control_Text_Shadow;
 $this->start_controls_section(
 	'content_section',
 	array(
-		'label' => __( 'Content', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => __( 'Content', 'wpmozo-addons-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
 	)
 );
 	$this->add_control(
 		'layout',
 		array(
-			'label'       => __( 'Layout', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => __( 'Layout', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'layout1' => esc_html__( 'Layout1', 'wpmozo-addons-lite-for-elementor' ),
-				'layout2' => esc_html__( 'Layout2', 'wpmozo-addons-lite-for-elementor' ),
+				'layout1' => esc_html__( 'Layout1', 'wpmozo-addons-for-elementor' ),
+				'layout2' => esc_html__( 'Layout2', 'wpmozo-addons-for-elementor' ),
 			),
 			'default'     => 'layout1',
 		)
@@ -27,7 +27,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'number_of_members',
 		array(
-			'label'   => esc_html__( 'Number of Members', 'wpmozo-addons-lite-for-elementor' ),
+			'label'   => esc_html__( 'Number of Members', 'wpmozo-addons-for-elementor' ),
 			'type'    => Controls_Manager::NUMBER,
 			'min'     => 1,
 			'max'     => 15,
@@ -38,12 +38,12 @@ $this->start_controls_section(
 	$this->add_control(
 		'team_order',
 		array(
-			'label'       => __( 'Order', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => __( 'Order', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'desc' => esc_html__( 'DESC', 'wpmozo-addons-lite-for-elementor' ),
-				'asc'  => esc_html__( 'ASC', 'wpmozo-addons-lite-for-elementor' ),
+				'desc' => esc_html__( 'DESC', 'wpmozo-addons-for-elementor' ),
+				'asc'  => esc_html__( 'ASC', 'wpmozo-addons-for-elementor' ),
 			),
 			'default'     => 'desc',
 		)
@@ -51,18 +51,18 @@ $this->start_controls_section(
 	$this->add_control(
 		'team_order_by',
 		array(
-			'label'       => __( 'Order By', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => __( 'Order By', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'date'          => esc_html__( 'Date', 'wpmozo-addons-lite-for-elementor' ),
-				'modified_date' => esc_html__( 'Modified Date', 'wpmozo-addons-lite-for-elementor' ),
-				'title'         => esc_html__( 'Title', 'wpmozo-addons-lite-for-elementor' ),
-				'slue'          => esc_html__( 'Slug', 'wpmozo-addons-lite-for-elementor' ),
-				'ID'            => esc_html__( 'ID', 'wpmozo-addons-lite-for-elementor' ),
-				'random'        => esc_html__( 'Random', 'wpmozo-addons-lite-for-elementor' ),
-				'relevance'     => esc_html__( 'Relevance', 'wpmozo-addons-lite-for-elementor' ),
-				'none'          => esc_html__( 'None', 'wpmozo-addons-lite-for-elementor' ),
+				'date'          => esc_html__( 'Date', 'wpmozo-addons-for-elementor' ),
+				'modified_date' => esc_html__( 'Modified Date', 'wpmozo-addons-for-elementor' ),
+				'title'         => esc_html__( 'Title', 'wpmozo-addons-for-elementor' ),
+				'slue'          => esc_html__( 'Slug', 'wpmozo-addons-for-elementor' ),
+				'ID'            => esc_html__( 'ID', 'wpmozo-addons-for-elementor' ),
+				'random'        => esc_html__( 'Random', 'wpmozo-addons-for-elementor' ),
+				'relevance'     => esc_html__( 'Relevance', 'wpmozo-addons-for-elementor' ),
+				'none'          => esc_html__( 'None', 'wpmozo-addons-for-elementor' ),
 			),
 			'default'     => 'date',
 		)
@@ -70,20 +70,20 @@ $this->start_controls_section(
 	$this->add_control(
 		'select_categories',
 		array(
-			'label'       => esc_html__( 'Select Categories', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Select Categories', 'wpmozo-addons-for-elementor' ),
 			'type'        => Controls_Manager::SELECT2,
 			'label_block' => true,
 			'multiple'    => true,
-			'options'     => wpmozo_ale_team_slider_for_elementor_get_team_member_categories(),
+			'options'     => wpmozo_ae_team_slider_for_elementor_get_team_member_categories(),
 		)
 	);
 	$this->add_control(
 		'no_result_text',
 		array(
-			'label'       => esc_html__( 'No Result Text', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'No Result Text', 'wpmozo-addons-for-elementor' ),
 			'type'        => Controls_Manager::TEXT,
 			'label_block' => true,
-			'placeholder' => esc_html__( 'The team member you requested could not be found. Try changing your widget settings or create some new team members.', 'wpmozo-addons-lite-for-elementor' ),
+			'placeholder' => esc_html__( 'The team member you requested could not be found. Try changing your widget settings or create some new team members.', 'wpmozo-addons-for-elementor' ),
 		)
 	);
 	$this->end_controls_section();
@@ -92,17 +92,17 @@ $this->start_controls_section(
 	$this->start_controls_section(
 		'elements_section',
 		array(
-			'label' => __( 'Elements', 'wpmozo-addons-lite-for-elementor' ),
+			'label' => __( 'Elements', 'wpmozo-addons-for-elementor' ),
 			'tab'   => Controls_Manager::TAB_CONTENT,
 		)
 	);
 	$this->add_control(
 		'show_designation',
 		array(
-			'label'        => esc_html__( 'Show Designation', 'wpmozo-addons-lite-for-elementor' ),
+			'label'        => esc_html__( 'Show Designation', 'wpmozo-addons-for-elementor' ),
 			'type'         => Controls_Manager::SWITCHER,
-			'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-			'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
+			'label_off'    => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+			'label_on'     => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
 			'return_value' => 'yes',
 			'default'      => 'yes',
 		)
@@ -110,10 +110,10 @@ $this->start_controls_section(
 	$this->add_control(
 		'show_description',
 		array(
-			'label'        => esc_html__( 'Show Descripton', 'wpmozo-addons-lite-for-elementor' ),
+			'label'        => esc_html__( 'Show Descripton', 'wpmozo-addons-for-elementor' ),
 			'type'         => Controls_Manager::SWITCHER,
-			'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-			'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
+			'label_off'    => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+			'label_on'     => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
 			'return_value' => 'yes',
 			'default'      => 'yes',
 		)
@@ -121,10 +121,10 @@ $this->start_controls_section(
 	$this->add_control(
 		'show_social_icon',
 		array(
-			'label'        => esc_html__( 'Show Social Icon', 'wpmozo-addons-lite-for-elementor' ),
+			'label'        => esc_html__( 'Show Social Icon', 'wpmozo-addons-for-elementor' ),
 			'type'         => Controls_Manager::SWITCHER,
-			'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-			'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
+			'label_off'    => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+			'label_on'     => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
 			'return_value' => 'yes',
 			'default'      => 'yes',
 		)
@@ -132,10 +132,10 @@ $this->start_controls_section(
 	$this->add_control(
 		'show_skills',
 		array(
-			'label'        => esc_html__( 'Show Skills', 'wpmozo-addons-lite-for-elementor' ),
+			'label'        => esc_html__( 'Show Skills', 'wpmozo-addons-for-elementor' ),
 			'type'         => Controls_Manager::SWITCHER,
-			'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-			'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
+			'label_off'    => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+			'label_on'     => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
 			'return_value' => 'yes',
 			'default'      => 'yes',
 		)
@@ -143,12 +143,12 @@ $this->start_controls_section(
 	$this->add_control(
 		'link_target',
 		array(
-			'label'       => __( 'Social Icon Link Target', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => __( 'Social Icon Link Target', 'wpmozo-addons-for-elementor' ),
 			'label_block' => true,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'_self'  => esc_html__( 'In The Same Window', 'wpmozo-addons-lite-for-elementor' ),
-				'_blank' => esc_html__( 'In the New Tab', 'wpmozo-addons-lite-for-elementor' ),
+				'_self'  => esc_html__( 'In The Same Window', 'wpmozo-addons-for-elementor' ),
+				'_blank' => esc_html__( 'In the New Tab', 'wpmozo-addons-for-elementor' ),
 			),
 			'default'     => '_self',
 		)
@@ -159,22 +159,22 @@ $this->start_controls_section(
 	$this->start_controls_section(
 		'slider_settings',
 		array(
-			'label' => esc_html__( 'Slider', 'wpmozo-addons-lite-for-elementor' ),
+			'label' => esc_html__( 'Slider', 'wpmozo-addons-for-elementor' ),
 			'tab'   => Controls_Manager::TAB_CONTENT,
 		)
 	);
 	$this->add_control(
 		'slide_effect',
 		array(
-			'label'       => __( 'Slider Effect', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => __( 'Slider Effect', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'separator'   => 'after',
 			'options'     => array(
-				'slide'     => esc_html__( 'Slide', 'wpmozo-addons-lite-for-elementor' ),
-				'cube'      => esc_html__( 'Cube', 'wpmozo-addons-lite-for-elementor' ),
-				'coverflow' => esc_html__( 'Coverflow', 'wpmozo-addons-lite-for-elementor' ),
-				'flip'      => esc_html__( 'Flip', 'wpmozo-addons-lite-for-elementor' ),
+				'slide'     => esc_html__( 'Slide', 'wpmozo-addons-for-elementor' ),
+				'cube'      => esc_html__( 'Cube', 'wpmozo-addons-for-elementor' ),
+				'coverflow' => esc_html__( 'Coverflow', 'wpmozo-addons-for-elementor' ),
+				'flip'      => esc_html__( 'Flip', 'wpmozo-addons-for-elementor' ),
 			),
 			'default'     => 'slide',
 			'selectors'   => array( '' ),
@@ -184,7 +184,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'cards_per_slide',
 		array(
-			'label'     => esc_html__( 'Number of Cards Per Slide', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Number of Cards Per Slide', 'wpmozo-addons-for-elementor' ),
 			'type'      => Controls_Manager::NUMBER,
 			'min'       => 1,
 			'max'       => 15,
@@ -196,7 +196,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'slides_per_group',
 		array(
-			'label'     => esc_html__( 'Number of Slides Per Group', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Number of Slides Per Group', 'wpmozo-addons-for-elementor' ),
 			'type'      => Controls_Manager::NUMBER,
 			'min'       => 1,
 			'max'       => 15,
@@ -208,7 +208,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'space_between_slides',
 		array(
-			'label'          => esc_html__( 'Space Between Slides', 'wpmozo-addons-lite-for-elementor' ),
+			'label'          => esc_html__( 'Space Between Slides', 'wpmozo-addons-for-elementor' ),
 			'type'           => Controls_Manager::SLIDER,
 			'range'          => array(
 				'px' => array(
@@ -239,10 +239,10 @@ $this->start_controls_section(
 	$this->add_control(
 		'enable_coverflow_shadow',
 		array(
-			'label'                => esc_html__( 'Enable Slide Shadow', 'wpmozo-addons-lite-for-elementor' ),
+			'label'                => esc_html__( 'Enable Slide Shadow', 'wpmozo-addons-for-elementor' ),
 			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
+			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
 			'return_value'         => 'yes',
 			'default'              => 'no',
 			'condition'            => array( 'slide_effect' => 'coverflow' ),
@@ -255,7 +255,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'coverflow_shadow_color',
 		array(
-			'label'       => esc_html__( 'Shadow Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Shadow Color', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#222',
@@ -273,7 +273,7 @@ $this->start_controls_section(
 		'coverflow_rotate',
 		array(
 			'type'        => Controls_Manager::SLIDER,
-			'label'       => esc_html__( 'Coverflow Rotate ', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Coverflow Rotate ', 'wpmozo-addons-for-elementor' ),
 			'range'       => array(
 				'px' => array(
 					'min'  => 1,
@@ -296,7 +296,7 @@ $this->start_controls_section(
 		'coverflow_depth',
 		array(
 			'type'        => Controls_Manager::SLIDER,
-			'label'       => esc_html__( 'Coverflow Depth ', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Coverflow Depth ', 'wpmozo-addons-for-elementor' ),
 			'range'       => array(
 				'px' => array(
 					'min'  => 1,
@@ -318,32 +318,32 @@ $this->start_controls_section(
 	$this->add_control(
 		'equalize_slides_height',
 		array(
-			'label'                => esc_html__( 'Equalize Slides Height', 'wpmozo-addons-lite-for-elementor' ),
+			'label'                => esc_html__( 'Equalize Slides Height', 'wpmozo-addons-for-elementor' ),
 			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
+			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
 			'return_value'         => 'equal_height',
 			'default'              => 'no',
 			'render_type'          => 'template',
-			'prefix_class'         => 'wpmozo_ale_',
+			'prefix_class'         => 'wpmozo_ae_',
 			'selectors_dictionary' => array(
 				'yes' => 'yes',
 				''    => 'no',
 			),
 			'condition'            => array( 'enable_auto_height!' => 'yes' ),
 			'selectors'            => array(
-				'{{WRAPPER}}.wpmozo_ale_equal_height .wpmozo_wrapper' => 'align-self: flex-start;',
-				'{{WRAPPER}}.wpmozo_ale_equal_height .wpmozo_wrapper .wpmozo_ale_team_member_card' => 'height:100%;',
+				'{{WRAPPER}}.wpmozo_ae_equal_height .wpmozo_wrapper' => 'align-self: flex-start;',
+				'{{WRAPPER}}.wpmozo_ae_equal_height .wpmozo_wrapper .wpmozo_ae_team_member_card' => 'height:100%;',
 			),
 		)
 	);
 	$this->add_control(
 		'enable_auto_height',
 		array(
-			'label'                => esc_html__( 'Enable Auto Height', 'wpmozo-addons-lite-for-elementor' ),
+			'label'                => esc_html__( 'Enable Auto Height', 'wpmozo-addons-for-elementor' ),
 			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
+			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
 			'return_value'         => 'yes',
 			'default'              => 'no',
 			'condition'            => array( 'equalize_slides_height!' => 'equal_height' ),
@@ -356,10 +356,10 @@ $this->start_controls_section(
 	$this->add_control(
 		'slider_loop',
 		array(
-			'label'                => esc_html__( 'Enable Loop', 'wpmozo-addons-lite-for-elementor' ),
+			'label'                => esc_html__( 'Enable Loop', 'wpmozo-addons-for-elementor' ),
 			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
+			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
 			'return_value'         => 'yes',
 			'default'              => 'no',
 			'selectors_dictionary' => array(
@@ -371,11 +371,11 @@ $this->start_controls_section(
 	$this->add_control(
 		'autoplay',
 		array(
-			'label'                => esc_html__( 'Autoplay', 'wpmozo-addons-lite-for-elementor' ),
+			'label'                => esc_html__( 'Autoplay', 'wpmozo-addons-for-elementor' ),
 			'separator'            => 'before',
 			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
+			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
 			'return_value'         => 'yes',
 			'default'              => 'no',
 			'selectors_dictionary' => array(
@@ -387,7 +387,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'autoplay_speed',
 		array(
-			'label'     => esc_html__( 'Autoplay Delay', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Autoplay Delay', 'wpmozo-addons-for-elementor' ),
 			'type'      => Controls_Manager::NUMBER,
 			'min'       => 100,
 			'max'       => 10000,
@@ -399,10 +399,10 @@ $this->start_controls_section(
 	$this->add_control(
 		'pause_on_hover',
 		array(
-			'label'                => esc_html__( 'Pause On Hover', 'wpmozo-addons-lite-for-elementor' ),
+			'label'                => esc_html__( 'Pause On Hover', 'wpmozo-addons-for-elementor' ),
 			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
+			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
 			'return_value'         => 'yes',
 			'default'              => 'no',
 			'condition'            => array( 'autoplay' => 'yes' ),
@@ -415,7 +415,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'slide_transition_duration',
 		array(
-			'label'   => esc_html__( 'Transition Duration', 'wpmozo-addons-lite-for-elementor' ),
+			'label'   => esc_html__( 'Transition Duration', 'wpmozo-addons-for-elementor' ),
 			'type'    => Controls_Manager::NUMBER,
 			'min'     => 100,
 			'max'     => 10000,
@@ -426,11 +426,11 @@ $this->start_controls_section(
 	$this->add_control(
 		'show_arrow',
 		array(
-			'label'                => esc_html__( 'Show Arrows', 'wpmozo-addons-lite-for-elementor' ),
+			'label'                => esc_html__( 'Show Arrows', 'wpmozo-addons-for-elementor' ),
 			'separator'            => 'before',
 			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
+			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
 			'return_value'         => 'yes',
 			'default'              => 'yes',
 			'selectors_dictionary' => array(
@@ -442,7 +442,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'previous_slide_arrow',
 		array(
-			'label'     => esc_html__( 'Previous Arrow', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Previous Arrow', 'wpmozo-addons-for-elementor' ),
 			'type'      => Controls_Manager::ICONS,
 			'default'   => array(
 				'value'   => 'fas fa-chevron-left',
@@ -454,7 +454,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'next_slide_arrow',
 		array(
-			'label'     => esc_html__( 'Next Arrow', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Next Arrow', 'wpmozo-addons-for-elementor' ),
 			'type'      => Controls_Manager::ICONS,
 			'default'   => array(
 				'value'   => 'fas fa-chevron-right',
@@ -466,10 +466,10 @@ $this->start_controls_section(
 	$this->add_control(
 		'show_arrow_on_hover',
 		array(
-			'label'                => esc_html__( 'Show Arrows On Hover', 'wpmozo-addons-lite-for-elementor' ),
+			'label'                => esc_html__( 'Show Arrows On Hover', 'wpmozo-addons-for-elementor' ),
 			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
+			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
 			'return_value'         => 'yes',
 			'default'              => 'no',
 			'condition'            => array( 'show_arrow' => 'yes' ),
@@ -482,18 +482,18 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'arrows_position',
 		array(
-			'label'       => __( 'Arrows Position', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => __( 'Arrows Position', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'inside'        => esc_html__( 'Inside', 'wpmozo-addons-lite-for-elementor' ),
-				'outside'       => esc_html__( 'Outside', 'wpmozo-addons-lite-for-elementor' ),
-				'top_left'      => esc_html__( 'Top Left', 'wpmozo-addons-lite-for-elementor' ),
-				'top_right'     => esc_html__( 'Top Right', 'wpmozo-addons-lite-for-elementor' ),
-				'top_center'    => esc_html__( 'Top Center', 'wpmozo-addons-lite-for-elementor' ),
-				'bottom_left'   => esc_html__( 'Bottom Left', 'wpmozo-addons-lite-for-elementor' ),
-				'bottom_right'  => esc_html__( 'Bottom Right', 'wpmozo-addons-lite-for-elementor' ),
-				'bottom_center' => esc_html__( 'Bottom Center', 'wpmozo-addons-lite-for-elementor' ),
+				'inside'        => esc_html__( 'Inside', 'wpmozo-addons-for-elementor' ),
+				'outside'       => esc_html__( 'Outside', 'wpmozo-addons-for-elementor' ),
+				'top_left'      => esc_html__( 'Top Left', 'wpmozo-addons-for-elementor' ),
+				'top_right'     => esc_html__( 'Top Right', 'wpmozo-addons-for-elementor' ),
+				'top_center'    => esc_html__( 'Top Center', 'wpmozo-addons-for-elementor' ),
+				'bottom_left'   => esc_html__( 'Bottom Left', 'wpmozo-addons-for-elementor' ),
+				'bottom_right'  => esc_html__( 'Bottom Right', 'wpmozo-addons-for-elementor' ),
+				'bottom_center' => esc_html__( 'Bottom Center', 'wpmozo-addons-for-elementor' ),
 			),
 			'default'     => 'inside',
 			'condition'   => array( 'show_arrow' => 'yes' ),
@@ -502,11 +502,11 @@ $this->start_controls_section(
 	$this->add_control(
 		'show_control_dot',
 		array(
-			'label'                => esc_html__( 'Show Dots Pagination', 'wpmozo-addons-lite-for-elementor' ),
+			'label'                => esc_html__( 'Show Dots Pagination', 'wpmozo-addons-for-elementor' ),
 			'separator'            => 'before',
 			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
+			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
 			'return_value'         => 'yes',
 			'default'              => 'no',
 			'selectors_dictionary' => array(
@@ -518,16 +518,16 @@ $this->start_controls_section(
 	$this->add_control(
 		'control_dot_style',
 		array(
-			'label'       => __( 'Dots Pagination Style', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => __( 'Dots Pagination Style', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'solid_dot'       => esc_html__( 'Solid Dot', 'wpmozo-addons-lite-for-elementor' ),
-				'transparent_dot' => esc_html__( 'Transparent Dot', 'wpmozo-addons-lite-for-elementor' ),
-				'stretched_dot'   => esc_html__( 'Stretched Dot', 'wpmozo-addons-lite-for-elementor' ),
-				'line'            => esc_html__( 'Line', 'wpmozo-addons-lite-for-elementor' ),
-				'rounded_line'    => esc_html__( 'Rounded Line', 'wpmozo-addons-lite-for-elementor' ),
-				'square_dot'      => esc_html__( 'Squared Dot', 'wpmozo-addons-lite-for-elementor' ),
+				'solid_dot'       => esc_html__( 'Solid Dot', 'wpmozo-addons-for-elementor' ),
+				'transparent_dot' => esc_html__( 'Transparent Dot', 'wpmozo-addons-for-elementor' ),
+				'stretched_dot'   => esc_html__( 'Stretched Dot', 'wpmozo-addons-for-elementor' ),
+				'line'            => esc_html__( 'Line', 'wpmozo-addons-for-elementor' ),
+				'rounded_line'    => esc_html__( 'Rounded Line', 'wpmozo-addons-for-elementor' ),
+				'square_dot'      => esc_html__( 'Squared Dot', 'wpmozo-addons-for-elementor' ),
 			),
 			'default'     => 'solid_dot',
 			'condition'   => array( 'show_control_dot' => 'yes' ),
@@ -537,10 +537,10 @@ $this->start_controls_section(
 	$this->add_control(
 		'enable_dynamic_dots',
 		array(
-			'label'                => esc_html__( 'Enable Dynamic Dots', 'wpmozo-addons-lite-for-elementor' ),
+			'label'                => esc_html__( 'Enable Dynamic Dots', 'wpmozo-addons-for-elementor' ),
 			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
+			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
 			'return_value'         => 'yes',
 			'default'              => 'no',
 			'condition'            => array(
@@ -563,31 +563,31 @@ $this->start_controls_section(
 	$this->start_controls_section(
 		'style_section',
 		array(
-			'label' => esc_html__( 'Text Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label' => esc_html__( 'Text Alignment', 'wpmozo-addons-for-elementor' ),
 			'tab'   => Controls_Manager::TAB_STYLE,
 		)
 	);
 	$this->add_control(
 		'team_alignment',
 		array(
-			'label'     => esc_html__( 'Team Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Team Alignment', 'wpmozo-addons-for-elementor' ),
 			'type'      => Controls_Manager::CHOOSE,
 			'options'   => array(
 				'left'   => array(
-					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Left', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-left',
 				),
 				'center' => array(
-					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-center',
 				),
 				'right'  => array(
-					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Right', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-right',
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_content_wrapper' => 'text-align: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_content_wrapper' => 'text-align: {{VALUE}};',
 			),
 		)
 	);
@@ -597,39 +597,39 @@ $this->start_controls_section(
 	$this->start_controls_section(
 		'name_text',
 		array(
-			'label' => esc_html__( 'Name Text', 'wpmozo-addons-lite-for-elementor' ),
+			'label' => esc_html__( 'Name Text', 'wpmozo-addons-for-elementor' ),
 			'tab'   => Controls_Manager::TAB_STYLE,
 		)
 	);
 	$this->add_control(
 		'name_text_heading_level',
 		array(
-			'label'       => esc_html__( 'Name Text Heading Level', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Name Text Heading Level', 'wpmozo-addons-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => true,
 			'options'     => array(
 				'h1' => array(
-					'title' => esc_html__( 'H1', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'H1', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-editor-h1',
 				),
 				'h2' => array(
-					'title' => esc_html__( 'H2', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'H2', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-editor-h2',
 				),
 				'h3' => array(
-					'title' => esc_html__( 'H3', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'H3', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-editor-h3',
 				),
 				'h4' => array(
-					'title' => esc_html__( 'H4', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'H4', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-editor-h4',
 				),
 				'h5' => array(
-					'title' => esc_html__( 'H5', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'H5', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-editor-h5',
 				),
 				'h6' => array(
-					'title' => esc_html__( 'H6', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'H6', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-editor-h6',
 				),
 			),
@@ -640,12 +640,12 @@ $this->start_controls_section(
 	$this->add_control(
 		'name_text_color',
 		array(
-			'label'       => esc_html__( 'Name Text Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Name Text Color', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#333',
 			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_content_wrapper .wpmozo_ale_team_member_name' => 'color:{{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_content_wrapper .wpmozo_ae_team_member_name' => 'color:{{VALUE}};',
 
 			),
 		)
@@ -654,37 +654,37 @@ $this->start_controls_section(
 		Group_Control_Typography::get_type(),
 		array(
 			'name'     => 'name_text_typography',
-			'selector' => '{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_content_wrapper .wpmozo_ale_team_member_name .wpmozo_ale_team_member_name_heading',
+			'selector' => '{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_content_wrapper .wpmozo_ae_team_member_name .wpmozo_ae_team_member_name_heading',
 		)
 	);
 	$this->add_group_control(
 		Group_Control_Text_Shadow::get_type(),
 		array(
 			'name'     => 'name_text_shadow',
-			'selector' => '{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_content_wrapper .wpmozo_ale_team_member_name .wpmozo_ale_team_member_name_heading',
+			'selector' => '{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_content_wrapper .wpmozo_ae_team_member_name .wpmozo_ae_team_member_name_heading',
 		)
 	);
 	$this->add_control(
 		'name_text_alignment',
 		array(
-			'label'     => esc_html__( 'Name Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Name Alignment', 'wpmozo-addons-for-elementor' ),
 			'type'      => Controls_Manager::CHOOSE,
 			'options'   => array(
 				'left'   => array(
-					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Left', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-left',
 				),
 				'center' => array(
-					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-center',
 				),
 				'right'  => array(
-					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Right', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-right',
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_content_wrapper .wpmozo_ale_team_member_name .wpmozo_ale_team_member_name_heading' => 'text-align: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_content_wrapper .wpmozo_ae_team_member_name .wpmozo_ae_team_member_name_heading' => 'text-align: {{VALUE}};',
 			),
 		)
 	);
@@ -695,39 +695,39 @@ $this->start_controls_section(
 	$this->start_controls_section(
 		'designation_text',
 		array(
-			'label' => esc_html__( 'Designation Text', 'wpmozo-addons-lite-for-elementor' ),
+			'label' => esc_html__( 'Designation Text', 'wpmozo-addons-for-elementor' ),
 			'tab'   => Controls_Manager::TAB_STYLE,
 		)
 	);
 	$this->add_control(
 		'designation_heading_level',
 		array(
-			'label'       => esc_html__( 'Designation Heading Level', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Designation Heading Level', 'wpmozo-addons-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => true,
 			'options'     => array(
 				'h1' => array(
-					'title' => esc_html__( 'H1', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'H1', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-editor-h1',
 				),
 				'h2' => array(
-					'title' => esc_html__( 'H2', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'H2', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-editor-h2',
 				),
 				'h3' => array(
-					'title' => esc_html__( 'H3', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'H3', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-editor-h3',
 				),
 				'h4' => array(
-					'title' => esc_html__( 'H4', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'H4', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-editor-h4',
 				),
 				'h5' => array(
-					'title' => esc_html__( 'H5', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'H5', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-editor-h5',
 				),
 				'h6' => array(
-					'title' => esc_html__( 'H6', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'H6', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-editor-h6',
 				),
 			),
@@ -738,12 +738,12 @@ $this->start_controls_section(
 	$this->add_control(
 		'designation_text_color',
 		array(
-			'label'       => esc_html__( 'Designation Text Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Designation Text Color', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#333',
 			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_content_wrapper .wpmozo_ale_team_member_designation .wpmozo_ale_team_member_designation_heading' => 'color:{{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_content_wrapper .wpmozo_ae_team_member_designation .wpmozo_ae_team_member_designation_heading' => 'color:{{VALUE}};',
 			),
 		)
 	);
@@ -751,37 +751,37 @@ $this->start_controls_section(
 		Group_Control_Typography::get_type(),
 		array(
 			'name'     => 'designation_text_typography',
-			'selector' => '{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_content_wrapper .wpmozo_ale_team_member_designation .wpmozo_ale_team_member_designation_heading',
+			'selector' => '{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_content_wrapper .wpmozo_ae_team_member_designation .wpmozo_ae_team_member_designation_heading',
 		)
 	);
 	$this->add_group_control(
 		Group_Control_Text_Shadow::get_type(),
 		array(
 			'name'     => 'designation_text_shadow',
-			'selector' => '{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_content_wrapper .wpmozo_ale_team_member_designation .wpmozo_ale_team_member_designation_heading',
+			'selector' => '{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_content_wrapper .wpmozo_ae_team_member_designation .wpmozo_ae_team_member_designation_heading',
 		)
 	);
 	$this->add_control(
 		'designation_text_alignment',
 		array(
-			'label'     => esc_html__( 'Designation Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Designation Alignment', 'wpmozo-addons-for-elementor' ),
 			'type'      => Controls_Manager::CHOOSE,
 			'options'   => array(
 				'left'   => array(
-					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Left', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-left',
 				),
 				'center' => array(
-					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-center',
 				),
 				'right'  => array(
-					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Right', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-right',
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_content_wrapper .wpmozo_ale_team_member_designation .wpmozo_ale_team_member_designation_heading' => 'text-align: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_content_wrapper .wpmozo_ae_team_member_designation .wpmozo_ae_team_member_designation_heading' => 'text-align: {{VALUE}};',
 			),
 		)
 	);
@@ -791,19 +791,19 @@ $this->start_controls_section(
 	$this->start_controls_section(
 		'description_text',
 		array(
-			'label' => esc_html__( 'Description Text', 'wpmozo-addons-lite-for-elementor' ),
+			'label' => esc_html__( 'Description Text', 'wpmozo-addons-for-elementor' ),
 			'tab'   => Controls_Manager::TAB_STYLE,
 		)
 	);
 	$this->add_control(
 		'description_text_color',
 		array(
-			'label'       => esc_html__( 'Description Text Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Description Text Color', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#333',
 			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_content_wrapper p.wpmozo_ale_team_member_short_desc_text' => 'color:{{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_content_wrapper p.wpmozo_ae_team_member_short_desc_text' => 'color:{{VALUE}};',
 			),
 		)
 	);
@@ -811,37 +811,37 @@ $this->start_controls_section(
 		Group_Control_Typography::get_type(),
 		array(
 			'name'     => 'description_text_typography',
-			'selector' => '{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_content_wrapper p.wpmozo_ale_team_member_short_desc_text',
+			'selector' => '{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_content_wrapper p.wpmozo_ae_team_member_short_desc_text',
 		)
 	);
 	$this->add_group_control(
 		Group_Control_Text_Shadow::get_type(),
 		array(
 			'name'     => 'description_text_shadow',
-			'selector' => '{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_content_wrapper p.wpmozo_ale_team_member_short_desc_text',
+			'selector' => '{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_content_wrapper p.wpmozo_ae_team_member_short_desc_text',
 		)
 	);
 	$this->add_control(
 		'description_text_alignment',
 		array(
-			'label'     => esc_html__( 'Description Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Description Alignment', 'wpmozo-addons-for-elementor' ),
 			'type'      => Controls_Manager::CHOOSE,
 			'options'   => array(
 				'left'   => array(
-					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Left', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-left',
 				),
 				'center' => array(
-					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-center',
 				),
 				'right'  => array(
-					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Right', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-right',
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_content_wrapper p.wpmozo_ale_team_member_short_desc_text' => 'text-align: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_content_wrapper p.wpmozo_ae_team_member_short_desc_text' => 'text-align: {{VALUE}};',
 			),
 		)
 	);
@@ -851,19 +851,19 @@ $this->start_controls_section(
 	$this->start_controls_section(
 		'skill_text',
 		array(
-			'label' => esc_html__( 'Skill Text', 'wpmozo-addons-lite-for-elementor' ),
+			'label' => esc_html__( 'Skill Text', 'wpmozo-addons-for-elementor' ),
 			'tab'   => Controls_Manager::TAB_STYLE,
 		)
 	);
 	$this->add_control(
 		'skill_text_color',
 		array(
-			'label'       => esc_html__( 'Skill Text Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Skill Text Color', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#333',
 			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_content_wrapper .wpmozo_skill_bar_wrapper .wpmozo_skill_name' => 'color:{{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_content_wrapper .wpmozo_skill_bar_wrapper .wpmozo_skill_name' => 'color:{{VALUE}};',
 
 			),
 		)
@@ -872,7 +872,7 @@ $this->start_controls_section(
 		Group_Control_Typography::get_type(),
 		array(
 			'name'     => 'skill_text_typography',
-			'selector' => '{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_content_wrapper .wpmozo_skill_bar_wrapper .wpmozo_skill_name',
+			'selector' => '{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_content_wrapper .wpmozo_skill_bar_wrapper .wpmozo_skill_name',
 		)
 	);
 
@@ -880,30 +880,30 @@ $this->start_controls_section(
 		Group_Control_Text_Shadow::get_type(),
 		array(
 			'name'     => 'skill_text_shadow',
-			'selector' => '{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_content_wrapper .wpmozo_skill_bar_wrapper .wpmozo_skill_name',
+			'selector' => '{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_content_wrapper .wpmozo_skill_bar_wrapper .wpmozo_skill_name',
 		)
 	);
 	$this->add_control(
 		'skill_text_alignment',
 		array(
-			'label'     => esc_html__( 'Skill Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Skill Alignment', 'wpmozo-addons-for-elementor' ),
 			'type'      => Controls_Manager::CHOOSE,
 			'options'   => array(
 				'left'   => array(
-					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Left', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-left',
 				),
 				'center' => array(
-					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-center',
 				),
 				'right'  => array(
-					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Right', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-right',
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_content_wrapper .wpmozo_skill_bar_wrapper .wpmozo_skill_name' => 'text-align: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_content_wrapper .wpmozo_skill_bar_wrapper .wpmozo_skill_name' => 'text-align: {{VALUE}};',
 			),
 		)
 	);
@@ -913,14 +913,14 @@ $this->start_controls_section(
 	$this->start_controls_section(
 		'skills',
 		array(
-			'label' => esc_html__( 'Skills', 'wpmozo-addons-lite-for-elementor' ),
+			'label' => esc_html__( 'Skills', 'wpmozo-addons-for-elementor' ),
 			'tab'   => Controls_Manager::TAB_STYLE,
 		)
 	);
 	$this->add_responsive_control(
 		'bar_height',
 		array(
-			'label'          => esc_html__( 'Bar Height', 'wpmozo-addons-lite-for-elementor' ),
+			'label'          => esc_html__( 'Bar Height', 'wpmozo-addons-for-elementor' ),
 			'type'           => Controls_Manager::SLIDER,
 			'range'          => array(
 				'px' => array(
@@ -952,7 +952,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'empty_bar_color',
 		array(
-			'label'       => esc_html__( 'Empty Bar Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Empty Bar Color', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#AFAFAF',
@@ -964,7 +964,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'filled_bar_color',
 		array(
-			'label'       => esc_html__( 'Filled Bar Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Filled Bar Color', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#007AFE',
@@ -979,14 +979,14 @@ $this->start_controls_section(
 	$this->start_controls_section(
 		'social_icons_style',
 		array(
-			'label' => esc_html__( 'Social Icons', 'wpmozo-addons-lite-for-elementor' ),
+			'label' => esc_html__( 'Social Icons', 'wpmozo-addons-for-elementor' ),
 			'tab'   => Controls_Manager::TAB_STYLE,
 		)
 	);
 	$this->add_responsive_control(
 		'icon_size',
 		array(
-			'label'          => esc_html__( 'Icon Size', 'wpmozo-addons-lite-for-elementor' ),
+			'label'          => esc_html__( 'Icon Size', 'wpmozo-addons-for-elementor' ),
 			'type'           => Controls_Manager::SLIDER,
 			'range'          => array(
 				'px' => array(
@@ -1010,20 +1010,20 @@ $this->start_controls_section(
 			),
 			'size_units'     => array( 'px' ),
 			'selectors'      => array(
-				'{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_social_wrapper i.wpmozo_ale_team_member_social_icon'   => 'font-size: {{SIZE}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_social_wrapper i.wpmozo_ae_team_member_social_icon'   => 'font-size: {{SIZE}}{{UNIT}};',
 			),
 		)
 	);
 	$this->add_control(
 		'icon_color',
 		array(
-			'label'       => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Icon Color', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '',
 			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_social_wrapper i.wpmozo_ale_team_member_social_icon'  => 'color:{{VALUE}}!important;',
-				'{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_social_wrapper i.wpmozo_ale_team_member_social_icon.fa-instagram.with_bg'  => 'background: none;-webkit-background-clip: unset;background-clip: unset;-webkit-text-fill-color: unset;',
+				'{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_social_wrapper i.wpmozo_ae_team_member_social_icon'  => 'color:{{VALUE}}!important;',
+				'{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_social_wrapper i.wpmozo_ae_team_member_social_icon.fa-instagram.with_bg'  => 'background: none;-webkit-background-clip: unset;background-clip: unset;-webkit-text-fill-color: unset;',
 			),
 			'render_type' => 'template',
 		)
@@ -1031,12 +1031,12 @@ $this->start_controls_section(
 	$this->add_control(
 		'icon_background_color',
 		array(
-			'label'       => esc_html__( 'Icon Background Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Icon Background Color', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_social_wrapper i.wpmozo_ale_team_member_social_icon'  => 'background-color:{{VALUE}}!important;',
-				'{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_social_wrapper i.wpmozo_ale_team_member_social_icon.fa-instagram.with_bg'  => 'background: none;-webkit-background-clip: unset;background-clip: unset;-webkit-text-fill-color: unset;',
+				'{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_social_wrapper i.wpmozo_ae_team_member_social_icon'  => 'background-color:{{VALUE}}!important;',
+				'{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_social_wrapper i.wpmozo_ae_team_member_social_icon.fa-instagram.with_bg'  => 'background: none;-webkit-background-clip: unset;background-clip: unset;-webkit-text-fill-color: unset;',
 			),
 			'render_type' => 'template',
 		)
@@ -1044,24 +1044,24 @@ $this->start_controls_section(
 	$this->add_control(
 		'social_icon_alignment',
 		array(
-			'label'     => esc_html__( 'Social Icon Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Social Icon Alignment', 'wpmozo-addons-for-elementor' ),
 			'type'      => Controls_Manager::CHOOSE,
 			'options'   => array(
 				'left'   => array(
-					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Left', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-left',
 				),
 				'center' => array(
-					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-center',
 				),
 				'right'  => array(
-					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+					'title' => esc_html__( 'Right', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-text-align-right',
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_ale_team_member_card .wpmozo_team_social_wrapper' => 'justify-content: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ae_team_member_card .wpmozo_team_social_wrapper' => 'justify-content: {{VALUE}};',
 			),
 		)
 	);
@@ -1070,7 +1070,7 @@ $this->start_controls_section(
 	$this->start_controls_section(
 		'slider_styling',
 		array(
-			'label'      => esc_html__( 'Slider', 'wpmozo-addons-lite-for-elementor' ),
+			'label'      => esc_html__( 'Slider', 'wpmozo-addons-for-elementor' ),
 			'tab'        => Controls_Manager::TAB_STYLE,
 			'conditions' => array(
 				'relation' => 'or',
@@ -1092,7 +1092,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'arrows_custom_padding',
 		array(
-			'label'       => esc_html__( 'Arrows Padding', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Arrows Padding', 'wpmozo-addons-for-elementor' ),
 			'type'        => Controls_Manager::DIMENSIONS,
 			'label_block' => true,
 			'size_units'  => array( 'px', 'em', '%' ),
@@ -1112,7 +1112,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'arrows_font_size',
 		array(
-			'label'          => esc_html__( 'Arrows Font Size', 'wpmozo-addons-lite-for-elementor' ),
+			'label'          => esc_html__( 'Arrows Font Size', 'wpmozo-addons-for-elementor' ),
 			'type'           => Controls_Manager::SLIDER,
 			'range'          => array(
 				'px' => array(
@@ -1154,14 +1154,14 @@ $this->start_controls_section(
 		$this->start_controls_tab(
 			'arrows_background_normal_state_tab',
 			array(
-				'label'     => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
+				'label'     => esc_html__( 'Normal', 'wpmozo-addons-for-elementor' ),
 				'condition' => array( 'show_arrow' => 'yes' ),
 			)
 		);
 			$this->add_control(
 				'arrows_color',
 				array(
-					'label'       => esc_html__( 'Arrows Color', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Arrows Color', 'wpmozo-addons-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '#007AFE',
@@ -1175,7 +1175,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'arrows_background_color',
 				array(
-					'label'       => esc_html__( 'Arrows Background', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Arrows Background', 'wpmozo-addons-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'condition'   => array( 'show_arrow' => 'yes' ),
@@ -1189,7 +1189,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'arrows_background_border_size',
 				array(
-					'label'      => esc_html__( 'Arrows Background Border', 'wpmozo-addons-lite-for-elementor' ),
+					'label'      => esc_html__( 'Arrows Background Border', 'wpmozo-addons-for-elementor' ),
 					'type'       => Controls_Manager::SLIDER,
 					'range'      => array(
 						'px' => array(
@@ -1213,7 +1213,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'arrows_background_border_color',
 				array(
-					'label'       => esc_html__( 'Arrows Background Border Color', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Arrows Background Border Color', 'wpmozo-addons-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
@@ -1231,14 +1231,14 @@ $this->start_controls_section(
 			$this->start_controls_tab(
 				'arrows_background_border_hover_state_tab',
 				array(
-					'label'     => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
+					'label'     => esc_html__( 'Hover', 'wpmozo-addons-for-elementor' ),
 					'condition' => array( 'show_arrow' => 'yes' ),
 				)
 			);
 			$this->add_control(
 				'arrows_hover_color',
 				array(
-					'label'       => esc_html__( 'Arrows Color', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Arrows Color', 'wpmozo-addons-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
@@ -1252,7 +1252,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'arrows_background_hover_color',
 				array(
-					'label'       => esc_html__( 'Arrows Background', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Arrows Background', 'wpmozo-addons-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
@@ -1266,7 +1266,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'arrows_background_border_hover_size',
 				array(
-					'label'      => esc_html__( 'Arrows Background Border', 'wpmozo-addons-lite-for-elementor' ),
+					'label'      => esc_html__( 'Arrows Background Border', 'wpmozo-addons-for-elementor' ),
 					'type'       => Controls_Manager::SLIDER,
 					'range'      => array(
 						'px' => array(
@@ -1290,7 +1290,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'arrows_background_border_hover_color',
 				array(
-					'label'       => esc_html__( 'Arrows Background Border Color', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Arrows Background Border Color', 'wpmozo-addons-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
@@ -1305,7 +1305,7 @@ $this->start_controls_section(
 				'arrows_transition_duration',
 				array(
 					'type'      => Controls_Manager::SLIDER,
-					'label'     => esc_html__( 'Transition Duration (ms) ', 'wpmozo-addons-lite-for-elementor' ),
+					'label'     => esc_html__( 'Transition Duration (ms) ', 'wpmozo-addons-for-elementor' ),
 					'range'     => array(
 						'ms' => array(
 							'min'  => 0,
@@ -1330,7 +1330,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'control_dot_active_color',
 				array(
-					'label'       => esc_html__( 'Active Dot Pagination Color', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Active Dot Pagination Color', 'wpmozo-addons-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '#000',
@@ -1341,7 +1341,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'control_dot_inactive_color',
 				array(
-					'label'       => esc_html__( 'Inactive Dot Pagination Color', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Inactive Dot Pagination Color', 'wpmozo-addons-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '#cccccc',
@@ -1357,7 +1357,7 @@ $this->start_controls_section(
 			$this->start_controls_section(
 				'team_styling',
 				array(
-					'label' => esc_html__( 'Team', 'wpmozo-addons-lite-for-elementor' ),
+					'label' => esc_html__( 'Team', 'wpmozo-addons-for-elementor' ),
 					'tab'   => Controls_Manager::TAB_STYLE,
 
 				)
@@ -1417,14 +1417,14 @@ $this->start_controls_section(
 			$this->add_control(
 				'team_align',
 				array(
-					'label'       => __( 'Team Alignment', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => __( 'Team Alignment', 'wpmozo-addons-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::SELECT,
 					'separator'   => 'after',
 					'options'     => array(
-						'flex-start' => esc_html__( 'Top', 'wpmozo-addons-lite-for-elementor' ),
-						'center'     => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
-						'flex-end'   => esc_html__( 'Bottom', 'wpmozo-addons-lite-for-elementor' ),
+						'flex-start' => esc_html__( 'Top', 'wpmozo-addons-for-elementor' ),
+						'center'     => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
+						'flex-end'   => esc_html__( 'Bottom', 'wpmozo-addons-for-elementor' ),
 					),
 					'default'     => 'center',
 					'selectors'   => array(
@@ -1436,7 +1436,7 @@ $this->start_controls_section(
 
 
 			/** Custom functions **/
-			function wpmozo_ale_team_slider_for_elementor_get_team_member_categories() {
+			function wpmozo_ae_team_slider_for_elementor_get_team_member_categories() {
 				$terms           = get_terms(
 					array(
 						'taxonomy'   => 'wpmozo-team-member-category',

@@ -1,120 +1,133 @@
-=== WPMozo Addons for Elementor Lite ===
+=== WPMozo Addons Lite For Elementor ===
 Contributors: elicus
-Tags: elementor, addons, page builder, elements, widgets, design, templates, customizations, lite, extension, website builder
-Requires at least: 6.3
-Tested up to: 6.4.2
+Tags: elementor, page builder, addons, widgets, elementor extension, elementor addon, before after slider, content toggle, fancy heading, fancy text, flip box, interactive image card, image card, masonry gallery, pricing table, tilt image, logo slider, bar counter, floating image, image hotspot, image magnifier, team slider
+Requires at least: 6.0
+Tested up to: 6.4.3
 Stable tag: 1.0.0
-Requires PHP: 7.4 or later
+Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-WPMozo Addons for Elementor Lite enhance your Elementor page builder experience with a collection of additional widgets.
+WPMozo Addons Lite For Elementor is a plugin that adds new design widgets to Elementor.
 
 == Description ==
+WPMozo Addons Lite For Elementor is a feature-packed plugin designed to complement your Elementor page building experience.
 
-WPMozo Addons for Elementor Lite
-
-Enhance your experience in building Elementor pages with the WPMozo Addons for Elementor Lite. This lightweight yet powerful extension enhances the capabilities of the Elementor page builder, offering additional widgets to enrich your website design.
-
-
-Key Features:
-
-Expanded Widget Collection: Unlock a diverse range of new widgets and elements to use within the Elementor editor, providing you with more design possibilities.
-
-Lite and Fast: Enjoy the benefits of extended functionality without compromising on speed. 
-
-Customization friendly: With customization options, you have more control over the appearance and behavior of each element.
-
-Elementor Compatibility: Seamlessly integrate with the Elementor page builder, giving you a seamless and intuitive experience within the familiar Elementor environment.
-
-Responsive Design: Ensure that your website looks stunning on all devices with our responsive design elements. Create layouts that adapt effortlessly to various screen sizes.
+### [View Demo](https://wpmozoaddons.com "View Demo")
+## Key Features of the Plugin
+- **16 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
+- **Enhanced Design Options**: Customize your website design with intuitive controls and a wide array of styling options.
+- **Interactive Elements**: Engage your audience with interactive elements like Interactive Image Card, Flip Box, and Fancy Text.
+- **Responsive and Lightweight**: Ensure a seamless user experience across all devices without compromising on performance.
 
 
-How to Get Started:
+## Widgets Included in WPMozo Addons Lite For Elementor
+- ### [Before After Slider](https://wpmozoaddons.com/before-after-slider/ "Before After Slider")
+Display a before and after version of any element in form of images using the before after image slider for Elementor.
 
-Install and Activate: Once the plugin is installed, activate it through the 'Plugins' menu in WordPress.
+- ### [Content Toggle](https://wpmozoaddons.com/content-toggle/ "Content Toggle")
+This handy tool allows you to easily toggle between different content on your screen with a simple click. You can add text, templates, and pages inside the toggle section to show or hide them as needed.
 
-Explore New Elements: Open the Elementor editor and discover a new set of widgets and elements available for use in your designs.
+- ### [Fancy Heading](https://wpmozoaddons.com/fancy-heading/ "Fancy Heading")
+To make your headings stand out, try the WPMozo Fancy Heading widget for Elementor. Customize the pre-heading, heading, and post-heading sections to style your headings in three distinct parts, whether in a single line or stacked format.
 
-Customize Your Design: Dive into the extended customization options to personalize each element according to your website's unique style.
+- ### [Fancy Text](https://wpmozoaddons.com/fancy-text/ "Fancy Text")
+The Fancy Text widget for Elementor adds creativity and engagement to your text. Customize the text color, incorporate images, and utilize advanced options to style your text exactly how you like it.
 
-Enjoy a Faster Design Process: Enhance your design workflow with additional tools, making your Elementor experience more efficient and enjoyable.
+- ### [Flip Box](https://wpmozoaddons.com/flip-box/ "Flip Box")
+Create captivating flip boxes using this widget to showcase your content in an interactive and engaging manner.
 
+- ### [Interactive Image Card](https://wpmozoaddons.com/interactive-image-card/ "Interactive Image Card")
+The Interactive Image Card widget offers a seamless way to display content on images, utilizing captivating animation effects without the need for complex CSS.
 
-Compatibility First:
+- ### [Image Card](https://wpmozoaddons.com/image-card/ "Image Card")
+Make your images more engaging by combining content, icons, and "read more" links using the Image Card widget from WPMozo Addons Lite for Elementor.
 
-Designed with compatibility in mind, WPMozo Addons for Elementor Lite ensures a harmonious coexistence with various themes and plugins. If you encounter any compatibility issues, our dedicated support team is ready to assist you.
+- ### [Masonry Gallery](https://wpmozoaddons.com/masonry-gallery/ "Masonry Gallery")
+Craft beautiful masonry galleries with the WPMozo Addons Lite for Elementor, offering intuitive features without the need for CSS. Customize number of columns, lightbox functionality, optimized image gaps, and enhanced visibility for an appealing showcase.
 
+- ### [Pricing Table](https://wpmozoaddons.com/pricing-table/ "Pricing Table")
+Create pricing tables in Elementor using the pricing table widget.
 
-Stay Updated:
+- ### [Tilt Image](https://wpmozoaddons.com/tilt-image/ "Tilt Image")
+Add the Tilt Image widget from WPMozo Addons Lite for Elementor to your page. It allows images to tilt in multiple directions upon user hover, and customize with buttons, content, overlay effects, 3D touches, and more to creatively enhance their appearance.
 
-Keep an eye out for future updates as we continue to enhance the plugin and potentially introduce new features. Your feedback is valuable to us, so feel free to share your suggestions on the support forum.
+- ### Logo Slider
+Showcase client logos or partner brands, perfect for displaying affiliations or endorsements on your Elementor-powered WordPress website.
 
+- ### Bar Counter
+Highlight progress or achievements with bar counters, allowing you to showcase statistics or milestones effectively on your Elementor-built WordPress site.
 
-If you have suggestions for a new add-on, feel free to contact us using support forum.
+- ### Floating Image
+Create captivating visual effects with floating images.
 
-Want the latest updates on WPMozo Addons for Elementor Lite? Connect with us on Facebook!
-https://www.facebook.com/hellowpmozo
+- ### Image Hotspot
+Provide detailed information or annotations on specific areas of an image, enhancing user understanding and engagement on your WordPress site crafted with Elementor.
 
-Stay in the loop! Follow us on X!
-http://x.com/hellowpmozo
+- ### Image Magnifier
+Enable users to zoom in on images for a closer look, enhancing the viewing experience for visuals on your Elementor-powered WordPress website.
 
+- ### Team Slider
+Showcase team members or staff in. Perfect for introducing your team or personnel on your website.
 
-== Frequently Asked Questions ==
+## Premium Version Available
+Upgrade to the premium version to WPMozo Addons for Elementor to unlock additional features, dedicated support, and exclusive widgets. [Explore Premium Version](https://wpmozo.com/product/wpmozo-addons-for-elementor/)
 
-= Can I use WPMozo Addons for Elementor Lite with any theme? =
-Yes, our Lite version is designed to be compatible with a wide range of WordPress themes that uses Elementor page builder. 
+== Documentation and Support ==
+- For detailed usage instructions, check out the [plugin documentation](https://wpmozo.com/product/wpmozo-addons-for-elementor/).
+- Need help or have questions? Visit the [plugin support forum](https://wordpress.org/support/plugin/wpmozo-addons-lite-for-elementor/).
+- We welcome your feedback and feature requests. Feel free to reach out to us through the support forum.
 
-= Are there any performance impacts with the Lite version? =
-No, the Lite version is optimized for performance, ensuring a fast and responsive user experience.
-
-= Is WPMozo Addons for Elementor Lite beginner-friendly? =
-Absolutely! The plugin is user-friendly and integrates seamlessly into the Elementor page builder, making it easy for beginners to explore and use the additional elements.
-
-= How often will the Lite version be updated? =
-We aim to provide regular updates to improve functionality and introduce new features. Stay tuned for the latest enhancements.
-
-
-== Installation ==
-
-Minimum Requirements:
-
-PHP 7.4 or greater
-MySQL 5.7 or greater, OR MariaDB version 10.4 or greater
-For detailed server requirements, refer to the official WordPress requirements documentation.
-
-
-Automatic Installation:
-
-Log in to your WordPress dashboard.
-
-Navigate to the 'Plugins' menu and click “Add New.”
-
-In the search field, type “WPMozo Addons for Elementor Lite.”
-
-Locate the plugin, view details, and click “Install Now.” WordPress will handle the installation process.
-
-
-Manual Installation:
-
-Download the WPMozo Addons for Elementor Lite plugin.
-Upload it to your server using your preferred FTP application following the WordPress codex manual installation instructions.
-
-
-Updating:
-
-While automatic updates are reliable, it's advisable to back up your website before applying any updates. If you encounter display issues, consider flushing permalinks by going to WordPress > Settings > Permalinks and clicking “Save.”
-
+### Like our Plugin?
+Do you like our plugin?
+- Connect with us on [Facebook](https://www.facebook.com/helloelicus "Facebook")!
+- Follow us on [Twitter](https://twitter.com/helloelicus "Twitter")!
+- Join our [YouTube](https://www.youtube.com/channel/UCOVS7z4-XeyiUcVDhYkIMNw "YouTube") channel
+- Rate us on [WordPress](https://wordpress.org/support/plugin/wpmozo-product-carousel-for-woocommerce/reviews/?rate=5#new-post "Rate our plugin").
 
 == Screenshots ==
-1. Additional widgets and elements available in the Elementor editor with WPMozo Addons for Elementor Lite.
-2. Customization options for the newly added elements, providing more control over design aesthetics.
-3. Responsive design of elements, ensuring a consistent and appealing appearance on various devices.
-4. Seamless integration with the Elementor page builder, enhancing your overall design experience.
+1. Main image of the plugin
 
+== Frequently Asked Questions ==
+= How do I install WPMozo Addons Lite For Elementor? =
+To install the plugin, follow these steps:
+1. Log in to your WordPress Dashboard.
+2. Navigate to the Plugins menu and click "Add New."
+3. Search for "WPMozo Addons Lite For Elementor."
+4. Click "Install Now" and then activate the plugin.
+
+= Is there a premium version available? =
+Yes, there is a premium version available with additional features and support. You can explore the [WPMozo Addons for Elementor](https://wpmozo.com/product/wpmozo-addons-for-elementor/ "WPMozo Addons for Elementor").
+
+= Are the widgets responsive? =
+All widgets included in WPMozo Addons Lite For Elementor are designed to be fully responsive, ensuring seamless display across various devices.
+
+= Can I customize the widgets? =
+Yes, each widget comes with a wide range of customization options allowing you to tailor them to match your website's design seamlessly.
+
+= Where can I get support or report issues? =
+If you encounter any issues or need assistance, please visit our [support forum](https://wordpress.org/support/plugin/wpmozo-addons-lite-for-elementor/). Our team will be happy to help you.
+
+== Installation ==
+### Minimum Requirements
+PHP 7.0 or greater is required (PHP 7.3 or greater is recommended)
+MySQL 5.6 or greater, OR MariaDB version 10.1 or greater, is required
+For a detailed list of server requirements, please refer to the official WordPress requirements documentation.
+
+### Automatic Installation
+1. Log in to your WordPress Dashboard.
+2. Go to Plugins > Add New.
+3. Search for "WPMozo Addons Lite For Elementor."
+4. Click "Install Now" and then activate the plugin.
+
+= Manual Installation =
+1. Download the plugin zip file.
+2. Extract the zip file on your computer.
+3. Upload the extracted folder to the `/wp-content/plugins/` directory.
+4. Activate the plugin through the Plugins menu in WordPress.
+
+== Upgrade Notice ==
 
 == Changelog ==
+= 1.0.0 = This is the initial release  of the plugin.
 
-= 1.0.0 =
-
-Initial release of WPMozo Addons for Elementor Lite.

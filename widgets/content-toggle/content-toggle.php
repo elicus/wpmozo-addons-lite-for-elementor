@@ -15,7 +15,7 @@ use \Elementor\Widget_Base;
 use \Elementor\Plugin;
 use \Elementor\Icons_Manager;
 
-class WPMOZO_ALE_Content_Toggle extends Widget_Base {
+class WPMOZO_AE_Content_Toggle extends Widget_Base {
 
 
 	protected static $toggle_one_page_ids = array();
@@ -32,7 +32,7 @@ class WPMOZO_ALE_Content_Toggle extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpmozo_ale_content_toggle_for_elementor';
+		return 'wpmozo_ae_content_toggle_for_elementor';
 	}
 
 	/**
@@ -46,7 +46,7 @@ class WPMOZO_ALE_Content_Toggle extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Content Toggle', 'wpmozo-addons-lite-for-elementor' );
+		return esc_html__( 'Content Toggle', 'wpmozo-addons-for-elementor' );
 	}
 
 	/**
@@ -60,7 +60,7 @@ class WPMOZO_ALE_Content_Toggle extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-dual-button wpmozo-ale-brandicon';
+		return 'eicon-dual-button wpmozo-ae-brandicon';
 	}
 
 	/**
@@ -146,7 +146,7 @@ class WPMOZO_ALE_Content_Toggle extends Widget_Base {
 		$toggle_two_page_id      = isset( $settings['wpmozo_toggle_two_select_page'] ) ? $settings['wpmozo_toggle_two_select_page'] : 0;
 		$toggle_switch_alignment = isset( $settings['wpmozo_toggle_switch_alignment'] ) ? $settings['wpmozo_toggle_switch_alignment'] : 'left';
 		$toggle_switch_layout    = isset( $settings['wpmozo_toggle_switch_layout'] ) ? $settings['wpmozo_toggle_switch_layout'] : 'wpmozo_toggle_layout_one';
-		$label_id                = 'wpmozo_ale_toggle_field_' . wp_rand();
+		$label_id                = 'wpmozo_ae_toggle_field_' . wp_rand();
 
 		$toggle_one_content = $toggle_one_text_content;
 		$toggle_two_content = $toggle_two_text_content;
@@ -173,7 +173,7 @@ class WPMOZO_ALE_Content_Toggle extends Widget_Base {
 						</div>
 						<div class="wpmozo_toggle_button">
 							<label class="wpmozo_toggle_button_inner">
-								<input class="wpmozo_ale_toggle_field" type="checkbox" value="">
+								<input class="wpmozo_ae_toggle_field" type="checkbox" value="">
 								<div class="wpmozo_switch wpmozo_round"></div>
 							</label>
 						</div>
@@ -195,7 +195,7 @@ class WPMOZO_ALE_Content_Toggle extends Widget_Base {
 					} else {
 						?>
 							<div class="wpmozo_toggle_button_wrapper <?php echo esc_attr( $toggle_switch_layout ); ?> wpmozo_toggle_<?php echo esc_attr( $toggle_switch_alignment ); ?>">
-								<input class="wpmozo_ale_toggle_field" id="<?php echo esc_attr( $label_id ); ?>" type="checkbox" value="" />
+								<input class="wpmozo_ae_toggle_field" id="<?php echo esc_attr( $label_id ); ?>" type="checkbox" value="" />
 								<label class="wpmozo_switch" for="<?php echo esc_attr( $label_id ); ?>">
 									<div class="wpmozo_switch_trigger wpmozo_switch_one wpmozo_active" data-value="<?php echo esc_attr( $toggle_one_title ); ?>">
 										<?php if ( isset( $settings['toggle_one_selected_icon'] ) && 'left' === esc_attr( $settings['toggle_one_icon_align'] ) ) : ?>

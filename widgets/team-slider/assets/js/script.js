@@ -6,9 +6,9 @@
             },
             change: function () {
                 let $winWidth = $(window).width();
-                if ($("body").find(".elementor-widget-wpmozo_ale_team_slider").length > 0) {
+                if ($("body").find(".elementor-widget-wpmozo_ae_team_slider").length > 0) {
                     $("body")
-                        .find(".elementor-widget-wpmozo_ale_team_slider")
+                        .find(".elementor-widget-wpmozo_ae_team_slider")
                         .each(function () {
                             let $arrows = $(this).find(".wpmozo_swiper_navigation").data();
                             if ($arrows) {
@@ -84,8 +84,8 @@
                     $element.removeClass($arrowClasses.join(" "));
                 }
 
-                let a = $("body").find(".elementor-widget-wpmozo_ale_team_slider");
-                if(true === a.hasClass("wpmozo_ale_equal_height")){
+                let a = $("body").find(".elementor-widget-wpmozo_ae_team_slider");
+                if(true === a.hasClass("wpmozo_ae_equal_height")){
                     let b = [];
                     let c = 0;
                     let d = a.find(".swiper-wrapper");
@@ -99,6 +99,6 @@
                 }
             },
         });
-        elementorFrontend.elementsHandler.attachHandler("wpmozo_ale_team_slider", WPMOZOTeamSlider);
+        elementorFrontend.elementsHandler.attachHandler("wpmozo_ae_team_slider", WPMOZOTeamSlider);
     });
 })(jQuery);

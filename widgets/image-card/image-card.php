@@ -16,7 +16,7 @@ use \Elementor\Group_Control_Image_Size;
 use \Elementor\Icons_Manager;
 use \Elementor\Control_Media;
 
-class WPMOZO_ALE_Image_Card extends Widget_Base {
+class WPMOZO_AE_Image_Card extends Widget_Base {
 
 	/**
 	 * Get widget name.
@@ -29,7 +29,7 @@ class WPMOZO_ALE_Image_Card extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpmozo_ale_image_card';
+		return 'wpmozo_ae_image_card';
 	}
 
 	/**
@@ -43,7 +43,7 @@ class WPMOZO_ALE_Image_Card extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Image Card', 'wpmozo-addons-lite-for-elementor' );
+		return esc_html__( 'Image Card', 'wpmozo-addons-for-elementor' );
 	}
 
 	/**
@@ -57,7 +57,7 @@ class WPMOZO_ALE_Image_Card extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-info-box wpmozo-ale-brandicon';
+		return 'eicon-info-box wpmozo-ae-brandicon';
 	}
 
 	/**
@@ -125,21 +125,21 @@ class WPMOZO_ALE_Image_Card extends Widget_Base {
 		$button_url             = isset( $settings['button_url'] ) ? esc_attr( $settings['button_url']['url'] ) : '#';
 
 		$this->add_inline_editing_attributes( 'title_text', 'none' );
-		$this->add_render_attribute( 'title_text', 'class', 'wpmozo_ale_image_card_title' );
+		$this->add_render_attribute( 'title_text', 'class', 'wpmozo_ae_image_card_title' );
 		$this->add_inline_editing_attributes( 'content_text', 'none' );
-		$this->add_render_attribute( 'content_text', 'class', 'wpmozo_ale_image_card_content' );
-		$this->add_render_attribute( 'icon_wrapper', 'class', 'wpmozo_ale_image_card_icon_wrapper' );
-		$this->add_render_attribute( 'icon_wrapper_shape', 'class', array( 'wpmozo_ale_image_card_icon_wrapper', 'wpmozo_ale_icon_shape_' . $icon_shape . '_container' ) );
+		$this->add_render_attribute( 'content_text', 'class', 'wpmozo_ae_image_card_content' );
+		$this->add_render_attribute( 'icon_wrapper', 'class', 'wpmozo_ae_image_card_icon_wrapper' );
+		$this->add_render_attribute( 'icon_wrapper_shape', 'class', array( 'wpmozo_ae_image_card_icon_wrapper', 'wpmozo_ae_icon_shape_' . $icon_shape . '_container' ) );
 		$this->add_render_attribute(
 			'button_text',
 			array(
-				'class' => 'wpmozo_ale_button',
+				'class' => 'wpmozo_ae_button',
 				'style' => 'text-decoration:none;',
 			),
 		);
 		$this->add_inline_editing_attributes( 'button_text', 'none' );
-		$this->add_render_attribute( 'wpmozo_ale_button_wrapper', 'class', 'wpmozo_ale_image_card_button_wrapper' );
-		$this->add_render_attribute( 'image_card_button_wrapper_inner', 'class', 'wpmozo_ale_image_card_button_wrapper_inner' );
+		$this->add_render_attribute( 'wpmozo_ae_button_wrapper', 'class', 'wpmozo_ae_image_card_button_wrapper' );
+		$this->add_render_attribute( 'image_card_button_wrapper_inner', 'class', 'wpmozo_ae_image_card_button_wrapper_inner' );
 
 		if ( ! empty( $button_hover_animation ) ) {
 			$this->add_render_attribute( 'image_card_button_wrapper_inner', 'class', 'elementor-animation-' . $button_hover_animation );
@@ -159,15 +159,15 @@ class WPMOZO_ALE_Image_Card extends Widget_Base {
 				$settings['button_icon'],
 				array(
 					'aria-hidden' => 'true',
-					'class'       => 'wpmozo_ale_button_icon',
+					'class'       => 'wpmozo_ae_button_icon',
 				)
 			);
 		}
 
 		// Main output.
 		?>
-			<div class="wpmozo_ale_image_card_wrapper">
-				<div class="wpmozo_ale_image_card_wrapper_inner">
+			<div class="wpmozo_ae_image_card_wrapper">
+				<div class="wpmozo_ae_image_card_wrapper_inner">
 					<?php
 						// Image card image html.
 					if ( ! empty( $settings['image_card_image']['url'] ) ) {
@@ -184,7 +184,7 @@ class WPMOZO_ALE_Image_Card extends Widget_Base {
 							'image',
 							array(
 								'src'   => $img_url,
-								'class' => array( 'wpmozo_ale_image_card_image', $image_sizing ),
+								'class' => array( 'wpmozo_ae_image_card_image', $image_sizing ),
 								'title' => Control_Media::get_image_title( $image ),
 								'alt'   => Control_Media::get_image_alt( $image ),
 							)
@@ -195,7 +195,7 @@ class WPMOZO_ALE_Image_Card extends Widget_Base {
 					}
 					?>
 				</div>
-				<div class="wpmozo_ale_image_card_content_wrapper">
+				<div class="wpmozo_ae_image_card_content_wrapper">
 					<?php
 						// Image card icon html.
 					if ( ! empty( $settings['select_icon']['value'] ) && 'yes' !== $settings['icon_style_switcher'] ) {
@@ -206,7 +206,7 @@ class WPMOZO_ALE_Image_Card extends Widget_Base {
 									$settings['select_icon'],
 									array(
 										'aria-hidden' => 'true',
-										'class'       => 'wpmozo_ale_image_card_icon',
+										'class'       => 'wpmozo_ae_image_card_icon',
 									),
 									'span'
 								);
@@ -222,7 +222,7 @@ class WPMOZO_ALE_Image_Card extends Widget_Base {
 											$settings['select_icon'],
 											array(
 												'aria-hidden' => 'true',
-												'class' => array( 'wpmozo_ale_image_card_icon', 'wpmozo_ale_icon_shape_' . $icon_shape ),
+												'class' => array( 'wpmozo_ae_image_card_icon', 'wpmozo_ae_icon_shape_' . $icon_shape ),
 											),
 											'span'
 										);
@@ -237,7 +237,7 @@ class WPMOZO_ALE_Image_Card extends Widget_Base {
 											$settings['select_icon'],
 											array(
 												'aria-hidden' => 'true',
-												'class' => array( 'wpmozo_ale_image_card_icon', 'wpmozo_ale_icon_shape_' . $icon_shape ),
+												'class' => array( 'wpmozo_ae_image_card_icon', 'wpmozo_ae_icon_shape_' . $icon_shape ),
 											),
 											'span'
 										);
@@ -247,7 +247,7 @@ class WPMOZO_ALE_Image_Card extends Widget_Base {
 						}
 					}
 					?>
-					<div class="wpmozo_ale_image_card_inner_content_wrapper">
+					<div class="wpmozo_ae_image_card_inner_content_wrapper">
 						<?php
 						if ( ! empty( $title_text ) ) {
 							?>
@@ -270,7 +270,7 @@ class WPMOZO_ALE_Image_Card extends Widget_Base {
 						<?php
 						if ( $button_text && 'after' === $settings['button_icon_position'] ) {
 							?>
-								<div <?php $this->print_render_attribute_string( 'wpmozo_ale_button_wrapper' ); ?> >
+								<div <?php $this->print_render_attribute_string( 'wpmozo_ae_button_wrapper' ); ?> >
 									<div <?php $this->print_render_attribute_string( 'image_card_button_wrapper_inner' ); ?> >
 										<a <?php $this->print_render_attribute_string( 'button_text' ); ?> >
 										<?php echo esc_html( $button_text ); ?>
@@ -282,7 +282,7 @@ class WPMOZO_ALE_Image_Card extends Widget_Base {
 											$settings['button_icon'],
 											array(
 												'aria-hidden' => 'true',
-												'class' => 'wpmozo_ale_button_icon',
+												'class' => 'wpmozo_ae_button_icon',
 											)
 										);
 									} else {
@@ -295,7 +295,7 @@ class WPMOZO_ALE_Image_Card extends Widget_Base {
 						} elseif ( $button_text && 'before' === $settings['button_icon_position'] ) {
 							?>
 
-									<div <?php $this->print_render_attribute_string( 'wpmozo_ale_button_wrapper' ); ?> >
+									<div <?php $this->print_render_attribute_string( 'wpmozo_ae_button_wrapper' ); ?> >
 										<div <?php $this->print_render_attribute_string( 'image_card_button_wrapper_inner' ); ?> >
 										<?php
 										if ( '' !== $settings['button_icon'] ) {
@@ -303,7 +303,7 @@ class WPMOZO_ALE_Image_Card extends Widget_Base {
 												$settings['button_icon'],
 												array(
 													'aria-hidden' => 'true',
-													'class'       => 'wpmozo_ale_button_icon',
+													'class'       => 'wpmozo_ae_button_icon',
 												)
 											);
 											echo esc_html( '&nbsp;' );
@@ -319,7 +319,7 @@ class WPMOZO_ALE_Image_Card extends Widget_Base {
 								<?php
 						} elseif ( $button_text ) {
 							?>
-								<div <?php $this->print_render_attribute_string( 'wpmozo_ale_button_wrapper' ); ?> >
+								<div <?php $this->print_render_attribute_string( 'wpmozo_ae_button_wrapper' ); ?> >
 									<div <?php $this->print_render_attribute_string( 'image_card_button_wrapper_inner' ); ?> >
 									<?php
 									if ( '' !== $settings['button_icon'] ) {
@@ -327,7 +327,7 @@ class WPMOZO_ALE_Image_Card extends Widget_Base {
 											$settings['button_icon'],
 											array(
 												'aria-hidden' => 'true',
-												'class' => 'wpmozo_ale_button_icon',
+												'class' => 'wpmozo_ae_button_icon',
 											)
 										);
 										echo esc_html( '&nbsp;' );

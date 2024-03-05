@@ -16,7 +16,7 @@ use \Elementor\Control_Media;
 use \Elementor\Icons_Manager;
 use \Elementor\Plugin;
 
-class WPMOZO_ALE_Image_Hotspot extends Widget_Base {
+class WPMOZO_AE_Image_Hotspot extends Widget_Base {
 
 
 
@@ -32,7 +32,7 @@ class WPMOZO_ALE_Image_Hotspot extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpmozo_ale_image_hotspot';
+		return 'wpmozo_ae_image_hotspot';
 	}
 
 	/**
@@ -46,7 +46,7 @@ class WPMOZO_ALE_Image_Hotspot extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Image Hotspot', 'wpmozo-addons-lite-for-elementor' );
+		return esc_html__( 'Image Hotspot', 'wpmozo-addons-for-elementor' );
 	}
 
 	/**
@@ -60,7 +60,7 @@ class WPMOZO_ALE_Image_Hotspot extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-image-hotspot wpmozo-ale-brandicon';
+		return 'eicon-image-hotspot wpmozo-ae-brandicon';
 	}
 
 	/**
@@ -179,7 +179,7 @@ class WPMOZO_ALE_Image_Hotspot extends Widget_Base {
 										$single_item['marker_icon'],
 										array(
 											'aria-hidden' => 'true',
-											'class'       => 'wpmozo_ale_marker_icon',
+											'class'       => 'wpmozo_ae_marker_icon',
 										)
 									);
 									?>

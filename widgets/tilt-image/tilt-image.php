@@ -17,7 +17,7 @@ use \Elementor\Group_Control_Image_Size;
 use \Elementor\Icons_Manager;
 use \Elementor\Control_Media;
 
-class WPMOZO_ALE_Tilt_Image extends Widget_Base {
+class WPMOZO_AE_Tilt_Image extends Widget_Base {
 
 
 	/**
@@ -31,7 +31,7 @@ class WPMOZO_ALE_Tilt_Image extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpmozo_ale_tilt_image';
+		return 'wpmozo_ae_tilt_image';
 	}
 
 	/**
@@ -45,7 +45,7 @@ class WPMOZO_ALE_Tilt_Image extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Tilt Image', 'wpmozo-addons-lite-for-elementor' );
+		return esc_html__( 'Tilt Image', 'wpmozo-addons-for-elementor' );
 	}
 
 	/**
@@ -59,7 +59,7 @@ class WPMOZO_ALE_Tilt_Image extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-image-rollover wpmozo-ale-brandicon';
+		return 'eicon-image-rollover wpmozo-ae-brandicon';
 	}
 
 	/**
@@ -171,27 +171,27 @@ class WPMOZO_ALE_Tilt_Image extends Widget_Base {
 		$tilt_scale       = '' !== $tilt_scale ? 'data-tilt-scale="' . $tilt_scale . '"' : '';
 		$tilt_speed       = '' !== $tilt_speed ? 'data-tilt-speed="' . $tilt_speed . '"' : '';
 
-		$this->add_render_attribute( 'contents_animations', 'class', 'wpmozo_ale_tilt_content_wrapper' );
+		$this->add_render_attribute( 'contents_animations', 'class', 'wpmozo_ae_tilt_content_wrapper' );
 
 		if ( '' !== $settings['content_on_hover_switcher'] ) {
 			$this->add_render_attribute( 'contents_animations', 'class', $content_animation );
 		}
 
 		$this->add_inline_editing_attributes( 'title_text', 'none' );
-		$this->add_render_attribute( 'title_text', 'class', 'wpmozo_ale_tilt_title' );
+		$this->add_render_attribute( 'title_text', 'class', 'wpmozo_ae_tilt_title' );
 		$this->add_inline_editing_attributes( 'description_text', 'none' );
-		$this->add_render_attribute( 'description_text', 'class', 'wpmozo_ale_tilt_desc' );
-		$this->add_render_attribute( 'icon_wrapper', 'class', 'wpmozo_ale_tilt_image_icon_wrapper' );
+		$this->add_render_attribute( 'description_text', 'class', 'wpmozo_ae_tilt_desc' );
+		$this->add_render_attribute( 'icon_wrapper', 'class', 'wpmozo_ae_tilt_image_icon_wrapper' );
 		$this->add_render_attribute(
 			'icon_wrapper_shape',
 			'class',
 			array(
-				'wpmozo_ale_tilt_image_icon_wrapper',
+				'wpmozo_ae_tilt_image_icon_wrapper',
 				'wpmozo_icon_shape_' . $icon_shape . '_container',
 			)
 		);
-		$this->add_render_attribute( 'wpmozo_button_wrapper', 'class', 'wpmozo_ale_tilt_image_button_wrapper' );
-		$this->add_render_attribute( 'wpmozo_ale_tilt_image_button_wrapper_inner', 'class', 'wpmozo_ale_tilt_image_button_wrapper_inner' );
+		$this->add_render_attribute( 'wpmozo_button_wrapper', 'class', 'wpmozo_ae_tilt_image_button_wrapper' );
+		$this->add_render_attribute( 'wpmozo_ae_tilt_image_button_wrapper_inner', 'class', 'wpmozo_ae_tilt_image_button_wrapper_inner' );
 		$this->add_render_attribute(
 			'button_text',
 			array(
@@ -202,7 +202,7 @@ class WPMOZO_ALE_Tilt_Image extends Widget_Base {
 		$this->add_inline_editing_attributes( 'button_text', 'none' );
 
 		if ( '' !== $settings['button_hover_animation'] ) {
-			$this->add_render_attribute( 'wpmozo_ale_tilt_image_button_wrapper_inner', 'class', 'elementor-animation-' . $settings['button_hover_animation'] );
+			$this->add_render_attribute( 'wpmozo_ae_tilt_image_button_wrapper_inner', 'class', 'elementor-animation-' . $settings['button_hover_animation'] );
 		}
 
 		if ( ! empty( $settings['button_url']['url'] ) ) {
@@ -226,8 +226,8 @@ class WPMOZO_ALE_Tilt_Image extends Widget_Base {
 		// Main output.
 
 		?>
-			<div class="wpmozo_ale_tilt_image_wrapper <?php echo '' !== $content_alignment ? 'wpmozo_ale_tilt_align_' . esc_attr( $content_alignment ) : ''; ?>" <?php echo wp_kses_post( $tilt_attr ); ?> >
-				<div class="wpmozo_ale_tilt_image_inner_wrapper"> 
+			<div class="wpmozo_ae_tilt_image_wrapper <?php echo '' !== $content_alignment ? 'wpmozo_ae_tilt_align_' . esc_attr( $content_alignment ) : ''; ?>" <?php echo wp_kses_post( $tilt_attr ); ?> >
+				<div class="wpmozo_ae_tilt_image_inner_wrapper"> 
 					<?php
 					if ( ! empty( $settings['tilt_image_image']['url'] ) ) {
 						$size         = $settings['tilt_image_size_size'];
@@ -246,7 +246,7 @@ class WPMOZO_ALE_Tilt_Image extends Widget_Base {
 							array(
 								'src'   => $img_url,
 								'class' => array(
-									'wpmozo_ale_tilt_image_image',
+									'wpmozo_ae_tilt_image_image',
 									$image_sizing,
 								),
 								'title' => Control_Media::get_image_title( $image ),
@@ -271,7 +271,7 @@ class WPMOZO_ALE_Tilt_Image extends Widget_Base {
 											$settings['select_icon'],
 											array(
 												'aria-hidden' => 'true',
-												'class' => 'wpmozo_ale_tilt-image_icon ',
+												'class' => 'wpmozo_ae_tilt-image_icon ',
 											),
 											'span'
 										)
@@ -290,7 +290,7 @@ class WPMOZO_ALE_Tilt_Image extends Widget_Base {
 											array(
 												'aria-hidden' => 'true',
 												'class' => array(
-													'wpmozo_ale_tilt_image_icon',
+													'wpmozo_ae_tilt_image_icon',
 													'wpmozo_icon_shape_' . $icon_shape,
 												),
 											),
@@ -319,14 +319,14 @@ class WPMOZO_ALE_Tilt_Image extends Widget_Base {
 								<?php
 						}
 						?>
-							<div class="wpmozo_ale_tilt_image_button_wrapper">
+							<div class="wpmozo_ae_tilt_image_button_wrapper">
 								<?php
 								// Tilt image button.
 								if ( $button_text && 'after' === $settings['button_icon_position'] ) {
 
 									?>
 										<div <?php $this->print_render_attribute_string( 'wpmozo_button_wrapper' ); ?> >
-											<div <?php $this->print_render_attribute_string( 'wpmozo_ale_tilt_image_button_wrapper_inner' ); ?> >
+											<div <?php $this->print_render_attribute_string( 'wpmozo_ae_tilt_image_button_wrapper_inner' ); ?> >
 												<a <?php $this->print_render_attribute_string( 'button_text' ); ?> >
 												<?php echo wp_kses_post( $button_text ); ?>
 												</a>
@@ -351,7 +351,7 @@ class WPMOZO_ALE_Tilt_Image extends Widget_Base {
 								} elseif ( $button_text && 'before' === $settings['button_icon_position'] ) {
 									?>
 										<div <?php $this->print_render_attribute_string( 'wpmozo_button_wrapper' ); ?> >
-											<div <?php $this->print_render_attribute_string( 'wpmozo_ale_tilt_image_button_wrapper_inner' ); ?> >
+											<div <?php $this->print_render_attribute_string( 'wpmozo_ae_tilt_image_button_wrapper_inner' ); ?> >
 												<?php
 												if ( '' !== $button_icon ) {
 													Icons_Manager::render_icon(
@@ -375,7 +375,7 @@ class WPMOZO_ALE_Tilt_Image extends Widget_Base {
 								} elseif ( $button_text ) {
 									?>
 										<div <?php $this->print_render_attribute_string( 'wpmozo_button_wrapper' ); ?> >
-											<div <?php $this->print_render_attribute_string( 'wpmozo_ale_tilt_image_button_wrapper_inner' ); ?> >
+											<div <?php $this->print_render_attribute_string( 'wpmozo_ae_tilt_image_button_wrapper_inner' ); ?> >
 												<?php
 												if ( '' !== $button_icon ) {
 													Icons_Manager::render_icon(

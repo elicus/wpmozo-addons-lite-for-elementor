@@ -1,4 +1,4 @@
 Changelog for WPMozo Addons Lite for Elementor
 
-2024-03-05 - Version 1.0.0
+2024-03-06 - Version 1.0.0
 - Initial release

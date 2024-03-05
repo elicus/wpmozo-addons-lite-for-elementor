@@ -15,7 +15,7 @@ use \Elementor\Utils;
 use \Elementor\Widget_Base;
 use \Elementor\Icons_Manager;
 
-class WPMOZO_ALE_Masonry_Gallery extends Widget_Base {
+class WPMOZO_AE_Masonry_Gallery extends Widget_Base {
 
 	/**
 	 * Get widget name.
@@ -28,7 +28,7 @@ class WPMOZO_ALE_Masonry_Gallery extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpmozo_ale_masonry_gallery';
+		return 'wpmozo_ae_masonry_gallery';
 	}
 
 	/**
@@ -42,7 +42,7 @@ class WPMOZO_ALE_Masonry_Gallery extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Masonry Gallery', 'wpmozo-addons-lite-for-elementor' );
+		return esc_html__( 'Masonry Gallery', 'wpmozo-addons-for-elementor' );
 	}
 
 	/**
@@ -56,7 +56,7 @@ class WPMOZO_ALE_Masonry_Gallery extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-gallery-masonry wpmozo-ale-brandicon';
+		return 'eicon-gallery-masonry wpmozo-ae-brandicon';
 	}
 
 	/**
@@ -148,14 +148,14 @@ class WPMOZO_ALE_Masonry_Gallery extends Widget_Base {
 		$title_caption_wrapper            = '';
 
 		// Declaring classes and other attributes.
-		$this->add_render_attribute( 'image_caption', 'class', array( 'wpmozo_ale_masonry_gallery_item_caption', $caption_area ) );
-		$this->add_render_attribute( 'image_title', 'class', array( 'wpmozo_ale_masonry_gallery_item_title', $title_area ) );
-		$this->add_render_attribute( 'image_wrapper', 'class', 'wpmozo_ale_masonry_gallery_image_wrapper' );
-		$this->add_render_attribute( 'gallery_item_with_lightbox', 'class', array( 'wpmozo_ale_masonry_gallery_item', 'wpmozo_ale_masonry_gallery_item_with_lightbox' ) );
-		$this->add_render_attribute( 'gallery_item_no_lightbox', 'class', 'wpmozo_ale_masonry_gallery_item' );
-		$this->add_render_attribute( 'gallery_wrapper', 'class', 'wpmozo_ale_masonry_gallery_wrapper' );
-		$this->add_render_attribute( 'gallery_item_gutter', 'class', 'wpmozo_ale_masonry_gallery_item_gutter' );
-		$this->add_render_attribute( 'title_caption_wrapper', 'class', array( 'wpmozo_ale_masonry_gallery_title_caption_wrapper', $lightbox_title_and_caption_style ) );
+		$this->add_render_attribute( 'image_caption', 'class', array( 'wpmozo_ae_masonry_gallery_item_caption', $caption_area ) );
+		$this->add_render_attribute( 'image_title', 'class', array( 'wpmozo_ae_masonry_gallery_item_title', $title_area ) );
+		$this->add_render_attribute( 'image_wrapper', 'class', 'wpmozo_ae_masonry_gallery_image_wrapper' );
+		$this->add_render_attribute( 'gallery_item_with_lightbox', 'class', array( 'wpmozo_ae_masonry_gallery_item', 'wpmozo_ae_masonry_gallery_item_with_lightbox' ) );
+		$this->add_render_attribute( 'gallery_item_no_lightbox', 'class', 'wpmozo_ae_masonry_gallery_item' );
+		$this->add_render_attribute( 'gallery_wrapper', 'class', 'wpmozo_ae_masonry_gallery_wrapper' );
+		$this->add_render_attribute( 'gallery_item_gutter', 'class', 'wpmozo_ae_masonry_gallery_item_gutter' );
+		$this->add_render_attribute( 'title_caption_wrapper', 'class', array( 'wpmozo_ae_masonry_gallery_title_caption_wrapper', $lightbox_title_and_caption_style ) );
 
 		$gutter = absint( $settings ['column_spacing_slider']['size'] );
 
@@ -171,7 +171,7 @@ class WPMOZO_ALE_Masonry_Gallery extends Widget_Base {
 				$settings['overlay_icon_select'],
 				array(
 					'aria-hidden' => 'true',
-					'class'       => 'wpmozo_ale_masonry_gallery_icon ',
+					'class'       => 'wpmozo_ae_masonry_gallery_icon ',
 				),
 				'span'
 			);
@@ -264,20 +264,20 @@ class WPMOZO_ALE_Masonry_Gallery extends Widget_Base {
 			?>
 				<script type="text/javascript">
 					// Masonry layout
-					jQuery( '.wpmozo_ale_masonry_gallery_wrapper' ).isotope({
+					jQuery( '.wpmozo_ae_masonry_gallery_wrapper' ).isotope({
 						// options
-						itemSelector: '.wpmozo_ale_masonry_gallery_item',
+						itemSelector: '.wpmozo_ae_masonry_gallery_item',
 						layoutMode: 'masonry',
 						percentPosition: true,
 						resize: true,
 						masonry: {
-							columnWidth: '.wpmozo_ale_masonry_gallery_item',
-							gutter: '.wpmozo_ale_masonry_gallery_item_gutter'
+							columnWidth: '.wpmozo_ae_masonry_gallery_item',
+							gutter: '.wpmozo_ae_masonry_gallery_item_gutter'
 						}
 					});
-					jQuery( '.wpmozo_ale_masonry_gallery_wrapper' ).imagesLoaded( { background: '.wpmozo_ale_masonry_gallery_image_wrapper' } ).progress( function() {
-						jQuery( '.wpmozo_ale_masonry_gallery_wrapper ' ).isotope( 'layout' );
-						jQuery( '.wpmozo_ale_masonry_gallery_wrapper ' ).isotope( 'reloadItems' );
+					jQuery( '.wpmozo_ae_masonry_gallery_wrapper' ).imagesLoaded( { background: '.wpmozo_ae_masonry_gallery_image_wrapper' } ).progress( function() {
+						jQuery( '.wpmozo_ae_masonry_gallery_wrapper ' ).isotope( 'layout' );
+						jQuery( '.wpmozo_ae_masonry_gallery_wrapper ' ).isotope( 'reloadItems' );
 					});
 				</script>
 			<?php

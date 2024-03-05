@@ -15,7 +15,7 @@ use \Elementor\Widget_Base;
 use \Elementor\Group_Control_Image_Size;
 use \Elementor\Control_Media;
 
-class WPMOZO_ALE_Interactive_Image_Card extends Widget_Base {
+class WPMOZO_AE_Interactive_Image_Card extends Widget_Base {
 
 	/**
 	 * Get widget name.
@@ -28,7 +28,7 @@ class WPMOZO_ALE_Interactive_Image_Card extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpmozo_ale_interactive_image_card';
+		return 'wpmozo_ae_interactive_image_card';
 	}
 
 	/**
@@ -42,7 +42,7 @@ class WPMOZO_ALE_Interactive_Image_Card extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Interactive Image Card', 'wpmozo-addons-lite-for-elementor' );
+		return esc_html__( 'Interactive Image Card', 'wpmozo-addons-for-elementor' );
 	}
 
 	/**
@@ -56,7 +56,7 @@ class WPMOZO_ALE_Interactive_Image_Card extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-image-rollover wpmozo-ale-brandicon';
+		return 'eicon-image-rollover wpmozo-ae-brandicon';
 	}
 
 	/**
@@ -121,9 +121,9 @@ class WPMOZO_ALE_Interactive_Image_Card extends Widget_Base {
 		$select_layout       = $settings['select_layout'];
 
 		$this->add_inline_editing_attributes( 'title_text', 'none' );
-		$this->add_render_attribute( 'title_text', 'class', 'wpmozo_ale_interactive_image_card_title' );
+		$this->add_render_attribute( 'title_text', 'class', 'wpmozo_ae_interactive_image_card_title' );
 		$this->add_inline_editing_attributes( 'content_text', 'none' );
-		$this->add_render_attribute( 'content_text', 'class', 'wpmozo_ale_interactive_image_card_wrapper_content' );
+		$this->add_render_attribute( 'content_text', 'class', 'wpmozo_ae_interactive_image_card_wrapper_content' );
 
 		// Interactive image card image.
 		if ( ! empty( $image ) ) {
@@ -142,7 +142,7 @@ class WPMOZO_ALE_Interactive_Image_Card extends Widget_Base {
 				'image',
 				array(
 					'src'   => $img_url,
-					'class' => array( 'wpmozo_ale_interactive_image_card_image', $image_sizing ),
+					'class' => array( 'wpmozo_ae_interactive_image_card_image', $image_sizing ),
 					'title' => esc_attr( Control_Media::get_image_title( $image ) ),
 					'alt'   => esc_attr( Control_Media::get_image_alt( $image ) ),
 				)
@@ -160,11 +160,11 @@ class WPMOZO_ALE_Interactive_Image_Card extends Widget_Base {
 			$content_text = '<div ' . $this->get_render_attribute_string( 'content_text' ) . '>' . $content_text . '</div>';
 		}
 		?>
-		<div class="wpmozo_ale_interactive_image_card_wrapper">
+		<div class="wpmozo_ae_interactive_image_card_wrapper">
 			<figure class="effect-<?php echo esc_attr( $select_layout ); ?>">
 				<?php echo wp_kses_post( $image ); ?>
 				<figcaption>
-					<div class="wpmozo_ale_interactive_image_card_wrapper_inner">
+					<div class="wpmozo_ae_interactive_image_card_wrapper_inner">
 						<?php echo wp_kses_post( $title_text ); ?>
 						<?php echo wp_kses_post( $content_text ); ?>
 					</div>
