@@ -1,4 +1,9 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use \Elementor\Utils;
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Text_Shadow;
@@ -13,7 +18,7 @@ use \Elementor\Group_Control_Css_Filter;
 $this->start_controls_section(
 	'content_section',
 	array(
-		'label' => __( 'Content', 'wpmozo-addons-for-elementor' ),
+		'label' => esc_html__( 'Content', 'wpmozo-addons-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
 	)
 );
@@ -21,7 +26,7 @@ $this->start_controls_section(
 	$repeater->add_control(
 		'image',
 		array(
-			'label'   => __( 'Image', 'wpmozo-addons-for-elementor' ),
+			'label'   => esc_html__( 'Image', 'wpmozo-addons-for-elementor' ),
 			'type'    => Controls_Manager::MEDIA,
 			'default' => array(
 				'url' => Utils::get_placeholder_image_src(),
@@ -31,7 +36,7 @@ $this->start_controls_section(
 	$repeater->add_control(
 		'image_alt_text',
 		array(
-			'label'       => __( 'Image Alt Text', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Image Alt Text', 'wpmozo-addons-for-elementor' ),
 			'type'        => Controls_Manager::TEXT,
 			'label_block' => true,
 		)
@@ -668,17 +673,17 @@ $this->start_controls_section(
 			$this->add_control(
 				'image_list',
 				array(
-					'label'       => __( 'Image List', 'wpmozo-addons-for-elementor' ),
+					'label'       => esc_html__( 'Image List', 'wpmozo-addons-for-elementor' ),
 					'type'        => Controls_Manager::REPEATER,
 					'fields'      => $repeater->get_controls(),
 					'default'     => array(
 						array(
-							'image'          => __( 'Item Media', 'wpmozo-addons-for-elementor' ),
-							'image_alt_text' => __( 'Floating Image Item', 'wpmozo-addons-for-elementor' ),
+							'image'          => esc_html__( 'Item Media', 'wpmozo-addons-for-elementor' ),
+							'image_alt_text' => esc_html__( 'Floating Image Item', 'wpmozo-addons-for-elementor' ),
 						),
 						array(
-							'image'          => __( 'Item Media', 'wpmozo-addons-for-elementor' ),
-							'image_alt_text' => __( 'Floating Image Item', 'wpmozo-addons-for-elementor' ),
+							'image'          => esc_html__( 'Item Media', 'wpmozo-addons-for-elementor' ),
+							'image_alt_text' => esc_html__( 'Floating Image Item', 'wpmozo-addons-for-elementor' ),
 
 						),
 					),

@@ -1,7 +1,7 @@
 !(function (e) {
     "use strict";
     e(function () {
-            /* Fill metafields value in hidden field on blur */
+            // Fill metafields value in hidden field on blur.
             if ( e('body').find('.wpmozo_ae_team_member_skills').length > 0 ) {
                 e('body').on('blur', '.wpmozo_ae_team_member_skills', function(){
                     let skills = [];
@@ -15,7 +15,7 @@
                 });
             }
 
-            /* Fill metafields value in hidden field on blur */
+            // Fill metafields value in hidden field on blur.
             if ( e('body').find('.wpmozo_ae_team_member_skills_value').length > 0 ) {
                 e('body').on('blur', '.wpmozo_ae_team_member_skills_value', function(){
                     let skills_val = [];
@@ -28,7 +28,7 @@
                     e('#wpmozo_ae_team_member_skills_value').val(skills_val);
                 });
             }
-            /* Add Row */
+            // Add Row.
             e('body').on('click', '.wpmozo_repeator_meta_field_add_row', function(){
                 let row  = '<div class="wpmozo_repeator_meta_field_row">';
                     row += '<div class="wpmozo_repeator_meta_field">';
@@ -48,7 +48,7 @@
                 e(this).closest('.wpmozo_repeator_meta_field_row').find('.wpmozo_repeator_meta_field_row_controls .wpmozo_repeator_meta_field_add_row').remove();
             });
             
-            /* Remove Row */
+            // Remove Row.
             e('body').on('click', '.wpmozo_repeator_meta_field_remove_row', function(){
                 if ( e(this).parents('.wpmozo_repeator_meta_fields').find('.wpmozo_repeator_meta_field_row').length === 2 ) {
                     let control = '<span class="wpmozo_repeator_meta_field_add_row_control wpmozo_repeator_meta_field_add_row">+</span>';

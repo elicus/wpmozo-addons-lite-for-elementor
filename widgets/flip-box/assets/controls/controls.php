@@ -1,4 +1,8 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Background;
@@ -394,7 +398,7 @@ $this->start_controls_section(
 					'label_block' => true,
 					'type'        => Controls_Manager::TEXT,
 					'dynamic'     => array( 'active' => true ),
-					'placeholder' => __( 'Enter Button Text Here', 'wpmozo-addons-for-elementor' ),
+					'placeholder' => esc_html__( 'Enter Button Text Here', 'wpmozo-addons-for-elementor' ),
 					'default'     => esc_html__( 'Click ME!', 'wpmozo-addons-for-elementor' ),
 					'condition'   => array( 'show_button_switcher' => 'yes' ),
 				)
@@ -565,7 +569,7 @@ $this->start_controls_section(
 			$this->start_controls_tab(
 				'flipbox_style_front',
 				array(
-					'label' => esc_html__( 'Front', 'elementor' ),
+					'label' => esc_html__( 'Front', 'wpmozo-addons-for-elementor' ),
 				)
 			);
 
@@ -1405,7 +1409,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'flipbox_front_image_border_heading',
 				array(
-					'label'     => __( 'Front Image Border', 'wpmozo-addons-for-elementor' ),
+					'label'     => esc_html__( 'Front Image Border', 'wpmozo-addons-for-elementor' ),
 					'type'      => Controls_Manager::HEADING,
 					'condition' => array(
 						'front_use_icon_image' => 'image',

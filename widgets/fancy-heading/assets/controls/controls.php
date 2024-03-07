@@ -1,4 +1,8 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Typography;
@@ -20,7 +24,7 @@ $this->start_controls_section(
 			'label'       => esc_html__( 'Pre Heading', 'wpmozo-addons-for-elementor' ),
 			'label_block' => true,
 			'type'        => Controls_Manager::TEXT,
-			'default'     => __( 'Pre', 'wpmozo-addons-for-elementor' ),
+			'default'     => esc_html__( 'Pre', 'wpmozo-addons-for-elementor' ),
 			'dynamic'     => array( 'active' => true ),
 			'placeholder' => esc_html__( 'Pre Heading', 'wpmozo-addons-for-elementor' ),
 		)
@@ -31,7 +35,7 @@ $this->start_controls_section(
 			'label'       => esc_html__( 'Heading', 'wpmozo-addons-for-elementor' ),
 			'label_block' => true,
 			'type'        => Controls_Manager::TEXT,
-			'default'     => __( 'Main', 'wpmozo-addons-for-elementor' ),
+			'default'     => esc_html__( 'Main', 'wpmozo-addons-for-elementor' ),
 			'dynamic'     => array( 'active' => true ),
 			'placeholder' => esc_html__( 'Main Heading', 'wpmozo-addons-for-elementor' ),
 		)
@@ -42,7 +46,7 @@ $this->start_controls_section(
 			'label'       => esc_html__( 'Post Heading', 'wpmozo-addons-for-elementor' ),
 			'label_block' => true,
 			'type'        => Controls_Manager::TEXT,
-			'default'     => __( 'Post', 'wpmozo-addons-for-elementor' ),
+			'default'     => esc_html__( 'Post', 'wpmozo-addons-for-elementor' ),
 			'dynamic'     => array( 'active' => true ),
 			'placeholder' => esc_html__( 'Post Heading', 'wpmozo-addons-for-elementor' ),
 		)
@@ -63,8 +67,8 @@ $this->start_controls_section(
 	);
 	$this->end_controls_section();
 
-	// Style tab starts here.
-	// Global text settings tab starts here.
+	// Style tab.
+	// Global text settings tab.
 	$this->start_controls_section(
 		'global_text_settings',
 		array(
@@ -202,7 +206,7 @@ $this->start_controls_section(
 	);
 	$this->end_controls_section();
 
-	// Pre text settings tab starts here.
+	// Pre text settings tab.
 	$this->start_controls_section(
 		'pre_text_settings',
 		array(
@@ -389,7 +393,7 @@ $this->start_controls_section(
 			$this->start_controls_tab(
 				'pre_text_padding_tab',
 				array(
-					'label' => __( 'Padding', 'wpmozo-addons-for-elementor' ),
+					'label' => esc_html__( 'Padding', 'wpmozo-addons-for-elementor' ),
 				)
 			);
 			$this->add_responsive_control(
@@ -408,7 +412,7 @@ $this->start_controls_section(
 			$this->start_controls_tab(
 				'pre_text_margin_tab',
 				array(
-					'label' => __( 'Margin', 'wpmozo-addons-for-elementor' ),
+					'label' => esc_html__( 'Margin', 'wpmozo-addons-for-elementor' ),
 				)
 			);
 			$this->add_responsive_control(
@@ -426,7 +430,7 @@ $this->start_controls_section(
 			$this->end_controls_tabs();
 			$this->end_controls_section();
 
-			// Main text settings tab starts here.
+			// Main text settings tab.
 			$this->start_controls_section(
 				'main_text_settings',
 				array(
@@ -617,7 +621,7 @@ $this->start_controls_section(
 			$this->start_controls_tab(
 				'main_text_padding_tab',
 				array(
-					'label' => __( 'Padding', 'wpmozo-addons-for-elementor' ),
+					'label' => esc_html__( 'Padding', 'wpmozo-addons-for-elementor' ),
 				)
 			);
 			$this->add_responsive_control(
@@ -637,7 +641,7 @@ $this->start_controls_section(
 			$this->start_controls_tab(
 				'main_text_margin_tab',
 				array(
-					'label' => __( 'Margin', 'wpmozo-addons-for-elementor' ),
+					'label' => esc_html__( 'Margin', 'wpmozo-addons-for-elementor' ),
 				)
 			);
 			$this->add_responsive_control(
@@ -655,7 +659,7 @@ $this->start_controls_section(
 			$this->end_controls_tabs();
 			$this->end_controls_section();
 
-			// Post text setting tab starts here.
+			// Post text setting tab.
 			$this->start_controls_section(
 				'post_text_settings',
 				array(
@@ -847,7 +851,7 @@ $this->start_controls_section(
 			$this->start_controls_tab(
 				'post_text_padding_tab',
 				array(
-					'label' => __( 'Padding', 'wpmozo-addons-for-elementor' ),
+					'label' => esc_html__( 'Padding', 'wpmozo-addons-for-elementor' ),
 				)
 			);
 			$this->add_responsive_control(
@@ -867,7 +871,7 @@ $this->start_controls_section(
 			$this->start_controls_tab(
 				'post_text_margin_tab',
 				array(
-					'label' => __( 'Margin', 'wpmozo-addons-for-elementor' ),
+					'label' => esc_html__( 'Margin', 'wpmozo-addons-for-elementor' ),
 				)
 			);
 			$this->add_responsive_control(

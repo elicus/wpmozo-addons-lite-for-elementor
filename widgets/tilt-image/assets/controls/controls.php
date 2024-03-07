@@ -1,4 +1,9 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use \Elementor\Utils;
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Background;
@@ -53,23 +58,23 @@ $this->start_controls_section(
 	$this->add_control(
 		'title_text',
 		array(
-			'label'       => __( 'Enter Title', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Enter Title', 'wpmozo-addons-for-elementor' ),
 			'label_block' => true,
 			'type'        => Controls_Manager::TEXT,
 			'dynamic'     => array( 'active' => true ),
-			'default'     => __( 'Tilt Image Title', 'wpmozo-addons-for-elementor' ),
-			'placeholder' => __( 'Enter Title', 'wpmozo-addons-for-elementor' ),
+			'default'     => esc_html__( 'Tilt Image Title', 'wpmozo-addons-for-elementor' ),
+			'placeholder' => esc_html__( 'Enter Title', 'wpmozo-addons-for-elementor' ),
 		)
 	);
 	$this->add_control(
 		'description_text',
 		array(
-			'label'       => __( 'Enter Description', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Enter Description', 'wpmozo-addons-for-elementor' ),
 			'label_block' => true,
 			'type'        => Controls_Manager::TEXTAREA,
 			'dynamic'     => array( 'active' => true ),
-			'default'     => __( 'Lorem ipsum dolor sit amet', 'wpmozo-addons-for-elementor' ),
-			'placeholder' => __( 'Enter Description', 'wpmozo-addons-for-elementor' ),
+			'default'     => esc_html__( 'Lorem ipsum dolor sit amet', 'wpmozo-addons-for-elementor' ),
+			'placeholder' => esc_html__( 'Enter Description', 'wpmozo-addons-for-elementor' ),
 		)
 	);
 	$this->add_control(
@@ -113,7 +118,7 @@ $this->start_controls_section(
 			'label_block' => true,
 			'type'        => Controls_Manager::TEXT,
 			'dynamic'     => array( 'active' => true ),
-			'placeholder' => __( 'Enter Button Text Here', 'wpmozo-addons-for-elementor' ),
+			'placeholder' => esc_html__( 'Enter Button Text Here', 'wpmozo-addons-for-elementor' ),
 			'default'     => esc_html__( 'Click ME!', 'wpmozo-addons-for-elementor' ),
 			'condition'   => array( 'show_button_switcher' => 'yes' ),
 		)
@@ -387,12 +392,12 @@ $this->start_controls_section(
 	$this->add_control(
 		'disable_x/y_axis_select',
 		array(
-			'label'       => __( 'Disable X/Y axis', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Disable X/Y axis', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'y' => __( 'X axis', 'wpmozo-addons-for-elementor' ),
-				'x' => __( 'Y axis', 'wpmozo-addons-for-elementor' ),
+				'y' => esc_html__( 'X axis', 'wpmozo-addons-for-elementor' ),
+				'x' => esc_html__( 'Y axis', 'wpmozo-addons-for-elementor' ),
 			),
 			'default'     => 'x',
 			'condition'   => array( 'use_disable_xy_axis_switcher' => 'on' ),
@@ -446,19 +451,19 @@ $this->start_controls_section(
 	$this->add_control(
 		'content_alignment_selector',
 		array(
-			'label'       => __( 'Content Alignment', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Content Alignment', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'top_left'      => __( 'Top Left', 'wpmozo-addons-for-elementor' ),
-				'top_center'    => __( 'Top Center', 'wpmozo-addons-for-elementor' ),
-				'top_right'     => __( 'Top Right', 'wpmozo-addons-for-elementor' ),
-				'center_left'   => __( 'Center Left', 'wpmozo-addons-for-elementor' ),
-				'center'        => __( 'Center', 'wpmozo-addons-for-elementor' ),
-				'center_right'  => __( 'Center Right', 'wpmozo-addons-for-elementor' ),
-				'bottom_left'   => __( 'Bottom Left', 'wpmozo-addons-for-elementor' ),
-				'bottom_center' => __( 'Bottom Center', 'wpmozo-addons-for-elementor' ),
-				'bottom_right'  => __( 'Bottom Right', 'wpmozo-addons-for-elementor' ),
+				'top_left'      => esc_html__( 'Top Left', 'wpmozo-addons-for-elementor' ),
+				'top_center'    => esc_html__( 'Top Center', 'wpmozo-addons-for-elementor' ),
+				'top_right'     => esc_html__( 'Top Right', 'wpmozo-addons-for-elementor' ),
+				'center_left'   => esc_html__( 'Center Left', 'wpmozo-addons-for-elementor' ),
+				'center'        => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
+				'center_right'  => esc_html__( 'Center Right', 'wpmozo-addons-for-elementor' ),
+				'bottom_left'   => esc_html__( 'Bottom Left', 'wpmozo-addons-for-elementor' ),
+				'bottom_center' => esc_html__( 'Bottom Center', 'wpmozo-addons-for-elementor' ),
+				'bottom_right'  => esc_html__( 'Bottom Right', 'wpmozo-addons-for-elementor' ),
 			),
 			'default'     => 'center',
 		)
@@ -482,19 +487,19 @@ $this->start_controls_section(
 	$this->add_control(
 		'content_animation_selector',
 		array(
-			'label'       => __( 'Content Animation', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Content Animation', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'wpmozofadeInBottom'      => __( 'Fade In Bottom', 'wpmozo-addons-for-elementor' ),
-				'wpmozofadeInRight'       => __( 'Fade In Right', 'wpmozo-addons-for-elementor' ),
-				'wpmozofadeInLeft'        => __( 'Fade In Left', 'wpmozo-addons-for-elementor' ),
-				'wpmozofadeInTop'         => __( 'Fade In Top', 'wpmozo-addons-for-elementor' ),
-				'wpmozofadeInTopLeft'     => __( 'Fade In Top-Left', 'wpmozo-addons-for-elementor' ),
-				'wpmozofadeInTopRight'    => __( 'Fade In Top-Right', 'wpmozo-addons-for-elementor' ),
-				'wpmozofadeInBottomLeft'  => __( 'Fade In Bottom-Left', 'wpmozo-addons-for-elementor' ),
-				'wpmozofadeInBottomRight' => __( 'Fade In Bottom-Right', 'wpmozo-addons-for-elementor' ),
-				''                        => __( 'No Animation', 'wpmozo-addons-for-elementor' ),
+				'wpmozofadeInBottom'      => esc_html__( 'Fade In Bottom', 'wpmozo-addons-for-elementor' ),
+				'wpmozofadeInRight'       => esc_html__( 'Fade In Right', 'wpmozo-addons-for-elementor' ),
+				'wpmozofadeInLeft'        => esc_html__( 'Fade In Left', 'wpmozo-addons-for-elementor' ),
+				'wpmozofadeInTop'         => esc_html__( 'Fade In Top', 'wpmozo-addons-for-elementor' ),
+				'wpmozofadeInTopLeft'     => esc_html__( 'Fade In Top-Left', 'wpmozo-addons-for-elementor' ),
+				'wpmozofadeInTopRight'    => esc_html__( 'Fade In Top-Right', 'wpmozo-addons-for-elementor' ),
+				'wpmozofadeInBottomLeft'  => esc_html__( 'Fade In Bottom-Left', 'wpmozo-addons-for-elementor' ),
+				'wpmozofadeInBottomRight' => esc_html__( 'Fade In Bottom-Right', 'wpmozo-addons-for-elementor' ),
+				''                        => esc_html__( 'No Animation', 'wpmozo-addons-for-elementor' ),
 			),
 			'default'     => '',
 			'condition'   => array( 'content_on_hover_switcher' => 'yes' ),

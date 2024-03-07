@@ -1,4 +1,9 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use \Elementor\Icons_Manager;
 if ( '' !== $header_graphics ) {
 	if ( 'icon' === $header_graphics && ! empty( $settings['header_icon']['value'] ) ) {
@@ -18,7 +23,7 @@ if ( '' !== $header_graphics ) {
 		$this->add_render_attribute(
 			'image',
 			array(
-				'src'   => $img_url,
+				'src'   => esc_url( $img_url ),
 				'class' => array( 'wpmozo_ae_header_image', $image_sizing ),
 				'title' => \Elementor\Control_Media::get_image_title( $image ),
 				'alt'   => \Elementor\Control_Media::get_image_alt( $image ),
@@ -32,7 +37,8 @@ if ( isset( $header_icon ) ) {
 	?>
 		<div class="wpmozo_ae_pricing_table_header_graphic">
 			<div <?php $this->print_render_attribute_string( 'header_graphics_div' ); ?> > 
-				<?php if ( '' !== $settings['header_icon'] ) {
+				<?php
+				if ( '' !== $settings['header_icon'] ) {
 					Icons_Manager::render_icon(
 						$settings['header_icon'],
 						array(
@@ -41,7 +47,8 @@ if ( isset( $header_icon ) ) {
 						),
 						'span'
 					);
-				} ?>
+				}
+				?>
 			</div>
 		</div>
 	<?php
@@ -65,13 +72,13 @@ if ( '' !== $table_title ) {
 			<?php
 			if ( '' !== $table_subtitle ) {
 				?>
-						<span <?php $this->print_render_attribute_string( 'table_subtitle_text' ); ?> >
-						<?php echo esc_html( $table_subtitle ); ?>
-						</span>
-						<span class="wpmozo_ae_bar_container">
-							<hr class="wpmozo_ae_bar" />
-						</span>
-					<?php
+					<span <?php $this->print_render_attribute_string( 'table_subtitle_text' ); ?> >
+					<?php echo esc_html( $table_subtitle ); ?>
+					</span>
+					<span class="wpmozo_ae_bar_container">
+						<hr class="wpmozo_ae_bar" />
+					</span>
+				<?php
 			}
 			?>
 		</div>
@@ -119,14 +126,15 @@ if ( '' !== $features_list ) {
 	<dl class="wpmozo_ae_pricing_table_features">
 		<?php
 		foreach ( $features_list as $index => $item ) {
-			$tab_count = $index + 1;
+			$tab_count                          = $index + 1;
 			$pricing_table_features_setting_key = $this->get_repeater_setting_key( 'list_feature', 'features_list', $index );
 
 			$this->add_render_attribute( $pricing_table_features_setting_key, 'class', 'wpmozo_ae_pricing_table_feature_text' );
 			$this->add_inline_editing_attributes( $pricing_table_features_setting_key, 'none' );
 			?>
 			<dt class="wpmozo_ae_pricing_table_features_list elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-				<?php if ( '' !== $item['list_icon']['value'] ) {
+				<?php
+				if ( '' !== $item['list_icon']['value'] ) {
 					Icons_Manager::render_icon(
 						$item['list_icon'],
 						array(
@@ -135,9 +143,10 @@ if ( '' !== $features_list ) {
 						),
 						'i'
 					);
-				}else {
+				} else {
 					echo '';
-				}?>
+				}
+				?>
 				<span <?php $this->print_render_attribute_string( $pricing_table_features_setting_key ); ?>>
 					<?php echo wp_kses_post( $item['list_feature'] ); ?>
 				</span>
@@ -158,7 +167,8 @@ if ( $button_text && 'after' === $settings['button_icon_position'] ) {
 				<a <?php $this->print_render_attribute_string( 'button_text' ); ?> >
 					<?php echo wp_kses_post( $button_text ); ?>
 				</a>
-				<?php if( '' !== $settings['button_icon'] ) {
+				<?php
+				if ( '' !== $settings['button_icon'] ) {
 					echo '&nbsp;';
 					Icons_Manager::render_icon(
 						$settings['button_icon'],
@@ -166,10 +176,11 @@ if ( $button_text && 'after' === $settings['button_icon_position'] ) {
 							'aria-hidden' => 'true',
 							'class'       => 'wpmozo_ae_button_icon',
 						)
-					); 
-				} else{
+					);
+				} else {
 					echo '';
-				} ?>
+				}
+				?>
 			</div>
 		</div>
 	<?php
@@ -177,18 +188,20 @@ if ( $button_text && 'after' === $settings['button_icon_position'] ) {
 	?>
 		<div <?php $this->print_render_attribute_string( 'wpmozo_ae_button_wrapper' ); ?> >
 			<div <?php $this->print_render_attribute_string( 'wpmozo_ae_pricing_table_button_wrapper_inner' ); ?> >
-				<?php if( '' !== $settings['button_icon'] ) {
+				<?php
+				if ( '' !== $settings['button_icon'] ) {
 					Icons_Manager::render_icon(
 						$settings['button_icon'],
 						array(
 							'aria-hidden' => 'true',
 							'class'       => 'wpmozo_ae_button_icon',
 						)
-					); 
+					);
 					echo '&nbsp;';
-				} else{
+				} else {
 					echo '';
-				} ?>
+				}
+				?>
 				<a <?php $this->print_render_attribute_string( 'button_text' ); ?> >
 					<?php echo wp_kses_post( $button_text ); ?> 
 				</a> 
@@ -199,18 +212,20 @@ if ( $button_text && 'after' === $settings['button_icon_position'] ) {
 	?>
 		<div <?php $this->print_render_attribute_string( 'wpmozo_ae_button_wrapper' ); ?>>
 			<div <?php $this->print_render_attribute_string( 'wpmozo_ae_pricing_table_button_wrapper_inner' ); ?>>
-				<?php if( '' !== $settings['button_icon'] ) {
+				<?php
+				if ( '' !== $settings['button_icon'] ) {
 					Icons_Manager::render_icon(
 						$settings['button_icon'],
 						array(
 							'aria-hidden' => 'true',
 							'class'       => 'wpmozo_ae_button_icon',
 						)
-					); 
+					);
 					echo '&nbsp;';
-				} else{
+				} else {
 					echo '';
-				} ?>
+				}
+				?>
 				<a <?php $this->print_render_attribute_string( 'button_text' ); ?> >
 					<?php echo wp_kses_post( $button_text ); ?>
 				</a> 

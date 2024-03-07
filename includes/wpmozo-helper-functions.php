@@ -1,8 +1,15 @@
 <?php
-defined( 'ABSPATH' ) || die( 'No script kiddies please!' );
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 use \Elementor\Plugin;
 
-/** Function to get Elementor templates as options. */
+/**
+ * Function to get a Elementor templates as options.
+ *
+ * @since    1.0.0
+ */
 if ( ! function_exists( 'wpmozo_ae_get_elementor_templates_as_options' ) ) {
 	function wpmozo_ae_get_elementor_templates_as_options() {
 		$templates        = Plugin::$instance->templates_manager->get_source( 'local' )->get_items();
@@ -17,7 +24,11 @@ if ( ! function_exists( 'wpmozo_ae_get_elementor_templates_as_options' ) ) {
 	}
 }
 
-/** Function to get a list of pages as options. */
+/**
+ * Function to get a list of pages as options.
+ *
+ * @since    1.0.0
+ */
 if ( ! function_exists( 'wpmozo_ae_get_pages_as_options' ) ) {
 	function wpmozo_ae_get_pages_as_options() {
 		$pages        = get_pages();

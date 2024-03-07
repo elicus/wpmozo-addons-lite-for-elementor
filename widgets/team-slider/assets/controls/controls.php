@@ -1,4 +1,9 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Typography;
 use \Elementor\Group_Control_Text_Shadow;
@@ -7,14 +12,14 @@ use \Elementor\Group_Control_Text_Shadow;
 $this->start_controls_section(
 	'content_section',
 	array(
-		'label' => __( 'Content', 'wpmozo-addons-for-elementor' ),
+		'label' => esc_html__( 'Content', 'wpmozo-addons-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
 	)
 );
 	$this->add_control(
 		'layout',
 		array(
-			'label'       => __( 'Layout', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Layout', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
@@ -38,7 +43,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'team_order',
 		array(
-			'label'       => __( 'Order', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Order', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
@@ -51,7 +56,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'team_order_by',
 		array(
-			'label'       => __( 'Order By', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Order By', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
@@ -92,7 +97,7 @@ $this->start_controls_section(
 	$this->start_controls_section(
 		'elements_section',
 		array(
-			'label' => __( 'Elements', 'wpmozo-addons-for-elementor' ),
+			'label' => esc_html__( 'Elements', 'wpmozo-addons-for-elementor' ),
 			'tab'   => Controls_Manager::TAB_CONTENT,
 		)
 	);
@@ -143,7 +148,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'link_target',
 		array(
-			'label'       => __( 'Social Icon Link Target', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Social Icon Link Target', 'wpmozo-addons-for-elementor' ),
 			'label_block' => true,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
@@ -166,7 +171,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'slide_effect',
 		array(
-			'label'       => __( 'Slider Effect', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Slider Effect', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'separator'   => 'after',
@@ -482,7 +487,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'arrows_position',
 		array(
-			'label'       => __( 'Arrows Position', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Arrows Position', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
@@ -518,7 +523,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'control_dot_style',
 		array(
-			'label'       => __( 'Dots Pagination Style', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Dots Pagination Style', 'wpmozo-addons-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
@@ -1365,7 +1370,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'team_width',
 				array(
-					'label'      => esc_html__( 'Team Width', 'textdomain' ),
+					'label'      => esc_html__( 'Team Width', 'wpmozo-addons-for-elementor' ),
 					'type'       => Controls_Manager::SLIDER,
 					'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 					'range'      => array(
@@ -1391,7 +1396,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'container_height',
 				array(
-					'label'      => esc_html__( 'Container Height', 'textdomain' ),
+					'label'      => esc_html__( 'Container Height', 'wpmozo-addons-for-elementor' ),
 					'type'       => Controls_Manager::SLIDER,
 					'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 					'range'      => array(
@@ -1417,7 +1422,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'team_align',
 				array(
-					'label'       => __( 'Team Alignment', 'wpmozo-addons-for-elementor' ),
+					'label'       => esc_html__( 'Team Alignment', 'wpmozo-addons-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::SELECT,
 					'separator'   => 'after',

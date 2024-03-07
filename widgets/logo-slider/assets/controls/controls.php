@@ -1,4 +1,8 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 use \Elementor\Utils;
 use \Elementor\Controls_Manager;
@@ -12,11 +16,11 @@ use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Flex_Item;
 
-// content section starts here.
+// Content section starts here.
 $this->start_controls_section(
 	'content_section_new',
 	array(
-		'label' => __( 'Logos', 'wpmozo-addons-for-elementor' ),
+		'label' => esc_html__( 'Logos', 'wpmozo-addons-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
 	)
 );
@@ -24,7 +28,7 @@ $this->start_controls_section(
 	$repeater->add_control(
 		'logo_image',
 		array(
-			'label'   => __( 'Logo', 'wpmozo-addons-for-elementor' ),
+			'label'   => esc_html__( 'Logo', 'wpmozo-addons-for-elementor' ),
 			'type'    => Controls_Manager::MEDIA,
 			'default' => array(
 				'url' => Utils::get_placeholder_image_src(),
@@ -34,9 +38,9 @@ $this->start_controls_section(
 	$repeater->add_control(
 		'logo_alt_text',
 		array(
-			'label'       => __( 'Alt Text', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Alt Text', 'wpmozo-addons-for-elementor' ),
 			'type'        => Controls_Manager::TEXT,
-			'default'     => __( 'List Title', 'wpmozo-addons-for-elementor' ),
+			'default'     => esc_html__( 'List Title', 'wpmozo-addons-for-elementor' ),
 			'label_block' => true,
 		)
 	);
@@ -44,7 +48,7 @@ $this->start_controls_section(
 	$repeater->add_control(
 		'logo_link',
 		array(
-			'label'       => esc_html__( 'Link', 'textdomain' ),
+			'label'       => esc_html__( 'Link', 'wpmozo-addons-for-elementor' ),
 			'type'        => Controls_Manager::URL,
 			'options'     => false,
 			'default'     => array(
@@ -65,7 +69,7 @@ $this->start_controls_section(
 					'icon'  => 'eicon-editor-link',
 				),
 				'_blank' => array(
-					'title' => esc_html__( 'New Tab', 'elementor' ),
+					'title' => esc_html__( 'New Tab', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-editor-external-link',
 				),
 			),
@@ -180,15 +184,15 @@ $this->start_controls_section(
 				)
 			);
 
-		$repeater->end_controls_tab();
+			$repeater->end_controls_tab();
 
-		// Tab 2.
-		$repeater->start_controls_tab(
-			'logo_styling_hover_state_tab',
-			array(
-				'label' => esc_html__( 'Hover', 'wpmozo-addons-for-elementor' ),
-			)
-		);
+			// Tab 2.
+			$repeater->start_controls_tab(
+				'logo_styling_hover_state_tab',
+				array(
+					'label' => esc_html__( 'Hover', 'wpmozo-addons-for-elementor' ),
+				)
+			);
 
 			$repeater->add_control(
 				'logo_hover_background_color',
@@ -265,538 +269,538 @@ $this->start_controls_section(
 				)
 			);
 
-		$repeater->end_controls_tab();
+			$repeater->end_controls_tab();
 
-	$repeater->end_controls_tabs();
+			$repeater->end_controls_tabs();
 
-	$this->add_control(
-		'logo_list',
-		array(
-			'label'       => __( 'Logo List', 'wpmozo-addons-for-elementor' ),
-			'type'        => Controls_Manager::REPEATER,
-			'fields'      => $repeater->get_controls(),
-			'default'     => array(
+			$this->add_control(
+				'logo_list',
 				array(
-					'list_logo'     => __( 'Item Media', 'wpmozo-addons-for-elementor' ),
-					'logo_alt_text' => __( 'Item 1', 'wpmozo-addons-for-elementor' ),
+					'label'       => esc_html__( 'Logo List', 'wpmozo-addons-for-elementor' ),
+					'type'        => Controls_Manager::REPEATER,
+					'fields'      => $repeater->get_controls(),
+					'default'     => array(
+						array(
+							'list_logo'     => esc_html__( 'Item Media', 'wpmozo-addons-for-elementor' ),
+							'logo_alt_text' => esc_html__( 'Item 1', 'wpmozo-addons-for-elementor' ),
 
 
-				),
+						),
+						array(
+							'list_image'    => esc_html__( 'Item Media', 'wpmozo-addons-for-elementor' ),
+							'logo_alt_text' => esc_html__( 'Item 2', 'wpmozo-addons-for-elementor' ),
+
+						),
+						array(
+							'list_image'    => esc_html__( 'Item Media', 'wpmozo-addons-for-elementor' ),
+							'logo_alt_text' => esc_html__( 'Item 3', 'wpmozo-addons-for-elementor' ),
+
+						),
+					),
+					'title_field' => '{{{ logo_alt_text }}}',
+				)
+			);
+			$this->end_controls_section();
+
+
+			// Slider settings start here.
+			$this->start_controls_section(
+				'slider_settings',
 				array(
-					'list_image'    => __( 'Item Media', 'wpmozo-addons-for-elementor' ),
-					'logo_alt_text' => __( 'Item 2', 'wpmozo-addons-for-elementor' ),
+					'label' => esc_html__( 'Slider', 'wpmozo-addons-for-elementor' ),
+					'tab'   => Controls_Manager::TAB_CONTENT,
+				)
+			);
 
-				),
+			$this->add_control(
+				'slide_effect',
 				array(
-					'list_image'    => __( 'Item Media', 'wpmozo-addons-for-elementor' ),
-					'logo_alt_text' => __( 'Item 3', 'wpmozo-addons-for-elementor' ),
+					'label'       => esc_html__( 'Slider Effect', 'wpmozo-addons-for-elementor' ),
+					'label_block' => false,
+					'type'        => Controls_Manager::SELECT,
+					'separator'   => 'after',
+					'options'     => array(
+						'slide'     => esc_html__( 'Slide', 'wpmozo-addons-for-elementor' ),
+						'cube'      => esc_html__( 'Cube', 'wpmozo-addons-for-elementor' ),
+						'coverflow' => esc_html__( 'Coverflow', 'wpmozo-addons-for-elementor' ),
+						'flip'      => esc_html__( 'Flip', 'wpmozo-addons-for-elementor' ),
+					),
+					'default'     => 'slide',
+					'selectors'   => array( '' ),
+					'render_type' => 'template',
+				)
+			);
 
-				),
-			),
-			'title_field' => '{{{ logo_alt_text }}}',
-		)
-	);
-$this->end_controls_section();
-
-
-// Slider settings start here.
-$this->start_controls_section(
-	'slider_settings',
-	array(
-		'label' => esc_html__( 'Slider', 'wpmozo-addons-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_CONTENT,
-	)
-);
-
-	$this->add_control(
-		'slide_effect',
-		array(
-			'label'       => __( 'Slider Effect', 'wpmozo-addons-for-elementor' ),
-			'label_block' => false,
-			'type'        => Controls_Manager::SELECT,
-			'separator'   => 'after',
-			'options'     => array(
-				'slide'     => esc_html__( 'Slide', 'wpmozo-addons-for-elementor' ),
-				'cube'      => esc_html__( 'Cube', 'wpmozo-addons-for-elementor' ),
-				'coverflow' => esc_html__( 'Coverflow', 'wpmozo-addons-for-elementor' ),
-				'flip'      => esc_html__( 'Flip', 'wpmozo-addons-for-elementor' ),
-			),
-			'default'     => 'slide',
-			'selectors'   => array( '' ),
-			'render_type' => 'template',
-		)
-	);
-
-	$this->add_responsive_control(
-		'cards_per_slide',
-		array(
-			'label'     => esc_html__( 'Number of Cards Per Slide', 'wpmozo-addons-for-elementor' ),
-			'type'      => Controls_Manager::NUMBER,
-			'min'       => 1,
-			'max'       => 15,
-			'step'      => 1,
-			'default'   => 3,
-			'condition' => array( 'slide_effect' => array( 'slide', 'coverflow' ) ),
-		)
-	);
-
-	$this->add_responsive_control(
-		'slides_per_group',
-		array(
-			'label'     => esc_html__( 'Number of Slides Per Group', 'wpmozo-addons-for-elementor' ),
-			'type'      => Controls_Manager::NUMBER,
-			'min'       => 1,
-			'max'       => 15,
-			'step'      => 1,
-			'default'   => 1,
-			'condition' => array( 'slide_effect' => array( 'slide', 'coverflow' ) ),
-		)
-	);
-
-	$this->add_responsive_control(
-		'space_between_slides',
-		array(
-			'label'          => esc_html__( 'Space Between Slides', 'wpmozo-addons-for-elementor' ),
-			'type'           => Controls_Manager::SLIDER,
-			'range'          => array(
-				'px' => array(
-					'min'  => -100,
-					'max'  => 100,
-					'step' => 1,
-				),
-			),
-			'devices'        => array( 'desktop', 'tablet', 'mobile' ),
-			'default'        => array(
-				'size' => 20,
-				'unit' => 'px',
-			),
-			'tablet_default' => array(
-				'size' => 20,
-				'unit' => 'px',
-			),
-			'mobile_default' => array(
-				'size' => 10,
-				'unit' => 'px',
-			),
-			'size_units'     => array( 'px' ),
-			'condition'      => array( 'slide_effect' => array( 'slide', 'coverflow' ) ),
-			'selectors'      => array( '' ),
-			'render_type'    => 'template',
-		)
-	);
-
-	$this->add_control(
-		'enable_coverflow_shadow',
-		array(
-			'label'                => esc_html__( 'Enable Slide Shadow', 'wpmozo-addons-for-elementor' ),
-			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
-			'return_value'         => 'yes', // return value when the switch is on.
-			'default'              => 'no',
-			'condition'            => array( 'slide_effect' => 'coverflow' ),
-			'selectors_dictionary' => array(
-				'yes' => 'yes',
-				''    => 'no',
-			),
-		)
-	);
-
-	$this->add_control(
-		'coverflow_shadow_color',
-		array(
-			'label'       => esc_html__( 'Shadow Color', 'wpmozo-addons-for-elementor' ),
-			'label_block' => false,
-			'type'        => Controls_Manager::COLOR,
-			'default'     => '#222',
-			'condition'   => array(
-				'enable_coverflow_shadow' => 'yes',
-				'slide_effect'            => 'coverflow',
-			),
-			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ae_wrapper .swiper-slide-shadow-left' => 'background-image: linear-gradient(to left,{{VALUE}},rgba(0,0,0,0)) !important;',
-				'{{WRAPPER}} .wpmozo_ae_wrapper .swiper-slide-shadow-right' => 'background-image: linear-gradient(to right,{{VALUE}},rgba(0,0,0,0)) !important;',
-			),
-		)
-	);
-
-	$this->add_responsive_control(
-		'coverflow_rotate',
-		array(
-			'type'        => Controls_Manager::SLIDER,
-			'label'       => esc_html__( 'Coverflow Rotate ', 'wpmozo-addons-for-elementor' ),
-			'range'       => array(
-				'px' => array(
-					'min'  => 1,
-					'max'  => 360,
-					'step' => 1,
-				),
-			),
-			'default'     => array(
-				'size' => 40,
-				'unit' => 'px',
-			),
-			'condition'   => array( 'slide_effect' => 'coverflow' ),
-			'selectors'   => array(
-				'{{WRAPPER}} .' => 'transform: rotate( {{SIZE}}{{UNIT}} );',
-			),
-			'render_type' => 'template',
-		)
-	);
-
-	$this->add_responsive_control(
-		'coverflow_depth',
-		array(
-			'type'        => Controls_Manager::SLIDER,
-			'label'       => esc_html__( 'Coverflow Depth ', 'wpmozo-addons-for-elementor' ),
-			'range'       => array(
-				'px' => array(
-					'min'  => 1,
-					'max'  => 1000,
-					'step' => 1,
-				),
-			),
-			'default'     => array(
-				'size' => 100,
-				'unit' => 'px',
-			),
-			'condition'   => array( 'slide_effect' => 'coverflow' ),
-			'selectors'   => array(
-				'{{WRAPPER}} .' => 'transform: rotate( {{SIZE}}{{UNIT}} );',
-			),
-			'render_type' => 'template',
-		)
-	);
-
-	$this->add_control(
-		'enable_linear_transition',
-		array(
-			'label'                => esc_html__( 'Enable Linear Transition', 'wpmozo-addons-for-elementor' ),
-			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
-			'return_value'         => 'linear', // return value when the switch is on.
-			'default'              => 'no',
-			'selectors_dictionary' => array(
-				'yes' => 'yes',
-				''    => 'no',
-			),
-			'selectors'            => array( '{{WRAPPER}} .swiper-wrapper' => 'transition-timing-function: {{VALUE}} !important; align-items:center;' ),
-		)
-	);
-
-	$this->add_control(
-		'slider_loop',
-		array(
-			'label'                => esc_html__( 'Enable Loop', 'wpmozo-addons-for-elementor' ),
-			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
-			'return_value'         => 'yes', // return value when the switch is on.
-			'default'              => 'no',
-			'selectors_dictionary' => array(
-				'yes' => 'yes',
-				''    => 'no',
-			),
-		)
-	);
-
-	$this->add_control(
-		'autoplay',
-		array(
-			'label'                => esc_html__( 'Autoplay', 'wpmozo-addons-for-elementor' ),
-			'separator'            => 'before',
-			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
-			'return_value'         => 'yes', // return value when the switch is on.
-			'default'              => 'no',
-			'selectors_dictionary' => array(
-				'yes' => 'yes',
-				''    => 'no',
-			),
-		)
-	);
-
-	$this->add_control(
-		'autoplay_speed',
-		array(
-			'label'     => esc_html__( 'Autoplay Delay', 'wpmozo-addons-for-elementor' ),
-			'type'      => Controls_Manager::NUMBER,
-			'min'       => 0,
-			'max'       => 10000,
-			'step'      => 100,
-			'default'   => 3000,
-			'condition' => array( 'autoplay' => 'yes' ),
-		)
-	);
-
-	$this->add_control(
-		'pause_on_hover',
-		array(
-			'label'                => esc_html__( 'Pause On Hover', 'wpmozo-addons-for-elementor' ),
-			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
-			'return_value'         => 'yes', // return value when the switch is on.
-			'default'              => 'no',
-			'condition'            => array( 'autoplay' => 'yes' ),
-			'selectors_dictionary' => array(
-				'yes' => 'yes',
-				''    => 'no',
-			),
-		)
-	);
-
-	$this->add_control(
-		'slide_transition_duration',
-		array(
-			'label'   => esc_html__( 'Transition Duration', 'wpmozo-addons-for-elementor' ),
-			'type'    => Controls_Manager::NUMBER,
-			'min'     => 100,
-			'max'     => 10000,
-			'step'    => 100,
-			'default' => 1000,
-		)
-	);
-
-	$this->add_control(
-		'show_arrow',
-		array(
-			'label'                => esc_html__( 'Show Arrows', 'wpmozo-addons-for-elementor' ),
-			'separator'            => 'before',
-			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
-			'return_value'         => 'yes', // return value when the switch is on.
-			'default'              => 'yes',
-			'selectors_dictionary' => array(
-				'yes' => 'yes',
-				''    => 'no',
-			),
-		)
-	);
-
-	$this->add_control(
-		'previous_slide_arrow',
-		array(
-			'label'     => esc_html__( 'Previous Arrow', 'wpmozo-addons-for-elementor' ),
-			'type'      => Controls_Manager::ICONS,
-			'default'   => array(
-				'value'   => 'fas fa-chevron-left',
-				'library' => 'fa-solid',
-			),
-			'condition' => array( 'show_arrow' => 'yes' ),
-		)
-	);
-
-	$this->add_control(
-		'next_slide_arrow',
-		array(
-			'label'     => esc_html__( 'Next Arrow', 'wpmozo-addons-for-elementor' ),
-			'type'      => Controls_Manager::ICONS,
-			'default'   => array(
-				'value'   => 'fas fa-chevron-right',
-				'library' => 'fa-solid',
-			),
-			'condition' => array( 'show_arrow' => 'yes' ),
-		)
-	);
-
-	$this->add_control(
-		'show_arrow_on_hover',
-		array(
-			'label'                => esc_html__( 'Show Arrows On Hover', 'wpmozo-addons-for-elementor' ),
-			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
-			'return_value'         => 'yes', // return value when the switch is on.
-			'default'              => 'no',
-			'condition'            => array( 'show_arrow' => 'yes' ),
-			'selectors_dictionary' => array(
-				'yes' => 'yes',
-				''    => 'no',
-			),
-		)
-	);
-
-	$this->add_responsive_control(
-		'arrows_position',
-		array(
-			'label'       => __( 'Arrows Position', 'wpmozo-addons-for-elementor' ),
-			'label_block' => false,
-			'type'        => Controls_Manager::SELECT,
-			'options'     => array(
-				'inside'        => esc_html__( 'Inside', 'wpmozo-addons-for-elementor' ),
-				'outside'       => esc_html__( 'Outside', 'wpmozo-addons-for-elementor' ),
-				'top_left'      => esc_html__( 'Top Left', 'wpmozo-addons-for-elementor' ),
-				'top_right'     => esc_html__( 'Top Right', 'wpmozo-addons-for-elementor' ),
-				'top_center'    => esc_html__( 'Top Center', 'wpmozo-addons-for-elementor' ),
-				'bottom_left'   => esc_html__( 'Bottom Left', 'wpmozo-addons-for-elementor' ),
-				'bottom_right'  => esc_html__( 'Bottom Right', 'wpmozo-addons-for-elementor' ),
-				'bottom_center' => esc_html__( 'Bottom Center', 'wpmozo-addons-for-elementor' ),
-			),
-			'default'     => 'inside',
-			'condition'   => array( 'show_arrow' => 'yes' ),
-		)
-	);
-
-	$this->add_control(
-		'show_control_dot',
-		array(
-			'label'                => esc_html__( 'Show Dots Pagination', 'wpmozo-addons-for-elementor' ),
-			'separator'            => 'before',
-			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
-			'return_value'         => 'yes', // return value when the switch is on.
-			'default'              => 'no',
-			'selectors_dictionary' => array(
-				'yes' => 'yes',
-				''    => 'no',
-			),
-		)
-	);
-
-	$this->add_control(
-		'control_dot_style',
-		array(
-			'label'       => __( 'Dots Pagination Style', 'wpmozo-addons-for-elementor' ),
-			'label_block' => false,
-			'type'        => Controls_Manager::SELECT,
-			'options'     => array(
-				'solid_dot'       => esc_html__( 'Solid Dot', 'wpmozo-addons-for-elementor' ),
-				'transparent_dot' => esc_html__( 'Transparent Dot', 'wpmozo-addons-for-elementor' ),
-				'stretched_dot'   => esc_html__( 'Stretched Dot', 'wpmozo-addons-for-elementor' ),
-				'line'            => esc_html__( 'Line', 'wpmozo-addons-for-elementor' ),
-				'rounded_line'    => esc_html__( 'Rounded Line', 'wpmozo-addons-for-elementor' ),
-				'square_dot'      => esc_html__( 'Squared Dot', 'wpmozo-addons-for-elementor' ),
-			),
-			'default'     => 'solid_dot',
-			'condition'   => array( 'show_control_dot' => 'yes' ),
-			'render-type' => 'template',
-		)
-	);
-
-	$this->add_control(
-		'enable_dynamic_dots',
-		array(
-			'label'                => esc_html__( 'Enable Dynamic Dots', 'wpmozo-addons-for-elementor' ),
-			'type'                 => Controls_Manager::SWITCHER,
-			'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
-			'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
-			'return_value'         => 'yes', // return value when the switch is on.
-			'default'              => 'no',
-			'condition'            => array(
-				'show_control_dot'  => 'yes',
-				'control_dot_style' => array(
-					'solid_dot',
-					'transparent_dot',
-					'square_dot',
-				),
-			),
-			'selectors_dictionary' => array(
-				'yes' => 'yes',
-				''    => 'no',
-			),
-		)
-	);
-$this->end_controls_section();
-
-$this->start_controls_section(
-	'slider_styling',
-	array(
-		'label'      => esc_html__( 'Slider', 'wpmozo-addons-for-elementor' ),
-		'tab'        => Controls_Manager::TAB_STYLE,
-		'conditions' => array(
-			'relation' => 'or',
-			'terms'    => array(
+			$this->add_responsive_control(
+				'cards_per_slide',
 				array(
-					'name'     => 'show_arrow',
-					'operator' => '===',
-					'value'    => 'yes',
-				),
+					'label'     => esc_html__( 'Number of Cards Per Slide', 'wpmozo-addons-for-elementor' ),
+					'type'      => Controls_Manager::NUMBER,
+					'min'       => 1,
+					'max'       => 15,
+					'step'      => 1,
+					'default'   => 3,
+					'condition' => array( 'slide_effect' => array( 'slide', 'coverflow' ) ),
+				)
+			);
+
+			$this->add_responsive_control(
+				'slides_per_group',
 				array(
-					'name'     => 'show_control_dot',
-					'operator' => '===',
-					'value'    => 'yes',
-				),
-			),
-		),
-	)
-);
+					'label'     => esc_html__( 'Number of Slides Per Group', 'wpmozo-addons-for-elementor' ),
+					'type'      => Controls_Manager::NUMBER,
+					'min'       => 1,
+					'max'       => 15,
+					'step'      => 1,
+					'default'   => 1,
+					'condition' => array( 'slide_effect' => array( 'slide', 'coverflow' ) ),
+				)
+			);
 
-	$this->add_responsive_control(
-		'arrows_custom_padding',
-		array(
-			'label'       => esc_html__( 'Arrows Padding', 'wpmozo-addons-for-elementor' ),
-			'type'        => Controls_Manager::DIMENSIONS,
-			'label_block' => true,
-			'size_units'  => array( 'px', 'em', '%' ),
-			'default'     => array(
-				'top'    => 5,
-				'right'  => 5,
-				'bottom' => 5,
-				'left'   => 5,
-			),
-			'condition'   => array( 'show_arrow' => 'yes' ),
-			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ae_swiper_navigation span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				'{{WRAPPER}} .wpmozo_ae_swiper_navigation svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-			),
-		)
-	);
+			$this->add_responsive_control(
+				'space_between_slides',
+				array(
+					'label'          => esc_html__( 'Space Between Slides', 'wpmozo-addons-for-elementor' ),
+					'type'           => Controls_Manager::SLIDER,
+					'range'          => array(
+						'px' => array(
+							'min'  => -100,
+							'max'  => 100,
+							'step' => 1,
+						),
+					),
+					'devices'        => array( 'desktop', 'tablet', 'mobile' ),
+					'default'        => array(
+						'size' => 20,
+						'unit' => 'px',
+					),
+					'tablet_default' => array(
+						'size' => 20,
+						'unit' => 'px',
+					),
+					'mobile_default' => array(
+						'size' => 10,
+						'unit' => 'px',
+					),
+					'size_units'     => array( 'px' ),
+					'condition'      => array( 'slide_effect' => array( 'slide', 'coverflow' ) ),
+					'selectors'      => array( '' ),
+					'render_type'    => 'template',
+				)
+			);
 
-	$this->add_responsive_control(
-		'arrows_font_size',
-		array(
-			'label'          => esc_html__( 'Arrows Font Size', 'wpmozo-addons-for-elementor' ),
-			'type'           => Controls_Manager::SLIDER,
-			'range'          => array(
-				'px' => array(
-					'min'  => 1,
-					'max'  => 1000,
-					'step' => 1,
-				),
-			),
-			'devices'        => array( 'desktop', 'tablet', 'mobile' ),
-			'default'        => array(
-				'size' => 20,
-				'unit' => 'px',
-			),
-			'tablet_default' => array(
-				'size' => 15,
-				'unit' => 'px',
-			),
-			'mobile_default' => array(
-				'size' => 10,
-				'unit' => 'px',
-			),
-			'size_units'     => array( 'px' ),
-			'condition'      => array( 'show_arrow' => 'yes' ),
-			'selectors'      => array(
-				'{{WRAPPER}} .wpmozo_ae_swiper_navigation span ' => 'font-size: {{SIZE}}{{UNIT}};',
-				'{{WRAPPER}} .wpmozo_ae_swiper_navigation svg ' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
+			$this->add_control(
+				'enable_coverflow_shadow',
+				array(
+					'label'                => esc_html__( 'Enable Slide Shadow', 'wpmozo-addons-for-elementor' ),
+					'type'                 => Controls_Manager::SWITCHER,
+					'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+					'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
+					'return_value'         => 'yes', // return value when the switch is on.
+					'default'              => 'no',
+					'condition'            => array( 'slide_effect' => 'coverflow' ),
+					'selectors_dictionary' => array(
+						'yes' => 'yes',
+						''    => 'no',
+					),
+				)
+			);
 
-			),
-		)
-	);
+			$this->add_control(
+				'coverflow_shadow_color',
+				array(
+					'label'       => esc_html__( 'Shadow Color', 'wpmozo-addons-for-elementor' ),
+					'label_block' => false,
+					'type'        => Controls_Manager::COLOR,
+					'default'     => '#222',
+					'condition'   => array(
+						'enable_coverflow_shadow' => 'yes',
+						'slide_effect'            => 'coverflow',
+					),
+					'selectors'   => array(
+						'{{WRAPPER}} .wpmozo_ae_wrapper .swiper-slide-shadow-left' => 'background-image: linear-gradient(to left,{{VALUE}},rgba(0,0,0,0)) !important;',
+						'{{WRAPPER}} .wpmozo_ae_wrapper .swiper-slide-shadow-right' => 'background-image: linear-gradient(to right,{{VALUE}},rgba(0,0,0,0)) !important;',
+					),
+				)
+			);
 
-	$this->start_controls_tabs(
-		'arrows_background_normal_and_hover_state_control_tab',
-		array(
-			'separator' => 'before',
-		)
-	);
+			$this->add_responsive_control(
+				'coverflow_rotate',
+				array(
+					'type'        => Controls_Manager::SLIDER,
+					'label'       => esc_html__( 'Coverflow Rotate ', 'wpmozo-addons-for-elementor' ),
+					'range'       => array(
+						'px' => array(
+							'min'  => 1,
+							'max'  => 360,
+							'step' => 1,
+						),
+					),
+					'default'     => array(
+						'size' => 40,
+						'unit' => 'px',
+					),
+					'condition'   => array( 'slide_effect' => 'coverflow' ),
+					'selectors'   => array(
+						'{{WRAPPER}} .' => 'transform: rotate( {{SIZE}}{{UNIT}} );',
+					),
+					'render_type' => 'template',
+				)
+			);
 
-		// Tab 1.
-		$this->start_controls_tab(
-			'arrows_background_normal_state_tab',
-			array(
-				'label'     => esc_html__( 'Normal', 'wpmozo-addons-for-elementor' ),
-				'condition' => array( 'show_arrow' => 'yes' ),
-			)
-		);
+			$this->add_responsive_control(
+				'coverflow_depth',
+				array(
+					'type'        => Controls_Manager::SLIDER,
+					'label'       => esc_html__( 'Coverflow Depth ', 'wpmozo-addons-for-elementor' ),
+					'range'       => array(
+						'px' => array(
+							'min'  => 1,
+							'max'  => 1000,
+							'step' => 1,
+						),
+					),
+					'default'     => array(
+						'size' => 100,
+						'unit' => 'px',
+					),
+					'condition'   => array( 'slide_effect' => 'coverflow' ),
+					'selectors'   => array(
+						'{{WRAPPER}} .' => 'transform: rotate( {{SIZE}}{{UNIT}} );',
+					),
+					'render_type' => 'template',
+				)
+			);
+
+			$this->add_control(
+				'enable_linear_transition',
+				array(
+					'label'                => esc_html__( 'Enable Linear Transition', 'wpmozo-addons-for-elementor' ),
+					'type'                 => Controls_Manager::SWITCHER,
+					'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+					'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
+					'return_value'         => 'linear', // return value when the switch is on.
+					'default'              => 'no',
+					'selectors_dictionary' => array(
+						'yes' => 'yes',
+						''    => 'no',
+					),
+					'selectors'            => array( '{{WRAPPER}} .swiper-wrapper' => 'transition-timing-function: {{VALUE}} !important; align-items:center;' ),
+				)
+			);
+
+			$this->add_control(
+				'slider_loop',
+				array(
+					'label'                => esc_html__( 'Enable Loop', 'wpmozo-addons-for-elementor' ),
+					'type'                 => Controls_Manager::SWITCHER,
+					'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+					'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
+					'return_value'         => 'yes', // return value when the switch is on.
+					'default'              => 'no',
+					'selectors_dictionary' => array(
+						'yes' => 'yes',
+						''    => 'no',
+					),
+				)
+			);
+
+			$this->add_control(
+				'autoplay',
+				array(
+					'label'                => esc_html__( 'Autoplay', 'wpmozo-addons-for-elementor' ),
+					'separator'            => 'before',
+					'type'                 => Controls_Manager::SWITCHER,
+					'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+					'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
+					'return_value'         => 'yes', // return value when the switch is on.
+					'default'              => 'no',
+					'selectors_dictionary' => array(
+						'yes' => 'yes',
+						''    => 'no',
+					),
+				)
+			);
+
+			$this->add_control(
+				'autoplay_speed',
+				array(
+					'label'     => esc_html__( 'Autoplay Delay', 'wpmozo-addons-for-elementor' ),
+					'type'      => Controls_Manager::NUMBER,
+					'min'       => 0,
+					'max'       => 10000,
+					'step'      => 100,
+					'default'   => 3000,
+					'condition' => array( 'autoplay' => 'yes' ),
+				)
+			);
+
+			$this->add_control(
+				'pause_on_hover',
+				array(
+					'label'                => esc_html__( 'Pause On Hover', 'wpmozo-addons-for-elementor' ),
+					'type'                 => Controls_Manager::SWITCHER,
+					'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+					'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
+					'return_value'         => 'yes', // return value when the switch is on.
+					'default'              => 'no',
+					'condition'            => array( 'autoplay' => 'yes' ),
+					'selectors_dictionary' => array(
+						'yes' => 'yes',
+						''    => 'no',
+					),
+				)
+			);
+
+			$this->add_control(
+				'slide_transition_duration',
+				array(
+					'label'   => esc_html__( 'Transition Duration', 'wpmozo-addons-for-elementor' ),
+					'type'    => Controls_Manager::NUMBER,
+					'min'     => 100,
+					'max'     => 10000,
+					'step'    => 100,
+					'default' => 1000,
+				)
+			);
+
+			$this->add_control(
+				'show_arrow',
+				array(
+					'label'                => esc_html__( 'Show Arrows', 'wpmozo-addons-for-elementor' ),
+					'separator'            => 'before',
+					'type'                 => Controls_Manager::SWITCHER,
+					'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+					'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
+					'return_value'         => 'yes', // return value when the switch is on.
+					'default'              => 'yes',
+					'selectors_dictionary' => array(
+						'yes' => 'yes',
+						''    => 'no',
+					),
+				)
+			);
+
+			$this->add_control(
+				'previous_slide_arrow',
+				array(
+					'label'     => esc_html__( 'Previous Arrow', 'wpmozo-addons-for-elementor' ),
+					'type'      => Controls_Manager::ICONS,
+					'default'   => array(
+						'value'   => 'fas fa-chevron-left',
+						'library' => 'fa-solid',
+					),
+					'condition' => array( 'show_arrow' => 'yes' ),
+				)
+			);
+
+			$this->add_control(
+				'next_slide_arrow',
+				array(
+					'label'     => esc_html__( 'Next Arrow', 'wpmozo-addons-for-elementor' ),
+					'type'      => Controls_Manager::ICONS,
+					'default'   => array(
+						'value'   => 'fas fa-chevron-right',
+						'library' => 'fa-solid',
+					),
+					'condition' => array( 'show_arrow' => 'yes' ),
+				)
+			);
+
+			$this->add_control(
+				'show_arrow_on_hover',
+				array(
+					'label'                => esc_html__( 'Show Arrows On Hover', 'wpmozo-addons-for-elementor' ),
+					'type'                 => Controls_Manager::SWITCHER,
+					'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+					'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
+					'return_value'         => 'yes', // return value when the switch is on.
+					'default'              => 'no',
+					'condition'            => array( 'show_arrow' => 'yes' ),
+					'selectors_dictionary' => array(
+						'yes' => 'yes',
+						''    => 'no',
+					),
+				)
+			);
+
+			$this->add_responsive_control(
+				'arrows_position',
+				array(
+					'label'       => esc_html__( 'Arrows Position', 'wpmozo-addons-for-elementor' ),
+					'label_block' => false,
+					'type'        => Controls_Manager::SELECT,
+					'options'     => array(
+						'inside'        => esc_html__( 'Inside', 'wpmozo-addons-for-elementor' ),
+						'outside'       => esc_html__( 'Outside', 'wpmozo-addons-for-elementor' ),
+						'top_left'      => esc_html__( 'Top Left', 'wpmozo-addons-for-elementor' ),
+						'top_right'     => esc_html__( 'Top Right', 'wpmozo-addons-for-elementor' ),
+						'top_center'    => esc_html__( 'Top Center', 'wpmozo-addons-for-elementor' ),
+						'bottom_left'   => esc_html__( 'Bottom Left', 'wpmozo-addons-for-elementor' ),
+						'bottom_right'  => esc_html__( 'Bottom Right', 'wpmozo-addons-for-elementor' ),
+						'bottom_center' => esc_html__( 'Bottom Center', 'wpmozo-addons-for-elementor' ),
+					),
+					'default'     => 'inside',
+					'condition'   => array( 'show_arrow' => 'yes' ),
+				)
+			);
+
+			$this->add_control(
+				'show_control_dot',
+				array(
+					'label'                => esc_html__( 'Show Dots Pagination', 'wpmozo-addons-for-elementor' ),
+					'separator'            => 'before',
+					'type'                 => Controls_Manager::SWITCHER,
+					'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+					'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
+					'return_value'         => 'yes', // return value when the switch is on.
+					'default'              => 'no',
+					'selectors_dictionary' => array(
+						'yes' => 'yes',
+						''    => 'no',
+					),
+				)
+			);
+
+			$this->add_control(
+				'control_dot_style',
+				array(
+					'label'       => esc_html__( 'Dots Pagination Style', 'wpmozo-addons-for-elementor' ),
+					'label_block' => false,
+					'type'        => Controls_Manager::SELECT,
+					'options'     => array(
+						'solid_dot'       => esc_html__( 'Solid Dot', 'wpmozo-addons-for-elementor' ),
+						'transparent_dot' => esc_html__( 'Transparent Dot', 'wpmozo-addons-for-elementor' ),
+						'stretched_dot'   => esc_html__( 'Stretched Dot', 'wpmozo-addons-for-elementor' ),
+						'line'            => esc_html__( 'Line', 'wpmozo-addons-for-elementor' ),
+						'rounded_line'    => esc_html__( 'Rounded Line', 'wpmozo-addons-for-elementor' ),
+						'square_dot'      => esc_html__( 'Squared Dot', 'wpmozo-addons-for-elementor' ),
+					),
+					'default'     => 'solid_dot',
+					'condition'   => array( 'show_control_dot' => 'yes' ),
+					'render-type' => 'template',
+				)
+			);
+
+			$this->add_control(
+				'enable_dynamic_dots',
+				array(
+					'label'                => esc_html__( 'Enable Dynamic Dots', 'wpmozo-addons-for-elementor' ),
+					'type'                 => Controls_Manager::SWITCHER,
+					'label_off'            => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+					'label_on'             => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
+					'return_value'         => 'yes', // return value when the switch is on.
+					'default'              => 'no',
+					'condition'            => array(
+						'show_control_dot'  => 'yes',
+						'control_dot_style' => array(
+							'solid_dot',
+							'transparent_dot',
+							'square_dot',
+						),
+					),
+					'selectors_dictionary' => array(
+						'yes' => 'yes',
+						''    => 'no',
+					),
+				)
+			);
+			$this->end_controls_section();
+
+			$this->start_controls_section(
+				'slider_styling',
+				array(
+					'label'      => esc_html__( 'Slider', 'wpmozo-addons-for-elementor' ),
+					'tab'        => Controls_Manager::TAB_STYLE,
+					'conditions' => array(
+						'relation' => 'or',
+						'terms'    => array(
+							array(
+								'name'     => 'show_arrow',
+								'operator' => '===',
+								'value'    => 'yes',
+							),
+							array(
+								'name'     => 'show_control_dot',
+								'operator' => '===',
+								'value'    => 'yes',
+							),
+						),
+					),
+				)
+			);
+
+			$this->add_responsive_control(
+				'arrows_custom_padding',
+				array(
+					'label'       => esc_html__( 'Arrows Padding', 'wpmozo-addons-for-elementor' ),
+					'type'        => Controls_Manager::DIMENSIONS,
+					'label_block' => true,
+					'size_units'  => array( 'px', 'em', '%' ),
+					'default'     => array(
+						'top'    => 5,
+						'right'  => 5,
+						'bottom' => 5,
+						'left'   => 5,
+					),
+					'condition'   => array( 'show_arrow' => 'yes' ),
+					'selectors'   => array(
+						'{{WRAPPER}} .wpmozo_ae_swiper_navigation span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ae_swiper_navigation svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					),
+				)
+			);
+
+			$this->add_responsive_control(
+				'arrows_font_size',
+				array(
+					'label'          => esc_html__( 'Arrows Font Size', 'wpmozo-addons-for-elementor' ),
+					'type'           => Controls_Manager::SLIDER,
+					'range'          => array(
+						'px' => array(
+							'min'  => 1,
+							'max'  => 1000,
+							'step' => 1,
+						),
+					),
+					'devices'        => array( 'desktop', 'tablet', 'mobile' ),
+					'default'        => array(
+						'size' => 20,
+						'unit' => 'px',
+					),
+					'tablet_default' => array(
+						'size' => 15,
+						'unit' => 'px',
+					),
+					'mobile_default' => array(
+						'size' => 10,
+						'unit' => 'px',
+					),
+					'size_units'     => array( 'px' ),
+					'condition'      => array( 'show_arrow' => 'yes' ),
+					'selectors'      => array(
+						'{{WRAPPER}} .wpmozo_ae_swiper_navigation span ' => 'font-size: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_ae_swiper_navigation svg ' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
+
+					),
+				)
+			);
+
+			$this->start_controls_tabs(
+				'arrows_background_normal_and_hover_state_control_tab',
+				array(
+					'separator' => 'before',
+				)
+			);
+
+			// Tab 1.
+			$this->start_controls_tab(
+				'arrows_background_normal_state_tab',
+				array(
+					'label'     => esc_html__( 'Normal', 'wpmozo-addons-for-elementor' ),
+					'condition' => array( 'show_arrow' => 'yes' ),
+				)
+			);
 
 			$this->add_control(
 				'arrows_color',
@@ -869,16 +873,16 @@ $this->start_controls_section(
 				)
 			);
 
-		$this->end_controls_tab();
+			$this->end_controls_tab();
 
-		// Tab 2.
-		$this->start_controls_tab(
-			'arrows_background_border_hover_state_tab',
-			array(
-				'label'     => esc_html__( 'Hover', 'wpmozo-addons-for-elementor' ),
-				'condition' => array( 'show_arrow' => 'yes' ),
-			)
-		);
+			// Tab 2.
+			$this->start_controls_tab(
+				'arrows_background_border_hover_state_tab',
+				array(
+					'label'     => esc_html__( 'Hover', 'wpmozo-addons-for-elementor' ),
+					'condition' => array( 'show_arrow' => 'yes' ),
+				)
+			);
 
 			$this->add_control(
 				'arrows_hover_color',
@@ -974,112 +978,112 @@ $this->start_controls_section(
 				)
 			);
 
-		$this->end_controls_tab();
-	$this->end_controls_tabs();
+			$this->end_controls_tab();
+			$this->end_controls_tabs();
 
-	$this->add_control(
-		'control_dot_active_color',
-		array(
-			'label'       => esc_html__( 'Active Dot Pagination Color', 'wpmozo-addons-for-elementor' ),
-			'label_block' => false,
-			'type'        => Controls_Manager::COLOR,
-			'default'     => '#000',
-			'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_swiper_pagination .swiper-pagination-bullet-active-main, {{WRAPPER}} .wpmozo_ae_swiper_pagination .swiper-pagination-bullet.swiper-pagination-bullet-active' => 'background : {{VALUE}};' ),
-			'condition'   => array( 'show_control_dot' => 'yes' ),
-		)
-	);
+			$this->add_control(
+				'control_dot_active_color',
+				array(
+					'label'       => esc_html__( 'Active Dot Pagination Color', 'wpmozo-addons-for-elementor' ),
+					'label_block' => false,
+					'type'        => Controls_Manager::COLOR,
+					'default'     => '#000',
+					'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_swiper_pagination .swiper-pagination-bullet-active-main, {{WRAPPER}} .wpmozo_ae_swiper_pagination .swiper-pagination-bullet.swiper-pagination-bullet-active' => 'background : {{VALUE}};' ),
+					'condition'   => array( 'show_control_dot' => 'yes' ),
+				)
+			);
 
-	$this->add_control(
-		'control_dot_inactive_color',
-		array(
-			'label'       => esc_html__( 'Inactive Dot Pagination Color', 'wpmozo-addons-for-elementor' ),
-			'label_block' => false,
-			'type'        => Controls_Manager::COLOR,
-			'default'     => '#cccccc',
-			'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_swiper_pagination .swiper-pagination-bullet' => 'background: {{VALUE}};' ),
-			'condition'   => array( 'show_control_dot' => 'yes' ),
-		)
-	);
+			$this->add_control(
+				'control_dot_inactive_color',
+				array(
+					'label'       => esc_html__( 'Inactive Dot Pagination Color', 'wpmozo-addons-for-elementor' ),
+					'label_block' => false,
+					'type'        => Controls_Manager::COLOR,
+					'default'     => '#cccccc',
+					'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_swiper_pagination .swiper-pagination-bullet' => 'background: {{VALUE}};' ),
+					'condition'   => array( 'show_control_dot' => 'yes' ),
+				)
+			);
 
-$this->end_controls_section();
+			$this->end_controls_section();
 
-$this->start_controls_section(
-	'logo_styling',
-	array(
-		'label' => esc_html__( 'Logo', 'wpmozo-addons-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_STYLE,
-	)
-);
+			$this->start_controls_section(
+				'logo_styling',
+				array(
+					'label' => esc_html__( 'Logo', 'wpmozo-addons-for-elementor' ),
+					'tab'   => Controls_Manager::TAB_STYLE,
+				)
+			);
 
-	$this->add_control(
-		'logo_width',
-		array(
-			'label'      => esc_html__( 'Logo Width', 'textdomain' ),
-			'type'       => \Elementor\Controls_Manager::SLIDER,
-			'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
-			'range'      => array(
-				'px' => array(
-					'min'  => 0,
-					'max'  => 1000,
-					'step' => 10,
-				),
-				'%'  => array(
-					'min' => 0,
-					'max' => 100,
-				),
-			),
-			'default'    => array(
-				'unit' => 'px',
-				'size' => 150,
-			),
-			'selectors'  => array(
-				'{{WRAPPER}} .wpmozo_ae_swiper_wrapper .swiper-wrapper .swiper-slide img' => 'width: {{SIZE}}{{UNIT}};',
-			),
-		)
-	);
+			$this->add_control(
+				'logo_width',
+				array(
+					'label'      => esc_html__( 'Logo Width', 'wpmozo-addons-for-elementor' ),
+					'type'       => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
+					'range'      => array(
+						'px' => array(
+							'min'  => 0,
+							'max'  => 1000,
+							'step' => 10,
+						),
+						'%'  => array(
+							'min' => 0,
+							'max' => 100,
+						),
+					),
+					'default'    => array(
+						'unit' => 'px',
+						'size' => 150,
+					),
+					'selectors'  => array(
+						'{{WRAPPER}} .wpmozo_ae_swiper_wrapper .swiper-wrapper .swiper-slide img' => 'width: {{SIZE}}{{UNIT}};',
+					),
+				)
+			);
 
-	$this->add_control(
-		'container_height',
-		array(
-			'label'      => esc_html__( 'Container Height', 'textdomain' ),
-			'type'       => Controls_Manager::SLIDER,
-			'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
-			'range'      => array(
-				'px' => array(
-					'min'  => 0,
-					'max'  => 1000,
-					'step' => 10,
-				),
-				'%'  => array(
-					'min' => 0,
-					'max' => 100,
-				),
-			),
-			'default'    => array(
-				'unit' => 'px',
-				'size' => 150,
-			),
-			'selectors'  => array(
-				'{{WRAPPER}} .wpmozo_ae_swiper_wrapper .swiper-wrapper .swiper-slide' => 'min-height: {{SIZE}}{{UNIT}};',
-			),
-		)
-	);
-	$this->add_control(
-		'logo_align',
-		array(
-			'label'       => __( 'Logo Alignment', 'wpmozo-addons-for-elementor' ),
-			'label_block' => false,
-			'type'        => Controls_Manager::SELECT,
-			'separator'   => 'after',
-			'options'     => array(
-				'flex-start' => esc_html__( 'Top', 'wpmozo-addons-for-elementor' ),
-				'center'     => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
-				'flex-end'   => esc_html__( 'Bottom', 'wpmozo-addons-for-elementor' ),
-			),
-			'default'     => 'center',
-			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ae_swiper_wrapper .swiper-wrapper .swiper-slide' => 'align-items: {{VALUE}};',
-			),
-		)
-	);
-$this->end_controls_section();
+			$this->add_control(
+				'container_height',
+				array(
+					'label'      => esc_html__( 'Container Height', 'wpmozo-addons-for-elementor' ),
+					'type'       => Controls_Manager::SLIDER,
+					'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
+					'range'      => array(
+						'px' => array(
+							'min'  => 0,
+							'max'  => 1000,
+							'step' => 10,
+						),
+						'%'  => array(
+							'min' => 0,
+							'max' => 100,
+						),
+					),
+					'default'    => array(
+						'unit' => 'px',
+						'size' => 150,
+					),
+					'selectors'  => array(
+						'{{WRAPPER}} .wpmozo_ae_swiper_wrapper .swiper-wrapper .swiper-slide' => 'min-height: {{SIZE}}{{UNIT}};',
+					),
+				)
+			);
+			$this->add_control(
+				'logo_align',
+				array(
+					'label'       => esc_html__( 'Logo Alignment', 'wpmozo-addons-for-elementor' ),
+					'label_block' => false,
+					'type'        => Controls_Manager::SELECT,
+					'separator'   => 'after',
+					'options'     => array(
+						'flex-start' => esc_html__( 'Top', 'wpmozo-addons-for-elementor' ),
+						'center'     => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
+						'flex-end'   => esc_html__( 'Bottom', 'wpmozo-addons-for-elementor' ),
+					),
+					'default'     => 'center',
+					'selectors'   => array(
+						'{{WRAPPER}} .wpmozo_ae_swiper_wrapper .swiper-wrapper .swiper-slide' => 'align-items: {{VALUE}};',
+					),
+				)
+			);
+			$this->end_controls_section();

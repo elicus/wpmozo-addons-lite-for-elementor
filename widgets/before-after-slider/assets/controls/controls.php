@@ -1,4 +1,9 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use \Elementor\Utils;
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Text_Shadow;
@@ -90,11 +95,11 @@ $this->start_controls_section(
 			$this->add_control(
 				'before_label_text',
 				array(
-					'label'       => __( 'Enter Lable', 'wpmozo-addons-for-elementor' ),
+					'label'       => esc_html__( 'Enter Lable', 'wpmozo-addons-for-elementor' ),
 					'label_block' => true,
 					'type'        => Controls_Manager::TEXT,
 					'dynamic'     => array( 'active' => true ),
-					'placeholder' => __( 'Enter Label For Before Image', 'wpmozo-addons-for-elementor' ),
+					'placeholder' => esc_html__( 'Enter Label For Before Image', 'wpmozo-addons-for-elementor' ),
 					'condition'   => array( 'before_label_show_switcher' => 'yes' ),
 				)
 			);
@@ -187,11 +192,11 @@ $this->start_controls_section(
 			$this->add_control(
 				'after_label_text',
 				array(
-					'label'       => __( 'Enter Lable', 'wpmozo-addons-for-elementor' ),
+					'label'       => esc_html__( 'Enter Lable', 'wpmozo-addons-for-elementor' ),
 					'label_block' => true,
 					'type'        => Controls_Manager::TEXT,
 					'dynamic'     => array( 'active' => true ),
-					'placeholder' => __( 'Enter Label For After Image', 'wpmozo-addons-for-elementor' ),
+					'placeholder' => esc_html__( 'Enter Label For After Image', 'wpmozo-addons-for-elementor' ),
 					'condition'   => array( 'after_label_show_switcher' => 'yes' ),
 				)
 			);
@@ -230,12 +235,12 @@ $this->start_controls_section(
 			$this->add_control(
 				'slider_orientation_select',
 				array(
-					'label'       => __( 'Slider Orientation', 'wpmozo-addons-for-elementor' ),
+					'label'       => esc_html__( 'Slider Orientation', 'wpmozo-addons-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::SELECT,
 					'options'     => array(
-						''         => __( 'Horizontal', 'wpmozo-addons-for-elementor' ),
-						'vertical' => __( 'Vertical', 'wpmozo-addons-for-elementor' ),
+						''         => esc_html__( 'Horizontal', 'wpmozo-addons-for-elementor' ),
+						'vertical' => esc_html__( 'Vertical', 'wpmozo-addons-for-elementor' ),
 					),
 					'default'     => '',
 				)

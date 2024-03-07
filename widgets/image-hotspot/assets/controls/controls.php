@@ -1,4 +1,9 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use \Elementor\Utils;
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Text_Shadow;
@@ -8,13 +13,12 @@ use \Elementor\Repeater;
 use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Css_Filter;
-use \Elementor\Plugin;
 
 // Marker section.
 $this->start_controls_section(
 	'marker',
 	array(
-		'label' => __( 'Hotspot Marker', 'wpmozo-addons-for-elementor' ),
+		'label' => esc_html__( 'Hotspot Marker', 'wpmozo-addons-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
 	)
 );
@@ -78,10 +82,10 @@ $this->start_controls_section(
 			$repeater->add_control(
 				'marker_text',
 				array(
-					'label'       => __( 'Marker Text', 'wpmozo-addons-for-elementor' ),
+					'label'       => esc_html__( 'Marker Text', 'wpmozo-addons-for-elementor' ),
 					'type'        => Controls_Manager::TEXT,
 					'label_block' => true,
-					'default'     => 'Marker',
+					'default'     => esc_html__( 'Marker' ),
 					'condition'   => array(
 						'marker_type' => 'text',
 					),
@@ -90,7 +94,7 @@ $this->start_controls_section(
 			$repeater->add_control(
 				'marker_image',
 				array(
-					'label'     => __( 'Marker Image', 'wpmozo-addons-for-elementor' ),
+					'label'     => esc_html__( 'Marker Image', 'wpmozo-addons-for-elementor' ),
 					'type'      => Controls_Manager::MEDIA,
 					'default'   => array(
 						'url' => Utils::get_placeholder_image_src(),
@@ -149,7 +153,7 @@ $this->start_controls_section(
 					'label'     => esc_html__( 'Select Template', 'wpmozo-addons-for-elementor' ),
 					'type'      => Controls_Manager::SELECT,
 					'default'   => 0,
-					'options'   => wpmozo_ae_image_hotspot_get_elementor_templates_as_options(),
+					'options'   => wpmozo_ae_get_elementor_templates_as_options(),
 					'condition' => array(
 						'tooltip_content_type' => 'template',
 					),
@@ -471,7 +475,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'hotspot_image',
 				array(
-					'label'   => __( 'Hotspot Image', 'wpmozo-addons-for-elementor' ),
+					'label'   => esc_html__( 'Hotspot Image', 'wpmozo-addons-for-elementor' ),
 					'type'    => Controls_Manager::MEDIA,
 					'default' => array(
 						'url' => Utils::get_placeholder_image_src(),
@@ -481,7 +485,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'hotspot_image_alt_text',
 				array(
-					'label'       => __( 'Hotspot Image Alt Text', 'wpmozo-addons-for-elementor' ),
+					'label'       => esc_html__( 'Hotspot Image Alt Text', 'wpmozo-addons-for-elementor' ),
 					'type'        => Controls_Manager::TEXT,
 					'label_block' => true,
 				)
@@ -1701,14 +1705,3 @@ $this->start_controls_section(
 			$this->end_controls_tab();
 			$this->end_controls_tabs();
 			$this->end_controls_section();
-
-			/** Function to get Elementor templates as options. **/
-			function wpmozo_ae_image_hotspot_get_elementor_templates_as_options() {
-				$templates           = Plugin::$instance->templates_manager->get_source( 'local' )->get_items();
-				$template_options    = array();
-				$template_options[0] = esc_html__( 'Select Template', 'wpmozo-addons-for-elementor' );
-				foreach ( $templates as $template ) {
-					$template_options[ $template['template_id'] ] = $template['title'];
-				}
-				return $template_options;
-			}

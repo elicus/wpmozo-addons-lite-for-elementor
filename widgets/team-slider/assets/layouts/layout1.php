@@ -1,11 +1,16 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( $query->have_posts() ) {
-	foreach ( $query->posts as $index => $post ) {
+	while ( $query->have_posts() ) {
 		$query->the_post();
 		$this->add_render_attribute( 'swiper_layout_item' . $index, array( 'class' => array( 'wpmozo_wrapper', 'wpmozo_swiper_layout_item_' . $index, 'swiper-slide' ) ) );
 		?>
 		<div <?php $this->print_render_attribute_string( 'swiper_layout_item' . $index ); ?>>            
-			<div id="wpmozo_ae_team_member_<?php echo get_the_ID(); ?>" class="wpmozo_ae_team_member_card"
+			<div id="wpmozo_ae_team_member_<?php echo esc_html( get_the_ID() ); ?>" class="wpmozo_ae_team_member_card"
 				data-link="<?php echo esc_attr( get_the_permalink() ); ?>" data-link_target="<?php echo esc_attr( $link_target ); ?>">
 				<div class="wpmozo_team_image_wrapper">
 					<div class="wpmozo_ae_team_member_image">
@@ -83,7 +88,7 @@ if ( $query->have_posts() ) {
 					<?php endif; ?>
 				</div>
 			</div> 
-			</div>          
+		</div>          
 		<?php
 	}
 }

@@ -1,6 +1,11 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( $query->have_posts() ) {
-	foreach ( $query->posts as $index => $post ) {
+	while ( $query->have_posts() ) {
 		$query->the_post();
 		$this->add_render_attribute( 'swiper_layout_item' . $index, array( 'class' => array( 'wpmozo_wrapper', 'wpmozo_swiper_layout_item_' . $index, 'swiper-slide' ) ) );
 		?>
@@ -41,7 +46,7 @@ if ( $query->have_posts() ) {
 											<div class="wpmozo_filled_bar" data-skill="<?php echo esc_attr( $skills_value_arr[ $key ] ); ?>%" style="width: <?php echo esc_attr( $skills_value_arr[ $key ] ); ?>%"></div>
 										</div>
 									</div>
-									<?php
+								<?php
 							}
 							?>
 						</div>

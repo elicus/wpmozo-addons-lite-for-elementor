@@ -1,4 +1,9 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use \Elementor\Utils;
 use \Elementor\Plugin;
 use \Elementor\Controls_Manager;
@@ -11,7 +16,6 @@ use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Flex_Item;
 
 // Content tab.
-
 // Image setting controls.
 $this->start_controls_section(
 	'image_setting',
@@ -57,7 +61,7 @@ $this->start_controls_section(
 			'label'       => esc_html__( 'Title', 'wpmozo-addons-for-elementor' ),
 			'label_block' => true,
 			'type'        => Controls_Manager::TEXT,
-			'default'     => 'Image Card Title',
+			'default'     => esc_html__( 'Image Card Title' ),
 			'dynamic'     => array( 'active' => true ),
 			'placeholder' => esc_html__( 'Enter Title Here', 'wpmozo-addons-for-elementor' ),
 		)
@@ -152,7 +156,7 @@ $this->start_controls_section(
 					'icon'  => 'eicon-angle-left',
 				),
 				'after'  => array(
-					'title' => esc_html__( 'After', 'elementor' ),
+					'title' => esc_html__( 'After', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-angle-right',
 				),
 			),
@@ -1219,7 +1223,7 @@ $this->start_controls_section(
 			$this->start_controls_section(
 				'_section_style',
 				array(
-					'label' => esc_html__( 'Layout', 'elementor' ),
+					'label' => esc_html__( 'Layout', 'wpmozo-addons-for-elementor' ),
 					'tab'   => Controls_Manager::TAB_ADVANCED,
 				)
 			);
@@ -1227,7 +1231,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'_title',
 				array(
-					'label'       => esc_html__( 'Title', 'elementor' ),
+					'label'       => esc_html__( 'Title', 'wpmozo-addons-for-elementor' ),
 					'type'        => Controls_Manager::HIDDEN,
 					'render_type' => 'none',
 				)
@@ -1235,7 +1239,7 @@ $this->start_controls_section(
 			$this->add_responsive_control(
 				'content_padding',
 				array(
-					'label'      => esc_html__( 'Content Padding', 'elementor' ),
+					'label'      => esc_html__( 'Content Padding', 'wpmozo-addons-for-elementor' ),
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', 'em', '%', 'rem', 'custom' ),
 					'default'    => array(
@@ -1252,7 +1256,7 @@ $this->start_controls_section(
 			$this->add_responsive_control(
 				'_margin',
 				array(
-					'label'      => esc_html__( 'Margin', 'elementor' ),
+					'label'      => esc_html__( 'Margin', 'wpmozo-addons-for-elementor' ),
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', 'em', '%', 'rem', 'custom' ),
 					'selectors'  => array(
@@ -1263,7 +1267,7 @@ $this->start_controls_section(
 			$this->add_responsive_control(
 				'_padding',
 				array(
-					'label'      => esc_html__( 'Padding', 'elementor' ),
+					'label'      => esc_html__( 'Padding', 'wpmozo-addons-for-elementor' ),
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', 'em', '%', 'rem', 'custom' ),
 					'selectors'  => array(
@@ -1276,14 +1280,14 @@ $this->start_controls_section(
 			$this->add_responsive_control(
 				'_element_width',
 				array(
-					'label'                => esc_html__( 'Width', 'elementor' ),
+					'label'                => esc_html__( 'Width', 'wpmozo-addons-for-elementor' ),
 					'type'                 => Controls_Manager::SELECT,
 					'default'              => '',
 					'options'              => array(
-						''        => esc_html__( 'Default', 'elementor' ),
-						'inherit' => esc_html__( 'Full Width', 'elementor' ) . ' (100%)',
-						'auto'    => esc_html__( 'Inline', 'elementor' ) . ' (auto)',
-						'initial' => esc_html__( 'Custom', 'elementor' ),
+						''        => esc_html__( 'Default', 'wpmozo-addons-for-elementor' ),
+						'inherit' => esc_html__( 'Full Width', 'wpmozo-addons-for-elementor' ) . ' (100%)',
+						'auto'    => esc_html__( 'Inline', 'wpmozo-addons-for-elementor' ) . ' (auto)',
+						'initial' => esc_html__( 'Custom', 'wpmozo-addons-for-elementor' ),
 					),
 					'selectors_dictionary' => array(
 						'inherit' => '100%',
@@ -1297,7 +1301,7 @@ $this->start_controls_section(
 			$this->add_responsive_control(
 				'_element_custom_width',
 				array(
-					'label'      => esc_html__( 'Width', 'elementor' ),
+					'label'      => esc_html__( 'Width', 'wpmozo-addons-for-elementor' ),
 					'type'       => Controls_Manager::SLIDER,
 					'default'    => array(
 						'unit' => '%',
@@ -1358,19 +1362,19 @@ $this->start_controls_section(
 			$this->add_responsive_control(
 				'_element_vertical_align',
 				array(
-					'label'     => esc_html__( 'Vertical Align', 'elementor' ),
+					'label'     => esc_html__( 'Vertical Align', 'wpmozo-addons-for-elementor' ),
 					'type'      => Controls_Manager::CHOOSE,
 					'options'   => array(
 						'flex-start' => array(
-							'title' => esc_html__( 'Start', 'elementor' ),
+							'title' => esc_html__( 'Start', 'wpmozo-addons-for-elementor' ),
 							'icon'  => 'eicon-v-align-top',
 						),
 						'center'     => array(
-							'title' => esc_html__( 'Center', 'elementor' ),
+							'title' => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
 							'icon'  => 'eicon-v-align-middle',
 						),
 						'flex-end'   => array(
-							'title' => esc_html__( 'End', 'elementor' ),
+							'title' => esc_html__( 'End', 'wpmozo-addons-for-elementor' ),
 							'icon'  => 'eicon-v-align-bottom',
 						),
 					),
@@ -1383,7 +1387,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'_position_description',
 				array(
-					'raw'             => '<strong>' . esc_html__( 'Please note!', 'elementor' ) . '</strong> ' . esc_html__( 'Custom positioning is not considered best practice for responsive web design and should not be used too frequently.', 'elementor' ),
+					'raw'             => '<strong>' . esc_html__( 'Please note!', 'wpmozo-addons-for-elementor' ) . '</strong> ' . esc_html__( 'Custom positioning is not considered best practice for responsive web design and should not be used too frequently.', 'wpmozo-addons-for-elementor' ),
 					'type'            => Controls_Manager::RAW_HTML,
 					'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
 					'render_type'     => 'ui',
@@ -1395,25 +1399,25 @@ $this->start_controls_section(
 			$this->add_control(
 				'_position',
 				array(
-					'label'              => esc_html__( 'Position', 'elementor' ),
+					'label'              => esc_html__( 'Position', 'wpmozo-addons-for-elementor' ),
 					'type'               => Controls_Manager::SELECT,
 					'default'            => '',
 					'options'            => array(
-						''         => esc_html__( 'Default', 'elementor' ),
-						'absolute' => esc_html__( 'Absolute', 'elementor' ),
-						'fixed'    => esc_html__( 'Fixed', 'elementor' ),
+						''         => esc_html__( 'Default', 'wpmozo-addons-for-elementor' ),
+						'absolute' => esc_html__( 'Absolute', 'wpmozo-addons-for-elementor' ),
+						'fixed'    => esc_html__( 'Fixed', 'wpmozo-addons-for-elementor' ),
 					),
 					'prefix_class'       => 'elementor-',
 					'frontend_available' => true,
 					'separator'          => 'before',
 				)
 			);
-			$start = is_rtl() ? esc_html__( 'Right', 'elementor' ) : esc_html__( 'Left', 'elementor' );
-			$end   = ! is_rtl() ? esc_html__( 'Right', 'elementor' ) : esc_html__( 'Left', 'elementor' );
+			$start = is_rtl() ? esc_html__( 'Right', 'wpmozo-addons-for-elementor' ) : esc_html__( 'Left', 'wpmozo-addons-for-elementor' );
+			$end   = ! is_rtl() ? esc_html__( 'Right', 'wpmozo-addons-for-elementor' ) : esc_html__( 'Left', 'wpmozo-addons-for-elementor' );
 			$this->add_control(
 				'_offset_orientation_h',
 				array(
-					'label'       => esc_html__( 'Horizontal Orientation', 'elementor' ),
+					'label'       => esc_html__( 'Horizontal Orientation', 'wpmozo-addons-for-elementor' ),
 					'type'        => Controls_Manager::CHOOSE,
 					'toggle'      => false,
 					'default'     => 'start',
@@ -1437,7 +1441,7 @@ $this->start_controls_section(
 			$this->add_responsive_control(
 				'_offset_x',
 				array(
-					'label'      => esc_html__( 'Offset', 'elementor' ),
+					'label'      => esc_html__( 'Offset', 'wpmozo-addons-for-elementor' ),
 					'type'       => Controls_Manager::SLIDER,
 					'range'      => array(
 						'px' => array(
@@ -1475,7 +1479,7 @@ $this->start_controls_section(
 			$this->add_responsive_control(
 				'_offset_x_end',
 				array(
-					'label'      => esc_html__( 'Offset', 'elementor' ),
+					'label'      => esc_html__( 'Offset', 'wpmozo-addons-for-elementor' ),
 					'type'       => Controls_Manager::SLIDER,
 					'range'      => array(
 						'px' => array(
@@ -1513,17 +1517,17 @@ $this->start_controls_section(
 			$this->add_control(
 				'_offset_orientation_v',
 				array(
-					'label'       => esc_html__( 'Vertical Orientation', 'elementor' ),
+					'label'       => esc_html__( 'Vertical Orientation', 'wpmozo-addons-for-elementor' ),
 					'type'        => Controls_Manager::CHOOSE,
 					'toggle'      => false,
 					'default'     => 'start',
 					'options'     => array(
 						'start' => array(
-							'title' => esc_html__( 'Top', 'elementor' ),
+							'title' => esc_html__( 'Top', 'wpmozo-addons-for-elementor' ),
 							'icon'  => 'eicon-v-align-top',
 						),
 						'end'   => array(
-							'title' => esc_html__( 'Bottom', 'elementor' ),
+							'title' => esc_html__( 'Bottom', 'wpmozo-addons-for-elementor' ),
 							'icon'  => 'eicon-v-align-bottom',
 						),
 					),
@@ -1536,7 +1540,7 @@ $this->start_controls_section(
 			$this->add_responsive_control(
 				'_offset_y',
 				array(
-					'label'      => esc_html__( 'Offset', 'elementor' ),
+					'label'      => esc_html__( 'Offset', 'wpmozo-addons-for-elementor' ),
 					'type'       => Controls_Manager::SLIDER,
 					'range'      => array(
 						'px' => array(
@@ -1573,7 +1577,7 @@ $this->start_controls_section(
 			$this->add_responsive_control(
 				'_offset_y_end',
 				array(
-					'label'      => esc_html__( 'Offset', 'elementor' ),
+					'label'      => esc_html__( 'Offset', 'wpmozo-addons-for-elementor' ),
 					'type'       => Controls_Manager::SLIDER,
 					'range'      => array(
 						'px' => array(
@@ -1610,7 +1614,7 @@ $this->start_controls_section(
 			$this->add_responsive_control(
 				'_z_index',
 				array(
-					'label'     => esc_html__( 'Z-Index', 'elementor' ),
+					'label'     => esc_html__( 'Z-Index', 'wpmozo-addons-for-elementor' ),
 					'type'      => Controls_Manager::NUMBER,
 					'selectors' => array(
 						'{{WRAPPER}}' => 'z-index: {{VALUE}};',
@@ -1620,13 +1624,13 @@ $this->start_controls_section(
 			$this->add_control(
 				'_element_id',
 				array(
-					'label'          => esc_html__( 'CSS ID', 'elementor' ),
+					'label'          => esc_html__( 'CSS ID', 'wpmozo-addons-for-elementor' ),
 					'type'           => Controls_Manager::TEXT,
 					'dynamic'        => array(
 						'active' => true,
 					),
 					'default'        => '',
-					'title'          => esc_html__( 'Add your custom id WITHOUT the Pound key. e.g: my-id', 'elementor' ),
+					'title'          => esc_html__( 'Add your custom id WITHOUT the Pound key. e.g: my-id', 'wpmozo-addons-for-elementor' ),
 					'style_transfer' => false,
 					'classes'        => 'elementor-control-direction-ltr',
 				)
@@ -1634,13 +1638,13 @@ $this->start_controls_section(
 			$this->add_control(
 				'_css_classes',
 				array(
-					'label'        => esc_html__( 'CSS Classes', 'elementor' ),
+					'label'        => esc_html__( 'CSS Classes', 'wpmozo-addons-for-elementor' ),
 					'type'         => Controls_Manager::TEXT,
 					'dynamic'      => array(
 						'active' => true,
 					),
 					'prefix_class' => '',
-					'title'        => esc_html__( 'Add your custom class WITHOUT the dot. e.g: my-class', 'elementor' ),
+					'title'        => esc_html__( 'Add your custom class WITHOUT the dot. e.g: my-class', 'wpmozo-addons-for-elementor' ),
 					'classes'      => 'elementor-control-direction-ltr',
 				)
 			);

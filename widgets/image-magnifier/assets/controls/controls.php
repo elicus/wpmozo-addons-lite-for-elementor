@@ -1,4 +1,9 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use \Elementor\Utils;
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Border;
@@ -7,7 +12,7 @@ use \Elementor\Group_Control_Image_Size;
 $this->start_controls_section(
 	'image_section',
 	array(
-		'label' => __( 'Image', 'wpmozo-addons-for-elementor' ),
+		'label' => esc_html__( 'Image', 'wpmozo-addons-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
 	)
 );
@@ -31,21 +36,21 @@ $this->start_controls_section(
 	$this->add_control(
 		'image_alt_text',
 		array(
-			'label'       => __( 'Image Alt Text', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Image Alt Text', 'wpmozo-addons-for-elementor' ),
 			'type'        => Controls_Manager::TEXT,
 			'label_block' => true,
 		)
 	);
-$this->end_controls_section();
+	$this->end_controls_section();
 
-// Image Alignment controls.
-$this->start_controls_section(
-	'image_alignment_section',
-	array(
-		'label' => esc_html__( 'Image Settings', 'wpmozo-addons-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_STYLE,
-	)
-);
+	// Image Alignment controls.
+	$this->start_controls_section(
+		'image_alignment_section',
+		array(
+			'label' => esc_html__( 'Image Settings', 'wpmozo-addons-for-elementor' ),
+			'tab'   => Controls_Manager::TAB_STYLE,
+		)
+	);
 	$this->add_responsive_control(
 		'image_alignment',
 		array(
@@ -74,16 +79,16 @@ $this->start_controls_section(
 			'selectors'   => array( '{{WRAPPER}} .wpmozo_image_magnifier .magnify' => 'justify-content: {{VALUE}};' ),
 		)
 	);
-$this->end_controls_section();
+	$this->end_controls_section();
 
-// Magnifier controls.
-$this->start_controls_section(
-	'magnifier_settings',
-	array(
-		'label' => esc_html__( 'Lens Settings', 'wpmozo-addons-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_STYLE,
-	)
-);
+	// Magnifier controls.
+	$this->start_controls_section(
+		'magnifier_settings',
+		array(
+			'label' => esc_html__( 'Lens Settings', 'wpmozo-addons-for-elementor' ),
+			'tab'   => Controls_Manager::TAB_STYLE,
+		)
+	);
 	$this->add_responsive_control(
 		'width',
 		array(
@@ -163,15 +168,15 @@ $this->start_controls_section(
 			'render_type' => 'template',
 		)
 	);
-$this->end_controls_section();
+	$this->end_controls_section();
 
-// Sizing controls.
-$this->start_controls_section(
-	'image_size_section',
-	array(
-		'label' => esc_html__( 'Sizing', 'wpmozo-addons-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_STYLE,
-	)
+	// Sizing controls.
+	$this->start_controls_section(
+		'image_size_section',
+		array(
+			'label' => esc_html__( 'Sizing', 'wpmozo-addons-for-elementor' ),
+			'tab'   => Controls_Manager::TAB_STYLE,
+		)
 	);
 	$this->add_responsive_control(
 		'image_width',
@@ -216,16 +221,16 @@ $this->start_controls_section(
 
 		)
 	);
-$this->end_controls_section();
+	$this->end_controls_section();
 
-// Spacing controls.
-$this->start_controls_section(
-	'spacing_section',
-	array(
-		'label' => esc_html__( 'Spacing', 'wpmozo-addons-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_STYLE,
-	)
-);
+	// Spacing controls.
+	$this->start_controls_section(
+		'spacing_section',
+		array(
+			'label' => esc_html__( 'Spacing', 'wpmozo-addons-for-elementor' ),
+			'tab'   => Controls_Manager::TAB_STYLE,
+		)
+	);
 	$this->add_responsive_control(
 		'padding',
 		array(
@@ -250,16 +255,16 @@ $this->start_controls_section(
 
 		)
 	);
-$this->end_controls_section();
+	$this->end_controls_section();
 
-// Border controls.
-$this->start_controls_section(
-	'border_section',
-	array(
-		'label' => esc_html__( 'Border', 'wpmozo-addons-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_STYLE,
-	)
-);
+	// Border controls.
+	$this->start_controls_section(
+		'border_section',
+		array(
+			'label' => esc_html__( 'Border', 'wpmozo-addons-for-elementor' ),
+			'tab'   => Controls_Manager::TAB_STYLE,
+		)
+	);
 	$this->add_group_control(
 		Group_Control_Border::get_type(),
 		array(
@@ -267,4 +272,4 @@ $this->start_controls_section(
 			'selector' => '{{WRAPPER}} .wpmozo_image_magnifier .magnify img',
 		)
 	);
-$this->end_controls_section();
+	$this->end_controls_section();

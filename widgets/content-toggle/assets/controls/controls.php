@@ -1,11 +1,15 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Text_Shadow;
 use \Elementor\Group_Control_Typography;
 use \Elementor\Plugin;
 
-// Content One section starts.
+// Content One section.
 $this->start_controls_section(
 	'wpmozo_toggle_one',
 	array(
@@ -52,7 +56,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'toggle_one_icon_indent',
 		array(
-			'label'     => esc_html__( 'Icon Spacing', 'elementor' ),
+			'label'     => esc_html__( 'Icon Spacing', 'wpmozo-addons-for-elementor' ),
 			'type'      => Controls_Manager::SLIDER,
 			'range'     => array(
 				'px' => array(
@@ -124,7 +128,7 @@ $this->start_controls_section(
 	);
 	$this->end_controls_section();
 
-	// Content Two section starts.
+	// Content Two section.
 	$this->start_controls_section(
 		'wpmozo_toggle_two',
 		array(
@@ -170,7 +174,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'toggle_two_icon_indent',
 		array(
-			'label'     => esc_html__( 'Icon Spacing', 'elementor' ),
+			'label'     => esc_html__( 'Icon Spacing', 'wpmozo-addons-for-elementor' ),
 			'type'      => Controls_Manager::SLIDER,
 			'range'     => array(
 				'px' => array(
@@ -242,8 +246,8 @@ $this->start_controls_section(
 
 	$this->end_controls_section();
 
-	// Style tab starts here.
-	// Toggle Switch controls start here.
+	// Style tab.
+	// Toggle Switch controls.
 	$this->start_controls_section(
 		'wpmozo_toggle_switch',
 		array(
@@ -468,7 +472,7 @@ $this->start_controls_section(
 
 			$this->end_controls_section();
 
-			// Animation controls section start here.
+			// Animation controls section.
 			$this->start_controls_section(
 				'wpmozo_toggle_animation',
 				array(
@@ -486,7 +490,7 @@ $this->start_controls_section(
 			);
 
 			$this->end_controls_section();
-			// Toggle label normal state styling starts here.
+			// Toggle label normal state styling.
 			$this->start_controls_section(
 				'active_label_section',
 				array(
@@ -527,7 +531,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'active_label_icon_size',
 				array(
-					'label'     => esc_html__( 'Icon Size', 'elementor' ),
+					'label'     => esc_html__( 'Icon Size', 'wpmozo-addons-for-elementor' ),
 					'type'      => Controls_Manager::SLIDER,
 					'range'     => array(
 						'px' => array(
@@ -581,7 +585,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'active_label_hover_icon_size',
 				array(
-					'label'     => esc_html__( 'Icon Size', 'elementor' ),
+					'label'     => esc_html__( 'Icon Size', 'wpmozo-addons-for-elementor' ),
 					'type'      => Controls_Manager::SLIDER,
 					'range'     => array(
 						'px' => array(
@@ -607,7 +611,7 @@ $this->start_controls_section(
 			$this->end_controls_tabs();
 			$this->end_controls_section();
 
-			// Toggle label hover state styling starts here.
+			// Toggle label hover state styling.
 			$this->start_controls_section(
 				'inactive_label_section',
 				array(
@@ -648,7 +652,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'inactive_label_icon_size',
 				array(
-					'label'     => esc_html__( 'Icon Size', 'elementor' ),
+					'label'     => esc_html__( 'Icon Size', 'wpmozo-addons-for-elementor' ),
 					'type'      => Controls_Manager::SLIDER,
 					'range'     => array(
 						'px' => array(
@@ -702,7 +706,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'inactive_label_hover_icon_size',
 				array(
-					'label'     => esc_html__( 'Icon Size', 'elementor' ),
+					'label'     => esc_html__( 'Icon Size', 'wpmozo-addons-for-elementor' ),
 					'type'      => Controls_Manager::SLIDER,
 					'range'     => array(
 						'px' => array(
@@ -728,7 +732,7 @@ $this->start_controls_section(
 			$this->end_controls_tabs();
 			$this->end_controls_section();
 
-			// Toggle One Label controls star here.
+			// Toggle One Label controls.
 			$this->start_controls_section(
 				'toggle_one_label_section',
 				array(
@@ -754,7 +758,6 @@ $this->start_controls_section(
 					'selector' => '{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_off_value .wpmozo_toggle_title',
 				)
 			);
-			// text color control was not given so added here.
 			$this->add_control(
 				'toggle_one_label_color',
 				array(
@@ -768,7 +771,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'toggle_one_icon_size',
 				array(
-					'label'     => esc_html__( 'Icon Size', 'elementor' ),
+					'label'     => esc_html__( 'Icon Size', 'wpmozo-addons-for-elementor' ),
 					'type'      => Controls_Manager::SLIDER,
 					'range'     => array(
 						'px' => array(
@@ -810,7 +813,6 @@ $this->start_controls_section(
 					'selector' => '{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_title:hover',
 				)
 			);
-			// text color control was not given so added here.
 			$this->add_control(
 				'toggle_one_label_hover_color',
 				array(
@@ -824,7 +826,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'toggle_one_hover_icon_size',
 				array(
-					'label'     => esc_html__( 'Icon Size', 'elementor' ),
+					'label'     => esc_html__( 'Icon Size', 'wpmozo-addons-for-elementor' ),
 					'type'      => Controls_Manager::SLIDER,
 					'range'     => array(
 						'px' => array(
@@ -851,7 +853,7 @@ $this->start_controls_section(
 			$this->end_controls_tabs();
 			$this->end_controls_section();
 
-			// Toggle Two Label controls star here.
+			// Toggle Two Label controls.
 			$this->start_controls_section(
 				'toggle_two_label_section',
 				array(
@@ -877,7 +879,6 @@ $this->start_controls_section(
 					'selector' => '{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_on_value .wpmozo_toggle_title',
 				)
 			);
-			// text color control was not given so added here.
 			$this->add_control(
 				'toggle_two_label_color',
 				array(
@@ -891,7 +892,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'toggle_two_icon_size',
 				array(
-					'label'     => esc_html__( 'Icon Size', 'elementor' ),
+					'label'     => esc_html__( 'Icon Size', 'wpmozo-addons-for-elementor' ),
 					'type'      => Controls_Manager::SLIDER,
 					'range'     => array(
 						'px' => array(
@@ -933,7 +934,6 @@ $this->start_controls_section(
 					'selector' => '{{WRAPPER}} .wpmozo_content_toggle_wrapper .wpmozo_toggle_button_wrapper .wpmozo_toggle_title:hover',
 				)
 			);
-			// text color control was not given so added here.
 			$this->add_control(
 				'toggle_two_label_hover_color',
 				array(
@@ -947,7 +947,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'toggle_two_hover_icon_size',
 				array(
-					'label'     => esc_html__( 'Icon Size', 'elementor' ),
+					'label'     => esc_html__( 'Icon Size', 'wpmozo-addons-for-elementor' ),
 					'type'      => Controls_Manager::SLIDER,
 					'range'     => array(
 						'px' => array(
@@ -974,7 +974,7 @@ $this->start_controls_section(
 			$this->end_controls_tabs();
 			$this->end_controls_section();
 
-			// Content One text styling starts here.
+			// Content One text styling.
 			$this->start_controls_section(
 				'wpmozo_toggle_one_section',
 				array(
@@ -1131,7 +1131,7 @@ $this->start_controls_section(
 			$this->end_controls_tabs();
 			$this->end_controls_section();
 
-			// Content Two text settings starts here.
+			// Content Two text settings.
 			$this->start_controls_section(
 				'wpmozo_toggle_two_section',
 				array(
