@@ -41,7 +41,7 @@ if ( ! class_exists( 'WPMOZO_AE_Fancy_Heading' ) ) {
 		 * @return string Widget title.
 		 */
 		public function get_title() {
-			return esc_html__( 'Fancy Heading', 'wpmozo-addons-for-elementor' );
+			return esc_html__( 'Fancy Heading', 'wpmozo-addons-lite-for-elementor' );
 		}
 
 		/**

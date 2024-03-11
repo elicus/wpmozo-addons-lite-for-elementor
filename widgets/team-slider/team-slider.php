@@ -42,7 +42,7 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 		 * @return string Widget title.
 		 */
 		public function get_title() {
-			return esc_html__( 'Team Slider', 'wpmozo-addons-for-elementor' );
+			return esc_html__( 'Team Slider', 'wpmozo-addons-lite-for-elementor' );
 		}
 
 		/**
@@ -119,7 +119,7 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 		}
 
 
-		public function wpmozo_ae_render_slider_script() {
+		/*public function wpmozo_ae_render_slider_script() {
 			$order_class         = 'elementor-element-' . $this->get_id();
 			$swiper              = str_replace( '-', '_', $order_class );
 			$settings            = $this->get_settings_for_display();
@@ -299,7 +299,159 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 				});
 			</script>
 			<?php
-		}
+		}*/
+
+			/**
+			 * This function dynamically creates script parameters according to the user settings
+			 *
+			 * @return string
+			 * */
+			public function wpmozo_ae_render_slider_script() {
+				$order_class         = 'elementor-element-' . $this->get_id();
+				$swiper              = str_replace( '-', '_', $order_class );
+				$settings            = $this->get_settings_for_display();
+				$slide_effect        = $settings['slide_effect'];
+				$show_arrow          = $settings['show_arrow'];
+				$show_control_dot    = $settings['show_control_dot'];
+				$loop                = $settings['slider_loop'];
+				$autoplay            = $settings['autoplay'];
+				$autoplay_speed      = absint( $settings['autoplay_speed'] );
+				$transition_duration = absint( $settings['slide_transition_duration'] );
+				$pause_on_hover      = $settings['pause_on_hover'];
+				$dynamic_bullets     = 'yes' === $settings['enable_dynamic_dots'] && in_array( $settings['control_dot_style'], array( 'solid_dot', 'transparent_dot', 'square_dot' ), true ) ? 'true' : 'false';
+				$autoheight          = 'yes' === $settings['enable_auto_height'] ? 'true' : 'false';
+
+				if ( 'coverflow' === $slide_effect || 'slide' === $slide_effect ) {
+					$cards_per_slide         = $settings['cards_per_slide'];
+					$slides_per_group        = $settings['slides_per_group'];
+					$space_between_slides    = $settings['space_between_slides']['size'];
+					$enable_coverflow_shadow = 'yes' === $settings['enable_coverflow_shadow'] ? 'true' : 'false';
+					$coverflow_rotate        = 'coverflow' === $slide_effect ? absint( $settings['coverflow_rotate']['size'] ) : '';
+					$coverflow_depth         = 'coverflow' === $slide_effect ? absint( $settings['coverflow_depth']['size'] ) : '';
+				}
+
+				$autoplay_speed           = '' !== $autoplay_speed || 0 !== $autoplay_speed ? $autoplay_speed : 3000;
+				$transition_duration      = '' !== $transition_duration || 0 !== $transition_duration ? $transition_duration : 1000;
+				$loop                     = 'yes' === $loop ? 'true' : 'false';
+				$arrows                   = 'false';
+				$dots                     = 'false';
+				$autoplay_slides          = 0;
+				$cube                     = 'false';
+				$coverflow                = 'false';
+				$slides_each_group        = 1;
+				$slides_each_group_skip   = 0;
+				$slides_each_group        = 1;
+				$slides_each_group_ipad   = 1;
+				$slides_each_group_mobile = 1;
+				$slides_each_group_skip   = 0;
+
+				if ( in_array( $slide_effect, array( 'slide', 'coverflow' ), true ) ) {
+					$cards_per_view      = $cards_per_slide;
+					$cards_space_between = $space_between_slides;
+					$slides_each_group   = $slides_per_group;
+
+					if ( $cards_per_view > $slides_each_group && 1 !== $slides_each_group ) {
+						$slides_each_group_skip = $cards_per_view - $slides_each_group;
+					}
+				} else {
+					$cards_per_view      = 1;
+					$cards_space_between = 0;
+				}
+
+				if ( 'yes' === $show_arrow ) {
+					$arrows = "{    
+		                            nextEl: '." . esc_attr( $order_class ) . " .swiper-button-next',
+		                            prevEl: '." . esc_attr( $order_class ) . " .swiper-button-prev',
+		                    }";
+				}
+
+				if ( 'yes' === $show_control_dot ) {
+					$dots = "{
+		                        el: '." . esc_attr( $order_class ) . " .swiper-pagination',
+		                        dynamicBullets: " . $dynamic_bullets . ',
+		                        clickable: true,
+		                    }';
+				}
+
+				if ( 'yes' === $autoplay ) {
+					if ( 'yes' === $pause_on_hover ) {
+						$autoplay_slides = '{
+		                                delay:' . $autoplay_speed . ',
+		                                disableOnInteraction: true,
+		                            }';
+					} else {
+						$autoplay_slides = '{
+		                                delay:' . $autoplay_speed . ',
+		                                disableOnInteraction: false,
+		                            }';
+					}
+				}
+
+				if ( 'cube' === $slide_effect ) {
+					$cube = '{
+		                        shadow: false,
+		                        slideShadows: false,
+		                    }';
+				}
+
+				if ( 'coverflow' === $slide_effect ) {
+					$coverflow = '{
+		                            rotate: ' . $coverflow_rotate . ',
+		                            stretch: 0,
+		                            depth: ' . $coverflow_depth . ',
+		                            modifier: 1,
+		                            slideShadows : ' . $enable_coverflow_shadow . ',
+		                        }';
+				}
+
+				$script  = '<script type="text/javascript">';
+				$script .= 'jQuery(function($) {';
+				$script .= 'var ' . esc_attr( $swiper ) . '_swiper = new Swiper(\'.' . esc_attr( $order_class ) . ' .swiper-container\', {
+		                            effect: "' . $slide_effect . '",
+		                            slidesPerView: ' . $cards_per_view . ',
+		                            slidesPerGroup: ' . $slides_each_group . ',
+		                            autoplay: ' . $autoplay_slides . ',
+		                            autoHeight: ' . $autoheight. ',
+		                            spaceBetween: ' . intval( $cards_space_between ) . ',
+		                            cubeEffect: ' . $cube . ',
+		                            coverflowEffect: ' . $coverflow . ',
+		                            speed: ' . $transition_duration . ',
+		                            loop: ' . $loop . ',
+		                            pagination: ' . $dots . ',
+		                            navigation: ' . $arrows . ',
+		                            grabCursor: \'true\',
+		                            breakpoints: {
+		                            	981: {
+				                          	slidesPerView: ' . $cards_per_view . ',
+				                          	spaceBetween: ' . intval( $cards_space_between ) . ',
+		                            		slidesPerGroup: ' . $slides_each_group . ',
+				                        }
+				                    },
+		                    });';
+
+				if ( 'yes' === $pause_on_hover && 'yes' === $autoplay ) {
+					$script .= 'jQuery(".' . esc_attr( $order_class ) . ' .swiper-container").on("mouseenter", function(e) {
+									if ( typeof ' . esc_attr( $swiper ) . '_swiper.autoplay.stop === "function" ) {
+										' . esc_attr( $swiper ) . '_swiper.autoplay.stop();
+									}
+		                        });';
+					$script .= 'jQuery(".' . esc_attr( $order_class ) . ' .swiper-container").on("mouseleave", function(e) {
+		        					if ( typeof ' . esc_attr( $swiper ) . '_swiper.autoplay.start === "function" ) {
+		                            	' . esc_attr( $swiper ) . '_swiper.autoplay.start();
+		                            }
+		                        });';
+				}
+
+				if ( 'true' !== $loop ) {
+					$script .= esc_attr( $swiper ) . '_swiper.on(\'reachEnd\', function(){
+		                            ' . esc_attr( $swiper ) . '_swiper.autoplay = false;
+		                        });';
+				}
+
+				$script .= '});</script>';
+
+				return $script;
+			}
 
 		/**
 		 * Render widget output on the frontend.
@@ -363,11 +515,11 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 			if ( empty( $no_result_text ) ) {
 				$no_result_text = 'No Team Member Found!';
 			}
-			$this->add_render_attribute( 'wpmozo_swiper_layout_title', 'class', 'wpmozo_swiper_layout_title' );
-			$this->add_render_attribute( 'wpmozo_swiper_layout_description', 'class', 'wpmozo_swiper_layout_description' );
+			$this->add_render_attribute( 'wpmozo_ae_swiper_layout_title', 'class', 'wpmozo_ae_swiper_layout_title' );
+			$this->add_render_attribute( 'wpmozo_ae_swiper_layout_description', 'class', 'wpmozo_ae_swiper_layout_description' );
 			$this->add_render_attribute( 'button_text', 'class', 'wpmozo_button' );
-			$this->add_render_attribute( 'button_wrapper', 'class', 'wpmozo_swiper_layout_button_wrapper' );
-			$this->add_render_attribute( 'button_wrapper_inner', 'class', 'wpmozo_swiper_layout_button_inner_wrapper' );
+			$this->add_render_attribute( 'button_wrapper', 'class', 'wpmozo_ae_swiper_layout_button_wrapper' );
+			$this->add_render_attribute( 'button_wrapper_inner', 'class', 'wpmozo_ae_swiper_layout_button_inner_wrapper' );
 
 			$args = array(
 				'post_type'      => 'wpmozoae-team-member',
@@ -388,13 +540,13 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 			$query = new WP_Query( $args );
 			if ( $query->found_posts > 0 ) {
 				?>
-				<div class="wpmozo_swiper_wrapper 
+				<div class="wpmozo_ae_swiper_wrapper 
 				<?php
 				echo esc_attr( $layout );
 				echo esc_attr( $equal_height );
 				?>
 				">
-					<div class="wpmozo_swiper_layout wpmozo_swiper_inner_wrap">
+					<div class="wpmozo_ae_swiper_layout wpmozo_ae_swiper_inner_wrap">
 						<div class="swiper-container">
 							<div class="swiper-wrapper<?php echo esc_attr( $equal_height ); ?>">						
 								<?php
@@ -410,7 +562,7 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 					$this->add_render_attribute(
 						'swiper_arrow_next',
 						array(
-							'class'                 => array( 'wpmozo_swiper_layout_icon_next', 'swiper-button-next' ),
+							'class'                 => array( 'wpmozo_ae_swiper_layout_icon_next', 'swiper-button-next' ),
 							'aria-hidden'           => 'true',
 							'data-next_slide_arrow' => $settings['next_slide_arrow']['value'],
 						)
@@ -420,7 +572,7 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 							$settings['next_slide_arrow'],
 							array(
 								'aria-hidden'           => 'true',
-								'class'                 => array( 'wpmozo_swiper_layout_icon_next', 'swiper-button-next' ),
+								'class'                 => array( 'wpmozo_ae_swiper_layout_icon_next', 'swiper-button-next' ),
 								'data-next_slide_arrow' => $settings['next_slide_arrow']['value'],
 							),
 							'span'
@@ -433,7 +585,7 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 									$settings['next_slide_arrow'],
 									array(
 										'aria-hidden' => 'true',
-										'class'       => array( 'wpmozo_swiper_layout_icon_next', 'swiper-button-next' ),
+										'class'       => array( 'wpmozo_ae_swiper_layout_icon_next', 'swiper-button-next' ),
 										'data-next_slide_arrow' => $settings['next_slide_arrow']['value'],
 									),
 									'span'
@@ -443,7 +595,7 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 					$this->add_render_attribute(
 						'swiper_arrow_prev',
 						array(
-							'class'                     => array( 'wpmozo_swiper_layout_icon_prev', 'swiper-button-prev' ),
+							'class'                     => array( 'wpmozo_ae_swiper_layout_icon_prev', 'swiper-button-prev' ),
 							'aria-hidden'               => 'true',
 							'data-previous_slide_arrow' => $settings['previous_slide_arrow']['value'],
 						)
@@ -453,7 +605,7 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 							$settings['previous_slide_arrow'],
 							array(
 								'aria-hidden'           => 'true',
-								'class'                 => array( 'wpmozo_swiper_layout_icon_prev', 'swiper-button-prev' ),
+								'class'                 => array( 'wpmozo_ae_swiper_layout_icon_prev', 'swiper-button-prev' ),
 								'data-next_slide_arrow' => $settings['previous_slide_arrow']['value'],
 							),
 							'span'
@@ -466,7 +618,7 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 									$settings['previous_slide_arrow'],
 									array(
 										'aria-hidden' => 'true',
-										'class'       => array( 'wpmozo_swiper_layout_icon_prev', 'swiper-button-prev' ),
+										'class'       => array( 'wpmozo_ae_swiper_layout_icon_prev', 'swiper-button-prev' ),
 										'data-previous_slide_arrow' => $settings['previous_slide_arrow']['value'],
 									),
 									'span'
@@ -479,25 +631,25 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 							$arrows_position_data .= $this->get_render_attribute_string( 'data-arrow' );
 					}
 					?>
-					<div class="wpmozo_swiper_navigation" <?php echo esc_html( ( ! empty( $arrows_position ) ? $arrows_position_data : '' ) ); ?> ><?php echo wp_kses_post( $next ); ?>  <?php echo wp_kses_post( $prev ); ?> </div>
+					<div class="wpmozo_ae_swiper_navigation" <?php echo esc_html( ( ! empty( $arrows_position ) ? $arrows_position_data : '' ) ); ?> ><?php echo wp_kses_post( $next ); ?>  <?php echo wp_kses_post( $prev ); ?> </div>
 					<?php
 					if ( 'yes' === $show_arrow_on_hover ) {
 
 						?>
 							<style> 
-								.<?php echo esc_attr( $order_class ); ?> .wpmozo_swiper_navigation .swiper-button-prev { 
+								.<?php echo esc_attr( $order_class ); ?> .wpmozo_ae_swiper_navigation .swiper-button-prev { 
 									visibility: hidden; 
 									opacity: 0; 
 									transition: all 300ms ease; 
-								} .<?php echo esc_attr( $order_class ); ?> .wpmozo_swiper_navigation .swiper-button-next {
+								} .<?php echo esc_attr( $order_class ); ?> .wpmozo_ae_swiper_navigation .swiper-button-next {
 									visibility: hidden; 
 									opacity: 0; 
 									transition: all 300ms ease;
-								} .<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_swiper_navigation .swiper-button-prev, 
-								.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_swiper_navigation .swiper-button-next {
+								} .<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ae_swiper_navigation .swiper-button-prev, 
+								.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ae_swiper_navigation .swiper-button-next {
 									visibility: visible;
 									opacity: 1;
-								} .<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_swiper_navigation .swiper-button-prev.swiper-button-disabled, .<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_swiper_navigation .swiper-button-next.swiper-button-disabled {
+								} .<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ae_swiper_navigation .swiper-button-prev.swiper-button-disabled, .<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_ae_swiper_navigation .swiper-button-next.swiper-button-disabled {
 									opacity: 0.35;
 								} .<?php echo esc_attr( $order_class ); ?> .wpmozo_arrows_outside .swiper-button-prev {
 									'declaration' = 'left: 50px;
@@ -522,24 +674,24 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 					}
 				}
 				?>
-					</div> <!-- wpmozo_swiper_layout_layout -->
+					</div> <!-- wpmozo_ae_swiper_layout_layout -->
 				<?php
 
 				if ( 'yes' === $show_control_dot ) {
 					?>
 
-						<div class="wpmozo_swiper_pagination"><div class="swiper-pagination <?php echo esc_attr( $control_dot_style ); ?>"></div></div>
+						<div class="wpmozo_ae_swiper_pagination"><div class="swiper-pagination <?php echo esc_attr( $control_dot_style ); ?>"></div></div>
 					<?php
 				}
 				?>
-				</div> <!-- wpmozo_swiper_wrapper -->
+				</div> <!-- wpmozo_ae_swiper_wrapper -->
 				<?php
 
 			} else {
 				?>
 				<div class="entry">
 					<h1> <?php echo esc_html( $no_result_text ); ?> </h1>
-					<p><?php echo esc_html__( 'Try changing your widget settings or add some new team member.', 'wpmozo-addons-for-elementor' ); ?></p>
+					<p><?php echo esc_html__( 'Try changing your widget settings or add some new team member.', 'wpmozo-addons-lite-for-elementor' ); ?></p>
 				</div>
 				<?php
 			}

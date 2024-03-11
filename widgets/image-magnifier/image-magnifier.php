@@ -42,7 +42,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Magnifier' ) ) {
 		 * @return string Widget title.
 		 */
 		public function get_title() {
-			return esc_html__( 'Image Magnifier', 'wpmozo-addons-for-elementor' );
+			return esc_html__( 'Image Magnifier', 'wpmozo-addons-lite-for-elementor' );
 		}
 
 		/**

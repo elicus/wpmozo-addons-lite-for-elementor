@@ -44,7 +44,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Card' ) ) {
 		 * @return string Widget title.
 		 */
 		public function get_title() {
-			return esc_html__( 'Image Card', 'wpmozo-addons-for-elementor' );
+			return esc_html__( 'Image Card', 'wpmozo-addons-lite-for-elementor' );
 		}
 
 		/**

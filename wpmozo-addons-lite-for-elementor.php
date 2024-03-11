@@ -9,9 +9,9 @@
  * Version: 1.0.0
  * Author: Elicus
  * Author URI: https://elicus.com/
- * License: GPL v3 or later
- * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: wpmozo-addons-for-elementor
+ * License:	GPL-2.0+
+ * License URI:	http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain: wpmozo-addons-lite-for-elementor
  * Domain Path: /languages
  * Requires at least: 5.3
  * Tested up to: 6.4.3
@@ -41,7 +41,7 @@ define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION', '1.0.0' );
 define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_URL', plugin_dir_url( __FILE__ ) );
 define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME', plugin_basename( __FILE__ ) );
-define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION', 'wpmozo-addons-for-elementor' );
+define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION', 'wpmozo-addons-lite-for-elementor' );
 
 if ( ! function_exists( 'wpmozo_addons_lite_for_elementor_admin_notice_missing_elementor' ) ) {
 	/**
@@ -55,7 +55,7 @@ if ( ! function_exists( 'wpmozo_addons_lite_for_elementor_admin_notice_missing_e
 		echo wp_kses_post(
 			'
 	        <div class="notice notice-warning is-dismissible">
-	            <p>' . __( '<strong>WPMozo Addons Lite for Elementor</strong> requires <strong>Elementor</strong> to be installed and activated.', 'wpmozo-addons-for-elementor' ) . '
+	            <p>' . __( '<strong>WPMozo Addons Lite for Elementor</strong> requires <strong>Elementor</strong> to be installed and activated.', 'wpmozo-addons-lite-for-elementor' ) . '
 	            </p>
 	        </div>'
 		);
@@ -81,7 +81,7 @@ if ( ! function_exists( 'wpmozo_addons_lite_for_elementor_admin_notice_minimum_e
 		echo wp_kses_post(
 			'
 	        <div class="notice notice-warning is-dismissible">
-	            <p>' . __( '<strong>WPMozo Addons Lite for Elementor</strong> requires <strong>Elementor</strong> version 2.0 or greater.', 'wpmozo-addons-for-elementor' ) . '
+	            <p>' . __( '<strong>WPMozo Addons Lite for Elementor</strong> requires <strong>Elementor</strong> version 2.0 or greater.', 'wpmozo-addons-lite-for-elementor' ) . '
 	            </p>
 	        </div>'
 		);
@@ -108,7 +108,7 @@ if ( ! function_exists( 'wpmozo_addons_lite_for_elementor_admin_notice_minimum_p
 		echo wp_kses_post(
 			'
 	        <div class="notice notice-warning is-dismissible">
-	            <p>' . __( '<strong>WPMozo Addons Lite for Elementor</strong> requires <strong>PHP</strong> version 5.6 or greater.', 'wpmozo-addons-for-elementor' ) . '
+	            <p>' . __( '<strong>WPMozo Addons Lite for Elementor</strong> requires <strong>PHP</strong> version 5.6 or greater.', 'wpmozo-addons-lite-for-elementor' ) . '
 	            </p>
 	        </div>'
 		);

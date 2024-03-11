@@ -109,7 +109,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 			$elements_manager->add_category(
 				'wpmozo',
 				array(
-					'title' => esc_html__( 'WPMozo', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'WPMozo', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'fa fa-plug',
 				)
 			);
@@ -122,7 +122,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		 */
 		public function register_oembed_widget( $widgets_manager ) {
 			global $pro_version;
-			$plugin_option = get_option( 'wpmozo-addons-for-elementor' );
+			$plugin_option = get_option( 'wpmozo-addons-lite-for-elementor' );
 
 			if ( false !== $plugin_option && false !== $pro_version ) {
 				$modules = array_map( 'basename', explode( ',', $plugin_option['wpmozo_widgets'] ) );

@@ -42,7 +42,7 @@ if ( ! class_exists( 'WPMOZO_AE_Before_After_Slider' ) ) {
 		 * @return string Widget title.
 		 */
 		public function get_title() {
-			return esc_html__( 'Before After Slider', 'wpmozo-addons-for-elementor' );
+			return esc_html__( 'Before After Slider', 'wpmozo-addons-lite-for-elementor' );
 		}
 
 		/**

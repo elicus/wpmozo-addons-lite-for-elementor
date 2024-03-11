@@ -42,7 +42,7 @@ if ( ! class_exists( 'WPMOZO_AE_Floating_Image' ) ) {
 		 * @return string Widget title.
 		 */
 		public function get_title() {
-			return esc_html__( 'Floating Image', 'wpmozo-addons-for-elementor' );
+			return esc_html__( 'Floating Image', 'wpmozo-addons-lite-for-elementor' );
 		}
 
 		/**

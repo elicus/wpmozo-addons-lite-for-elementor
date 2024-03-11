@@ -41,7 +41,7 @@ if ( ! class_exists( 'WPMOZO_AE_Bar_Counter' ) ) {
 		 * @return string Widget title.
 		 */
 		public function get_title() {
-			return esc_html__( 'Bar Counter', 'wpmozo-addons-for-elementor' );
+			return esc_html__( 'Bar Counter', 'wpmozo-addons-lite-for-elementor' );
 		}
 
 		/**

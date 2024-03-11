@@ -5,9 +5,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( $query->have_posts() ) {
+	$index = 0;
 	while ( $query->have_posts() ) {
 		$query->the_post();
-		$this->add_render_attribute( 'swiper_layout_item' . $index, array( 'class' => array( 'wpmozo_wrapper', 'wpmozo_swiper_layout_item_' . $index, 'swiper-slide' ) ) );
+		$index = $index + 1;
+		$this->add_render_attribute( 'swiper_layout_item' . $index, array( 'class' => array( 'wpmozo_wrapper', 'wpmozo_ae_swiper_layout_item_' . $index, 'swiper-slide' ) ) );
 		?>
 		<div <?php $this->print_render_attribute_string( 'swiper_layout_item' . $index ); ?>>  
 			<div class="wpmozo_ae_team_member_slide swiper-slide" role="group" >

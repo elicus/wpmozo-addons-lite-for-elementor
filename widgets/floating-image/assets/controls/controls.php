@@ -18,7 +18,7 @@ use \Elementor\Group_Control_Css_Filter;
 $this->start_controls_section(
 	'content_section',
 	array(
-		'label' => esc_html__( 'Content', 'wpmozo-addons-for-elementor' ),
+		'label' => esc_html__( 'Content', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
 	)
 );
@@ -26,7 +26,7 @@ $this->start_controls_section(
 	$repeater->add_control(
 		'image',
 		array(
-			'label'   => esc_html__( 'Image', 'wpmozo-addons-for-elementor' ),
+			'label'   => esc_html__( 'Image', 'wpmozo-addons-lite-for-elementor' ),
 			'type'    => Controls_Manager::MEDIA,
 			'default' => array(
 				'url' => Utils::get_placeholder_image_src(),
@@ -36,7 +36,7 @@ $this->start_controls_section(
 	$repeater->add_control(
 		'image_alt_text',
 		array(
-			'label'       => esc_html__( 'Image Alt Text', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Image Alt Text', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::TEXT,
 			'label_block' => true,
 		)
@@ -44,7 +44,7 @@ $this->start_controls_section(
 	$repeater->add_control(
 		'image_position',
 		array(
-			'label'     => esc_html__( 'Image Position', 'wpmozo-addons-for-elementor' ),
+			'label'     => esc_html__( 'Image Position', 'wpmozo-addons-lite-for-elementor' ),
 			'separator' => 'before',
 			'type'      => Controls_Manager::HEADING,
 			'separator' => 'before',
@@ -54,7 +54,7 @@ $this->start_controls_section(
 		'horizonal_align',
 		array(
 			'type'           => Controls_Manager::SLIDER,
-			'label'          => esc_html__( 'Horizonal Align', 'wpmozo-addons-for-elementor' ),
+			'label'          => esc_html__( 'Horizonal Align', 'wpmozo-addons-lite-for-elementor' ),
 			'range'          => array(
 				'%' => array(
 					'min' => -100,
@@ -83,7 +83,7 @@ $this->start_controls_section(
 		'vertical_align',
 		array(
 			'type'           => Controls_Manager::SLIDER,
-			'label'          => esc_html__( 'Vertical Align', 'wpmozo-addons-for-elementor' ),
+			'label'          => esc_html__( 'Vertical Align', 'wpmozo-addons-lite-for-elementor' ),
 			'range'          => array(
 				'%' => array(
 					'min' => -100,
@@ -112,10 +112,10 @@ $this->start_controls_section(
 	$repeater->add_control(
 		'image_animation_heading',
 		array(
-			'label'        => esc_html__( 'Image Animation', 'wpmozo-addons-for-elementor' ),
+			'label'        => esc_html__( 'Image Animation', 'wpmozo-addons-lite-for-elementor' ),
 			'type'         => Controls_Manager::POPOVER_TOGGLE,
-			'label_off'    => esc_html__( 'Default', 'wpmozo-addons-for-elementor' ),
-			'label_on'     => esc_html__( 'Custom', 'wpmozo-addons-for-elementor' ),
+			'label_off'    => esc_html__( 'Default', 'wpmozo-addons-lite-for-elementor' ),
+			'label_on'     => esc_html__( 'Custom', 'wpmozo-addons-lite-for-elementor' ),
 			'return_value' => 'yes',
 			'default'      => 'yes',
 		)
@@ -124,13 +124,13 @@ $this->start_controls_section(
 		$repeater->add_control(
 			'floating_effect',
 			array(
-				'label'     => esc_html__( 'Floating Effect', 'wpmozo-addons-for-elementor' ),
+				'label'     => esc_html__( 'Floating Effect', 'wpmozo-addons-lite-for-elementor' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'wpmozo_float_up_down',
 				'options'   => array(
-					'wpmozo_float_up_down'    => esc_html__( 'Up Down', 'wpmozo-addons-for-elementor' ),
-					'wpmozo_float_left_right' => esc_html__( 'Left Right', 'wpmozo-addons-for-elementor' ),
-					'no_effect'               => esc_html__( 'No Effect', 'wpmozo-addons-for-elementor' ),
+					'wpmozo_float_up_down'    => esc_html__( 'Up Down', 'wpmozo-addons-lite-for-elementor' ),
+					'wpmozo_float_left_right' => esc_html__( 'Left Right', 'wpmozo-addons-lite-for-elementor' ),
+					'no_effect'               => esc_html__( 'No Effect', 'wpmozo-addons-lite-for-elementor' ),
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .wpmozo_floating_images_wrapper {{CURRENT_ITEM}}' => 'animation-name: {{VALUE}};',
@@ -140,7 +140,7 @@ $this->start_controls_section(
 		$repeater->add_control(
 			'animation_delay',
 			array(
-				'label'     => esc_html__( 'Animation Delay', 'wpmozo-addons-for-elementor' ),
+				'label'     => esc_html__( 'Animation Delay', 'wpmozo-addons-lite-for-elementor' ),
 				'type'      => Controls_Manager::NUMBER,
 				'min'       => 100,
 				'max'       => 10000,
@@ -154,7 +154,7 @@ $this->start_controls_section(
 		$repeater->add_control(
 			'animation_duration',
 			array(
-				'label'     => esc_html__( 'Animation Duration', 'wpmozo-addons-for-elementor' ),
+				'label'     => esc_html__( 'Animation Duration', 'wpmozo-addons-lite-for-elementor' ),
 				'type'      => Controls_Manager::NUMBER,
 				'min'       => 100,
 				'max'       => 10000,
@@ -169,15 +169,15 @@ $this->start_controls_section(
 		$repeater->add_control(
 			'animation_speed_curve',
 			array(
-				'label'     => esc_html__( 'Animation Speed Curve', 'wpmozo-addons-for-elementor' ),
+				'label'     => esc_html__( 'Animation Speed Curve', 'wpmozo-addons-lite-for-elementor' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'ease-in-out',
 				'options'   => array(
-					'ease-in-out' => esc_html__( 'Ease-In-Out', 'wpmozo-addons-for-elementor' ),
-					'ease'        => esc_html__( 'Ease', 'wpmozo-addons-for-elementor' ),
-					'ease-in'     => esc_html__( 'Ease-In', 'wpmozo-addons-for-elementor' ),
-					'ease-out'    => esc_html__( 'Ease-Out', 'wpmozo-addons-for-elementor' ),
-					'linear'      => esc_html__( 'Linear', 'wpmozo-addons-for-elementor' ),
+					'ease-in-out' => esc_html__( 'Ease-In-Out', 'wpmozo-addons-lite-for-elementor' ),
+					'ease'        => esc_html__( 'Ease', 'wpmozo-addons-lite-for-elementor' ),
+					'ease-in'     => esc_html__( 'Ease-In', 'wpmozo-addons-lite-for-elementor' ),
+					'ease-out'    => esc_html__( 'Ease-Out', 'wpmozo-addons-lite-for-elementor' ),
+					'linear'      => esc_html__( 'Linear', 'wpmozo-addons-lite-for-elementor' ),
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .wpmozo_floating_images_wrapper {{CURRENT_ITEM}}' => 'animation-timing-function: {{VALUE}};',
@@ -187,12 +187,12 @@ $this->start_controls_section(
 		$repeater->add_control(
 			'animation_repeat',
 			array(
-				'label'     => esc_html__( 'Animation Repeat', 'wpmozo-addons-for-elementor' ),
+				'label'     => esc_html__( 'Animation Repeat', 'wpmozo-addons-lite-for-elementor' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'infinite',
 				'options'   => array(
-					'infinite' => esc_html__( 'Infinite', 'wpmozo-addons-for-elementor' ),
-					'initial'  => esc_html__( 'Initial', 'wpmozo-addons-for-elementor' ),
+					'infinite' => esc_html__( 'Infinite', 'wpmozo-addons-lite-for-elementor' ),
+					'initial'  => esc_html__( 'Initial', 'wpmozo-addons-lite-for-elementor' ),
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .wpmozo_floating_images_wrapper {{CURRENT_ITEM}}' => 'animation-iteration-count: {{VALUE}};',
@@ -203,10 +203,10 @@ $this->start_controls_section(
 		$repeater->add_control(
 			'enable_advanced_option',
 			array(
-				'label'        => esc_html__( 'Enable Advanced Option', 'wpmozo-addons-for-elementor' ),
+				'label'        => esc_html__( 'Enable Advanced Option', 'wpmozo-addons-lite-for-elementor' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Show', 'wpmozo-addons-for-elementor' ),
-				'label_off'    => esc_html__( 'Hide', 'wpmozo-addons-for-elementor' ),
+				'label_on'     => esc_html__( 'Show', 'wpmozo-addons-lite-for-elementor' ),
+				'label_off'    => esc_html__( 'Hide', 'wpmozo-addons-lite-for-elementor' ),
 				'return_value' => 'yes',
 				'default'      => 'no',
 				'separator'    => 'before',
@@ -215,7 +215,7 @@ $this->start_controls_section(
 		$repeater->add_control(
 			'image_link_url',
 			array(
-				'label'       => esc_html__( 'Image Link Url', 'wpmozo-addons-for-elementor' ),
+				'label'       => esc_html__( 'Image Link Url', 'wpmozo-addons-lite-for-elementor' ),
 				'type'        => Controls_Manager::URL,
 				'options'     => array( 'url', 'is_external', 'nofollow' ),
 				'default'     => array(
@@ -253,14 +253,14 @@ $this->start_controls_section(
 		$repeater->start_controls_tab(
 			'item_normal_tab',
 			array(
-				'label'     => esc_html__( 'Normal', 'wpmozo-addons-for-elementor' ),
+				'label'     => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
 				'condition' => array( 'enable_advanced_option' => 'yes' ),
 			)
 		);
 			$repeater->add_control(
 				'image_sizing_normal',
 				array(
-					'label'     => esc_html__( 'Image Sizing', 'wpmozo-addons-for-elementor' ),
+					'label'     => esc_html__( 'Image Sizing', 'wpmozo-addons-lite-for-elementor' ),
 					'type'      => Controls_Manager::HEADING,
 					'condition' => array(
 						'enable_advanced_option' => 'yes',
@@ -271,7 +271,7 @@ $this->start_controls_section(
 				'image_width_normal',
 				array(
 					'type'           => Controls_Manager::SLIDER,
-					'label'          => esc_html__( 'Width', 'wpmozo-addons-for-elementor' ),
+					'label'          => esc_html__( 'Width', 'wpmozo-addons-lite-for-elementor' ),
 					'range'          => array(
 						'%' => array(
 							'min' => 0,
@@ -303,7 +303,7 @@ $this->start_controls_section(
 				'image_max_width_normal',
 				array(
 					'type'           => Controls_Manager::SLIDER,
-					'label'          => esc_html__( 'Max Width', 'wpmozo-addons-for-elementor' ),
+					'label'          => esc_html__( 'Max Width', 'wpmozo-addons-lite-for-elementor' ),
 					'range'          => array(
 						'%' => array(
 							'min' => 0,
@@ -334,7 +334,7 @@ $this->start_controls_section(
 			$repeater->add_control(
 				'image_spacing_normal',
 				array(
-					'label'     => esc_html__( 'Image Spacing', 'wpmozo-addons-for-elementor' ),
+					'label'     => esc_html__( 'Image Spacing', 'wpmozo-addons-lite-for-elementor' ),
 					'separator' => 'before',
 					'type'      => Controls_Manager::HEADING,
 					'condition' => array(
@@ -345,7 +345,7 @@ $this->start_controls_section(
 			$repeater->add_control(
 				'image_margin_noraml',
 				array(
-					'label'      => esc_html__( 'Margin', 'wpmozo-addons-for-elementor' ),
+					'label'      => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 					'selectors'  => array(
@@ -359,7 +359,7 @@ $this->start_controls_section(
 			$repeater->add_control(
 				'image_padding_normal',
 				array(
-					'label'      => esc_html__( 'Padding', 'wpmozo-addons-for-elementor' ),
+					'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 					'selectors'  => array(
@@ -373,7 +373,7 @@ $this->start_controls_section(
 			$repeater->add_control(
 				'image_border_heading_normal',
 				array(
-					'label'     => esc_html__( 'Border', 'wpmozo-addons-for-elementor' ),
+					'label'     => esc_html__( 'Border', 'wpmozo-addons-lite-for-elementor' ),
 					'separator' => 'before',
 					'type'      => Controls_Manager::HEADING,
 					'condition' => array(
@@ -395,7 +395,7 @@ $this->start_controls_section(
 				'image_border_radius_normal',
 				array(
 					'type'           => Controls_Manager::SLIDER,
-					'label'          => esc_html__( 'Border Radius', 'wpmozo-addons-for-elementor' ),
+					'label'          => esc_html__( 'Border Radius', 'wpmozo-addons-lite-for-elementor' ),
 					'range'          => array(
 						'px' => array(
 							'min' => 1,
@@ -426,7 +426,7 @@ $this->start_controls_section(
 			$repeater->add_control(
 				'box_shadow_heading_normal',
 				array(
-					'label'     => esc_html__( 'Box Shadow', 'wpmozo-addons-for-elementor' ),
+					'label'     => esc_html__( 'Box Shadow', 'wpmozo-addons-lite-for-elementor' ),
 					'separator' => 'before',
 					'type'      => Controls_Manager::HEADING,
 					'condition' => array(
@@ -459,7 +459,7 @@ $this->start_controls_section(
 			$repeater->add_control(
 				'css_filter_heading_normal',
 				array(
-					'label'     => esc_html__( 'CSS Filter', 'wpmozo-addons-for-elementor' ),
+					'label'     => esc_html__( 'CSS Filter', 'wpmozo-addons-lite-for-elementor' ),
 					'separator' => 'before',
 					'type'      => Controls_Manager::HEADING,
 					'condition' => array(
@@ -480,14 +480,14 @@ $this->start_controls_section(
 			$repeater->start_controls_tab(
 				'item_hover_tab',
 				array(
-					'label'     => esc_html__( 'Hover', 'wpmozo-addons-for-elementor' ),
+					'label'     => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
 					'condition' => array( 'enable_advanced_option' => 'yes' ),
 				)
 			);
 			$repeater->add_control(
 				'image_sizing_hover',
 				array(
-					'label'     => esc_html__( 'Image Sizing', 'wpmozo-addons-for-elementor' ),
+					'label'     => esc_html__( 'Image Sizing', 'wpmozo-addons-lite-for-elementor' ),
 					'type'      => Controls_Manager::HEADING,
 					'condition' => array(
 						'enable_advanced_option' => 'yes',
@@ -498,7 +498,7 @@ $this->start_controls_section(
 				'image_width_hover',
 				array(
 					'type'      => Controls_Manager::SLIDER,
-					'label'     => esc_html__( 'Width', 'wpmozo-addons-for-elementor' ),
+					'label'     => esc_html__( 'Width', 'wpmozo-addons-lite-for-elementor' ),
 					'range'     => array(
 						'%' => array(
 							'min' => 0,
@@ -518,7 +518,7 @@ $this->start_controls_section(
 				'image_max_width_hover',
 				array(
 					'type'      => Controls_Manager::SLIDER,
-					'label'     => esc_html__( 'Max Width', 'wpmozo-addons-for-elementor' ),
+					'label'     => esc_html__( 'Max Width', 'wpmozo-addons-lite-for-elementor' ),
 					'range'     => array(
 						'%' => array(
 							'min' => 0,
@@ -537,7 +537,7 @@ $this->start_controls_section(
 			$repeater->add_control(
 				'image_spacing_hover',
 				array(
-					'label'     => esc_html__( 'Image Spacing', 'wpmozo-addons-for-elementor' ),
+					'label'     => esc_html__( 'Image Spacing', 'wpmozo-addons-lite-for-elementor' ),
 					'separator' => 'before',
 					'type'      => Controls_Manager::HEADING,
 					'condition' => array(
@@ -548,7 +548,7 @@ $this->start_controls_section(
 			$repeater->add_control(
 				'image_margin_hover',
 				array(
-					'label'      => esc_html__( 'Margin', 'wpmozo-addons-for-elementor' ),
+					'label'      => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 					'selectors'  => array(
@@ -562,7 +562,7 @@ $this->start_controls_section(
 			$repeater->add_control(
 				'image_padding_hover',
 				array(
-					'label'      => esc_html__( 'Padding', 'wpmozo-addons-for-elementor' ),
+					'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 					'selectors'  => array(
@@ -576,7 +576,7 @@ $this->start_controls_section(
 			$repeater->add_control(
 				'image_border_heading_hover',
 				array(
-					'label'     => esc_html__( 'Border', 'wpmozo-addons-for-elementor' ),
+					'label'     => esc_html__( 'Border', 'wpmozo-addons-lite-for-elementor' ),
 					'separator' => 'before',
 					'type'      => Controls_Manager::HEADING,
 					'condition' => array(
@@ -599,7 +599,7 @@ $this->start_controls_section(
 				'image_border_radius_hover',
 				array(
 					'type'      => Controls_Manager::SLIDER,
-					'label'     => esc_html__( 'Border Radius', 'wpmozo-addons-for-elementor' ),
+					'label'     => esc_html__( 'Border Radius', 'wpmozo-addons-lite-for-elementor' ),
 					'range'     => array(
 						'px' => array(
 							'min' => 1,
@@ -618,7 +618,7 @@ $this->start_controls_section(
 			$repeater->add_control(
 				'box_shadow_heading_hover',
 				array(
-					'label'     => esc_html__( 'Box Shadow', 'wpmozo-addons-for-elementor' ),
+					'label'     => esc_html__( 'Box Shadow', 'wpmozo-addons-lite-for-elementor' ),
 					'separator' => 'before',
 					'type'      => Controls_Manager::HEADING,
 					'condition' => array(
@@ -653,7 +653,7 @@ $this->start_controls_section(
 			$repeater->add_control(
 				'css_fileter_heading_hover',
 				array(
-					'label'     => esc_html__( 'CSS Filter', 'wpmozo-addons-for-elementor' ),
+					'label'     => esc_html__( 'CSS Filter', 'wpmozo-addons-lite-for-elementor' ),
 					'separator' => 'before',
 					'type'      => Controls_Manager::HEADING,
 					'condition' => array(
@@ -673,17 +673,17 @@ $this->start_controls_section(
 			$this->add_control(
 				'image_list',
 				array(
-					'label'       => esc_html__( 'Image List', 'wpmozo-addons-for-elementor' ),
+					'label'       => esc_html__( 'Image List', 'wpmozo-addons-lite-for-elementor' ),
 					'type'        => Controls_Manager::REPEATER,
 					'fields'      => $repeater->get_controls(),
 					'default'     => array(
 						array(
-							'image'          => esc_html__( 'Item Media', 'wpmozo-addons-for-elementor' ),
-							'image_alt_text' => esc_html__( 'Floating Image Item', 'wpmozo-addons-for-elementor' ),
+							'image'          => esc_html__( 'Item Media', 'wpmozo-addons-lite-for-elementor' ),
+							'image_alt_text' => esc_html__( 'Floating Image Item', 'wpmozo-addons-lite-for-elementor' ),
 						),
 						array(
-							'image'          => esc_html__( 'Item Media', 'wpmozo-addons-for-elementor' ),
-							'image_alt_text' => esc_html__( 'Floating Image Item', 'wpmozo-addons-for-elementor' ),
+							'image'          => esc_html__( 'Item Media', 'wpmozo-addons-lite-for-elementor' ),
+							'image_alt_text' => esc_html__( 'Floating Image Item', 'wpmozo-addons-lite-for-elementor' ),
 
 						),
 					),
@@ -694,7 +694,7 @@ $this->start_controls_section(
 				'container_height',
 				array(
 					'type'           => Controls_Manager::SLIDER,
-					'label'          => esc_html__( 'Container Height', 'wpmozo-addons-for-elementor' ),
+					'label'          => esc_html__( 'Container Height', 'wpmozo-addons-lite-for-elementor' ),
 					'range'          => array(
 						'px' => array(
 							'min' => 1,

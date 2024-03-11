@@ -13,19 +13,19 @@ use \Elementor\Group_Control_Text_Shadow;
 $this->start_controls_section(
 	'content_section',
 	array(
-		'label' => esc_html__( 'Fancy Text Content', 'wpmozo-addons-for-elementor' ),
+		'label' => esc_html__( 'Fancy Text Content', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
 	)
 );
 	$this->add_control(
 		'text_style',
 		array(
-			'label'       => esc_html__( 'Text Style', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Text Style', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => true,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'wpmozo_ae_gradient' => esc_html__( 'Gradient', 'wpmozo-addons-for-elementor' ),
-				'wpmozo_ae_clipping' => esc_html__( 'Background Clipping', 'wpmozo-addons-for-elementor' ),
+				'wpmozo_ae_gradient' => esc_html__( 'Gradient', 'wpmozo-addons-lite-for-elementor' ),
+				'wpmozo_ae_clipping' => esc_html__( 'Background Clipping', 'wpmozo-addons-lite-for-elementor' ),
 			),
 			'default'     => 'wpmozo_ae_gradient',
 		)
@@ -33,10 +33,10 @@ $this->start_controls_section(
 	$this->add_control(
 		'fancy_text',
 		array(
-			'label'       => esc_html__( 'Fancy Text', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Fancy Text', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::TEXTAREA,
 			'label_block' => true,
-			'default'     => esc_html__( 'Here you can set text.', 'wpmozo-addons-for-elementor' ),
+			'default'     => esc_html__( 'Here you can set text.', 'wpmozo-addons-lite-for-elementor' ),
 		)
 	);
 	$this->end_controls_section();
@@ -45,7 +45,7 @@ $this->start_controls_section(
 	$this->start_controls_section(
 		'fancy_text_settings',
 		array(
-			'label' => esc_html__( 'Fancy Text Styling', 'wpmozo-addons-for-elementor' ),
+			'label' => esc_html__( 'Fancy Text Styling', 'wpmozo-addons-lite-for-elementor' ),
 			'tab'   => Controls_Manager::TAB_STYLE,
 		)
 	);
@@ -56,7 +56,7 @@ $this->start_controls_section(
 			'types'          => array( 'gradient' ),
 			'fields_options' => array(
 				'background' => array(
-					'label'   => _x( 'Gradient', 'Background Control', 'wpmozo-addons-for-elementor' ),
+					'label'   => _x( 'Gradient', 'Background Control', 'wpmozo-addons-lite-for-elementor' ),
 					'toggle'  => false,
 					'default' => 'gradient',
 				),
@@ -76,7 +76,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'clip_image',
 		array(
-			'label'       => esc_html__( 'Clip Background Image', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Clip Background Image', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::MEDIA,
 			'label_block' => true,
 			'default'     => array(
@@ -90,13 +90,13 @@ $this->start_controls_section(
 	$this->add_control(
 		'clip_bg_size',
 		array(
-			'label'       => esc_html__( 'Background Size', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Background Size', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => true,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'cover'   => esc_html__( 'Cover', 'wpmozo-addons-for-elementor' ),
-				'contain' => esc_html__( 'Fit', 'wpmozo-addons-for-elementor' ),
-				'auto'    => esc_html__( 'Actual Size', 'wpmozo-addons-for-elementor' ),
+				'cover'   => esc_html__( 'Cover', 'wpmozo-addons-lite-for-elementor' ),
+				'contain' => esc_html__( 'Fit', 'wpmozo-addons-lite-for-elementor' ),
+				'auto'    => esc_html__( 'Actual Size', 'wpmozo-addons-lite-for-elementor' ),
 			),
 			'default'     => 'cover',
 			'selectors'   => array(
@@ -111,19 +111,19 @@ $this->start_controls_section(
 	$this->add_control(
 		'clip_bg_position',
 		array(
-			'label'       => esc_html__( 'Background Position', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Background Position', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => true,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'top left'      => esc_html__( 'Top Left', 'wpmozo-addons-for-elementor' ),
-				'top center'    => esc_html__( 'Top Center', 'wpmozo-addons-for-elementor' ),
-				'top right'     => esc_html__( 'Top Right', 'wpmozo-addons-for-elementor' ),
-				'center left'   => esc_html__( 'Center Left', 'wpmozo-addons-for-elementor' ),
-				'center'        => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
-				'center right'  => esc_html__( 'Center Right', 'wpmozo-addons-for-elementor' ),
-				'bottom left'   => esc_html__( 'Bottom Left', 'wpmozo-addons-for-elementor' ),
-				'bottom center' => esc_html__( 'Bottom Center', 'wpmozo-addons-for-elementor' ),
-				'bottom right'  => esc_html__( 'Bottom Right', 'wpmozo-addons-for-elementor' ),
+				'top left'      => esc_html__( 'Top Left', 'wpmozo-addons-lite-for-elementor' ),
+				'top center'    => esc_html__( 'Top Center', 'wpmozo-addons-lite-for-elementor' ),
+				'top right'     => esc_html__( 'Top Right', 'wpmozo-addons-lite-for-elementor' ),
+				'center left'   => esc_html__( 'Center Left', 'wpmozo-addons-lite-for-elementor' ),
+				'center'        => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+				'center right'  => esc_html__( 'Center Right', 'wpmozo-addons-lite-for-elementor' ),
+				'bottom left'   => esc_html__( 'Bottom Left', 'wpmozo-addons-lite-for-elementor' ),
+				'bottom center' => esc_html__( 'Bottom Center', 'wpmozo-addons-lite-for-elementor' ),
+				'bottom right'  => esc_html__( 'Bottom Right', 'wpmozo-addons-lite-for-elementor' ),
 			),
 			'default'     => 'center',
 			'selectors'   => array(
@@ -138,16 +138,16 @@ $this->start_controls_section(
 	$this->add_control(
 		'clip_bg_repeat',
 		array(
-			'label'       => esc_html__( 'Background Repeat', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Background Repeat', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => true,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'initial'  => esc_html__( 'No Repeat', 'wpmozo-addons-for-elementor' ),
-				'repeat'   => esc_html__( 'Repeat', 'wpmozo-addons-for-elementor' ),
-				'repeat-x' => esc_html__( 'Repeat X (horizontal)', 'wpmozo-addons-for-elementor' ),
-				'repeat-y' => esc_html__( 'Repeat Y (vertical)', 'wpmozo-addons-for-elementor' ),
-				'space'    => esc_html__( 'Space', 'wpmozo-addons-for-elementor' ),
-				'round'    => esc_html__( 'Round', 'wpmozo-addons-for-elementor' ),
+				'initial'  => esc_html__( 'No Repeat', 'wpmozo-addons-lite-for-elementor' ),
+				'repeat'   => esc_html__( 'Repeat', 'wpmozo-addons-lite-for-elementor' ),
+				'repeat-x' => esc_html__( 'Repeat X (horizontal)', 'wpmozo-addons-lite-for-elementor' ),
+				'repeat-y' => esc_html__( 'Repeat Y (vertical)', 'wpmozo-addons-lite-for-elementor' ),
+				'space'    => esc_html__( 'Space', 'wpmozo-addons-lite-for-elementor' ),
+				'round'    => esc_html__( 'Round', 'wpmozo-addons-lite-for-elementor' ),
 			),
 			'default'     => 'initial',
 			'selectors'   => array(
@@ -162,13 +162,13 @@ $this->start_controls_section(
 	$this->add_control(
 		'clip_overlay',
 		array(
-			'label'       => esc_html__( 'Background Color Overlay', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Background Color Overlay', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => true,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array(
-				'none'     => esc_html__( 'None', 'wpmozo-addons-for-elementor' ),
-				'color'    => esc_html__( 'Color', 'wpmozo-addons-for-elementor' ),
-				'gradient' => esc_html__( 'Gradient', 'wpmozo-addons-for-elementor' ),
+				'none'     => esc_html__( 'None', 'wpmozo-addons-lite-for-elementor' ),
+				'color'    => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
+				'gradient' => esc_html__( 'Gradient', 'wpmozo-addons-lite-for-elementor' ),
 			),
 			'default'     => 'none',
 			'condition'   => array(
@@ -180,7 +180,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'clip_bg_color',
 		array(
-			'label'     => esc_html__( 'Clip Background Color', 'wpmozo-addons-for-elementor' ),
+			'label'     => esc_html__( 'Clip Background Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner:after' => 'background-color: {{VALUE}};',
@@ -199,7 +199,7 @@ $this->start_controls_section(
 			'types'          => array( 'gradient' ),
 			'fields_options' => array(
 				'background' => array(
-					'label'   => _x( 'Gradient', 'Background Control', 'wpmozo-addons-for-elementor' ),
+					'label'   => _x( 'Gradient', 'Background Control', 'wpmozo-addons-lite-for-elementor' ),
 					'toggle'  => false,
 					'default' => 'gradient',
 				),
@@ -221,7 +221,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'overlay_custom_padding',
 		array(
-			'label'      => esc_html__( 'Padding', 'wpmozo-addons-for-elementor' ),
+			'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => array( 'px', 'em', '%' ),
 			'selectors'  => array(
@@ -236,28 +236,28 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'fancy_text_alignment',
 		array(
-			'label'       => esc_html__( 'Alignment', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => false,
 			'options'     => array(
 				'left'    =>
 				array(
-					'title' => esc_html__( 'Left', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-left',
 				),
 				'center'  =>
 				array(
-					'title' => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-center',
 				),
 				'right'   =>
 				array(
-					'title' => esc_html__( 'Right', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-right',
 				),
 				'justify' =>
 				array(
-					'title' => esc_html__( 'Justify', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Justify', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-justify',
 				),
 			),
@@ -272,7 +272,7 @@ $this->start_controls_section(
 	$this->start_controls_section(
 		'fancy_text_typography',
 		array(
-			'label' => esc_html__( 'Fancy Text Typography', 'wpmozo-addons-for-elementor' ),
+			'label' => esc_html__( 'Fancy Text Typography', 'wpmozo-addons-lite-for-elementor' ),
 			'tab'   => Controls_Manager::TAB_STYLE,
 		)
 	);

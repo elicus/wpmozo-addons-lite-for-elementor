@@ -10,57 +10,57 @@
                     $("body")
                         .find(".elementor-widget-wpmozo_ae_team_slider")
                         .each(function () {
-                            let $arrows = $(this).find(".wpmozo_swiper_navigation").data();
+                            let $arrows = $(this).find(".wpomzo_ae_swiper_navigation").data();
                             if ($arrows) {
                                 if ($winWidth > 980 && typeof $arrows.arrows_desktop !== "undefined") {
-                                    wpmozo_remove_arrows_classes($(this).find(".wpmozo_swiper_navigation"));
+                                    wpmozo_remove_arrows_classes($(this).find(".wpomzo_ae_swiper_navigation"));
                                     $(this)
-                                        .find(".wpmozo_swiper_navigation")
+                                        .find(".wpomzo_ae_swiper_navigation")
                                         .addClass("wpmozo_arrows_" + $arrows.arrows_desktop);
                                 }
                                 if ($winWidth < 981 && typeof $arrows.arrows_tablet !== "undefined") {
-                                    wpmozo_remove_arrows_classes($(this).find(".wpmozo_swiper_navigation"));
+                                    wpmozo_remove_arrows_classes($(this).find(".wpomzo_ae_swiper_navigation"));
                                     $(this)
-                                        .find(".wpmozo_swiper_navigation")
+                                        .find(".wpomzo_ae_swiper_navigation")
                                         .addClass("wpmozo_arrows_" + $arrows.arrows_tablet);
                                 }
                                 if ($winWidth < 768 && typeof $arrows.arrows_phone !== "undefined") {
-                                    wpmozo_remove_arrows_classes($(this).find(".wpmozo_swiper_navigation"));
+                                    wpmozo_remove_arrows_classes($(this).find(".wpomzo_ae_swiper_navigation"));
                                     $(this)
-                                        .find(".wpmozo_swiper_navigation")
+                                        .find(".wpomzo_ae_swiper_navigation")
                                         .addClass("wpmozo_arrows_" + $arrows.arrows_phone);
                                 }
-                                wpmozo_remove_arrows_classes($(this).find(".wpmozo_swiper_navigation"));
+                                wpmozo_remove_arrows_classes($(this).find(".wpomzo_ae_swiper_navigation"));
                                 $(this)
-                                    .find(".wpmozo_swiper_navigation")
+                                    .find(".wpomzo_ae_swiper_navigation")
                                     .addClass("wpmozo_arrows_" + $arrows.arrows);
                             }
                         });
                 }
                 $(window).resize(function () {
                     let $winWidth = $(window).width();
-                    if ($("body").find(".wpmozo_swiper_layout").length > 0) {
+                    if ($("body").find(".wpomzo_ae_swiper_layout").length > 0) {
                         $("body")
-                            .find(".wpmozo_swiper_layout")
+                            .find(".wpomzo_ae_swiper_layout")
                             .each(function () {
-                                let $arrows = $(this).find(".wpmozo_swiper_navigation").data();
+                                let $arrows = $(this).find(".wpomzo_ae_swiper_navigation").data();
                                 if ($arrows) {
                                     if ($winWidth > 980 && typeof $arrows.arrows_desktop !== "undefined") {
-                                        wpmozo_remove_arrows_classes($(this).find(".wpmozo_swiper_navigation"));
+                                        wpmozo_remove_arrows_classes($(this).find(".wpomzo_ae_swiper_navigation"));
                                         $(this)
-                                            .find(".wpmozo_swiper_navigation")
+                                            .find(".wpomzo_ae_swiper_navigation")
                                             .addClass("wpmozo_arrows_" + $arrows.arrows_desktop);
                                     }
                                     if ($winWidth < 981 && typeof $arrows.arrows_tablet !== "undefined") {
-                                        wpmozo_remove_arrows_classes($(this).find(".wpmozo_swiper_navigation"));
+                                        wpmozo_remove_arrows_classes($(this).find(".wpomzo_ae_swiper_navigation"));
                                         $(this)
-                                            .find(".wpmozo_swiper_navigation")
+                                            .find(".wpomzo_ae_swiper_navigation")
                                             .addClass("wpmozo_arrows_" + $arrows.arrows_tablet);
                                     }
                                     if ($winWidth < 768 && typeof $arrows.arrows_phone !== "undefined") {
-                                        wpmozo_remove_arrows_classes($(this).find(".wpmozo_swiper_navigation"));
+                                        wpmozo_remove_arrows_classes($(this).find(".wpomzo_ae_swiper_navigation"));
                                         $(this)
-                                            .find(".wpmozo_swiper_navigation")
+                                            .find(".wpomzo_ae_swiper_navigation")
                                             .addClass("wpmozo_arrows_" + $arrows.arrows_phone);
                                     }
                                 }

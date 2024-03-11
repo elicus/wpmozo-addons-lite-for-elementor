@@ -1,6 +1,6 @@
 === WPMozo Addons Lite For Elementor ===
 Contributors: elicus
-Tags: elementor, page builder, addons, widgets, elementor extension, elementor addon, before after slider, content toggle, fancy heading, fancy text, flip box, interactive image card, image card, masonry gallery, pricing table, tilt image, logo slider, bar counter, floating image, image hotspot, image magnifier, team slider
+Tags: elementor, page builder, addons, widgets, elementor extension, elementor addon, before after slider, fancy heading, fancy text, flip box, interactive image card, image card, masonry gallery, pricing table, tilt image, logo slider, bar counter, floating image, image magnifier, team slider
 Requires at least: 6.0
 Tested up to: 6.4.3
 Stable tag: 1.0.0
@@ -15,7 +15,7 @@ WPMozo Addons Lite For Elementor is a feature-packed plugin designed to compleme
 
 ### [View Demo](https://wpmozoaddons.com "View Demo")
 ## Key Features of the Plugin
-- **16 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
+- **14 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
 - **Enhanced Design Options**: Customize your website design with intuitive controls and a wide array of styling options.
 - **Interactive Elements**: Engage your audience with interactive elements like Interactive Image Card, Flip Box, and Fancy Text.
 - **Responsive and Lightweight**: Ensure a seamless user experience across all devices without compromising on performance.
@@ -24,9 +24,6 @@ WPMozo Addons Lite For Elementor is a feature-packed plugin designed to compleme
 ## Widgets Included in WPMozo Addons Lite For Elementor
 - ### [Before After Slider](https://wpmozoaddons.com/before-after-slider/ "Before After Slider")
 Display a before and after version of any element in form of images using the before after image slider for Elementor.
-
-- ### [Content Toggle](https://wpmozoaddons.com/content-toggle/ "Content Toggle")
-This handy tool allows you to easily toggle between different content on your screen with a simple click. You can add text, templates, and pages inside the toggle section to show or hide them as needed.
 
 - ### [Fancy Heading](https://wpmozoaddons.com/fancy-heading/ "Fancy Heading")
 To make your headings stand out, try the WPMozo Fancy Heading widget for Elementor. Customize the pre-heading, heading, and post-heading sections to style your headings in three distinct parts, whether in a single line or stacked format.
@@ -61,9 +58,6 @@ Highlight progress or achievements with bar counters, allowing you to showcase s
 - ### Floating Image
 Create captivating visual effects with floating images.
 
-- ### Image Hotspot
-Provide detailed information or annotations on specific areas of an image, enhancing user understanding and engagement on your WordPress site crafted with Elementor.
-
 - ### Image Magnifier
 Enable users to zoom in on images for a closer look, enhancing the viewing experience for visuals on your Elementor-powered WordPress website.
 
@@ -71,7 +65,7 @@ Enable users to zoom in on images for a closer look, enhancing the viewing exper
 Showcase team members or staff in. Perfect for introducing your team or personnel on your website.
 
 ## Premium Version Available
-Upgrade to the premium version to WPMozo Addons for Elementor to unlock additional features, dedicated support, and exclusive widgets. [Explore Premium Version](https://wpmozo.com/product/wpmozo-addons-for-elementor/)
+Upgrade to the premium version to [WPMozo Addons for Elementor](https://wpmozo.com/product/wpmozo-addons-for-elementor/) and unlock additional features, dedicated support, and exclusive widgets. 
 
 == Documentation and Support ==
 - For detailed usage instructions, check out the [plugin documentation](https://wpmozo.com/product/wpmozo-addons-for-elementor/).
@@ -129,5 +123,6 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
-= 1.0.0 = This is the initial release  of the plugin.
+2024-03-06 - Version 1.0.0
+- Initial release
 

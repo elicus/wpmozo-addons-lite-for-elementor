@@ -42,7 +42,7 @@ if ( ! class_exists( 'WPMOZO_AE_Pricing_Table' ) ) {
 		 * @return string Widget title.
 		 */
 		public function get_title() {
-			return esc_html__( 'Pricing Table', 'wpmozo-addons-for-elementor' );
+			return esc_html__( 'Pricing Table', 'wpmozo-addons-lite-for-elementor' );
 		}
 
 		/**

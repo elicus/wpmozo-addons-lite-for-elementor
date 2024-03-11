@@ -42,7 +42,7 @@ if ( ! class_exists( 'WPMOZO_AE_Flip_Box' ) ) {
 		 * @return string Widget title.
 		 */
 		public function get_title() {
-			return __( 'Flip Box', 'wpmozo-addons-for-elementor' );
+			return __( 'Flip Box', 'wpmozo-addons-lite-for-elementor' );
 		}
 
 		/**
