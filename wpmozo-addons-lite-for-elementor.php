@@ -9,8 +9,8 @@
  * Version: 1.0.0
  * Author: Elicus
  * Author URI: https://elicus.com/
- * License:	GPL-2.0+
- * License URI:	http://www.gnu.org/licenses/gpl-2.0.txt
+ * License: GPL-2.0+
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: wpmozo-addons-lite-for-elementor
  * Domain Path: /languages
  * Requires at least: 5.3
@@ -41,7 +41,22 @@ define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION', '1.0.0' );
 define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_URL', plugin_dir_url( __FILE__ ) );
 define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME', plugin_basename( __FILE__ ) );
-define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION', 'wpmozo-addons-lite-for-elementor' );
+define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION', 'wpmozo-addons-for-elementor-option' );
+
+if ( ! function_exists( 'wpmozo_addons_lite_for_elementor_activate' ) ) {
+	/**
+	 * The code that runs during plugin activation.
+	 * This action is documented in includes/class-wpmozo-addons-for-elementor-activator.php
+	 *
+	 * @return void
+	 * @since  1.0.0
+	 */
+	function wpmozo_addons_lite_for_elementor_activate() {
+		include_once plugin_dir_path( __FILE__ ) . 'includes/class-wpmozo-addons-lite-for-elementor-activator.php';
+		WPMOZO_Addons_Lite_For_Elementor_Activator::activate();
+	}
+	register_activation_hook( __FILE__, 'wpmozo_addons_lite_for_elementor_activate' );
+}
 
 if ( ! function_exists( 'wpmozo_addons_lite_for_elementor_admin_notice_missing_elementor' ) ) {
 	/**
@@ -120,22 +135,6 @@ if ( ! function_exists( 'wpmozo_addons_lite_for_elementor_admin_notice_minimum_p
 		add_action( 'admin_notices', 'wpmozo_addons_lite_for_elementor_admin_notice_minimum_php_version' );
 		return;
 	}
-}
-
-if ( ! function_exists( 'wpmozo_addons_lite_for_elementor_admin_checking_pro_version_active' ) ) {
-	/**
-	 * Admin checking
-	 *
-	 * Checking if pro version active.
-	 *
-	 * @since 1.0.0
-	 */
-	function wpmozo_addons_lite_for_elementor_admin_checking_pro_version_active() {
-
-		return defined( 'WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION' );
-
-	}
-	$GLOBALS['pro_version'] = wpmozo_addons_lite_for_elementor_admin_checking_pro_version_active();
 }
 
 require_once WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_PATH . 'includes/class-wpmozo-addons-lite-for-elementor.php';

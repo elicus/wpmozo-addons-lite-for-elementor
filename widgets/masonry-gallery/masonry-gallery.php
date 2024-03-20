@@ -264,9 +264,9 @@ if ( ! class_exists( 'WPMOZO_AE_Masonry_Gallery' ) ) {
 			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
 				?>
 					<script type="text/javascript">
-						// Masonry layout
+						// Masonry layout.
 						jQuery( '.wpmozo_ae_masonry_gallery_wrapper' ).isotope({
-							// options
+							// options.
 							itemSelector: '.wpmozo_ae_masonry_gallery_item',
 							layoutMode: 'masonry',
 							percentPosition: true,

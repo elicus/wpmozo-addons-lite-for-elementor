@@ -118,8 +118,12 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'team-slider/assets/controls/controls.php';
 		}
 
-
-		/*public function wpmozo_ae_render_slider_script() {
+		/**
+		 * This function dynamically creates script parameters according to the user settings
+		 *
+		 * @return string
+		 * */
+		public function wpmozo_ae_render_slider_script() {
 			$order_class         = 'elementor-element-' . $this->get_id();
 			$swiper              = str_replace( '-', '_', $order_class );
 			$settings            = $this->get_settings_for_display();
@@ -128,8 +132,8 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 			$show_control_dot    = $settings['show_control_dot'];
 			$loop                = $settings['slider_loop'];
 			$autoplay            = $settings['autoplay'];
-			$autoplay_speed      = intval( $settings['autoplay_speed'] );
-			$transition_duration = intval( $settings['slide_transition_duration'] );
+			$autoplay_speed      = absint( $settings['autoplay_speed'] );
+			$transition_duration = absint( $settings['slide_transition_duration'] );
 			$pause_on_hover      = $settings['pause_on_hover'];
 			$dynamic_bullets     = 'yes' === $settings['enable_dynamic_dots'] && in_array( $settings['control_dot_style'], array( 'solid_dot', 'transparent_dot', 'square_dot' ), true ) ? 'true' : 'false';
 			$autoheight          = 'yes' === $settings['enable_auto_height'] ? 'true' : 'false';
@@ -139,8 +143,8 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 				$slides_per_group        = $settings['slides_per_group'];
 				$space_between_slides    = $settings['space_between_slides']['size'];
 				$enable_coverflow_shadow = 'yes' === $settings['enable_coverflow_shadow'] ? 'true' : 'false';
-				$coverflow_rotate        = 'coverflow' === $slide_effect ? intval( $settings['coverflow_rotate']['size'] ) : '';
-				$coverflow_depth         = 'coverflow' === $slide_effect ? intval( $settings['coverflow_depth']['size'] ) : '';
+				$coverflow_rotate        = 'coverflow' === $slide_effect ? absint( $settings['coverflow_rotate']['size'] ) : '';
+				$coverflow_depth         = 'coverflow' === $slide_effect ? absint( $settings['coverflow_depth']['size'] ) : '';
 			}
 
 			$autoplay_speed           = '' !== $autoplay_speed || 0 !== $autoplay_speed ? $autoplay_speed : 3000;
@@ -153,8 +157,10 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 			$coverflow                = 'false';
 			$slides_each_group        = 1;
 			$slides_each_group_skip   = 0;
+			$slides_each_group        = 1;
 			$slides_each_group_ipad   = 1;
 			$slides_each_group_mobile = 1;
+			$slides_each_group_skip   = 0;
 
 			if ( in_array( $slide_effect, array( 'slide', 'coverflow' ), true ) ) {
 				$cards_per_view      = $cards_per_slide;
@@ -169,20 +175,6 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 				$cards_space_between = 0;
 			}
 
-			$cards_per_slide_tablet  = isset( $settings['cards_per_slide_tablet'] ) && ! empty( $settings['cards_per_slide_tablet'] ) ? $settings['cards_per_slide_tablet'] : $cards_per_view;
-			$cards_per_slide_mobile  = isset( $settings['cards_per_slide_mobile'] ) && ! empty( $settings['cards_per_slide_mobile'] ) ? $settings['cards_per_slide_mobile'] : $cards_per_view;
-			$slides_per_group_tablet = isset( $settings['slides_per_group_tablet'] ) && ! empty( $settings['slides_per_group_tablet'] ) ? $settings['slides_per_group_tablet'] : $slides_per_group;
-			$slides_per_group_mobile = isset( $settings['slides_per_group_mobile'] ) && ! empty( $settings['slides_per_group_mobile'] ) ? $settings['slides_per_group_tablet'] : $slides_per_group;
-
-			$space_between_slides_tablet = $cards_space_between;
-			if ( isset( $settings['space_between_slides_tablet']['size'] ) ) {
-				$space_between_slides_tablet = $settings['space_between_slides_tablet']['size'];
-			}
-
-			$space_between_slides_mobile = $cards_space_between;
-			if ( isset( $settings['space_between_slides_mobile']['size'] ) ) {
-				$space_between_slides_mobile = $settings['space_between_slides_mobile']['size'];
-			}
 			if ( 'yes' === $show_arrow ) {
 				$arrows = "{    
 	                            nextEl: '." . esc_attr( $order_class ) . " .swiper-button-next',
@@ -228,230 +220,55 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 	                            slideShadows : ' . $enable_coverflow_shadow . ',
 	                        }';
 			}
-			?>
-			<script type="text/javascript">
-				jQuery(function($) {
-					var <?php echo esc_attr( $swiper ); ?>_swiper = new Swiper('.<?php echo esc_attr( $order_class ); ?> .swiper-container',{
-						slidesPerView: <?php echo esc_attr( $cards_per_view ); ?>,
-						autoplay: <?php echo esc_attr( $autoplay_slides ); ?>,
-						spaceBetween: <?php echo intval( $cards_space_between ); ?>,
-						slidesPerGroup: <?php echo esc_attr( $slides_each_group ); ?>,
-						slidesPerGroupSkip: <?php echo esc_attr( $slides_each_group_skip ); ?>,
-						effect: "<?php echo esc_attr( $slide_effect ); ?>",
-						cubeEffect: <?php echo esc_attr( $cube ); ?>,
-						coverflowEffect: <?php echo esc_attr( $coverflow ); ?>,
-						speed: <?php echo esc_attr( $transition_duration ); ?>,
-						pagination: <?php echo wp_kses_post( $dots ); ?>,
-						navigation: <?php echo wp_kses_post( $arrows ); ?>,
-						grabCursor: 'true',
-						autoHeight: <?php echo esc_attr( $autoheight ); ?>,
-						observer: true,
-						observeParents: true,
-						loop: <?php echo esc_attr( $loop ); ?>,
-						breakpoints: {
-									981: {
-										slidesPerView: <?php echo esc_attr( $cards_per_view ); ?>,
-										spaceBetween: <?php echo intval( esc_attr( $cards_space_between ) ); ?>,
-										slidesPerGroup: <?php echo esc_attr( $slides_each_group ); ?>,
-										slidesPerGroupSkip: <?php echo esc_attr( $slides_each_group_skip ); ?>,
-									},
-									768: {
-										slidesPerView: <?php echo esc_attr( $cards_per_slide_tablet ); ?>,
-										spaceBetween: <?php echo intval( esc_attr( $space_between_slides_tablet ) ); ?>,
-										slidesPerGroup: <?php echo esc_attr( isset( $slides_per_group_tablet ) ? $slides_per_group_tablet : 1 ); ?>,
-										slidesPerGroupSkip: <?php echo esc_attr( $slides_each_group_skip ); ?>,
-									},
-									0: {
-										slidesPerView: <?php echo esc_attr( $cards_per_slide_mobile ); ?>,
-										spaceBetween:<?php echo esc_attr( intval( $space_between_slides_mobile ) ); ?>,
-										slidesPerGroup: <?php echo esc_attr( isset( $slides_per_group_mobile ) ? $slides_per_group_mobile : 1 ); ?>,
-										slidesPerGroupSkip: <?php echo esc_attr( $slides_each_group_skip ); ?>,
-									},
-								},
-					});
-					<?php
-					if ( 'yes' === $pause_on_hover && 'yes' === $autoplay ) {
-						?>
 
-							jQuery(".<?php echo esc_attr( $order_class ); ?> .swiper-container").on("mouseenter", function(e) {
-								if (typeof <?php echo esc_attr( $swiper ); ?>_swiper.autoplay.stop === "function") {
-									<?php echo esc_attr( $swiper ); ?>_swiper.autoplay.stop();
+			$script  = '<script type="text/javascript">';
+			$script .= 'jQuery(function($) {';
+			$script .= 'var ' . esc_attr( $swiper ) . '_swiper = new Swiper(\'.' . esc_attr( $order_class ) . ' .swiper-container\', {
+	                            effect: "' . $slide_effect . '",
+	                            slidesPerView: ' . $cards_per_view . ',
+	                            slidesPerGroup: ' . $slides_each_group . ',
+	                            autoplay: ' . $autoplay_slides . ',
+	                            autoHeight: ' . $autoheight. ',
+	                            spaceBetween: ' . intval( $cards_space_between ) . ',
+	                            cubeEffect: ' . $cube . ',
+	                            coverflowEffect: ' . $coverflow . ',
+	                            speed: ' . $transition_duration . ',
+	                            loop: ' . $loop . ',
+	                            pagination: ' . $dots . ',
+	                            navigation: ' . $arrows . ',
+	                            grabCursor: \'true\',
+	                            breakpoints: {
+	                            	981: {
+			                          	slidesPerView: ' . $cards_per_view . ',
+			                          	spaceBetween: ' . intval( $cards_space_between ) . ',
+	                            		slidesPerGroup: ' . $slides_each_group . ',
+			                        }
+			                    },
+	                    });';
+
+			if ( 'yes' === $pause_on_hover && 'yes' === $autoplay ) {
+				$script .= 'jQuery(".' . esc_attr( $order_class ) . ' .swiper-container").on("mouseenter", function(e) {
+								if ( typeof ' . esc_attr( $swiper ) . '_swiper.autoplay.stop === "function" ) {
+									' . esc_attr( $swiper ) . '_swiper.autoplay.stop();
 								}
-							});
-
-							jQuery(".<?php echo esc_attr( $order_class ); ?> .swiper-container").on("mouseleave", function(e) {
-								if (typeof <?php echo esc_attr( $swiper ); ?>_swiper.autoplay.start === "function") {
-									<?php echo esc_attr( $swiper ); ?>_swiper.autoplay.start();
-								}
-							});					
-						<?php
-					}
-					if ( 'true' !== $loop ) {
-						?>
-
-							<?php echo esc_attr( $swiper ); ?>_swiper.on('reachEnd', function() {
-								<?php echo esc_attr( $swiper ); ?>_swiper.autoplay = false;
-							});
-
-						<?php
-					}
-					?>
-				});
-			</script>
-			<?php
-		}*/
-
-			/**
-			 * This function dynamically creates script parameters according to the user settings
-			 *
-			 * @return string
-			 * */
-			public function wpmozo_ae_render_slider_script() {
-				$order_class         = 'elementor-element-' . $this->get_id();
-				$swiper              = str_replace( '-', '_', $order_class );
-				$settings            = $this->get_settings_for_display();
-				$slide_effect        = $settings['slide_effect'];
-				$show_arrow          = $settings['show_arrow'];
-				$show_control_dot    = $settings['show_control_dot'];
-				$loop                = $settings['slider_loop'];
-				$autoplay            = $settings['autoplay'];
-				$autoplay_speed      = absint( $settings['autoplay_speed'] );
-				$transition_duration = absint( $settings['slide_transition_duration'] );
-				$pause_on_hover      = $settings['pause_on_hover'];
-				$dynamic_bullets     = 'yes' === $settings['enable_dynamic_dots'] && in_array( $settings['control_dot_style'], array( 'solid_dot', 'transparent_dot', 'square_dot' ), true ) ? 'true' : 'false';
-				$autoheight          = 'yes' === $settings['enable_auto_height'] ? 'true' : 'false';
-
-				if ( 'coverflow' === $slide_effect || 'slide' === $slide_effect ) {
-					$cards_per_slide         = $settings['cards_per_slide'];
-					$slides_per_group        = $settings['slides_per_group'];
-					$space_between_slides    = $settings['space_between_slides']['size'];
-					$enable_coverflow_shadow = 'yes' === $settings['enable_coverflow_shadow'] ? 'true' : 'false';
-					$coverflow_rotate        = 'coverflow' === $slide_effect ? absint( $settings['coverflow_rotate']['size'] ) : '';
-					$coverflow_depth         = 'coverflow' === $slide_effect ? absint( $settings['coverflow_depth']['size'] ) : '';
-				}
-
-				$autoplay_speed           = '' !== $autoplay_speed || 0 !== $autoplay_speed ? $autoplay_speed : 3000;
-				$transition_duration      = '' !== $transition_duration || 0 !== $transition_duration ? $transition_duration : 1000;
-				$loop                     = 'yes' === $loop ? 'true' : 'false';
-				$arrows                   = 'false';
-				$dots                     = 'false';
-				$autoplay_slides          = 0;
-				$cube                     = 'false';
-				$coverflow                = 'false';
-				$slides_each_group        = 1;
-				$slides_each_group_skip   = 0;
-				$slides_each_group        = 1;
-				$slides_each_group_ipad   = 1;
-				$slides_each_group_mobile = 1;
-				$slides_each_group_skip   = 0;
-
-				if ( in_array( $slide_effect, array( 'slide', 'coverflow' ), true ) ) {
-					$cards_per_view      = $cards_per_slide;
-					$cards_space_between = $space_between_slides;
-					$slides_each_group   = $slides_per_group;
-
-					if ( $cards_per_view > $slides_each_group && 1 !== $slides_each_group ) {
-						$slides_each_group_skip = $cards_per_view - $slides_each_group;
-					}
-				} else {
-					$cards_per_view      = 1;
-					$cards_space_between = 0;
-				}
-
-				if ( 'yes' === $show_arrow ) {
-					$arrows = "{    
-		                            nextEl: '." . esc_attr( $order_class ) . " .swiper-button-next',
-		                            prevEl: '." . esc_attr( $order_class ) . " .swiper-button-prev',
-		                    }";
-				}
-
-				if ( 'yes' === $show_control_dot ) {
-					$dots = "{
-		                        el: '." . esc_attr( $order_class ) . " .swiper-pagination',
-		                        dynamicBullets: " . $dynamic_bullets . ',
-		                        clickable: true,
-		                    }';
-				}
-
-				if ( 'yes' === $autoplay ) {
-					if ( 'yes' === $pause_on_hover ) {
-						$autoplay_slides = '{
-		                                delay:' . $autoplay_speed . ',
-		                                disableOnInteraction: true,
-		                            }';
-					} else {
-						$autoplay_slides = '{
-		                                delay:' . $autoplay_speed . ',
-		                                disableOnInteraction: false,
-		                            }';
-					}
-				}
-
-				if ( 'cube' === $slide_effect ) {
-					$cube = '{
-		                        shadow: false,
-		                        slideShadows: false,
-		                    }';
-				}
-
-				if ( 'coverflow' === $slide_effect ) {
-					$coverflow = '{
-		                            rotate: ' . $coverflow_rotate . ',
-		                            stretch: 0,
-		                            depth: ' . $coverflow_depth . ',
-		                            modifier: 1,
-		                            slideShadows : ' . $enable_coverflow_shadow . ',
-		                        }';
-				}
-
-				$script  = '<script type="text/javascript">';
-				$script .= 'jQuery(function($) {';
-				$script .= 'var ' . esc_attr( $swiper ) . '_swiper = new Swiper(\'.' . esc_attr( $order_class ) . ' .swiper-container\', {
-		                            effect: "' . $slide_effect . '",
-		                            slidesPerView: ' . $cards_per_view . ',
-		                            slidesPerGroup: ' . $slides_each_group . ',
-		                            autoplay: ' . $autoplay_slides . ',
-		                            autoHeight: ' . $autoheight. ',
-		                            spaceBetween: ' . intval( $cards_space_between ) . ',
-		                            cubeEffect: ' . $cube . ',
-		                            coverflowEffect: ' . $coverflow . ',
-		                            speed: ' . $transition_duration . ',
-		                            loop: ' . $loop . ',
-		                            pagination: ' . $dots . ',
-		                            navigation: ' . $arrows . ',
-		                            grabCursor: \'true\',
-		                            breakpoints: {
-		                            	981: {
-				                          	slidesPerView: ' . $cards_per_view . ',
-				                          	spaceBetween: ' . intval( $cards_space_between ) . ',
-		                            		slidesPerGroup: ' . $slides_each_group . ',
-				                        }
-				                    },
-		                    });';
-
-				if ( 'yes' === $pause_on_hover && 'yes' === $autoplay ) {
-					$script .= 'jQuery(".' . esc_attr( $order_class ) . ' .swiper-container").on("mouseenter", function(e) {
-									if ( typeof ' . esc_attr( $swiper ) . '_swiper.autoplay.stop === "function" ) {
-										' . esc_attr( $swiper ) . '_swiper.autoplay.stop();
-									}
-		                        });';
-					$script .= 'jQuery(".' . esc_attr( $order_class ) . ' .swiper-container").on("mouseleave", function(e) {
-		        					if ( typeof ' . esc_attr( $swiper ) . '_swiper.autoplay.start === "function" ) {
-		                            	' . esc_attr( $swiper ) . '_swiper.autoplay.start();
-		                            }
-		                        });';
-				}
-
-				if ( 'true' !== $loop ) {
-					$script .= esc_attr( $swiper ) . '_swiper.on(\'reachEnd\', function(){
-		                            ' . esc_attr( $swiper ) . '_swiper.autoplay = false;
-		                        });';
-				}
-
-				$script .= '});</script>';
-
-				return $script;
+	                        });';
+				$script .= 'jQuery(".' . esc_attr( $order_class ) . ' .swiper-container").on("mouseleave", function(e) {
+	        					if ( typeof ' . esc_attr( $swiper ) . '_swiper.autoplay.start === "function" ) {
+	                            	' . esc_attr( $swiper ) . '_swiper.autoplay.start();
+	                            }
+	                        });';
 			}
+
+			if ( 'true' !== $loop ) {
+				$script .= esc_attr( $swiper ) . '_swiper.on(\'reachEnd\', function(){
+	                            ' . esc_attr( $swiper ) . '_swiper.autoplay = false;
+	                        });';
+			}
+
+			$script .= '});</script>';
+
+			return $script;
+		}
 
 		/**
 		 * Render widget output on the frontend.

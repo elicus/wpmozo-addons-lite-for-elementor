@@ -22,8 +22,8 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		public function init() {
 
 			$this->include_files();
-
 		}
+
 		/**
 		 * Include file with helper funcitons.
 		 *
@@ -121,35 +121,51 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		 * @since    1.0.0
 		 */
 		public function register_oembed_widget( $widgets_manager ) {
-			global $pro_version;
-			$plugin_option = get_option( 'wpmozo-addons-lite-for-elementor' );
 
-			if ( false !== $plugin_option && false !== $pro_version ) {
-				$modules = array_map( 'basename', explode( ',', $plugin_option['wpmozo_widgets'] ) );
-
-				if ( ! empty( $modules ) && is_array( $modules ) ) {
-					$modules_list = array();
-					foreach ( $modules as $module ) {
-						$mod                  = trim( preg_replace( '/[A-Z]([A-Z](?![a-z]))*/', ' $0', $module ) );
-						$key                  = '\WPMOZO_AE_' . ucwords( strtolower( str_replace( '-', '_', $mod ) ) );
-						$modules_list[ $key ] = esc_html( $mod );
-					}
-					$this->include_widgets( $modules_list );
-					foreach ( $modules_list as $key => $value ) {
-						$widgets_manager->register( new $key() );
-					}
-				}
+			$plugin_option = get_option( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION, array() );
+			if ( defined( 'WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION' ) && isset( $plugin_option['wpmozo_inactive_widgets'] ) && '' !== $plugin_option['wpmozo_inactive_widgets'] ) {
+				$inactive_widgets  	= explode( ',', $plugin_option['wpmozo_inactive_widgets'] );
+				$active_widgets 	= array_diff( $this->get_all_widgets(), $inactive_widgets );
 			} else {
+				$active_widgets = $this->get_all_widgets();
+			}
+			$this->register_widgets( $active_widgets, $widgets_manager );
+		}
 
-				$widgets_path = plugin_dir_path( __DIR__ ) . '/widgets/';
-				$modules      = glob( $widgets_path . '*', GLOB_ONLYDIR );
+		/**
+		 * Get all widgets.
+		 *
+		 * @since    1.0.0
+		 */
+		private function get_all_widgets() {
+			$widgets_path = plugin_dir_path( __DIR__ ) . '/widgets/';
+			$widgets      = glob( $widgets_path . '*', GLOB_ONLYDIR );
 
-				if ( ! empty( $modules ) ) {
-					foreach ( $modules as $module ) {
-						$module_name = basename( $module );
-						$class_name  = 'WPMOZO_AE_' . str_replace( '-', '_', ucwords( $module_name, '-' ) );
-						require_once $module . '/' . $module_name . '.php';
-						$widgets_manager->register( new $class_name() );
+			if ( ! empty( $widgets ) ) {
+				$widgets = array_map( 'basename', $widgets );
+				return $widgets;
+			}
+			return array();
+		}
+
+		/**
+		 * Register widgets.
+		 *
+		 * @since    1.0.0
+		 */
+		private function register_widgets( $widgets, $widgets_manager ) {
+			if ( ! empty( $widgets ) ) {
+				$widgets_list = array();
+				foreach ( $widgets as $widget ) {
+					$mod                  = trim( preg_replace( '/[A-Z]([A-Z](?![a-z]))*/', ' $0', $widget ) );
+					$key                  = 'WPMOZO_AE_' . ucwords( strtolower( str_replace( '-', '_', $mod ) ) );
+					$widgets_list[ $key ] = esc_html( $mod );
+				}
+
+				$this->include_widgets( $widgets_list );
+				foreach ( $widgets_list as $key => $value ) {
+					if ( class_exists( $key ) ) {
+						$widgets_manager->register( new $key() );
 					}
 				}
 			}

@@ -91,14 +91,6 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		public function enqueue_scripts( $hook_suffix ) {
 			$nonce = wp_create_nonce( $this->plugin_name . '-admin-nonce' );
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/js/admin.min.js', array( 'jquery' ), $this->plugin_version, false );
-			wp_localize_script(
-				$this->plugin_name,
-				'admin_ajax_object',
-				array(
-					'ajaxurl'    => admin_url( 'admin-ajax.php' ),
-					'ajax_nonce' => $nonce,
-				)
-			);
 		}
 
 		/**
@@ -505,6 +497,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 				}
 			}
 		}
+
 		/**
 		 * Callback function to render the meta box.
 		 *
@@ -519,6 +512,50 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 				'normal',
 				'default'
 			);
+		}
+
+		/**
+		 * Runs after WordPress loaded
+		 *
+		 * @since    1.0.0
+		 */
+		public function wp_loaded() {
+			if ( 'yes' === get_option( 'wpmozo_addons_lite_for_elementor_activated' ) ) {
+				delete_option( 'wpmozo_addons_lite_for_elementor_activated' );
+			}
+			$this->update_active_widgets();
+		}
+
+		/**
+		 * Runs after WordPress loaded
+		 *
+		 * @since    1.0.0
+		 */
+		public function update_active_widgets() {
+			$plugin_option 	= get_option( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION, array() );
+			$widget_version = isset( $plugin_option['wpmozo_addons_lite_for_elementor_version'] ) ? $plugin_option['wpmozo_addons_lite_for_elementor_version'] : '0.0.0';
+			if ( version_compare( $widget_version, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, '<' ) ) {
+				$all_widgets   = $this->get_all_widgets();
+				$plugin_option['wpmozo_addons_lite_for_elementor_version'] = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION;
+				$plugin_option['wpmozo_lite_widgets'] = implode( ',', $all_widgets );
+				update_option( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION, $plugin_option );
+			}
+		}
+
+		/**
+		 * Get array of all widgets of the plugin.
+		 *
+		 * @since    1.0.0
+		 */
+		private function get_all_widgets() {
+			$widgets_path = plugin_dir_path( __DIR__ ) . '/widgets/';
+			$widgets      = glob( $widgets_path . '*', GLOB_ONLYDIR );
+
+			if ( ! empty( $widgets ) ) {
+				$widgets = array_map( 'basename', $widgets );
+				return $widgets;
+			}
+			return array();
 		}
 	}
 }

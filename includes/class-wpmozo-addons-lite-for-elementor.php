@@ -138,6 +138,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 
 			$plugin_admin = new WPMOZO_Addons_Lite_For_Elementor_Admin();
 
+			$this->loader->add_action( 'wp_loaded', $plugin_admin, 'wp_loaded' );
 			$this->loader->add_action( 'init', $plugin_admin, 'wpmozo_register_post_types' );
 			$this->loader->add_action( 'init', $plugin_admin, 'wpmozo_register_taxonomies' );
 			// Hook to add meta box.
