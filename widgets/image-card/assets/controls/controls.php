@@ -61,7 +61,7 @@ $this->start_controls_section(
 			'label'       => esc_html__( 'Title', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => true,
 			'type'        => Controls_Manager::TEXT,
-			'default'     => esc_html__( 'Image Card Title' ),
+			'default'     => esc_html__( 'Image Card Title', 'wpmozo-addons-lite-for-elementor' ),
 			'dynamic'     => array( 'active' => true ),
 			'placeholder' => esc_html__( 'Enter Title Here', 'wpmozo-addons-lite-for-elementor' ),
 		)

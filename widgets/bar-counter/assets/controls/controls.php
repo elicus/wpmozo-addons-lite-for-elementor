@@ -73,64 +73,87 @@ $this->start_controls_section(
 		)
 	);
 	$this->add_control(
-		'enable_custom_chunk_size',
+		'enable_custom_bar_size',
 		array(
-			'label'        => esc_html__( 'Enable Custom Chunk Size', 'wpmozo-addons-lite-for-elementor' ),
+			'label'        => esc_html__( 'Enable Custom Bar Size', 'wpmozo-addons-lite-for-elementor' ),
 			'type'         => Controls_Manager::SWITCHER,
 			'label_on'     => esc_html__( 'Show', 'wpmozo-addons-lite-for-elementor' ),
 			'label_off'    => esc_html__( 'Hide', 'wpmozo-addons-lite-for-elementor' ),
 			'return_value' => 'yes',
 			'default'      => 'no',
-			'condition'    => array(
-				'layout' => 'layout2',
+		)
+	);
+	$this->add_responsive_control(
+		'bar_width',
+		array(
+			'label'     => esc_html__( 'Bar Width', 'wpmozo-addons-lite-for-elementor' ),
+			'type'      => Controls_Manager::SLIDER,
+			'range'      => array(
+				'px' => array(
+					'min'  => 0,
+					'max'  => 1000,
+					'step' => 1,
+				),
+				'%'  => array(
+					'min' => 0,
+					'max' => 100,
+				),
+				'vw' => array(
+					'min' => 0,
+					'max' => 200,
+				),
+				'vh' => array(
+					'min' => 0,
+					'max' => 200,
+				),
+			),
+			'default'   => array(
+				'unit' => '%',
+				'size' => 50,
+			),
+			'selectors' => array(
+				'{{WRAPPER}} .wpmozo_bar_counter_bar_wrapper .wpmozo_bar_counter_chunks, {{WRAPPER}} .wpmozo_bar_counter_bar_wrapper .wpmozo_bar_counter_bar' => 'max-width: {{SIZE}}{{UNIT}};',
+			),
+			'size_units' => array( 'px', '%', 'vw', 'vh' ),
+			'condition' => array(
+				'enable_custom_bar_size' => 'yes',
 			),
 		)
 	);
-	$this->add_control(
-		'chunks_width',
+	$this->add_responsive_control(
+		'bar_height',
 		array(
-			'label'     => esc_html__( 'Chunks Width', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Bar Height', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::SLIDER,
-			'range'     => array(
+			'range'      => array(
 				'px' => array(
+					'min'  => 0,
+					'max'  => 1000,
+					'step' => 1,
+				),
+				'%'  => array(
 					'min' => 0,
 					'max' => 100,
+				),
+				'vw' => array(
+					'min' => 0,
+					'max' => 200,
+				),
+				'vh' => array(
+					'min' => 0,
+					'max' => 200,
 				),
 			),
 			'default'   => array(
 				'unit' => 'px',
-				'size' => 20,
+				'size' => 50,
 			),
+			'size_units' => array( 'px', '%', 'vw', 'vh' ),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_bar_counter_bar_wrapper .wpmozo_bar_counter_chunks' => 'max-width: {{SIZE}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_bar_counter_bar_wrapper .wpmozo_bar_counter_chunks, {{WRAPPER}} .wpmozo_bar_counter_bar_wrapper .wpmozo_bar_counter_bar' => 'height: {{SIZE}}{{UNIT}};',
 			),
 			'condition' => array(
-				'layout'                   => 'layout2',
-				'enable_custom_chunk_size' => 'yes',
-			),
-		)
-	);
-	$this->add_control(
-		'chunks_height',
-		array(
-			'label'     => esc_html__( 'Chunks Height', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::SLIDER,
-			'range'     => array(
-				'px' => array(
-					'min' => 0,
-					'max' => 100,
-				),
-			),
-			'default'   => array(
-				'unit' => 'px',
-				'size' => 20,
-			),
-			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_bar_counter_bar_wrapper .wpmozo_bar_counter_chunks' => 'height: {{SIZE}}{{UNIT}};',
-			),
-			'condition' => array(
-				'layout'                   => 'layout2',
-				'enable_custom_chunk_size' => 'yes',
+				'enable_custom_bar_size' => 'yes',
 			),
 		)
 	);
@@ -338,7 +361,7 @@ $this->start_controls_section(
 					'label'     => esc_html__( 'Percentage Text Color', 'wpmozo-addons-lite-for-elementor' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .wpmozo_bar_counter_bar .wpmozo_bar_counter_percent' => 'color: {{VALUE}}',
+						'{{WRAPPER}} .wpmozo_bar_counter_bar_wrapper .wpmozo_bar_counter_percent' => 'color: {{VALUE}}',
 					),
 				)
 			);
@@ -347,7 +370,7 @@ $this->start_controls_section(
 				array(
 					'name'     => 'percentage_typography',
 					'label'    => esc_html__( 'Percentage Typography', 'wpmozo-addons-lite-for-elementor' ),
-					'selector' => '{{WRAPPER}} .wpmozo_bar_counter_bar .wpmozo_bar_counter_percent',
+					'selector' => '{{WRAPPER}} .wpmozo_bar_counter_bar_wrapper .wpmozo_bar_counter_percent',
 				)
 			);
 			$this->add_group_control(
@@ -355,7 +378,7 @@ $this->start_controls_section(
 				array(
 					'name'     => 'percentage_text_shadow',
 					'label'    => esc_html__( 'Percentage Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector' => '{{WRAPPER}} .wpmozo_bar_counter_bar .wpmozo_bar_counter_percent',
+					'selector' => '{{WRAPPER}} .wpmozo_bar_counter_bar_wrapper .wpmozo_bar_counter_percent',
 				)
 			);
 			$this->add_control(
