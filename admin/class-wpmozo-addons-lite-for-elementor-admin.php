@@ -91,16 +91,30 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		public function enqueue_scripts( $hook_suffix ) {
 			$nonce = wp_create_nonce( $this->plugin_name . '-admin-nonce' );
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/js/admin.min.js', array( 'jquery' ), $this->plugin_version, false );
-			wp_localize_script(
-				$this->plugin_name,
-				'admin_ajax_object',
-				array(
-					'ajaxurl'    => admin_url( 'admin-ajax.php' ),
-					'ajax_nonce' => $nonce,
-				)
-			);
 		}
+		/**
+		 * Check if team related widgets are disabled in pro version.
+		 *
+		 * @since    1.1.0
+		 */
+		public function wpmozo_is_team_disabled() {
+	        $plugin_options = get_option( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION );
+	        if ( defined( 'WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION' ) && isset( $plugin_options['wpmozo_inactive_widgets'] ) ) {
+	            $widgets = explode( ',', $plugin_options['wpmozo_inactive_widgets'] );
+	            if (
+	                in_array( 'team-slider', $widgets ) ||
+	                in_array( 'team-grid', $widgets )
+	            ) {
+	                return true;
+	            }
+	        } else {
+	            return false;
+	        }
 
+	        return false;
+	    }
+
+		// Team member post type registration.
 		/**
 		 * Register custom post for team members.
 		 *
@@ -108,44 +122,48 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		 */
 		public function wpmozo_register_post_types() {
 
-			$labels = array(
-				'name'                  => esc_html__( 'WPMozo Team Members', 'wpmozo-addons-lite-for-elementor' ),
-				'singular_name'         => esc_html__( 'WPMozo Team Member', 'wpmozo-addons-lite-for-elementor' ),
-				'menu_name'             => esc_html__( 'WPMozo Team Members', 'wpmozo-addons-lite-for-elementor' ),
-				'add_new'               => esc_html__( 'Add New', 'wpmozo-addons-lite-for-elementor' ),
-				'add_new_item'          => esc_html__( 'Add New Member', 'wpmozo-addons-lite-for-elementor' ),
-				'edit_item'             => esc_html__( 'Edit Member', 'wpmozo-addons-lite-for-elementor' ),
-				'new_item'              => esc_html__( 'New Member', 'wpmozo-addons-lite-for-elementor' ),
-				'view_item'             => esc_html__( 'View Member', 'wpmozo-addons-lite-for-elementor' ),
-				'all_items'             => esc_html__( 'All Members', 'wpmozo-addons-lite-for-elementor' ),
-				'search_items'          => esc_html__( 'Search Members', 'wpmozo-addons-lite-for-elementor' ),
-				'not_found'             => esc_html__( 'No member found', 'wpmozo-addons-lite-for-elementor' ),
-				'not_found_in_trash'    => esc_html__( 'No members found in Trash', 'wpmozo-addons-lite-for-elementor' ),
-				'featured_image'        => esc_html__( 'Team Member Image', 'wpmozo-addons-lite-for-elementor' ),
-				'set_featured_image'    => esc_html__( 'Set team member image', 'wpmozo-addons-lite-for-elementor' ),
-				'remove_featured_image' => esc_html__( 'Remove team member image', 'wpmozo-addons-lite-for-elementor' ),
-				'use_featured_image'    => esc_html__( 'Use as team member image', 'wpmozo-addons-lite-for-elementor' ),
-				'parent_item_colon'     => esc_html__( 'Parent Member:', 'wpmozo-addons-lite-for-elementor' ),
-			);
+			if ( ! $this->wpmozo_is_team_disabled() ) {
+				$labels = array(
+					'name'                  => esc_html__( 'WPMozo Team Members', 'wpmozo-addons-lite-for-elementor' ),
+					'singular_name'         => esc_html__( 'WPMozo Team Member', 'wpmozo-addons-lite-for-elementor' ),
+					'menu_name'             => esc_html__( 'WPMozo Team Members', 'wpmozo-addons-lite-for-elementor' ),
+					'add_new'               => esc_html__( 'Add New', 'wpmozo-addons-lite-for-elementor' ),
+					'add_new_item'          => esc_html__( 'Add New Member', 'wpmozo-addons-lite-for-elementor' ),
+					'edit_item'             => esc_html__( 'Edit Member', 'wpmozo-addons-lite-for-elementor' ),
+					'new_item'              => esc_html__( 'New Member', 'wpmozo-addons-lite-for-elementor' ),
+					'view_item'             => esc_html__( 'View Member', 'wpmozo-addons-lite-for-elementor' ),
+					'all_items'             => esc_html__( 'All Members', 'wpmozo-addons-lite-for-elementor' ),
+					'search_items'          => esc_html__( 'Search Members', 'wpmozo-addons-lite-for-elementor' ),
+					'not_found'             => esc_html__( 'No member found', 'wpmozo-addons-lite-for-elementor' ),
+					'not_found_in_trash'    => esc_html__( 'No members found in Trash', 'wpmozo-addons-lite-for-elementor' ),
+					'featured_image'        => esc_html__( 'Team Member Image', 'wpmozo-addons-lite-for-elementor' ),
+					'set_featured_image'    => esc_html__( 'Set team member image', 'wpmozo-addons-lite-for-elementor' ),
+					'remove_featured_image' => esc_html__( 'Remove team member image', 'wpmozo-addons-lite-for-elementor' ),
+					'use_featured_image'    => esc_html__( 'Use as team member image', 'wpmozo-addons-lite-for-elementor' ),
+					'parent_item_colon'     => esc_html__( 'Parent Member:', 'wpmozo-addons-lite-for-elementor' ),
+				);
 
-			$args = array(
-				'labels'            => $labels,
-				'description'       => esc_html__( 'WPMozo Team Members Custom Post', 'wpmozo-addons-lite-for-elementor' ),
-				'public'            => true,
-				'supports'          => array( 'title', 'editor', 'author', 'thumbnail', 'revisions' ),
-				'taxonomies'        => array( 'wpmozo-ae-team-member-category' ),
-				'hierarchical'      => false,
-				'menu_position'     => 20,
-				'menu_icon'         => 'dashicons-admin-users',
-				'show_ui'           => true,
-				'show_in_menu'      => true,
-				'show_in_nav_menus' => true,
-				'has_archive'       => true,
-				'query_var'         => true,
-				'capability_type'   => 'post',
-			);
-
-			register_post_type( 'wpmozoae-team-member', $args );
+				$args = array(
+					'labels'            => $labels,
+					'description'       => esc_html__( 'WPMozo Team Members Custom Post', 'wpmozo-addons-lite-for-elementor' ),
+					'public'            => true,
+					'supports'          => array( 'title', 'editor', 'author', 'thumbnail', 'revisions' ),
+					'taxonomies'        => array( 'wpmozo-ae-team-member-category' ),
+					'hierarchical'      => false,
+					'menu_position'     => 20,
+					'menu_icon'         => 'dashicons-admin-users',
+					'show_ui'           => true,
+					'show_in_menu'      => true,
+					'show_in_nav_menus' => true,
+					'has_archive'       => true,
+					'query_var'         => true,
+					'capability_type'   => 'post',
+				);
+				register_post_type( 'wpmozoae-team-member', $args );
+			}
+			else { 
+				return ;
+			}
 		}
 
 		/**
@@ -154,39 +172,42 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		 * @since    1.0.0
 		 */
 		public function wpmozo_register_taxonomies() {
-			$labels = array(
-				'name'                       => esc_html_x( 'Categories', 'Taxonomy General Name', 'wpmozo-addons-lite-for-elementor' ),
-				'singular_name'              => esc_html_x( 'Category', 'Taxonomy Singular Name', 'wpmozo-addons-lite-for-elementor' ),
-				'menu_name'                  => esc_html__( 'Categories', 'wpmozo-addons-lite-for-elementor' ),
-				'all_items'                  => esc_html__( 'All Team Member Categories', 'wpmozo-addons-lite-for-elementor' ),
-				'parent_item'                => esc_html__( 'Parent Team Member Category', 'wpmozo-addons-lite-for-elementor' ),
-				'parent_item_colon'          => esc_html__( 'Parent Team Member Category:', 'wpmozo-addons-lite-for-elementor' ),
-				'new_item_name'              => esc_html__( 'New Team Member Category Name', 'wpmozo-addons-lite-for-elementor' ),
-				'add_new_item'               => esc_html__( 'Add New Team Member Category', 'wpmozo-addons-lite-for-elementor' ),
-				'edit_item'                  => esc_html__( 'Edit Team Member Category', 'wpmozo-addons-lite-for-elementor' ),
-				'update_item'                => esc_html__( 'Update Team Member Category', 'wpmozo-addons-lite-for-elementor' ),
-				'view_item'                  => esc_html__( 'View Team Member Category', 'wpmozo-addons-lite-for-elementor' ),
-				'separate_items_with_commas' => esc_html__( 'Separate categories with commas', 'wpmozo-addons-lite-for-elementor' ),
-				'add_or_remove_items'        => esc_html__( 'Add or remove categories', 'wpmozo-addons-lite-for-elementor' ),
-				'choose_from_most_used'      => esc_html__( 'Choose from the most used', 'wpmozo-addons-lite-for-elementor' ),
-				'popular_items'              => esc_html__( 'Popular Team Member Categories', 'wpmozo-addons-lite-for-elementor' ),
-				'search_items'               => esc_html__( 'Search Team Member Categories', 'wpmozo-addons-lite-for-elementor' ),
-				'not_found'                  => esc_html__( 'Not Found', 'wpmozo-addons-lite-for-elementor' ),
-				'no_terms'                   => esc_html__( 'No Team Member Categories', 'wpmozo-addons-lite-for-elementor' ),
-				'items_list'                 => esc_html__( 'Team Member Categories list', 'wpmozo-addons-lite-for-elementor' ),
-				'items_list_navigation'      => esc_html__( 'Team Member Categories list navigation', 'wpmozo-addons-lite-for-elementor' ),
-			);
-			$args   = array(
-				'labels'            => $labels,
-				'hierarchical'      => true,
-				'public'            => true,
-				'show_ui'           => true,
-				'show_admin_column' => true,
-				'show_in_nav_menus' => true,
-				'show_tagcloud'     => true,
-			);
-
-			register_taxonomy( 'wpmozo-ae-team-member-category', array( 'wpmozoae-team-member' ), $args );
+			if ( ! $this->wpmozo_is_team_disabled() ) {
+				$labels = array(
+					'name'                       => esc_html_x( 'Categories', 'Taxonomy General Name', 'wpmozo-addons-lite-for-elementor' ),
+					'singular_name'              => esc_html_x( 'Category', 'Taxonomy Singular Name', 'wpmozo-addons-lite-for-elementor' ),
+					'menu_name'                  => esc_html__( 'Categories', 'wpmozo-addons-lite-for-elementor' ),
+					'all_items'                  => esc_html__( 'All Team Member Categories', 'wpmozo-addons-lite-for-elementor' ),
+					'parent_item'                => esc_html__( 'Parent Team Member Category', 'wpmozo-addons-lite-for-elementor' ),
+					'parent_item_colon'          => esc_html__( 'Parent Team Member Category:', 'wpmozo-addons-lite-for-elementor' ),
+					'new_item_name'              => esc_html__( 'New Team Member Category Name', 'wpmozo-addons-lite-for-elementor' ),
+					'add_new_item'               => esc_html__( 'Add New Team Member Category', 'wpmozo-addons-lite-for-elementor' ),
+					'edit_item'                  => esc_html__( 'Edit Team Member Category', 'wpmozo-addons-lite-for-elementor' ),
+					'update_item'                => esc_html__( 'Update Team Member Category', 'wpmozo-addons-lite-for-elementor' ),
+					'view_item'                  => esc_html__( 'View Team Member Category', 'wpmozo-addons-lite-for-elementor' ),
+					'separate_items_with_commas' => esc_html__( 'Separate categories with commas', 'wpmozo-addons-lite-for-elementor' ),
+					'add_or_remove_items'        => esc_html__( 'Add or remove categories', 'wpmozo-addons-lite-for-elementor' ),
+					'choose_from_most_used'      => esc_html__( 'Choose from the most used', 'wpmozo-addons-lite-for-elementor' ),
+					'popular_items'              => esc_html__( 'Popular Team Member Categories', 'wpmozo-addons-lite-for-elementor' ),
+					'search_items'               => esc_html__( 'Search Team Member Categories', 'wpmozo-addons-lite-for-elementor' ),
+					'not_found'                  => esc_html__( 'Not Found', 'wpmozo-addons-lite-for-elementor' ),
+					'no_terms'                   => esc_html__( 'No Team Member Categories', 'wpmozo-addons-lite-for-elementor' ),
+					'items_list'                 => esc_html__( 'Team Member Categories list', 'wpmozo-addons-lite-for-elementor' ),
+					'items_list_navigation'      => esc_html__( 'Team Member Categories list navigation', 'wpmozo-addons-lite-for-elementor' ),
+				);
+				$args   = array(
+					'labels'            => $labels,
+					'hierarchical'      => true,
+					'public'            => true,
+					'show_ui'           => true,
+					'show_admin_column' => true,
+					'show_in_nav_menus' => true,
+					'show_tagcloud'     => true,
+				);
+				register_taxonomy( 'wpmozo-ae-team-member-category', array( 'wpmozoae-team-member' ), $args );
+			}else { 
+				return ; 
+			}
 		}
 
 		/**
@@ -342,7 +363,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 					<?php esc_html_e( 'Skills', 'wpmozo-addons-lite-for-elementor' ); ?>
 				</label>
 				<div class="wpmozo_repeator_meta_fields">
-					<input type="hidden" id="wpmozo_ae_team_member_skills" name="wpmozo_ae_team_member_skills" value="<?php echo esc_attr( $skills ); ?>" />
+					<input type="hidden" id="wpmozo_ae_team_member_skills" name="wpmozo_ae_team_member_skills" value="<?php echo esc_attr( $skills ); ?>" required />
 					<input type="hidden" id="wpmozo_ae_team_member_skills_value" name="wpmozo_ae_team_member_skills_value" value="<?php echo esc_attr( $skills_value ); ?>" />
 					<?php
 						$skills       = explode( ',', $skills );
@@ -359,7 +380,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 							?>
 							<div class="wpmozo_repeator_meta_field_row">
 								<div class="wpmozo_repeator_meta_field">
-									<input type="text" class="wpmozo_ae_team_member_skills" value="<?php echo esc_attr( $skills[ $i ] ); ?>" placeholder="Skill" />
+									<input type="text" class="wpmozo_ae_team_member_skills" value="<?php echo esc_attr( $skills[ $i ] ); ?>" placeholder="Skill" required />
 									<input type="number" class="wpmozo_ae_team_member_skills_value" value="<?php echo esc_attr( $skill_value ); ?>" placeholder="Skill Value Between 0 to 100" step="1" min="0" max="100"/>
 								</div>
 								<p class="wpmozo_repeator_meta_field_row_controls">
@@ -379,7 +400,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 						?>
 						<div class="wpmozo_repeator_meta_field_row">
 							<div class="wpmozo_repeator_meta_field">
-								<input type="text" class="wpmozo_ae_team_member_skills" placeholder="Skill" />
+								<input type="text" class="wpmozo_ae_team_member_skills" placeholder="Skill" required />
 								<input type="number" class="wpmozo_ae_team_member_skills_value" placeholder="Skill Value Between 0 to 100" step="1" min="0" max="100" />
 							</div>
 							<p class="wpmozo_repeator_meta_field_row_controls">
@@ -505,6 +526,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 				}
 			}
 		}
+
 		/**
 		 * Callback function to render the meta box.
 		 *
@@ -519,6 +541,50 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 				'normal',
 				'default'
 			);
+		}
+
+		/**
+		 * Runs after WordPress loaded
+		 *
+		 * @since    1.0.0
+		 */
+		public function wp_loaded() {
+			if ( 'yes' === get_option( 'wpmozo_addons_lite_for_elementor_activated' ) ) {
+				delete_option( 'wpmozo_addons_lite_for_elementor_activated' );
+			}
+			$this->update_active_widgets();
+		}
+
+		/**
+		 * Runs after WordPress loaded
+		 *
+		 * @since    1.0.0
+		 */
+		public function update_active_widgets() {
+			$plugin_option 	= get_option( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION, array() );
+			$widget_version = isset( $plugin_option['wpmozo_addons_lite_for_elementor_version'] ) ? $plugin_option['wpmozo_addons_lite_for_elementor_version'] : '0.0.0';
+			if ( version_compare( $widget_version, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, '<' ) ) {
+				$all_widgets   = $this->get_all_widgets();
+				$plugin_option['wpmozo_addons_lite_for_elementor_version'] = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION;
+				$plugin_option['wpmozo_lite_widgets'] = implode( ',', $all_widgets );
+				update_option( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION, $plugin_option );
+			}
+		}
+
+		/**
+		 * Get array of all widgets of the plugin.
+		 *
+		 * @since    1.0.0
+		 */
+		private function get_all_widgets() {
+			$widgets_path = plugin_dir_path( __DIR__ ) . '/widgets/';
+			$widgets      = glob( $widgets_path . '*', GLOB_ONLYDIR );
+
+			if ( ! empty( $widgets ) ) {
+				$widgets = array_map( 'basename', $widgets );
+				return $widgets;
+			}
+			return array();
 		}
 	}
 }

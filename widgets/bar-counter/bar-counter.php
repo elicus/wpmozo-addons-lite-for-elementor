@@ -55,7 +55,7 @@ if ( ! class_exists( 'WPMOZO_AE_Bar_Counter' ) ) {
 		 * @return string Widget icon.
 		 */
 		public function get_icon() {
-			return 'eicon-skill-bar wpmozo-ae-brandicon';
+			return 'wpmozo-ae-icon-bar-counter wpmozo-ae-brandicon';
 		}
 
 		/**
@@ -83,22 +83,8 @@ if ( ! class_exists( 'WPMOZO_AE_Bar_Counter' ) ) {
 		 * @return style handle.
 		 */
 		public function get_style_depends() {
-			wp_register_style( 'wpmozo-ale-bar-counter-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
-			return array( 'wpmozo-ale-bar-counter-style' );
-		}
-
-		/**
-		 * Get script dependencies.
-		 *
-		 * Retrieve the list of script dependencies the element requires.
-		 *
-		 * @since  1.3.0
-		 * @access public
-		 *
-		 * @return array Element scripts dependencies.
-		 */
-		public function get_script_depends() {
-			return array( 'wpmozo-ale-twenty-twenty' );
+			wp_register_style( 'wpmozo-ae-bar-counter-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+			return array( 'wpmozo-ae-bar-counter-style' );
 		}
 
 		/**
@@ -126,16 +112,16 @@ if ( ! class_exists( 'WPMOZO_AE_Bar_Counter' ) ) {
 		protected function render() {
 			$settings            = $this->get_settings_for_display();
 			$widget_id           = $this->get_id();
-			$layout              = $settings['layout'];
-			$title               = $settings['title'];
-			$percentage          = $settings['percentage']['size'];
-			$display_empty_bar   = $settings['display_empty_bar'];
-			$use_strip_class     = isset( $settings['use_stripes'] ) && 'yes' === $settings['use_stripes'] ? 'wpmozo_bar_counter_animated_striped_bar' : '';
-			$title_heading_level = $settings['title_heading_level'];
+			$layout              = $settings[ 'layout' ];
+			$title               = $settings[ 'title' ];
+			$percentage          = $settings[ 'percentage' ][ 'size' ];
+			$display_empty_bar   = $settings[ 'display_empty_bar' ];
+			$use_strip_class     = isset( $settings[ 'use_stripes' ] ) && 'yes' === $settings[ 'use_stripes' ] ? 'wpmozo_bar_counter_animated_striped_bar' : '';
+			$title_heading_level = $settings[ 'title_heading_level' ];
 			$chunks_count        = intval( $percentage / 10 );
-			$widget_alignment    = isset( $settings['widget_alignment'] ) ? $settings['widget_alignment'] : '';
-			$stripe_color        = $settings['stripe_color'];
-			$enable_animation    = $settings['enable_stripe_animation'];
+			$widget_alignment    = isset( $settings[ 'widget_alignment' ] ) ? $settings[ 'widget_alignment' ] : '';
+			$stripe_color        = $settings[ 'stripe_color' ];
+			$enable_animation    = $settings[ 'enable_stripe_animation' ];
 			$empty_bar_class     = '';
 			if ( 'yes' === $display_empty_bar ) {
 				$empty_bar_class = 'empty_bar_enabled';
@@ -144,7 +130,7 @@ if ( ! class_exists( 'WPMOZO_AE_Bar_Counter' ) ) {
 			?>
 			<style>
 				.elementor-element-<?php echo esc_html( $widget_id ); ?> .wpmozo_bar_counter_filled_bar_wrapper .wpmozo_bar_counter_filled_bar.wpmozo_bar_counter_animated_striped_bar:before {
-					background-image: linear-gradient(-45deg, <?php echo esc_html( $stripe_color ); ?> 25%, transparent 25%, transparent 50%, <?php echo esc_html( $stripe_color ); ?> 50%, <?php echo esc_html( $stripe_color ); ?> 75%, transparent 75%, transparent) !important;
+					background-image: linear-gradient( -45deg, <?php echo esc_html( $stripe_color ); ?> 25%, transparent 25%, transparent 50%, <?php echo esc_html( $stripe_color ); ?> 50%, <?php echo esc_html( $stripe_color ); ?> 75%, transparent 75%, transparent ) !important;
 				}
 			<?php if ( 'yes' === $enable_animation ) : ?>
 					.elementor-element-<?php echo esc_html( $widget_id ); ?> .wpmozo_bar_counter_animated_striped_bar:before{

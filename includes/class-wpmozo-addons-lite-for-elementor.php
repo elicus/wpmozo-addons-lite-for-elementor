@@ -73,10 +73,10 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 		 *
 		 * Include the following files that make up the plugin:
 		 *
-		 * - WPMOZO_addons_For_Elementor_Loader. Orchestrates the hooks of the plugin.
-		 * - WPMOZO_addons_For_Elementor_i18n. Defines internationalization functionality.
-		 * - WPMOZO_addons_For_Elementor_Admin. Defines all hooks for the admin area.
-		 * - WPMOZO_addons_For_Elementor_Public. Defines all hooks for the public side of the site.
+		 * - WPMOZO_Addons_Lite_For_Elementor_Loader. Orchestrates the hooks of the plugin.
+		 * - WPMOZO_Addons_Lite_For_Elementor_i18n. Defines internationalization functionality.
+		 * - WPMOZO_Addons_Lite_For_Elementor_Admin. Defines all hooks for the admin area.
+		 * - WPMOZO_Addons_Lite_For_Elementor_Public. Defines all hooks for the public side of the site.
 		 *
 		 * Create an instance of the loader which will be used to register the hooks
 		 * with WordPress.
@@ -113,7 +113,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 		/**
 		 * Define the locale for this plugin for internationalization.
 		 *
-		 * Uses the WPMOZO_addons_For_Elementor_i18n class in order to set the domain and to register the hook
+		 * Uses the WPMOZO_Addons_Lite_For_Elementor_i18n class in order to set the domain and to register the hook
 		 * with WordPress.
 		 *
 		 * @since    1.0.0
@@ -138,14 +138,18 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 
 			$plugin_admin = new WPMOZO_Addons_Lite_For_Elementor_Admin();
 
+			$this->loader->add_action( 'wp_loaded', $plugin_admin, 'wp_loaded' );
 			$this->loader->add_action( 'init', $plugin_admin, 'wpmozo_register_post_types' );
 			$this->loader->add_action( 'init', $plugin_admin, 'wpmozo_register_taxonomies' );
-			// Hook to add meta box.
-			$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'wpmozo_add_team_member_metabox' );
-			// Hook to save meta box data.
 			$this->loader->add_action( 'save_post', $plugin_admin, 'wpmozo_save_team_member_meta_fields' );
 			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+			if ( ! $plugin_admin->wpmozo_is_team_disabled() ) {
+				// Hook to add meta box.
+				$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'wpmozo_add_team_member_metabox' );
+				// Hook to save meta box data.
+				$this->loader->add_action( 'save_post', $plugin_admin, 'wpmozo_save_team_member_meta_fields' );
+			}
 		}
 
 		/**

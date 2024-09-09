@@ -1,12 +1,13 @@
 <?php
 /**
- * @author    Elicus <hello@elicus.com>
- * @link      https://www.elicus.com/
- * @copyright 2024 Elicus Technologies Private Limited
- * @version   1.0.0
+ * @author      Elicus <hello@elicus.com>
+ * @link        https://www.elicus.com/
+ * @copyright   2024 Elicus Technologies Private Limited
+ * @version     1.0.0
  */
 
-// if this file is called directly, abort.
+/** If this file is called directly, abort. **/
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -55,7 +56,7 @@ if ( ! class_exists( 'WPMOZO_AE_Fancy_Heading' ) ) {
 		 * @return string Widget icon.
 		 */
 		public function get_icon() {
-			return 'eicon-heading wpmozo-ae-brandicon';
+			return 'wpmozo-ae-icon-fancy-heading wpmozo-ae-brandicon';
 		}
 
 		/**
@@ -83,9 +84,9 @@ if ( ! class_exists( 'WPMOZO_AE_Fancy_Heading' ) ) {
 		 * @return style handle.
 		 */
 		public function get_style_depends() {
-			wp_register_style( 'wpmozo-ale-fancyheading-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+			wp_register_style( 'wpmozo-ae-fancyheading-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
-			return array( 'wpmozo-ale-fancyheading-style' );
+			return array( 'wpmozo-ae-fancyheading-style' );
 		}
 
 		/**
@@ -113,12 +114,12 @@ if ( ! class_exists( 'WPMOZO_AE_Fancy_Heading' ) ) {
 		protected function render() {
 			$settings = $this->get_settings_for_display();
 
-			$pre_heading          = '' !== $settings['pre_heading'] ? $settings['pre_heading'] : '';
-			$heading              = '' !== $settings['heading'] ? $settings['heading'] : '';
-			$post_heading         = '' !== $settings['post_heading'] ? $settings['post_heading'] : '';
-			$display_inline       = $settings['display_inline'];
-			$global_heading_level = $settings['global_heading_level'];
-			$display_inline       = $settings['display_inline'];
+			$pre_heading          = '' !== $settings[ 'pre_heading' ] ? $settings[ 'pre_heading' ] : '';
+			$heading              = '' !== $settings[ 'heading' ] ? $settings[ 'heading' ] : '';
+			$post_heading         = '' !== $settings[ 'post_heading' ] ? $settings[ 'post_heading' ] : '';
+			$display_inline       = $settings[ 'display_inline' ];
+			$global_heading_level = $settings[ 'global_heading_level' ];
+			$display_inline       = $settings[ 'display_inline' ];
 
 			$this->add_render_attribute( 'heading_wrapper', 'class', 'wpmozo_ae_text_wrapper' );
 			$this->add_render_attribute( 'heading_wrapper_inner', 'class', 'wpmozo_ae_text_wrapper_inner' );

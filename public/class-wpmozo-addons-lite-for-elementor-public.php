@@ -22,8 +22,8 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		public function init() {
 
 			$this->include_files();
-
 		}
+
 		/**
 		 * Include file with helper funcitons.
 		 *
@@ -60,13 +60,22 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		 */
 		public function register_frontend_styles() {
 
-			wp_register_style( 'wpmozo-ale-swiper-style', plugins_url( 'assets/css/swiper.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+			wp_register_style( 'wpmozo-ae-swiper-style', plugins_url( 'assets/css/swiper.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
-			wp_register_style( 'wpmozo-ale-animate-style', plugins_url( 'assets/css/animate.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+			wp_register_style( 'wpmozo-ae-animate-style', plugins_url( 'assets/css/animate.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
-			wp_register_style( 'wpmozo-ale-font-awesome-style', plugins_url( 'assets/css/font-awesome.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+			wp_register_style( 'wpmozo-ae-font-awesome-style', plugins_url( 'assets/css/font-awesome.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
-			wp_register_style( 'wpmozo-ale-mfp-style', plugins_url( 'assets/css/magnificPopup.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+			wp_register_style( 'wpmozo-ae-mfp-style', plugins_url( 'assets/css/magnificPopup.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+
+			wp_register_style( 'wpmozo-ae-icons', plugins_url( 'assets/css/wpmozoicon.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+
+			wp_enqueue_style(
+	            'wpmozo-ae-icons',
+	            plugins_url( 'assets/css/wpmozoicon.min.css', plugin_dir_path( __FILE__ ) ),
+	            false,
+		        WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION
+	        );
 
 		}
 
@@ -79,23 +88,25 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		 */
 		public function register_frontend_scripts() {
 
-			wp_register_script( 'wpmozo-ale-isotope', plugins_url( 'assets/js/isotope.pkgd.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
-			wp_register_script( 'wpmozo-ale-masonry', plugins_url( 'assets/js/masonry.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
-			wp_register_script( 'wpmozo-ale-magnify', plugins_url( 'assets/js/magnify.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-isotope', plugins_url( 'assets/js/isotope.pkgd.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-masonry', plugins_url( 'assets/js/masonry.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-magnify', plugins_url( 'assets/js/magnify.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-			wp_register_script( 'wpmozo-ale-popper', plugins_url( 'assets/js/popper.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-popper', plugins_url( 'assets/js/popper.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-			wp_register_script( 'wpmozo-ale-tippy', plugins_url( 'assets/js/tippy-bundle.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-tippy', plugins_url( 'assets/js/tippy-bundle.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-			wp_register_script( 'wpmozo-ale-imagesloaded', plugins_url( 'assets/js/imagesloaded.pkgd.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-imagesloaded', plugins_url( 'assets/js/imagesloaded.pkgd.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-			wp_register_script( 'wpmozo-ale-move-event', plugins_url( 'assets/js/jquery_event_move.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-move-event', plugins_url( 'assets/js/jquery_event_move.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-			wp_register_script( 'wpmozo-ale-twenty-twenty', plugins_url( 'assets/js/jquery_twentytwenty.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-twenty-twenty', plugins_url( 'assets/js/jquery_twentytwenty.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-			wp_register_script( 'wpmozo-ale-mfp', plugins_url( 'assets/js/magnificPopup.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-mfp', plugins_url( 'assets/js/magnificPopup.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-			wp_register_script( 'wpmozo-ale-swiper', plugins_url( 'assets/js/swiper.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-swiper', plugins_url( 'assets/js/swiper.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+
+			wp_register_script( 'wpmozo-ae-waypoints', plugins_url( 'assets/js/waypoints.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
 		}
 
@@ -121,35 +132,51 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		 * @since    1.0.0
 		 */
 		public function register_oembed_widget( $widgets_manager ) {
-			global $pro_version;
-			$plugin_option = get_option( 'wpmozo-addons-lite-for-elementor' );
 
-			if ( false !== $plugin_option && false !== $pro_version ) {
-				$modules = array_map( 'basename', explode( ',', $plugin_option['wpmozo_widgets'] ) );
-
-				if ( ! empty( $modules ) && is_array( $modules ) ) {
-					$modules_list = array();
-					foreach ( $modules as $module ) {
-						$mod                  = trim( preg_replace( '/[A-Z]([A-Z](?![a-z]))*/', ' $0', $module ) );
-						$key                  = '\WPMOZO_AE_' . ucwords( strtolower( str_replace( '-', '_', $mod ) ) );
-						$modules_list[ $key ] = esc_html( $mod );
-					}
-					$this->include_widgets( $modules_list );
-					foreach ( $modules_list as $key => $value ) {
-						$widgets_manager->register( new $key() );
-					}
-				}
+			$plugin_option = get_option( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION, array() );
+			if ( defined( 'WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION' ) && isset( $plugin_option['wpmozo_inactive_widgets'] ) && '' !== $plugin_option['wpmozo_inactive_widgets'] ) {
+				$inactive_widgets  	= explode( ',', $plugin_option['wpmozo_inactive_widgets'] );
+				$active_widgets 	= array_diff( $this->get_all_widgets(), $inactive_widgets );
 			} else {
+				$active_widgets = $this->get_all_widgets();
+			}
+			$this->register_widgets( $active_widgets, $widgets_manager );
+		}
 
-				$widgets_path = plugin_dir_path( __DIR__ ) . '/widgets/';
-				$modules      = glob( $widgets_path . '*', GLOB_ONLYDIR );
+		/**
+		 * Get all widgets.
+		 *
+		 * @since    1.0.0
+		 */
+		private function get_all_widgets() {
+			$widgets_path = plugin_dir_path( __DIR__ ) . '/widgets/';
+			$widgets      = glob( $widgets_path . '*', GLOB_ONLYDIR );
 
-				if ( ! empty( $modules ) ) {
-					foreach ( $modules as $module ) {
-						$module_name = basename( $module );
-						$class_name  = 'WPMOZO_AE_' . str_replace( '-', '_', ucwords( $module_name, '-' ) );
-						require_once $module . '/' . $module_name . '.php';
-						$widgets_manager->register( new $class_name() );
+			if ( ! empty( $widgets ) ) {
+				$widgets = array_map( 'basename', $widgets );
+				return $widgets;
+			}
+			return array();
+		}
+
+		/**
+		 * Register widgets.
+		 *
+		 * @since    1.0.0
+		 */
+		private function register_widgets( $widgets, $widgets_manager ) {
+			if ( ! empty( $widgets ) ) {
+				$widgets_list = array();
+				foreach ( $widgets as $widget ) {
+					$mod                  = trim( preg_replace( '/[A-Z]([A-Z](?![a-z]))*/', ' $0', $widget ) );
+					$key                  = 'WPMOZO_AE_' . ucwords( strtolower( str_replace( '-', '_', $mod ) ) );
+					$widgets_list[ $key ] = esc_html( $mod );
+				}
+
+				$this->include_widgets( $widgets_list );
+				foreach ( $widgets_list as $key => $value ) {
+					if ( class_exists( $key ) ) {
+						$widgets_manager->register( new $key() );
 					}
 				}
 			}

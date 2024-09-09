@@ -32,7 +32,7 @@
             e('body').on('click', '.wpmozo_repeator_meta_field_add_row', function(){
                 let row  = '<div class="wpmozo_repeator_meta_field_row">';
                     row += '<div class="wpmozo_repeator_meta_field">';
-                    row += '<input type="text" class="wpmozo_ae_team_member_skills" placeholder="Skill" />';
+                    row += '<input type="text" class="wpmozo_ae_team_member_skills" placeholder="Skill" required />';
                     row += '<input type="number" class="wpmozo_ae_team_member_skills_value" placeholder="Skill Value Between 0 to 100" step="1" min="0" max="100"/>';
                     row += '</div>';
                     row += '<p class="wpmozo_repeator_meta_field_row_controls">';

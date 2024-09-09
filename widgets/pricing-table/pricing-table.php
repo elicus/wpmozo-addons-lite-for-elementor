@@ -1,9 +1,9 @@
 <?php
 /**
- * @author    Elicus <hello@elicus.com>
- * @link      https://www.elicus.com/
- * @copyright 2024 Elicus Technologies Private Limited
- * @version   1.0.0
+ * @author      Elicus <hello@elicus.com>
+ * @link        https://www.elicus.com/
+ * @copyright   2024 Elicus Technologies Private Limited
+ * @version     1.0.0
  */
 
 // if this file is called directly, abort.
@@ -56,7 +56,7 @@ if ( ! class_exists( 'WPMOZO_AE_Pricing_Table' ) ) {
 		 * @return string Widget icon.
 		 */
 		public function get_icon() {
-			return 'eicon-price-table  wpmozo-ae-brandicon';
+			return 'wpmozo-ae-icon-pricing-table  wpmozo-ae-brandicon';
 		}
 
 		/**
@@ -84,9 +84,9 @@ if ( ! class_exists( 'WPMOZO_AE_Pricing_Table' ) ) {
 		 * @return style handle.
 		 */
 		public function get_style_depends() {
-			wp_register_style( 'wpmozo-ale-pricingtable-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+			wp_register_style( 'wpmozo-ae-pricingtable-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
-			return array( 'wpmozo-ale-pricingtable-style' );
+			return array( 'wpmozo-ae-pricingtable-style' );
 		}
 
 		/**
@@ -110,7 +110,7 @@ if ( ! class_exists( 'WPMOZO_AE_Pricing_Table' ) ) {
 		 * @access protected
 		 */
 		private function get_currency_symbol( $symbol_name ) {
-			$symbols = array(
+			$symbols = array( 
 				'dollar'  => ' &#36;',
 				'euro'    => ' &#128;',
 				'franc'   => ' &#8355;',
@@ -128,7 +128,7 @@ if ( ! class_exists( 'WPMOZO_AE_Pricing_Table' ) ) {
 				'inr'     => ' &#8377;',
 				'real'    => ' R$',
 				'krona'   => ' kr',
-			);
+			 );
 			return isset( $symbols[ $symbol_name ] ) ? $symbols[ $symbol_name ] : '';
 		}
 
@@ -144,18 +144,39 @@ if ( ! class_exists( 'WPMOZO_AE_Pricing_Table' ) ) {
 
 			$settings = $this->get_settings_for_display();
 
-			$table_title            = $settings['table_title_text'];
-			$title_heading_level    = $settings['title_heading_level'];
-			$currency_symbol        = $settings['currency_symbol'];
-			$currency_symbol_custom = $settings['currency_symbol_custom'];
-			$table_price            = $settings['table_price'];
-			$pricing_period         = $settings['pricing_period'];
-			$button_text            = $settings['button_text'];
+			$table_title            = $settings[ 'table_title_text' ];
+			$title_heading_level    = $settings[ 'title_heading_level' ];
+			$currency_symbol        = $settings[ 'currency_symbol' ];
+			$currency_symbol_custom = $settings[ 'currency_symbol_custom' ];
+			$table_price            = $settings[ 'table_price' ];
+			$pricing_period         = $settings[ 'pricing_period' ];
 			$features_list          = $this->get_settings_for_display( 'features_list' );
-			$header_graphics        = $settings['header_graphics'];
-			$table_subtitle         = $settings['table_subtitle_text'];
-			$currency_position      = $settings['currency_position'];
+			$header_graphics        = $settings[ 'header_graphics' ];
+			$table_subtitle         = $settings[ 'table_subtitle_text' ];
+			$currency_position      = $settings[ 'currency_position' ];
 			$list_icon              = '';
+			$button_text            = $settings[ 'button_text' ];
+			$button_hover_animation = isset( $settings[ 'button_hover_animation' ] ) ? $settings[ 'button_hover_animation' ] : '';
+			$button_url             = isset( $settings[ 'button_url' ] ) ? esc_attr( $settings[ 'button_url' ][ 'url' ] ) : '#';
+			$this->add_render_attribute( 'wpmozo_ae_button', 'class', 'wpmozo_ae_button' );
+			$this->add_render_attribute( 'button_text', 'class', 'button_text' );
+			$this->add_inline_editing_attributes( 'button_text', 'none' );
+			$this->add_render_attribute( 'wpmozo_ae_button_wrapper', 'class', 'wpmozo_ae_pricing_table_button_wrapper' );
+			$this->add_render_attribute( 'pricing_table_button_wrapper_inner', 'class', 'wpmozo_ae_pricing_table_button_wrapper_inner' );
+			if ( ! empty( $button_hover_animation ) ) {
+				$this->add_render_attribute( 'wpmozo_ae_button', 'class', 'elementor-animation-' . $button_hover_animation );
+			}
+			if ( ! empty( $settings[ 'button_url' ][ 'url' ] ) ) {
+				$sanitized_url                 = esc_attr( $settings[ 'button_url' ][ 'url' ] );
+				$settings[ 'button_url' ][ 'url' ] = $sanitized_url;
+				$this->add_link_attributes( 'wpmozo_ae_button', $settings[ 'button_url' ] );
+			}
+
+
+
+
+
+
 
 			if ( ! empty( $currency_symbol ) ) {
 				if ( 'custom' !== $currency_symbol ) {
@@ -181,38 +202,17 @@ if ( ! class_exists( 'WPMOZO_AE_Pricing_Table' ) ) {
 
 			$this->add_render_attribute( 'wpmozo_ae_pricing_table_pricing', 'class', 'wpmozo_ae_pricing_table_pricing' );
 
-			$this->add_render_attribute( 'wpmozo_ae_button_wrapper', 'class', 'wpmozo_ae_pricing_table_button_wrapper' );
+			'icon' === $settings[ 'header_graphics' ] ? $this->add_render_attribute( 'header_graphics_div', 'class', 'wpmozo_ae_pricing_table_header_graphic_inner' ) : $this->add_render_attribute( 'header_graphics_div', 'class', array( 'wpmozo_ae_pricing_table_header_graphic_inner', 'wpmozo_ae_header_image_container', 'placehoder_image' === $settings[ 'header_image' ][ 'id' ] ? 'placeholder_image': '' ) );
 
-			$this->add_render_attribute( 'wpmozo_ae_pricing_table_button_wrapper_inner', 'class', 'wpmozo_ae_pricing_table_button_wrapper_inner' );
-
-			$this->add_render_attribute(
-				'button_text',
-				array(
-					'class' => 'wpmozo_ae_button',
-					'style' => 'text-decoration:none;',
-				),
-			);
-			$this->add_inline_editing_attributes( 'button_text', 'none' );
-
-			if ( '' !== $settings['button_hover_animation'] ) {
-				$this->add_render_attribute( 'wpmozo_ae_pricing_table_button_wrapper_inner', 'class', 'elementor-animation-' . $settings['button_hover_animation'] );
-			}
-
-			if ( ! empty( $settings['button_url']['url'] ) ) {
-				$this->add_link_attributes( 'button_text', $settings['button_url'] );
-			}
-
-			'icon' === $settings['header_graphics'] ? $this->add_render_attribute( 'header_graphics_div', 'class', 'wpmozo_ae_pricing_table_header_graphic_inner' ) : $this->add_render_attribute( 'header_graphics_div', 'class', array( 'wpmozo_ae_pricing_table_header_graphic_inner', 'wpmozo_ae_header_image_container' ) );
-
-			if ( 'icon' === $settings['header_graphics'] && '' !== $settings['header_icon_hover_animation'] ) {
-				$this->add_render_attribute( 'header_graphics_div', 'class', 'elementor-animation-' . $settings['header_icon_hover_animation'] );
+			if ( 'icon' === $settings[ 'header_graphics' ] && '' !== $settings[ 'header_icon_hover_animation' ] ) {
+				$this->add_render_attribute( 'header_graphics_div', 'class', 'elementor-animation-' . $settings[ 'header_icon_hover_animation' ] );
 			}
 
 			?>
 			<div class="wpmozo_ae_pricing_table">
 				<div class="wpmozo_ae_pricing_table_wrapper">
 					<?php
-					require __DIR__ . '/assets/templates/layout-1.php';
+					require __DIR__ . '/assets/templates/pricing_table_1.php';
 					?>
 				</div>
 			</div>

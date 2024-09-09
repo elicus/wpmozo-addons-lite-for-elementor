@@ -1,9 +1,9 @@
 <?php
 /**
- * @author    Elicus <hello@elicus.com>
- * @link      https://www.elicus.com/
- * @copyright 2024 Elicus Technologies Private Limited
- * @version   1.0.0
+ * @author      Elicus <hello@elicus.com>
+ * @link        https://www.elicus.com/
+ * @copyright   2024 Elicus Technologies Private Limited
+ * @version     1.0.0
  */
 
 // if this file is called directly, abort.
@@ -57,7 +57,7 @@ if ( ! class_exists( 'WPMOZO_AE_Interactive_Image_Card' ) ) {
 		 * @return string Widget icon.
 		 */
 		public function get_icon() {
-			return 'eicon-image-rollover wpmozo-ae-brandicon';
+			return 'wpmozo-ae-icon-interactive-image-card wpmozo-ae-brandicon';
 		}
 
 		/**
@@ -85,9 +85,9 @@ if ( ! class_exists( 'WPMOZO_AE_Interactive_Image_Card' ) ) {
 		 * @return style handle.
 		 */
 		public function get_style_depends() {
-			wp_register_style( 'wpmozo-ale-interactive-imagecard-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+			wp_register_style( 'wpmozo-ae-interactiveimagecard-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
-			return array( 'wpmozo-ale-interactive-imagecard-style' );
+			return array( 'wpmozo-ae-interactiveimagecard-style' );
 		}
 
 		/**
@@ -115,11 +115,11 @@ if ( ! class_exists( 'WPMOZO_AE_Interactive_Image_Card' ) ) {
 		protected function render() {
 			$settings = $this->get_settings_for_display();
 
-			$image               = array_map( 'esc_attr', $settings['image'] );
-			$title_text          = $settings['title_text'];
-			$title_heading_level = $settings['title_heading_level'];
-			$content_text        = $settings['content_text'];
-			$select_layout       = $settings['select_layout'];
+			$image               = array_map( 'esc_attr', $settings[ 'image' ] );
+			$title_text          = $settings[ 'title_text' ];
+			$content_text        = $settings[ 'content_text' ];
+			$select_layout       = $settings[ 'select_layout' ];
+			$title_heading_level = $settings[ 'title_heading_level' ];
 
 			$this->add_inline_editing_attributes( 'title_text', 'none' );
 			$this->add_render_attribute( 'title_text', 'class', 'wpmozo_ae_interactive_image_card_title' );
@@ -128,26 +128,26 @@ if ( ! class_exists( 'WPMOZO_AE_Interactive_Image_Card' ) ) {
 
 			// Interactive image card image.
 			if ( ! empty( $image ) ) {
-				$image = wp_get_attachment_image( $settings['image']['id'], 'full', '', array( 'loading' => 'eager' ) );
+				$image = wp_get_attachment_image( $settings[ 'image' ][ 'id' ], 'full', '', array( 'loading' => 'eager' ) );
 			}
-			if ( ! empty( $settings['image']['url'] ) ) {
-				$size         = esc_attr( $settings['image_size_size'] );
+			if ( ! empty( $settings[ 'image' ][ 'url' ] ) ) {
+				$size         = esc_attr( $settings[ 'image_size_size' ] );
 				$image_sizing = 'attachment-' . $size . ' size-' . $size;
-				$image        = $settings['image'];
-				$attach_id    = absint( $image['id'] );
+				$image        = $settings[ 'image' ];
+				$attach_id    = absint( $image[ 'id' ] );
 				$img_url      = Group_Control_Image_Size::get_attachment_image_src( $attach_id, 'image_size', $settings );
 				if ( empty( $img_url ) ) {
-					$img_url = esc_url( $settings['image']['url'] );
+					$img_url = esc_url( $settings[ 'image' ][ 'url' ] );
 				}
-				$this->add_render_attribute(
+				$this->add_render_attribute( 
 					'image',
-					array(
+					array( 
 						'src'   => $img_url,
 						'class' => array( 'wpmozo_ae_interactive_image_card_image', $image_sizing ),
 						'title' => esc_attr( Control_Media::get_image_title( $image ) ),
 						'alt'   => esc_attr( Control_Media::get_image_alt( $image ) ),
-					)
-				);
+					 )
+				 );
 				$image = '<img ' . $this->get_render_attribute_string( 'image' ) . ' />';
 			}
 

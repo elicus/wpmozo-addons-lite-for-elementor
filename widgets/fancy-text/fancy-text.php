@@ -1,12 +1,12 @@
 <?php
 /**
- * @author    Elicus <hello@elicus.com>
- * @link      https://www.elicus.com/
- * @copyright 2024 Elicus Technologies Private Limited
- * @version   1.0.0
+ * @author      Elicus <hello@elicus.com>
+ * @link        https://www.elicus.com/
+ * @copyright   2024 Elicus Technologies Private Limited
+ * @version     1.0.0
  */
 
-// if this file is called directly, abort.
+// If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -55,7 +55,7 @@ if ( ! class_exists( 'WPMOZO_AE_Fancy_Text' ) ) {
 		 * @return string Widget icon.
 		 */
 		public function get_icon() {
-			return 'eicon-font wpmozo-ae-brandicon';
+			return 'wpmozo-ae-icon-fancy-text wpmozo-ae-brandicon';
 		}
 
 		/**
@@ -84,8 +84,8 @@ if ( ! class_exists( 'WPMOZO_AE_Fancy_Text' ) ) {
 		 */
 		public function get_style_depends() {
 
-			wp_register_style( 'wpmozo-ale-fancytext-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
-			return array( 'wpmozo-ale-fancytext-style' );
+			wp_register_style( 'wpmozo-ae-fancytext-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+			return array( 'wpmozo-ae-fancytext-style' );
 		}
 
 		/**
@@ -114,20 +114,20 @@ if ( ! class_exists( 'WPMOZO_AE_Fancy_Text' ) ) {
 
 			$settings = $this->get_settings_for_display();
 
-			$this->add_render_attribute( 'wrapper', 'class', esc_attr( $settings['text_style'] ) );
-			$this->add_render_attribute( 'wrapper', 'id', esc_attr( $settings['text_style'] . '-' . $this->get_id() ) );
+			$this->add_render_attribute( 'wrapper', 'class', esc_attr( $settings[ 'text_style' ] ) );
+			$this->add_render_attribute( 'wrapper', 'id', esc_attr( $settings[ 'text_style' ] . '-' . $this->get_id() ) );
 			$this->add_render_attribute( 'text-wrapper', 'class', 'wpmozo_ae_text_wrapper' );
-			$this->add_render_attribute( 'inner-text-wrapper', 'class', array( 'wpmozo_ae_text_wrapper_inner', esc_attr( $settings['text_style'] ) . '_text' ) );
+			$this->add_render_attribute( 'inner-text-wrapper', 'class', array( 'wpmozo_ae_text_wrapper_inner', esc_attr( $settings[ 'text_style' ] ) . '_text' ) );
 
-			if ( isset( $settings['clip_image']['url'] ) ) {
-				$this->add_render_attribute( 'image', 'style', 'background-image: url(' . esc_url( $settings['clip_image']['url'] ) . ');' );
+			if ( isset( $settings[ 'clip_image' ][ 'url' ] ) ) {
+				$this->add_render_attribute( 'image', 'style', 'background-image: url( ' . $settings[ 'clip_image' ][ 'url' ] . ' );' );
 			}
 
-			if ( 'none' !== $settings['clip_overlay'] ) {
+			if ( 'none' !== $settings[ 'clip_overlay' ] ) {
 				?>
 				<style type="text/css">
-					#wpmozo_ae_clipping-<?php echo esc_html( $this->get_id() ); ?> .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner::before,
-					#wpmozo_ae_clipping-<?php echo esc_html( $this->get_id() ); ?> .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner::after {
+					#wpmozo_ae_clipping-<?php echo wp_kses_post( $this->get_id() ); ?> .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner::before,
+					#wpmozo_ae_clipping-<?php echo wp_kses_post( $this->get_id() ); ?> .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner::after {
 						content: "";
 					}
 				</style>
@@ -137,11 +137,12 @@ if ( ! class_exists( 'WPMOZO_AE_Fancy_Text' ) ) {
 				<div <?php $this->print_render_attribute_string( 'wrapper' ); ?> >
 					<div <?php $this->print_render_attribute_string( 'text-wrapper' ); ?> >
 						<div <?php $this->print_render_attribute_string( 'inner-text-wrapper' ); ?> <?php $this->print_render_attribute_string( 'image' ); ?> >
-							<?php echo esc_textarea( $this->parse_text_editor( $settings['fancy_text'] ) ); ?>
+							<?php echo esc_textarea( $this->parse_text_editor( $settings[ 'fancy_text' ] ) ); ?>
 						</div>
 					</div>
 				</div>
 			<?php
+
 		}
 	}
 }

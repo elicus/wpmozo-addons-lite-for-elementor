@@ -1,9 +1,9 @@
 <?php
 /**
- * @author    Elicus <hello@elicus.com>
- * @link      https://www.elicus.com/
- * @copyright 2024 Elicus Technologies Private Limited
- * @version   1.0.0
+ * @author      Elicus <hello@elicus.com>
+ * @link        https://www.elicus.com/
+ * @copyright   2024 Elicus Technologies Private Limited
+ * @version     1.0.0
  */
 
 // if this file is called directly, abort.
@@ -56,7 +56,7 @@ if ( ! class_exists( 'WPMOZO_AE_Floating_Image' ) ) {
 		 * @return string Widget icon.
 		 */
 		public function get_icon() {
-			return 'eicon-image-box wpmozo-ae-brandicon';
+			return 'wpmozo-ae-icon-floating-image wpmozo-ae-brandicon';
 		}
 
 		/**
@@ -84,8 +84,8 @@ if ( ! class_exists( 'WPMOZO_AE_Floating_Image' ) ) {
 		 * @return style handle.
 		 */
 		public function get_style_depends() {
-			wp_register_style( 'wpmozo-ale-floating-image-style', plugins_url( 'assets/css/style.min.css?test=' . wp_rand(), __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
-			return array( 'wpmozo-ale-floating-image-style' );
+			wp_register_style( 'wpmozo-ae-floating-image-style', plugins_url( 'assets/css/style.min.css?test=' . wp_rand(), __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+			return array( 'wpmozo-ae-floating-image-style' );
 		}
 
 		/**
@@ -99,7 +99,7 @@ if ( ! class_exists( 'WPMOZO_AE_Floating_Image' ) ) {
 		 * @return array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-			return array( 'wpmozo-ale-twenty-twenty', 'wpmozo-ale-move-event' );
+			return array( 'wpmozo-ae-twenty-twenty', 'wpmozo-ae-move-event' );
 		}
 
 				/**
@@ -127,14 +127,14 @@ if ( ! class_exists( 'WPMOZO_AE_Floating_Image' ) ) {
 		protected function render() {
 			$settings   = $this->get_settings_for_display();
 			$widget_id  = $this->get_id();
-			$image_list = $settings['image_list'];
+			$image_list = $settings[ 'image_list' ];
 			?>		
 			<div class="wpmozo_floating_image wpmozo_floating_image_<?php echo esc_attr( $widget_id ); ?>">
 				<?php
 				foreach ( $image_list as $index => $single_item ) {
-					$image_link     = $single_item['image_link_url'];
-					$image_link_url = isset( $image_link['url'] ) ? $image_link['url'] : '';
-					$is_external    = isset( $image_link['is_external'] ) ? $image_link['is_external'] : '';
+					$image_link     = $single_item[ 'image_link_url' ];
+					$image_link_url = isset( $image_link[ 'url' ] ) ? $image_link[ 'url' ] : '';
+					$is_external    = isset( $image_link[ 'is_external' ] ) ? $image_link[ 'is_external' ] : '';
 					$link_taget     = '_self';
 					if ( 1 === $is_external ) {
 						$link_taget = '_blank';
@@ -144,8 +144,8 @@ if ( ! class_exists( 'WPMOZO_AE_Floating_Image' ) ) {
 							<a href="<?php echo esc_url( $image_link_url ); ?>" target="<?php echo esc_attr( $link_taget ); ?>" > 
 								<?php endif; ?>									
 									<div class="wpmozo_floating_images_wrapper">
-										<div class="wpmozo_floating_image_item elementor-repeater-item-<?php echo esc_attr( $single_item['_id'] ); ?>">				
-											<img decoding="async" class="wpmozo_floating_img" src="<?php echo esc_url( $single_item['image']['url'] ); ?>" alt="<?php echo esc_attr( $single_item['image_alt_text'] ); ?>" >	
+										<div class="wpmozo_floating_image_item elementor-repeater-item-<?php echo esc_attr( $single_item[ '_id' ] ); ?>">				
+												<img decoding="async" class="wpmozo_floating_img" src="<?php echo esc_attr( $single_item[ 'image' ][ 'url' ] ); ?>" alt="<?php echo esc_attr( $single_item[ 'image_alt_text' ] ); ?>" >	
 										</div>					
 									</div>	
 								<?php
@@ -153,7 +153,7 @@ if ( ! class_exists( 'WPMOZO_AE_Floating_Image' ) ) {
 									?>
 							</a> 
 									<?php
-					endif;
+						endif;
 				}
 				?>
 			</div>			
