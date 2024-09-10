@@ -45,7 +45,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 
 			wp_enqueue_style(
 				'wpmozo-icons',
-				plugins_url( 'assets/css/wpmozoicon.min.css', plugin_dir_path( __FILE__ ) ),
+				plugins_url( 'assets/css/wpmozoicon/wpmozoicon.min.css', plugin_dir_path( __FILE__ ) ),
 				false,
 				WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION
 			);
@@ -60,23 +60,22 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		 */
 		public function register_frontend_styles() {
 
-			wp_register_style( 'wpmozo-ae-swiper-style', plugins_url( 'assets/css/swiper.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+			wp_register_style( 'wpmozo-ae-swiper-style', plugins_url( 'assets/css/swiper/swiper.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
-			wp_register_style( 'wpmozo-ae-animate-style', plugins_url( 'assets/css/animate.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+			wp_register_style( 'wpmozo-ae-animate-style', plugins_url( 'assets/css/animate/animate.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
-			wp_register_style( 'wpmozo-ae-font-awesome-style', plugins_url( 'assets/css/font-awesome.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+			wp_register_style( 'wpmozo-ae-font-awesome-style', plugins_url( 'assets/css/font-awesome/font-awesome.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
-			wp_register_style( 'wpmozo-ae-mfp-style', plugins_url( 'assets/css/magnificPopup.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+			wp_register_style( 'wpmozo-ae-mfp-style', plugins_url( 'assets/css/magnificPopup/magnificPopup.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
-			wp_register_style( 'wpmozo-ae-icons', plugins_url( 'assets/css/wpmozoicon.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+			wp_register_style( 'wpmozo-ae-icons', plugins_url( 'assets/css/wpmozoicon/wpmozoicon.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
 			wp_enqueue_style(
 	            'wpmozo-ae-icons',
-	            plugins_url( 'assets/css/wpmozoicon.min.css', plugin_dir_path( __FILE__ ) ),
+	            plugins_url( 'assets/css/wpmozoicon/wpmozoicon.min.css', plugin_dir_path( __FILE__ ) ),
 	            false,
 		        WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION
 	        );
-
 		}
 
 		/**
@@ -88,25 +87,25 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		 */
 		public function register_frontend_scripts() {
 
-			wp_register_script( 'wpmozo-ae-isotope', plugins_url( 'assets/js/isotope.pkgd.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
-			wp_register_script( 'wpmozo-ae-masonry', plugins_url( 'assets/js/masonry.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
-			wp_register_script( 'wpmozo-ae-magnify', plugins_url( 'assets/js/magnify.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-isotope', plugins_url( 'assets/js/isotope/isotope.pkgd.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-masonry', plugins_url( 'assets/js/masonry/masonry.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-magnify', plugins_url( 'assets/js/magnify/magnify.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-			wp_register_script( 'wpmozo-ae-popper', plugins_url( 'assets/js/popper.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-popper', plugins_url( 'assets/js/popper/popper.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-			wp_register_script( 'wpmozo-ae-tippy', plugins_url( 'assets/js/tippy-bundle.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-tippy', plugins_url( 'assets/js/tippyBundle/tippy-bundle.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-			wp_register_script( 'wpmozo-ae-imagesloaded', plugins_url( 'assets/js/imagesloaded.pkgd.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-imagesloaded', plugins_url( 'assets/js/imagesLoaded/imagesloaded.pkgd.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-			wp_register_script( 'wpmozo-ae-move-event', plugins_url( 'assets/js/jquery_event_move.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-move-event', plugins_url( 'assets/js/jqueryEventMove/jquery_event_move.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-			wp_register_script( 'wpmozo-ae-twenty-twenty', plugins_url( 'assets/js/jquery_twentytwenty.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-twenty-twenty', plugins_url( 'assets/js/jqueryTwentyTwenty/jquery_twentytwenty.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-			wp_register_script( 'wpmozo-ae-mfp', plugins_url( 'assets/js/magnificPopup.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-mfp', plugins_url( 'assets/js/magnificPopup/magnificPopup.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-			wp_register_script( 'wpmozo-ae-swiper', plugins_url( 'assets/js/swiper.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-swiper', plugins_url( 'assets/js/swiper/swiper.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-			wp_register_script( 'wpmozo-ae-waypoints', plugins_url( 'assets/js/waypoints.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-waypoints', plugins_url( 'assets/js/waypoints/waypoints.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
 		}
 
