@@ -18,28 +18,28 @@ jQuery( window ).on( "elementor/frontend/init", function () {
                         
                         if ( words.length > 0 ) {
                             if ( $this.find( '.wpmozo-fade' ).length > 0 ) {
-                                dpFadeEffect( animatedBlock, words );
+                                wpmozoFadeEffect( animatedBlock, words );
                             }
                             if ( $this.find( '.wpmozo-flip' ).length > 0 ) {
-                                dpFlipEffect( animatedBlock, words );
+                                wpmozoFlipEffect( animatedBlock, words );
                             }
                             if ( $this.find( '.wpmozo-typing' ).length > 0 ) {
-                                dpTypingEffect( animatedBlock, words );
+                                wpmozoTypingEffect( animatedBlock, words );
                             }
                             if ( $this.find( '.wpmozo-slide' ).length > 0 ) {
-                                dpSlideEffect( animatedBlock, words );
+                                wpmozoSlideEffect( animatedBlock, words );
                             }
                             if ( $this.find( '.wpmozo-zoom' ).length > 0 ) {
-                                dpZoomEffect( animatedBlock, words );
+                                wpmozoZoomEffect( animatedBlock, words );
                             }
                             if ( $this.find( '.wpmozo-bounce' ).length > 0 ) {
-                                dpBounceEffect( animatedBlock, words );
+                                wpmozoBounceEffect( animatedBlock, words );
                             }
                             if ( $this.find( '.wpmozo-wipe' ).length > 0 ) {
-                                dpWipeEffect( animatedBlock, words );
+                                wpmozoWipeEffect( animatedBlock, words );
                             }
                             if ( $this.find( '.wpmozo-wave' ).length > 0 ) {
-                                dpWaveEffect( animatedBlock, words );
+                                wpmozoWaveEffect( animatedBlock, words );
                             }
                             if ( 'on' === animatedBlock.data( 'stop-animation-on-hover' ) ) {
                             console.log( animatedBlock.data( 'stop-animation-on-hover' ) );
@@ -57,7 +57,7 @@ jQuery( window ).on( "elementor/frontend/init", function () {
                 }
             } );
 
-            function dpTypingEffect( animatedBlock, words ) {
+            function wpmozoTypingEffect( animatedBlock, words ) {
                 let intervalId          = animatedBlock.data( 'interval-id' ) ? parseInt( animatedBlock.data( 'interval-id' ) ) : 0;
                 let waitTime            = animatedBlock.data( 'wait-time' ) ? parseInt( animatedBlock.data( 'wait-time' ) ) : 1000;
                 let typingTime          = animatedBlock.data( 'typing-time' ) ? parseInt( animatedBlock.data( 'typing-time' ) ) : 800;
@@ -76,7 +76,7 @@ jQuery( window ).on( "elementor/frontend/init", function () {
                     if ( animatedBlock.hasClass( 'wpmozo_animation_paused' ) ) {
                         return false;
                     }
-                    // Get substring with 1 characater added
+                    // Get substring with 1 character added
                     let text = words[ i ].substring( 0, charIndex + 1 );
                     animatedBlock.text( text );
                     charIndex++;
@@ -94,11 +94,12 @@ jQuery( window ).on( "elementor/frontend/init", function () {
                         return false;
                     }
 
-                    let text = words[ i ].substring( 0, charIndex - 1 );
+                    // Add a blank space while erasing
+                    let text = words[ i ].substring( 0, charIndex - 1 ) + " ";
                     animatedBlock.text( text );
                     charIndex--;
 
-                    if ( text === '' ) {
+                    if ( charIndex === 0 ) {
                         clearInterval( currentIntervalId );
 
                         if ( i === ( words.length - 1 ) ) {
@@ -106,7 +107,7 @@ jQuery( window ).on( "elementor/frontend/init", function () {
                         } else {
                             i++;
                         }
-                        
+
                         charIndex = 0;
 
                         setTimeout( function() {
@@ -119,7 +120,8 @@ jQuery( window ).on( "elementor/frontend/init", function () {
                 animatedBlock.data( 'interval-id', currentIntervalId );
             }
 
-            function dpWaveEffect( animatedBlock, words ) {
+
+            function wpmozoWaveEffect( animatedBlock, words ) {
                 let intervalId          = animatedBlock.data( 'interval-id' ) ? parseInt( animatedBlock.data( 'interval-id' ) ) : 0;
                 let waitTime            = animatedBlock.data( 'wait-time' ) ? parseInt( animatedBlock.data( 'wait-time' ) ) : 800;
                 let animationTime       = animatedBlock.data( 'animation-time' ) ? parseInt( animatedBlock.data( 'animation-time' ) ) : 300;
@@ -194,7 +196,7 @@ jQuery( window ).on( "elementor/frontend/init", function () {
                 animatedBlock.data( 'interval-id', currentIntervalId );
             }
 
-            function dpBounceEffect( animatedBlock, words ) {
+            function wpmozoBounceEffect( animatedBlock, words ) {
                 let intervalId          = animatedBlock.data( 'interval-id' ) ? parseInt( animatedBlock.data( 'interval-id' ) ) : 0;
                 let waitTime            = animatedBlock.data( 'wait-time' ) ? parseInt( animatedBlock.data( 'wait-time' ) ) : 800;
                 let animationTime       = animatedBlock.data( 'animation-time' ) ? parseInt( animatedBlock.data( 'animation-time' ) ) : 300;
@@ -231,7 +233,7 @@ jQuery( window ).on( "elementor/frontend/init", function () {
                 animatedBlock.data( 'interval-id', currentIntervalId );
             }
 
-            function dpZoomEffect( animatedBlock, words ) {
+            function wpmozoZoomEffect( animatedBlock, words ) {
                 let intervalId          = animatedBlock.data( 'interval-id' ) ? parseInt( animatedBlock.data( 'interval-id' ) ) : 0;
                 let waitTime            = animatedBlock.data( 'wait-time' ) ? parseInt( animatedBlock.data( 'wait-time' ) ) : 800;
                 let animationTime       = animatedBlock.data( 'animation-time' ) ? parseInt( animatedBlock.data( 'animation-time' ) ) : 300;
@@ -268,7 +270,7 @@ jQuery( window ).on( "elementor/frontend/init", function () {
                 animatedBlock.data( 'interval-id', currentIntervalId );
             }
 
-            function dpSlideEffect( animatedBlock, words ) {
+            function wpmozoSlideEffect( animatedBlock, words ) {
                 let intervalId          = animatedBlock.data( 'interval-id' ) ? parseInt( animatedBlock.data( 'interval-id' ) ) : 0;
                 let waitTime            = animatedBlock.data( 'wait-time' ) ? parseInt( animatedBlock.data( 'wait-time' ) ) : 800;
                 let animationTime       = animatedBlock.data( 'animation-time' ) ? parseInt( animatedBlock.data( 'animation-time' ) ) : 300;
@@ -305,7 +307,7 @@ jQuery( window ).on( "elementor/frontend/init", function () {
                 animatedBlock.data( 'interval-id', currentIntervalId );
             }
 
-            function dpFlipEffect( animatedBlock, words ) {
+            function wpmozoFlipEffect( animatedBlock, words ) {
                 let intervalId          = animatedBlock.data( 'interval-id' ) ? parseInt( animatedBlock.data( 'interval-id' ) ) : 0;
                 let waitTime            = animatedBlock.data( 'wait-time' ) ? parseInt( animatedBlock.data( 'wait-time' ) ) : 500;
                 let animationTime       = animatedBlock.data( 'animation-time' ) ? parseInt( animatedBlock.data( 'animation-time' ) ) : 1500;
@@ -342,7 +344,7 @@ jQuery( window ).on( "elementor/frontend/init", function () {
                 animatedBlock.data( 'interval-id', currentIntervalId );
             }
 
-            function dpFadeEffect( animatedBlock, words ) {
+            function wpmozoFadeEffect( animatedBlock, words ) {
                 let intervalId          = animatedBlock.data( 'interval-id' ) ? parseInt( animatedBlock.data( 'interval-id' ) ) : 0;
                 let waitTime            = animatedBlock.data( 'wait-time' ) ? parseInt( animatedBlock.data( 'wait-time' ) ) : 500;
                 let animationTime       = animatedBlock.data( 'animation-time' ) ? parseInt( animatedBlock.data( 'animation-time' ) ) : 1500;
@@ -379,7 +381,7 @@ jQuery( window ).on( "elementor/frontend/init", function () {
                 animatedBlock.data( 'interval-id', currentIntervalId );
             }
 
-            function dpWipeEffect( animatedBlock, words ) {
+            function wpmozoWipeEffect( animatedBlock, words ) {
                 let intervalId          = animatedBlock.data( 'interval-id' ) ? parseInt( animatedBlock.data( 'interval-id' ) ) : 0;
                 let waitTime            = animatedBlock.data( 'wait-time' ) ? parseInt( animatedBlock.data( 'wait-time' ) ) : 800;
                 let animationTime       = animatedBlock.data( 'animation-time' ) ? parseInt( animatedBlock.data( 'animation-time' ) ) : 300;

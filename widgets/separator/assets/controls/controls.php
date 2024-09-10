@@ -157,7 +157,7 @@ $this->add_responsive_control(
 		'default'   => '#2b87da',
 		'selectors' => array( 
 			'{{WRAPPER}} .wpmozo_ae_shadow' => 'background: radial-gradient( ellipse at 50% -50% , {{VALUE}} 0%, rgba( 0, 0, 0, 0 ) 75% ), repeat scroll;',
-			'{{WRAPPER}} .wpmozo_ae_line'   => 'color: {{VALUE}};'
+			'{{WRAPPER}} .wpmozo_ae_line'   => 'border-color: {{VALUE}};'
 		 ),
 	 )
  );

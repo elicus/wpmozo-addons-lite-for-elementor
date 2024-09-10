@@ -135,20 +135,31 @@ if ( ! class_exists( 'WPMOZO_AE_Text_Animator' ) ) {
             $typing_speed    = ( isset( $settings[ 'typing_time' ] ) && '' !== $settings[ 'typing_time' ] ) ? $settings[ 'typing_time' ][ 'size' ] : 100;
             $erasing_speed   = ( isset( $settings[ 'erasing_time' ] ) && '' !== $settings[ 'erasing_time' ] ) ? $settings[ 'erasing_time' ][ 'size' ] : 100;
             $stop_animation  = '' !== $settings[ 'animation_on_hover' ] ? 'on' : 'off';
+            $this->add_render_attribute( 'animated_text', array('class' => array('wpmozo_animated_text', 'wpmozo_main_part'), 'data-wait-time' => $animation_delay, 'data-animation-time' => $animation_time, 'data-text' => $settings['animated_text'], 'data-stop-animation-on-hover' => $stop_animation ) );
+            if( 'typing' === $animation_type ) {
+                $this->add_render_attribute( 'animated_text', array( 'data-typing-time' => $typing_speed, 'data-erasing-time' => $erasing_speed ) );
+            }
+            if( '' !== $pre_text ) {
+                $pre_text = '<span class="wpmozo_pre_text_wrapper wpmozo_pre_post">'. $pre_text .'</span>';
+            } else {
+                $pre_text = '';
+            }
+            if( !empty( $content_text[0] ) ) {
+                $content_text = '<span '.$this->get_render_attribute_string( 'animated_text' ).'>'.$content_text[0].'</span>';
+            } else {
+                $content_text = '<span '.$this->get_render_attribute_string( 'animated_text' ).'></span>';
+            }
+            if( '' !== $post_text ) {
+                $post_text = '<span class="wpmozo_post_text_wrapper wpmozo_pre_post">'. $post_text .'</span>';
+            } else {
+                $post_text = '';
+            }
             ?> 
                 <div class="wpmozo_ae_text_animator wpmozo_animated_text_wrapper wpmozo_text_animator_<?php echo esc_attr( $widget_id ); ?>">                
-                        <<?php echo esc_attr( $heading_level ); ?> class="wpmozo-<?php echo esc_attr( $animation_type ); ?>">
-                            <span class="wpmozo_pre_text_wrapper wpmozo_pre_post"><?php echo wp_kses_post( $pre_text ); ?></span>
-                            <span class="wpmozo_animated_text wpmozo_main_part" 
-                                data-wait-time=<?php echo esc_attr( $animation_delay ); ?> 
-                                data-animation-time="<?php echo esc_attr( $animation_time ); ?>" 
-                                <?php echo 'typing' === $animation_type ?  'data-typing-time="'. esc_attr( $typing_speed ).'"' : '' ; 
-                                echo 'typing' === $animation_type ?  ' data-erasing-time='. esc_attr( $erasing_speed ) : '' ; ?> data-text="<?php echo esc_attr( $settings[ 'animated_text' ] ); ?>" data-stop-animation-on-hover="<?php echo esc_attr( $stop_animation ); ?>">
-                                
-                                    <?php echo wp_kses_post( $content_text[ 0 ] ); ?>
-                                    
-                                </span>
-                            <span class="wpmozo_post_text_wrapper wpmozo_pre_post"><?php echo wp_kses_post( $post_text ); ?></span>
+                        <<?php echo esc_attr( $heading_level ); ?> class="wpmozo-<?php echo esc_attr( $animation_type ); ?> wpmozo_text_heading">
+                            <?php echo wp_kses_post( $pre_text );
+                            echo wp_kses_post( $content_text );
+                            echo wp_kses_post( $post_text );?>
                         </<?php echo esc_attr( $heading_level ); ?>>
                 </div>
             <?php

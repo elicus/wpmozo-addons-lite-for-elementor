@@ -283,7 +283,6 @@ $this->start_controls_section( 'descriptoin_text_styling',
 				array( 
 					'type'    => Controls_Manager::CHOOSE,
 					'label'   => esc_html__( 'Description Alignment', 'wpmozo-addons-lite-for-elementor' ),
-					'default' => 'left',
 					'toggle'  => true,
 					'options' => array( 
 						'left' => array( 
@@ -343,7 +342,6 @@ $this->start_controls_section( 'descriptoin_text_styling',
 				array( 
 					'type'    => Controls_Manager::CHOOSE,
 					'label'   => esc_html__( 'Link Alignment', 'wpmozo-addons-lite-for-elementor' ),
-					'default' => 'left',
 					'toggle'  => true,
 					'options' => array( 
 						'left' => array( 
@@ -403,7 +401,6 @@ $this->start_controls_section( 'descriptoin_text_styling',
 				array( 
 					'type'    => Controls_Manager::CHOOSE,
 					'label'   => esc_html__( 'Unordered List Alignment', 'wpmozo-addons-lite-for-elementor' ),
-					'default' => 'left',
 					'toggle'  => true,
 					'options' => array( 
 						'left' => array( 
@@ -463,7 +460,6 @@ $this->start_controls_section( 'descriptoin_text_styling',
 				array( 
 					'type'    => Controls_Manager::CHOOSE,
 					'label'   => esc_html__( 'Ordered List Alignment', 'wpmozo-addons-lite-for-elementor' ),
-					'default' => 'left',
 					'toggle'  => true,
 					'options' => array( 
 						'left' => array( 
@@ -524,7 +520,6 @@ $this->start_controls_section( 'descriptoin_text_styling',
 				array( 
 					'type'    => Controls_Manager::CHOOSE,
 					'label'   => esc_html__( 'Blockquote Alignment', 'wpmozo-addons-lite-for-elementor' ),
-					'default' => 'left',
 					'toggle'  => true,
 					'options' => array( 
 						'left' => array( 

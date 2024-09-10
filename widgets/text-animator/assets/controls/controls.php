@@ -18,6 +18,7 @@ $this->start_controls_section(
         array( 
             'label'       => esc_html__( 'Prefix Text', 'wpmozo-addons-lite-for-elementor' ),
             'type'        => Controls_Manager::TEXT,
+            'default'     => esc_html__( 'Pre', 'wpmozo-addons-lite-for-elementor' ),
             'label_block' => true,
         )
     );
@@ -26,6 +27,7 @@ $this->start_controls_section(
         array( 
             'label'       => esc_html__( 'Animated Text ( | Separated )', 'wpmozo-addons-lite-for-elementor' ),
             'type'        => Controls_Manager::TEXT,
+            'default'     => esc_html__( 'Animated|Text', 'wpmozo-addons-lite-for-elementor' ),
             'label_block' => true,
         )
     );  
@@ -34,6 +36,7 @@ $this->start_controls_section(
         array( 
             'label'       => esc_html__( 'Postfix Text', 'wpmozo-addons-lite-for-elementor' ),
             'type'        => Controls_Manager::TEXT,
+            'default'     => esc_html__( 'Post', 'wpmozo-addons-lite-for-elementor' ),
             'label_block' => true,
         )
     );  
@@ -96,7 +99,7 @@ $this->start_controls_section(
             'return_value'  => 'yes',
             'prefix_class'  => 'display_in_stack_',
             'selectors'     =>  array( 
-                '{{WRAPPER}}.display_in_stack_yes .wpmozo_animated_text_wrapper span.wpmozo_pre_post, {{WRAPPER}}.display_in_stack_yes .wpmozo_animated_text_wrapper span.wpmozo_main_part' => 'display: block;',
+                '{{WRAPPER}}.display_in_stack_yes .wpmozo_animated_text_wrapper .wpmozo_text_heading' => 'flex-direction: column;',
             ),                
         )
     );
@@ -264,13 +267,13 @@ $this->start_controls_section(
             $this->add_responsive_control( 
                 'global_text_alignment',
                 array( 
-                    'label'       => esc_html__( 'Global Text Alignment', 'wpmozo-addons-lite-for-elementor' ),
-                    'type'        => Controls_Manager::CHOOSE,
-                    'label_block' => true,
-                    'separator'   => 'before',
-                    'options'     =>
+                    'label'        => esc_html__( 'Text Alignment', 'wpmozo-addons-lite-for-elementor' ),
+                    'type'         => Controls_Manager::CHOOSE,
+                    'label_block'  => true,
+                    'separator'    => 'before',
+                    'options'      =>
                     array( 
-                        'left' =>
+                        'flex-start' =>
                             array( 
                                 'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
                                 'icon'  => 'eicon-text-align-left',
@@ -280,16 +283,17 @@ $this->start_controls_section(
                                 'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
                                 'icon'  => 'eicon-text-align-center',
                             ),
-                        'right'   =>
+                        'flex-end'   =>
                             array( 
                                 'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
                                 'icon'  => 'eicon-text-align-right',
                             ),
                     ),
-                    'default'     => 'left',
+                    'default'     => 'flex-start',
                     'toggle'      => true,
                     'selectors'   => array( 
-                        '{{WRAPPER}} .wpmozo_ae_text_animator' => 'text-align: {{VALUE}};',
+                        '{{WRAPPER}}.display_in_stack_yes .wpmozo_ae_text_animator .wpmozo_text_heading' => 'place-items: {{VALUE}};',
+                        '{{WRAPPER}}:not(.display_in_stack_yes) .wpmozo_ae_text_animator .wpmozo_text_heading' => 'justify-content: {{VALUE}};',
                     ),
                 )
             );
@@ -420,6 +424,26 @@ $this->start_controls_section(
                     )
                 )
             );
+            $this->add_responsive_control( 
+                'pre_post_text_padding',
+                array( 
+                    'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
+                    'type'       => Controls_Manager::DIMENSIONS,
+                    'size_units' => array( 'px', 'em', '%' ),
+                    'default'    => array( 
+                        'top'    => 0,
+                        'right'  => 0,
+                        'bottom' => 0,
+                        'left'   => 0,
+                     ),
+                    'selectors'  => array( 
+                        '{{WRAPPER}} .wpmozo_ae_text_animator .wpmozo_pre_post' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                     ),
+                    'condition' => array( 
+                        'pre_post_use_background' => 'yes'
+                    )
+                 )
+             );
             
             $this->end_controls_tab();
             $this->start_controls_tab( 
@@ -453,6 +477,27 @@ $this->start_controls_section(
                     )
                 )
             );
+
+            $this->add_responsive_control( 
+                'main_text_padding',
+                array( 
+                    'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
+                    'type'       => Controls_Manager::DIMENSIONS,
+                    'size_units' => array( 'px', 'em', '%' ),
+                    'default'    => array( 
+                        'top'    => 0,
+                        'right'  => 0,
+                        'bottom' => 0,
+                        'left'   => 0,
+                     ),
+                    'selectors'  => array( 
+                        '{{WRAPPER}} .wpmozo_ae_text_animator .wpmozo_main_part' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                     ),
+                    'condition' => array( 
+                        'main_use_background' => 'yes'
+                    )
+                 )
+             );
 
             $this->end_controls_tab();  
             $this->end_controls_tabs();

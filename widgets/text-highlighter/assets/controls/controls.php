@@ -182,7 +182,7 @@ $this->start_controls_section(
             'size' => 100,
         ),
         'selectors' => array( 
-            '{{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_curly_line svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_double_underline svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_underline svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_zig_zag svg' => 'top: {{SIZE}}{{UNIT}};',                    
+            '{{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_curly_line svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_double_underline svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_underline svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_zig_zag svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_diagonal svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_circle svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_cross svg' => 'top: {{SIZE}}{{UNIT}};',                    
         ),
         'condition' => array( 
             'custom_highlighter_positioning' => 'yes',
@@ -210,7 +210,7 @@ $this->start_controls_section(
             'unit' => '%',
         ),
         'selectors' => array( 
-            '{{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_curly_line svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_double_underline svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_underline svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_zig_zag svg' => 'left: {{SIZE}}{{UNIT}};',                    
+            '{{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_curly_line svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_double_underline svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_underline svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_zig_zag svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_diagonal svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_circle svg, {{WRAPPER}} .wpmozo_text_highlighter_wrapper.wpmozo_highlight_cross svg' => 'left: {{SIZE}}{{UNIT}};',                    
         ),
         'condition' => array( 
             'custom_highlighter_positioning' => 'yes',
