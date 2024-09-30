@@ -3,7 +3,7 @@ Contributors: elicus
 Tags: elementor, page builder, addons, elementor extension, elementor addon
 Requires at least: 6.0
 Tested up to: 6.6.2
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -82,6 +82,12 @@ Animate your text with various effects to grab attention using the Text Animator
 - ### [Text Highlighter](https://wpmozoaddons.com/elementor-text-highlighter/ "Elementor Text Highlighter")
 Highlight important text using the Text Highlighter widget for Elementor.
 
+- ### [Advanced Button](https://wpmozoaddons.com/elementor-advanced-button/ "Elementor Advanced Button")
+Add enhanced functionality and styling options to buttons, including hover effects, animations, and customization with Advanced Button widget.
+
+- ### [Lottie](https://wpmozoaddons.com/elementor-lottie/ "Elementor Lottie")
+Show interactive animations with customizable controls, triggers, and responsiveness using the Lottie Widget.
+
 
 ## Premium Version Available
 Upgrade to the premium version to [WPMozo Addons for Elementor](https://wpmozo.com/product/wpmozo-addons-for-elementor/) and unlock additional features, dedicated support, and exclusive widgets. 
@@ -112,6 +118,15 @@ Create a stunning blog page on Elementor with the advanced blog module.
 
 - ### [Timeline](https://wpmozoaddons.com/elementor-timeline/ "Elementor Timeline")
 A widget that will allow you to create timline sections in Elementor.
+
+- ### [Instagram Feed Carousel](https://wpmozoaddons.com/elementor-instagram-feed-carousel/ "Elementor Instagram Feed Carousel")
+Showcase Instagram feed images on your Elementor website in a responsive, customizable carousel layout with navigation controls using the Instagram Feed Carousel widget.
+
+- ### [Advaced Tabs](https://wpmozoaddons.com/elementor-advanced-tabs/ "Elementor Advanced Tabs")
+Show content or Elementor templates in tabs with Advanced Tabs widget.
+
+- ### [Dynamic Gallery](https://wpmozoaddons.com/elementor-dynamic-gallery/ "Elementor Dynamic Gallery")
+Display stunning galleries in Elementor using filters and various customization options with Dynamic Gallery widget.
 
 == Documentation and Support ==
 - For detailed usage instructions, check out the [plugin documentation](https://wpmozo.com/documentation/wpmozo-addons-for-elementor/).
@@ -169,6 +184,13 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
+2024-09-30 - Version 1.2.0
+- NEW: New widget Advanced Button.
+- NEW: New widget Lottie.
+- FIXED: (Scroll Image) Horizontal scroll was not working.
+- FIXED: (Text Highlighter) Custom positioning was not working for some highlighters.
+- FIXED: (Separator) Border color was not working for some border styles on Google Chrome browser.
+
 2024-09-10 - Version 1.1.0
 - NEW: New widget Breadcrumb.
 - NEW: New widget Scroll Image.

@@ -1,13 +1,13 @@
 @font-face {
-    font-family: wpmozo;
-    src: url(../fonts/wpmozo.eot?ra8njx);
-    src: url(../fonts/wpmozo.eot?ra8njx#iefix) format("embedded-opentype"), url(../fonts/wpmozo.ttf?ra8njx) format("truetype"), url(../fonts/wpmozo.woff?ra8njx) format("woff"), url(../fonts/wpmozo.svg?ra8njx#wpmozo) format("svg");
+    font-family: "wpmozo";
+    src: url(../../fonts/wpmozo.eot?450dm0);
+    src: url(../../fonts/wpmozo.eot?450dm0#iefix) format("embedded-opentype"), url(../../fonts/wpmozo.ttf?450dm0) format("truetype"), url(../../fonts/wpmozo.woff?450dm0) format("woff"), url(../../fonts/wpmozo.svg?450dm0#wpmozo) format("svg");
     font-weight: 400;
     font-style: normal;
     font-display: block;
 }
 .wpmozo-ae-brandicon::after,
-[class*="wpmozo-ae-icon-"] {
+.elementor-panel .elementor-element-wrapper [class*="wpmozo-ae-icon-"] {
     font-family: wpmozo !important;
     speak: never;
     font-style: normal;
@@ -19,6 +19,42 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+.wpmozo-ae-icon-dynamic-gallery:before {
+    content: "\e92b";
+}
+.wpmozo-ae-icon-lottie:before {
+    content: "\e92f";
+}
+.wpmozo-ae-icon-product-categories:before {
+    content: "\e92d";
+}
+.wpmozo-ae-icon-list:before {
+    content: "\e92a";
+}
+.wpmozo-ae-icon-advanced-button:before {
+    content: "\e92c";
+}
+.wpmozo-ae-icon-image-mask:before {
+    content: "\e927";
+}
+.wpmozo-ae-icon-blog-slider:before {
+    content: "\e91c";
+}
+.wpmozo-ae-icon-instagram-feed-carousel:before {
+    content: "\e929";
+}
+.wpmozo-ae-icon-instagram:before {
+    content: "\e91d";
+}
+.wpmozo-ae-icon-form-styler:before {
+    content: "\e926";
+}
+.wpmozo-ae-icon-testimonial-carousel:before {
+    content: "\e928";
+}
+.wpmozo-ae-icon-testimonial-grid:before {
+    content: "\e915";
+}
 .wpmozo-ae-icon-blog-timeline:before {
     content: "\e916";
 }
@@ -28,16 +64,13 @@
 .wpmozo-ae-icon-team-grid:before {
     content: "\e914";
 }
-.wpmozo-ae-icon-advanced-tabs1:before {
-    content: "\e919";
-}
 .wpmozo-ae-icon-advanced-tabs:before {
-    content: "\e915";
+    content: "\e919";
 }
 .wpmozo-ae-icon-filterable-gallery:before {
     content: "\e913";
 }
-.wpmozo-ae-icon-text-animator1:before {
+.wpmozo-ae-icon-text-animator:before {
     content: "\e912";
 }
 .wpmozo-ae-icon-text-highlighter:before {
@@ -45,9 +78,6 @@
 }
 .wpmozo-ae-icon-star-rating:before {
     content: "\e91b";
-}
-.wpmozo-ae-icon-separator1:before {
-    content: "\e91c";
 }
 .wpmozo-ae-icon-separator:before {
     content: "\e91f";
@@ -115,7 +145,7 @@
 .wpmozo-ae-icon-tilt-image:before {
     content: "\e904";
 }
-.wpmozo-ae-icon-instagram:before {
+.wpmozo-ae-icon-instagram-feed:before {
     content: "\e906";
 }
 .wpmozo-ae-icon-before-after-slider:before {

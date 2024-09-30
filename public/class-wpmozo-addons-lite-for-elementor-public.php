@@ -107,6 +107,8 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 
 			wp_register_script( 'wpmozo-ae-waypoints', plugins_url( 'assets/js/waypoints/waypoints.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
+			wp_register_script( 'wpmozo-ae-lottie', plugins_url( 'assets/js/lottie/lottie.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+
 		}
 
 		/**
