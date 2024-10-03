@@ -14,9 +14,9 @@
  * Text Domain: wpmozo-addons-lite-for-elementor
  * Domain Path: /languages
  * Requires at least: 5.3
- * Tested up to: 6.6.1
- * Elementor tested up to: 3.24.4
- * Elementor Pro tested up : 3.24.2
+ * Tested up to: 6.6.2
+ * Elementor tested up to: 3.24.5
+ * Elementor Pro tested up : 3.24.3
  *
  * WPMozo Addons Lite for Elementor - A plugin for WordPress and Elementor.
  * Copyright © 2024 Elicus Technologies Private Limited

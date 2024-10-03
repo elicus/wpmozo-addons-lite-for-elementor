@@ -204,7 +204,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Button' ) ) {
 			
 					$button_classes = implode( ' ', $button_classes );
 					?>
-					<div class="wpmozo_button_item elementor-repeater-item-<?php echo $item['_id']. ' ' . $vertical_or_horizonal_fill_class . ' '.$icon_position. ' '.$icon_sizing  ; ?>">
+					<div class="wpmozo_button_item wpmozo_button_item_<?php echo $index; ?> elementor-repeater-item-<?php echo $item['_id']. ' ' . $vertical_or_horizonal_fill_class . ' '.$icon_position. ' '.$icon_sizing  ; ?>">
 						<div class="wpmozo_button_wrapper wpmozo_button_<?php echo $button_type; ?>">
 							<a class="<?php echo $button_classes; ?>" href="<?php echo $button_link; ?>" target="<?php echo $item['url_new_window']; ?>" >
 								<span class="wpmozo_primary_text_with_icon">

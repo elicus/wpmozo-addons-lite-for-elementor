@@ -403,6 +403,7 @@ $this->start_controls_section(
                 array( 
                     'label'       => esc_html__( 'Background Fill Style', 'wpmozo-addons-lite-for-elementor' ),
                     'label_block' => false,
+                    'render_type' => 'template',
                     'type'        => Controls_Manager::SELECT,
                     'options'     => array( 
                         'default_fill'            => esc_html__( 'Default', 'wpmozo-addons-lite-for-elementor' ),
@@ -423,6 +424,7 @@ $this->start_controls_section(
                     'name'     => 'button_bg_hover_color',
                     'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
                     'types'    => array( 'classic', 'gradient' ),
+                    'exclude'  => array('position'),
                     'selector' => '
                     {{WRAPPER}} {{CURRENT_ITEM}}.vertical_or_horizonal_fill .wpmozo_button_link:hover .wpmozo_background_effect_wrap:before, 
                     {{WRAPPER}} {{CURRENT_ITEM}}.vertical_or_horizonal_fill .wpmozo_button_link:hover .wpmozo_background_effect_wrap:after, 
