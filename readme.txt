@@ -3,7 +3,7 @@ Contributors: elicus
 Tags: elementor, page builder, addons, elementor extension, elementor addon
 Requires at least: 6.0
 Tested up to: 6.6.2
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
