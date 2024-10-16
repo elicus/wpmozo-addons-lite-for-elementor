@@ -6,7 +6,7 @@
  * Description: WPMozo Addons Lite for Elementor is a premium multipurpose plugin that comes with multiple
  * exceptional widgets. Using these unique and powerful widgets, you'll be able to create different web
  * page elements that would increase your site's functionality as well as appearance.
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: Elicus
  * Author URI: https://elicus.com/
  * License: GPL-2.0+
@@ -14,9 +14,9 @@
  * Text Domain: wpmozo-addons-lite-for-elementor
  * Domain Path: /languages
  * Requires at least: 5.3
- * Tested up to: 6.6.1
- * Elementor tested up to: 3.23.4
- * Elementor Pro tested up : 3.23.3
+ * Tested up to: 6.6.2
+ * Elementor tested up to: 3.24.7
+ * Elementor Pro tested up : 3.24.4
  *
  * WPMozo Addons Lite for Elementor - A plugin for WordPress and Elementor.
  * Copyright © 2024 Elicus Technologies Private Limited
@@ -37,7 +37,7 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || die( 'No script kiddies please!' );
 define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_SLUG', 'wpmozo-addons-lite-for-elementor' );
-define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION', '1.1.0' );
+define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION', '1.1.1' );
 define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_URL', plugin_dir_url( __FILE__ ) );
 define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME', plugin_basename( __FILE__ ) );

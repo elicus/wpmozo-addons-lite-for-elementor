@@ -169,6 +169,9 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
+2024-10-16 - Version 1.1.1
+- FIXED: Security issue with layouts in team slider widget.
+
 2024-09-10 - Version 1.1.0
 - NEW: New widget Breadcrumb.
 - NEW: New widget Scroll Image.
