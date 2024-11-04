@@ -15,13 +15,13 @@ A feature-packed plugin designed to complement your Elementor page-building expe
 
 ### [View Demo](https://wpmozoaddons.com "View Demo")
 ## Key Features of the Plugin
-- **20 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
+- **22 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
 - **Enhanced Design Options**: Customize your website design with intuitive controls and a wide array of styling options.
 - **Interactive Elements**: Engage your audience with interactive elements like Interactive Image Card, Flip Box, and Fancy Text.
 - **Responsive and Lightweight**: Ensure a seamless user experience across all devices without compromising on performance.
 
 
-## Widgets Included in WPMozo Addons Lite For Elementor
+## Widgets Included in WPMozo Addons Lite for Elementor
 - ### [Before After Slider](https://wpmozoaddons.com/elementor-before-and-after-slider/ "Elementor Before After Slider")
 Display a before and after version of any element in form of images using the before after image slider for Elementor.
 
@@ -111,18 +111,18 @@ An ideal tool to let you display content in form of toggle.
 This widget will let you display Instagram feed on your website.
 
 - ### [Image Hotspot](https://wpmozoaddons.com/elementor-image-hotspot/ "Elementor Image Hotspot")
-Create interactive image hotpspots and display information about individual locations or objects inside an image.
+Create interactive image hotspots and display information about individual locations or objects inside an image.
 
 - ### [Advanced Blog](https://wpmozoaddons.com/elementor-advanced-blog/ "Elementor Advanced Blog")
 Create a stunning blog page on Elementor with the advanced blog module.
 
 - ### [Timeline](https://wpmozoaddons.com/elementor-timeline/ "Elementor Timeline")
-A widget that will allow you to create timline sections in Elementor.
+A widget that will allow you to create timeline sections in Elementor.
 
 - ### [Instagram Feed Carousel](https://wpmozoaddons.com/elementor-instagram-feed-carousel/ "Elementor Instagram Feed Carousel")
 Showcase Instagram feed images on your Elementor website in a responsive, customizable carousel layout with navigation controls using the Instagram Feed Carousel widget.
 
-- ### [Advaced Tabs](https://wpmozoaddons.com/elementor-advanced-tabs/ "Elementor Advanced Tabs")
+- ### [Advanced Tabs](https://wpmozoaddons.com/elementor-advanced-tabs/ "Elementor Advanced Tabs")
 Show content or Elementor templates in tabs with Advanced Tabs widget.
 
 - ### [Dynamic Gallery](https://wpmozoaddons.com/elementor-dynamic-gallery/ "Elementor Dynamic Gallery")
@@ -163,6 +163,9 @@ Yes, each widget comes with a wide range of customization options allowing you t
 = Where can I get support or report issues? =
 If you encounter any issues or need assistance, please visit our [support forum](https://wordpress.org/support/plugin/wpmozo-addons-lite-for-elementor/). Our team will be happy to help you.
 
+= How can I report security bugs? = 
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/wpmozo-addons-lite-for-elementor)
+
 == Installation ==
 ### Minimum Requirements
 PHP 7.0 or greater is required (PHP 7.3 or greater is recommended)
@@ -184,18 +187,9 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
-2024-09-30 - Version 1.2.0
+2024-11-05 - Version 1.2.0
 - NEW: New widget Advanced Button.
 - NEW: New widget Lottie.
 - FIXED: (Scroll Image) Horizontal scroll was not working.
 - FIXED: (Text Highlighter) Custom positioning was not working for some highlighters.
 - FIXED: (Separator) Border color was not working for some border styles on Google Chrome browser.
-
-2024-09-10 - Version 1.1.0
-- NEW: New widget Breadcrumb.
-- NEW: New widget Scroll Image.
-- NEW: New widget Separator.
-- NEW: New widget Star Rating.
-- NEW: New widget Text Animator.
-- NEW: New widget Text Highlighter.
-- FIXED: (Flip Box) Flip effect was not working properly on Google Chrome browser.

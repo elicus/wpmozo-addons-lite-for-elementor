@@ -1,11 +1,14 @@
 Changelog for WPMozo Addons Lite for Elementor
 
-2024-09-30 - Version 1.2.0
+2024-11-05 - Version 1.2.0
 - NEW: New widget Advanced Button.
 - NEW: New widget Lottie.
 - FIXED: (Scroll Image) Horizontal scroll was not working.
 - FIXED: (Text Highlighter) Custom positioning was not working for some highlighters.
 - FIXED: (Separator) Border color was not working for some border styles on Google Chrome browser.
+
+2024-10-16 - Version 1.1.1
+- FIXED: Security issue with layouts in team slider widget.
 
 2024-09-10 - Version 1.1.0
 - NEW: New widget Breadcrumb.
