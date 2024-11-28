@@ -223,9 +223,9 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
-2024-11-05 - Version 1.2.0
-- NEW: New widget Advanced Button.
-- NEW: New widget Lottie.
-- FIXED: (Scroll Image) Horizontal scroll was not working.
-- FIXED: (Text Highlighter) Custom positioning was not working for some highlighters.
-- FIXED: (Separator) Border color was not working for some border styles on Google Chrome browser.
+2024-11-28 - Version 1.3.0
+- NEW: New widget Testimonial Slider.
+- NEW: New widget Twitter Embedded Tweet.
+- NEW: New widget Twitter Follow Button.
+- NEW: New widget Twitter Share Button.
+- FIXED: Security issue with title heading level in all widget.
