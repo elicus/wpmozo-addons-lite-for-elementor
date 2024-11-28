@@ -88,6 +88,24 @@ Add enhanced functionality and styling options to buttons, including hover effec
 - ### [Lottie](https://wpmozoaddons.com/elementor-lottie/ "Elementor Lottie")
 Show interactive animations with customizable controls, triggers, and responsiveness using the Lottie Widget.
 
+- ### [Testimonial Slider](https://wpmozoaddons.com/elementor-testimonial-slider/ "Elementor Testimonial Slider")
+Show testimonials with amazing sliders on your Elementor website in style and make an impression on you users with the Testimonial Slider Widget.
+
+- ### [Twitter Embedded Tweet](https://wpmozoaddons.com/elementor-twitter-widgets/ "Elementor Twitter Embedded Tweet Widget")
+Embed your Tweets an show than on you Elementor wibsite pages with a number of customization options with the Twitter Embedded Tweet Widget.
+
+- ### [Twitter Follow Button](https://wpmozoaddons.com/elementor-twitter-widgets/ "Elementor Twitter Follow Widget")
+Use the Twitter Follow Button Widget to make users follow you on your twitter account right from your Elementor website page.
+
+- ### [Twitter Share Button](https://wpmozoaddons.com/elementor-twitter-widgets/ "Elementor Twitter Share Widget")
+Make users share post on their accounts containing your content right from your Elementor website page with the Twitter Share Button Widget.
+
+- ### [Blog Timeline](https://wpmozoaddons.com/elementor-blog-timeline/ "Elementor Blog Timeline")
+Showcase your blogs in a stylish and user friendly timline and make you Elementor website stunning with the Blog Timeline Widget.
+
+- ### [List](https://wpmozoaddons.com/elementor-list/ "Elementor List")
+Show lists on your Elementor website in style using the List Widget.
+
 
 ## Premium Version Available
 Upgrade to the premium version to [WPMozo Addons for Elementor](https://wpmozo.com/product/wpmozo-addons-for-elementor/) and unlock additional features, dedicated support, and exclusive widgets. 
@@ -127,6 +145,24 @@ Show content or Elementor templates in tabs with Advanced Tabs widget.
 
 - ### [Dynamic Gallery](https://wpmozoaddons.com/elementor-dynamic-gallery/ "Elementor Dynamic Gallery")
 Display stunning galleries in Elementor using filters and various customization options with Dynamic Gallery widget.
+
+- ### [Testimonial Grid](https://wpmozoaddons.com/elementor-testimonial-grid/ "Elementor Testimonial Grid")
+Showcase feedbacks and reviews in a grid on you Elementor website with masonry support using the Testimonial Grid Widget.
+
+- ### [Advanced Blog Slider](https://wpmozoaddons.com/elementor-advanced-blog-slider/ "Elementor Advanced Blog Slider")
+Make it easier for your users to go through blogs by showing them in a slider in Elementor using the Advanced Blog Slider Widget.
+
+- ### [Team Grid](https://wpmozoaddons.com/elementor-team-grid/ "Elementor Team Grid")
+Display team members, their skills and much more in a grid on you Elementor website with masonry support using the Team Grid Widget.
+
+- ### [Twitter Timeline](https://wpmozoaddons.com/elementor-twitter-timeline/ "Elementor Twitter Timeline")
+Showcase all posts from you Twitter account on your Elementor website page with the Twitte Timeline Widget.
+
+- ### [WooComerce Product Categories](https://wpmozoaddons.com/elementor-product-categories/ "Elementor Product Categories")
+Display all your shop products according to categories in Elementor using the Product Categories Widget.
+
+- ### [Gravity Form Styler](https://wpmozoaddons.com/elementor-gravity-form-styler/ "Elementor Gravity Form Styler")
+Get amazing customization options to style and make your gravity forms elegant and showcase them on your Elementor website using the Gravity Form Styler Widget.
 
 == Documentation and Support ==
 - For detailed usage instructions, check out the [plugin documentation](https://wpmozo.com/documentation/wpmozo-addons-for-elementor/).
