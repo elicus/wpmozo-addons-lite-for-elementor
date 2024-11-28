@@ -13,7 +13,7 @@
  * Text Domain: wpmozo-addons-lite-for-elementor
  * Domain Path: /languages
  * Requires at least: 5.3
- * Tested up to: 6.7
+ * Tested up to: 6.7.1
  * Elementor tested up to: 3.25.10
  * Elementor Pro tested up : 3.25.4
  *
