@@ -62,3 +62,39 @@ if ( ! function_exists( 'wpmozo_ae_validate_layout' ) ) {
 		return sanitize_file_name( $layouts[0] );
 	}
 }
+
+/**
+ * Function to get testimonial categories.
+ *
+ * @since    1.7.0
+ */
+if ( ! function_exists( 'wpmozo_ae_get_testimonial_categories' ) ) {
+	function wpmozo_ae_get_testimonial_categories() {
+	    $terms = get_terms( array( 
+	        'taxonomy' =>'wpmozo-ae-testimonial-category',
+	        'hide_empty' => false,
+	    ) );
+	    $dynamic_options = array();
+	    if ( !empty( $terms ) && !is_wp_error( $terms ) ) {
+	        foreach ( $terms as $term ) {
+	            $dynamic_options[ $term->term_id ] = $term->name;
+	        }
+	    }
+	    return $dynamic_options;
+	}
+}
+
+/**
+ * Check if given heading size is valid.
+ *
+ * @since    1.7.0
+ */
+if ( ! function_exists( 'wpmozo_ae_validate_heading_level' ) ) {
+	function wpmozo_ae_validate_heading_level($tag) {
+		$valid_tags = array('h1', 'h2', 'h3', 'h4', 'h5', 'h6' );
+	    if ( in_array( $tag, $valid_tags, true ) ) {
+			return esc_html( $tag );
+		}
+		return esc_html( 'h5' );
+	}
+}

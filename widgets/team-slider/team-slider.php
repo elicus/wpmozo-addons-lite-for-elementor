@@ -356,7 +356,7 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 			$enable_member_link					 = esc_attr( $settings[ 'enable_member_link' ] );
 			$member_link_target					 = esc_attr( $settings[ 'member_link_target' ] );
 			$show_skills 						 = esc_attr( $settings[ 'show_skills' ] );
-			$name_text_heading_level			 = esc_attr( $settings[ 'name_text_heading_level' ] );
+			$name_text_heading_level			 = wpmozo_ae_validate_heading_level( $settings[ 'name_text_heading_level' ] );
 			$designation_heading_level 			 = esc_attr( $settings[ 'designation_heading_level' ] );
 
 

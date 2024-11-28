@@ -15,11 +15,11 @@ if ( $query->have_posts() )
                 </div>
                 <div class="wpmozo_team_content_wrapper">
                     <div class="wpmozo_ae_team_member_name">
-                        <<?php echo $name_text_heading_level; ?> class="wpmozo_ae_team_member_name_heading" ><?php echo get_the_title(); ?></<?php echo $name_text_heading_level; ?>>
+                        <<?php echo esc_html( $name_text_heading_level ); ?> class="wpmozo_ae_team_member_name_heading" ><?php echo get_the_title(); ?></<?php echo esc_html( $name_text_heading_level ); ?>>
                     </div>
                     <?php if( 'yes' === $show_designation ): ?>
                     <div class="wpmozo_ae_team_member_designation">
-                        <<?php echo $designation_heading_level; ?>  class="wpmozo_ae_team_member_designation_heading"><?php echo get_post_meta( get_the_ID(), 'wpmozo_ae_team_member_designation', true ); ?></<?php echo $designation_heading_level; ?>>
+                        <<?php echo esc_html( $designation_heading_level ); ?>  class="wpmozo_ae_team_member_designation_heading"><?php echo get_post_meta( get_the_ID(), 'wpmozo_ae_team_member_designation', true ); ?></<?php echo esc_html( $designation_heading_level ); ?>>
                     </div>
                     <?php endif; ?>
                     <?php if( 'yes' === $show_description ): ?>

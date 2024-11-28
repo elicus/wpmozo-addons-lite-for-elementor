@@ -150,6 +150,12 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 				// Hook to save meta box data.
 				$this->loader->add_action( 'save_post', $plugin_admin, 'wpmozo_save_team_member_meta_fields' );
 			}
+			if ( ! $plugin_admin->wpmozo_is_testimonial_disabled() ) {
+				// Hook to add meta box.
+				$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'wpmozo_add_testimonial_metabox' );
+				// Hook to save meta box data.
+				$this->loader->add_action( 'save_post', $plugin_admin, 'wpmozo_save_testimonial_meta_fields' );
+			}
 		}
 
 		/**
@@ -168,6 +174,13 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 			$this->loader->add_action( 'elementor/frontend/after_register_styles', $plugin_public, 'register_frontend_styles' );
 			$this->loader->add_action( 'elementor/frontend/after_register_scripts', $plugin_public, 'register_frontend_scripts' );
 			$this->loader->add_action( 'elementor/editor/before_enqueue_scripts', $plugin_public, 'wpmozo_ale_editor_enqueue_scripts' );
+			$this->loader->add_action( 'wp_ajax_wpmozo_ae_select2_search_post', $plugin_public, 'wpmozo_ae_select2_ajax_posts' );
+			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_ae_select2_search_post', $plugin_public, 'wpmozo_ae_select2_ajax_posts' );
+			$this->loader->add_action( 'wp_ajax_wpmozo_ae_select2_get_title', $plugin_public, 'wpmozo_ae_select2_ajax_get_title' );
+			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_ae_select2_get_title', $plugin_public, 'wpmozo_ae_select2_ajax_get_title' );
+			$this->loader->add_action( 'elementor/controls/controls_registered', $plugin_public, 'register_custom_controls' );
+			$this->loader->add_action( 'wp_ajax_wpmozo_get_testimonials', $plugin_public, 'wpmozo_get_testimonials' );
+			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_get_testimonials', $plugin_public, 'wpmozo_get_testimonials' );
 		}
 
 		/**

@@ -114,6 +114,28 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 	        return false;
 	    }
 
+        /**
+    	 * Check if testimonials related widgets are disabled.
+    	 *
+    	 * @since    1.4.0
+    	 */
+    	public function wpmozo_is_testimonial_disabled() {
+            $plugin_options = get_option( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION );
+            if ( isset( $plugin_options['wpmozo_inactive_widgets'] ) ) {
+                $widgets = explode( ',', $plugin_options['wpmozo_inactive_widgets'] );
+                if (
+                    in_array( 'testimonial-slider', $widgets ) ||
+                    in_array( 'testimonial-grid', $widgets )
+                ) {
+                    return true;
+                }
+            } else {
+                return true;
+            }
+
+            return false;
+        }
+
 		// Team member post type registration.
 		/**
 		 * Register custom post for team members.
@@ -123,7 +145,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		public function wpmozo_register_post_types() {
 
 			if ( ! $this->wpmozo_is_team_disabled() ) {
-				$labels = array(
+				$team_labels = array(
 					'name'                  => esc_html__( 'WPMozo Team Members', 'wpmozo-addons-lite-for-elementor' ),
 					'singular_name'         => esc_html__( 'WPMozo Team Member', 'wpmozo-addons-lite-for-elementor' ),
 					'menu_name'             => esc_html__( 'WPMozo Team Members', 'wpmozo-addons-lite-for-elementor' ),
@@ -143,8 +165,8 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 					'parent_item_colon'     => esc_html__( 'Parent Member:', 'wpmozo-addons-lite-for-elementor' ),
 				);
 
-				$args = array(
-					'labels'            => $labels,
+				$team_args = array(
+					'labels'            => $team_labels,
 					'description'       => esc_html__( 'WPMozo Team Members Custom Post', 'wpmozo-addons-lite-for-elementor' ),
 					'public'            => true,
 					'supports'          => array( 'title', 'editor', 'author', 'thumbnail', 'revisions' ),
@@ -159,11 +181,48 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 					'query_var'         => true,
 					'capability_type'   => 'post',
 				);
-				register_post_type( 'wpmozoae-team-member', $args );
+				register_post_type( 'wpmozoae-team-member', $team_args );
 			}
-			else { 
-				return ;
+			if ( ! $this->wpmozo_is_testimonial_disabled() ) {
+				$testimonial_labels = array(
+					'name'                  => esc_html__( 'WPMozo Testimonials', 'wpmozo-addons-lite-for-elementor' ),
+					'singular_name'         => esc_html__( 'WPMozo Testimonial', 'wpmozo-addons-lite-for-elementor' ),
+					'menu_name'             => esc_html__( 'WPMozo Testimonials', 'wpmozo-addons-lite-for-elementor' ),
+					'add_new'               => esc_html__( 'Add New', 'wpmozo-addons-lite-for-elementor' ),
+					'add_new_item'          => esc_html__( 'Add New Testimonial', 'wpmozo-addons-lite-for-elementor' ),
+					'edit_item'             => esc_html__( 'Edit Testimonial', 'wpmozo-addons-lite-for-elementor' ),
+					'new_item'              => esc_html__( 'New Testimonial', 'wpmozo-addons-lite-for-elementor' ),
+					'view_item'             => esc_html__( 'View Testimonial', 'wpmozo-addons-lite-for-elementor' ),
+					'all_items'             => esc_html__( 'All Testimonials', 'wpmozo-addons-lite-for-elementor' ),
+					'search_items'          => esc_html__( 'Search Testimonials', 'wpmozo-addons-lite-for-elementor' ),
+					'not_found'             => esc_html__( 'No testimonial found', 'wpmozo-addons-lite-for-elementor' ),
+					'not_found_in_trash'    => esc_html__( 'No testimonial found in Trash', 'wpmozo-addons-lite-for-elementor' ),
+					'featured_image'        => esc_html__( 'Testimonial Image', 'wpmozo-addons-lite-for-elementor' ),
+					'set_featured_image'    => esc_html__( 'Set testimonial image', 'wpmozo-addons-lite-for-elementor' ),
+					'remove_featured_image' => esc_html__( 'Remove testimonial member image', 'wpmozo-addons-lite-for-elementor' ),
+					'use_featured_image'    => esc_html__( 'Use as testimonial image', 'wpmozo-addons-lite-for-elementor' ),
+					'parent_item_colon'     => esc_html__( 'Parent Testimonial:', 'wpmozo-addons-lite-for-elementor' ),
+				);
+
+				$testimonial_args = array(
+					'labels'            => $testimonial_labels,
+					'description'       => esc_html__( 'WPMozo Testimonial Custom Post', 'wpmozo-addons-lite-for-elementor' ),
+					'public'            => true,
+					'supports'          => array( 'title', 'editor', 'author', 'thumbnail', 'revisions' ),
+					'taxonomies'        => array( 'wpmozo-ae-testimonial-member-category' ),
+					'hierarchical'      => false,
+					'menu_position'     => 20,
+					'menu_icon'         => 'dashicons-admin-users',
+					'show_ui'           => true,
+					'show_in_menu'      => true,
+					'show_in_nav_menus' => true,
+					'has_archive'       => true,
+					'query_var'         => true,
+					'capability_type'   => 'post',
+				);
+				register_post_type( 'wpmozoae-testimonial', $testimonial_args );
 			}
+			return ;
 		}
 
 		/**
@@ -173,7 +232,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		 */
 		public function wpmozo_register_taxonomies() {
 			if ( ! $this->wpmozo_is_team_disabled() ) {
-				$labels = array(
+				$team_labels = array(
 					'name'                       => esc_html_x( 'Categories', 'Taxonomy General Name', 'wpmozo-addons-lite-for-elementor' ),
 					'singular_name'              => esc_html_x( 'Category', 'Taxonomy Singular Name', 'wpmozo-addons-lite-for-elementor' ),
 					'menu_name'                  => esc_html__( 'Categories', 'wpmozo-addons-lite-for-elementor' ),
@@ -195,8 +254,8 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 					'items_list'                 => esc_html__( 'Team Member Categories list', 'wpmozo-addons-lite-for-elementor' ),
 					'items_list_navigation'      => esc_html__( 'Team Member Categories list navigation', 'wpmozo-addons-lite-for-elementor' ),
 				);
-				$args   = array(
-					'labels'            => $labels,
+				$team_args   = array(
+					'labels'            => $team_labels,
 					'hierarchical'      => true,
 					'public'            => true,
 					'show_ui'           => true,
@@ -204,10 +263,43 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 					'show_in_nav_menus' => true,
 					'show_tagcloud'     => true,
 				);
-				register_taxonomy( 'wpmozo-ae-team-member-category', array( 'wpmozoae-team-member' ), $args );
-			}else { 
-				return ; 
+				register_taxonomy( 'wpmozo-ae-team-member-category', array( 'wpmozoae-team-member' ), $team_args );
 			}
+			if ( ! $this->wpmozo_is_testimonial_disabled() ) {
+				$testimonial_labels = array(
+					'name'                       => esc_html_x( 'Categories', 'Taxonomy General Name', 'wpmozo-addons-lite-for-elementor' ),
+					'singular_name'              => esc_html_x( 'Category', 'Taxonomy Singular Name', 'wpmozo-addons-lite-for-elementor' ),
+					'menu_name'                  => esc_html__( 'Categories', 'wpmozo-addons-lite-for-elementor' ),
+					'all_items'                  => esc_html__( 'All Testimonial Categories', 'wpmozo-addons-lite-for-elementor' ),
+					'parent_item'                => esc_html__( 'Parent Testimonial Category', 'wpmozo-addons-lite-for-elementor' ),
+					'parent_item_colon'          => esc_html__( 'Parent Testimonial Category:', 'wpmozo-addons-lite-for-elementor' ),
+					'new_item_name'              => esc_html__( 'New Testimonial Category Name', 'wpmozo-addons-lite-for-elementor' ),
+					'add_new_item'               => esc_html__( 'Add New Testimonial Category', 'wpmozo-addons-lite-for-elementor' ),
+					'edit_item'                  => esc_html__( 'Edit Testimonial Category', 'wpmozo-addons-lite-for-elementor' ),
+					'update_item'                => esc_html__( 'Update Testimonial Category', 'wpmozo-addons-lite-for-elementor' ),
+					'view_item'                  => esc_html__( 'View Testimonial Category', 'wpmozo-addons-lite-for-elementor' ),
+					'separate_items_with_commas' => esc_html__( 'Separate categories with commas', 'wpmozo-addons-lite-for-elementor' ),
+					'add_or_remove_items'        => esc_html__( 'Add or remove categories', 'wpmozo-addons-lite-for-elementor' ),
+					'choose_from_most_used'      => esc_html__( 'Choose from the most used', 'wpmozo-addons-lite-for-elementor' ),
+					'popular_items'              => esc_html__( 'Popular Testimonial Categories', 'wpmozo-addons-lite-for-elementor' ),
+					'search_items'               => esc_html__( 'Search Testimonial Categories', 'wpmozo-addons-lite-for-elementor' ),
+					'not_found'                  => esc_html__( 'Not Found', 'wpmozo-addons-lite-for-elementor' ),
+					'no_terms'                   => esc_html__( 'No Testimonial Categories', 'wpmozo-addons-lite-for-elementor' ),
+					'items_list'                 => esc_html__( 'Testimonial Categories list', 'wpmozo-addons-lite-for-elementor' ),
+					'items_list_navigation'      => esc_html__( 'Testimonial Categories list navigation', 'wpmozo-addons-lite-for-elementor' ),
+				);
+				$testimonial_args   = array(
+					'labels'            => $testimonial_labels,
+					'hierarchical'      => true,
+					'public'            => true,
+					'show_ui'           => true,
+					'show_admin_column' => true,
+					'show_in_nav_menus' => true,
+					'show_tagcloud'     => true,
+				);
+				register_taxonomy( 'wpmozo-ae-testimonial-category', array( 'wpmozoae-testimonial' ), $testimonial_args );
+			}
+			return ; 
 		}
 
 		/**
@@ -416,6 +508,69 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		}
 
 		/**
+		 * Add metabox for custom post of testimonials.
+		 *
+		 * @since    1.0.0
+		 */
+		public function wpmozo_ae_testimonial_metabox_callback( $post ) {
+	        wp_nonce_field( 'wpmozo_ae_metaboxes_nonce', 'wpmozo_ae_testimonial_metabox_nonce' );
+	        $author_name        = get_post_meta( $post->ID, 'wpmozo_ae_testimonial_author_name', true );
+	        $author_email       = get_post_meta( $post->ID, 'wpmozo_ae_testimonial_author_email', true );
+	        $author_designation = get_post_meta( $post->ID, 'wpmozo_ae_testimonial_author_designation', true );
+	        $author_company     = get_post_meta( $post->ID, 'wpmozo_ae_testimonial_author_company', true );
+	        $author_company_url = get_post_meta( $post->ID, 'wpmozo_ae_testimonial_author_company_url', true );
+	        $author_rating      = get_post_meta( $post->ID, 'wpmozo_ae_testimonial_author_rating', true );
+	        $author_rating      = $author_rating ? $author_rating : '5';
+
+	        $ratings = array( '0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5' );
+	        ?>
+			
+	        <div class="wpmozo_meta_fields">
+	            <label for="wpmozo_ae_testimonial_author_name">
+	                <?php esc_html_e( 'Author Name', 'divi-plus' ); ?>
+	            </label>
+	            <input type="text" id="wpmozo_ae_testimonial_author_name" name="wpmozo_ae_testimonial_author_name" value="<?php echo esc_attr( $author_name ); ?>" />
+	        </div>
+	        <div class="wpmozo_meta_fields">
+	            <label for="wpmozo_ae_testimonial_author_email">
+	                <?php esc_html_e( 'Author Email', 'divi-plus' ); ?>
+	            </label>
+	            <input type="email" id="wpmozo_ae_testimonial_author_email" name="wpmozo_ae_testimonial_author_email" value="<?php echo esc_attr( $author_email ); ?>" />
+	        </div>
+	        <div class="wpmozo_meta_fields">
+	            <label for="wpmozo_ae_testimonial_author_designation">
+	                <?php esc_html_e( 'Author Designation', 'divi-plus' ); ?>
+	            </label>
+	            <input type="text" id="wpmozo_ae_testimonial_author_designation" name="wpmozo_ae_testimonial_author_designation" value="<?php echo esc_attr( $author_designation ); ?>" />
+	        </div>
+	        <div class="wpmozo_meta_fields">
+	            <label for="wpmozo_ae_testimonial_author_company">
+	                <?php esc_html_e( 'Author Company', 'divi-plus' ); ?>
+	            </label>
+	            <input type="text" id="wpmozo_ae_testimonial_author_company" name="wpmozo_ae_testimonial_author_company" value="<?php echo esc_attr( $author_company ); ?>" />
+	        </div>
+	        <div class="wpmozo_meta_fields">
+	            <label for="wpmozo_ae_testimonial_author_company_url">
+	                <?php esc_html_e( 'Author Company Url', 'divi-plus' ); ?>
+	            </label>
+	            <input type="text" id="wpmozo_ae_testimonial_author_company_url" name="wpmozo_ae_testimonial_author_company_url" value="<?php echo esc_attr( $author_company_url ); ?>" />
+	        </div>
+	        <div class="wpmozo_meta_fields">
+	            <label for="wpmozo_ae_testimonial_author_rating">
+	                <?php esc_html_e( 'Author Rating', 'divi-plus' ); ?>
+	            </label>
+	            <select id="wpmozo_ae_testimonial_author_rating" name="wpmozo_ae_testimonial_author_rating">
+	                <?php
+	                foreach( $ratings as $rating ) {
+	                    ?><option value="<?php echo esc_attr( $rating ); ?>" <?php selected( $author_rating, esc_attr( $rating ) ); ?>><?php echo esc_html( $rating ); ?></option><?php
+	                }
+	                ?>
+	            </select>
+	        </div>
+	        <?php
+	    }
+
+		/**
 		 * Save data from the meta fields fo custom post for team members.
 		 *
 		 * @since    1.0.0
@@ -528,6 +683,44 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		}
 
 		/**
+		 * Save data from the meta fields fo custom post for team members.
+		 *
+		 * @since    1.0.0
+		 */
+		public function wpmozo_save_testimonial_meta_fields( $post_id ) {
+	        // doing an auto save.
+	        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+	            return;
+	        }
+
+	        // verify nonce.
+	        if ( ! isset( $_POST['wpmozo_ae_testimonial_metabox_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['wpmozo_ae_testimonial_metabox_nonce'] ) ), 'wpmozo_ae_metaboxes_nonce' ) ) {
+	            return;
+	        }
+
+	        // if current user can not edit the post.
+	        if ( ! current_user_can( 'edit_posts', $post_id ) ) {
+	            return;
+	        }
+
+	        $fields = array(
+	            'wpmozo_ae_testimonial_author_name',
+	            'wpmozo_ae_testimonial_author_email',
+	            'wpmozo_ae_testimonial_author_designation',
+	            'wpmozo_ae_testimonial_author_company',
+	            'wpmozo_ae_testimonial_author_company_url',
+	            'wpmozo_ae_testimonial_author_rating',
+	        );
+
+	        foreach ( $fields as $field ) {
+	            if ( isset( $_POST[ $field ] ) ) {
+	                ${$field} = sanitize_text_field( wp_unslash( $_POST[ $field ] ) );
+	                update_post_meta( $post_id, $field, ${$field} );
+	            }
+	        }
+	    }
+
+		/**
 		 * Callback function to render the meta box.
 		 *
 		 * @since    1.0.0
@@ -538,6 +731,22 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 				'<img class="wpmozo_ae_meta_image" src="' . esc_url( plugin_dir_url( __FILE__ ) . 'assets/images/wpmozo-logo.png' ) . '" />Team Member Information',
 				array( $this, 'wpmozo_ae_team_member_metabox_callback' ),
 				'wpmozoae-team-member', // Replace 'your_custom_post_type' with the actual name of your custom post type.
+				'normal',
+				'default'
+			);
+		}
+
+		/**
+		 * Callback function to render the meta box.
+		 *
+		 * @since    1.0.0
+		 */
+		public function wpmozo_add_testimonial_metabox() {
+			add_meta_box(
+				'wpmozo_ae_testimonial_metabox',
+				'<img class="wpmozo_ae_meta_image" src="' . esc_url( plugin_dir_url( __FILE__ ) . 'assets/images/wpmozo-logo.png' ) . '" />Team Member Information',
+				array( $this, 'wpmozo_ae_testimonial_metabox_callback' ),
+				'wpmozoae-testimonial', // Replace 'your_custom_post_type' with the actual name of your custom post type.
 				'normal',
 				'default'
 			);
@@ -567,6 +776,9 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 				$all_widgets   = $this->get_all_widgets();
 				$plugin_option['wpmozo_addons_lite_for_elementor_version'] = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION;
 				$plugin_option['wpmozo_lite_widgets'] = implode( ',', $all_widgets );
+				if( !isset($plugin_option[ 'wpmozo_inactive_widgets' ] ) ){
+					$plugin_option[ 'wpmozo_inactive_widgets' ] = ' '; // To avoid fatal error of array key wpmozo_inactive_widgets not found in pro version.
+				}
 				update_option( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION, $plugin_option );
 			}
 		}

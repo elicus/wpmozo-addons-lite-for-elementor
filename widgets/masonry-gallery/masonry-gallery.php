@@ -139,7 +139,7 @@ if ( ! class_exists( 'WPMOZO_AE_Masonry_Gallery' ) ) {
 			$show_caption                     = $settings[ 'caption_switcher' ];
 			$caption_area                     = $settings[ 'caption_show_select' ];
 			$lightbox_title_and_caption_style = $settings[ 'title_caption_style_select' ];
-			$title_level                      = $settings[ 'title_heading_level' ];
+			$title_heading_level              = wpmozo_ae_validate_heading_level( $settings[ 'title_heading_level' ] );
 			$column_count                     = $settings[ 'select_number_of_column' ];
 			$column_spacing                   = $settings [ 'column_spacing_slider' ][ 'size' ] . $settings [ 'column_spacing_slider' ][ 'unit' ];
 			$gallery_images                   = '';
@@ -172,7 +172,7 @@ if ( ! class_exists( 'WPMOZO_AE_Masonry_Gallery' ) ) {
 						foreach ( $gallery_items as $items ) {
 							// Masonry gallery image title.
 							if ( '' !== get_the_title( $items[ 'id' ] ) && 'yes' === $show_title && 'default-image-id' !== $items[ 'id' ] ) {
-								$image_title = '<' . $title_level . ' ' . $this->get_render_attribute_string( 'image_title' ) . '>' . get_the_title( $items[ 'id' ] ) . '</' . $title_level . '>';
+								$image_title = '<' . esc_html( $title_heading_level ) . ' ' . $this->get_render_attribute_string( 'image_title' ) . '>' . get_the_title( $items[ 'id' ] ) . '</' . esc_html( $title_heading_level ) . '>';
 							} else {
 								$image_title = '';
 							}

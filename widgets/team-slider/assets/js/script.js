@@ -5,10 +5,11 @@
                 this.change();
             },
             change: function () {
-                let $winWidth = $( window ).width();
+                let $winWidth = $( window ).width(),
+                $this = this.$element;
 
-                if ( $( '.elementor-widget-wpmozo_ae_team_slider' ).find( '.wpmozo_team_link' ).length > 0 ) {
-                            $( 'body' ).on( 'click', '.wpmozo_team_link', function( e ) {
+                if ( $this.find( '.wpmozo_team_link' ).length > 0 ) {
+                            $this.on( 'click', '.wpmozo_team_link', function( e ) {
                                 if ( $( e.target ).is( $( this ).find( '.wpmozo_ae_team_member_social_icon' ) ) ) {
                                     return;
                                 }
@@ -18,10 +19,8 @@
                                 window.open( link, target );
                             } );
                         }
-                if ( $( "body" ).find( ".elementor-widget-wpmozo_ae_team_slider" ).length > 0 ) {
-                    $( "body" )
-                        .find( ".elementor-widget-wpmozo_ae_team_slider" )
-                        .each( function () {
+                if ( $this.length > 0 ) {
+                    $this.each( function () {
                             let $arrows = $( this ).find( ".wpmozo_swiper_navigation" ).data();
                             if ( $arrows ) {
                                 if ( $winWidth > 980 && typeof $arrows.arrows_desktop !== "undefined" ) {
@@ -51,8 +50,8 @@
                 }
                 $( window ).resize( function () {
                     let $winWidth = $( window ).width();
-                    if ( $( "body" ).find( ".wpmozo_swiper_layout" ).length > 0 ) {
-                        $( "body" )
+                    if ( $this.find( ".wpmozo_swiper_layout" ).length > 0 ) {
+                        $this
                             .find( ".wpmozo_swiper_layout" )
                             .each( function () {
                                 let $arrows = $( this ).find( ".wpmozo_swiper_navigation" ).data();
@@ -96,7 +95,7 @@
                     $element.removeClass( $arrowClasses.join( " " ) );
                 }
 
-                let a = $( "body" ).find( ".elementor-widget-wpmozo_ae_team_slider" );
+                let a = $this;
                 if( true === a.hasClass( "wpmozo_ae_equal_height" ) ){
                     let b = [  ];
                     let c = 0;

@@ -119,7 +119,7 @@ if ( ! class_exists( 'WPMOZO_AE_Interactive_Image_Card' ) ) {
 			$title_text          = $settings[ 'title_text' ];
 			$content_text        = $settings[ 'content_text' ];
 			$select_layout       = $settings[ 'select_layout' ];
-			$title_heading_level = $settings[ 'title_heading_level' ];
+			$title_heading_level = wpmozo_ae_validate_heading_level( $settings[ 'title_heading_level' ] );
 
 			$this->add_inline_editing_attributes( 'title_text', 'none' );
 			$this->add_render_attribute( 'title_text', 'class', 'wpmozo_ae_interactive_image_card_title' );
