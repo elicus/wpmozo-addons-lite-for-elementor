@@ -728,7 +728,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		public function wpmozo_add_team_member_metabox() {
 			add_meta_box(
 				'wpmozo_ae_team_member_metabox',
-				'<img class="wpmozo_ae_meta_image" src="' . esc_url( plugin_dir_url( __FILE__ ) . 'assets/images/wpmozo-logo.png' ) . '" />Team Member Information',
+				'<img class="wpmozo_ae_meta_image" src="https://wpmozoaddons.com/wp-content/uploads/2023/11/favicon-for-wpmozo-addons-for-elementor.png" />Team Member Information',
 				array( $this, 'wpmozo_ae_team_member_metabox_callback' ),
 				'wpmozoae-team-member', // Replace 'your_custom_post_type' with the actual name of your custom post type.
 				'normal',
@@ -744,7 +744,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		public function wpmozo_add_testimonial_metabox() {
 			add_meta_box(
 				'wpmozo_ae_testimonial_metabox',
-				'<img class="wpmozo_ae_meta_image" src="' . esc_url( plugin_dir_url( __FILE__ ) . 'assets/images/wpmozo-logo.png' ) . '" />Team Member Information',
+				'<img class="wpmozo_ae_meta_image" src="https://wpmozoaddons.com/wp-content/uploads/2023/11/favicon-for-wpmozo-addons-for-elementor.png"/>Testimonial Meta Fields',
 				array( $this, 'wpmozo_ae_testimonial_metabox_callback' ),
 				'wpmozoae-testimonial', // Replace 'your_custom_post_type' with the actual name of your custom post type.
 				'normal',
