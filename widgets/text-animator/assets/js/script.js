@@ -4,58 +4,56 @@ jQuery( window ).on( "elementor/frontend/init", function () {
             this.change();
         },
         change: function () {
-            jQuery( document ).ready( function( $ ){
-                if ( jQuery( 'body' ).find( '.wpmozo_ae_text_animator' ).length > 0 ) {
-                    jQuery( 'body' ).find( '.wpmozo_ae_text_animator' ).each( function() {
-                        let $this           = $( this );
-                        let animatedBlock   = $this.find( '.wpmozo_animated_text' );
-                        let isPaused        = false;
-                        let words           = [  ];
+            let $this           = this.$element;
+            if ( $this.find( '.wpmozo_ae_text_animator' ).length > 0 ) {
+                $this.find( '.wpmozo_ae_text_animator' ).each( function() {
+                    let animatedBlock   = $this.find( '.wpmozo_animated_text' );
+                    let isPaused        = false;
+                    let words           = [  ];
 
-                        if ( '' !== animatedBlock.data( 'text' ) && undefined !== animatedBlock.data( 'text' ) ) {
-                            words = animatedBlock.data( "text" ).toString().split( "|" ).map( function( e ){return e.trim();} );
+                    if ( '' !== animatedBlock.data( 'text' ) && undefined !== animatedBlock.data( 'text' ) ) {
+                        words = animatedBlock.data( "text" ).toString().split( "|" ).map( function( e ){return e.trim();} );
+                    }
+                    
+                    if ( words.length > 0 ) {
+                        if ( $this.find( '.wpmozo-fade' ).length > 0 ) {
+                            wpmozoFadeEffect( animatedBlock, words );
                         }
-                        
-                        if ( words.length > 0 ) {
-                            if ( $this.find( '.wpmozo-fade' ).length > 0 ) {
-                                wpmozoFadeEffect( animatedBlock, words );
-                            }
-                            if ( $this.find( '.wpmozo-flip' ).length > 0 ) {
-                                wpmozoFlipEffect( animatedBlock, words );
-                            }
-                            if ( $this.find( '.wpmozo-typing' ).length > 0 ) {
-                                wpmozoTypingEffect( animatedBlock, words );
-                            }
-                            if ( $this.find( '.wpmozo-slide' ).length > 0 ) {
-                                wpmozoSlideEffect( animatedBlock, words );
-                            }
-                            if ( $this.find( '.wpmozo-zoom' ).length > 0 ) {
-                                wpmozoZoomEffect( animatedBlock, words );
-                            }
-                            if ( $this.find( '.wpmozo-bounce' ).length > 0 ) {
-                                wpmozoBounceEffect( animatedBlock, words );
-                            }
-                            if ( $this.find( '.wpmozo-wipe' ).length > 0 ) {
-                                wpmozoWipeEffect( animatedBlock, words );
-                            }
-                            if ( $this.find( '.wpmozo-wave' ).length > 0 ) {
-                                wpmozoWaveEffect( animatedBlock, words );
-                            }
-                            if ( 'on' === animatedBlock.data( 'stop-animation-on-hover' ) ) {
-                            console.log( animatedBlock.data( 'stop-animation-on-hover' ) );
-                                $this.on( 'mouseenter mouseleave', function( e ) {
-                                    if ( e.type === 'mouseenter' ) {
-                                        animatedBlock.addClass( 'wpmozo_animation_paused' );
-                                    }
-                                    if ( e.type === 'mouseleave' ) {
-                                        animatedBlock.removeClass( 'wpmozo_animation_paused' );
-                                    }
-                                } );
-                            }
+                        if ( $this.find( '.wpmozo-flip' ).length > 0 ) {
+                            wpmozoFlipEffect( animatedBlock, words );
                         }
-                    } );
-                }
-            } );
+                        if ( $this.find( '.wpmozo-typing' ).length > 0 ) {
+                            wpmozoTypingEffect( animatedBlock, words );
+                        }
+                        if ( $this.find( '.wpmozo-slide' ).length > 0 ) {
+                            wpmozoSlideEffect( animatedBlock, words );
+                        }
+                        if ( $this.find( '.wpmozo-zoom' ).length > 0 ) {
+                            wpmozoZoomEffect( animatedBlock, words );
+                        }
+                        if ( $this.find( '.wpmozo-bounce' ).length > 0 ) {
+                            wpmozoBounceEffect( animatedBlock, words );
+                        }
+                        if ( $this.find( '.wpmozo-wipe' ).length > 0 ) {
+                            wpmozoWipeEffect( animatedBlock, words );
+                        }
+                        if ( $this.find( '.wpmozo-wave' ).length > 0 ) {
+                            wpmozoWaveEffect( animatedBlock, words );
+                        }
+                        if ( 'on' === animatedBlock.data( 'stop-animation-on-hover' ) ) {
+                        console.log( animatedBlock.data( 'stop-animation-on-hover' ) );
+                            $this.on( 'mouseenter mouseleave', function( e ) {
+                                if ( e.type === 'mouseenter' ) {
+                                    animatedBlock.addClass( 'wpmozo_animation_paused' );
+                                }
+                                if ( e.type === 'mouseleave' ) {
+                                    animatedBlock.removeClass( 'wpmozo_animation_paused' );
+                                }
+                            } );
+                        }
+                    }
+                } );
+            }
 
             function wpmozoTypingEffect( animatedBlock, words ) {
                 let intervalId          = animatedBlock.data( 'interval-id' ) ? parseInt( animatedBlock.data( 'interval-id' ) ) : 0;
@@ -418,7 +416,7 @@ jQuery( window ).on( "elementor/frontend/init", function () {
                 currentIntervalId = setInterval( wipe, waitTime );
                 animatedBlock.data( 'interval-id', currentIntervalId );
             }
-            },
+        },
     } );
     elementorFrontend.elementsHandler.attachHandler( "wpmozo_ae_text_animator", e );
 } );

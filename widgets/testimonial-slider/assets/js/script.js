@@ -5,9 +5,7 @@
                 this.change();
             },
             change: function () {
-                let $this = this.$element
-
-                let a = $this;
+                let a = this.$element
                 if( true === a.hasClass( "wpmozo_ae_equal_height" ) ){
                     let b = [  ];
                     let c = 0;
@@ -16,9 +14,8 @@
                         b[ c ] = $( this ).height();
                         c++;
                     } );
-                    console.log(b);
                     d.children().each( function(){
-
+                        $( this ).height( Math.max.apply( Math,b ) );
                     } );
                 }
             },
