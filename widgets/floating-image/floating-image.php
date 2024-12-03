@@ -93,7 +93,7 @@ if ( ! class_exists( 'WPMOZO_AE_Floating_Image' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since 1.3.0
+		 * @since 1.0.0
 		 * @access public
 		 *
 		 * @return array Element scripts dependencies.
@@ -102,14 +102,14 @@ if ( ! class_exists( 'WPMOZO_AE_Floating_Image' ) ) {
 			return array( 'wpmozo-ae-twenty-twenty', 'wpmozo-ae-move-event' );
 		}
 
-				/**
-				 * Register widget controls.
-				 *
-				 * Adds different input fields to allow the user to change and customize the widget settings.
-				 *
-				 * @since 1.0.0
-				 * @access protected
-				 */
+		/**
+		 * Register widget controls.
+		 *
+		 * Adds different input fields to allow the user to change and customize the widget settings.
+		 *
+		 * @since 1.0.0
+		 * @access protected
+		 */
 		protected function register_controls() {
 
 			// Seprate file containing all the code for registering controls.

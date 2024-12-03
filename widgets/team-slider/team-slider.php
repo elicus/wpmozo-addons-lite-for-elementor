@@ -98,7 +98,7 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since 1.3.0
+		 * @since 1.0.0
 		 * @access public
 		 *
 		 * @return array Element scripts dependencies.
@@ -125,7 +125,12 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'team-slider/assets/controls/controls.php';
 		}
 
-
+		/**
+		 * This function dynamically creates script parameters according to the user settings.
+		 *
+		 * @since 1.0.0
+		 * @return string
+		 */
 		public function wpmozo_render_slider_script() {
 			$settings                 = $this->get_settings_for_display();
 			$order_class              = 'elementor-element-'.$this->get_id();

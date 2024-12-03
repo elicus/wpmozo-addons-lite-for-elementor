@@ -21,7 +21,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since 1.0.0
+		 * @since 1.1.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -35,7 +35,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since 1.0.0
+		 * @since 1.1.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -49,7 +49,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since 1.0.0
+		 * @since 1.1.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -63,7 +63,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since 1.0.0
+		 * @since 1.1.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -77,7 +77,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since 1.0.0
+		 * @since 1.1.0
 		 * @access public
 		 *
 		 * @return style handle.
@@ -92,7 +92,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since 1.0.0
+		 * @since 1.1.0
 		 * @access protected
 		 */
 		protected function register_controls() {
@@ -105,7 +105,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 		 *
 		 * Written in PHP and used to generate the final HTML.
 		 *
-		 * @since 1.0.0
+		 * @since 1.1.0
 		 * @access protected
 		 */
 		protected function render() {
@@ -132,7 +132,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 		/**
 		 * Get breadcrumb data for output.
 		 *
-		 * @since 1.0.0
+		 * @since 1.1.0
 		 * @access private
 		 */
 		private function get_breadcrumb( $separator, $separator_icon, $breadcrumb_layout, $open_link, $opacity_range, $home_link_text, $home_link_icon, $display_icon_only ) {

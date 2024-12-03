@@ -23,7 +23,7 @@ if ( ! class_exists( 'WPMOZO_AE_Lottie' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since 1.0.0
+		 * @since 1.2.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -37,7 +37,7 @@ if ( ! class_exists( 'WPMOZO_AE_Lottie' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since 1.0.0
+		 * @since 1.2.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -51,7 +51,7 @@ if ( ! class_exists( 'WPMOZO_AE_Lottie' ) ) {
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since 1.0.0
+		 * @since 1.2.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -65,7 +65,7 @@ if ( ! class_exists( 'WPMOZO_AE_Lottie' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since 1.0.0
+		 * @since 1.2.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -79,7 +79,7 @@ if ( ! class_exists( 'WPMOZO_AE_Lottie' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since 1.3.0
+		 * @since 1.2.0
 		 * @access public
 		 *
 		 * @return array Element scripts dependencies.
@@ -95,7 +95,7 @@ if ( ! class_exists( 'WPMOZO_AE_Lottie' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since 1.0.0
+		 * @since 1.2.0
 		 * @access protected
 		 */
 		protected function register_controls() {
@@ -109,7 +109,7 @@ if ( ! class_exists( 'WPMOZO_AE_Lottie' ) ) {
 		 * Written in PHP and used to generate the final HTML.
 		 * ( 
 		 *
-		 * @since 1.0.0
+		 * @since 1.2.0
 		 * @access protected
 		 */
 		protected function render() {

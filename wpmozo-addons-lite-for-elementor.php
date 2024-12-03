@@ -15,7 +15,7 @@
  * Requires at least: 5.3
  * Tested up to: 6.7.1
  * Elementor tested up to: 3.25.10
- * Elementor Pro tested up : 3.25.4
+ * Elementor Pro tested up to: 3.25.4
  *
  * WPMozo Addons Lite for Elementor - A plugin for WordPress and Elementor.
  * Copyright © 2024 Elicus Technologies Private Limited
@@ -109,7 +109,9 @@ if ( ! function_exists( 'wpmozo_addons_lite_for_elementor_admin_notice_minimum_p
 // Check for required plugin and manage dependencies
 
 /**
- * Check for plugin dependencies and show appropriate notices
+ * Check for plugin dependencies and show appropriate notices.
+ * 
+ * @since 1.3.0
  */
 function wpmozo_lite_check_dependencies() {
     if (!current_user_can('activate_plugins')) {
@@ -160,7 +162,9 @@ if ( file_exists(WP_PLUGIN_DIR . '/' . $plugin_file) && is_plugin_active($plugin
     wpmozo_lite_handle_plugin_activation();
 }
 /**
- * Check for plugin dependencies and show appropriate notices
+ *Executes the main plugin files and classes after verifying all dependencies and conditions.
+ * 
+ * @since 1.3.0
  */
 function wpmozo_lite_handle_plugin_activation() {
     define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_SLUG', 'wpmozo-addons-lite-for-elementor' );

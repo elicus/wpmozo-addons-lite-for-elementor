@@ -133,7 +133,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		 *
 		 * @access public
 		 * @return void
-		 * @since 1.0.0
+		 * @since  1.3.0
 		 */
 		public function wpmozo_ae_select2_ajax_posts() {
 			/*if ( ! isset( $_POST['wpmozo_ae_select_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['wpmozo_ae_select_nonce'] ) ), 'wpmozo-select-nonce' ) ) {
@@ -179,7 +179,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		 *
 		 * @access public
 		 * @return void
-		 * @since 1.0.0
+		 * @since  1.3.0
 		 */
 		public function wpmozo_ae_select2_ajax_get_title() {
 
@@ -223,12 +223,29 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 
 		}
 
+		/**
+		 * Register Custom Control to Search Taxonomy
+		 * get the searched taxonomies if present in database.
+		 *
+		 * @access public
+		 * @return void
+		 * @since  1.3.0
+		 */
 		public function register_custom_controls() {
 
 			require_once plugin_dir_path( __DIR__ ) . 'includes/controls/select2.php';
 			\Elementor\Plugin::instance()->controls_manager->register( new WPMOZO_AE_Select2() );
 		}
 
+		/**
+		 * Fetch Testimonial Data
+		 * Fetch and process testimonials dynamically based on user-defined settings, rendering them with the specified
+		 * layout and returning paginated results or an error message via AJAX.
+		 *
+		 * @access public
+		 * @return void
+		 * @since  1.3.0
+		 */
 		public function wpmozo_get_testimonials() {
 			
 	        if ( ! isset( $_POST['wpmozo_get_testimonials_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['wpmozo_get_testimonials_nonce'] ) ), 'wpmozo-testimonial-grid-nonce' ) ) {

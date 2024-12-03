@@ -94,7 +94,7 @@ if ( ! class_exists( 'WPMOZO_AE_Masonry_Gallery' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since 1.3.0
+		 * @since 1.0.0
 		 * @access public
 		 *
 		 * @return array Element scripts dependencies.

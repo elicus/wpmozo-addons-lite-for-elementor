@@ -117,7 +117,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
         /**
     	 * Check if testimonials related widgets are disabled.
     	 *
-    	 * @since    1.4.0
+    	 * @since    1.3.0
     	 */
     	public function wpmozo_is_testimonial_disabled() {
             $plugin_options = get_option( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION );
@@ -510,7 +510,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		/**
 		 * Add metabox for custom post of testimonials.
 		 *
-		 * @since    1.0.0
+		 * @since    1.3.0
 		 */
 		public function wpmozo_ae_testimonial_metabox_callback( $post ) {
 	        wp_nonce_field( 'wpmozo_ae_metaboxes_nonce', 'wpmozo_ae_testimonial_metabox_nonce' );
@@ -685,7 +685,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		/**
 		 * Save data from the meta fields fo custom post for team members.
 		 *
-		 * @since    1.0.0
+		 * @since    1.3.0
 		 */
 		public function wpmozo_save_testimonial_meta_fields( $post_id ) {
 	        // doing an auto save.
@@ -739,7 +739,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		/**
 		 * Callback function to render the meta box.
 		 *
-		 * @since    1.0.0
+		 * @since    1.3.0
 		 */
 		public function wpmozo_add_testimonial_metabox() {
 			add_meta_box(

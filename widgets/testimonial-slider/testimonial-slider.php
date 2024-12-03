@@ -21,7 +21,7 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -36,7 +36,7 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -51,7 +51,7 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -66,7 +66,7 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -81,7 +81,7 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return style handle.
@@ -114,13 +114,20 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access protected
 		 */
 		protected function register_controls() {
 			// Seprate file containing all the code for registering controls.
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'testimonial-slider/assets/controls/controls.php';
 		}
+
+		/**
+		 * This function dynamically creates script parameters according to the user settings.
+		 *
+		 * @since 1.3.0
+		 * @return string
+		 * */
 		public function wpmozo_render_testimonial_script() {
 			
 			$settings                 = $this->get_settings_for_display();
@@ -311,8 +318,8 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 		 * Render widget output on the frontend.
 		 *
 		 * Written in PHP and used to generate the final HTML.
-		 *( 
-		 * @since 1.0.0
+		 *
+		 * @since 1.3.0
 		 * @access protected
 		 */
 		protected function render() {

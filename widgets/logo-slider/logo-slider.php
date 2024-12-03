@@ -95,7 +95,7 @@ if ( ! class_exists( 'WPMOZO_AE_Logo_Slider' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since 1.3.0
+		 * @since 1.0.0
 		 * @access public
 		 *
 		 * @return array Element scripts dependencies.
@@ -120,8 +120,9 @@ if ( ! class_exists( 'WPMOZO_AE_Logo_Slider' ) ) {
 		}
 
 		/**
-		 * This function dynamically creates script parameters according to the user settings
+		 * This function dynamically creates script parameters according to the user settings.
 		 *
+		 * @since 1.0.0
 		 * @return string
 		 * */
 		public function wpmozo_ae_render_slider_script() {
