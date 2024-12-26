@@ -1,11 +1,15 @@
 @font-face {
-    font-family: "wpmozo";
-    src: url(../../fonts/wpmozo.eot?450dm0);
-    src: url(../../fonts/wpmozo.eot?450dm0#iefix) format("embedded-opentype"), url(../../fonts/wpmozo.ttf?450dm0) format("truetype"), url(../../fonts/wpmozo.woff?450dm0) format("woff"), url(../../fonts/wpmozo.svg?450dm0#wpmozo) format("svg");
-    font-weight: 400;
-    font-style: normal;
-    font-display: block;
+  font-family: 'wpmozo';
+  src:  url('../../fonts/wpmozo.eot?4stdzo');
+  src:  url('../../fonts/wpmozo.eot?4stdzo#iefix') format('embedded-opentype'),
+    url('../../fonts/wpmozo.ttf?4stdzo') format('truetype'),
+    url('../../fonts/wpmozo.woff?4stdzo') format('woff'),
+    url('../../fonts/wpmozo.svg?4stdzo#wpmozo') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
 }
+
 .wpmozo-ae-brandicon::after,
 .elementor-panel .elementor-element-wrapper [class*="wpmozo-ae-icon-"] {
     font-family: wpmozo !important;
@@ -19,149 +23,210 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.wpmozo-ae-icon-product-gallery4:before {
+  content: "\e933";
+}
+.wpmozo-ae-icon-product-gallery3:before {
+  content: "\e939";
+}
+.wpmozo-ae-icon-product-gallery2:before {
+  content: "\e93a";
+}
+.wpmozo-ae-icon-product-gallery1:before {
+  content: "\e938";
+}
+.wpmozo-ae-icon-product-accordion:before {
+  content: "\e93b";
+}
+.wpmozo-ae-icon-image-accordion:before {
+  content: "\e93c";
+}
+.wpmozo-ae-icon-flip-box-carousel:before {
+  content: "\e93d";
+}
+.wpmozo-ae-icon-price-list:before {
+  content: "\e936";
+}
+.wpmozo-ae-icon-image-card-carousel:before {
+  content: "\e937";
+}
+.wpmozo-ae-icon-facebook-embedded-post:before {
+  content: "\e93e";
+}
+.wpmozo-ae-icon-facebook-page:before {
+  content: "\e93f";
+}
+.wpmozo-ae-icon-facebook-embedded-video:before {
+  content: "\e940";
+}
+.wpmozo-ae-icon-facebook-comments:before {
+  content: "\e941";
+}
+.wpmozo-ae-icon-facebook-share-button:before {
+  content: "\e92e";
+}
+.wpmozo-ae-icon-facebook-like-button2:before {
+  content: "\e930";
+}
+.wpmozo-ae-icon-facebook-like-button:before {
+  content: "\e935";
+}
+.wpmozo-ae-icon-twitter-follow-button:before {
+  content: "\e934";
+}
+.wpmozo-ae-icon-twitter-embedded-tweet:before {
+  content: "\e931";
+}
+.wpmozo-ae-icon-twitter-timeline:before {
+  content: "\e942";
+}
+.wpmozo-ae-icon-twitter-tweet-button:before {
+  content: "\e932";
+}
 .wpmozo-ae-icon-dynamic-gallery:before {
-    content: "\e92b";
+  content: "\e92b";
 }
 .wpmozo-ae-icon-lottie:before {
-    content: "\e92f";
+  content: "\e92f";
 }
 .wpmozo-ae-icon-product-categories:before {
-    content: "\e92d";
+  content: "\e92d";
 }
 .wpmozo-ae-icon-list:before {
-    content: "\e92a";
+  content: "\e92a";
 }
 .wpmozo-ae-icon-advanced-button:before {
-    content: "\e92c";
+  content: "\e92c";
 }
 .wpmozo-ae-icon-image-mask:before {
-    content: "\e927";
+  content: "\e927";
 }
-.wpmozo-ae-icon-blog-slider:before {
-    content: "\e91c";
+.wpmozo-ae-icon-advanced-blog-slider:before {
+  content: "\e91c";
 }
 .wpmozo-ae-icon-instagram-feed-carousel:before {
-    content: "\e929";
-}
-.wpmozo-ae-icon-instagram:before {
-    content: "\e91d";
-}
-.wpmozo-ae-icon-form-styler:before {
-    content: "\e926";
-}
-.wpmozo-ae-icon-testimonial-carousel:before {
-    content: "\e928";
-}
-.wpmozo-ae-icon-testimonial-grid:before {
-    content: "\e915";
-}
-.wpmozo-ae-icon-blog-timeline:before {
-    content: "\e916";
-}
-.wpmozo-ae-icon-business-hours:before {
-    content: "\e917";
-}
-.wpmozo-ae-icon-team-grid:before {
-    content: "\e914";
-}
-.wpmozo-ae-icon-advanced-tabs:before {
-    content: "\e919";
-}
-.wpmozo-ae-icon-filterable-gallery:before {
-    content: "\e913";
-}
-.wpmozo-ae-icon-text-animator:before {
-    content: "\e912";
-}
-.wpmozo-ae-icon-text-highlighter:before {
-    content: "\e91a";
-}
-.wpmozo-ae-icon-star-rating:before {
-    content: "\e91b";
-}
-.wpmozo-ae-icon-separator:before {
-    content: "\e91f";
-}
-.wpmozo-ae-icon-scroll-image:before {
-    content: "\e923";
-}
-.wpmozo-ae-icon-modal-popup:before {
-    content: "\e924";
-}
-.wpmozo-ae-icon-breadcrumb:before {
-    content: "\e925";
-}
-.wpmozo-ae-icon-floating-image:before {
-    content: "\e90b";
-}
-.wpmozo-ae-icon-flip-box:before {
-    content: "\e910";
-}
-.wpmozo-ae-icon-logo-slider:before {
-    content: "\e90d";
-}
-.wpmozo-ae-icon-team-slider:before {
-    content: "\e90e";
-}
-.wpmozo-ae-icon-fancy-heading:before {
-    content: "\e90f";
-}
-.wpmozo-ae-icon-fancy-text:before {
-    content: "\e911";
-}
-.wpmozo-ae-icon-interactive-image-card:before {
-    content: "\e90a";
-}
-.wpmozo-ae-icon-image-card:before {
-    content: "\e90c";
-}
-.wpmozo-ae-icon-advanced-blog:before {
-    content: "\e902";
-}
-.wpmozo-ae-icon-product-carousel:before {
-    content: "\e905";
-}
-.wpmozo-ae-icon-product-grid:before {
-    content: "\e922";
-}
-.wpmozo-ae-icon-timeline:before {
-    content: "\e918";
-}
-.wpmozo-ae-icon-pricing-table:before {
-    content: "\e91e";
-}
-.wpmozo-ae-icon-image-hotspot:before {
-    content: "\e920";
-}
-.wpmozo-ae-icon-masonry-gallery:before {
-    content: "\e921";
-}
-.wpmozo-ae-icon-image-magnifier:before {
-    content: "\e909";
-}
-.wpmozo-ae-icon-bar-counter:before {
-    content: "\e903";
-}
-.wpmozo-ae-icon-tilt-image:before {
-    content: "\e904";
+  content: "\e929";
 }
 .wpmozo-ae-icon-instagram-feed:before {
-    content: "\e906";
+  content: "\e91d";
+}
+.wpmozo-ae-icon-form-styler:before {
+  content: "\e926";
+}
+.wpmozo-ae-icon-testimonial-slider:before {
+  content: "\e928";
+}
+.wpmozo-ae-icon-testimonial-grid:before {
+  content: "\e915";
+}
+.wpmozo-ae-icon-blog-timeline:before {
+  content: "\e916";
+}
+.wpmozo-ae-icon-business-hours:before {
+  content: "\e917";
+}
+.wpmozo-ae-icon-team-grid:before {
+  content: "\e914";
+}
+.wpmozo-ae-icon-advanced-tabs:before {
+  content: "\e919";
+}
+.wpmozo-ae-icon-filterable-gallery:before {
+  content: "\e913";
+}
+.wpmozo-ae-icon-text-animator:before {
+  content: "\e912";
+}
+.wpmozo-ae-icon-text-highlighter:before {
+  content: "\e91a";
+}
+.wpmozo-ae-icon-star-rating:before {
+  content: "\e91b";
+}
+.wpmozo-ae-icon-separator:before {
+  content: "\e91f";
+}
+.wpmozo-ae-icon-scroll-image:before {
+  content: "\e923";
+}
+.wpmozo-ae-icon-modal-popup:before {
+  content: "\e924";
+}
+.wpmozo-ae-icon-breadcrumb:before {
+  content: "\e925";
+}
+.wpmozo-ae-icon-floating-image:before {
+  content: "\e90b";
+}
+.wpmozo-ae-icon-flip-box:before {
+  content: "\e910";
+}
+.wpmozo-ae-icon-logo-slider:before {
+  content: "\e90d";
+}
+.wpmozo-ae-icon-team-slider:before {
+  content: "\e90e";
+}
+.wpmozo-ae-icon-fancy-heading:before {
+  content: "\e90f";
+}
+.wpmozo-ae-icon-fancy-text:before {
+  content: "\e911";
+}
+.wpmozo-ae-icon-interactive-image-card:before {
+  content: "\e90a";
+}
+.wpmozo-ae-icon-image-card:before {
+  content: "\e90c";
+}
+.wpmozo-ae-icon-advanced-blog:before {
+  content: "\e902";
+}
+.wpmozo-ae-icon-product-carousel:before {
+  content: "\e905";
+}
+.wpmozo-ae-icon-product-grid:before {
+  content: "\e922";
+}
+.wpmozo-ae-icon-timeline:before {
+  content: "\e918";
+}
+.wpmozo-ae-icon-pricing-table:before {
+  content: "\e91e";
+}
+.wpmozo-ae-icon-image-hotspot:before {
+  content: "\e920";
+}
+.wpmozo-ae-icon-masonry-gallery:before {
+  content: "\e921";
+}
+.wpmozo-ae-icon-image-magnifier:before {
+  content: "\e909";
+}
+.wpmozo-ae-icon-bar-counter:before {
+  content: "\e903";
+}
+.wpmozo-ae-icon-tilt-image:before {
+  content: "\e904";
+}
+.wpmozo-ae-icon-instagram:before {
+  content: "\e906";
 }
 .wpmozo-ae-icon-before-after-slider:before {
-    content: "\e907";
+  content: "\e907";
 }
 .wpmozo-ae-icon-content-toggle:before {
-    content: "\e908";
+  content: "\e908";
 }
 .wpmozo-ae-icon-ajax-search:before {
-    content: "\e901";
+  content: "\e901";
 }
 .wpmozo-ae-brandicon:after {
-    font-size: 22px;
-    content: "\e900";
-    color: #00de7c;
-    position: absolute;
-    top: 0;
-    right: 3%;
+  font-size:22px;
+  content:"\e900";
+  color:#5e1f9e;
+  position:absolute;
+  top:0;
+  right:3%;
 }

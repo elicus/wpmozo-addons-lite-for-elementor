@@ -550,7 +550,7 @@ $this->start_controls_section(
 				'left'    => 20,
 			 ),
 			'selectors'   => array( 
-				'{{WRAPPER}} .wpmozo_ae_flipbox_wrapper .wpmozo_ae_flipbox_front, {{WRAPPER}} .wpmozo_ae_filpbox_wrapper .wpmozo_ae_flipbox_back' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_ae_flipbox_wrapper .wpmozo_ae_flipbox_front, {{WRAPPER}} .wpmozo_ae_flipbox_wrapper .wpmozo_ae_flipbox_back' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			 ),
 		 )
 	 );

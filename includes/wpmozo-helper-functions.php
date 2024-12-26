@@ -6,6 +6,80 @@ if ( ! defined( 'ABSPATH' ) ) {
 use \Elementor\Plugin;
 
 /**
+ * Function to get category thumbnail image.
+ *
+ * @since    1.6.0
+ * @return   array
+ */
+
+if ( ! function_exists( 'wpmozo_ae_woocommerce_category_thumbnail' ) ) {
+    function wpmozo_ae_woocommerce_category_thumbnail( $category, $size = 'woocommerce_thumbnail' ) {
+        $dimensions           = wc_get_image_size( $size );
+        $thumbnail_id         = get_term_meta( $category->term_id, 'thumbnail_id', true );
+
+        if ( $thumbnail_id ) {
+            $image        = wp_get_attachment_image_src( $thumbnail_id, $size );
+            $image        = is_array( $image ) ? $image[0] : wc_placeholder_img_src();
+            $image_srcset = function_exists( 'wp_get_attachment_image_srcset' ) ? wp_get_attachment_image_srcset( $thumbnail_id, $size ) : false;
+            $image_sizes  = function_exists( 'wp_get_attachment_image_sizes' ) ? wp_get_attachment_image_sizes( $thumbnail_id, $size ) : false;
+        } else {
+            $image        = wc_placeholder_img_src();
+            $image_srcset = false;
+            $image_sizes  = false;
+        }
+
+        if ( $image ) {
+            // Prevent esc_url from breaking spaces in urls for image embeds.
+            // Ref: https://core.trac.wordpress.org/ticket/23605.
+            $image = str_replace( ' ', '%20', $image );
+
+            // Add responsive image markup if available.
+            if ( $image_srcset && $image_sizes ) {
+                return '<img src="' . esc_url( $image ) . '" alt="' . esc_attr( $category->name ) . '" width="' . esc_attr( $dimensions['width'] ) . '" height="' . esc_attr( $dimensions['height'] ) . '" srcset="' . esc_attr( $image_srcset ) . '" sizes="' . esc_attr( $image_sizes ) . '" />';
+            } else {
+                return '<img src="' . esc_url( $image ) . '" alt="' . esc_attr( $category->name ) . '" width="' . esc_attr( $dimensions['width'] ) . '" height="' . esc_attr( $dimensions['height'] ) . '" />';
+            }
+        }
+    }
+}
+
+/**
+ * Get reading time
+ *
+ * @since  1.0.0
+ * @return string
+ */
+if ( ! function_exists( 'wpmozo_ae_reading_time' ) ) {
+	function wpmozo_ae_reading_time() {
+		global $post;
+		$content     = get_post_field( 'post_content', $post->ID );
+		$word_count  = str_word_count( wp_strip_all_tags( $content ) );
+		$readingtime = ceil( $word_count / 260 );
+		return $readingtime;
+	}
+}
+
+/**
+ * Post types Options
+ *
+ * @since  1.0.0
+ * @return array
+ */
+if ( ! function_exists( 'wpmozo_ae_get_post_types' ) ) {
+	function wpmozo_ae_get_post_types() {
+		$post_types = get_post_types(
+			array(
+				'public' => true,
+			),
+			'objects'
+		);
+		$post_types = wp_list_pluck( $post_types, 'label', 'name' );
+
+		return array_diff_key( $post_types, array( 'elementor_library', 'attachment' ) );
+	}
+}
+
+/**
  * Function to get a Elementor templates as options.
  *
  * @since    1.0.0
@@ -96,5 +170,33 @@ if ( ! function_exists( 'wpmozo_ae_validate_heading_level' ) ) {
 			return esc_html( $tag );
 		}
 		return esc_html( 'h5' );
+	}
+}
+
+/**
+ * Check if given heading size is valid.
+ *
+ * @since    1.4.0
+ */
+if ( ! function_exists( 'wpmozo_ae_validate_select2' ) ) {
+	function wpmozo_ae_validate_select2( $variable, $allowedValues = array() ) {
+	    // Check if the variable is a string
+	    if ( is_string( $variable ) ) {
+	        return in_array( $variable, $allowedValues, true ) ? $variable : false; // Strict comparison
+	    }
+
+	    // Check if the variable is an array
+	    if ( is_array( $variable ) ) {
+	        // Ensure every value in the array is allowed
+	        foreach ( $variable as $value ) {
+	            if ( !in_array( $value, $allowedValues, true ) ) {
+	                return false;
+	            }
+	        }
+	        return $variable;
+	    }
+
+	    // If the variable is neither a string nor an array, it's invalid
+	    return false;
 	}
 }
