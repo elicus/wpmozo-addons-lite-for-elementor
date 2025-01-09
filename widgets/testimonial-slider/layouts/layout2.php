@@ -11,8 +11,8 @@
  *
  * @author      Elicus Technologies <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2023 Elicus Technologies Private Limited
- * @version     1.9.6
+ * @copyright   2025 Elicus Technologies Private Limited
+ * @version     1.0.0
  */
 ?>
 <div id="wpmozo_single_testimonial_<?php echo esc_attr( $testimonial_id ); ?>" class="wpmozo_single_testimonial_card">
