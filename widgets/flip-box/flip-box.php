@@ -2,8 +2,8 @@
 /**
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
- * @version     1.0.0
+ * @copyright   2025 Elicus Technologies Private Limited
+ * @version     1.0.1
  */
 
 // If this file is called directly, abort.
@@ -217,7 +217,7 @@ if ( ! class_exists( 'WPMOZO_AE_Flip_Box' ) ) {
 
 			?>
 				<div class="wpmozo_ae_flipbox_wrapper <?php echo esc_attr( $settings[ 'flipbox_layout' ] ); ?>" flip-direction="<?php echo 'layout1' === $settings[ 'flipbox_layout' ] ? esc_attr( $settings[ 'layout1_flip_style' ] ) : esc_attr( $settings[ 'layout2_flip_style' ] ); ?>">
-							<div class="wpmozo_ae_flipbox_side wpmozo_ae_flipbox_front wpmozo_ae_flipbox_position_<?php echo esc_attr( $settings[ 'front_icon_placement' ] ); ?> wpmozo_ae_flipbox_content_<?php echo esc_attr( $settings[ 'front_content_align' ] ); ?> ">
+							<div class="wpmozo_ae_flipbox_side wpmozo_ae_flipbox_front wpmozo_ae_flipbox_position_<?php echo esc_attr( isset( $settings[ 'front_icon_placement' ] ) ? $settings[ 'front_icon_placement' ] : 'top' ); ?> wpmozo_ae_flipbox_content_<?php echo esc_attr( isset( $settings[ 'front_content_align' ] ) ? $settings[ 'front_content_align' ] : 'center' ); ?> ">
 								<div class="wpmozo_ae_flipbox_inner">
 								<?php
 								if ( 'image' === $settings[ 'front_use_icon_image' ] && '' !== $settings[ 'front_image' ] && '' !== $settings[ 'front_image' ][ 'url' ] ) {
@@ -323,7 +323,7 @@ if ( ! class_exists( 'WPMOZO_AE_Flip_Box' ) ) {
 									</div>
 								</div>
 							</div>
-							<div class="wpmozo_ae_flipbox_side wpmozo_ae_flipbox_back wpmozo_ae_flipbox_position_<?php echo esc_attr( $settings[ 'back_icon_placement' ] ); ?> wpmozo_ae_flipbox_content_<?php echo esc_attr( $settings[ 'back_content_align' ] ); ?> ">
+							<div class="wpmozo_ae_flipbox_side wpmozo_ae_flipbox_back wpmozo_ae_flipbox_position_<?php echo esc_attr( isset( $settings[ 'back_icon_placement' ] ) ? $settings[ 'back_icon_placement' ] : 'top' ); ?> wpmozo_ae_flipbox_content_<?php echo esc_attr( isset( $settings[ 'back_content_align' ] ) ? $settings[ 'back_content_align' ] : 'center' ); ?> ">
 								<div class="wpmozo_ae_flipbox_inner">
 								<?php
 								if ( 'image' === $settings[ 'back_use_icon_image' ] && '' !== $settings[ 'back_image' ] && '' !== $settings[ 'back_image' ][ 'url' ] ) {

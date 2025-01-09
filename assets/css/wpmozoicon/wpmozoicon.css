@@ -24,7 +24,7 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.wpmozo-ae-icon-product-gallery4:before {
+.wpmozo-ae-icon-product-gallery:before {
   content: "\e933";
 }
 .wpmozo-ae-icon-product-gallery3:before {
@@ -33,7 +33,7 @@
 .wpmozo-ae-icon-product-gallery2:before {
   content: "\e93a";
 }
-.wpmozo-ae-icon-product-gallery1:before {
+.wpmozo-ae-icon-product-gallery4:before {
   content: "\e938";
 }
 .wpmozo-ae-icon-product-accordion:before {
@@ -72,7 +72,7 @@
 .wpmozo-ae-icon-facebook-like:before {
   content: "\e935";
 }
-.wpmozo-ae-icon-twitter-follow:before {
+.wpmozo-ae-icon-twitter-follow-button:before {
   content: "\e934";
 }
 .wpmozo-ae-icon-twitter-embedded-tweet:before {

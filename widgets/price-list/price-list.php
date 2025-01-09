@@ -1,9 +1,8 @@
 <?php
-
 /**
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
+ * @copyright   2025 Elicus Technologies Private Limited
  * @version     1.0.0
  */
 
@@ -24,7 +23,7 @@ if ( ! class_exists( 'WPMOZO_AE_Price_List' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since 1.0.0
+		 * @since 1.4.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -40,7 +39,7 @@ if ( ! class_exists( 'WPMOZO_AE_Price_List' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since 1.0.0
+		 * @since 1.4.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -48,7 +47,7 @@ if ( ! class_exists( 'WPMOZO_AE_Price_List' ) ) {
 
 		public function get_title()
 		{
-			return esc_html__( 'Price List', 'wpmozo-addons-for-elementor' );
+			return esc_html__( 'Price List', 'wpmozo-addons-lite-for-elementor' );
 		}
 
 		/**
@@ -56,7 +55,7 @@ if ( ! class_exists( 'WPMOZO_AE_Price_List' ) ) {
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since 1.0.0
+		 * @since 1.4.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -72,7 +71,7 @@ if ( ! class_exists( 'WPMOZO_AE_Price_List' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since 1.0.0
+		 * @since 1.4.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -88,7 +87,7 @@ if ( ! class_exists( 'WPMOZO_AE_Price_List' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since 1.0.0
+		 * @since 1.4.0
 		 * @access public
 		 *
 		 * @return style handle.
@@ -96,7 +95,7 @@ if ( ! class_exists( 'WPMOZO_AE_Price_List' ) ) {
 
 		public function get_style_depends()
 		{
-			wp_register_style( 'wpmozo-ae-price-list-style', plugins_url( 'assets/css/style.min.css', __FILE__ ) );
+			wp_register_style( 'wpmozo-ae-price-list-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
 			return array( 'wpmozo-ae-price-list-style', 'wpmozo-ae-swiper-style', 'wpmozo-ae-font-awesome-style' );
 		}
@@ -107,7 +106,7 @@ if ( ! class_exists( 'WPMOZO_AE_Price_List' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since 1.0.0
+		 * @since 1.4.0
 		 * @access protected
 		 */
 
@@ -123,7 +122,7 @@ if ( ! class_exists( 'WPMOZO_AE_Price_List' ) ) {
 		 *
 		 * Written in PHP and used to generate the final HTML.
 		 *( 
-		 * @since 1.0.0
+		 * @since 1.4.0
 		 * @access protected
 		 */
 		protected function render() {

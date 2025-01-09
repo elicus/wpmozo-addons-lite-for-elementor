@@ -14,11 +14,11 @@
  * Domain Path: /languages
  * Requires at least: 5.3
  * Tested up to: 6.7.1
- * Elementor tested up to: 3.26.3
- * Elementor Pro tested up to: 3.26.2
+ * Elementor tested up to: 3.26.4
+ * Elementor Pro tested up to: 3.26.3
  *
  * WPMozo Addons Lite for Elementor - A plugin for WordPress and Elementor.
- * Copyright © 2024 Elicus Technologies Private Limited
+ * Copyright © 2025 Elicus Technologies Private Limited
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

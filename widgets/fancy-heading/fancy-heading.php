@@ -2,8 +2,8 @@
 /**
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
- * @version     1.0.0
+ * @copyright   2025 Elicus Technologies Private Limited
+ * @version     1.0.1
  */
 
 /** If this file is called directly, abort. **/
@@ -117,9 +117,7 @@ if ( ! class_exists( 'WPMOZO_AE_Fancy_Heading' ) ) {
 			$pre_heading          = '' !== $settings[ 'pre_heading' ] ? $settings[ 'pre_heading' ] : '';
 			$heading              = '' !== $settings[ 'heading' ] ? $settings[ 'heading' ] : '';
 			$post_heading         = '' !== $settings[ 'post_heading' ] ? $settings[ 'post_heading' ] : '';
-			$display_inline       = $settings[ 'display_inline' ];
 			$global_heading_level = wpmozo_ae_validate_heading_level( $settings[ 'global_heading_level' ] );
-			$display_inline       = $settings[ 'display_inline' ];
 
 			$this->add_render_attribute( 'heading_wrapper', 'class', 'wpmozo_ae_text_wrapper' );
 			$this->add_render_attribute( 'heading_wrapper_inner', 'class', 'wpmozo_ae_text_wrapper_inner' );

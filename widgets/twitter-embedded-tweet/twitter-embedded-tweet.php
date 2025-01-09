@@ -1,10 +1,9 @@
 <?php
-
 /**
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
- * @version     1.0.0
+ * @copyright   2025 Elicus Technologies Private Limited
+ * @version     1.0.1
  */
 
 // If this file is called directly, abort.

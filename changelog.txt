@@ -1,5 +1,12 @@
 Changelog for WPMozo Addons Lite for Elementor
 
+2025-01-10 - Version 1.4.0
+- NEW: New widget Price List.
+- NEW: New widget Facebook Like.
+- NEW: New widget Facebook Share.
+- NEW: New widget Facebook Comments.
+- NEW: New widget Facebook Embedded Video.
+
 2024-11-28 - Version 1.3.0
 - NEW: New widget Testimonial Slider.
 - NEW: New widget Twitter Embedded Tweet.

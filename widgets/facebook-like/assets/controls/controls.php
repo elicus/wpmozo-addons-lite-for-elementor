@@ -42,8 +42,8 @@ $this->start_controls_section( 'configuration',
             'label_block' => false,
             'type'        => Controls_Manager::SELECT,
             'options'     => array( 
-                'like'  	=> esc_html__( 'Like', 'wpmozo-addons-for-elementors' ),
-                'recommend' => esc_html__( 'Recommend', 'wpmozo-addons-for-elementors' ),
+                'like'  	=> esc_html__( 'Like', 'wpmozo-addons-lite-for-elementor' ),
+                'recommend' => esc_html__( 'Recommend', 'wpmozo-addons-lite-for-elementor' ),
             ),
             'default'   => 'like',
         )

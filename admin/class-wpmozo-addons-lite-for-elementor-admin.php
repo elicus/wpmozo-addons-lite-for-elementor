@@ -4,7 +4,7 @@
  *
  * @since      1.0.0
  * @author     Elicus <hello@elicus.com>
- * @copyright  2024 Elicus Technologies Private Limited
+ * @copyright  2025 Elicus Technologies Private Limited
  */
 
 // if this file is called directly, abort.

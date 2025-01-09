@@ -8,7 +8,7 @@ use \Elementor\Plugin;
 /**
  * Function to get category thumbnail image.
  *
- * @since    1.6.0
+ * @since    1.4.0
  * @return   array
  */
 

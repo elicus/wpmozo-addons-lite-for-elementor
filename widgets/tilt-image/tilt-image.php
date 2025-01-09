@@ -2,8 +2,8 @@
 /**
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
- * @version     1.0.0
+ * @copyright   2025 Elicus Technologies Private Limited
+ * @version     1.0.1
  */
 
 // if this file is called directly, abort.
@@ -127,26 +127,27 @@ if ( ! class_exists( 'WPMOZO_AE_Tilt_Image' ) ) {
 		 * @access protected
 		 */
 		protected function render() {
-			$settings               = $this->get_settings_for_display();
-			$icon                   = '';
-			$image                  = '';
-			$tilt_max               = $settings[ 'max_rotation_slider' ][ 'size' ];
-			$use_glare              = $settings[ 'use_glare_switcher' ];
-			$icon_shape             = $settings[ 'select_icon_shape' ];
-			$title_text             = $settings[ 'title_text' ];
-			$button_url             = isset( $settings[ 'button_url' ] ) ? esc_attr( $settings[ 'button_url' ][ 'url' ] ) : '#';
-			$tilt_scale             = $settings[ 'scale_on_hover_slider' ][ 'size' ];
-			$tilt_speed             = $settings[ 'speed_slider' ][ 'size' ];
-			$button_text            = $settings[ 'button_text' ];
-			$tilt_mobile            = 'yes' === $settings[ 'disable_on_mobile_switcher' ] ? 'on' : 'off';
-			$description_text       = $settings[ 'description_text' ];
-			$tilt_perspective       = $settings[ 'perspective_slider' ][ 'size' ];
-			$use_disable_axis       = $settings[ 'use_disable_xy_axis_switcher' ];
-			$tilt_disable_axis      = $settings[ 'disable_x/y_axis_select' ];
-			$content_animation      = $settings[ 'content_animation_selector' ];
-			$content_alignment      = $settings[ 'content_alignment_selector' ];
-			$title_heading_level    = wpmozo_ae_validate_heading_level( $settings[ 'title_heading_level' ] );
-			$button_hover_animation = isset( $settings[ 'button_hover_animation' ] ) ? $settings[ 'button_hover_animation' ] : '';
+			$settings                = $this->get_settings_for_display();
+			$icon                    = '';
+			$image                   = '';
+			$tilt_max                = $settings[ 'max_rotation_slider' ][ 'size' ];
+			$use_glare               = $settings[ 'use_glare_switcher' ];
+			$icon_shape              = $settings[ 'select_icon_shape' ];
+			$title_text              = $settings[ 'title_text' ];
+			$button_url              = isset( $settings[ 'button_url' ] ) ? esc_attr( $settings[ 'button_url' ][ 'url' ] ) : '#';
+			$tilt_scale              = $settings[ 'scale_on_hover_slider' ][ 'size' ];
+			$tilt_speed              = $settings[ 'speed_slider' ][ 'size' ];
+			$button_text             = $settings[ 'button_text' ];
+			$tilt_mobile             = 'yes' === $settings[ 'disable_on_mobile_switcher' ] ? 'on' : 'off';
+			$description_text        = $settings[ 'description_text' ];
+			$tilt_perspective        = $settings[ 'perspective_slider' ][ 'size' ];
+			$use_disable_axis        = $settings[ 'use_disable_xy_axis_switcher' ];
+			$tilt_disable_axis       = $settings[ 'disable_x/y_axis_select' ];
+			$content_animation       = $settings[ 'content_animation_selector' ];
+			$content_alignment       = $settings[ 'content_alignment_selector' ];
+			$title_heading_level     = wpmozo_ae_validate_heading_level( $settings[ 'title_heading_level' ] );
+			$enable_content_on_hover = isset( $settings[ 'content_on_hover_switcher' ] ) ? $settings[ 'content_on_hover_switcher' ] : '';
+			$button_hover_animation  = isset( $settings[ 'button_hover_animation' ] ) ? $settings[ 'button_hover_animation' ] : '';
 
 			if ( 'on' === $settings[ 'use_glare_switcher' ] ) {
 				null !== absint( $settings[ 'max_glare_slider' ][ 'size' ] ) ? $tilt_max_glare = absint( $settings[ 'max_glare_slider' ][ 'size' ] ) : '';
@@ -160,7 +161,7 @@ if ( ! class_exists( 'WPMOZO_AE_Tilt_Image' ) ) {
 
 			$this->add_render_attribute( 'contents_animations', 'class', 'wpmozo_ae_tilt_content_wrapper' );
 
-			if ( '' !== $settings[ 'content_on_hover_switcher' ] ) {
+			if ( '' !== $enable_content_on_hover ) {
 				$this->add_render_attribute( 'contents_animations', 'class', $content_animation );
 			}
 

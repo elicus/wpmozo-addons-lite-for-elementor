@@ -2,8 +2,8 @@
 /**
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
- * @version     1.0.0
+ * @copyright   2025 Elicus Technologies Private Limited
+ * @version     1.0.1
  */
 
 // If this file is called directly, abort.
@@ -118,7 +118,6 @@ if ( !class_exists( 'WPMOZO_AE_Star_Rating' ) ) {
 			$image_class         = 'wpmozo_ae_star_rating_image';
 			$rating_count        = $settings[ 'rating_count' ];
 			$image_alt_text      = $settings[ 'image_alt_text' ];
-			$rating_position     = $settings[ 'rating_position' ];
 			$description_text    = $settings[ 'description_text' ];
 			$star_rating_scale   = $settings[ 'star_rating_scale' ];
 			$show_rating_number  = $settings[ 'show_rating_number_switcher' ];

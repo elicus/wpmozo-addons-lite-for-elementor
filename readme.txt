@@ -1,9 +1,9 @@
 === WPMozo Addons Lite for Elementor ===
 Contributors: elicus
 Tags: elementor, page builder, addons, elementor extension, elementor addon
-Requires at least: 6.0
+Requires at least: 5.3
 Tested up to: 6.7.1
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@ A feature-packed plugin designed to complement your Elementor page-building expe
 
 ### [View Demo](https://wpmozoaddons.com "View Demo")
 ## Key Features of the Plugin
-- **22 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
+- **33 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
 - **Enhanced Design Options**: Customize your website design with intuitive controls and a wide array of styling options.
 - **Interactive Elements**: Engage your audience with interactive elements like Interactive Image Card, Flip Box, and Fancy Text.
 - **Responsive and Lightweight**: Ensure a seamless user experience across all devices without compromising on performance.
@@ -62,7 +62,7 @@ Create captivating visual effects with floating images.
 Enable users to zoom in on images for a closer look, enhancing the viewing experience for visuals on your Elementor-powered WordPress website.
 
 - ### [Team Slider](https://wpmozoaddons.com/elementor-team-slider/ "Elementor Team Slider")
-Showcase team members or staff in. Perfect for introducing your team or personnel on your website.
+Showcase team members or staff in an amazing slider. Perfect for introducing your team or personnel on your website.
 
 - ### [Breadcrumb](https://wpmozoaddons.com/elementor-breadcrumbs/ "Elementor Breadcrumb")
 Display navigational breadcrumbs on your page using the Breadcrumb widget for Elementor.
@@ -105,6 +105,21 @@ Showcase your blogs in a stylish and user friendly timline and make you Elemento
 
 - ### [List](https://wpmozoaddons.com/elementor-list/ "Elementor List")
 Show lists on your Elementor website in style using the List Widget.
+
+- ### [Price List](https://wpmozoaddons.com/elementor-price-list/ "Elementor Price List")
+Display pricing elegantly on your Elementor website with the Price List Widget.
+
+- ### [Facebook Like](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Like")
+Add a Facebook Like button to your Elementor website, allowing users to like your content directly from your page.
+
+- ### [Facebook Share](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Share")
+Enable users to share your content on Facebook with their facebook accounts using the Facebook Share Widget for Elementor.
+
+- ### [Facebook Comments](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Comments")
+Integrate Facebook Comments into your Elementor website with the Facebook Comments Widget enabling users to comment on your content using their Facebook accounts.
+
+- ### [Facebook Embedded Video](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Embedded Video")
+Embed Facebook videos directly into your Elementor website with customizable controls and responsive design using the Facebook Embedded Video Widget.
 
 
 ## Premium Version Available
@@ -155,7 +170,7 @@ Make it easier for your users to go through blogs by showing them in a slider in
 - ### [Team Grid](https://wpmozoaddons.com/elementor-team-grid/ "Elementor Team Grid")
 Display team members, their skills and much more in a grid on you Elementor website with masonry support using the Team Grid Widget.
 
-- ### [Twitter Timeline](https://wpmozoaddons.com/elementor-twitter-timeline/ "Elementor Twitter Timeline")
+- ### [Twitter Timeline](https://wpmozoaddons.com/elementor-twitter-widgets/ "Elementor Twitter Timeline")
 Showcase all posts from you Twitter account on your Elementor website page with the Twitte Timeline Widget.
 
 - ### [WooComerce Product Categories](https://wpmozoaddons.com/elementor-product-categories/ "Elementor Product Categories")
@@ -223,9 +238,9 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
-2024-11-28 - Version 1.3.0
-- NEW: New widget Testimonial Slider.
-- NEW: New widget Twitter Embedded Tweet.
-- NEW: New widget Twitter Follow Button.
-- NEW: New widget Twitter Share Button.
-- FIXED: Security issue with title heading level in all widget.
+2025-01-10 - Version 1.4.0
+- NEW: New widget Price List.
+- NEW: New widget Facebook Like.
+- NEW: New widget Facebook Share.
+- NEW: New widget Facebook Comments.
+- NEW: New widget Facebook Embedded Video.
