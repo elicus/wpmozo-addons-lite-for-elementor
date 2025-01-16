@@ -72,7 +72,7 @@ $this->add_responsive_control( 'column_spacing',
 		'render_type' => 'template',
 		'selectors'      => array( 
             '{{WRAPPER}} .column_2 .wpmozo_price_list_item:not(:nth-child(2n)), {{WRAPPER}} .column_3 .wpmozo_price_list_item:not(:nth-child(3n)), {{WRAPPER}} .column_4 .wpmozo_price_list_item:not(:nth-child(4n)), {{WRAPPER}} .column_5 .wpmozo_price_list_item:not(:nth-child(5n)), {{WRAPPER}} .column_6 .wpmozo_price_list_item:not(:nth-child(6n))' => 'margin-right: {{SIZE}}{{UNIT}};',
-			'{{WRAPPER}} .wpmozo_price_list_item' => 'margin-bottom: 2.75%;',
+			'{{WRAPPER}} .wpmozo_price_list_item' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 		),
 	)
 );  
@@ -467,7 +467,7 @@ $this->add_control(
 		'type'      => Controls_Manager::COLOR,
 		'default'   => '#000000',
 		'selectors' => array(
-			'{{WRAPPER}} .use_circle,{{WRAPPER}} .use_square,{{WRAPPER}} .wpmozo_hexagon' => 'border: 2px {{VALUE}} solid;',
+			'{{WRAPPER}} .use_circle,{{WRAPPER}} .use_square,{{WRAPPER}} .wpmozo_hexagon' => 'border-top: 2px {{VALUE}} solid;border-bottom: 2px {{VALUE}} solid;border-left:2px solid transparent;border-right:2px solid transparent;',
 			'{{WRAPPER}} .wpmozo_price_list_layout .hexagon.wpmozo_hexagon:after,{{WRAPPER}} .wpmozo_price_list_layout .hexagon.wpmozo_hexagon:before' => 'border-top:2px solid {{VALUE}};border-bottom:2px solid {{VALUE}};border-color:inherit;'
 		),
 		'condition' => array(
@@ -530,15 +530,6 @@ $this->start_controls_section( 'title_section',
 		'tab'   => Controls_Manager::TAB_STYLE,
 	 )
 );
-	$this->add_group_control( 
-		Group_Control_Typography::get_type(),
-		array( 
-			'name'     => 'title_typography',
-			'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
-			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_title',
-			'exclude'  => array( 'font_size' ),
-		 )
-	 );
 	$this->add_control( 
 		'heading_level',
 		array( 
@@ -549,42 +540,32 @@ $this->start_controls_section( 'title_section',
 				'h1' => array( 
 					'title' => esc_html__( 'H1', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-editor-h1',
-				 ),
+				),
 				'h2' => array( 
 					'title' => esc_html__( 'H2', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-editor-h2',
-				 ),
+				),
 				'h3' => array( 
 					'title' => esc_html__( 'H3', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-editor-h3',
-				 ),
+				),
 				'h4' => array( 
 					'title' => esc_html__( 'H4', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-editor-h4',
-				 ),
+				),
 				'h5' => array( 
 					'title' => esc_html__( 'H5', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-editor-h5',
-				 ),
+				),
 				'h6' => array( 
 					'title' => esc_html__( 'H6', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-editor-h6',
-				 ),
-			 ),
+				),
+			),
 			'default'     => 'h3',
 			'toggle'      => true,
-		 )
-	 );
-
-
-	 $this->add_group_control( 
-		Group_Control_Text_Shadow::get_type(),
-		array( 
-			'name'     => 'title_text_shadow',
-			'label'    => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_title',
-		 )
-	 );
+		)
+	);
 	 $this->start_controls_tabs(
 		'title_tabs'
 	);
@@ -604,21 +585,20 @@ $this->start_controls_section( 'title_section',
 			 ),
 		 )
 	 );
-	 $this->add_responsive_control( 
-		'title_text_size',
+	$this->add_group_control( 
+		Group_Control_Typography::get_type(),
 		array( 
-			'label'     => esc_html__( 'Title Font Size', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::SLIDER,
-			'range'     => array( 
-				'px' => array( 
-					'min'  => 1,
-					'max'  => 100,
-					'step' => 1,
-				 ),
-			 ),
-			'selectors' => array( 
-				'{{WRAPPER}} .wpmozo_price_list_item_title' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
-			 ),
+			'name'     => 'title_typography',
+			'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
+			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_title',
+		 )
+	 );
+	 $this->add_group_control( 
+		Group_Control_Text_Shadow::get_type(),
+		array( 
+			'name'     => 'title_text_shadow',
+			'label'    => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_title',
 		 )
 	 );
 	$this->end_controls_tab();
@@ -638,21 +618,20 @@ $this->start_controls_section( 'title_section',
 			 ),
 		 )
 	 );
-	 $this->add_responsive_control( 
-		'title_text_size_hover',
+	 $this->add_group_control( 
+		Group_Control_Typography::get_type(),
 		array( 
-			'label'     => esc_html__( 'Title Text Size', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::SLIDER,
-			'range'     => array( 
-				'px' => array( 
-					'min'  	=> 1,
-					'max'  	=> 100,
-					'step' 	=> 1,
-				 ),
-			 ),
-			'selectors' => array( 
-				'{{WRAPPER}} .wpmozo_price_list_item_title:hover' => 'font-size: {{SIZE}}{{UNIT}};',
-			 ),
+			'name'     => 'title_hover_typography',
+			'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
+			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_title:hover',
+		)
+	);
+	 $this->add_group_control( 
+		Group_Control_Text_Shadow::get_type(),
+		array( 
+			'name'     => 'title_hover_text_shadow',
+			'label'    => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_title:hover',
 		 )
 	 );
 	$this->end_controls_tab();
@@ -664,23 +643,6 @@ $this->start_controls_section( 'price_section',
 		'tab'   => Controls_Manager::TAB_STYLE,
 	 )
 );
-	$this->add_group_control( 
-		Group_Control_Typography::get_type(),
-		array( 
-			'name'     => 'price_typography',
-			'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
-			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_price',
-			'exclude'  => array( 'font_size' ),
-		 )
-	 );
-	 $this->add_group_control( 
-		Group_Control_Text_Shadow::get_type(),
-		array( 
-			'name'     => 'price_text_shadow',
-			'label'    => esc_html__( 'Price Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_price',
-		 )
-	 );
 	 $this->start_controls_tabs(
 		'price_tabs'
 	);
@@ -700,25 +662,20 @@ $this->start_controls_section( 'price_section',
 			 ),
 		 )
 	 );
-	 $this->add_responsive_control( 
-		'price_text_size',
+	$this->add_group_control( 
+		Group_Control_Typography::get_type(),
 		array( 
-			'label'     => esc_html__( 'Price Text Size', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::SLIDER,
-			'range'     => array( 
-				'px' => array( 
-					'min'  => 1,
-					'max'  => 100,
-					'step' => 1,
-				 ),
-			 ),
-			'default'   => array( 
-				'unit'  => 'px',
-				'size'  => 14,
-			 ),
-			'selectors' => array( 
-				'{{WRAPPER}} .wpmozo_price_list_item_price' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
-			 ),
+			'name'     => 'price_typography',
+			'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
+			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_price',
+		 )
+	 );
+	 $this->add_group_control( 
+		Group_Control_Text_Shadow::get_type(),
+		array( 
+			'name'     => 'price_text_shadow',
+			'label'    => esc_html__( 'Price Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_price',
 		 )
 	 );
 	$this->end_controls_tab();
@@ -738,21 +695,20 @@ $this->start_controls_section( 'price_section',
 			 ),
 		 )
 	 );
-	 $this->add_responsive_control( 
-		'price_text_size_hover',
+	 $this->add_group_control( 
+		Group_Control_Typography::get_type(),
 		array( 
-			'label'     => esc_html__( 'Price Text Size', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::SLIDER,
-			'range'     => array( 
-				'px' => array( 
-					'min'  	=> 1,
-					'max'  	=> 100,
-					'step' 	=> 1,
-				 ),
-			 ),
-			'selectors' => array( 
-				'{{WRAPPER}} .wpmozo_price_list_item_price_wrap:hover .wpmozo_price_list_item_price' => 'font-size: {{SIZE}}{{UNIT}};',
-			 ),
+			'name'     => 'price_hover_typography',
+			'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
+			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_price_wrap:hover .wpmozo_price_list_item_price',
+		 )
+	 );
+	 $this->add_group_control( 
+		Group_Control_Text_Shadow::get_type(),
+		array( 
+			'name'     => 'price_hover_text_shadow',
+			'label'    => esc_html__( 'Price Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_price_wrap:hover .wpmozo_price_list_item_price',
 		 )
 	 );
 	$this->end_controls_tab();
@@ -776,23 +732,6 @@ $this->start_controls_section( 'currency_section',
 			),
 		)
 	);
-	$this->add_group_control( 
-		Group_Control_Typography::get_type(),
-		array( 
-			'name'     => 'currency_typography',
-			'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
-			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_currency',
-			'exclude'  => array( 'font_size' ),
-		 )
-	 );
-	 $this->add_group_control( 
-		Group_Control_Text_Shadow::get_type(),
-		array( 
-			'name'     => 'currency_text_shadow',
-			'label'    => esc_html__( 'Currency Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_currency',
-		 )
-	 );
 	 $this->start_controls_tabs(
 		'currency_tabs'
 	);
@@ -812,27 +751,22 @@ $this->start_controls_section( 'currency_section',
 			 ),
 		 )
 	 );
-	 $this->add_responsive_control( 
-		'currency_text_size',
-		array( 
-			'label'     => esc_html__( 'Currency Text Size', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::SLIDER,
-			'range'     => array( 
-				'px' => array( 
-					'min'  => 1,
-					'max'  => 100,
-					'step' => 1,
-				 ),
-			 ),
-			'default'   => array( 
-				'unit'  => 'px',
-				'size'  => 14,
-			 ),
-			'selectors' => array( 
-				'{{WRAPPER}} .wpmozo_price_list_item_currency' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
-			 ),
-		 )
-	 );
+	 $this->add_group_control( 
+	 	Group_Control_Typography::get_type(),
+	 	array( 
+	 		'name'     => 'currency_typography',
+	 		'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
+	 		'selector' => '{{WRAPPER}} .wpmozo_price_list_item_currency',
+	 	 )
+	  );
+	  $this->add_group_control( 
+	 	Group_Control_Text_Shadow::get_type(),
+	 	array( 
+	 		'name'     => 'currency_text_shadow',
+	 		'label'    => esc_html__( 'Currency Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+	 		'selector' => '{{WRAPPER}} .wpmozo_price_list_item_currency',
+	 	 )
+	  );
 	$this->end_controls_tab();
 	$this->start_controls_tab(
 		'currency_hover_tab',
@@ -850,21 +784,20 @@ $this->start_controls_section( 'currency_section',
 			 ),
 		 )
 	 );
-	 $this->add_responsive_control( 
-		'currency_text_size_hover',
+	 $this->add_group_control( 
+		Group_Control_Typography::get_type(),
 		array( 
-			'label'     => esc_html__( 'Currency Text Size', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::SLIDER,
-			'range'     => array( 
-				'px' => array( 
-					'min'  	=> 1,
-					'max'  	=> 100,
-					'step' 	=> 1,
-				 ),
-			 ),
-			'selectors' => array( 
-				'{{WRAPPER}} .wpmozo_price_list_item_price_wrap:hover .wpmozo_price_list_item_currency' => 'font-size: {{SIZE}}{{UNIT}};',
-			 ),
+			'name'     => 'currency_hover_typography',
+			'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
+			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_price_wrap:hover .wpmozo_price_list_item_currency',
+		 )
+	 );
+	 $this->add_group_control( 
+		Group_Control_Text_Shadow::get_type(),
+		array( 
+			'name'     => 'currency_hover_text_shadow',
+			'label'    => esc_html__( 'Currency Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_price_wrap:hover .wpmozo_price_list_item_currency',
 		 )
 	 );
 	$this->end_controls_tab();
@@ -966,23 +899,6 @@ $this->start_controls_section( 'period_section',
 		'tab'   => Controls_Manager::TAB_STYLE,
 	 )
 );
-	$this->add_group_control( 
-		Group_Control_Typography::get_type(),
-		array( 
-			'name'     => 'period_typography',
-			'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
-			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_price_period',
-			'exclude'  => array( 'font_size' ),
-		 )
-	 );
-	 $this->add_group_control( 
-		Group_Control_Text_Shadow::get_type(),
-		array( 
-			'name'     => 'period_text_shadow',
-			'label'    => esc_html__( 'Period Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_price_period',
-		 )
-	 );
 	 $this->start_controls_tabs(
 		'period_tabs'
 	);
@@ -1002,25 +918,20 @@ $this->start_controls_section( 'period_section',
 			 ),
 		 )
 	 );
-	 $this->add_responsive_control( 
-		'period_text_size',
+	$this->add_group_control( 
+		Group_Control_Typography::get_type(),
 		array( 
-			'label'     => esc_html__( 'Period Text Size', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::SLIDER,
-			'range'     => array( 
-				'px' => array( 
-					'min'  => 1,
-					'max'  => 100,
-					'step' => 1,
-				 ),
-			 ),
-			'default'   => array( 
-				'unit'  => 'px',
-				'size'  => 14,
-			 ),
-			'selectors' => array( 
-				'{{WRAPPER}} .wpmozo_price_list_item_price_period' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
-			 ),
+			'name'     => 'period_typography',
+			'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
+			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_price_period',
+		 )
+	 );
+	 $this->add_group_control( 
+		Group_Control_Text_Shadow::get_type(),
+		array( 
+			'name'     => 'period_text_shadow',
+			'label'    => esc_html__( 'Period Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+			'selector' => '{{WRAPPER}} .wpmozo_price_list_item_price_period',
 		 )
 	 );
 	$this->end_controls_tab();
@@ -1040,27 +951,23 @@ $this->start_controls_section( 'period_section',
 			 ),
 		 )
 	 );
-	 $this->add_responsive_control( 
-		'period_text_size_hover',
-		array( 
-			'label'     => esc_html__( 'Period Text Size', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::SLIDER,
-			'range'     => array( 
-				'px' => array( 
-					'min'  	=> 1,
-					'max'  	=> 100,
-					'step' 	=> 1,
-				 ),
-			 ),
-			'default'   => array( 
-				'unit' 		=> 'px',
-				'size' 		=> 14,
-			 ),
-			'selectors' => array( 
-				'{{WRAPPER}} .wpmozo_price_list_item_price_period:hover' => 'font-size: {{SIZE}}{{UNIT}};',
-			 ),
-		 )
-	 );
+	 $this->add_group_control( 
+	 	Group_Control_Typography::get_type(),
+	 	array( 
+	 		'name'     => 'period_hover_typography',
+	 		'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
+	 		'selector' => '{{WRAPPER}} .wpmozo_price_list_item_price_period:hover',
+	 		'exclude'  => array( 'font_size' ),
+	 	 )
+	  );
+	  $this->add_group_control( 
+	 	Group_Control_Text_Shadow::get_type(),
+	 	array( 
+	 		'name'     => 'period_hover_text_shadow',
+	 		'label'    => esc_html__( 'Period Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+	 		'selector' => '{{WRAPPER}} .wpmozo_price_list_item_price_period:hover',
+	 	 )
+	  );
 	$this->end_controls_tab();
 	$this->end_controls_tabs();	
 $this->end_controls_section();
