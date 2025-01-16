@@ -241,6 +241,31 @@ $this->start_controls_section( 'thumbnail_styling',
 		'tab'   => Controls_Manager::TAB_STYLE,
 	 )
 );
+	$this->add_responsive_control( 'thumbnail_alignment',
+		array( 
+			'label'      => esc_html__( 'Thumbnail Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'type'       => Controls_Manager::CHOOSE,
+			'options'    => array( 
+				'left'   => array( 
+					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-left',
+				),
+				'center' => array( 
+					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-center',
+				),
+				'right'  => array( 
+					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-right',
+				),
+			),
+			'selectors'  => array( 
+				'{{WRAPPER}} .wpmozo_price_list_item_thumbnail' => 'text-align: {{VALUE}};',
+			),
+			'default' 	=> 'left',
+			'toggle' 	=> true,
+		)
+	);
 	$this->add_responsive_control(
 		'thumbnail_width',
 		array(
@@ -635,7 +660,50 @@ $this->start_controls_section( 'title_section',
 		 )
 	 );
 	$this->end_controls_tab();
-	$this->end_controls_tabs();	
+	$this->end_controls_tabs();
+
+	$this->start_controls_tabs( 'title_padding_margin_control_tabs',
+		array( 
+				'separator'  => 'before',
+			)
+	 );
+		$this->start_controls_tab( 
+			'title_padding_tab',
+			array( 
+				'label' => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
+			)
+		 );
+			$this->add_responsive_control( 
+				'title_padding',
+				array( 
+					'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
+					'type'       => Controls_Manager::DIMENSIONS,
+					'size_units' => array( 'px', 'em', '%' ),
+					'selectors'  => array( 
+						'{{WRAPPER}} .wpmozo_price_list_item_title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					 ),
+				 )
+			 );
+		$this->end_controls_tab();
+		$this->start_controls_tab( 
+			'title_margin_tab',
+			array( 
+				'label' => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
+			 )
+		 );
+			$this->add_responsive_control( 
+				'title_margin',
+				array( 
+					'label'      => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
+					'type'       => Controls_Manager::DIMENSIONS,
+					'size_units' => array( 'px', 'em', '%' ),
+					'selectors'  => array( 
+						'{{WRAPPER}} .wpmozo_price_list_item_title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					 ),
+				 )
+			 );
+		$this->end_controls_tab();
+	$this->end_controls_tabs();
 $this->end_controls_section();
 $this->start_controls_section( 'price_section',
 	array( 
