@@ -76,6 +76,9 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 	            false,
 		        WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION
 	        );
+
+			wp_register_style( 'wpmozo-ae-justified-gallery-global-style', plugins_url( 'assets/css/justifiedGallery/justifiedGallery.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION );
+
 		}
 
 		/**
@@ -110,6 +113,10 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 			wp_register_script( 'wpmozo-ae-lottie', plugins_url( 'assets/js/lottie/lottie.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
 			wp_register_script( 'wpmozo-ae-twbspagination', plugins_url( 'assets/js/twbsPagination/twbsPagination.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+
+			wp_register_script( 'wpmozo-ae-justified-gallery-global', plugins_url( 'assets/js/justifiedGallery/justifiedGallery.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION, false );
+
+
 
 		}
 
