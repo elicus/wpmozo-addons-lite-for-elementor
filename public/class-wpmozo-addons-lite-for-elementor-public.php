@@ -443,7 +443,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		 */
 		public function include_widgets( $widgets ) {
 			foreach ( $widgets as $key => $value ) {
-				$widget_path = plugin_dir_path( __DIR__ ) . '/widgets/' . $value . '/class-wpmozo-ae-' . $value . '.php';
+				$widget_path = plugin_dir_path( __DIR__ ) . '/widgets/' . $value . '/' . $value . '.php';
 				if ( file_exists( $widget_path ) ) {
 					require_once $widget_path;
 				}

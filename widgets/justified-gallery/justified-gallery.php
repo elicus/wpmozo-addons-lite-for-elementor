@@ -6,8 +6,8 @@
  * @author    Elicus <hello@elicus.com>
  * @link      https://www.elicus.com/
  * @copyright 2024 Elicus Technologies Private Limited
- * @version   1.0.0
- * @package   WPMozo
+ * @since     1.5.0
+ * @package   WPMOZO Lite
  */
 
 // if this file is called directly, abort.
@@ -33,7 +33,7 @@ if ( ! class_exists( 'WPMOZO_AE_Justified_Gallery' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since   1.0.0
+		 * @since   1.5.0
 		 * @access  public
 		 * @package WPMOZO Lite
 		 * @return  string Widget name.
@@ -47,7 +47,7 @@ if ( ! class_exists( 'WPMOZO_AE_Justified_Gallery' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since   1.0.0
+		 * @since   1.5.0
 		 * @access  public
 		 * @package WPMOZO Lite
 		 * @return  string Widget title.
@@ -61,7 +61,7 @@ if ( ! class_exists( 'WPMOZO_AE_Justified_Gallery' ) ) {
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since   1.0.0
+		 * @since   1.5.0
 		 * @access  public
 		 * @package WPMOZO Lite
 		 * @return  string Widget icon.
@@ -75,7 +75,7 @@ if ( ! class_exists( 'WPMOZO_AE_Justified_Gallery' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since   1.0.0
+		 * @since   1.5.0
 		 * @access  public
 		 * @package WPMOZO Lite
 		 * @return  array Widget categories.
@@ -89,7 +89,7 @@ if ( ! class_exists( 'WPMOZO_AE_Justified_Gallery' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since   1.0.0
+		 * @since   1.5.0
 		 * @access  public
 		 * @package WPMOZO Lite
 		 * @return  style handle.
@@ -127,7 +127,7 @@ if ( ! class_exists( 'WPMOZO_AE_Justified_Gallery' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since   1.0.0
+		 * @since   1.5.0
 		 * @access  protected
 		 * @package WPMOZO Lite
 		 */
@@ -167,7 +167,7 @@ if ( ! class_exists( 'WPMOZO_AE_Justified_Gallery' ) ) {
 		 *
 		 * Written in PHP and used to generate the final HTML.
 		 *
-		 * @since   1.0.0
+		 * @since   1.5.0
 		 * @access  protected
 		 * @package WPMOZO Lite
 		 */
