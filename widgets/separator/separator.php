@@ -46,6 +46,20 @@ if ( !class_exists( 'WPMOZO_AE_Separator' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz separator','wpmozo separator','wpmz divider','wpmozo divider' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

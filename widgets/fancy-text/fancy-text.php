@@ -45,6 +45,20 @@ if ( ! class_exists( 'WPMOZO_AE_Fancy_Text' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz fancy text','wpmozo fancy text' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

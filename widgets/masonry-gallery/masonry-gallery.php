@@ -47,6 +47,20 @@ if ( ! class_exists( 'WPMOZO_AE_Masonry_Gallery' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz masonry gallery','wpmozo masonry gallery','wpmz image gallery','wpmozo image gallery' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

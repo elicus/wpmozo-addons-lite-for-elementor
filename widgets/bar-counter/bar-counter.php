@@ -45,6 +45,20 @@ if ( ! class_exists( 'WPMOZO_AE_Bar_Counter' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz bar counter','wpmozo bar counter','wpmz progress bar','wpmozo progress bar' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

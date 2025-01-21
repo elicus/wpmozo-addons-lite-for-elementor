@@ -46,6 +46,20 @@ if ( ! class_exists( 'WPMOZO_AE_Facebook_Share' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz facebook share','wpmozo facebook share','wpmz social media widgets','wpmozo social media widgets' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

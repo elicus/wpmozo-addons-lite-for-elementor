@@ -47,6 +47,20 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz team slider','wpmozo team slider','wpmz team carousel','wpmozo team carousel','wpmz team members','wpmozo team members' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

@@ -46,6 +46,20 @@ if ( ! class_exists( 'WPMOZO_AE_Flip_Box' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz flip box','wpmozo flip box','wpmz flipbox','wpmozo flipbox' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

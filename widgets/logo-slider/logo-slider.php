@@ -47,6 +47,20 @@ if ( ! class_exists( 'WPMOZO_AE_Logo_Slider' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz logo slider','wpmozo logo slider','wpmz logo carousel','wpmozo logo carousel' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

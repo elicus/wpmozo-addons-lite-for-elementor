@@ -47,6 +47,20 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz testimonial slider','wpmozo testimonial slider','wpmz testimonial carousel','wpmozo testimonial carousel','wpmz feedback slider','wpmozo feedback slider' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

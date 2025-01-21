@@ -47,6 +47,20 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz blog timeline','wpmozo blog timeline','wpmz blog posts','wpmozo blog posts' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

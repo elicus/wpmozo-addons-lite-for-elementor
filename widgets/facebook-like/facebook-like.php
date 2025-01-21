@@ -45,6 +45,20 @@ if ( ! class_exists( 'WPMOZO_AE_Facebook_Like' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz facebook like','wpmozo facebook like','wpmz social media widgets','wpmozo soocial media widgets' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

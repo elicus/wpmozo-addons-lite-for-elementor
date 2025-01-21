@@ -46,6 +46,20 @@ if ( ! class_exists( 'WPMOZO_AE_Facebook_Comments' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz facebook comments','wpmozo facebook comments','wpmz social media widgets','wpmozo social media widgets','wpmz comments','wpmozo comments' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

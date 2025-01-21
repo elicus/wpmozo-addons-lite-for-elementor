@@ -46,6 +46,20 @@ if ( ! class_exists( 'WPMOZO_AE_Fancy_Heading' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz fancy heading','wpmozo fancy heading','wpmz fancy title','wpmozo fancy title','wpmz dual heading','wpmozo dual heading','wpmz double heading','wpmozo double heading' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

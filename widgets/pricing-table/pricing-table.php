@@ -46,6 +46,20 @@ if ( ! class_exists( 'WPMOZO_AE_Pricing_Table' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz pricing table','wpmozo pricing table','wpmz pricing plans','wpmozo pricing plans' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

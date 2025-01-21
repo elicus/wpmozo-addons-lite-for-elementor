@@ -46,6 +46,20 @@ if ( ! class_exists( 'WPMOZO_AE_Before_After_Slider' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz before after slider','wpmozo before after slider','wpmz comparison slider','wpmozo comparison slider' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

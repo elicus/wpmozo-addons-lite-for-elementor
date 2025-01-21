@@ -47,6 +47,20 @@ if ( ! class_exists( 'WPMOZO_AE_Interactive_Image_Card' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz interactive image card','wpmozo interactive image card','wpmz interactive imagecard','wpmozo interactive imagecard' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

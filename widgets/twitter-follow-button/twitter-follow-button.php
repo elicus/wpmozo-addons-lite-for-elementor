@@ -45,6 +45,20 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Follow_Button' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz twitter follow button','wpmozo twitter follow button','wpmz x follow button','wpmozo x follow button','wpmz social media widgets','wpmozo social media widgets' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

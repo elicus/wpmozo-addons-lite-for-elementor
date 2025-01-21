@@ -45,6 +45,20 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Embedded_Tweet' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz twitter embedded tweet','wpmozo twitter embedded tweet','wpmz x embedded tweet','wpmozo x embedded tweet','wpmz social media widgets','wpmozo social media widgets' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

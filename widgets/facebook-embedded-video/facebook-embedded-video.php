@@ -46,6 +46,20 @@ if ( ! class_exists( 'WPMOZO_AE_Facebook_Embedded_Video' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz facebook embedded video','wpmozo facebook embedded video','wpmz social media widgets','wpmozo social media widgets','wpmz facebook video widget','wpmozo facebook video widget' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

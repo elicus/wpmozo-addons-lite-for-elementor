@@ -45,6 +45,20 @@ if ( !class_exists( 'WPMOZO_AE_Star_Rating' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz star rating','wpmozo star rating','wpmz star reviews','wpmozo star reviews' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.

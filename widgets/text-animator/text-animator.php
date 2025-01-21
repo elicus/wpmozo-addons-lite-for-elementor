@@ -43,6 +43,20 @@ if ( ! class_exists( 'WPMOZO_AE_Text_Animator' ) ) {
         }
 
         /**
+         * Get widget keyword list.
+         *
+         * Retrieve widget keywords.
+         *
+         * @since 1.4.0
+         * @access public
+         *
+         * @return array Widget keywords.
+         */
+        public function get_keywords() {
+            return array( 'wpmz text animator','wpmozo text animator' );
+        }
+
+        /**
          * Get widget icon.
          *
          * Retrieve widget icon.

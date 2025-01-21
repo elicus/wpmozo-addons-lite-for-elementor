@@ -48,6 +48,20 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Magnifier' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz image magnifier','wpmozo image magnifier','wpmz magnify image','wpmozo magnify image' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.
