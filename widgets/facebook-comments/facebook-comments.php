@@ -1,9 +1,12 @@
 <?php
 /**
- * @author      Elicus <hello@elicus.com>
- * @link        https://www.elicus.com/
- * @copyright   2025 Elicus Technologies Private Limited
- * @version     1.0.0
+ * Defines the Facebook Comments widget for WPMozo, allowing users to embed responsive Facebook comment sections within Elementor.
+ *
+ * @author    Elicus <hello@elicus.com>
+ * @link      https://www.elicus.com/
+ * @copyright 2025 Elicus Technologies Private Limited
+ * @version   1.0.0
+ * @package   WPMOZO Lite
  */
 
 // if this file is called directly, abort.
@@ -11,18 +14,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use \Elementor\Widget_Base;
-use \Elementor\Icons_Manager;
+use Elementor\Widget_Base;
+use Elementor\Icons_Manager;
 
 if ( ! class_exists( 'WPMOZO_AE_Facebook_Comments' ) ) {
+	/**
+	 * Class WPMOZO_AE_Facebook_Comments
+	 *
+	 * This class extends the Widget_Base class and is responsible for rendering the Facebook Comments widget in the WPMozo plugin.
+	 * It includes methods for initializing the widget, rendering the comment section, and handling various settings and options for displaying Facebook comments.
+	 *
+	 * @package WPMOZO Lite
+	 */
 	class WPMOZO_AE_Facebook_Comments extends Widget_Base {
+
 
 		/**
 		 * Get widget name.
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since 1.4.0
+		 * @since  1.4.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -36,7 +48,7 @@ if ( ! class_exists( 'WPMOZO_AE_Facebook_Comments' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since 1.4.0
+		 * @since  1.4.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -50,7 +62,7 @@ if ( ! class_exists( 'WPMOZO_AE_Facebook_Comments' ) ) {
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since 1.4.0
+		 * @since  1.4.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -64,7 +76,7 @@ if ( ! class_exists( 'WPMOZO_AE_Facebook_Comments' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since 1.4.0
+		 * @since  1.4.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -78,18 +90,16 @@ if ( ! class_exists( 'WPMOZO_AE_Facebook_Comments' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since 1.4.0
+		 * @since  1.4.0
 		 * @access public
 		 *
 		 * @return style handle.
 		 */
 		public function get_style_depends() {
-			
 
 			wp_register_style( 'wpmozo-ae-facebook-comments-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
-	
-			return array( 'wpmozo-ae-facebook-comments-style' );
 
+			return array( 'wpmozo-ae-facebook-comments-style' );
 		}
 
 		/**
@@ -97,19 +107,17 @@ if ( ! class_exists( 'WPMOZO_AE_Facebook_Comments' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since 1.4.0
+		 * @since  1.4.0
 		 * @access public
 		 *
 		 * @return array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-		
-			
-		    wp_register_script( 'wpmozo-ae-facebook-comments-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
-			wp_register_script( 'elicus-facebook-sdk', 'https://connect.facebook.net/en_us/sdk.js#xfbml=1&version=v13.0&appId=731764030978054', array('jquery'), null, true );
-	
 
-			return array( 'wpmozo-ae-facebook-comments-script', );
+			wp_register_script( 'wpmozo-ae-facebook-comments-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'elicus-facebook-sdk', 'https://connect.facebook.net/en_us/sdk.js#xfbml=1&version=v13.0&appId=731764030978054', array( 'jquery' ), null, true );
+
+			return array( 'wpmozo-ae-facebook-comments-script' );
 		}
 
 		/**
@@ -117,57 +125,57 @@ if ( ! class_exists( 'WPMOZO_AE_Facebook_Comments' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since 1.4.0
+		 * @since  1.4.0
 		 * @access protected
 		 */
 		protected function register_controls() {
 
 			// Seprate file containing all the code for registering controls.
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'facebook-comments/assets/controls/controls.php';
+			include_once plugin_dir_path( __DIR__ ) . 'facebook-comments/assets/controls/controls.php';
 		}
 		/**
 		 * Render widget output on the frontend.
 		 *
 		 * Written in PHP and used to generate the final HTML.
 		 *
-		 * @since 1.4.0
+		 * @since  1.4.0
 		 * @access protected
 		 */
 		protected function render() {
 
-			$settings     		= $this->get_settings_for_display();
-			$facebook_app_id 	= '' !== $settings['facebook_app_id'] ?  (int) $settings['facebook_app_id'] : '';
-			$page_url     		= $settings[ 'page_url' ];
-			$num_posts    		= 0 !== (int) $settings[ 'num_posts' ] ? (int) $settings[ 'num_posts' ] : 10;
-			$order_by     		= $settings[ 'order_by' ];
-			$lazy_loading		= $settings['lazy_loading'];
+			$settings        = $this->get_settings_for_display();
+			$facebook_app_id = '' !== $settings['facebook_app_id'] ? (int) $settings['facebook_app_id'] : '';
+			$page_url        = $settings['page_url'];
+			$num_posts       = 0 !== (int) $settings['num_posts'] ? (int) $settings['num_posts'] : 10;
+			$order_by        = $settings['order_by'];
+			$lazy_loading    = $settings['lazy_loading'];
 			$this->add_render_attribute(
 				'fb_facebook_comments_wrapper',
 				array(
-					'class'        		=> array( 'wpmozo_ae_facebook_comments','fb-comments' ),
-					'data-href' 		=> esc_url($page_url),
-					'data-numposts'		=> absint( $num_posts ),
-					'data-order-by'		=> esc_attr( $order_by ),
-					'data-lazy'			=> 'yes' === $lazy_loading ? 'true' : 'false',
-					'data-mobile'		=> 'true',
-					'data-width'		=> '100%',
-					'data-app-id'		=> esc_html($facebook_app_id),
+					'class'         => array( 'wpmozo_ae_facebook_comments', 'fb-comments' ),
+					'data-href'     => esc_url( $page_url ),
+					'data-numposts' => absint( $num_posts ),
+					'data-order-by' => esc_attr( $order_by ),
+					'data-lazy'     => 'yes' === $lazy_loading ? 'true' : 'false',
+					'data-mobile'   => 'true',
+					'data-width'    => '100%',
+					'data-app-id'   => esc_html( $facebook_app_id ),
 				)
 			);
-			if ( !empty($facebook_app_id) ) {
-				if ( !empty($page_url) ) {
+			if ( ! empty( $facebook_app_id ) ) {
+				if ( ! empty( $page_url ) ) {
 					?>
 						<div <?php $this->print_render_attribute_string( 'fb_facebook_comments_wrapper' ); ?>>
 						</div>
 					<?php
 				} else {
 					?>
-						<p> <?php echo esc_html__('Please enter a valid URL.', 'wpmozo-addons-lite-for-elementor'); ?> </p>
+						<p> <?php echo esc_html__( 'Please enter a valid URL.', 'wpmozo-addons-lite-for-elementor' ); ?> </p>
 					<?php
 				}
-			}else {
+			} else {
 				?>
-					<p><?php echo esc_html__('Please enter your Facebook App ID.', 'wpmozo-addons-lite-for-elementor'); ?></p>
+					<p><?php echo esc_html__( 'Please enter your Facebook App ID.', 'wpmozo-addons-lite-for-elementor' ); ?></p>
 				<?php
 			}
 		}
