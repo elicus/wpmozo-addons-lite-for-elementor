@@ -5,7 +5,7 @@
  * @author    Elicus <hello@elicus.com>
  * @link      https://www.elicus.com/
  * @copyright 2025 Elicus Technologies Private Limited
- * @version   1.0.0
+ * @version   1.4.0
  * @package   WPMOZO Lite
  */
 
@@ -35,9 +35,9 @@ if ( ! class_exists( 'WPMOZO_AE_Facebook_Comments' ) ) {
 		 * Retrieve widget name.
 		 *
 		 * @since  1.4.0
-		 * @access public
-		 *
-		 * @return string Widget name.
+		 * @access  public
+		 * @package WPMOZO Lite
+		 * @return  string Widget name.
 		 */
 		public function get_name() {
 			return 'wpmozo_ae_facebook_comments';
@@ -48,10 +48,10 @@ if ( ! class_exists( 'WPMOZO_AE_Facebook_Comments' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since  1.4.0
-		 * @access public
-		 *
-		 * @return string Widget title.
+		 * @since   1.4.0
+		 * @access  public
+		 * @package WPMOZO Lite
+		 * @return  string Widget title.
 		 */
 		public function get_title() {
 			return esc_html__( 'Facebook Comments', 'wpmozo-addons-lite-for-elementor' );
@@ -62,10 +62,10 @@ if ( ! class_exists( 'WPMOZO_AE_Facebook_Comments' ) ) {
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since  1.4.0
-		 * @access public
-		 *
-		 * @return string Widget icon.
+		 * @since   1.4.0
+		 * @access  public
+		 * @package WPMOZO Lite
+		 * @return  string Widget icon.
 		 */
 		public function get_icon() {
 			return 'wpmozo-ae-icon-facebook-comments wpmozo-ae-brandicon';
@@ -76,10 +76,10 @@ if ( ! class_exists( 'WPMOZO_AE_Facebook_Comments' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since  1.4.0
-		 * @access public
-		 *
-		 * @return array Widget categories.
+		 * @since   1.4.0
+		 * @access  public
+		 * @package WPMOZO Lite
+		 * @return  array Widget categories.
 		 */
 		public function get_categories() {
 			return array( 'wpmozo' );
@@ -90,10 +90,10 @@ if ( ! class_exists( 'WPMOZO_AE_Facebook_Comments' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since  1.4.0
-		 * @access public
-		 *
-		 * @return style handle.
+		 * @since   1.4.0
+		 * @access  public
+		 * @package WPMOZO Lite
+		 * @return  style handle.
 		 */
 		public function get_style_depends() {
 
@@ -107,16 +107,14 @@ if ( ! class_exists( 'WPMOZO_AE_Facebook_Comments' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since  1.4.0
-		 * @access public
-		 *
-		 * @return array Element scripts dependencies.
+		 * @since   1.4.0
+		 * @access  public
+		 * @package WPMOZO Lite
+		 * @return  array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-
-			wp_register_script( 'wpmozo-ae-facebook-comments-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+			wp_register_script( 'wpmozo-ae-facebook-comments-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 			wp_register_script( 'elicus-facebook-sdk', 'https://connect.facebook.net/en_us/sdk.js#xfbml=1&version=v13.0&appId=731764030978054', array( 'jquery' ), null, true );
-
 			return array( 'wpmozo-ae-facebook-comments-script' );
 		}
 

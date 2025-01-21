@@ -7,7 +7,7 @@
  * @author    Elicus <hello@elicus.com>
  * @link      https://www.elicus.com/
  * @copyright 2024 Elicus Technologies Private Limited
- * @version   1.0.0
+ * @version   1.4.0
  * @package   WPMOZO Lite
  */
 
