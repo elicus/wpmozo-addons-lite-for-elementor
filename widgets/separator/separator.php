@@ -3,18 +3,18 @@
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
  * @copyright   2025 Elicus Technologies Private Limited
- * @version     1.0.1
+ * @version     1.1.0
  */
 
 // If this file is called directly, abort.
-if ( !defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use \Elementor\Widget_Base;
-use \Elementor\Icons_Manager;
+use Elementor\Widget_Base;
+use Elementor\Icons_Manager;
 
-if ( !class_exists( 'WPMOZO_AE_Separator' ) ) {
+if ( ! class_exists( 'WPMOZO_AE_Separator' ) ) {
 	class WPMOZO_AE_Separator extends Widget_Base {
 
 		/**
@@ -22,10 +22,10 @@ if ( !class_exists( 'WPMOZO_AE_Separator' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since 1.1.0
-		 * @access public
-		 *
-		 * @return string Widget name.
+		 * @since   1.1.0
+		 * @access  public
+		 * @package WPMOZO Lite
+		 * @return  string Widget name.
 		 */
 		public function get_name() {
 			return 'wpmozo_ae_separator';
@@ -36,10 +36,10 @@ if ( !class_exists( 'WPMOZO_AE_Separator' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since 1.1.0
-		 * @access public
-		 *
-		 * @return string Widget title.
+		 * @since   1.1.0
+		 * @access  public
+		 * @package WPMOZO Lite
+		 * @return  string Widget title.
 		 */
 		public function get_title() {
 			return esc_html__( 'Separator', 'wpmozo-addons-lite-for-elementor' );
@@ -50,10 +50,10 @@ if ( !class_exists( 'WPMOZO_AE_Separator' ) ) {
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since 1.1.0
-		 * @access public
-		 *
-		 * @return string Widget icon.
+		 * @since   1.1.0
+		 * @access  public
+		 * @package WPMOZO Lite
+		 * @return  string Widget icon.
 		 */
 		public function get_icon() {
 			return 'wpmozo-ae-icon-separator wpmozo-ae-brandicon';
@@ -64,10 +64,10 @@ if ( !class_exists( 'WPMOZO_AE_Separator' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since 1.1.0
-		 * @access public
-		 *
-		 * @return array Widget categories.
+		 * @since   1.1.0
+		 * @access  public
+		 * @package WPMOZO Lite
+		 * @return  array Widget categories.
 		 */
 		public function get_categories() {
 			return array( 'wpmozo' );
@@ -78,10 +78,10 @@ if ( !class_exists( 'WPMOZO_AE_Separator' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since 1.1.0
-		 * @access public
-		 *
-		 * @return style handle.
+		 * @since   1.1.0
+		 * @access  public
+		 * @package WPMOZO Lite
+		 * @return  style handle.
 		 */
 		public function get_style_depends() {
 
@@ -94,12 +94,11 @@ if ( !class_exists( 'WPMOZO_AE_Separator' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since 1.1.0
-		 * @access public
-		 *
-		 * @return array Element scripts dependencies.
+		 * @since   1.1.0
+		 * @access  public
+		 * @package WPMOZO Lite
+		 * @return  array Element scripts dependencies.
 		 */
-
 		public function get_script_depends() {
 			wp_register_script( 'wpmozo-ae-separator-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 			return array( 'wpmozo-ae-separator-script' );
@@ -110,13 +109,13 @@ if ( !class_exists( 'WPMOZO_AE_Separator' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since 1.1.0
-		 * @access protected
+		 * @since   1.1.0
+		 * @access  protected
 		 */
 		protected function register_controls() {
 
 			// Seprate file containing all the code for registering controls.
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'separator/assets/controls/controls.php';
+			require_once plugin_dir_path( __DIR__ ) . 'separator/assets/controls/controls.php';
 		}
 
 		/**
@@ -129,47 +128,47 @@ if ( !class_exists( 'WPMOZO_AE_Separator' ) ) {
 		 */
 		protected function render() {
 			$settings                  = $this->get_settings_for_display();
-			$separator_text            = $settings[ 'separator_text' ];
-			$separator_alignment       = $settings[ 'separator_alignment' ];
-			$separator_icon_shape      = $settings[ 'separator_icon_shape' ];
-			$separator_icon_alignment  = $settings[ 'separator_icon_alignment' ];
-			$separator_image_alignment = $settings[ 'separator_image_alignment' ];
-			if ( !empty( $settings[ 'separator_image' ][ 'url' ] ) ) {
-				$separator_image = $settings[ 'separator_image' ][ 'url' ];
+			$separator_text            = $settings['separator_text'];
+			$separator_alignment       = $settings['separator_alignment'];
+			$separator_icon_shape      = $settings['separator_icon_shape'];
+			$separator_icon_alignment  = $settings['separator_icon_alignment'];
+			$separator_image_alignment = $settings['separator_image_alignment'];
+			if ( ! empty( $settings['separator_image']['url'] ) ) {
+				$separator_image = $settings['separator_image']['url'];
 			}
 			$this->add_inline_editing_attributes( 'separator_text', 'none' );
 			?>
 			<div class="wpmozo_ae_separator">
-				<?php if ( !empty( $separator_text ) ) { ?>
+				<?php if ( ! empty( $separator_text ) ) { ?>
 					<div class="wpmozo_ae_separator_container <?php echo esc_attr( $separator_alignment ); ?>">
 						<div class="wpmozo_ae_line wpmozo_ae_line_before"></div>
 						<div class="wpmozo_ae_wrapper">
 							<div class="wpmozo_ae_text_wrapper">
-								<p <?php $this->print_render_attribute_string( 'separator_text' ) ?>><?php echo esc_html( $separator_text ); ?></p>
+								<p <?php $this->print_render_attribute_string( 'separator_text' ); ?>><?php echo esc_html( $separator_text ); ?></p>
 							</div>
 						</div>
 						<div class="wpmozo_ae_line wpmozo_ae_line_after"></div>
 					</div>
-				<?php } elseif ( 'separator_with_icon' === $settings[ 'separator_use_with' ] && '' !== $settings[ 'separator_icon' ][ 'value' ] ) { ?>
+				<?php } elseif ( 'separator_with_icon' === $settings['separator_use_with'] && '' !== $settings['separator_icon']['value'] ) { ?>
 					<div class="wpmozo_ae_separator_container <?php echo esc_attr( $separator_icon_alignment ); ?>">
 						<div class="wpmozo_ae_line wpmozo_ae_line_before"></div>
 						<div class="wpmozo_ae_wrapper">
 							<div class="wpmozo_ae_icon_wrapper <?php echo esc_attr( $separator_icon_shape ); ?>">
 								<?php
-									Icons_Manager::render_icon( 
-										$settings[ 'separator_icon' ],
-										array( 
+									Icons_Manager::render_icon(
+										$settings['separator_icon'],
+										array(
 											'aria-hidden' => 'true',
-											'class' => 'wpmozo_ae_separator_icon ',
-										 ),
+											'class'       => 'wpmozo_ae_separator_icon ',
+										),
 										'i'
-									 );
+									);
 								?>
 							</div>
 						</div>
 						<div class="wpmozo_ae_line wpmozo_ae_line_after"></div>
 					</div>
-				<?php } elseif ( !empty( $separator_image ) ) { ?>
+				<?php } elseif ( ! empty( $separator_image ) ) { ?>
 					<div class="wpmozo_ae_separator_container <?php echo esc_attr( $separator_image_alignment ); ?>">
 						<div class="wpmozo_ae_line wpmozo_ae_line_before"></div>
 						<div class="wpmozo_ae_wrapper">
@@ -179,7 +178,7 @@ if ( !class_exists( 'WPMOZO_AE_Separator' ) ) {
 						</div>
 						<div class="wpmozo_ae_line wpmozo_ae_line_after"></div>
 					</div>
-					<?php } elseif( 'shadow' === $settings[ 'separator_type' ] ) { ?>
+					<?php } elseif ( 'shadow' === $settings['separator_type'] ) { ?>
 						<div class="wpmozo_ae_shadow"></div>
 					<?php } else { ?>
 						<div class="wpmozo_ae_separator_container default_separator">
