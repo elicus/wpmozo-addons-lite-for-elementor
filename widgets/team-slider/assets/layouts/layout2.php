@@ -1,4 +1,9 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 if ( $query->have_posts() ) 
 {
     foreach ( $query->posts as $index => $post ) {        

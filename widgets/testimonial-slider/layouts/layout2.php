@@ -1,4 +1,9 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 /**
  * The Template for displaying Layout 2
  *

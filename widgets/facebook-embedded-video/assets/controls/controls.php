@@ -1,4 +1,9 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 use \Elementor\Controls_Manager;
 /* Configuration controls start here */
 $this->start_controls_section( 'configuration',
@@ -59,16 +64,6 @@ $this->start_controls_section( 'configuration',
 				'{{WRAPPER}} .wpmozo_ajax_search_isotope_item' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 			 ),
 		 )
-	);
-	$this->add_control( 'lazy_loading',
-		array( 
-			'label'        => esc_html__( 'Enable lazy loading', 'wpmozo-addons-lite-for-elementor' ),
-			'type'         => Controls_Manager::SWITCHER,
-			'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-			'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
-			'return_value' => 'yes',
-			'default'      => '',
-		)
 	);
 	$this->add_control( 'lazy_loading',
 		array( 

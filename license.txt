@@ -6,9 +6,40 @@ WPMozo Addons Lite for Elementor
 Third Party Code Credits
 ========================
 
+Justified Gallery
+-----------------
+- File Location: /wpmozo-addons-lite-for-elementor/assets/js/justifiedGallery/justifiedGallery.min.js
+- File Location: /wpmozo-addons-lite-for-elementor/assets/css/justifiedGallery/justifiedGallery.min.css
+- License: Apache
+
+The MIT License (MIT)
+
+Copyright (c) 2020 Miro Mannino
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
 Magnific Popup
 --------------
-- File Location: /wpmozo-addons-lite-for-elementor/assets/js/magnificPopup.min.js
+- File Location: /wpmozo-addons-lite-for-elementor/assets/js/magnificPopup/magnificPopup.min.js
 - File Location: /wpmozo-addons-lite-for-elementor/assets/css/magnificPopup/magnificPopup.min.css
 - License: Apache
 
@@ -101,7 +132,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Magnify
 -------
-- File Location: /wpmozo-addons-lite-for-elementor/assets/js/magnify.min.js
+- File Location: /wpmozo-addons-lite-for-elementor/assets/js/magnify/magnify.min.js
 - License: MIT
 - License URI: https://opensource.org/licenses/MIT
 
@@ -129,7 +160,7 @@ SOFTWARE.
 
 Masonry
 -------
-- File Location: /wpmozo-addons-lite-for-elementor/assets/js/masonry.min.js
+- File Location: /wpmozo-addons-lite-for-elementor/assets/js/masonry/masonry.min.js
 - License: MIT
 - License URI: https://opensource.org/licenses/MIT
 
@@ -144,7 +175,7 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 Popper
 ------
-- File Location: /wpmozo-addons-lite-for-elementor/assets/js/popper.min.js
+- File Location: /wpmozo-addons-lite-for-elementor/assets/js/popper/popper.min.js
 - License: MIT
 - License URI: https://opensource.org/licenses/MIT
 
@@ -172,7 +203,7 @@ SOFTWARE.
 
 Tippy
 -----
-- File Location: /wpmozo-addons-lite-for-elementor/assets/js/tippy-bundle.min.js
+- File Location: /wpmozo-addons-lite-for-elementor/assets/js/tippyBundle/tippy-bundle.min.js
 - License: MIT
 - License URI: https://opensource.org/licenses/MIT
 
@@ -240,7 +271,7 @@ This Hippocratic License is an Ethical Source license (https://ethicalsource.dev
 
 Waypoints
 --------------
-- File Location: /wpmozo-addons-lite-for-elementor/assets/js/waypoints.min.js
+- File Location: /wpmozo-addons-lite-for-elementor/assets/js/waypoints/waypoints.min.js
 - License: MIT
 
 Copyright (c) 2011-2012 Caleb Troughton

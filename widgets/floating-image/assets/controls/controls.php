@@ -1,4 +1,9 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 use \Elementor\Utils;
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Text_Shadow;
