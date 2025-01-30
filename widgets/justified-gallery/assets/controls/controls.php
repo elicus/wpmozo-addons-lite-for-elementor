@@ -130,7 +130,6 @@ $this->start_controls_section(
         array(
             'label'             => esc_html__('Click Trigger', 'wpmozo-addons-for-elementor'),
             'type'              => Controls_Manager::SELECT,
-            'description'       => esc_html__('Selecting both will make overlay on image compoulsory', 'wpmozo-addons-for-elementor'),
             'default'           => 'off',
             'options'           => array(
                 'off'		  => esc_html__( 'None', 'wpmozo-addons-for-elementor' ),
