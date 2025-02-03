@@ -134,102 +134,6 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		}
 
 		/**
-		 * Select2 Ajax Posts
-		 * Fetch post/taxonomy data and render in select2 ajax search box
-		 *
-		 * @access public
-		 * @return void
-		 * @since  1.3.0
-		 */
-		public function wpmozo_ae_select2_ajax_posts() {
-			/*if ( ! isset( $_POST['wpmozo_ae_select_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['wpmozo_ae_select_nonce'] ) ), 'wpmozo-select-nonce' ) ) {
-				return;
-			}*/
-
-			$post_type   = 'post';
-			$post_type   = ! empty( $_GET['post_type'] ) ? sanitize_text_field( wp_unslash( $_GET['post_type'] ) ) : '';
-			$source_name = ! empty( $_GET['source_name'] ) ? sanitize_text_field( wp_unslash( $_GET['source_name'] ) ) : '';
-			$search      = ! empty( $_GET['term'] ) ? sanitize_text_field( wp_unslash( $_GET['term'] ) ) : '';
-			$results     = array();
-			$post_list   = array();
-
-			if ( 'taxonomy' === $source_name ) {
-				$post_list = wp_list_pluck(
-					get_terms(
-						$post_type,
-						array(
-							'hide_empty' => false,
-							'orderby'    => 'name',
-							'order'      => 'ASC',
-							'search'     => $search,
-						)
-					),
-					'name',
-					'term_id'
-				);
-			}
-
-			if ( ! empty( $post_list ) ) {
-				foreach ( $post_list as $key => $value ) {
-					$results[] = array(
-						'text' => $value,
-						'id'   => $key,
-					);
-				}
-			}
-			wp_send_json( array( 'results' => $results ) );
-		}
-		/**
-		 * Select2 Ajax Get Posts Value Titles
-		 * get selected value to show elementor editor panel in select2 ajax search box
-		 *
-		 * @access public
-		 * @return void
-		 * @since  1.3.0
-		 */
-		public function wpmozo_ae_select2_ajax_get_title() {
-
-			/*if ( ! isset( $_POST['wpmozo_ae_select_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['wpmozo_ae_select_nonce'] ) ), 'wpmozo-select-nonce' ) ) {
-				return;
-			}*/
-
-			if ( empty( $_POST['id'] ) ) {
-				wp_send_json_error( array() );
-			}
-
-			if ( empty( array_filter( sanitize_key( wp_unslash( $_POST['id'] ) ) ) ) ) {
-				wp_send_json_error( array() );
-			}
-
-			$ids         = array_map( 'intval', $_POST['id'] );
-			$post_type   = ! empty( $_POST['post_type'] ) ? sanitize_text_field( wp_unslash( $_POST['post_type'] ) ) : '';
-			$source_name = ! empty( $_POST['source_name'] ) ? sanitize_text_field( wp_unslash( $_POST['source_name'] ) ) : '';
-
-			if ( 'taxonomy' === $source_name ) {
-				$result = wp_list_pluck(
-					get_terms(
-						$post_type,
-						array(
-							'hide_empty' => false,
-							'orderby'    => 'name',
-							'order'      => 'ASC',
-							'include'    => implode( ',', $ids ),
-						)
-					),
-					'name',
-					'term_id'
-				);
-			}
-
-			if ( ! empty( $result ) ) {
-				wp_send_json_success( array( 'results' => $result ) );
-			} else {
-				wp_send_json_error( array() );
-			}
-
-		}
-
-		/**
 		 * Register Custom Control to Search Taxonomy
 		 * get the searched taxonomies if present in database.
 		 *
@@ -283,16 +187,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 
 	        foreach ( $defaults as $key => $default ) {
 	            // phpcs:ignore ET.Sniffs.ValidatedSanitizedInput.InputNotSanitized
-	            if ( isset( $_POST['props'][$key] ) && strpos( $_POST['props'][$key], '%' ) !== false ) {
-	                // phpcs:ignore ET.Sniffs.ValidatedSanitizedInput.InputNotSanitized
-	                $prepared_value  = preg_replace( '/%([a-f0-9]{2})/', '%_$1', $_POST['props'][$key] );
-	                ${$key} = preg_replace( '/%_([a-f0-9]{2})/', '%$1', trim( sanitize_text_field( wp_unslash( $prepared_value ) ) ) );
-	            } else {
-	                // phpcs:ignore ET.Sniffs.ValidatedSanitizedInput.InputNotSanitized
-	                // ${$key} = trim( sanitize_text_field( wp_unslash( et_()->array_get( $_POST['props'], $key, $default ) ) ) ); 
-					${$key} = trim( sanitize_text_field( wp_unslash( isset( $_POST['props'][$key] ) ? $_POST['props'][$key] : $default ) ) );
-
-	            }
+	            ${$key} = trim( sanitize_text_field( wp_unslash( isset( $_POST['props'][$key] ) ? $_POST['props'][$key] : $default ) ) );
 	        }
 	        $offset_number      = absint( $offset_number );
 	        $page               = absint( $page );

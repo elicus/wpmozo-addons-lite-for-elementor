@@ -43,7 +43,7 @@ if ( ! class_exists( 'WPMOZO_AE_Justified_Gallery' ) ) {
 		 * @return string Widget title.
 		 */
 		public function get_title() {
-			return esc_html__( 'Justified Gallery', 'wpmozo-addons-for-elementor' );
+			return esc_html__( 'Justified Gallery', 'wpmozo-addons-lite-for-elementor' );
 		}
 
 		/**
@@ -268,7 +268,7 @@ if ( ! class_exists( 'WPMOZO_AE_Justified_Gallery' ) ) {
 							?>
 							<li <?php $this->print_render_attribute_string( 'wpmozo_filter_item_all' ); ?>>
 								<a <?php $this->print_render_attribute_string( 'wpmozo_filter_item_all_anchor' ); ?>>
-									<?php echo ! empty( $settings['all_images_text'] ) ? $settings['all_images_text'] : esc_html__( 'All', 'wpmozo-addons-for-elementor' ); ?>
+									<?php echo ! empty( $settings['all_images_text'] ) ? $settings['all_images_text'] : esc_html__( 'All', 'wpmozo-addons-lite-for-elementor' ); ?>
 								</a>
 							</li>
 							<?php
@@ -579,7 +579,7 @@ if ( ! class_exists( 'WPMOZO_AE_Justified_Gallery' ) ) {
 						$load_more_button = $this->add_render_attribute(
 							'load_more_button',
 							array(
-							'button_text'			=> !empty( $settings['load_more_text'] ) ? esc_html( $settings['load_more_text'] ) : esc_html__( 'Load More', 'wpmozo-addons-for-elementor' ),
+							'button_text'			=> !empty( $settings['load_more_text'] ) ? esc_html( $settings['load_more_text'] ) : esc_html__( 'Load More', 'wpmozo-addons-lite-for-elementor' ),
 							'button_text_escaped'	=> true,
 							'button_url'			=> '#loadmore',
 							'class'					=> array( 'wpmozo-justified-gallery-load-more', 'wpmozo-button' ),
@@ -593,7 +593,7 @@ if ( ! class_exists( 'WPMOZO_AE_Justified_Gallery' ) ) {
 							<div <?php $this->print_render_attribute_string( 'wpmozo_button_wrapper'); ?>>
 								<a <?php $this->print_render_attribute_string( 'load_more_button'); ?>>
 									<span>
-										<?php echo !empty( $settings['load_more_text'] ) ? esc_html( $settings['load_more_text'] ) : esc_html__( 'Load More', 'wpmozo-addons-for-elementor' ); ?>
+										<?php echo !empty( $settings['load_more_text'] ) ? esc_html( $settings['load_more_text'] ) : esc_html__( 'Load More', 'wpmozo-addons-lite-for-elementor' ); ?>
 									</span>
 									<?php
 										Icons_Manager::render_icon( 

@@ -551,7 +551,7 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 			}else {
 				?>
 				<div class="entry">
-					<h1> <?php echo  esc_html__( $no_result_text, 'wpmozo-addons-lite-for-elementor' ) ; ?> </h1>
+					<h1> <?php echo  esc_html( $no_result_text ) ; ?> </h1>
 					<p><?php echo  esc_html__( 'Try changing your widget settings or add some new tem member.', 'wpmozo-addons-lite-for-elementor' ) ; ?></p>
 				</div>
 				<?php

@@ -527,37 +527,37 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 			
 	        <div class="wpmozo_meta_fields">
 	            <label for="wpmozo_ae_testimonial_author_name">
-	                <?php esc_html_e( 'Author Name', 'divi-plus' ); ?>
+	                <?php esc_html_e( 'Author Name', 'wpmozo-addons-lite-for-elementor' ); ?>
 	            </label>
 	            <input type="text" id="wpmozo_ae_testimonial_author_name" name="wpmozo_ae_testimonial_author_name" value="<?php echo esc_attr( $author_name ); ?>" />
 	        </div>
 	        <div class="wpmozo_meta_fields">
 	            <label for="wpmozo_ae_testimonial_author_email">
-	                <?php esc_html_e( 'Author Email', 'divi-plus' ); ?>
+	                <?php esc_html_e( 'Author Email', 'wpmozo-addons-lite-for-elementor' ); ?>
 	            </label>
 	            <input type="email" id="wpmozo_ae_testimonial_author_email" name="wpmozo_ae_testimonial_author_email" value="<?php echo esc_attr( $author_email ); ?>" />
 	        </div>
 	        <div class="wpmozo_meta_fields">
 	            <label for="wpmozo_ae_testimonial_author_designation">
-	                <?php esc_html_e( 'Author Designation', 'divi-plus' ); ?>
+	                <?php esc_html_e( 'Author Designation', 'wpmozo-addons-lite-for-elementor' ); ?>
 	            </label>
 	            <input type="text" id="wpmozo_ae_testimonial_author_designation" name="wpmozo_ae_testimonial_author_designation" value="<?php echo esc_attr( $author_designation ); ?>" />
 	        </div>
 	        <div class="wpmozo_meta_fields">
 	            <label for="wpmozo_ae_testimonial_author_company">
-	                <?php esc_html_e( 'Author Company', 'divi-plus' ); ?>
+	                <?php esc_html_e( 'Author Company', 'wpmozo-addons-lite-for-elementor' ); ?>
 	            </label>
 	            <input type="text" id="wpmozo_ae_testimonial_author_company" name="wpmozo_ae_testimonial_author_company" value="<?php echo esc_attr( $author_company ); ?>" />
 	        </div>
 	        <div class="wpmozo_meta_fields">
 	            <label for="wpmozo_ae_testimonial_author_company_url">
-	                <?php esc_html_e( 'Author Company Url', 'divi-plus' ); ?>
+	                <?php esc_html_e( 'Author Company Url', 'wpmozo-addons-lite-for-elementor' ); ?>
 	            </label>
 	            <input type="text" id="wpmozo_ae_testimonial_author_company_url" name="wpmozo_ae_testimonial_author_company_url" value="<?php echo esc_attr( $author_company_url ); ?>" />
 	        </div>
 	        <div class="wpmozo_meta_fields">
 	            <label for="wpmozo_ae_testimonial_author_rating">
-	                <?php esc_html_e( 'Author Rating', 'divi-plus' ); ?>
+	                <?php esc_html_e( 'Author Rating', 'wpmozo-addons-lite-for-elementor' ); ?>
 	            </label>
 	            <select id="wpmozo_ae_testimonial_author_rating" name="wpmozo_ae_testimonial_author_rating">
 	                <?php

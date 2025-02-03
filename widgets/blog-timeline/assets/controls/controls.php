@@ -1240,7 +1240,7 @@ $this->add_responsive_control(
 				'icon' 			=> 'eicon-angle-left',
 			),
 			'row' 					=> array(
-				'title' 		=> esc_html__( 'After', 'elementor'),
+				'title' 		=> esc_html__( 'After', 'wpmozo-addons-lite-for-elementor'),
 				'icon' 			=> 'eicon-angle-right',
 			),
 		),
