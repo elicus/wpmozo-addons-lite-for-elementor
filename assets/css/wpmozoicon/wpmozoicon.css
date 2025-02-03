@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'wpmozo';
-  src:  url('../../fonts/wpmozo.eot?4stdzo');
-  src:  url('../../fonts/wpmozo.eot?4stdzo#iefix') format('embedded-opentype'),
-    url('../../fonts/wpmozo.ttf?4stdzo') format('truetype'),
-    url('../../fonts/wpmozo.woff?4stdzo') format('woff'),
-    url('../../fonts/wpmozo.svg?4stdzo#wpmozo') format('svg');
+  src:  url('../../fonts/wpmozo.eot?q60l7o');
+  src:  url('../../fonts/wpmozo.eot?q60l7o#iefix') format('embedded-opentype'),
+    url('../../fonts/wpmozo.ttf?q60l7o') format('truetype'),
+    url('../../fonts/wpmozo.woff?q60l7o') format('woff'),
+    url('../../fonts/wpmozo.svg?q60l7o#wpmozo') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -24,17 +24,11 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.wpmozo-ae-icon-image-carousel:before {
+  content: "\e930";
+}
 .wpmozo-ae-icon-product-gallery:before {
   content: "\e933";
-}
-.wpmozo-ae-icon-product-gallery3:before {
-  content: "\e939";
-}
-.wpmozo-ae-icon-product-gallery2:before {
-  content: "\e93a";
-}
-.wpmozo-ae-icon-product-gallery4:before {
-  content: "\e938";
 }
 .wpmozo-ae-icon-product-accordion:before {
   content: "\e93b";
@@ -58,16 +52,13 @@
   content: "\e93f";
 }
 .wpmozo-ae-icon-facebook-embedded-video:before {
-  content: "\e940";
+  content: "\e938";
 }
 .wpmozo-ae-icon-facebook-comments:before {
   content: "\e941";
 }
 .wpmozo-ae-icon-facebook-share:before {
   content: "\e92e";
-}
-.wpmozo-ae-icon-facebook-like2:before {
-  content: "\e930";
 }
 .wpmozo-ae-icon-facebook-like:before {
   content: "\e935";

@@ -179,6 +179,21 @@ Display all your shop products according to categories in Elementor using the Pr
 - ### [Gravity Form Styler](https://wpmozoaddons.com/elementor-gravity-form-styler/ "Elementor Gravity Form Styler")
 Get amazing customization options to style and make your gravity forms elegant and showcase them on your Elementor website using the Gravity Form Styler Widget.
 
+- ### [Product Gallery](https://wpmozoaddons.com/elementor-product-gallery/ "Elementor Product Gallery")
+Show products with multiple images in a superb gallery on your Elementor website using the Product Gallery Widget.
+
+- ### [Product Accordion](https://wpmozoaddons.com/elementor-product-accordion/ "Elementor Product Accordion")
+Organize and showcase products in a user friendly way while displaying product details in a sleek, collapsible accordion format on your Elementor website using the Product Accordion Widget.
+
+- ### [Image Carousel](https://wpmozoaddons.com/elementor-image-carousel/ "Elementor Image Carousel")
+Showcase your images in a dynamic and interactive carousel on your Elementor website using the Image Carousel Widget.
+
+- ### [Facebook Embedded Post](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Embedded Post")
+Easily integrate and display Facebook posts directly on your Elementor website using the Facebook Embedded Post Widget, allowing you to share social content seamlessly while maintaining engagement and authenticity.
+
+- ### [Facebook Page](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Page")
+Effortlessly embed and showcase your Facebook page on your Elementor website using the Facebook Page Widget.
+
 == Documentation and Support ==
 - For detailed usage instructions, check out the [plugin documentation](https://wpmozo.com/documentation/wpmozo-addons-for-elementor/).
 - Need help or have questions? Visit the [plugin support forum](https://wordpress.org/support/plugin/wpmozo-addons-lite-for-elementor/).
@@ -238,9 +253,11 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
-2025-01-10 - Version 1.4.0
+2025-02-04 - Version 1.4.0
 - NEW: New widget Price List.
 - NEW: New widget Facebook Like.
 - NEW: New widget Facebook Share.
 - NEW: New widget Facebook Comments.
 - NEW: New widget Facebook Embedded Video.
+
+[See changelog for all versions](https://plugins.svn.wordpress.org/wpmozo-addons-lite-for-elementor/trunk/changelog.txt).
