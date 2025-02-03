@@ -233,7 +233,7 @@ $this->start_controls_section(
 			'separator'   => 'before',
 			'options'     =>
 			array( 
-				'flex-start' =>
+				'start' =>
 					array( 
 						'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-left',
@@ -243,7 +243,7 @@ $this->start_controls_section(
 						'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-center',
 					 ),
-				'flex-end'   =>
+				'end'   =>
 					array( 
 						'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-right',
@@ -251,7 +251,7 @@ $this->start_controls_section(
 			 ),
 			'default'     => 'none',
 			'toggle'      => true,
-			'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_pre_text' => 'align-self: {{VALUE}};' ),
+			'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_pre_text' => 'align-self: {{VALUE}};text-align: {{VALUE}};' ),
 			'condition'   => array( 'display_inline' => 'column' ),
 		 )
 	 );
@@ -456,7 +456,7 @@ $this->start_controls_section(
 			'separator'   => 'before',
 			'options'     =>
 			array( 
-				'flex-start' =>
+				'start' =>
 					array( 
 						'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-left',
@@ -466,7 +466,7 @@ $this->start_controls_section(
 						'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-center',
 					 ),
-				'flex-end'   =>
+				'end'   =>
 					array( 
 						'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-right',
@@ -475,7 +475,7 @@ $this->start_controls_section(
 			'default'     => 'none',
 			'toggle'      => true,
 			'selectors'   => array( 
-				'{{WRAPPER}} .wpmozo_ae_main_text' => 'align-self: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ae_main_text' => 'align-self: {{VALUE}};text-align: {{VALUE}};',
 			 ),
 			'condition'   => array( 'display_inline' => 'column' ),
 		 )
@@ -685,7 +685,7 @@ $this->start_controls_section(
 			'separator'   => 'before',
 			'options'     =>
 			array( 
-				'flex-start' =>
+				'start' =>
 					array( 
 						'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-left',
@@ -695,7 +695,7 @@ $this->start_controls_section(
 						'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-center',
 					 ),
-				'flex-end'   =>
+				'end'   =>
 					array( 
 						'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-right',
@@ -704,7 +704,7 @@ $this->start_controls_section(
 			'default'     => 'none',
 			'toggle'      => true,
 			'selectors'   => array( 
-				'{{WRAPPER}} .wpmozo_ae_post_text' => 'align-self: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ae_post_text' => 'align-self: {{VALUE}}; text-align: {{VALUE}};',
 			 ),
 			'condition'   => array( 'display_inline' => 'column' ),
 		 )
