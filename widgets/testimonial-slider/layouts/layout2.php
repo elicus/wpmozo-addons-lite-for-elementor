@@ -53,7 +53,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php if ( 'yes' === $show_opening_quote_icon ): ?>
 			<span class="wpmozo_testimonial_quote_icon wpmozo_testimonial_opening_quote_icon eicon-editor-quote"></span>
 		<?php endif; ?>
-		<?php echo apply_filters( 'the_content', do_shortcode( get_the_content( null, false, $testimonial_id ) ) ); ?>
+		<?php echo wp_kses_post( apply_filters( 'the_content', do_shortcode( get_the_content( null, false, $testimonial_id ) ) ) ); ?>
 		<?php if ( 'yes' === $show_closing_quote_icon ): ?>
 			<span class="wpmozo_testimonial_quote_icon wpmozo_testimonial_closing_quote_icon eicon-editor-quote"></span>
 		<?php endif; ?>

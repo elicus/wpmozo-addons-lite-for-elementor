@@ -152,12 +152,12 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Follow_Button' ) ) {
 			<div class="wpmozo_twitter_follow_button">
 				<div class="wpmozo_twitter_embedded_follow_button">
 					<a class="wpmozo_twitter_embed_follow_button" 
-					href="https://twitter.com/<?php echo $twitter_username; ?>" 
-					data-show-screen-name="<?php echo $show_username; ?>" 
-					data-size="<?php echo $button_size; ?>" 
-					data-dnt="<?php echo $do_not_track; ?>" 
-					data-name="<?php echo $twitter_username; ?>">
-					Follow @<?php echo $twitter_username; ?>
+					href="https://twitter.com/<?php echo esc_attr( $twitter_username ); ?>" 
+					data-show-screen-name="<?php echo esc_attr( $show_username ); ?>" 
+					data-size="<?php echo esc_attr( $button_size ); ?>" 
+					data-dnt="<?php echo esc_attr( $do_not_track ); ?>" 
+					data-name="<?php echo esc_attr( $twitter_username ); ?>">
+					Follow @<?php echo esc_html( $twitter_username ); ?>
 					</a>
 				</div>
 			</div>

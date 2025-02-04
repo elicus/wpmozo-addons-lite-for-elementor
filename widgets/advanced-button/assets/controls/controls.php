@@ -212,6 +212,7 @@ $this->start_controls_section(
                 array( 
                     'label'     => esc_html__( 'Button Alignment', 'wpmozo-addons-lite-for-elementor' ),
                     'type'      => Controls_Manager::CHOOSE,
+                    'separator' => 'before',
                     'options'   => array( 
                         'left' => array( 
                             'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
@@ -484,6 +485,11 @@ $this->start_controls_section(
 			'label'       => esc_html__( 'Button', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::REPEATER,
 			'fields'      => $repeater->get_controls(),
+            'default'     => array( 
+                array( 
+                    'button_text'          => esc_html__( 'Click Here', 'wpmozo-addons-lite-for-elementor' ),
+                 )
+             ),
 			'title_field' => '{{{ button_text }}}',
             ),
 	 );

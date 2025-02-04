@@ -157,13 +157,13 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Tweet_Button' ) ) {
 				<div class="wpmozo_twitter_embedded_tweet_button">
 					<a class="wpmozo_twitter_embed_tweet_button" 
 					   href="https://twitter.com/intent/tweet" 
-					   data-text="<?php echo $custom_text; ?>" 
-					   data-url="<?php echo $custom_url; ?>" 
-					   data-size="<?php echo $button_size; ?>" 
-					   data-dnt="<?php echo $do_not_track; ?>" 
-					   data-hashtags="<?php echo $hashtags; ?>" 
-					   data-via="<?php echo $via; ?>" 
-					   data-related="<?php echo $related; ?>">
+					   data-text="<?php echo esc_attr( $custom_text ); ?>" 
+					   data-url="<?php echo esc_attr( $custom_url ); ?>" 
+					   data-size="<?php echo esc_attr( $button_size ); ?>" 
+					   data-dnt="<?php echo esc_attr( $do_not_track ); ?>" 
+					   data-hashtags="<?php echo esc_attr( $hashtags ); ?>" 
+					   data-via="<?php echo esc_attr( $via ); ?>" 
+					   data-related="<?php echo esc_attr( $related ); ?>">
 						Tweet
 					</a>
 				</div>

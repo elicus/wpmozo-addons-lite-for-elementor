@@ -456,8 +456,7 @@ $this->add_control(
 		'label' 		=> esc_html__( 'Icon Shape Background Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type' 			=> Controls_Manager::COLOR,
 		'selectors' 	=> array(
-			'{{WRAPPER}} .wpmozo_blog_timeline_post .wpmozo_blog_timeline_stem_center' 	=> 'background-color: {{VALUE}}; transition: 300ms;',
-			'{{WRAPPER}} .wpmozo_blog_timeline_post .wpmozo_blog_timeline_stem_center' 	=> 'background-color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_blog_timeline_post .wpmozo_blog_timeline_stem_center' 	=> 'background-color: {{VALUE}}; transition: 300ms;'
 		),
 		'condition' 	=> array(
 			'icon_shape!' 	=> 'none',
@@ -470,8 +469,7 @@ $this->add_control(
 		'label' 		=> esc_html__( 'Icon Shape Background Fill Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type' 			=> Controls_Manager::COLOR,
 		'selectors' 	=> array(
-			'{{WRAPPER}} .wpmozo_blog_timeline_post.wpmozo_icon_fill .wpmozo_blog_timeline_stem_center' 	=> 'background-color: {{VALUE}}; transition: 300ms;',
-			'{{WRAPPER}} .wpmozo_blog_timeline_post.wpmozo_icon_fill .wpmozo_blog_timeline_stem_center' 	=> 'background-color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_blog_timeline_post.wpmozo_icon_fill .wpmozo_blog_timeline_stem_center' 	=> 'background-color: {{VALUE}}; transition: 300ms;'
 		),
 		'condition' 	=> array(
 			'icon_shape!' 	=> 'none',
@@ -484,8 +482,7 @@ $this->add_control(
 		'label' 		=> esc_html__( 'Icon Shape Border Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type' 			=> Controls_Manager::COLOR,
 		'selectors' 	=> array(
-			'{{WRAPPER}} .wpmozo_blog_timeline_post .wpmozo_blog_timeline_stem_center' 	=> 'border-color: {{VALUE}};',
-			'{{WRAPPER}} .wpmozo_blog_timeline_post .wpmozo_blog_timeline_stem_center' 	=> 'border-color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_blog_timeline_post .wpmozo_blog_timeline_stem_center' 	=> 'border-color: {{VALUE}};'
 		),
 		'condition' 	=> array(
 			'icon_shape!' 		=> 'none',
@@ -499,8 +496,7 @@ $this->add_control(
 		'label' 		=> esc_html__( 'Icon Shape Border Fill Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type' 			=> Controls_Manager::COLOR,
 		'selectors' 	=> array(
-			'{{WRAPPER}} .wpmozo_blog_timeline_post.wpmozo_icon_fill .wpmozo_blog_timeline_stem_center' 	=> 'border-color: {{VALUE}};',
-			'{{WRAPPER}} .wpmozo_blog_timeline_post.wpmozo_icon_fill .wpmozo_blog_timeline_stem_center' 	=> 'border-color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_blog_timeline_post.wpmozo_icon_fill .wpmozo_blog_timeline_stem_center' 	=> 'border-color: {{VALUE}};'
 		),
 		'condition' 	=> array(
 			'icon_shape!' 		=> 'none',
@@ -521,8 +517,8 @@ $this->add_control(
 		'label' 		=> esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type' 			=> Controls_Manager::COLOR,
 		'selectors' 	=> array(
-			'{{WRAPPER}} .wpmozo_blog_timeline_post span.timeline_icon:hover' 	=> 'color: {{VALUE}}; transition: 300ms;',
-			'{{WRAPPER}} .wpmozo_blog_timeline_post svg.timeline_icon:hover' => 'color: {{VALUE}}; fill: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_blog_timeline_post .wpmozo_blog_timeline_stem_center:hover span.timeline_icon' 	=> 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_blog_timeline_post .wpmozo_blog_timeline_stem_center:hover svg.timeline_icon' => 'color: {{VALUE}}; fill: {{VALUE}};',
 		),
 	)
 );
@@ -532,8 +528,8 @@ $this->add_control(
 		'label' 	=> esc_html__( 'Icon Fill Color(On Scroll)', 'wpmozo-addons-lite-for-elementor' ),
 		'type' 		=> Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_blog_timeline_post.wpmozo_icon_fill span.timeline_icon:hover' 		=> 'color: {{VALUE}}; transition: 300ms;',
-			'{{WRAPPER}} .wpmozo_blog_timeline_post.wpmozo_icon_fill svg.timeline_icon:hover' 	=> 'color: {{VALUE}}; fill: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_blog_timeline_post.wpmozo_icon_fill .wpmozo_blog_timeline_stem_center:hover span.timeline_icon' 		=> 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_blog_timeline_post.wpmozo_icon_fill .wpmozo_blog_timeline_stem_center:hover svg.timeline_icon' 	=> 'color: {{VALUE}}; fill: {{VALUE}};',
 		),
 	)
 );
@@ -543,8 +539,7 @@ $this->add_control(
 		'label' 	=> esc_html__( 'Icon Shape Background Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type' 		=> Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_blog_timeline_post span.timeline_icon:hover' 	=> 'background-color: {{VALUE}}; transition: 300ms;',
-			'{{WRAPPER}} .wpmozo_blog_timeline_post svg.timeline_icon:hover' => 'background-color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_blog_timeline_post .wpmozo_blog_timeline_stem_center:hover' 	=> 'background-color: {{VALUE}}; transition: 300ms;'
 		),
 		'condition' => array(
 			'icon_shape!' 	=> 'none',
@@ -557,8 +552,7 @@ $this->add_control(
 		'label' 		=> esc_html__( 'Icon Shape Background Fill Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type' 			=> Controls_Manager::COLOR,
 		'selectors' 	=> array(
-			'{{WRAPPER}} .wpmozo_blog_timeline_post.wpmozo_icon_fill span.timeline_icon:hover' 		=> 'background-color: {{VALUE}}; transition: 300ms;',
-			'{{WRAPPER}} .wpmozo_blog_timeline_post.wpmozo_icon_fill svg.timeline_icon:hover' 	=> 'background-color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_blog_timeline_post.wpmozo_icon_fill .wpmozo_blog_timeline_stem_center:hover' => 'background-color: {{VALUE}}; transition: 300ms;'
 		),
 		'condition' 	=> array(
 			'icon_shape!' 	=> 'none',
@@ -571,8 +565,7 @@ $this->add_control(
 		'label' 		=> esc_html__( 'Icon Shape Border Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type' 			=> Controls_Manager::COLOR,
 		'selectors' 	=> array(
-			'{{WRAPPER}} .wpmozo_blog_timeline_post span.timeline_icon:hover' 	=> 'border: {{VALUE}} {{icon_shape_border_size.SIZE}}{{icon_shape_border_size.UNIT}} solid;',
-			'{{WRAPPER}} .wpmozo_blog_timeline_post svg.timeline_icon:hover' => 'border: {{VALUE}} {{icon_shape_border_size.SIZE}}{{icon_shape_border_size.UNIT}} solid;',
+			'{{WRAPPER}} .wpmozo_blog_timeline_post .wpmozo_blog_timeline_stem_center:hover' 	=> 'border-color: {{VALUE}};'
 		),
 		'condition' 	=> array(
 			'icon_shape!' 		=> 'none',
@@ -586,8 +579,7 @@ $this->add_control(
 		'label' 		=> esc_html__( 'Icon Shape Border Fill Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type' 			=> Controls_Manager::COLOR,
 		'selectors' 	=> array(
-			'{{WRAPPER}} .wpmozo_blog_timeline_post.wpmozo_icon_fill span.timeline_icon:hover' 		=> 'border: {{VALUE}} {{icon_shape_border_size.SIZE}}{{icon_shape_border_size.UNIT}} solid;',
-			'{{WRAPPER}} .wpmozo_blog_timeline_post.wpmozo_icon_fill svg.timeline_icon:hover' 	=> 'border: {{VALUE}} {{icon_shape_border_size.SIZE}}{{icon_shape_border_size.UNIT}} solid;',
+			'{{WRAPPER}} .wpmozo_blog_timeline_post.wpmozo_icon_fill .wpmozo_blog_timeline_stem_center:hover' 	=> 'border-color: {{VALUE}};'
 		),
 		'condition' 	=> array(
 			'icon_shape!' 		=> 'none',
@@ -1643,8 +1635,8 @@ $this->add_responsive_control(
 			'show_button_icon' 		=> 'yes',
 		),
 		'selectors' 	=> array(
-			'{{WRAPPER}} .wpmozo_readmore_button svg:hover' => 'fill: {{VALUE}}; transition: 300ms;',
-			'{{WRAPPER}} .wpmozo_readmore_button i:hover' 	=> 'color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_readmore_button:hover svg' => 'fill: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_readmore_button:hover i' 	=> 'color: {{VALUE}}; transition: 300ms;',
 		),
 	)
 );

@@ -161,14 +161,14 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Embedded_Tweet' ) ) {
 			<div class="wpmozo_twitter_embedded_tweet">
 				<div class="wpmozo_twitter_embedded_tweet_wrapper">
 					<blockquote class="wpmozo_tweet" 
-							data-id="<?php echo $tweet_id; ?>" 
-							data-cards="<?php echo $cards; ?>" 
-							data-conversation="<?php echo $conversation; ?>" 
-							data-theme="<?php echo $theme; ?>" 
-							data-dnt="<?php echo $do_not_track; ?>" 
-							data-width="<?php echo $tweet_max_width_value . $tweet_max_width_unit; ?>" 
+							data-id="<?php echo esc_attr( $tweet_id ); ?>" 
+							data-cards="<?php echo esc_attr( $cards ); ?>" 
+							data-conversation="<?php echo esc_attr( $conversation ); ?>" 
+							data-theme="<?php echo esc_attr( $theme ); ?>" 
+							data-dnt="<?php echo esc_attr( $do_not_track ); ?>" 
+							data-width="<?php echo esc_attr( $tweet_max_width_value . $tweet_max_width_unit ); ?>" 
 							role="blockquote">
-						<?php echo $content; ?>
+						<?php echo wp_kses_post( $content ); ?>
 					</blockquote>
 				</div>
     		</div>

@@ -258,41 +258,41 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 			?>
 			<script type="text/javascript">
 				jQuery( function( $ ) {
-					var <?php echo esc_attr( $swiper ); ?>_swiper = new Swiper( '.<?php echo esc_attr( $order_class ); ?> .swiper-container',{
-						slidesPerView: <?php echo $cards_per_view; ?>,
-						autoplay: <?php echo $autoplaySlides; ?>,
+					var <?php echo wp_kses_post( $swiper ); ?>_swiper = new Swiper( '.<?php echo wp_kses_post( $order_class ); ?> .swiper-container',{
+						slidesPerView: <?php echo wp_kses_post( $cards_per_view ); ?>,
+						autoplay: <?php echo wp_kses_post( $autoplaySlides ); ?>,
 						spaceBetween: <?php echo intval( $cards_space_between ); ?>,
-						slidesPerGroup: <?php echo $slidesPerGroup; ?>,
-						slidesPerGroupSkip: <?php echo $slidesPerGroupSkip; ?>,
-						effect: "<?php echo $slide_effect; ?>",
-						cubeEffect: <?php echo $cube; ?>,
-						coverflowEffect: <?php echo $coverflow; ?>,
-						speed: <?php echo $transition_duration; ?>,
-						pagination: <?php echo $dots; ?>,
-						navigation: <?php echo $arrows; ?>,
+						slidesPerGroup: <?php echo wp_kses_post( $slidesPerGroup ); ?>,
+						slidesPerGroupSkip: <?php echo wp_kses_post( $slidesPerGroupSkip ); ?>,
+						effect: "<?php echo wp_kses_post( $slide_effect ); ?>",
+						cubeEffect: <?php echo wp_kses_post( $cube ); ?>,
+						coverflowEffect: <?php echo wp_kses_post( $coverflow ); ?>,
+						speed: <?php echo wp_kses_post( $transition_duration ); ?>,
+						pagination: <?php echo wp_kses_post( $dots ); ?>,
+						navigation: <?php echo wp_kses_post( $arrows ); ?>,
 						grabCursor: 'true',
-						autoHeight: <?php echo 'equal_height' === $equalize_height ? 0 : true; ?>,
+						autoHeight: <?php echo wp_kses_post( 'equal_height' === $equalize_height ? 0 : true ); ?>,
 						observer: true,
 						observeParents: true,
-						loop: <?php echo $loop; ?>,
+						loop: <?php echo wp_kses_post( $loop ); ?>,
 						breakpoints: {
 	                            	981: {
-			                          	slidesPerView: <?php echo  $cards_per_view ; ?>,
+			                          	slidesPerView: <?php echo  wp_kses_post( $cards_per_view ) ; ?>,
 			                          	spaceBetween: <?php echo  intval( $cards_space_between ) ; ?>,
-	                            		slidesPerGroup: <?php echo  $slidesPerGroup ; ?>,
-	                            		slidesPerGroupSkip: <?php echo  $slidesPerGroupSkip ; ?>,
+	                            		slidesPerGroup: <?php echo  wp_kses_post( $slidesPerGroup ) ; ?>,
+	                            		slidesPerGroupSkip: <?php echo  wp_kses_post( $slidesPerGroupSkip ) ; ?>,
 			                        },
 									768: {
-										slidesPerView: <?php echo $cards_per_slide_tablet; ?>,
+										slidesPerView: <?php echo wp_kses_post( $cards_per_slide_tablet ); ?>,
 										spaceBetween: <?php echo intval( $space_between_slides_tablet ); ?>,
-										slidesPerGroup: <?php echo isset( $slides_per_group_tablet ) ? $slides_per_group_tablet : 1; ?>,
-										slidesPerGroupSkip: <?php echo $slidesPerGroupSkip; ?>,
+										slidesPerGroup: <?php echo wp_kses_post( isset( $slides_per_group_tablet ) ? $slides_per_group_tablet : 1 ); ?>,
+										slidesPerGroupSkip: <?php echo wp_kses_post( $slidesPerGroupSkip ); ?>,
 									},
 									0: {
-										slidesPerView: <?php echo $cards_per_slide_mobile; ?>,
+										slidesPerView: <?php echo wp_kses_post( $cards_per_slide_mobile ); ?>,
 										spaceBetween:<?php echo intval( $space_between_slides_mobile ); ?>,
-										slidesPerGroup: <?php echo isset( $slides_per_group_mobile ) ? $slides_per_group_mobile : 1; ?>,
-										slidesPerGroupSkip: <?php echo $slidesPerGroupSkip; ?>,
+										slidesPerGroup: <?php echo wp_kses_post( isset( $slides_per_group_mobile ) ? $slides_per_group_mobile : 1 ); ?>,
+										slidesPerGroupSkip: <?php echo wp_kses_post( $slidesPerGroupSkip ); ?>,
 									},
 			                    },
 					
@@ -301,23 +301,23 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 					<?php
 					if ( 'yes' === $pause_on_hover && 'yes' === $autoplay ) {
 						?>					
-							jQuery( ".<?php echo esc_attr( $order_class ); ?> .swiper-container" ).on( "mouseenter", function( e ) {
-								if ( typeof <?php echo esc_attr( $swiper ); ?>_swiper.autoplay.stop === "function" ) {
-									<?php echo esc_attr( $swiper ); ?>_swiper.autoplay.stop();
+							jQuery( ".<?php echo wp_kses_post( $order_class ); ?> .swiper-container" ).on( "mouseenter", function( e ) {
+								if ( typeof <?php echo wp_kses_post( $swiper ); ?>_swiper.autoplay.stop === "function" ) {
+									<?php echo wp_kses_post( $swiper ); ?>_swiper.autoplay.stop();
 								}
 							} );
 
-							jQuery( ".<?php echo esc_attr( $order_class ); ?> .swiper-container" ).on( "mouseleave", function( e ) {
-								if ( typeof <?php echo esc_attr( $swiper ); ?>_swiper.autoplay.start === "function" ) {
-									<?php echo esc_attr( $swiper ); ?>_swiper.autoplay.start();
+							jQuery( ".<?php echo wp_kses_post( $order_class ); ?> .swiper-container" ).on( "mouseleave", function( e ) {
+								if ( typeof <?php echo wp_kses_post( $swiper ); ?>_swiper.autoplay.start === "function" ) {
+									<?php echo wp_kses_post( $swiper ); ?>_swiper.autoplay.start();
 								}
 							} );					
 						<?php
 					}
 					if ( 'true' !== $loop ) {
 						?>				
-							<?php echo esc_attr( $swiper ); ?>_swiper.on( 'reachEnd', function() {
-								<?php echo esc_attr( $swiper ); ?>_swiper.autoplay = false;
+							<?php echo wp_kses_post( $swiper ); ?>_swiper.on( 'reachEnd', function() {
+								<?php echo wp_kses_post( $swiper ); ?>_swiper.autoplay = false;
 							} );
 						
 						<?php
@@ -414,7 +414,7 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 
 				$control_dot_class = ' ' . $control_dot_style;
 				?> 
-				<div class="wpmozo_swiper_wrapper <?php echo $equal_height; ?>">
+				<div class="wpmozo_swiper_wrapper <?php echo esc_attr( $equal_height ); ?>">
 				<div class="wpmozo_testimonial_layout wpmozo_swiper_inner_wrap <?php echo esc_attr( $testimonial_layout ); ?> <?php echo esc_attr( $equal_height_class ); ?>">
 					<div class="swiper-container">
 					<div class="swiper-wrapper">
@@ -467,7 +467,7 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 						$arrows_position_data .= $this->get_render_attribute_string( 'data-arrow' );
 					}
 					?>
-					<div class="wpmozo_swiper_navigation wpmozo_arrows_<?php echo $arrows_position; ?>" <?php echo  ( !empty( $arrows_position ) ? $arrows_position_data : '' ) ;  ?> >
+					<div class="wpmozo_swiper_navigation wpmozo_arrows_<?php echo esc_html( $arrows_position ); ?>" <?php echo  esc_html( !empty( $arrows_position ) ? $arrows_position_data : '' ) ;  ?> >
 						<?php 
 						if( 'svg' !== $settings[ 'next_slide_arrow' ][ 'library' ] ) {
 							Icons_Manager::render_icon( 
@@ -525,37 +525,37 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 						<?php
 						if ( 'yes' === $show_arrow_on_hover ) {
 							?>
-								.<?php echo $order_class; ?> .wpmozo_swiper_navigation .swiper-button-prev { 
+								.<?php echo esc_attr( $order_class ); ?> .wpmozo_swiper_navigation .swiper-button-prev { 
 									visibility: hidden; 
 									opacity: 0; 
 									transition: all 300ms ease; 
-								} .<?php echo $order_class; ?> .wpmozo_swiper_navigation .swiper-button-next {
+								} .<?php echo esc_attr( $order_class ); ?> .wpmozo_swiper_navigation .swiper-button-next {
 									visibility: hidden; 
 									opacity: 0; 
 									transition: all 300ms ease;
-								} .<?php echo $order_class; ?>:hover .wpmozo_swiper_navigation .swiper-button-prev, 
-								.<?php echo $order_class; ?>:hover .wpmozo_swiper_navigation .swiper-button-next {
+								} .<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_swiper_navigation .swiper-button-prev, 
+								.<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_swiper_navigation .swiper-button-next {
 									visibility: visible;
 									opacity: 1;
-								} .<?php echo $order_class; ?>:hover .wpmozo_swiper_navigation .swiper-button-prev.swiper-button-disabled, .<?php echo $order_class; ?>:hover .wpmozo_swiper_navigation .swiper-button-next.swiper-button-disabled {
+								} .<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_swiper_navigation .swiper-button-prev.swiper-button-disabled, .<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_swiper_navigation .swiper-button-next.swiper-button-disabled {
 									opacity: 0.35;
-								} .<?php echo $order_class; ?> .wpmozo_arrows_outside .swiper-button-prev {
+								} .<?php echo esc_attr( $order_class ); ?> .wpmozo_arrows_outside .swiper-button-prev {
 									left: 50px;
-								} .<?php echo $order_class; ?> .wpmozo_arrows_outside .swiper-button-next {
+								} .<?php echo esc_attr( $order_class ); ?> .wpmozo_arrows_outside .swiper-button-next {
 									right: 50px;
-								} .<?php echo $order_class; ?>:hover .wpmozo_arrows_outside .swiper-button-prev {
+								} .<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_arrows_outside .swiper-button-prev {
 									left: 0;
-								} .<?php echo $order_class; ?>:hover .wpmozo_arrows_outside .swiper-button-next {
+								} .<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_arrows_outside .swiper-button-next {
 									right: 0;
-								} .<?php echo $order_class; ?> .wpmozo_arrows_inside .swiper-button-prev {
+								} .<?php echo esc_attr( $order_class ); ?> .wpmozo_arrows_inside .swiper-button-prev {
 									left: -50px;
-								} .<?php echo $order_class; ?> .wpmozo_arrows_inside .swiper-button-next {
+								} .<?php echo esc_attr( $order_class ); ?> .wpmozo_arrows_inside .swiper-button-next {
 									right: -50px;
-								} .<?php echo $order_class; ?>:hover .wpmozo_arrows_inside .swiper-button-prev {
+								} .<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_arrows_inside .swiper-button-prev {
 									left: 0;
-								} .<?php echo $order_class; ?>:hover .wpmozo_arrows_inside .swiper-button-next {
+								} .<?php echo esc_attr( $order_class ); ?>:hover .wpmozo_arrows_inside .swiper-button-next {
 									right: 0;
-								} .<?php echo $order_class; ?> .wpmozo_arrows_outside:before, .<?php echo $order_class; ?> .wpmozo_arrows_outside:after {
+								} .<?php echo esc_attr( $order_class ); ?> .wpmozo_arrows_outside:before, .<?php echo esc_attr( $order_class ); ?> .wpmozo_arrows_outside:after {
 									content: '';
 									position: absolute;
 									top: 0;

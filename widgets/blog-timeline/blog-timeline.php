@@ -260,7 +260,7 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 					<div class="wpmozo_blog_timeline_content_wrapper icon_<?php echo esc_attr( $settings[ 'button_icon_placement' ] ); ?>">
 						<?php if ( 'layout1' === $settings[ 'timeline_layout' ] && 'yes' === $settings[ 'show_date' ] ) : ?>
 							<div class="wpmozo_blog_timeline_meta_date">
-								<span class="published"><?php if ( $settings[ 'meta_date' ] ) : echo date_i18n( $settings[ 'meta_date' ], get_the_time( 'U' ) );
+								<span class="published"><?php if ( $settings[ 'meta_date' ] ) : echo esc_html( date_i18n( $settings[ 'meta_date' ], get_the_time( 'U' ) ) );
 														endif; ?></span>
 							</div>
 						<?php endif; ?>
@@ -288,9 +288,9 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 						</div>
 						<div class="wpmozo_blog_timeline_post_content_inner">
 							<?php if ( 'excerpt' === $settings[ 'show_content' ] ) { ?>
-								<p><?php echo wp_trim_words( get_the_content(), $settings[ 'excerpt_length' ] ); ?></p>
+								<p><?php echo wp_kses_post( wp_trim_words( get_the_content(), $settings[ 'excerpt_length' ] ) ); ?></p>
 							<?php } else {
-								echo get_the_content();
+								echo wp_kses_post( get_the_content() );
 							} ?>
 						</div>
 						<?php if ( $settings[ 'show_more' ] ) : ?>
@@ -307,7 +307,7 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 				<div class="wpmozo_blog_timeline_outer_container">
 					<?php if ( 'layout2' === $settings[ 'timeline_layout' ] && 'yes' === $settings[ 'show_date' ] ) : ?>
 						<div class="wpmozo_blog_timeline_meta_date">
-							<span class="published"><?php if ( $settings[ 'meta_date' ] ) : echo date_i18n( $settings[ 'meta_date' ], get_the_time( 'U' ) );
+							<span class="published"><?php if ( $settings[ 'meta_date' ] ) : echo esc_html( date_i18n( $settings[ 'meta_date' ], get_the_time( 'U' ) ) );
 													endif; ?></span>
 						</div>
 					<?php endif; ?>

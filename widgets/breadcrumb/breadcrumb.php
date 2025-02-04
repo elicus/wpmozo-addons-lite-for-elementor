@@ -193,7 +193,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 						            if ( $index == 0 && !empty( $home_link_text ) ) {
 						                // This is the first <li>, include the home link icon
 						                ?>
-						                <li style="opacity: <?php echo $current_opacity; ?>;">
+						                <li style="opacity: <?php echo esc_attr( $current_opacity ); ?>;">
 						                    <a <?php $this->print_render_attribute_string( 'breadcrumb_item' ); ?>>
 						                        <span class="breadcrumb_page">
 						                        	<span class="breadcrumb_home_icon">
@@ -207,7 +207,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 							                    	<?php if( !empty( $separator_icon ) ){ 
 							                    		Icons_Manager::render_icon( $separator_icon, [ 'aria-hidden' => 'true', 'class' => 'wpmozo_separator_icon' ] ); 
 							                    	} else { 
-							                    		echo $separator; 
+							                    		echo esc_html( $separator ); 
 							                    	} ?>
 							                    </span>
 						                	<?php } ?>
@@ -216,7 +216,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 						            } elseif ( $index == 0 && !empty( $home_link_icon ) ) {
 						                // This is the first <li>, include the home link icon
 						                ?>
-						                <li style="opacity: <?php echo $current_opacity; ?>;">
+						                <li style="opacity: <?php echo esc_attr( $current_opacity ); ?>;">
 						                    <a <?php $this->print_render_attribute_string( 'breadcrumb_item' ); ?>>
 						                        <span class="breadcrumb_page">
 						                        	<span class="breadcrumb_home_icon">
@@ -230,7 +230,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 							                    	<?php if( !empty( $separator_icon ) ){ 
 							                    		Icons_Manager::render_icon( $separator_icon, [ 'aria-hidden' => 'true', 'class' => 'wpmozo_separator_icon' ] ); 
 							                    	} else{ 
-							                    		echo $separator; 
+							                    		echo esc_html( $separator ); 
 							                    	} ?>
 							                    </span>
 						                	<?php } ?>
@@ -239,7 +239,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 						            } else {
 						                // For other <li>s, render without the icon
 						                ?>
-						                <li style="opacity: <?php echo $current_opacity; ?>;">
+						                <li style="opacity: <?php echo esc_attr( $current_opacity ); ?>;">
 						                    <a <?php $this->print_render_attribute_string( 'breadcrumb_item' ); ?>>
 						                        <span class="breadcrumb_page">
 						                        	<?php echo esc_html( get_the_title( $page ) ); ?>
@@ -250,7 +250,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 							                    	<?php if( !empty( $separator_icon ) ){ 
 							                    		Icons_Manager::render_icon( $separator_icon, [ 'aria-hidden' => 'true', 'class' => 'wpmozo_separator_icon' ] ); 
 							                    	} else{ 
-							                    		echo $separator; 
+							                    		echo esc_html( $separator ); 
 							                    	} ?>
 						                    	</span>
 					                    	<?php } ?>
@@ -262,7 +262,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 
 						    // Add current page ( last page )
 						    ?>
-						    <li style="opacity: <?php echo $current_opacity; ?>;">
+						    <li style="opacity: <?php echo esc_attr( $current_opacity ); ?>;">
 						        <a class="breadcrumb_item wpmozo_last_page">
 						            <span class="breadcrumb_page wpmozo_breadcrumb_last_page">
 						            	<?php echo esc_html( get_the_title( $post ) ); ?>
