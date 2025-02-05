@@ -415,7 +415,7 @@ if ( ! class_exists( 'WPMOZO_AE_Logo_Slider' ) ) {
 							$arrows_position_data .= $this->get_render_attribute_string( 'data-arrow' );
 					}
 					?>
-					<div class="wpmozo_swiper_navigation" <?php echo  esc_html( !empty( $arrows_position ) ? $arrows_position_data : '' ) ; ?> >
+					<div class="wpmozo_swiper_navigation" <?php echo  wp_kses_post( !empty( $arrows_position ) ? $arrows_position_data : '' ) ; ?> >
 						<?php 
 						if( 'svg' !== $settings[ 'next_slide_arrow' ][ 'library' ] ) {
 							Icons_Manager::render_icon( 

@@ -294,13 +294,6 @@ $this->start_controls_section(
 					'selector' => '{{WRAPPER}} .wpmozo_ae_pre_text',
 				 )
 			 );
-			$this->add_control( 
-				'pre_normal_tab_divider',
-				array( 
-					'type'  => Controls_Manager::DIVIDER,
-					'style' => 'thin',
-				 )
-			 );
 			$this->add_group_control( 
 				Group_Control_Text_Shadow::get_type(),
 				array( 
@@ -338,13 +331,6 @@ $this->start_controls_section(
 					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
 					'types'    => array( 'classic', 'gradient' ),
 					'selector' => '{{WRAPPER}} .wpmozo_ae_pre_text:hover',
-				 )
-			 );
-			$this->add_control( 
-				'pre_hover_tab_divider',
-				array( 
-					'type'  => Controls_Manager::DIVIDER,
-					'style' => 'thin',
 				 )
 			 );
 			$this->add_group_control( 
@@ -520,13 +506,6 @@ $this->start_controls_section(
 					'selector' => '{{WRAPPER}} .wpmozo_ae_main_text',
 				 )
 			 );
-			$this->add_control( 
-				'main_normal_tab_divider',
-				array( 
-					'type'  => Controls_Manager::DIVIDER,
-					'style' => 'thin',
-				 )
-			 );
 			$this->add_group_control( 
 				Group_Control_Text_Shadow::get_type(),
 				array( 
@@ -564,13 +543,6 @@ $this->start_controls_section(
 					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
 					'types'    => array( 'classic', 'gradient' ),
 					'selector' => '{{WRAPPER}} .wpmozo_ae_main_text:hover',
-				 )
-			 );
-			$this->add_control( 
-				'main_hover_tab_divider',
-				array( 
-					'type'  => Controls_Manager::DIVIDER,
-					'style' => 'thin',
 				 )
 			 );
 			$this->add_group_control( 
@@ -749,13 +721,6 @@ $this->start_controls_section(
 					'selector' => '{{WRAPPER}} .wpmozo_ae_post_text',
 				 )
 			 );
-			$this->add_control( 
-				'post_normal_tab_divider',
-				array( 
-					'type'  => Controls_Manager::DIVIDER,
-					'style' => 'thin',
-				 )
-			 );
 			$this->add_group_control( 
 				Group_Control_Text_Shadow::get_type(),
 				array( 
@@ -793,13 +758,6 @@ $this->start_controls_section(
 					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
 					'types'    => array( 'classic', 'gradient' ),
 					'selector' => '{{WRAPPER}} .wpmozo_ae_post_text:hover',
-				 )
-			 );
-			$this->add_control( 
-				'post_hover_tab_divider',
-				array( 
-					'type'  => Controls_Manager::DIVIDER,
-					'style' => 'thin',
 				 )
 			 );
 			$this->add_group_control( 

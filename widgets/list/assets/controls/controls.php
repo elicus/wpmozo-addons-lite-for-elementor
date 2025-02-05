@@ -68,8 +68,9 @@ $repeater->add_control(
 	array(
 		'label'   => esc_html__( 'Item Thumbnail', 'wpmozo-addons-lite-for-elementor' ),
 		'type'    => Controls_Manager::MEDIA,
-		'default' => array(
-			'url' => ' ',
+		'default' => array( 
+			'url' => Utils::get_placeholder_image_src(),
+			'id'  => 'thisistheimage',
 		),
 		'condition' => array(
 			'wpmozo_thumbnail_type' => array( 'use_image' ),

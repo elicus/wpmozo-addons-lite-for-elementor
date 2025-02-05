@@ -553,8 +553,9 @@ $this->start_controls_section( 'descriptoin_text_styling',
 $this->end_controls_section();
 $this->start_controls_section( 'rating_number_styling',
 	array( 
-		'label' => esc_html__( 'Rating Number', 'wpmozo-addons-lite-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_STYLE,
+		'label'     => esc_html__( 'Rating Number', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'       => Controls_Manager::TAB_STYLE,
+		'condition' => array( 'show_rating_number_switcher' => 'yes' ),
 	 )
  );
 	$this->add_responsive_control( 'rating_number_underline_text_decoration',

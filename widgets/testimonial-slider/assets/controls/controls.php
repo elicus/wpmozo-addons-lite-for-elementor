@@ -667,11 +667,68 @@ $this->start_controls_section( 'body_style_sec',
     );
 $this->end_controls_section();
 
+/* Style rating style controls start here */
+$this->start_controls_section( 'star_rating_style_sec',
+    array( 
+        'label'     => esc_html__( 'Star Rating', 'wpmozo-addons-lite-for-elementor' ),
+        'tab'       => Controls_Manager::TAB_STYLE,
+        'condition' => array( 'show_rating' => 'yes' ),
+    )
+);
+    $this->add_responsive_control( 
+        'star_font_size',
+        array( 
+            'label'      => esc_html__( 'Star Font Size', 'wpmozo-addons-lite-for-elementor' ),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => array( 'px' ),
+            'range'      => array( 
+                'px' => array( 
+                    'min'  => 10,
+                    'max'  => 100,
+                    'step' => 10,
+                ),
+            ),
+            'default' => array( 
+                'unit' => 'px',
+                'size' => 24,
+            ),
+            'selectors'    =>  array( 
+                '{{WRAPPER}} .wpmozo_testimonial_rating .wpmozo_testimonial_star' => 'font-size: {{SIZE}}{{UNIT}};',
+            ),
+        )
+    );
+    $this->add_responsive_control( 
+        'filled_star_color',
+        array( 
+            'label'       => esc_html__( 'Filled Star Color', 'wpmozo-addons-lite-for-elementor' ),
+            'label_block' => false,
+            'type'        => Controls_Manager::COLOR,
+            'default'     => '',
+            'selectors'   => array( 
+                '{{WRAPPER}} .wpmozo_testimonial_rating .wpmozo_testimonial_filled_star, {{WRAPPER}} .wpmozo_testimonial_rating .wpmozo_testimonial_half_filled_star' => 'color: {{VALUE}};',
+            ),
+        )
+    );
+    $this->add_responsive_control( 
+        'empty_star_color',
+        array( 
+            'label'       => esc_html__( 'Empty Star Color', 'wpmozo-addons-lite-for-elementor' ),
+            'label_block' => false,
+            'type'        => Controls_Manager::COLOR,
+            'default'     => '',
+            'selectors'   => array( 
+                '{{WRAPPER}} .wpmozo_testimonial_rating .wpmozo_testimonial_empty_star' => 'color: {{VALUE}};',
+            ),
+        )
+    );
+$this->end_controls_section();
+
 /* Author style controls start here */
 $this->start_controls_section( 'author_style_sec',
     array( 
-        'label' => esc_html__( 'Author', 'wpmozo-addons-lite-for-elementor' ),
-        'tab' => Controls_Manager::TAB_STYLE,
+        'label'     => esc_html__( 'Author', 'wpmozo-addons-lite-for-elementor' ),
+        'tab'       => Controls_Manager::TAB_STYLE,
+        'condition' => array( 'show_author_image' => 'yes' ),
     )
 );
     $this->add_control(
@@ -925,61 +982,6 @@ $this->start_controls_section( 'author_style_sec',
         array( 
             'name' => 'company_text_shadow',
             'selector' => '{{WRAPPER}} .wpmozo_testimonial_author_company, {{WRAPPER}} .wpmozo_testimonial_author_company a',
-        )
-    );
-$this->end_controls_section();
-
-/* Style rating style controls start here */
-$this->start_controls_section( 'star_rating_style_sec',
-    array( 
-        'label' => esc_html__( 'Star Rating', 'wpmozo-addons-lite-for-elementor' ),
-        'tab' => Controls_Manager::TAB_STYLE,
-    )
-);
-    $this->add_responsive_control( 
-        'star_font_size',
-        array( 
-            'label'      => esc_html__( 'Star Font Size', 'wpmozo-addons-lite-for-elementor' ),
-            'type'       => Controls_Manager::SLIDER,
-            'size_units' => array( 'px' ),
-            'range'      => array( 
-                'px' => array( 
-                    'min'  => 10,
-                    'max'  => 100,
-                    'step' => 10,
-                ),
-            ),
-            'default' => array( 
-                'unit' => 'px',
-                'size' => 24,
-            ),
-            'selectors'    =>  array( 
-                '{{WRAPPER}} .wpmozo_testimonial_rating .wpmozo_testimonial_star' => 'font-size: {{SIZE}}{{UNIT}};',
-            ),
-        )
-    );
-    $this->add_responsive_control( 
-        'filled_star_color',
-        array( 
-            'label'       => esc_html__( 'Filled Star Color', 'wpmozo-addons-lite-for-elementor' ),
-            'label_block' => false,
-            'type'        => Controls_Manager::COLOR,
-            'default'     => '',
-            'selectors'   => array( 
-                '{{WRAPPER}} .wpmozo_testimonial_rating .wpmozo_testimonial_filled_star, {{WRAPPER}} .wpmozo_testimonial_rating .wpmozo_testimonial_half_filled_star' => 'color: {{VALUE}};',
-            ),
-        )
-    );
-    $this->add_responsive_control( 
-        'empty_star_color',
-        array( 
-            'label'       => esc_html__( 'Empty Star Color', 'wpmozo-addons-lite-for-elementor' ),
-            'label_block' => false,
-            'type'        => Controls_Manager::COLOR,
-            'default'     => '',
-            'selectors'   => array( 
-                '{{WRAPPER}} .wpmozo_testimonial_rating .wpmozo_testimonial_empty_star' => 'color: {{VALUE}};',
-            ),
         )
     );
 $this->end_controls_section();

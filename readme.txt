@@ -207,7 +207,24 @@ Do you like our plugin?
 - Rate us on [WordPress](https://wordpress.org/support/plugin/wpmozo-product-carousel-for-woocommerce/reviews/?rate=5#new-post "Rate our plugin").
 
 == Screenshots ==
-1. Main image of the plugin
+1. The WPMozo Addons Lite for Elementor plugin.
+2. Masonry gallery widget for Elementor.
+3. Instagram widget for Elementor.
+4. Gravity Forms styler for Elementor.
+5. Pricing table widget.
+6. WooCommerce product grid widget for Elementor.
+7. Timeline widget for Elementor.
+8. Flipbox widget for Elementor.
+9. Image hostspot widget for Elementor.
+10. Ajax search widget for Elementor.
+11. Content toggle and switch for Elementor.
+12. Bar counter widget for Elementor.
+13. Fancy text widget for Elementor.
+14. Advanced blog widget for Elementor.
+15. Modal popup widget for Elementor.
+16. Before after image slider widget for Elementor.
+17. Image magnifier widget for Elementor.
+18. Star rating widget for Elementor.
 
 == Frequently Asked Questions ==
 = How do I install WPMozo Addons Lite for Elementor? =
@@ -253,7 +270,7 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
-2025-02-04 - Version 1.4.0
+2025-02-05 - Version 1.4.0
 - NEW: New widget Price List.
 - NEW: New widget Facebook Like.
 - NEW: New widget Facebook Share.

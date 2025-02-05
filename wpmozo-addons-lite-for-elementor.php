@@ -14,8 +14,8 @@
  * Domain Path: /languages
  * Requires at least: 5.3
  * Tested up to: 6.7
- * Elementor tested up to: 3.27.2
- * Elementor Pro tested up to: 3.27.1
+ * Elementor tested up to: 3.27.3
+ * Elementor Pro tested up to: 3.27.2
  *
  * WPMozo Addons Lite for Elementor - A plugin for WordPress and Elementor.
  * Copyright © 2025 Elicus Technologies Private Limited

@@ -9,7 +9,7 @@ jQuery(window).on("elementor/frontend/init", function () {
                 const isEditorMode = !!window.elementorFrontend?.isEditMode();
                 if (isEditorMode) {
                     // Editor-specific logic
-                    jQuery.getScript('https://connect.facebook.net/en_US/sdk.js?xfbml=1&version=v12.0', function () {
+                    jQuery.getScript('https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0', function () {
                         if (typeof FB !== 'undefined' && FB.XFBML && FB.XFBML.parse) {
                             FB.XFBML.parse();
                         }

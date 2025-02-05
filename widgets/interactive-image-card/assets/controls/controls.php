@@ -259,7 +259,7 @@ $this->start_controls_section(
 		$this->start_controls_tab( 
 			'overlay_hover_state_tab',
 			array( 
-				'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
+				'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
 			 )
 		 );
 			$this->add_group_control( 

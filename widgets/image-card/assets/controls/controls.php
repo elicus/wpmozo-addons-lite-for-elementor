@@ -647,7 +647,7 @@ $this->start_controls_section(
 		'icon_color',
 		array( 
 			'label'       => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
-			'label_block' => true,
+			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '',
 			'selectors'   => array( 
@@ -775,7 +775,7 @@ $this->start_controls_section(
 		'icon_border_color',
 		array( 
 			'label'       => esc_html__( 'Border Color', 'wpmozo-addons-lite-for-elementor' ),
-			'label_block' => true,
+			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '',
 			'selectors'   => array( 

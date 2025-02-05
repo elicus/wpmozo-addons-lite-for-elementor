@@ -288,7 +288,7 @@ $this->start_controls_section( 'thumbnail_styling',
 				'size' 	=> 100,
 			),
 			'selectors' 	=> array(
-				'{{WRAPPER}} .wpmozo_price_list_item_thumbnail img' => 'width: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+				'{{WRAPPER}} .wpmozo_price_list_item_thumbnail img' => 'width: {{SIZE}}{{UNIT}};',
 			),
 		)
 	);
@@ -327,7 +327,7 @@ $this->start_controls_section( 'thumbnail_styling',
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => array( 'px', 'em', '%' ),
 			'selectors'  => array( 
-				"{{WRAPPER}} .wpmozo_price_list_item_thumbnail img" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; transition: all 300ms;',
+				"{{WRAPPER}} .wpmozo_price_list_item_thumbnail img" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			),
 		)
 	);
