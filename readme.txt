@@ -2,8 +2,8 @@
 Contributors: elicus
 Tags: elementor, page builder, addons, elementor extension, elementor addon
 Requires at least: 5.3
-Tested up to: 6.7.1
-Stable tag: 1.4.0
+Tested up to: 6.8
+Stable tag: 1.5.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,13 +15,25 @@ A feature-packed plugin designed to complement your Elementor page-building expe
 
 ### [View Demo](https://wpmozoaddons.com "View Demo")
 ## Key Features of the Plugin
-- **33 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
+- **37 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
 - **Enhanced Design Options**: Customize your website design with intuitive controls and a wide array of styling options.
 - **Interactive Elements**: Engage your audience with interactive elements like Interactive Image Card, Flip Box, and Fancy Text.
 - **Responsive and Lightweight**: Ensure a seamless user experience across all devices without compromising on performance.
 
 
 ## Widgets Included in WPMozo Addons Lite for Elementor
+- ### [Image Stack](https://wpmozoaddons.com/elementor-image-stack/ "Elementor Image Stack")
+.
+
+- ### [Background Switcher](https://wpmozoaddons.com/elementor-background-switcher/ "Elementor Background Switcher")
+.
+
+- ### [Mystery Image](https://wpmozoaddons.com/elementor-mystery-image/ "Elementor Mystery Image")
+.
+
+- ### [Promotion Bar](https://wpmozoaddons.com/elementor-promotion-bar/ "Elementor Promotion Bar")
+.
+
 - ### [Before After Slider](https://wpmozoaddons.com/elementor-before-and-after-slider/ "Elementor Before After Slider")
 Display a before and after version of any element in form of images using the before after image slider for Elementor.
 
@@ -270,11 +282,10 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
-2025-02-05 - Version 1.4.0
-- NEW: New widget Price List.
-- NEW: New widget Facebook Like.
-- NEW: New widget Facebook Share.
-- NEW: New widget Facebook Comments.
-- NEW: New widget Facebook Embedded Video.
+2025-02-05 - Version 1.5.0
+- NEW: New widget Promotion Bar.
+- NEW: New widget Mystery Image.
+- NEW: New widget Background Switcher.
+- NEW: New widget Image Stack.
 
 [See changelog for all versions](https://plugins.svn.wordpress.org/wpmozo-addons-lite-for-elementor/trunk/changelog.txt).

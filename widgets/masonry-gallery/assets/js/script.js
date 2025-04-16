@@ -13,10 +13,11 @@ jQuery( window ).on(
 					this.change();
 				},
 				change: function () {
-					0 < jQuery( "body" ).find( ".elementor-widget-wpmozo_ae_masonry_gallery > .elementor-widget-container" ).length &&
-					jQuery( ".elementor-widget-wpmozo_ae_masonry_gallery > .elementor-widget-container" ).each( 
+					$this = this.$element;
+					0 < $this.length &&
+					$this.each( 
 						function () {
-							let t = jQuery( this ).find( ".wpmozo_ae_masonry_gallery_wrapper" );
+							let t = $this.find( ".wpmozo_ae_masonry_gallery_wrapper" );
 							t.find( ".wpmozo_ae_masonry_gallery_item" ).hasClass( "wpmozo_ae_masonry_gallery_item_with_lightbox" ) &&
 							( ( e = "elementor-element-" + t.closest( ".elementor-widget-wpmozo_ae_masonry_gallery" ).data( "id" ) ),
 							t.magnificPopup( 

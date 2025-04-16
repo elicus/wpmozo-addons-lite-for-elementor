@@ -259,7 +259,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 						            } 
 						        }
 						    }
-
+						    $current_opacity = $opacity;
 						    // Add current page ( last page )
 						    ?>
 						    <li style="opacity: <?php echo esc_attr( $current_opacity ); ?>;">

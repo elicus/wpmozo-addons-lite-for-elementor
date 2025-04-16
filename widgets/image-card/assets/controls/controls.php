@@ -566,7 +566,7 @@ $this->start_controls_section(
 		array( 
 			'name'     => 'image_border',
 			'label'    => esc_html__( 'Border', 'wpmozo-addons-lite-for-elementor' ),
-			'selector' => 'div.wpmozo_ae_image_card_wrapper_inner img',
+			'selector' => '{{WRAPPER}} div.wpmozo_ae_image_card_wrapper_inner img',
 		 )
 	 );
 	$this->add_responsive_control( 
@@ -576,7 +576,7 @@ $this->start_controls_section(
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => array( 'px', 'em', '%' ),
 			'selectors'  => array( 
-				'div.wpmozo_ae_image_card_wrapper_inner img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'{{WRAPPER}} div.wpmozo_ae_image_card_wrapper_inner img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			 ),
 		 )
 	 );
