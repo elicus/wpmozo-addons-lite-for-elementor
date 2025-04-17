@@ -132,7 +132,7 @@ $this->add_responsive_control(
 		'type'        => Controls_Manager::COLOR,
 		'default'     => '#0000006E',
 		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_mystery_image_overlay:hover:before' => 'opacity: 1;  background-color:{{VALUE}};',
+			'{{WRAPPER}} .wpmozo_mystery_image_overlay:before' => 'background-color:{{VALUE}};',
 		),
 		'condition'   => array( 'enable_overlay' => 'yes' ),
 	)

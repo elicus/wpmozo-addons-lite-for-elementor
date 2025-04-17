@@ -29,16 +29,14 @@
 .elementor-widget-wpmozo_ae_background_switcher .wpmozo_bg_switcher_content{
 	padding: 20px;
 }
-.elementor-widget-wpmozo_ae_background_switcher .wpmozo_background_switcher_item .wpmozo_bg_switcher_item_wrap .wpmozo_bg_switcher_content .wpmozo_bg_switcher_hover_content{
+/*.elementor-widget-wpmozo_ae_background_switcher .wpmozo_background_switcher_item .wpmozo_bg_switcher_item_wrap .wpmozo_bg_switcher_content .wpmozo_bg_switcher_hover_content{
+	margin-bottom:-100%;
+}*/
+.elementor-widget-wpmozo_ae_background_switcher .wpmozo_background_switcher_item .hover_content_wrapper{
+	outline: 1px solid blueviolet;
+	height: fit-content;
 	overflow: hidden;
-	transform-origin: bottom;
-	transition: 300ms;
-	max-height: 0px;
 }
-.elementor-widget-wpmozo_ae_background_switcher .wpmozo_background_switcher_item:hover .wpmozo_bg_switcher_hover_content{
-	overflow: auto;
-}
-
 .elementor-widget-wpmozo_ae_background_switcher .wpmozo_background_switcher_image{
 	position: absolute;
     top: 0;

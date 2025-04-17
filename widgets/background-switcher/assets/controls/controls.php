@@ -145,9 +145,14 @@ $this->add_responsive_control(
 			'center'     => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
 			'flex-end'   => esc_html__( 'Bottom', 'wpmozo-addons-for-elementor' ),
 		),
+		'prefix_class' => 'content-align-',
 		'default'     => 'flex-end',
 		'selectors'   => array(
 			'{{WRAPPER}} .wpmozo_bg_switcher_item_wrap' => 'justify-content: {{VALUE}};',
+			'{{WRAPPER}}.content-align-flex-start .hover_content_wrapper .wpmozo_bg_switcher_hover_content, {{WRAPPER}}.content-align-center .hover_content_wrapper .wpmozo_bg_switcher_hover_content' => 'margin-top: -100%;',
+			'{{WRAPPER}}.content-align-flex-start .wpmozo_background_switcher_item:hover .hover_content_wrapper .wpmozo_bg_switcher_hover_content, {{WRAPPER}}.content-align-center .wpmozo_background_switcher_item:hover .hover_content_wrapper .wpmozo_bg_switcher_hover_content' => 'margin-top: 0%;',
+			'{{WRAPPER}}.content-align-flex-end .hover_content_wrapper .wpmozo_bg_switcher_hover_content' => 'margin-bottom: -100%;',
+			'{{WRAPPER}}.content-align-flex-end .wpmozo_background_switcher_item:hover .hover_content_wrapper .wpmozo_bg_switcher_hover_content' => 'margin-bottom: 0%;',
 		),
 	)
 );
@@ -234,7 +239,7 @@ $this->add_responsive_control(
 			'unit' => 'ms',
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_background_switcher_item .wpmozo_bg_switcher_item_wrap .wpmozo_bg_switcher_content .wpmozo_bg_switcher_hover_content, {{WRAPPER}} .wpmozo_background_switcher_image' => 'transition: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_background_switcher_item .wpmozo_bg_switcher_item_wrap .wpmozo_bg_switcher_content .wpmozo_bg_switcher_hover_content, {{WRAPPER}} .wpmozo_background_switcher_image' => 'transition: all {{SIZE}}{{UNIT}};',
 		),
 	)
 );

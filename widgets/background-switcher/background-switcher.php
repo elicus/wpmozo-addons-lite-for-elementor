@@ -159,9 +159,12 @@ if ( ! class_exists( 'WPMOZO_AE_Background_Switcher' ) ) {
 								<div class="wpmozo_bg_switcher_item_wrap">
 									<div class="wpmozo_bg_switcher_content">
 										<<?php echo esc_attr( $title_heading_level ); ?> class="wpmozo_bg_switcher_title"><?php echo esc_html( $background_item['item_title'] ); ?></<?php echo esc_attr( $title_heading_level ); ?>>
-										<div class="wpmozo_bg_switcher_hover_content">
-											<div class="wpmozo_bg_switcher_desc"><?php echo esc_html( $background_item['item_description'] ); ?></div>
-										<?php if ( 'yes' === $background_item['show_button'] && '' !== $background_item['button_url'] && '' !== $background_item['button_text'] ) : ?>
+										<div class="hover_content_wrapper">
+											<div class="wpmozo_bg_switcher_hover_content">
+												<div class="wpmozo_bg_switcher_desc">
+													<?php echo esc_html( $background_item['item_description'] ); ?>
+												</div>
+												<?php if ( 'yes' === $background_item['show_button'] && '' !== $background_item['button_url'] && '' !== $background_item['button_text'] ) : ?>
 												<div class="wpmozo_background_switcher_btn_wrap">
 													<div class="wpmozo_read_more_button_wrapper">
 														<a class="wpmozo_read_more_button" href="<?php echo esc_url( $background_item['button_url']['url'] ); ?>">
@@ -178,7 +181,8 @@ if ( ! class_exists( 'WPMOZO_AE_Background_Switcher' ) ) {
 														</a>
 													</div>
 												</div>
-											<?php endif; ?>
+												<?php endif; ?>
+											</div>
 										</div>
 									</div>
 								</div>

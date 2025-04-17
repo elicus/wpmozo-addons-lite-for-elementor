@@ -97,7 +97,7 @@ if ( ! class_exists( 'WPMOZO_AE_Mystery_Image' ) ) {
 		 */
 		public function get_style_depends() {
 
-			wp_register_style( 'wpmozo-ae-mystery-image-style', plugins_url( 'assets/css/style.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+			wp_register_style( 'wpmozo-ae-mystery-image-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 			return array( 'wpmozo-ae-mystery-image-style', 'wpmozo-ae-mfp-style' );
 		}
 
