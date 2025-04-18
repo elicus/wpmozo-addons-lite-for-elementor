@@ -147,11 +147,12 @@ if ( ! class_exists( 'WPMOZO_AE_Background_Switcher' ) ) {
 			$settings            = $this->get_settings_for_display();
 			$background_items    = isset( $settings['background_item'] ) ? $settings['background_item'] : array();
 			$title_heading_level = wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
+			$transition          = isset( $settings['transition_duration']['size'] ) && !empty( $settings['transition_duration']['size'] ) ? $settings['transition_duration']['size'] : 300;
 
 			?>
 			<div class="wpmozo_background_switcher">
 					<div class="wpmozo_background_switcher_wrap">
-						<div class="wpmozo_background_switcher_inner">
+						<div class="wpmozo_background_switcher_inner" data-transition="<?php echo esc_attr($transition); ?>">
 						<?php
 						foreach ( $background_items as $index => $background_item ) {
 							?>
@@ -159,30 +160,28 @@ if ( ! class_exists( 'WPMOZO_AE_Background_Switcher' ) ) {
 								<div class="wpmozo_bg_switcher_item_wrap">
 									<div class="wpmozo_bg_switcher_content">
 										<<?php echo esc_attr( $title_heading_level ); ?> class="wpmozo_bg_switcher_title"><?php echo esc_html( $background_item['item_title'] ); ?></<?php echo esc_attr( $title_heading_level ); ?>>
-										<div class="hover_content_wrapper">
-											<div class="wpmozo_bg_switcher_hover_content">
-												<div class="wpmozo_bg_switcher_desc">
-													<?php echo esc_html( $background_item['item_description'] ); ?>
-												</div>
-												<?php if ( 'yes' === $background_item['show_button'] && '' !== $background_item['button_url'] && '' !== $background_item['button_text'] ) : ?>
-												<div class="wpmozo_background_switcher_btn_wrap">
-													<div class="wpmozo_read_more_button_wrapper">
-														<a class="wpmozo_read_more_button" href="<?php echo esc_url( $background_item['button_url']['url'] ); ?>">
-															<span class="wpmozo_button_text"><?php echo esc_html( $background_item['button_text'] ); ?></span>
-															<?php
-															\Elementor\Icons_Manager::render_icon(
-																$settings['button_icon'],
-																array(
-																	'aria-hidden' => 'true',
-																	'class'       => 'wpmozo_button_icon',
-																)
-															);
-															?>
-														</a>
-													</div>
-												</div>
-												<?php endif; ?>
+										<div class="wpmozo_bg_switcher_hover_content">
+											<div class="wpmozo_bg_switcher_desc">
+												<?php echo esc_html( $background_item['item_description'] ); ?>
 											</div>
+											<?php if ( 'yes' === $background_item['show_button'] && '' !== $background_item['button_url'] && '' !== $background_item['button_text'] ) : ?>
+											<div class="wpmozo_background_switcher_btn_wrap">
+												<div class="wpmozo_read_more_button_wrapper">
+													<a class="wpmozo_read_more_button" href="<?php echo esc_url( $background_item['button_url']['url'] ); ?>">
+														<span class="wpmozo_button_text"><?php echo esc_html( $background_item['button_text'] ); ?></span>
+														<?php
+														\Elementor\Icons_Manager::render_icon(
+															$settings['button_icon'],
+															array(
+																'aria-hidden' => 'true',
+																'class'       => 'wpmozo_button_icon',
+															)
+														);
+														?>
+													</a>
+												</div>
+											</div>
+											<?php endif; ?>
 										</div>
 									</div>
 								</div>

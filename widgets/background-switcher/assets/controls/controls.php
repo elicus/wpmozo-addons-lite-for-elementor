@@ -145,14 +145,9 @@ $this->add_responsive_control(
 			'center'     => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
 			'flex-end'   => esc_html__( 'Bottom', 'wpmozo-addons-for-elementor' ),
 		),
-		'prefix_class' => 'content-align-',
 		'default'     => 'flex-end',
 		'selectors'   => array(
 			'{{WRAPPER}} .wpmozo_bg_switcher_item_wrap' => 'justify-content: {{VALUE}};',
-			'{{WRAPPER}}.content-align-flex-start .hover_content_wrapper .wpmozo_bg_switcher_hover_content, {{WRAPPER}}.content-align-center .hover_content_wrapper .wpmozo_bg_switcher_hover_content' => 'margin-top: -100%;',
-			'{{WRAPPER}}.content-align-flex-start .wpmozo_background_switcher_item:hover .hover_content_wrapper .wpmozo_bg_switcher_hover_content, {{WRAPPER}}.content-align-center .wpmozo_background_switcher_item:hover .hover_content_wrapper .wpmozo_bg_switcher_hover_content' => 'margin-top: 0%;',
-			'{{WRAPPER}}.content-align-flex-end .hover_content_wrapper .wpmozo_bg_switcher_hover_content' => 'margin-bottom: -100%;',
-			'{{WRAPPER}}.content-align-flex-end .wpmozo_background_switcher_item:hover .hover_content_wrapper .wpmozo_bg_switcher_hover_content' => 'margin-bottom: 0%;',
 		),
 	)
 );
@@ -184,9 +179,7 @@ $this->add_responsive_control(
 		'size_units'     => array( 'px' ),
 		'separator'      => 'before',
 		'selectors'      => array(
-			'{{WRAPPER}} .wpmozo_background_switcher_item:hover' => 'height: {{SIZE}}{{UNIT}}; min-height:{{SIZE}}{{UNIT}};',
 			'{{WRAPPER}} .wpmozo_background_switcher_item' => 'height: {{SIZE}}{{UNIT}}; min-height:{{SIZE}}{{UNIT}};',
-			'{{WRAPPER}} .wpmozo_background_switcher_item:hover .wpmozo_bg_switcher_item_wrap .wpmozo_bg_switcher_content .wpmozo_bg_switcher_hover_content' => 'max-height:{{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -226,7 +219,7 @@ $this->add_responsive_control(
 	'transition_duration',
 	array(
 		'type'      => Controls_Manager::SLIDER,
-		'label'     => esc_html__( 'Transition Duration', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Transition Duration(ms)', 'wpmozo-addons-for-elementor' ),
 		'range'     => array(
 			'ms' => array(
 				'min'  => 0,
@@ -234,12 +227,13 @@ $this->add_responsive_control(
 				'step' => 1,
 			),
 		),
+		'render_type' => 'template',
 		'default'   => array(
 			'size' => 300,
 			'unit' => 'ms',
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_background_switcher_item .wpmozo_bg_switcher_item_wrap .wpmozo_bg_switcher_content .wpmozo_bg_switcher_hover_content, {{WRAPPER}} .wpmozo_background_switcher_image' => 'transition: all {{SIZE}}{{UNIT}};',
+			' {{WRAPPER}} .wpmozo_background_switcher_image' => 'transition: all {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -308,7 +302,7 @@ $this->add_responsive_control(
 		'type'      => Controls_Manager::COLOR,
 		'default'   => '#ffffff',
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_bg_switcher_title' => 'color: {{VALUE}}',
+			'{{WRAPPER}} .wpmozo_bg_switcher_title' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -361,7 +355,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Title Text Color', 'wpmozo-addons-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_bg_switcher_title:hover' => 'color: {{VALUE}}',
+			'{{WRAPPER}} .wpmozo_bg_switcher_title:hover' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -378,7 +372,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_bg_switcher_title:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_bg_switcher_title:hover' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -449,7 +443,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Description Text Color', 'wpmozo-addons-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_bg_switcher_desc' => 'color: {{VALUE}}',
+			'{{WRAPPER}} .wpmozo_bg_switcher_desc' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -506,7 +500,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Description Text Color', 'wpmozo-addons-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_bg_switcher_desc:hover' => 'color: {{VALUE}}',
+			'{{WRAPPER}} .wpmozo_bg_switcher_desc:hover' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -523,7 +517,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_bg_switcher_desc:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_bg_switcher_desc:hover' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -569,7 +563,7 @@ $this->add_responsive_control(
 		),
 		'toggle'    => true,
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_bg_switcher_desc' => 'text-align: {{VALUE}}',
+			'{{WRAPPER}} .wpmozo_bg_switcher_desc' => 'text-align: {{VALUE}};',
 		),
 	)
 );
@@ -785,43 +779,15 @@ $this->add_group_control(
 		'selector'       => '{{WRAPPER}} .wpmozo_read_more_button',
 	)
 );
-$this->add_responsive_control(
-	'button_border_width',
-	array(
-		'label'      => esc_html__( 'Border Width', 'wpmozo-addons-for-elementor' ),
-		'type'       => Controls_Manager::SLIDER,
-		'size_units' => array( 'px', '%' ),
-		'range'      => array(
-			'px' => array(
-				'min' => 1,
-				'max' => 100,
-			),
-		),
-		'default'    => array(
-			'unit' => 'px',
-			'size' => 1,
-		),
-		'condition'  => array(
-			'button_custom_style' => 'yes',
-		),
-		'selectors'  => array(
-			'{{WRAPPER}} .wpmozo_read_more_button' => 'border: {{SIZE}}{{UNIT}} solid;',
-		),
-	)
-);
-$this->add_responsive_control(
-	'button_border_color',
-	array(
-		'label'     => esc_html__( 'Border Color', 'wpmozo-addons-for-elementor' ),
-		'type'      => Controls_Manager::COLOR,
-		'condition' => array(
-			'button_custom_style' => 'yes',
-		),
-		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_read_more_button' => 'border-color: {{VALUE}};',
-		),
-	)
-);
+$this->add_group_control( 
+	Group_Control_Border::get_type(),
+	array( 
+		'name'     => 'button_border',
+		'label'    => esc_html__( 'Border', 'wpmozo-addons-lite-for-elementor' ),
+		'selector' => '{{WRAPPER}} .wpmozo_read_more_button',
+
+	 )
+ );
 $this->add_responsive_control(
 	'button_border_radius',
 	array(
@@ -842,7 +808,7 @@ $this->add_responsive_control(
 			'button_custom_style' => 'yes',
 		),
 		'selectors'  => array(
-			'{{WRAPPER}} .wpmozo_read_more_button' => 'border-radius: {{SIZE}}{{UNIT}};transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_read_more_button' => 'border-radius: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -963,39 +929,15 @@ $this->add_group_control(
 		'selector'       => '{{WRAPPER}} .wpmozo_read_more_button:hover',
 	)
 );
-$this->add_responsive_control(
-	'button_border_width_hover',
-	array(
-		'label'      => esc_html__( 'Border Width', 'wpmozo-addons-for-elementor' ),
-		'type'       => Controls_Manager::SLIDER,
-		'size_units' => array( 'px', '%' ),
-		'range'      => array(
-			'px' => array(
-				'min' => 1,
-				'max' => 100,
-			),
-		),
-		'condition'  => array(
-			'button_custom_style' => 'yes',
-		),
-		'selectors'  => array(
-			'{{WRAPPER}} .wpmozo_read_more_button:hover' => 'border: {{SIZE}}{{UNIT}} solid;',
-		),
-	)
-);
-$this->add_responsive_control(
-	'button_border_color_hover',
-	array(
-		'label'     => esc_html__( 'Border Color', 'wpmozo-addons-for-elementor' ),
-		'type'      => Controls_Manager::COLOR,
-		'condition' => array(
-			'button_custom_style' => 'yes',
-		),
-		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_read_more_button:hover' => 'border-color: {{VALUE}};',
-		),
-	)
-);
+$this->add_group_control( 
+	Group_Control_Border::get_type(),
+	array( 
+		'name'     => 'button_border_hover',
+		'label'    => esc_html__( 'Border', 'wpmozo-addons-lite-for-elementor' ),
+		'selector' => '{{WRAPPER}} .wpmozo_read_more_button:hover',
+
+	 )
+ );
 $this->add_responsive_control(
 	'button_border_radius_hover',
 	array(
