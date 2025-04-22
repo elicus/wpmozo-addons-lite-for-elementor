@@ -128,6 +128,7 @@ $this->add_responsive_control(
 			'column' => esc_html__( 'Vertical', 'wpmozo-addons-for-elementor' ),
 		),
 		'default'     => 'row',
+		'render_type' => 'template',
 		'selectors'   => array(
 			'{{WRAPPER}} .wpmozo_background_switcher_inner' => 'flex-direction: {{VALUE}};',
 		),

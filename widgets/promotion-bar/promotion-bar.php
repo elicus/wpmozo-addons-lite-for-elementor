@@ -13,6 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use Elementor\Icons_Manager;
 use Elementor\Widget_Base;
+use \Elementor\Group_Control_Image_Size;
+use \Elementor\Control_Media;
 
 if ( ! class_exists( 'WPMOZO_AE_Promotion_Bar' ) ) {
 	class WPMOZO_AE_Promotion_Bar extends Widget_Base {
@@ -145,9 +147,10 @@ if ( ! class_exists( 'WPMOZO_AE_Promotion_Bar' ) ) {
 		protected function render() {
 			// Get settings for display.
 			$settings                  = $this->get_settings_for_display();
+			$image                     = 'yes' === $settings['enable_image'] && isset( $settings['timer_image'] ) && '' !== $settings['timer_image'] ? $settings['timer_image'] : '';
 			$date_time                 = $settings['date_time'];
 			$layout                    = esc_attr( $settings['layout'] );
-			$layout                    = wpmozo_ae_validate_layout( $layout, array( 'layout1', 'layout2' ) );
+			$layout                    = wpmozo_ae_validate_layout( $layout, array( 'layout1', 'layout2', 'layout3' ) );
 			$title_heading_level       = wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
 			$hide_days                 = 'yes' === $settings['hide_days'] ? 'yes' : '';
 			$promotion_bar_title       = $settings['promotion_bar_title'];
@@ -220,11 +223,13 @@ if ( ! class_exists( 'WPMOZO_AE_Promotion_Bar' ) ) {
 			$minute_label = ( isset( $labels['minutes'][ $display_label ] ) ) ? $labels['minutes'][ $display_label ] : esc_html__( '', 'wpmozo-addons-for-elementor' );
 			$second_label = ( isset( $labels['seconds'][ $display_label ] ) ) ? $labels['seconds'][ $display_label ] : esc_html__( '', 'wpmozo-addons-for-elementor' );
 
+
 			?>
 			<div class="wpmozo_promotion_bar wpmozo_promotion_bar_0">
 				<?php if ( $time_left > 0 ) { ?>
 				<div class="wpmozo_promotion_bar_wrap <?php echo esc_attr( $layout ); ?> icon_<?php echo esc_attr( $settings['button_icon_placement'] ); ?>" data-timestamp="<?php echo esc_attr( strtotime($date_time." ".$gmt) ); ?>">
 					<?php
+					$layout = 'layout3' === $layout ? 'layout1' : $layout;
 					if ( file_exists( plugin_dir_path( __DIR__ ) . "promotion-bar/assets/layouts/$layout.php" ) ) {
 						include plugin_dir_path( __DIR__ ) . "promotion-bar/assets/layouts/$layout.php";
 					}

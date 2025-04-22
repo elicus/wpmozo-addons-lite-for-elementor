@@ -60,11 +60,11 @@ $this->add_responsive_control(
 			'unit' => 'px',
 		),
 		'tablet_default' => array(
-			'size' => 90,
+			'size' => '',
 			'unit' => 'px',
 		),
 		'mobile_default' => array(
-			'size' => 70,
+			'size' => '',
 			'unit' => 'px',
 		),
 		'size_units'     => array( 'px' ),
@@ -91,11 +91,11 @@ $this->add_responsive_control(
 			'unit' => 'px',
 		),
 		'tablet_default' => array(
-			'size' => 40,
+			'size' => '',
 			'unit' => 'px',
 		),
 		'mobile_default' => array(
-			'size' => 40,
+			'size' => '',
 			'unit' => 'px',
 		),
 		'size_units'     => array( 'px' ),
@@ -122,11 +122,11 @@ $this->add_responsive_control(
 			'unit' => 'px',
 		),
 		'tablet_default' => array(
-			'size' => 10,
+			'size' => '',
 			'unit' => 'px',
 		),
 		'mobile_default' => array(
-			'size' => 10,
+			'size' => '',
 			'unit' => 'px',
 		),
 		'size_units'     => array( 'px' ),
@@ -252,11 +252,12 @@ $repeater->add_responsive_control(
 	'stack_item_shape',
 	array(
 		'label'     => esc_html__( 'Icon Shape', 'wpmozo-addons-for-elementor' ),
-		'default'   => '0.0',
+		'default'   => '',
 		'toggle'      => true,
+		'render_type' => 'template',
 		'type'        => Controls_Manager::CHOOSE,
 		'options'     => array(
-			'0.0'   =>
+			'null'   =>
 				array(
 					'title' => esc_html__( 'None', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-close',
@@ -274,6 +275,7 @@ $repeater->add_responsive_control(
 		),
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_image_stack_wrap .wpmozo_image_stack_inner .wpmozo_image_stack_item{{CURRENT_ITEM}} .stack_item-type-icon' => 'border-radius: {{VALUE}}%; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_image_stack_wrap .wpmozo_image_stack_inner .wpmozo_image_stack_item{{CURRENT_ITEM}}.icon_shape_null .stack_item-type-icon' => 'background-color:transparent;',
 		),
 		'condition' => array(
 			'stack_item_type' => 'icon'
@@ -419,7 +421,7 @@ $this->add_responsive_control(
 		'default'   => '0.0',
 		'type'        => Controls_Manager::CHOOSE,
 		'options'     => array(
-			'0.0'   =>
+			'null'   =>
 				array(
 					'title' => esc_html__( 'None', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-close',
@@ -480,15 +482,15 @@ $this->add_responsive_control(
 		),
 		'devices'        => array( 'desktop', 'tablet', 'mobile' ),
 		'default'        => array(
-			'size' => 100,
+			'size' => '',
 			'unit' => 'px',
 		),
 		'tablet_default' => array(
-			'size' => 70,
+			'size' => '',
 			'unit' => 'px',
 		),
 		'mobile_default' => array(
-			'size' => 50,
+			'size' => '',
 			'unit' => 'px',
 		),
 		'selectors'      => array(
@@ -527,11 +529,11 @@ $this->add_responsive_control(
 			'unit' => 'px',
 		),
 		'tablet_default' => array(
-			'size' => 0,
+			'size' => '',
 			'unit' => 'px',
 		),
 		'mobile_default' => array(
-			'size' => 0,
+			'size' => '',
 			'unit' => 'px',
 		),
 		'selectors'      => array(

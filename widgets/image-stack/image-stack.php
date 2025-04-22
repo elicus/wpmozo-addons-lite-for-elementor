@@ -182,9 +182,10 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Stack' ) ) {
 					<div class="wpmozo_image_stack_inner">
 						<?php
 						foreach ( $stack_item_list as $index => $single_item ) {
-							$stack_item_type = esc_attr( $single_item['stack_item_type'] );
+							$stack_item_type       = esc_attr( $single_item['stack_item_type'] );
+							$stack_item_icon_shape = isset( $single_item['stack_item_shape'] ) && 'null' === $single_item['stack_item_shape'] ? "icon_shape_".$single_item['stack_item_shape'] : '';
 							?>
-							<div class="wpmozo_image_stack_item elementor-repeater-item-<?php echo esc_attr( $single_item['_id'] ); ?>" data-repeater-id="elementor-repeater-item-<?php echo esc_attr( $single_item['_id'] ); ?>" data-template="tooltip-content-<?php echo esc_attr( $widget_id ); ?>-<?php echo esc_attr( $index ); ?>">
+							<div class="wpmozo_image_stack_item elementor-repeater-item-<?php echo esc_attr( $single_item['_id'] ) . " ". $stack_item_icon_shape;?>" data-repeater-id="elementor-repeater-item-<?php echo esc_attr( $single_item['_id'] ); ?>" data-template="tooltip-content-<?php echo esc_attr( $widget_id ); ?>-<?php echo esc_attr( $index ); ?>">
 								<span class="wpmozo_stack_item_wrapper stack_item-type-<?php echo esc_attr( $stack_item_type ); ?>">								 
 								<?php if ( 'icon' === $stack_item_type ) : ?>
 											<?php

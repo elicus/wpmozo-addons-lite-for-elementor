@@ -1,12 +1,44 @@
+<?php 
+use \Elementor\Group_Control_Image_Size;
+use \Elementor\Control_Media;
+?>
 <div class="wpmozo_promotion_bar_inner">
 <div class="wpmozo_promotion_bar_content">
-<?php if ( '' !== $promotion_bar_title ) :
-	?><<?php echo esc_attr( $title_heading_level ); ?> class="wpmozo_pb_title"><?php echo esc_html( $promotion_bar_title ); ?></<?php echo esc_attr( $title_heading_level ); ?>><?php endif; ?>
-	<?php if ( '' !== $promotion_bar_description ) : ?>
-	<div class="wpmozo_pb_desc">
-		<?php echo wp_kses_post( $promotion_bar_description ); ?>
+<?php if ( 'yes' === $settings['enable_image'] && '' !== $image ){
+		$size         = $settings[ 'timer_image_size_size' ];
+		$image_sizing = 'attachment-' . $size . ' size-' . $size;
+		$image        = $settings[ 'timer_image' ];
+		$attach_id    = $image[ 'id' ];
+		$img_url      = Group_Control_Image_Size::get_attachment_image_src( $attach_id, 'timer_image_size', $settings );
+
+		// To show placeholder image.
+		if ( empty( $img_url ) ) {
+			$img_url = $settings[ 'timer_image' ][ 'url' ];
+		}
+
+		$this->add_render_attribute( 
+			'image',
+			array( 
+				'src'   => $img_url,
+				'class' => array( 'wpmozo_ae_timer_image_image', $image_sizing ),
+				'title' => Control_Media::get_image_title( $image ),
+				'alt'   => Control_Media::get_image_alt( $image ),
+			 )
+		 );
+?>	<div class="wpmozo_promotion_image_wrap" >
+		<img <?php $this->print_render_attribute_string( 'image' ); ?> />
 	</div>
-	<?php endif; ?>
+	<?php
+}
+	?><div class="wpmozo_ae_promotion_bar_content_inner"><?php
+		if ( '' !== $promotion_bar_title ) :
+		?><<?php echo esc_attr( $title_heading_level ); ?> class="wpmozo_pb_title"><?php echo esc_html( $promotion_bar_title ); ?></<?php echo esc_attr( $title_heading_level ); ?>><?php endif; ?>
+		<?php if ( '' !== $promotion_bar_description ) : ?>
+		<div class="wpmozo_pb_desc">
+			<?php echo wp_kses_post( $promotion_bar_description ); ?>
+		</div>
+		<?php endif; ?>
+	</div>
 </div>
 <div class="wpmozo_promotion_bar_timer">
 <?php if ( ! $hide_days ) : ?>

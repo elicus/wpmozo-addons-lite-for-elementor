@@ -5,6 +5,8 @@ use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
+use \Elementor\Group_Control_Image_Size;
+use Elementor\Utils;
 
 // Start Content Tab.
 $this->start_controls_section(
@@ -39,6 +41,42 @@ $this->add_control(
 		'default' => esc_html__( 'Description', 'wpmozo-addons-for-elementor' ),
 	)
 );
+$this->add_control(
+	'enable_image',
+	array(
+		'label'        => esc_html__( 'Show Image', 'wpmozo-addons-for-elementor' ),
+		'type'         => Controls_Manager::SWITCHER,
+		'label_off'    => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+		'label_on'     => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
+		'return_value' => 'yes',
+		'default'      => '',
+	)
+);
+$this->add_control( 
+	'timer_image',
+	array( 
+		'label'   => esc_html__( 'Image', 'wpmozo-addons-lite-for-elementor' ),
+		'type'    => Controls_Manager::MEDIA,
+		'default' => array( 
+			'url' => Utils::get_placeholder_image_src(),
+		 ),
+		'condition' => array(
+			'enable_image' => 'yes'
+		)
+	 )
+ );
+$this->add_group_control( 
+		Group_Control_Image_Size::get_type(),
+		array( 
+			'name'    => 'timer_image_size',
+			'exclude' => array( 'custom' ),
+			'include' => array(),
+			'default' => 'large',
+			'condition' => array(
+				'enable_image' => 'yes'
+			)
+	 	)
+	 );
 $this->end_controls_section();
 $this->start_controls_section(
 	'display_tab',
@@ -56,6 +94,7 @@ $this->add_control(
 		'options'     => array(
 			'layout1' => esc_html__( 'Layout 1', 'wpmozo-addons-for-elementor' ),
 			'layout2' => esc_html__( 'Layout 2', 'wpmozo-addons-for-elementor' ),
+			'layout3' => esc_html__( 'Layout 3', 'wpmozo-addons-for-elementor' ),
 		),
 		'default'     => 'layout1',
 		'render_type' => 'template',
@@ -220,10 +259,10 @@ $this->add_responsive_control(
 		'size_units'     => array( '%' ),
 		'separator'      => 'before',
 		'selectors'      => array(
-			'{{WRAPPER}} .wpmozo_promotion_bar_wrap.layout2 .wpmozo_promotion_bar_content' => 'width: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_promotion_bar_wrap.layout2 .wpmozo_promotion_bar_content,{{WRAPPER}} .wpmozo_promotion_bar_wrap.layout3 .wpmozo_promotion_bar_content' => 'width: {{SIZE}}{{UNIT}};',
 		),
 		'condition'      => array(
-			'layout' => 'layout2',
+			'layout' => array( 'layout2','layout3' )
 		),
 	)
 );
@@ -255,21 +294,14 @@ $this->add_responsive_control(
 		'size_units'     => array( 'px' ),
 		'separator'      => 'before',
 		'selectors'      => array(
-			'{{WRAPPER}} .layout2 .wpmozo_promotion_bar_inner' => 'gap: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .layout2 .wpmozo_promotion_bar_inner,{{WRAPPER}} .layout3 .wpmozo_promotion_bar_inner' => 'gap: {{SIZE}}{{UNIT}};',
 		),
 		'condition'      => array(
-			'layout' => 'layout2',
+			'layout' => array( 'layout2', 'layout3' )
 		),
 	)
 );
 $this->end_controls_section();
-/*$this->start_controls_section(
-	'promotion_bar_content_tab',
-	array(
-		'label' => esc_html__( 'Promotion Bar Content', 'wpmozo-addons-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_STYLE,
-	)
-);*/
 $this->start_controls_section(
 	'title_styling',
 	array(
@@ -601,7 +633,7 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'timer_clock_digits_tab',
 	array(
-		'label' => esc_html__( 'Digit Style', 'wpmozo-addons-for-elementor' ),
+		'label' => esc_html__( 'Digits', 'wpmozo-addons-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	)
 );
@@ -615,7 +647,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'digits_text_color',
 	array(
-		'label'       => esc_html__( 'Digits Text Color', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Digit Text Color', 'wpmozo-addons-for-elementor' ),
 		'label_block' => false,
 		'type'        => Controls_Manager::COLOR,
 		'selectors'   => array(
@@ -657,7 +689,7 @@ $this->add_group_control(
 $this->add_control(
 	'digits_background_color',
 	array(
-		'label'       => esc_html__( 'Digits Background Color', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Digit Background Color', 'wpmozo-addons-for-elementor' ),
 		'label_block' => false,
 		'type'        => Controls_Manager::COLOR,
 		'selectors'   => array(
@@ -671,13 +703,13 @@ $this->add_group_control(
 		'name'           => 'digits_border',
 		'fields_options' => array(
 			'border' => array(
-				'label' => esc_html__( 'Digits Border', 'wpmozo-addons-for-elementor' ),
+				'label' => esc_html__( 'Digit Border', 'wpmozo-addons-for-elementor' ),
 			),
 			'width'  => array(
-				'label' => esc_html__( 'Digits Border Width', 'wpmozo-addons-for-elementor' ),
+				'label' => esc_html__( 'Digit Border Width', 'wpmozo-addons-for-elementor' ),
 			),
 			'color'  => array(
-				'label' => esc_html__( 'Digits Border Color', 'wpmozo-addons-for-elementor' ),
+				'label' => esc_html__( 'Digit Border Color', 'wpmozo-addons-for-elementor' ),
 			),
 		),
 		'selector'       => '{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_number',
@@ -693,7 +725,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'digits_text_color_hover',
 	array(
-		'label'       => esc_html__( 'Digits Text Color', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Digit Text Color', 'wpmozo-addons-for-elementor' ),
 		'label_block' => false,
 		'type'        => Controls_Manager::COLOR,
 		'selectors'   => array(
@@ -731,7 +763,7 @@ $this->add_group_control(
 $this->add_control(
 	'digits_background_color_hover',
 	array(
-		'label'       => esc_html__( 'Digits Background Color', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Digit Background Color', 'wpmozo-addons-for-elementor' ),
 		'label_block' => false,
 		'type'        => Controls_Manager::COLOR,
 		'selectors'   => array(
@@ -745,13 +777,13 @@ $this->add_group_control(
 		'name'           => 'digits_border_hover',
 		'fields_options' => array(
 			'border' => array(
-				'label' => esc_html__( 'Digits Border', 'wpmozo-addons-for-elementor' ),
+				'label' => esc_html__( 'Digit Border', 'wpmozo-addons-for-elementor' ),
 			),
 			'width'  => array(
-				'label' => esc_html__( 'Digits Border Width', 'wpmozo-addons-for-elementor' ),
+				'label' => esc_html__( 'Digit Border Width', 'wpmozo-addons-for-elementor' ),
 			),
 			'color'  => array(
-				'label' => esc_html__( 'Digits Border Color', 'wpmozo-addons-for-elementor' ),
+				'label' => esc_html__( 'Digit Border Color', 'wpmozo-addons-for-elementor' ),
 			),
 		),
 		'selector'       => '{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_number:hover',
@@ -780,7 +812,7 @@ $this->add_responsive_control(
 $this->add_group_control(
 	Group_Control_Text_Shadow::get_type(),
 	array(
-		'label'       => esc_html__( 'Digits Text Shadow', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Digit Text Shadow', 'wpmozo-addons-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'digits_text_shadow',
 		'selector'    => '{{WRAPPER}} .wpmozo_pb_timer_box span.wpmozo_pb_number',
@@ -789,7 +821,7 @@ $this->add_group_control(
 $this->add_group_control(
 	Group_Control_Box_Shadow::get_type(),
 	array(
-		'label'       => esc_html__( 'Digits Box Shadow', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Digit Box Shadow', 'wpmozo-addons-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'digits_box_shadow',
 		'selector'    => '{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_number',
@@ -810,7 +842,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'digits_padding',
 	array(
-		'label'      => esc_html__( 'Digits Padding', 'wpmozo-addons-for-elementor' ),
+		'label'      => esc_html__( 'Digit Padding', 'wpmozo-addons-for-elementor' ),
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', 'em', '%' ),
 		'default'    => array(
@@ -834,7 +866,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'digits_margin',
 	array(
-		'label'      => esc_html__( 'Digits Margin', 'wpmozo-addons-for-elementor' ),
+		'label'      => esc_html__( 'Digit Margin', 'wpmozo-addons-for-elementor' ),
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', 'em', '%' ),
 		'default'    => array(
@@ -854,7 +886,7 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'timer_clock_labels_tab',
 	array(
-		'label' => esc_html__( 'Label Style', 'wpmozo-addons-for-elementor' ),
+		'label' => esc_html__( 'Labels', 'wpmozo-addons-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	)
 );
