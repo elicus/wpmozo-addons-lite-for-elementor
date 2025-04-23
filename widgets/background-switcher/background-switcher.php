@@ -147,12 +147,12 @@ if ( ! class_exists( 'WPMOZO_AE_Background_Switcher' ) ) {
 			$settings            = $this->get_settings_for_display();
 			$background_items    = isset( $settings['background_item'] ) ? $settings['background_item'] : array();
 			$title_heading_level = wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
-			$transition          = isset( $settings['transition_duration']['size'] ) && !empty( $settings['transition_duration']['size'] ) ? $settings['transition_duration']['size'] : 300;
+			$transition          = isset( $settings['transition_duration']['size'] ) && ! empty( $settings['transition_duration']['size'] ) ? $settings['transition_duration']['size'] : 300;
 
 			?>
 			<div class="wpmozo_background_switcher">
 					<div class="wpmozo_background_switcher_wrap">
-						<div class="wpmozo_background_switcher_inner" data-transition="<?php echo esc_attr($transition); ?>">
+						<div class="wpmozo_background_switcher_inner" data-transition="<?php echo esc_attr( $transition ); ?>">
 						<?php
 						foreach ( $background_items as $index => $background_item ) {
 							?>

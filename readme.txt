@@ -23,19 +23,19 @@ A feature-packed plugin designed to complement your Elementor page-building expe
 
 ## Widgets Included in WPMozo Addons Lite for Elementor
 - ### [Image Stack](https://wpmozoaddons.com/elementor-image-stack/ "Elementor Image Stack")
-.
+Showcase images and icons in an expandable stack and make your WordPress website amazing with the WPMozo Image Stack widget for Elementor.
 
 - ### [Background Switcher](https://wpmozoaddons.com/elementor-background-switcher/ "Elementor Background Switcher")
-.
+Display content on your WordPress website with various background in a single widget be it image, color or gradient using the WPMozo Background Switcher widget.
 
 - ### [Mystery Image](https://wpmozoaddons.com/elementor-mystery-image/ "Elementor Mystery Image")
-.
+Show one random image from a number of images on you WordPress website whenever the page is refreshed using the WPMozo Mystery Image widget.
 
 - ### [Promotion Bar](https://wpmozoaddons.com/elementor-promotion-bar/ "Elementor Promotion Bar")
-.
+Highlight announcements, offers, or seasonal deals with the WPMozo Promotion Bar widget for Elementor. Perfect for grabbing user attention and boosting conversions.
 
 - ### [Before After Slider](https://wpmozoaddons.com/elementor-before-and-after-slider/ "Elementor Before After Slider")
-Display a before and after version of any element in form of images using the before after image slider for Elementor.
+Display a before and after version of any element in form of images using the WPMozo Before After Slider widget for Elementor.
 
 - ### [Fancy Heading](https://wpmozoaddons.com/elementor-fancy-heading/ "Elementor Fancy Heading")
 To make your headings stand out, try the WPMozo Fancy Heading widget for Elementor. Customize the pre-heading, heading, and post-heading sections to style your headings in three distinct parts, whether in a single line or stacked format.
@@ -282,7 +282,7 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
-2025-02-05 - Version 1.5.0
+2025-04-23 - Version 1.5.0
 - NEW: New widget Promotion Bar.
 - NEW: New widget Mystery Image.
 - NEW: New widget Background Switcher.

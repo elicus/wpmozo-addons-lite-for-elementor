@@ -118,7 +118,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Stack' ) ) {
 
 			wp_register_script( 'wpmozo-ae-image-stack-script', plugins_url( 'assets/js/script.min.js?test=' . wp_rand(), __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
-			return array( 'wpmozo-ae-image-stack-script', 'wpmozo-ae-popper', 'wpmozo-ae-tippy', 'tippy' );
+			return array( 'wpmozo-ae-image-stack-script', 'wpmozo-ae-popper', 'wpmozo-ae-tippy' );
 		}
 
 				/**
@@ -150,7 +150,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Stack' ) ) {
 			$show_tooltip_on    = $settings['show_tooltip_on'];
 			$show_speech_bubble = $settings['show_speech_bubble'];
 			$enable_tooltip     = $settings['enable_tooltip'];
-			$animation_duration = isset($settings['tooltip_animation_duration']['size']) && ! empty($settings['tooltip_animation_duration']['size']) ? $settings['tooltip_animation_duration']['size'] : '300';
+			$animation_duration = isset( $settings['tooltip_animation_duration']['size'] ) && ! empty( $settings['tooltip_animation_duration']['size'] ) ? $settings['tooltip_animation_duration']['size'] : '300';
 
 			$animation_name = '';
 			if ( isset( $settings['tooltip_animation_type'] ) ) {
@@ -164,28 +164,31 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Stack' ) ) {
 					$animation_name = $settings['animation_type_away'];
 				}
 			}
-			$this->add_render_attribute('image-stack-wrap', array(
-				"class"                   => "wpmozo_image_stack_wrap elementor-".$widget_id, 
-				"id"                      => "wpmozo-".$widget_id,
-				"data-speech-bubble"      => $show_speech_bubble, 
-				"data-animation-type"     => $settings['tooltip_animation_type'], 
-				"data-animation-duration" => $animation_duration,
-				"data-animation-name"     => $animation_name,
-				"data-tooltip-id"         => "elementor-".$widget_id,
-				"data-trigger"            => $show_tooltip_on,
-			));
+			$this->add_render_attribute(
+				'image-stack-wrap',
+				array(
+					'class'                   => 'wpmozo_image_stack_wrap elementor-' . $widget_id,
+					'id'                      => 'wpmozo-' . $widget_id,
+					'data-speech-bubble'      => $show_speech_bubble,
+					'data-animation-type'     => $settings['tooltip_animation_type'],
+					'data-animation-duration' => $animation_duration,
+					'data-animation-name'     => $animation_name,
+					'data-tooltip-id'         => 'elementor-' . $widget_id,
+					'data-trigger'            => $show_tooltip_on,
+				)
+			);
 
 			?>
 
 			<div class="wpmozo_image_stack">
-				<div <?php $this->print_render_attribute_string("image-stack-wrap"); ?>>
+				<div <?php $this->print_render_attribute_string( 'image-stack-wrap' ); ?>>
 					<div class="wpmozo_image_stack_inner">
 						<?php
 						foreach ( $stack_item_list as $index => $single_item ) {
 							$stack_item_type       = esc_attr( $single_item['stack_item_type'] );
-							$stack_item_icon_shape = isset( $single_item['stack_item_shape'] ) && 'null' === $single_item['stack_item_shape'] ? "icon_shape_".$single_item['stack_item_shape'] : '';
+							$stack_item_icon_shape = isset( $single_item['stack_item_shape'] ) && 'null' === $single_item['stack_item_shape'] ? 'icon_shape_' . $single_item['stack_item_shape'] : '';
 							?>
-							<div class="wpmozo_image_stack_item elementor-repeater-item-<?php echo esc_attr( $single_item['_id'] ) . " ". $stack_item_icon_shape;?>" data-repeater-id="elementor-repeater-item-<?php echo esc_attr( $single_item['_id'] ); ?>" data-template="tooltip-content-<?php echo esc_attr( $widget_id ); ?>-<?php echo esc_attr( $index ); ?>">
+							<div class="wpmozo_image_stack_item elementor-repeater-item-<?php echo esc_attr( $single_item['_id'] ) . ' ' . esc_attr( $stack_item_icon_shape ); ?>" data-repeater-id="elementor-repeater-item-<?php echo esc_attr( $single_item['_id'] ); ?>" data-template="tooltip-content-<?php echo esc_attr( $widget_id ); ?>-<?php echo esc_attr( $index ); ?>">
 								<span class="wpmozo_stack_item_wrapper stack_item-type-<?php echo esc_attr( $stack_item_type ); ?>">								 
 								<?php if ( 'icon' === $stack_item_type ) : ?>
 											<?php

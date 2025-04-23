@@ -47,9 +47,9 @@ $this->add_control(
 		),
 		'label_block' => true,
 		'condition'   => array( 'open_lightbox!' => 'yes' ),
-		'dynamic' => [
+		'dynamic'     => array(
 			'active' => true,
-		],
+		),
 	)
 );
 $this->add_control(

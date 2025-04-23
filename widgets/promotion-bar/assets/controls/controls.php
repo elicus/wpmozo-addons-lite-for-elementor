@@ -5,7 +5,7 @@ use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
-use \Elementor\Group_Control_Image_Size;
+use Elementor\Group_Control_Image_Size;
 use Elementor\Utils;
 
 // Start Content Tab.
@@ -52,31 +52,31 @@ $this->add_control(
 		'default'      => '',
 	)
 );
-$this->add_control( 
+$this->add_control(
 	'timer_image',
-	array( 
-		'label'   => esc_html__( 'Image', 'wpmozo-addons-lite-for-elementor' ),
-		'type'    => Controls_Manager::MEDIA,
-		'default' => array( 
+	array(
+		'label'     => esc_html__( 'Image', 'wpmozo-addons-lite-for-elementor' ),
+		'type'      => Controls_Manager::MEDIA,
+		'default'   => array(
 			'url' => Utils::get_placeholder_image_src(),
-		 ),
+		),
 		'condition' => array(
-			'enable_image' => 'yes'
-		)
-	 )
- );
-$this->add_group_control( 
-		Group_Control_Image_Size::get_type(),
-		array( 
-			'name'    => 'timer_image_size',
-			'exclude' => array( 'custom' ),
-			'include' => array(),
-			'default' => 'large',
-			'condition' => array(
-				'enable_image' => 'yes'
-			)
-	 	)
-	 );
+			'enable_image' => 'yes',
+		),
+	)
+);
+$this->add_group_control(
+	Group_Control_Image_Size::get_type(),
+	array(
+		'name'      => 'timer_image_size',
+		'exclude'   => array( 'custom' ),
+		'include'   => array(),
+		'default'   => 'large',
+		'condition' => array(
+			'enable_image' => 'yes',
+		),
+	)
+);
 $this->end_controls_section();
 $this->start_controls_section(
 	'display_tab',
@@ -186,23 +186,23 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'content_box_tab',
 	array(
-		'label' => esc_html__( 'Content Box', 'wpmozo-addons-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_STYLE,
+		'label'      => esc_html__( 'Content Box', 'wpmozo-addons-for-elementor' ),
+		'tab'        => Controls_Manager::TAB_STYLE,
 		'conditions' => array(
 			'relation' => 'or',
-			'terms' => array(
+			'terms'    => array(
 				array(
-					'name' => 'promotion_bar_title',
+					'name'     => 'promotion_bar_title',
 					'operator' => '!==',
-					'value' => '',
+					'value'    => '',
 				),
 				array(
-					'name' => 'promotion_bar_description',
+					'name'     => 'promotion_bar_description',
 					'operator' => '!==',
-					'value' => '',
+					'value'    => '',
 				),
 			),
-		)
+		),
 	)
 );
 $this->add_responsive_control(
@@ -262,7 +262,7 @@ $this->add_responsive_control(
 			'{{WRAPPER}} .wpmozo_promotion_bar_wrap.layout2 .wpmozo_promotion_bar_content,{{WRAPPER}} .wpmozo_promotion_bar_wrap.layout3 .wpmozo_promotion_bar_content' => 'width: {{SIZE}}{{UNIT}};',
 		),
 		'condition'      => array(
-			'layout' => array( 'layout2','layout3' )
+			'layout' => array( 'layout2', 'layout3' ),
 		),
 	)
 );
@@ -297,7 +297,7 @@ $this->add_responsive_control(
 			'{{WRAPPER}} .layout2 .wpmozo_promotion_bar_inner,{{WRAPPER}} .layout3 .wpmozo_promotion_bar_inner' => 'gap: {{SIZE}}{{UNIT}};',
 		),
 		'condition'      => array(
-			'layout' => array( 'layout2', 'layout3' )
+			'layout' => array( 'layout2', 'layout3' ),
 		),
 	)
 );
@@ -305,11 +305,11 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'title_styling',
 	array(
-		'label' => esc_html__( 'Title', 'wpmozo-addons-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_STYLE,
+		'label'     => esc_html__( 'Title', 'wpmozo-addons-for-elementor' ),
+		'tab'       => Controls_Manager::TAB_STYLE,
 		'condition' => array(
-			'promotion_bar_title!' => ''
-		)
+			'promotion_bar_title!' => '',
+		),
 	)
 );
 $this->add_control(
@@ -485,11 +485,11 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'description_styling',
 	array(
-		'label' => esc_html__( 'Description', 'wpmozo-addons-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_STYLE,
+		'label'     => esc_html__( 'Description', 'wpmozo-addons-for-elementor' ),
+		'tab'       => Controls_Manager::TAB_STYLE,
 		'condition' => array(
-			'promotion_bar_description!' => ''
-		)
+			'promotion_bar_description!' => '',
+		),
 	)
 );
 $this->start_controls_tabs( 'description_text_tabs' );
@@ -1458,11 +1458,11 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'sale_button_tab',
 	array(
-		'label' => esc_html__( 'Sale Button', 'wpmozo-addons-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_STYLE,
+		'label'     => esc_html__( 'Sale Button', 'wpmozo-addons-for-elementor' ),
+		'tab'       => Controls_Manager::TAB_STYLE,
 		'condition' => array(
-			'show_button' => 'yes'
-		)
+			'show_button' => 'yes',
+		),
 	)
 );
 $this->add_responsive_control(

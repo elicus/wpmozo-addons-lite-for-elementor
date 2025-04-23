@@ -219,9 +219,9 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'transition_duration',
 	array(
-		'type'      => Controls_Manager::SLIDER,
-		'label'     => esc_html__( 'Transition Duration(ms)', 'wpmozo-addons-for-elementor' ),
-		'range'     => array(
+		'type'        => Controls_Manager::SLIDER,
+		'label'       => esc_html__( 'Transition Duration(ms)', 'wpmozo-addons-for-elementor' ),
+		'range'       => array(
 			'ms' => array(
 				'min'  => 0,
 				'max'  => 1000,
@@ -229,11 +229,11 @@ $this->add_responsive_control(
 			),
 		),
 		'render_type' => 'template',
-		'default'   => array(
+		'default'     => array(
 			'size' => 300,
 			'unit' => 'ms',
 		),
-		'selectors' => array(
+		'selectors'   => array(
 			' {{WRAPPER}} .wpmozo_background_switcher_image' => 'transition: all {{SIZE}}{{UNIT}};',
 		),
 	)
@@ -780,15 +780,15 @@ $this->add_group_control(
 		'selector'       => '{{WRAPPER}} .wpmozo_read_more_button',
 	)
 );
-$this->add_group_control( 
+$this->add_group_control(
 	Group_Control_Border::get_type(),
-	array( 
+	array(
 		'name'     => 'button_border',
 		'label'    => esc_html__( 'Border', 'wpmozo-addons-lite-for-elementor' ),
 		'selector' => '{{WRAPPER}} .wpmozo_read_more_button',
 
-	 )
- );
+	)
+);
 $this->add_responsive_control(
 	'button_border_radius',
 	array(
@@ -930,15 +930,15 @@ $this->add_group_control(
 		'selector'       => '{{WRAPPER}} .wpmozo_read_more_button:hover',
 	)
 );
-$this->add_group_control( 
+$this->add_group_control(
 	Group_Control_Border::get_type(),
-	array( 
+	array(
 		'name'     => 'button_border_hover',
 		'label'    => esc_html__( 'Border', 'wpmozo-addons-lite-for-elementor' ),
 		'selector' => '{{WRAPPER}} .wpmozo_read_more_button:hover',
 
-	 )
- );
+	)
+);
 $this->add_responsive_control(
 	'button_border_radius_hover',
 	array(

@@ -158,8 +158,8 @@ $this->add_control(
 		),
 		'render_type' => 'template',
 		'condition'   => array(
-			'enable_tooltip' => 'yes'
-		)
+			'enable_tooltip' => 'yes',
+		),
 	)
 );
 $this->end_controls_section();
@@ -251,35 +251,35 @@ $repeater->add_responsive_control(
 $repeater->add_responsive_control(
 	'stack_item_shape',
 	array(
-		'label'     => esc_html__( 'Icon Shape', 'wpmozo-addons-for-elementor' ),
-		'default'   => '',
+		'label'       => esc_html__( 'Icon Shape', 'wpmozo-addons-for-elementor' ),
+		'default'     => '',
 		'toggle'      => true,
 		'render_type' => 'template',
 		'type'        => Controls_Manager::CHOOSE,
 		'options'     => array(
-			'null'   =>
+			'null' =>
 				array(
 					'title' => esc_html__( 'None', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-close',
 				),
-			'0' =>
+			'0'    =>
 				array(
 					'title' => esc_html__( 'Square', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-square',
 				),
-			'50'  =>
+			'50'   =>
 				array(
 					'title' => esc_html__( 'Circle', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-circle',
 				),
 		),
-		'selectors' => array(
+		'selectors'   => array(
 			'{{WRAPPER}} .wpmozo_image_stack_wrap .wpmozo_image_stack_inner .wpmozo_image_stack_item{{CURRENT_ITEM}} .stack_item-type-icon' => 'border-radius: {{VALUE}}%; transition: all 300ms;',
 			'{{WRAPPER}} .wpmozo_image_stack_wrap .wpmozo_image_stack_inner .wpmozo_image_stack_item{{CURRENT_ITEM}}.icon_shape_null .stack_item-type-icon' => 'background-color:transparent;',
 		),
-		'condition' => array(
-			'stack_item_type' => 'icon'
-		)
+		'condition'   => array(
+			'stack_item_type' => 'icon',
+		),
 	)
 );
 $repeater->add_responsive_control(
@@ -292,7 +292,7 @@ $repeater->add_responsive_control(
 		),
 		'condition' => array(
 			'stack_item_shape' => array( '0', '50' ),
-			'stack_item_type' => 'icon'
+			'stack_item_type'  => 'icon',
 		),
 		'default'   => '#FFFFFF',
 	)
@@ -310,24 +310,24 @@ $repeater->add_group_control(
 $repeater->add_responsive_control(
 	'stack_item_image_border_radius',
 	array(
-		'type'      => Controls_Manager::SLIDER,
-		'label'     => esc_html__( 'Image Border Radius', 'wpmozo-addons-for-elementor' ),
-		'range'     => array(
+		'type'       => Controls_Manager::SLIDER,
+		'label'      => esc_html__( 'Image Border Radius', 'wpmozo-addons-for-elementor' ),
+		'range'      => array(
 			'px' => array(
 				'min' => 1,
 				'max' => 100,
 			),
-			'%' => array(
+			'%'  => array(
 				'min' => 1,
 				'max' => 100,
 			),
 		),
 		'size_units' => array( 'px', '%' ),
-		'devices'   => array( 'desktop', 'tablet', 'mobile' ),
-		'selectors' => array(
+		'devices'    => array( 'desktop', 'tablet', 'mobile' ),
+		'selectors'  => array(
 			'{{WRAPPER}} .wpmozo_image_stack_wrap .wpmozo_image_stack_item{{CURRENT_ITEM}} span.wpmozo_stack_item_wrapper.stack_item-type-image img' => 'border-radius: {{SIZE}}{{UNIT}};',
 		),
-		'condition' => array(
+		'condition'  => array(
 			'stack_item_type' => 'image',
 		),
 	)
@@ -341,13 +341,13 @@ $repeater->add_responsive_control(
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 		'selectors'  => array(
-			'{{WRAPPER}} .wpmozo_image_stack_wrap {{CURRENT_ITEM}} span.wpmozo_stack_item_wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_image_stack_wrap {{CURRENT_ITEM}} span.wpmozo_stack_item_wrapper .wpmozo_ae_stack_item_icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
-		'default'    => array( 
-			'top'    => 5,
-			'right'  => 5,
-			'bottom' => 5,
-			'left'   => 5,
+		'default'    => array(
+			'top'    => '',
+			'right'  => '',
+			'bottom' => '',
+			'left'   => '',
 		),
 	)
 );
@@ -372,24 +372,24 @@ $this->add_control(
 	array(
 		'type'        => Controls_Manager::REPEATER,
 		'fields'      => $repeater->get_controls(),
-		'default'     => array( 
-			array( 
-				'stack_item_image'     => array( 'url' => Utils::get_placeholder_image_src() ),
-				'tooltip_text'     => "Stack Item 1",
-			 ),
-			array( 
-				'stack_item_image'    => array( 'url' => Utils::get_placeholder_image_src() ),
-				'tooltip_text'    => "Stack Item 2",
-			 ),
-			array( 
-				'stack_item_image'    => array( 'url' => Utils::get_placeholder_image_src() ),
-				'tooltip_text'    => "Stack Item 3",
-			 ),
-			array( 
-				'stack_item_image'    => array( 'url' => Utils::get_placeholder_image_src() ),
-				'tooltip_text'    => "Stack Item 4",
-			 ),
-		 ),
+		'default'     => array(
+			array(
+				'stack_item_image' => array( 'url' => Utils::get_placeholder_image_src() ),
+				'tooltip_text'     => 'Stack Item 1',
+			),
+			array(
+				'stack_item_image' => array( 'url' => Utils::get_placeholder_image_src() ),
+				'tooltip_text'     => 'Stack Item 2',
+			),
+			array(
+				'stack_item_image' => array( 'url' => Utils::get_placeholder_image_src() ),
+				'tooltip_text'     => 'Stack Item 3',
+			),
+			array(
+				'stack_item_image' => array( 'url' => Utils::get_placeholder_image_src() ),
+				'tooltip_text'     => 'Stack Item 4',
+			),
+		),
 		'title_field' => '{{{ tooltip_text }}}',
 	)
 );
@@ -419,19 +419,19 @@ $this->add_responsive_control(
 	array(
 		'label'     => esc_html__( 'Icon Shape', 'wpmozo-addons-for-elementor' ),
 		'default'   => '0.0',
-		'type'        => Controls_Manager::CHOOSE,
-		'options'     => array(
-			'null'   =>
+		'type'      => Controls_Manager::CHOOSE,
+		'options'   => array(
+			'null' =>
 				array(
 					'title' => esc_html__( 'None', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-close',
 				),
-			'0' =>
+			'0'    =>
 				array(
 					'title' => esc_html__( 'Square', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-square',
 				),
-			'50'  =>
+			'50'   =>
 				array(
 					'title' => esc_html__( 'Circle', 'wpmozo-addons-for-elementor' ),
 					'icon'  => 'eicon-circle',
@@ -451,9 +451,26 @@ $this->add_responsive_control(
 			'{{WRAPPER}} .wpmozo_image_stack_wrap .wpmozo_image_stack_item .wpmozo_stack_item_wrapper:has(.wpmozo_ae_stack_item_icon)' => 'background-color: {{VALUE}};',
 		),
 		'condition' => array(
-			'global_icon_shape' => array( '0', '50' )
+			'global_icon_shape' => array( '0', '50' ),
 		),
 		'default'   => '#FFFFFF',
+	)
+);
+$this->add_responsive_control(
+	'global_icon__padding',
+	array(
+		'label'      => esc_html__( 'Padding', 'wpmozo-addons-for-elementor' ),
+		'type'       => Controls_Manager::DIMENSIONS,
+		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
+		'selectors'  => array(
+			'{{WRAPPER}} .wpmozo_image_stack_wrap span.wpmozo_stack_item_wrapper .wpmozo_ae_stack_item_icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+		),
+		'default'    => array(
+			'top'    => 5,
+			'right'  => 5,
+			'bottom' => 5,
+			'left'   => 5,
+		),
 	)
 );
 $this->end_controls_section();
@@ -517,12 +534,12 @@ $this->add_responsive_control(
 				'min' => 1,
 				'max' => 100,
 			),
-			'%' => array(
+			'%'  => array(
 				'min' => 1,
 				'max' => 100,
 			),
 		),
-		'size_units' => array( 'px', '%' ),
+		'size_units'     => array( 'px', '%' ),
 		'devices'        => array( 'desktop', 'tablet', 'mobile' ),
 		'default'        => array(
 			'size' => 0,
@@ -550,8 +567,8 @@ $this->start_controls_section(
 		'label'     => esc_html__( 'Tooltip Styling', 'wpmozo-addons-for-elementor' ),
 		'tab'       => Controls_Manager::TAB_STYLE,
 		'condition' => array(
-			'enable_tooltip' => 'yes'
-		)
+			'enable_tooltip' => 'yes',
+		),
 	)
 );
 
@@ -566,11 +583,11 @@ $this->add_group_control(
 $this->add_control(
 	'tooltip_animation_type',
 	array(
-		'label'   => esc_html__( 'Animation Type', 'wpmozo-addons-for-elementor' ),
-		'type'    => Controls_Manager::SELECT,
-		'default' => 'away',
+		'label'     => esc_html__( 'Animation Type', 'wpmozo-addons-for-elementor' ),
+		'type'      => Controls_Manager::SELECT,
+		'default'   => 'away',
 		'separator' => 'before',
-		'options' => array(
+		'options'   => array(
 			'away'        => esc_html__( 'Away', 'wpmozo-addons-for-elementor' ),
 			'toward'      => esc_html__( 'Toward', 'wpmozo-addons-for-elementor' ),
 			'scale'       => esc_html__( 'Scale', 'wpmozo-addons-for-elementor' ),
@@ -691,7 +708,7 @@ $this->add_responsive_control(
 	)
 );
 
-$this->start_controls_tabs( 'global_tooltip_tabs',array('separator' => 'before') );
+$this->start_controls_tabs( 'global_tooltip_tabs', array( 'separator' => 'before' ) );
 
 $this->start_controls_tab(
 	'tooltip_text_tab',
@@ -1031,7 +1048,7 @@ $this->add_responsive_control(
 		'selectors'  => array(
 			'{{WRAPPER}} .wpmozo_image_stack_wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
-		'default'    => array( 
+		'default'    => array(
 			'top'    => 5,
 			'right'  => 5,
 			'bottom' => 5,

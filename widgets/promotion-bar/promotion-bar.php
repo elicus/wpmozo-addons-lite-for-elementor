@@ -13,8 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use Elementor\Icons_Manager;
 use Elementor\Widget_Base;
-use \Elementor\Group_Control_Image_Size;
-use \Elementor\Control_Media;
 
 if ( ! class_exists( 'WPMOZO_AE_Promotion_Bar' ) ) {
 	class WPMOZO_AE_Promotion_Bar extends Widget_Base {
@@ -58,7 +56,7 @@ if ( ! class_exists( 'WPMOZO_AE_Promotion_Bar' ) ) {
 		 * @return array Widget keywords.
 		 */
 		public function get_keywords() {
-			return array( 'wpmz promotion bar', 'wpmozo promotion bar', 'wpmz promotion bar', 'wpmozo promotion bar' );
+			return array( 'wpmz promotion bar', 'wpmozo promotion bar', 'wpmz countdown', 'wpmozo countdown' );
 		}
 
 		/**
@@ -167,7 +165,7 @@ if ( ! class_exists( 'WPMOZO_AE_Promotion_Bar' ) ) {
 
 			// Convert the selected date_time to a timestamp.
 			$end_time     = strtotime( $date_time );
-			$current_time = strtotime(current_time('Y-m-d H:i:s'));
+			$current_time = strtotime( current_time( 'Y-m-d H:i:s' ) );
 
 			$gmt_offset        = strval( get_option( 'gmt_offset' ) );
 			$gmt_divider       = '-' === substr( $gmt_offset, 0, 1 ) ? '-' : '+';
@@ -175,7 +173,7 @@ if ( ! class_exists( 'WPMOZO_AE_Promotion_Bar' ) ) {
 			$gmt_offset_minute = str_pad( ( ( abs( $gmt_offset ) * 100 ) % 100 ) * ( 60 / 100 ), 2, '0', STR_PAD_LEFT );
 			$gmt               = "GMT{$gmt_divider}{$gmt_offset_hour}{$gmt_offset_minute}";
 
-			$timestamp = strtotime($date_time." ".$gmt);
+			$timestamp = strtotime( $date_time . ' ' . $gmt );
 
 			// Calculate the difference in seconds.
 			$time_left = $end_time - $current_time;
@@ -218,16 +216,15 @@ if ( ! class_exists( 'WPMOZO_AE_Promotion_Bar' ) ) {
 			);
 
 			// Get the labels based on the selected display_label control.
-			$day_label    = ( isset( $labels['days'][ $display_label ] ) ) ? $labels['days'][ $display_label ] : esc_html__( '', 'wpmozo-addons-for-elementor' );
-			$hour_label   = ( isset( $labels['hours'][ $display_label ] ) ) ? $labels['hours'][ $display_label ] : esc_html__( '', 'wpmozo-addons-for-elementor' );
-			$minute_label = ( isset( $labels['minutes'][ $display_label ] ) ) ? $labels['minutes'][ $display_label ] : esc_html__( '', 'wpmozo-addons-for-elementor' );
-			$second_label = ( isset( $labels['seconds'][ $display_label ] ) ) ? $labels['seconds'][ $display_label ] : esc_html__( '', 'wpmozo-addons-for-elementor' );
-
+			$day_label    = ( isset( $labels['days'][ $display_label ] ) ) ? $labels['days'][ $display_label ] : esc_html( '' );
+			$hour_label   = ( isset( $labels['hours'][ $display_label ] ) ) ? $labels['hours'][ $display_label ] : esc_html( '' );
+			$minute_label = ( isset( $labels['minutes'][ $display_label ] ) ) ? $labels['minutes'][ $display_label ] : esc_html( '' );
+			$second_label = ( isset( $labels['seconds'][ $display_label ] ) ) ? $labels['seconds'][ $display_label ] : esc_html( '' );
 
 			?>
 			<div class="wpmozo_promotion_bar wpmozo_promotion_bar_0">
 				<?php if ( $time_left > 0 ) { ?>
-				<div class="wpmozo_promotion_bar_wrap <?php echo esc_attr( $layout ); ?> icon_<?php echo esc_attr( $settings['button_icon_placement'] ); ?>" data-timestamp="<?php echo esc_attr( strtotime($date_time." ".$gmt) ); ?>">
+				<div class="wpmozo_promotion_bar_wrap <?php echo esc_attr( $layout ); ?> icon_<?php echo esc_attr( $settings['button_icon_placement'] ); ?>" data-timestamp="<?php echo esc_attr( strtotime( $date_time . ' ' . $gmt ) ); ?>">
 					<?php
 					$layout = 'layout3' === $layout ? 'layout1' : $layout;
 					if ( file_exists( plugin_dir_path( __DIR__ ) . "promotion-bar/assets/layouts/$layout.php" ) ) {
