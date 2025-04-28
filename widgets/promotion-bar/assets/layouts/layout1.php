@@ -27,7 +27,7 @@ if ( 'yes' === $settings['enable_image'] && '' !== $image ) {
 			)
 		);
 	?>
-	<div class="wpmozo_promotion_image_wrap" >
+	<div class="wpmozo_promotion_image_wrap">
 		<img <?php $this->print_render_attribute_string( 'image' ); ?> />
 	</div>
 	<?php

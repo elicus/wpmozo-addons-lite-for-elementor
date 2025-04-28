@@ -13,7 +13,7 @@ use Elementor\Group_Control_Css_Filter;
 $this->start_controls_section(
 	'display_tab',
 	array(
-		'label' => esc_html__( 'Display', 'wpmozo-addons-for-elementor' ),
+		'label' => esc_html__( 'Display', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
 	)
 );
@@ -21,18 +21,18 @@ $this->add_responsive_control(
 	'item_alignment',
 	array(
 		'type'      => Controls_Manager::CHOOSE,
-		'label'     => esc_html__( 'Alignment', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 		'options'   => array(
 			'flex-start' => array(
-				'title' => esc_html__( 'Left', 'wpmozo-addons-for-elementor' ),
+				'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 				'icon'  => 'eicon-text-align-left',
 			),
 			'center'     => array(
-				'title' => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
+				'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 				'icon'  => 'eicon-text-align-center',
 			),
 			'flex-end'   => array(
-				'title' => esc_html__( 'Right', 'wpmozo-addons-for-elementor' ),
+				'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 				'icon'  => 'eicon-text-align-right',
 			),
 		),
@@ -45,7 +45,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'item_size',
 	array(
-		'label'          => esc_html__( 'Image/Icon Size', 'wpmozo-addons-for-elementor' ),
+		'label'          => esc_html__( 'Image/Icon Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'           => Controls_Manager::SLIDER,
 		'range'          => array(
 			'px' => array(
@@ -76,7 +76,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'item_shrink',
 	array(
-		'label'          => esc_html__( 'Image/Icon Shrink', 'wpmozo-addons-for-elementor' ),
+		'label'          => esc_html__( 'Image/Icon Shrink', 'wpmozo-addons-lite-for-elementor' ),
 		'type'           => Controls_Manager::SLIDER,
 		'range'          => array(
 			'px' => array(
@@ -107,7 +107,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'item_spacing',
 	array(
-		'label'          => esc_html__( 'Image/Icon Spacing', 'wpmozo-addons-for-elementor' ),
+		'label'          => esc_html__( 'Image/Icon Spacing', 'wpmozo-addons-lite-for-elementor' ),
 		'type'           => Controls_Manager::SLIDER,
 		'range'          => array(
 			'px' => array(
@@ -138,10 +138,10 @@ $this->add_responsive_control(
 $this->add_control(
 	'enable_tooltip',
 	array(
-		'label'        => esc_html__( 'Enable Tooltip', 'wpmozo-addons-for-elementor' ),
+		'label'        => esc_html__( 'Enable Tooltip', 'wpmozo-addons-lite-for-elementor' ),
 		'type'         => Controls_Manager::SWITCHER,
-		'label_on'     => esc_html__( 'Yes', 'wpmozo-addons-for-elementor' ),
-		'label_off'    => esc_html__( 'No', 'wpmozo-addons-for-elementor' ),
+		'label_on'     => esc_html__( 'Yes', 'wpmozo-addons-lite-for-elementor' ),
+		'label_off'    => esc_html__( 'No', 'wpmozo-addons-lite-for-elementor' ),
 		'return_value' => 'yes',
 		'default'      => 'yes',
 	)
@@ -149,12 +149,12 @@ $this->add_control(
 $this->add_control(
 	'show_tooltip_on',
 	array(
-		'label'       => esc_html__( 'Show Tooltip On', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Show Tooltip On', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::SELECT,
 		'default'     => 'hover',
 		'options'     => array(
-			'hover' => esc_html__( 'Hover', 'wpmozo-addons-for-elementor' ),
-			'click' => esc_html__( 'Click', 'wpmozo-addons-for-elementor' ),
+			'hover' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
+			'click' => esc_html__( 'Click', 'wpmozo-addons-lite-for-elementor' ),
 		),
 		'render_type' => 'template',
 		'condition'   => array(
@@ -166,7 +166,7 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'stack_item',
 	array(
-		'label' => __( 'Image Stack Item', 'wpmozo-addons-for-elementor' ),
+		'label' => __( 'Image Stack Item', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
 	)
 );
@@ -175,22 +175,22 @@ $repeater = new Repeater();
 $repeater->add_control(
 	'tooltip_text',
 	array(
-		'label'       => esc_html__( 'Tooltip Text', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Tooltip Text', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::WYSIWYG,
-		'default'     => esc_html__( 'Tooltip Text', 'wpmozo-addons-for-elementor' ),
-		'placeholder' => esc_html__( 'Type your Tooltip Text here', 'wpmozo-addons-for-elementor' ),
+		'default'     => esc_html__( 'Tooltip Text', 'wpmozo-addons-lite-for-elementor' ),
+		'placeholder' => esc_html__( 'Type your Tooltip Text here', 'wpmozo-addons-lite-for-elementor' ),
 	)
 );
 $repeater->add_control(
 	'stack_item_type',
 	array(
-		'label'       => esc_html__( 'Stack Type', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Stack Type', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::SELECT,
 		'default'     => 'image',
 		'separator'   => 'before',
 		'options'     => array(
-			'icon'  => esc_html__( 'Icon', 'wpmozo-addons-for-elementor' ),
-			'image' => esc_html__( 'Image', 'wpmozo-addons-for-elementor' ),
+			'icon'  => esc_html__( 'Icon', 'wpmozo-addons-lite-for-elementor' ),
+			'image' => esc_html__( 'Image', 'wpmozo-addons-lite-for-elementor' ),
 		),
 		'render_type' => 'template',
 	)
@@ -198,7 +198,7 @@ $repeater->add_control(
 $repeater->add_control(
 	'stack_item_icon',
 	array(
-		'label'       => esc_html__( 'Stack Icon', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Stack Icon', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::ICONS,
 		'default'     => array(
 			'value'   => 'fas fa-circle',
@@ -224,7 +224,7 @@ $repeater->add_control(
 $repeater->add_control(
 	'stack_item_image',
 	array(
-		'label'     => __( 'Stack Image', 'wpmozo-addons-for-elementor' ),
+		'label'     => __( 'Stack Image', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::MEDIA,
 		'default'   => array(
 			'url' => Utils::get_placeholder_image_src(),
@@ -237,7 +237,7 @@ $repeater->add_control(
 $repeater->add_responsive_control(
 	'icon_color',
 	array(
-		'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_image_stack_wrap .wpmozo_image_stack_item{{CURRENT_ITEM}} .wpmozo_ae_stack_item_icon' => 'color: {{VALUE}};',
@@ -251,7 +251,7 @@ $repeater->add_responsive_control(
 $repeater->add_responsive_control(
 	'stack_item_shape',
 	array(
-		'label'       => esc_html__( 'Icon Shape', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Icon Shape', 'wpmozo-addons-lite-for-elementor' ),
 		'default'     => '',
 		'toggle'      => true,
 		'render_type' => 'template',
@@ -259,17 +259,17 @@ $repeater->add_responsive_control(
 		'options'     => array(
 			'null' =>
 				array(
-					'title' => esc_html__( 'None', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'None', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-close',
 				),
 			'0'    =>
 				array(
-					'title' => esc_html__( 'Square', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Square', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-square',
 				),
 			'50'   =>
 				array(
-					'title' => esc_html__( 'Circle', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Circle', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-circle',
 				),
 		),
@@ -285,7 +285,7 @@ $repeater->add_responsive_control(
 $repeater->add_responsive_control(
 	'stack_item_shape_background_color',
 	array(
-		'label'     => esc_html__( 'Icon Shape Background', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Icon Shape Background', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_image_stack_wrap .wpmozo_image_stack_inner .wpmozo_image_stack_item{{CURRENT_ITEM}} .stack_item-type-icon' => 'background-color: {{VALUE}};',
@@ -311,7 +311,7 @@ $repeater->add_responsive_control(
 	'stack_item_image_border_radius',
 	array(
 		'type'       => Controls_Manager::SLIDER,
-		'label'      => esc_html__( 'Image Border Radius', 'wpmozo-addons-for-elementor' ),
+		'label'      => esc_html__( 'Image Border Radius', 'wpmozo-addons-lite-for-elementor' ),
 		'range'      => array(
 			'px' => array(
 				'min' => 1,
@@ -337,7 +337,7 @@ $repeater->add_responsive_control(
 $repeater->add_responsive_control(
 	'stack_item_padding',
 	array(
-		'label'      => esc_html__( 'Padding', 'wpmozo-addons-for-elementor' ),
+		'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 		'selectors'  => array(
@@ -399,14 +399,14 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'global_icon_styling',
 	array(
-		'label' => esc_html__( 'Global Icon Styling', 'wpmozo-addons-for-elementor' ),
+		'label' => esc_html__( 'Global Icon Styling', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	)
 );
 $this->add_responsive_control(
 	'global_icon_color',
 	array(
-		'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_image_stack_wrap .wpmozo_image_stack_item .wpmozo_ae_stack_item_icon' => 'color: {{VALUE}};',
@@ -417,23 +417,23 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'global_icon_shape',
 	array(
-		'label'     => esc_html__( 'Icon Shape', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Icon Shape', 'wpmozo-addons-lite-for-elementor' ),
 		'default'   => '0.0',
 		'type'      => Controls_Manager::CHOOSE,
 		'options'   => array(
 			'null' =>
 				array(
-					'title' => esc_html__( 'None', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'None', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-close',
 				),
 			'0'    =>
 				array(
-					'title' => esc_html__( 'Square', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Square', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-square',
 				),
 			'50'   =>
 				array(
-					'title' => esc_html__( 'Circle', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Circle', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-circle',
 				),
 		),
@@ -445,7 +445,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'global_icon_shape_background_color',
 	array(
-		'label'     => esc_html__( 'Icon Shape Background', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Icon Shape Background', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_image_stack_wrap .wpmozo_image_stack_item .wpmozo_stack_item_wrapper:has(.wpmozo_ae_stack_item_icon)' => 'background-color: {{VALUE}};',
@@ -459,7 +459,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'global_icon__padding',
 	array(
-		'label'      => esc_html__( 'Padding', 'wpmozo-addons-for-elementor' ),
+		'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 		'selectors'  => array(
@@ -480,7 +480,7 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'global_stack_item_image_styling',
 	array(
-		'label' => esc_html__( 'Global Image Styling', 'wpmozo-addons-for-elementor' ),
+		'label' => esc_html__( 'Global Image Styling', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 
 	)
@@ -490,7 +490,7 @@ $this->add_responsive_control(
 	'global_stack_item_image_size',
 	array(
 		'type'           => Controls_Manager::SLIDER,
-		'label'          => esc_html__( 'Image Size', 'wpmozo-addons-for-elementor' ),
+		'label'          => esc_html__( 'Image Size', 'wpmozo-addons-lite-for-elementor' ),
 		'range'          => array(
 			'px' => array(
 				'min' => 32,
@@ -528,7 +528,7 @@ $this->add_responsive_control(
 	'global_stack_item_image_border_radius',
 	array(
 		'type'           => Controls_Manager::SLIDER,
-		'label'          => esc_html__( 'Image Border Radius', 'wpmozo-addons-for-elementor' ),
+		'label'          => esc_html__( 'Image Border Radius', 'wpmozo-addons-lite-for-elementor' ),
 		'range'          => array(
 			'px' => array(
 				'min' => 1,
@@ -564,7 +564,7 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'global_tooltip',
 	array(
-		'label'     => esc_html__( 'Tooltip Styling', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Tooltip Styling', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'       => Controls_Manager::TAB_STYLE,
 		'condition' => array(
 			'enable_tooltip' => 'yes',
@@ -583,15 +583,15 @@ $this->add_group_control(
 $this->add_control(
 	'tooltip_animation_type',
 	array(
-		'label'     => esc_html__( 'Animation Type', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Animation Type', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SELECT,
 		'default'   => 'away',
 		'separator' => 'before',
 		'options'   => array(
-			'away'        => esc_html__( 'Away', 'wpmozo-addons-for-elementor' ),
-			'toward'      => esc_html__( 'Toward', 'wpmozo-addons-for-elementor' ),
-			'scale'       => esc_html__( 'Scale', 'wpmozo-addons-for-elementor' ),
-			'perspective' => esc_html__( 'Perspective', 'wpmozo-addons-for-elementor' ),
+			'away'        => esc_html__( 'Away', 'wpmozo-addons-lite-for-elementor' ),
+			'toward'      => esc_html__( 'Toward', 'wpmozo-addons-lite-for-elementor' ),
+			'scale'       => esc_html__( 'Scale', 'wpmozo-addons-lite-for-elementor' ),
+			'perspective' => esc_html__( 'Perspective', 'wpmozo-addons-lite-for-elementor' ),
 		),
 	)
 );
@@ -599,13 +599,13 @@ $this->add_control(
 $this->add_control(
 	'animation_type_away',
 	array(
-		'label'     => esc_html__( 'Select Animation', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Select Animation', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SELECT,
 		'default'   => 'shift-away',
 		'options'   => array(
-			'shift-away'         => esc_html__( 'Shift Away', 'wpmozo-addons-for-elementor' ),
-			'shift-away-subtle'  => esc_html__( 'Shift Away Subtle', 'wpmozo-addons-for-elementor' ),
-			'shift-away-extreme' => esc_html__( 'Shift Away Extreme', 'wpmozo-addons-for-elementor' ),
+			'shift-away'         => esc_html__( 'Shift Away', 'wpmozo-addons-lite-for-elementor' ),
+			'shift-away-subtle'  => esc_html__( 'Shift Away Subtle', 'wpmozo-addons-lite-for-elementor' ),
+			'shift-away-extreme' => esc_html__( 'Shift Away Extreme', 'wpmozo-addons-lite-for-elementor' ),
 		),
 		'condition' => array(
 			'tooltip_animation_type' => 'away',
@@ -615,13 +615,13 @@ $this->add_control(
 $this->add_control(
 	'animation_type_toward',
 	array(
-		'label'     => esc_html__( 'Select Animation', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Select Animation', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SELECT,
 		'default'   => 'shift-toward',
 		'options'   => array(
-			'shift-toward'         => esc_html__( 'Shift Toward', 'wpmozo-addons-for-elementor' ),
-			'shift-toward-subtle'  => esc_html__( 'Shift Toward Subtle', 'wpmozo-addons-for-elementor' ),
-			'shift-toward-extreme' => esc_html__( 'Shift Toward Extreme', 'wpmozo-addons-for-elementor' ),
+			'shift-toward'         => esc_html__( 'Shift Toward', 'wpmozo-addons-lite-for-elementor' ),
+			'shift-toward-subtle'  => esc_html__( 'Shift Toward Subtle', 'wpmozo-addons-lite-for-elementor' ),
+			'shift-toward-extreme' => esc_html__( 'Shift Toward Extreme', 'wpmozo-addons-lite-for-elementor' ),
 		),
 		'condition' => array(
 			'tooltip_animation_type' => 'toward',
@@ -632,13 +632,13 @@ $this->add_control(
 $this->add_control(
 	'animation_type_scale',
 	array(
-		'label'     => esc_html__( 'Select Animation', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Select Animation', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SELECT,
 		'default'   => 'scale',
 		'options'   => array(
-			'scale'         => esc_html__( 'Scale', 'wpmozo-addons-for-elementor' ),
-			'scale-subtle'  => esc_html__( 'Scale Subtle', 'wpmozo-addons-for-elementor' ),
-			'scale-extreme' => esc_html__( 'Scale Extreme', 'wpmozo-addons-for-elementor' ),
+			'scale'         => esc_html__( 'Scale', 'wpmozo-addons-lite-for-elementor' ),
+			'scale-subtle'  => esc_html__( 'Scale Subtle', 'wpmozo-addons-lite-for-elementor' ),
+			'scale-extreme' => esc_html__( 'Scale Extreme', 'wpmozo-addons-lite-for-elementor' ),
 		),
 		'condition' => array(
 			'tooltip_animation_type' => 'scale',
@@ -649,13 +649,13 @@ $this->add_control(
 $this->add_control(
 	'animation_type_perspective',
 	array(
-		'label'     => esc_html__( 'Select Animation', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Select Animation', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SELECT,
 		'default'   => 'perspective',
 		'options'   => array(
-			'perspective'         => esc_html__( 'Perspective', 'wpmozo-addons-for-elementor' ),
-			'perspective-subtle'  => esc_html__( 'Perspective Subtle', 'wpmozo-addons-for-elementor' ),
-			'perspective-extreme' => esc_html__( 'Perspective Extreme', 'wpmozo-addons-for-elementor' ),
+			'perspective'         => esc_html__( 'Perspective', 'wpmozo-addons-lite-for-elementor' ),
+			'perspective-subtle'  => esc_html__( 'Perspective Subtle', 'wpmozo-addons-lite-for-elementor' ),
+			'perspective-extreme' => esc_html__( 'Perspective Extreme', 'wpmozo-addons-lite-for-elementor' ),
 		),
 		'condition' => array(
 			'tooltip_animation_type' => 'perspective',
@@ -667,7 +667,7 @@ $this->add_control(
 	'tooltip_animation_duration',
 	array(
 		'type'    => Controls_Manager::SLIDER,
-		'label'   => esc_html__( 'Animation Duration ( ms )', 'wpmozo-addons-for-elementor' ),
+		'label'   => esc_html__( 'Animation Duration ( ms )', 'wpmozo-addons-lite-for-elementor' ),
 		'range'   => array(
 			'ms' => array(
 				'min'  => 0,
@@ -686,11 +686,11 @@ $this->add_control(
 $this->add_control(
 	'show_speech_bubble',
 	array(
-		'label'        => esc_html__( 'Show Speech Bubble', 'wpmozo-addons-for-elementor' ),
+		'label'        => esc_html__( 'Show Speech Bubble', 'wpmozo-addons-lite-for-elementor' ),
 		'type'         => Controls_Manager::SWITCHER,
 		'separator'    => 'before',
-		'label_on'     => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
-		'label_off'    => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
+		'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
+		'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
 		'return_value' => 'yes',
 		'default'      => 'yes',
 	)
@@ -699,7 +699,7 @@ $this->add_control(
 $this->add_responsive_control(
 	'global_tooltip_padding',
 	array(
-		'label'      => esc_html__( 'Padding', 'wpmozo-addons-for-elementor' ),
+		'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 		'selectors'  => array(
@@ -719,7 +719,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'tooltip_text_color',
 	array(
-		'label'     => esc_html__( 'Text Color', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'.wpmozo-floating-container.wpmozo-wrapper-{{ID}} p' => 'color: {{VALUE}};',
@@ -730,7 +730,7 @@ $this->add_group_control(
 	Group_Control_Typography::get_type(),
 	array(
 		'name'     => 'tooltip_text_typography',
-		'label'    => esc_html__( 'Typography', 'wpmozo-addons-for-elementor' ),
+		'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
 		'selector' => '.wpmozo-floating-container.wpmozo-wrapper-{{ID}} p',
 	)
 );
@@ -738,30 +738,30 @@ $this->add_group_control(
 	Group_Control_Text_Shadow::get_type(),
 	array(
 		'name'     => 'tooltip_text_shadow',
-		'label'    => esc_html__( 'Text Shadow', 'wpmozo-addons-for-elementor' ),
+		'label'    => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'selector' => '.wpmozo-floating-container.wpmozo-wrapper-{{ID}} p',
 	)
 );
 $this->add_responsive_control(
 	'tooltip_text_alignment',
 	array(
-		'label'       => esc_html__( 'Text Alignment', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Text Alignment', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::CHOOSE,
 		'label_block' => true,
 		'options'     => array(
 			'left'   =>
 				array(
-					'title' => esc_html__( 'Left', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-left',
 				),
 			'center' =>
 				array(
-					'title' => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-center',
 				),
 			'right'  =>
 				array(
-					'title' => esc_html__( 'Right', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-right',
 				),
 		),
@@ -783,7 +783,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'tooltip_link_color',
 	array(
-		'label'     => esc_html__( 'Link Color', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Link Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'.wpmozo-floating-container.wpmozo-wrapper-{{ID}} a' => 'color: {{VALUE}};',
@@ -794,7 +794,7 @@ $this->add_group_control(
 	Group_Control_Typography::get_type(),
 	array(
 		'name'     => 'tooltip_link_typography',
-		'label'    => esc_html__( 'Link Typography', 'wpmozo-addons-for-elementor' ),
+		'label'    => esc_html__( 'Link Typography', 'wpmozo-addons-lite-for-elementor' ),
 		'selector' => '.wpmozo-floating-container.wpmozo-wrapper-{{ID}} a',
 	)
 );
@@ -802,30 +802,30 @@ $this->add_group_control(
 	Group_Control_Text_Shadow::get_type(),
 	array(
 		'name'     => 'tooltip_link_text_shadow',
-		'label'    => esc_html__( 'Link Shadow', 'wpmozo-addons-for-elementor' ),
+		'label'    => esc_html__( 'Link Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'selector' => '.wpmozo-floating-container.wpmozo-wrapper-{{ID}} a',
 	)
 );
 $this->add_responsive_control(
 	'tooltip_link_alignment',
 	array(
-		'label'       => esc_html__( 'Link Alignment', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Link Alignment', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::CHOOSE,
 		'label_block' => true,
 		'options'     => array(
 			'left'   =>
 				array(
-					'title' => esc_html__( 'Left', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-left',
 				),
 			'center' =>
 				array(
-					'title' => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-center',
 				),
 			'right'  =>
 				array(
-					'title' => esc_html__( 'Right', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-right',
 				),
 		),
@@ -846,7 +846,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'ol_text_color',
 	array(
-		'label'     => esc_html__( 'Order List Text Color', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Order List Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'.wpmozo-floating-container.wpmozo-wrapper-{{ID}} ol li' => 'color: {{VALUE}};',
@@ -857,7 +857,7 @@ $this->add_group_control(
 	Group_Control_Typography::get_type(),
 	array(
 		'name'     => 'ol_text_typography',
-		'label'    => esc_html__( 'Order List Typography', 'wpmozo-addons-for-elementor' ),
+		'label'    => esc_html__( 'Order List Typography', 'wpmozo-addons-lite-for-elementor' ),
 		'selector' => '.wpmozo-floating-container.wpmozo-wrapper-{{ID}} ol li',
 	)
 );
@@ -865,30 +865,30 @@ $this->add_group_control(
 	Group_Control_Text_Shadow::get_type(),
 	array(
 		'name'     => 'ol_text_shadow',
-		'label'    => esc_html__( 'Order List Text Shadow', 'wpmozo-addons-for-elementor' ),
+		'label'    => esc_html__( 'Order List Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'selector' => '.wpmozo-floating-container.wpmozo-wrapper-{{ID}} ol li',
 	)
 );
 $this->add_responsive_control(
 	'ol_text_alignment',
 	array(
-		'label'       => esc_html__( 'Order List Text Alignment', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Order List Text Alignment', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::CHOOSE,
 		'label_block' => true,
 		'options'     => array(
 			'left'   =>
 				array(
-					'title' => esc_html__( 'Left', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-left',
 				),
 			'center' =>
 				array(
-					'title' => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-center',
 				),
 			'right'  =>
 				array(
-					'title' => esc_html__( 'Right', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-right',
 				),
 		),
@@ -909,7 +909,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'ul_text_color',
 	array(
-		'label'     => esc_html__( 'Unordered List Text Color', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Unordered List Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'.wpmozo-floating-container.wpmozo-wrapper-{{ID}} ul li' => 'color: {{VALUE}};',
@@ -920,7 +920,7 @@ $this->add_group_control(
 	Group_Control_Typography::get_type(),
 	array(
 		'name'     => 'ul_text_typography',
-		'label'    => esc_html__( 'Unordered List Typography', 'wpmozo-addons-for-elementor' ),
+		'label'    => esc_html__( 'Unordered List Typography', 'wpmozo-addons-lite-for-elementor' ),
 		'selector' => '.wpmozo-floating-container.wpmozo-wrapper-{{ID}} ul li',
 	)
 );
@@ -928,30 +928,30 @@ $this->add_group_control(
 	Group_Control_Text_Shadow::get_type(),
 	array(
 		'name'     => 'ul_text_shadow',
-		'label'    => esc_html__( 'Unordered List Text Shadow', 'wpmozo-addons-for-elementor' ),
+		'label'    => esc_html__( 'Unordered List Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'selector' => '.wpmozo-floating-container.wpmozo-wrapper-{{ID}} ul li',
 	)
 );
 $this->add_responsive_control(
 	'ul_text_alignment',
 	array(
-		'label'       => esc_html__( 'Unordered List Text Alignment', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Unordered List Text Alignment', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::CHOOSE,
 		'label_block' => true,
 		'options'     => array(
 			'left'   =>
 				array(
-					'title' => esc_html__( 'Left', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-left',
 				),
 			'center' =>
 				array(
-					'title' => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-center',
 				),
 			'right'  =>
 				array(
-					'title' => esc_html__( 'Right', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-right',
 				),
 		),
@@ -973,7 +973,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'blockquote_text_color',
 	array(
-		'label'     => esc_html__( 'Blockquote Text Color', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Blockquote Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'.wpmozo-floating-container.wpmozo-wrapper-{{ID}} blockquote' => 'color: {{VALUE}};',
@@ -984,7 +984,7 @@ $this->add_group_control(
 	Group_Control_Typography::get_type(),
 	array(
 		'name'     => 'blockquote_text_typography',
-		'label'    => esc_html__( 'Blockquote Typography', 'wpmozo-addons-for-elementor' ),
+		'label'    => esc_html__( 'Blockquote Typography', 'wpmozo-addons-lite-for-elementor' ),
 		'selector' => '.wpmozo-floating-container.wpmozo-wrapper-{{ID}} blockquote',
 	)
 );
@@ -992,30 +992,30 @@ $this->add_group_control(
 	Group_Control_Text_Shadow::get_type(),
 	array(
 		'name'     => 'blockquote_text_shadow',
-		'label'    => esc_html__( 'Blockquote Text Shadow', 'wpmozo-addons-for-elementor' ),
+		'label'    => esc_html__( 'Blockquote Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'selector' => '.wpmozo-floating-container.wpmozo-wrapper-{{ID}} blockquote',
 	)
 );
 $this->add_responsive_control(
 	'blockquote_text_alignment',
 	array(
-		'label'       => esc_html__( 'Blockquote Text Alignment', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Blockquote Text Alignment', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::CHOOSE,
 		'label_block' => true,
 		'options'     => array(
 			'left'   =>
 				array(
-					'title' => esc_html__( 'Left', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-left',
 				),
 			'center' =>
 				array(
-					'title' => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-center',
 				),
 			'right'  =>
 				array(
-					'title' => esc_html__( 'Right', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-right',
 				),
 		),
@@ -1034,7 +1034,7 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'spcacing_settings',
 	array(
-		'label' => esc_html__( 'Spacing', 'wpmozo-addons-for-elementor' ),
+		'label' => esc_html__( 'Spacing', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	)
 );
@@ -1042,7 +1042,7 @@ $this->start_controls_section(
 $this->add_responsive_control(
 	'content_padding',
 	array(
-		'label'      => esc_html__( 'Content Padding', 'wpmozo-addons-for-elementor' ),
+		'label'      => esc_html__( 'Content Padding', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 		'selectors'  => array(
