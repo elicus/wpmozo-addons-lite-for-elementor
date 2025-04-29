@@ -23,7 +23,7 @@ $this->add_responsive_control(
 		'type'      => Controls_Manager::CHOOSE,
 		'label'     => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 		'options'   => array(
-			'flex-start' => array(
+			'left' => array(
 				'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 				'icon'  => 'eicon-text-align-left',
 			),
@@ -31,14 +31,14 @@ $this->add_responsive_control(
 				'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 				'icon'  => 'eicon-text-align-center',
 			),
-			'flex-end'   => array(
+			'right'   => array(
 				'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 				'icon'  => 'eicon-text-align-right',
 			),
 		),
 		'toggle'    => true,
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_image_stack_inner' => 'justify-content: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_image_stack_wrap' => 'text-align: {{VALUE}};',
 		),
 	)
 );
@@ -100,7 +100,7 @@ $this->add_responsive_control(
 		),
 		'size_units'     => array( 'px' ),
 		'selectors'      => array(
-			'{{WRAPPER}} .wpmozo_image_stack_wrap .wpmozo_image_stack_item:not(:first-child)' => 'margin-left: -{{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_image_stack_inner .wpmozo_image_stack_item:not(:first-child)' => 'margin-left: -{{SIZE}}{{UNIT}}; transition: all 300ms;',
 		),
 	)
 );
@@ -131,7 +131,7 @@ $this->add_responsive_control(
 		),
 		'size_units'     => array( 'px' ),
 		'selectors'      => array(
-			'{{WRAPPER}} .wpmozo_image_stack_wrap .wpmozo_image_stack_item:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_image_stack_inner .wpmozo_image_stack_item:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 		),
 	)
 );
@@ -571,7 +571,6 @@ $this->start_controls_section(
 		),
 	)
 );
-
 $this->add_group_control(
 	Group_Control_Background::get_type(),
 	array(
@@ -695,7 +694,19 @@ $this->add_control(
 		'default'      => 'yes',
 	)
 );
-
+$this->add_responsive_control(
+	'speech_bubble_pointer_color',
+	array(
+		'label'     => esc_html__( 'Speech Bubble Pointer Color', 'wpmozo-addons-lite-for-elementor' ),
+		'type'      => Controls_Manager::COLOR,
+		'selectors' => array(
+			'.tippy-content:has(> .wpmozo-wrapper-{{ID}}) + .tippy-arrow::before' => 'border-top-color: {{VALUE}};',
+		),
+		'condition' => array(
+			'show_speech_bubble' => 'yes',
+		),
+	)
+);
 $this->add_responsive_control(
 	'global_tooltip_padding',
 	array(
