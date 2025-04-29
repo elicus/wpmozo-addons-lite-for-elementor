@@ -222,8 +222,6 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Stack' ) ) {
 						</div>
 					</div>
 				</div>
-			</div>
-			
 			<?php
 		}
 	}
