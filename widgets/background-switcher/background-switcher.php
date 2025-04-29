@@ -42,7 +42,7 @@ if ( ! class_exists( 'WPMOZO_AE_Background_Switcher' ) ) {
 		 * @return string Widget title.
 		 */
 		public function get_title() {
-			return esc_html__( 'Background Switcher', 'wpmozo-addons-for-elementor' );
+			return esc_html__( 'Background Switcher', 'wpmozo-addons-lite-for-elementor' );
 		}
 
 		/**
