@@ -117,11 +117,12 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 			wp_register_script( 'wpmozo-ae-goshare', plugins_url( 'assets/js/goshare/goshare.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
 			wp_enqueue_script(
-	            'wpmozo-ae-goshare',
-	            plugins_url( 'assets/js/goshare/goshare.js', plugin_dir_path( __FILE__ ) ),
-	            false,
-		        WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION
-	        );
+				'wpmozo-ae-goshare',
+				plugins_url( 'assets/js/goshare/goshare.js', plugin_dir_url( __FILE__ ) ),
+				array(),
+				WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION,
+				true
+			);			
 		}
 
 		/**
