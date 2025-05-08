@@ -23,15 +23,15 @@ $this->add_responsive_control(
 		'type'      => Controls_Manager::CHOOSE,
 		'label'     => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 		'options'   => array(
-			'left' => array(
+			'left'   => array(
 				'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 				'icon'  => 'eicon-text-align-left',
 			),
-			'center'     => array(
+			'center' => array(
 				'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 				'icon'  => 'eicon-text-align-center',
 			),
-			'right'   => array(
+			'right'  => array(
 				'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 				'icon'  => 'eicon-text-align-right',
 			),
@@ -184,7 +184,7 @@ $repeater->add_control(
 $repeater->add_control(
 	'stack_item_type',
 	array(
-		'label'       => esc_html__( 'Stack Type', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Item Type', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::SELECT,
 		'default'     => 'image',
 		'separator'   => 'before',
@@ -196,9 +196,40 @@ $repeater->add_control(
 	)
 );
 $repeater->add_control(
+	'enable_item_link',
+	array(
+		'label'        => esc_html__( 'Enable Item Link', 'wpmozo-addons-lite-for-elementor' ),
+		'type'         => Controls_Manager::SWITCHER,
+		'label_on'     => esc_html__( 'Yes', 'wpmozo-addons-lite-for-elementor' ),
+		'label_off'    => esc_html__( 'No', 'wpmozo-addons-lite-for-elementor' ),
+		'return_value' => 'yes',
+		'default'      => '',
+	)
+);
+$repeater->add_control(
+	'stack_item_link',
+	array(
+		'label'       => esc_html__( 'Item Link', 'wpmozo-addons-lite-for-elementor' ),
+		'type'        => Controls_Manager::URL,
+		'options'     => array( 'url', 'is_external', 'nofollow' ),
+		'default'     => array(
+			'url'         => '',
+			'is_external' => true,
+			'nofollow'    => true,
+		),
+		'label_block' => true,
+		'dynamic'     => array(
+			'active' => true,
+		),
+		'condition'   => array(
+			'enable_item_link' => 'yes',
+		),
+	)
+);
+$repeater->add_control(
 	'stack_item_icon',
 	array(
-		'label'       => esc_html__( 'Stack Icon', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Icon', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::ICONS,
 		'default'     => array(
 			'value'   => 'fas fa-circle',
@@ -224,7 +255,7 @@ $repeater->add_control(
 $repeater->add_control(
 	'stack_item_image',
 	array(
-		'label'     => __( 'Stack Image', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => __( 'Image', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::MEDIA,
 		'default'   => array(
 			'url' => Utils::get_placeholder_image_src(),

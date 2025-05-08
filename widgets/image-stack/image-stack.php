@@ -147,7 +147,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Stack' ) ) {
 			$settings           = $this->get_settings_for_display();
 			$widget_id          = $this->get_id();
 			$stack_item_list    = isset( $settings['stack_item_list'] ) ? $settings['stack_item_list'] : array();
-			$show_tooltip_on    = $settings['show_tooltip_on'];
+			$show_tooltip_on    = isset( $settings['show_tooltip_on'] ) ? $settings['show_tooltip_on'] : '';
 			$show_speech_bubble = $settings['show_speech_bubble'];
 			$enable_tooltip     = $settings['enable_tooltip'];
 			$animation_duration = isset( $settings['tooltip_animation_duration']['size'] ) && ! empty( $settings['tooltip_animation_duration']['size'] ) ? $settings['tooltip_animation_duration']['size'] : '300';
@@ -187,23 +187,40 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Stack' ) ) {
 						foreach ( $stack_item_list as $index => $single_item ) {
 							$stack_item_type       = esc_attr( $single_item['stack_item_type'] );
 							$stack_item_icon_shape = isset( $single_item['stack_item_shape'] ) && 'null' === $single_item['stack_item_shape'] ? 'icon_shape_' . $single_item['stack_item_shape'] : '';
+							$this->add_render_attribute( 'stack_item_link', 'class', 'stack_item_link' );
+
+								$this->add_link_attributes(
+									'stack_item_link',
+									array(
+										'url'         => isset( $single_item['stack_item_link']['url'] ) ? $single_item['stack_item_link']['url'] : '',
+										'is_external' => isset( $single_item['stack_item_link']['is_external'] ) ? $single_item['stack_item_link']['is_external'] : '',
+										'nofollow'    => isset( $single_item['stack_item_link']['is_external'] ) ? $single_item['stack_item_link']['nofollow'] : '',
+									)
+								);
+
 							?>
 							<div class="wpmozo_image_stack_item elementor-repeater-item-<?php echo esc_attr( $single_item['_id'] ) . ' ' . esc_attr( $stack_item_icon_shape ); ?>" data-repeater-id="elementor-repeater-item-<?php echo esc_attr( $single_item['_id'] ); ?>" data-template="tooltip-content-<?php echo esc_attr( $widget_id ); ?>-<?php echo esc_attr( $index ); ?>">
-								<span class="wpmozo_stack_item_wrapper stack_item-type-<?php echo esc_attr( $stack_item_type ); ?>">								 
-								<?php if ( 'icon' === $stack_item_type ) : ?>
-											<?php
-											Icons_Manager::render_icon(
-												$single_item['stack_item_icon'],
-												array(
-													'aria-hidden' => 'true',
-													'class' => 'wpmozo_ae_stack_item_icon',
-												)
-											);
-											?>
+								<span class="wpmozo_stack_item_wrapper stack_item-type-<?php echo esc_attr( $stack_item_type ); ?>">
+									<?php if ( ! empty( $single_item['stack_item_link']['url'] ) ) { ?>
+										<a <?php $this->print_render_attribute_string( 'stack_item_link' ); ?> >
+									<?php } ?>
+										<?php if ( 'icon' === $stack_item_type ) : ?>
+												<?php
+												Icons_Manager::render_icon(
+													$single_item['stack_item_icon'],
+													array(
+														'aria-hidden' => 'true',
+														'class' => 'wpmozo_ae_stack_item_icon',
+													)
+												);
+												?>
 										<?php endif; ?>
-									<?php if ( 'image' === $stack_item_type ) : ?>									
-											<img src="<?php echo esc_attr( $single_item['stack_item_image']['url'] ); ?>">
+										<?php if ( 'image' === $stack_item_type ) : ?>									
+												<img src="<?php echo esc_attr( $single_item['stack_item_image']['url'] ); ?>">
 										<?php endif; ?>
+										<?php if ( ! empty( $single_item['stack_item_link']['url'] ) ) { ?>
+										</a>
+										<?php } ?>
 								</span>
 							</div>
 							<!-- tooltip content -->
