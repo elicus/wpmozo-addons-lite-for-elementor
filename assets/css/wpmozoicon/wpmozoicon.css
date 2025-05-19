@@ -9,10 +9,10 @@
   font-style: normal;
   font-display: block;
 }
-
 .wpmozo-ae-brandicon::after,
 .elementor-panel .elementor-element-wrapper [class*="wpmozo-ae-icon-"],
-#wpmozo_ae_panel_general_section .wpmozo_ae_panel_multiple_checkboxes [class*="wpmozo-ae-icon-"] {
+#wpmozo_ae_panel_general_section .wpmozo_ae_panel_multiple_checkboxes [class*="wpmozo-ae-icon-"],
+.elementor-control-wpmozo_extension_select_actions [data-collapse_id="wpmozo_extension_select_actions"] + .elementor-section-title:before {
     font-family: wpmozo !important;
     speak: never;
     font-style: normal;
@@ -232,11 +232,19 @@
 .wpmozo-ae-icon-ajax-search:before {
   content: "\e901";
 }
-.wpmozo-ae-brandicon:after {
+.wpmozo-ae-brandicon:after,
+.elementor-control-wpmozo_extension_select_actions [data-collapse_id="wpmozo_extension_select_actions"] + .elementor-section-title:before{
   font-size:22px;
   content:"\e900";
   color:#5e1f9e;
   position:absolute;
   top:0;
   right:3%;
+}
+.elementor-control-wpmozo_extension_select_actions [data-collapse_id="wpmozo_extension_select_actions"] + .elementor-section-title:before{
+  line-height: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  top:25px;
+  right:10px;
 }
