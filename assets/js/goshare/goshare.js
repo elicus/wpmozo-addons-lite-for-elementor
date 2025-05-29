@@ -50,18 +50,21 @@
             return false;
         }
 
+        
         $(document).ready(function () {
-            $($this).mouseup(function () {
-                var selection = getSelected();
-                var e = window.event;
-                var posX = e.clientX;
-                var posY = e.clientY;
-                posX = posX + 10;
-                posY = posY + 10;
-                if (selection == "") { HideGoShar(); }
-                else { $("#social").css({ left: posX, top: posY, opacity: 1 }); }
+            $($this).mouseup(function (event) {
+                var selection = getSelected().toString().trim();
+                if (selection === "") {
+                    HideGoShar();
+                    return;
+                }
+        
+                var posX = event.pageX + 10;
+                var posY = event.pageY + 10;
+        
+                $("#social").css({ left: posX, top: posY, opacity: 1 });
             });
-        });
+        });        
         return this;
     };
 

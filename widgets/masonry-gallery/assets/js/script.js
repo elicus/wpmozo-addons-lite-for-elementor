@@ -1,10 +1,4 @@
 jQuery( window ).on( 
-	'panel/open_editor/widget/wpmozo_ae_masonry_gallery', function( panel, model, view ) {
-
-   var $element = view.$el.find( '.elementor-selector' );
-} );
-
-jQuery( window ).on( 
 	"elementor/frontend/init",
 	function () {
 		var e = elementorModules.frontend.handlers.Base.extend( 
@@ -26,6 +20,7 @@ jQuery( window ).on(
 									type: "image",
 									closeOnContentClick: ! 1,
 									closeBtnInside: ! 1,
+									allowHTMLInTemplate: ! 0,
 									mainClass: "elementor-element mfp-with-zoom mfp-img-mobile wpmozo_ae_masonry_gallery_lightbox " + e,
 									prependTo: t.closest( ".elementor" ),
 									zoom: {
@@ -49,23 +44,31 @@ jQuery( window ).on(
 									},
 								}
 							 ) );
-							jQuery( window ).on( 'load', function(){
-								t.imagesLoaded( 
-									function () {
-										var e = t.isotope( 
-											{
-												itemSelector: ".wpmozo_ae_masonry_gallery_item",
-												transformsEnabled : ! 1,
-												layoutMode: "masonry",
-												percentPosition: ! 0,
-												resize: ! 0,
-												masonry: { columnWidth: ".wpmozo_ae_masonry_gallery_item", gutter: ".wpmozo_ae_masonry_gallery_item_gutter" },
-											}
-										 );
-										e.isotope( 'layout' ); e.isotope( 'reloadItems' );
-									}
-								 )
-							} );
+							 function runIsotopeLayout($galleryWrapper) {
+							    $galleryWrapper.imagesLoaded(function () {
+							        const isoInstance = $galleryWrapper.isotope({
+							            itemSelector: '.wpmozo_ae_masonry_gallery_item',
+							            layoutMode: 'masonry',
+							            percentPosition: true,
+							            resize: true,
+							            masonry: {
+							                columnWidth: '.wpmozo_ae_masonry_gallery_item',
+							                gutter: '.wpmozo_ae_masonry_gallery_item_gutter',
+							            },
+							        });
+
+							        isoInstance.isotope('layout');
+							        isoInstance.isotope('reloadItems');
+							    });
+							}
+
+							if (document.readyState === 'complete') {
+							    runIsotopeLayout(jQuery( '.wpmozo_ae_masonry_gallery_wrapper' ));
+							} else {
+							    jQuery(window).on('load', function () {
+							        runIsotopeLayout(jQuery( '.wpmozo_ae_masonry_gallery_wrapper' ));
+							    });
+							}
 						}
 					 );
 				},
