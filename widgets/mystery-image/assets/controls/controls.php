@@ -231,4 +231,45 @@ $this->add_control(
 		),
 	)
 );
+$this->start_controls_tabs( 'close_icon_tabs',
+	array(
+		'separator'     => 'before',
+	) );
+$this->start_controls_tab(
+	'close_icon_normal_tab',
+	array(
+		'label' => esc_html__( 'Normal', 'wpmozo-addons-for-elementor' ),
+	)
+);
+$this->add_control(
+	'close_icon_background_color',
+	array(
+		'label'       => esc_html__( 'Close Icon Background Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label_block' => false,
+		'type'        => Controls_Manager::COLOR,
+		'selectors'   => array(
+			'{{WRAPPER}} button.mfp-close' => 'background-color: {{VALUE}};',
+		),
+	)
+);
+$this->end_controls_tab();
+$this->start_controls_tab(
+	'close_icon_hover_tab',
+	array(
+		'label' => esc_html__( 'Hover', 'wpmozo-addons-for-elementor' ),
+	)
+);
+$this->add_control(
+	'close_icon_background_color_hover',
+	array(
+		'label'       => esc_html__( 'Close Icon Background Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label_block' => false,
+		'type'        => Controls_Manager::COLOR,
+		'selectors'   => array(
+			'{{WRAPPER}} button.mfp-close:hover' => 'background-color: {{VALUE}};',
+		),
+	)
+);
+$this->end_controls_tab();
+$this->end_controls_tabs();
 $this->end_controls_section();
