@@ -111,7 +111,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 		 */
 		protected function register_controls() {
 			// Seprate file containing all the code for registering controls.
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'breadcrumb/assets/controls/controls.php';
+			require plugin_dir_path( dirname( __FILE__ ) ) . 'breadcrumb/assets/controls/controls.php';
 		}
 
 		/**

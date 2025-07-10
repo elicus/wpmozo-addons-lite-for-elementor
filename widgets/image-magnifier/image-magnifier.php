@@ -129,7 +129,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Magnifier' ) ) {
 		 */
 		protected function register_controls() {
 			// Seprate file containing all the code for registering controls.
-			include_once plugin_dir_path( __DIR__ ) . 'image-magnifier/assets/controls/controls.php';
+			require plugin_dir_path( __DIR__ ) . 'image-magnifier/assets/controls/controls.php';
 		}
 
 		/**
@@ -144,7 +144,6 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Magnifier' ) ) {
 			$settings       = $this->get_settings_for_display();
 			$widget_id      = $this->get_id();
 			$image          = $settings[ 'image' ];
-			$image_alt_text = $settings[ 'image_alt_text' ];
 			$attach_id      = absint( $image[ 'id' ] );
 			$lense_speed    = $settings[ 'lense_speed' ][ 'size' ];
 			$img_url        = Group_Control_Image_Size::get_attachment_image_src( $attach_id, 'image_size', $settings );
@@ -167,7 +166,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Magnifier' ) ) {
 								'src'                => $img_url,
 								'class'              => array( 'zoom', $image_sizing ),
 								'title'              => Control_Media::get_image_title( $image ),
-								'alt'                => Control_Media::get_image_alt( $image ),
+								'alt'                => '' !== $settings['image_alt_text'] ? $settings['image_alt_text'] : Control_Media::get_image_alt( $image ),
 								'data-magnify-src'   => $img_url,
 								'data-magnify-speed' => $lense_speed,
 								'decoding'           => "async",

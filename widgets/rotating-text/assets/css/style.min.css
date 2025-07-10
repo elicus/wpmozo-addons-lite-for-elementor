@@ -1,0 +1,73 @@
+.elementor-widget-wpmozo_ae_rotating_text .wpmozo_rotating_text_wrap {
+	display: grid;
+	place-content: center;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	overflow: hidden;
+	position: relative;
+	background: #e3e3e3;
+	color: #000000;
+	transition: background 300ms, transform 200ms;
+	text-align: center;
+	appearance: none;
+	border: 0 solid;
+	user-select: none;
+}
+.elementor-widget-wpmozo_ae_rotating_text .wpmozo_rotating_text_inner p, 
+.elementor-widget-wpmozo_ae_rotating_text .wpmozo_rotating_text_inner .wpmozo_circle_text,
+.elementor-widget-wpmozo_ae_rotating_text .wpmozo_rotating_text_wrap,
+.elementor-widget-wpmozo_ae_rotating_text .wpmozo_rotating_text_icon_wrapper, 
+.elementor-widget-wpmozo_ae_rotating_text .wpmozo_rotating_text_icon_wrapper .wpmozo_icon {
+	transition: all 300ms;
+}
+.elementor-widget-wpmozo_ae_rotating_text .wpmozo_rotating_text_inner {
+	position: absolute;
+	inset: 0;
+	font-size: 16px;
+	transform-origin: center;
+	margin-bottom: 0px;
+}
+
+/* Styling individual characters */
+.elementor-widget-wpmozo_ae_rotating_text .wpmozo_rotating_text_inner .wpmozo_circle_text {
+	position: absolute;
+	transform: rotate(calc(var(--angle-step) * var(--index) * 1deg));
+	transform-origin: center;
+	inset: 5px;
+}
+/* Icon wrapper inside the button */
+.elementor-widget-wpmozo_ae_rotating_text .wpmozo_rotating_text_icon_wrapper{
+	position: relative;
+	width: 55px;
+	height: 55px;
+	overflow: hidden;
+	background: #fff;
+	border: 0 solid;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.elementor-widget-wpmozo_ae_rotating_text .wpmozo_rotating_text_icon_wrapper img{
+	width: 100%;
+	height: auto;
+}
+.elementor-widget-wpmozo_ae_rotating_text .wpmozo_rotating_text_icon_wrapper .et-pb-icon{
+	font-size: 28px;
+}
+.elementor-widget-wpmozo_ae_rotating_text .wpmozo_circle_text {
+	position: absolute;
+	transform: rotate(calc(var(--index) * var(--angle-step) * 1deg))
+	           translate(100px)
+	           rotate(calc(var(--index) * var(--angle-step) * -1deg));
+	transform-origin: center center;
+}
+
+/* Keyframe for text rotation */
+@keyframes wpmozo-text-rotation-clockwise {
+	to { transform: rotate(360deg); }
+}
+@keyframes wpmozo-text-rotation-anticlockwise {
+	to { transform: rotate(-360deg); }
+}

@@ -115,7 +115,7 @@ if ( ! class_exists( 'WPMOZO_AE_Price_List' ) ) {
 		 */
 		protected function register_controls() {
 			// Seprate file containing all the code for registering controls.
-			require_once plugin_dir_path( __DIR__ ) . 'price-list/assets/controls/controls.php';
+			require plugin_dir_path( __DIR__ ) . 'price-list/assets/controls/controls.php';
 		}
 
 

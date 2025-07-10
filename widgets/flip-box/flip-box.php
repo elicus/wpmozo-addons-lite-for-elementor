@@ -131,7 +131,7 @@ if ( ! class_exists( 'WPMOZO_AE_Flip_Box' ) ) {
 		protected function register_controls() {
 
 			// Seprate file containing all the code for registering controls.
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'flip-box/assets/controls/controls.php';
+			require plugin_dir_path( dirname( __FILE__ ) ) . 'flip-box/assets/controls/controls.php';
 		}
 
 		/**
@@ -237,7 +237,7 @@ if ( ! class_exists( 'WPMOZO_AE_Flip_Box' ) ) {
 								if ( 'image' === $settings[ 'front_use_icon_image' ] && '' !== $settings[ 'front_image' ] && '' !== $settings[ 'front_image' ][ 'url' ] ) {
 									?>
 											<div class="wpmozo_ae_flipbox_image">
-												<img src="<?php echo esc_url( $settings[ 'front_image' ][ 'url' ] ); ?>" alt="<?php echo esc_attr( $settings[ 'front_image_alt' ] ); ?>"/>
+												<img src="<?php echo esc_url( $settings[ 'front_image' ][ 'url' ] ); ?>" alt="<?php echo '' !== $settings[ 'front_image_alt' ] ? esc_attr( $settings[ 'front_image_alt' ] ) : esc_attr( $settings[ 'front_image' ]['alt'] ) ; ?>"/>
 											</div>
 										<?php
 								}
@@ -343,7 +343,7 @@ if ( ! class_exists( 'WPMOZO_AE_Flip_Box' ) ) {
 								if ( 'image' === $settings[ 'back_use_icon_image' ] && '' !== $settings[ 'back_image' ] && '' !== $settings[ 'back_image' ][ 'url' ] ) {
 									?>
 										<div class="wpmozo_ae_flipbox_image">
-											<img src="<?php echo esc_url( $settings[ 'back_image' ][ 'url' ] ); ?>" alt="<?php echo esc_attr( $settings[ 'back_image_alt' ] ); ?>"/>
+											<img src="<?php echo esc_url( $settings[ 'back_image' ][ 'url' ] ); ?>" alt="<?php echo '' !== $settings[ 'back_image_alt' ] ? esc_attr( $settings[ 'back_image_alt' ] ) : esc_attr( $settings[ 'back_image' ]['alt'] ) ; ; ?>"/>
 										</div>
 									<?php
 								}

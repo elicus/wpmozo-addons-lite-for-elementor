@@ -51,6 +51,25 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 		 */
 		protected $plugin_option = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION;
 
+		public static $public_instance;
+		
+		protected static $_instance;
+
+		/**
+		 * The instance of this class.
+		 *
+		 * Ensures only one instance of Mozo_Bna_Blocks_And_Addons is loaded or can be loaded.
+		 *
+		 * @since 1.0.0
+		 * @return Mozo_Bna_Blocks_And_Addons - Main instance.
+		 */
+		public static function instance() {
+			if ( is_null( self::$_instance ) ) {
+				self::$_instance = new self();
+			}
+			return self::$_instance;
+		}
+
 		/**
 		 * Define the core functionality of the plugin.
 		 *
@@ -105,7 +124,12 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 			/**
 			 * The class responsible for defining all actions that occur in the public-facing side of the site.
 			 */
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/trait-helper-functions.php';
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wpmozo-addons-lite-for-elementor-public.php';
+
+			/**
+			 * The class responsible for defining all actions that occur in the public-facing side of the site.
+			 */
 
 			$this->loader = new WPMOZO_Addons_Lite_For_Elementor_Loader();
 		}
@@ -168,6 +192,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 		private function define_public_hooks() {
 
 			$plugin_public = new WPMOZO_Addons_Lite_For_Elementor_Public();
+			self::$public_instance = $plugin_public;
 			$this->loader->add_action( 'elementor/init', $plugin_public, 'init' );
 			$this->loader->add_action( 'elementor/elements/categories_registered', $plugin_public, 'add_elementor_widget_categories', 99 );
 			$this->loader->add_action( 'elementor/widgets/register', $plugin_public, 'register_oembed_widget', 99 );
@@ -181,6 +206,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_ae_select2_search_post', $plugin_public, 'wpmozo_ae_select2_ajax_posts' );
 			$this->loader->add_action( 'wp_ajax_wpmozo_ae_select2_get_title', $plugin_public, 'wpmozo_ae_select2_ajax_get_title' );
 			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_ae_select2_get_title', $plugin_public, 'wpmozo_ae_select2_ajax_get_title' );
+			/*$plugin_public->help_me();*/
 		}
 
 		/**

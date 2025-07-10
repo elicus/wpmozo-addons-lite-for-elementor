@@ -9,9 +9,6 @@ use \Elementor\Group_Control_Background;
 use \Elementor\Group_Control_Typography;
 use \Elementor\Group_Control_Text_Shadow;
 
-$taxonomies = get_taxonomies( array(), 'objects' );
-// Check for the category taxonomy
-$category_taxonomy = 'category'; // Taxonomy you want to include
 // Content tab.
 $this->start_controls_section(
 	'query_section',
@@ -21,22 +18,16 @@ $this->start_controls_section(
 	)
 );
 
-if ( isset( $taxonomies[$category_taxonomy] ) ) {
-	$object = $taxonomies[$category_taxonomy];
-
-	// Add the control for category IDs
-	$this->add_control(
-		$category_taxonomy . '_ids',
-		array(
-			'label' 		=> $object->label,
-			'type' 			=> 'wpmozo-select',
-			'label_block' 	=> true,
-			'multiple' 		=> true,
-			'source_name' 	=> 'taxonomy',
-			'source_type' 	=> $category_taxonomy,
-		)
-	);
-}
+$this->add_control(
+	'select_categories',
+	array(
+		'label'       => esc_html__( 'Select Categories', 'wpmozo-addons-for-elementor' ),
+		'type'        => Controls_Manager::SELECT2,
+		'label_block' => true,
+		'multiple'    => true,
+		'options'     => wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_get_post_categories(),
+	)
+);
 $this->add_control(
 	'posts_number',
 	array(

@@ -116,7 +116,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Card' ) ) {
 		protected function register_controls() {
 
 			// Seprate file containing all the code for registering controls.
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'image-card/assets/controls/controls.php';
+			require plugin_dir_path( dirname( __FILE__ ) ) . 'image-card/assets/controls/controls.php';
 		}
 
 		/**
@@ -129,7 +129,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Card' ) ) {
 		 */
 		protected function render() {
 			$settings               = $this->get_settings_for_display();
-			$image                  = array_map( 'esc_attr', $settings[ 'image_card_image' ] );
+			$image                  = $settings[ 'image_card_image' ];
 			$title_text             = $settings[ 'title_text' ];
 			$title_heading_level    = wpmozo_ae_validate_heading_level( $settings[ 'title_heading_level' ] );
 			$content_text           = $settings[ 'content_text' ];
@@ -159,9 +159,6 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Card' ) ) {
 				$sanitized_url                 = esc_attr( $settings[ 'button_url' ][ 'url' ] );
 				$settings[ 'button_url' ][ 'url' ] = $sanitized_url;
 				$this->add_link_attributes( 'wpmozo_ae_button', $settings[ 'button_url' ] );
-			}
-			if ( ! empty( $image ) ) {
-				$image = wp_get_attachment_image( $image[ 'id' ], 'full', '', array( 'loading' => 'eager' ) );
 			}
 
 			// Main output.

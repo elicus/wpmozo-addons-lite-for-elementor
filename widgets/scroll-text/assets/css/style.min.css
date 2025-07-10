@@ -1,0 +1,45 @@
+.elementor-widget-wpmozo_ae_scroll_text .wpmozo_scroll_text_inner{
+	font-size: 55px;
+	line-height: 1.3;
+}
+.elementor-widget-wpmozo_ae_scroll_text .wpmozo_scroll_text_inner span{
+	white-space: pre;
+	transition: all 0.4s ease;
+}
+.elementor-widget-wpmozo_ae_scroll_text .wpmozo_scroll_text_inner span.wpmozo_st_word{
+	display: inline-block;
+}
+.elementor-widget-wpmozo_ae_scroll_text .wpmozo_scroll_text_inner span.wpmozo_st_letter{
+	display: inline;
+	white-space: nowrap;
+}
+
+/* Fade effect for word & letter split. */
+.elementor-widget-wpmozo_ae_scroll_text .wpmozo_scroll_word_fade .wpmozo_st_word,
+.elementor-widget-wpmozo_ae_scroll_text .wpmozo_scroll_letter_fade .wpmozo_st_letter{
+	opacity: 0;
+}
+.elementor-widget-wpmozo_ae_scroll_text .wpmozo_scroll_text .wpmozo_scroll_word_fade .wpmozo_st_word.visible,
+.elementor-widget-wpmozo_ae_scroll_text .wpmozo_scroll_text .wpmozo_scroll_letter_fade .wpmozo_st_letter.visible{
+	opacity: 1;
+}
+
+/* Blur effect for word & letter split. */
+.elementor-widget-wpmozo_ae_scroll_text .wpmozo_scroll_word_blur .wpmozo_st_word,
+.elementor-widget-wpmozo_ae_scroll_text .wpmozo_scroll_letter_blur .wpmozo_st_letter{
+	filter: blur(6px);
+}
+.elementor-widget-wpmozo_ae_scroll_text .wpmozo_scroll_text .wpmozo_scroll_word_blur .wpmozo_st_word.visible,
+.elementor-widget-wpmozo_ae_scroll_text .wpmozo_scroll_text .wpmozo_scroll_letter_blur .wpmozo_st_letter.visible{
+	filter: blur(0) !important;
+}
+
+/* Color effect for word & letter split. */
+.elementor-widget-wpmozo_ae_scroll_text .wpmozo_scroll_word_color .wpmozo_st_word,
+.elementor-widget-wpmozo_ae_scroll_text .wpmozo_scroll_letter_color .wpmozo_st_letter{
+	color: #999999;
+}
+.elementor-widget-wpmozo_ae_scroll_text .wpmozo_scroll_word_color .wpmozo_st_word.visible,
+.elementor-widget-wpmozo_ae_scroll_text .wpmozo_scroll_letter_color .wpmozo_st_letter.visible{
+	color: #2ea3f2;
+}

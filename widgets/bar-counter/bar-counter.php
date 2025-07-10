@@ -112,7 +112,7 @@ if ( ! class_exists( 'WPMOZO_AE_Bar_Counter' ) ) {
 		protected function register_controls() {
 
 			// Seprate file containing all the code for registering controls.
-			include_once plugin_dir_path( __DIR__ ) . 'bar-counter/assets/controls/controls.php';
+			require plugin_dir_path( __DIR__ ) . 'bar-counter/assets/controls/controls.php';
 		}
 
 		/**

@@ -114,7 +114,7 @@ if ( ! class_exists( 'WPMOZO_AE_Fancy_Heading' ) ) {
 		protected function register_controls() {
 
 			// Seprate file containing all the code for registering controls.
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'fancy-heading/assets/controls/controls.php';
+			require plugin_dir_path( dirname( __FILE__ ) ) . 'fancy-heading/assets/controls/controls.php';
 		}
 
 		/**
@@ -132,9 +132,13 @@ if ( ! class_exists( 'WPMOZO_AE_Fancy_Heading' ) ) {
 			$heading              = '' !== $settings[ 'heading' ] ? $settings[ 'heading' ] : '';
 			$post_heading         = '' !== $settings[ 'post_heading' ] ? $settings[ 'post_heading' ] : '';
 			$global_heading_level = wpmozo_ae_validate_heading_level( $settings[ 'global_heading_level' ] );
+			$inline_tab           = isset( $settings[ 'display_inline_tablet' ] ) && 'flex' === $settings['display_inline_tablet'] ? "flex" : "block";
+			$inline_mob           = isset( $settings[ 'display_inline_mobile' ] ) && 'flex' === $settings['display_inline_mobile'] ? "flex" : "block";
 
 			$this->add_render_attribute( 'heading_wrapper', 'class', 'wpmozo_ae_text_wrapper' );
-			$this->add_render_attribute( 'heading_wrapper_inner', 'class', 'wpmozo_ae_text_wrapper_inner' );
+			
+			$this->add_render_attribute( 'heading_wrapper_inner', 'class', array( 'wpmozo_ae_text_wrapper_inner', "flex" === $settings['display_inline'] ? 'wpmz_stack_desk' : '', "flex" === $inline_tab ? 'wpmz_stack_tab' : '', "flex" === $inline_mob ? 'wpmz_stack_mob' : '' ) );
+			
 			$this->add_render_attribute( 'pre_text_wrapper', 'class', 'wpmozo_ae_pre_text_wrapper' );
 			$this->add_render_attribute( 'main_text_wrapper', 'class', 'wpmozo_ae_main_text_wrapper' );
 			$this->add_render_attribute( 'post_text_wrapper', 'class', 'wpmozo_ae_post_text_wrapper' );
@@ -164,11 +168,7 @@ if ( ! class_exists( 'WPMOZO_AE_Fancy_Heading' ) ) {
 
 			?>
 			<div <?php $this->print_render_attribute_string( 'heading_wrapper' ); ?> >
-				<<?php echo esc_html( $global_heading_level ); ?> <?php $this->print_render_attribute_string( 'heading_wrapper_inner' ); ?> >
-					<?php echo wp_kses_post( $pre_heading ); ?>
-					<?php echo wp_kses_post( $heading ); ?>
-					<?php echo wp_kses_post( $post_heading ); ?>
-				</<?php echo esc_html( $global_heading_level ); ?>>
+				<<?php echo esc_html( $global_heading_level ); ?> <?php $this->print_render_attribute_string( 'heading_wrapper_inner' ); ?> ><?php echo wp_kses_post( $pre_heading ); ?><?php echo wp_kses_post( $heading ); ?><?php echo wp_kses_post( $post_heading ); ?></<?php echo esc_html( $global_heading_level ); ?>>
 			</div>
 			<?php
 		}

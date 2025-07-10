@@ -129,7 +129,7 @@ if ( ! class_exists( 'WPMOZO_AE_Tilt_Image' ) ) {
 		 * @access protected
 		 */
 		protected function register_controls() {
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'tilt-image/assets/controls/controls.php';
+			require plugin_dir_path( dirname( __FILE__ ) ) . 'tilt-image/assets/controls/controls.php';
 		}
 
 		/**

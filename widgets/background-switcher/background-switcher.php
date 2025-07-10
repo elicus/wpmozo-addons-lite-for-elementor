@@ -131,7 +131,7 @@ if ( ! class_exists( 'WPMOZO_AE_Background_Switcher' ) ) {
 		protected function register_controls() {
 
 			// Seprate file containing all the code for registering controls.
-			require_once plugin_dir_path( __DIR__ ) . 'background-switcher/assets/controls/controls.php';
+			require plugin_dir_path( __DIR__ ) . 'background-switcher/assets/controls/controls.php';
 		}
 
 		/**

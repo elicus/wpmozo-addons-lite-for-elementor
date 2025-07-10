@@ -137,7 +137,7 @@ if ( ! class_exists( 'WPMOZO_AE_Facebook_Comments' ) ) {
 		protected function register_controls() {
 
 			// Seprate file containing all the code for registering controls.
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'facebook-comments/assets/controls/controls.php';
+			require plugin_dir_path( dirname( __FILE__ ) ) . 'facebook-comments/assets/controls/controls.php';
 		}
 		/**
 		 * Render widget output on the frontend.

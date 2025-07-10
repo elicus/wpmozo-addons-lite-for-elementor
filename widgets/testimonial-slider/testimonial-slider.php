@@ -119,7 +119,7 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 		 */
 	    
 	    public function get_script_depends() {
-			wp_register_script( 'wpmozo-testimonial-slider-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
+			wp_register_script( 'wpmozo-testimonial-slider-script', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 			return array( 'wpmozo-testimonial-slider-script', 'wpmozo-ae-swiper'  );
 		}
 
@@ -133,199 +133,7 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 		 */
 		protected function register_controls() {
 			// Seprate file containing all the code for registering controls.
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'testimonial-slider/assets/controls/controls.php';
-		}
-
-		/**
-		 * This function dynamically creates script parameters according to the user settings.
-		 *
-		 * @since 1.3.0
-		 * @return string
-		 * */
-		public function wpmozo_render_testimonial_script() {
-			
-			$settings                 = $this->get_settings_for_display();
-			$order_class              = 'elementor-element-'.$this->get_id();
-			$loop                     = esc_attr( $settings[ 'slider_loop' ] );
-			$swiper					  = str_replace( '-', '_', $order_class );
-			$autoplay                 = esc_attr( $settings[ 'autoplay' ] );
-			$show_arrow               = esc_attr( $settings[ 'show_arrow' ] );
-			$slide_effect             = esc_attr( $settings[ 'slide_effect' ] );
-			$autoplay_speed           = intval( $settings[ 'autoplay_speed' ] );
-			$pause_on_hover           = esc_attr( $settings[ 'pause_on_hover' ] );
-			$equalize_height          = esc_attr( $settings[ 'equalize_testimonials_height' ] );
-			$show_control_dot         = esc_attr( $settings[ 'show_control_dot' ] );
-			$transition_duration      = intval( $settings[ 'slide_transition_duration' ] );
-			$dynamic_bullets          = 'yes' === $settings[ 'enable_dynamic_dots' ] && in_array( $settings[ 'control_dot_style' ], array( 'solid_dot', 'transparent_dot', 'square_dot' ), true ) ? 'true' : 'false';
-
-			if( 'coverflow' === $slide_effect || 'slide' === $slide_effect ) {
-				$cards_per_slide          = $settings[ 'testimonial_per_slide' ];
-				$slides_per_group         = $settings[ 'slides_per_group' ];
-				$space_between_slides     = $settings[ 'space_between_slides' ][ 'size' ];
-				$enable_coverflow_shadow  = 'yes' === $settings[ 'enable_coverflow_shadow' ] ? 'true' : 'false';
-				$coverflow_rotate         = 'coverflow' === $slide_effect ? intval( $settings[ 'coverflow_rotate' ][ 'size' ] ) : '';
-				$coverflow_depth          = 'coverflow' === $slide_effect ? intval( $settings[ 'coverflow_depth' ][ 'size' ] ) : '' ;
-			}
-
-			$autoplay_speed           = '' !== $autoplay_speed || 0 !== $autoplay_speed ? $autoplay_speed : 3000;
-			$transition_duration      = '' !== $transition_duration || 0 !== $transition_duration ? $transition_duration : 1000;
-			$loop                     = 'yes' === $loop ? 'true' : 'false';
-			$arrows                   = 'false';
-			$dots                     = 'false';
-			$autoplaySlides           = 0;
-			$cube                     = 'false';
-			$coverflow                = 'false';
-			$slidesPerGroup           = 1;
-			$slidesPerGroupSkip       = 0;
-			$slidesPerGroupIpad       = 1;
-			$slidesPerGroupMobile     = 1;
-
-			if ( in_array( $slide_effect, array( 'slide', 'coverflow' ), true ) ) {
-				$cards_per_view             = $cards_per_slide;
-				$cards_space_between        = $space_between_slides;
-				$slidesPerGroup             = $slides_per_group;
-
-				if ( $cards_per_view > $slidesPerGroup && 1 !== $slidesPerGroup ) {
-					$slidesPerGroupSkip = $cards_per_view - $slidesPerGroup;
-				}
-			} else {
-				$cards_per_view             = 1;
-				$cards_space_between        = 0;
-				$slides_per_group            = 1;
-			}
-			
-			$cards_per_slide_tablet = isset( $settings[ 'testimonial_per_slide_tablet' ] ) && !empty( $settings[ 'testimonial_per_slide_tablet' ] ) ? $settings[ 'testimonial_per_slide_tablet' ] : $cards_per_view;
-			$cards_per_slide_mobile = isset( $settings[ 'testimonial_per_slide_mobile' ] ) && !empty( $settings[ 'testimonial_per_slide_mobile' ] ) ? $settings[ 'testimonial_per_slide_mobile' ] : $cards_per_view;
-			$slides_per_group_tablet = isset( $settings[ 'slides_per_group_tablet' ] ) && !empty( $settings[ 'slides_per_group_tablet' ] ) ? $settings[ 'slides_per_group_tablet' ] : $slides_per_group;
-			$slides_per_group_mobile = isset( $settings[ 'slides_per_group_mobile' ] )  && !empty( $settings[ 'slides_per_group_mobile' ] ) ? $settings[ 'slides_per_group_tablet' ] : $slides_per_group;	
-
-			$space_between_slides_tablet = $cards_space_between;
-			if( isset( $settings[ 'space_between_slides_tablet' ][ 'size' ] ) )
-			{
-				$space_between_slides_tablet = $settings[ 'space_between_slides_tablet' ][ 'size' ];
-			}	
-
-			$space_between_slides_mobile = $cards_space_between;
-			if( isset( $settings[ 'space_between_slides_mobile' ][ 'size' ] ) )
-			{
-				$space_between_slides_mobile = $settings[ 'space_between_slides_mobile' ][ 'size' ];
-			}
-			if ( 'yes' === $show_arrow ) {
-				$arrows = "{    
-	                            nextEl: '." . esc_attr( $order_class ) . " .swiper-button-next',
-	                            prevEl: '." . esc_attr( $order_class ) . " .swiper-button-prev',
-	                    }";
-			}
-
-			if ( 'yes' === $show_control_dot ) {
-				$dots = "{
-	                        el: '." . esc_attr( $order_class ) . " .swiper-pagination',
-	                        dynamicBullets: " . $dynamic_bullets . ",
-	                        clickable: true,
-	                    }";
-			}
-
-			if ( 'yes' === $autoplay ) {
-				if ( 'yes' === $pause_on_hover ) {
-					$autoplaySlides = '{
-	                                delay:' . $autoplay_speed . ',
-	                                disableOnInteraction: true,
-	                            }';
-				} else {
-					$autoplaySlides = '{
-	                                delay:' . $autoplay_speed . ',
-	                                disableOnInteraction: false,
-	                            }';
-				}
-			}
-
-			if ( 'cube' === $slide_effect ) {
-				$cube = '{
-	                        shadow: false,
-	                        slideShadows: false,
-	                    }';
-			}
-
-			if ( 'coverflow' === $slide_effect ) {
-				$coverflow = '{
-	                            rotate: ' . $coverflow_rotate . ',
-	                            stretch: 0,
-	                            depth: ' . $coverflow_depth . ',
-	                            modifier: 1,
-	                            slideShadows : ' . $enable_coverflow_shadow . ',
-	                        }';
-			}
-			?>
-			<script type="text/javascript">
-				jQuery( function( $ ) {
-					var <?php echo wp_kses_post( $swiper ); ?>_swiper = new Swiper( '.<?php echo wp_kses_post( $order_class ); ?> .swiper-container',{
-						slidesPerView: <?php echo wp_kses_post( $cards_per_view ); ?>,
-						autoplay: <?php echo wp_kses_post( $autoplaySlides ); ?>,
-						spaceBetween: <?php echo intval( $cards_space_between ); ?>,
-						slidesPerGroup: <?php echo wp_kses_post( $slidesPerGroup ); ?>,
-						slidesPerGroupSkip: <?php echo wp_kses_post( $slidesPerGroupSkip ); ?>,
-						effect: "<?php echo wp_kses_post( $slide_effect ); ?>",
-						cubeEffect: <?php echo wp_kses_post( $cube ); ?>,
-						coverflowEffect: <?php echo wp_kses_post( $coverflow ); ?>,
-						speed: <?php echo wp_kses_post( $transition_duration ); ?>,
-						pagination: <?php echo wp_kses_post( $dots ); ?>,
-						navigation: <?php echo wp_kses_post( $arrows ); ?>,
-						grabCursor: 'true',
-						autoHeight: <?php echo wp_kses_post( 'equal_height' === $equalize_height ? 0 : true ); ?>,
-						observer: true,
-						observeParents: true,
-						loop: <?php echo wp_kses_post( $loop ); ?>,
-						breakpoints: {
-	                            	981: {
-			                          	slidesPerView: <?php echo  wp_kses_post( $cards_per_view ) ; ?>,
-			                          	spaceBetween: <?php echo  intval( $cards_space_between ) ; ?>,
-	                            		slidesPerGroup: <?php echo  wp_kses_post( $slidesPerGroup ) ; ?>,
-	                            		slidesPerGroupSkip: <?php echo  wp_kses_post( $slidesPerGroupSkip ) ; ?>,
-			                        },
-									768: {
-										slidesPerView: <?php echo wp_kses_post( $cards_per_slide_tablet ); ?>,
-										spaceBetween: <?php echo intval( $space_between_slides_tablet ); ?>,
-										slidesPerGroup: <?php echo wp_kses_post( isset( $slides_per_group_tablet ) ? $slides_per_group_tablet : 1 ); ?>,
-										slidesPerGroupSkip: <?php echo wp_kses_post( $slidesPerGroupSkip ); ?>,
-									},
-									0: {
-										slidesPerView: <?php echo wp_kses_post( $cards_per_slide_mobile ); ?>,
-										spaceBetween:<?php echo intval( $space_between_slides_mobile ); ?>,
-										slidesPerGroup: <?php echo wp_kses_post( isset( $slides_per_group_mobile ) ? $slides_per_group_mobile : 1 ); ?>,
-										slidesPerGroupSkip: <?php echo wp_kses_post( $slidesPerGroupSkip ); ?>,
-									},
-			                    },
-					
-					} );
-			
-					<?php
-					if ( 'yes' === $pause_on_hover && 'yes' === $autoplay ) {
-						?>					
-							jQuery( ".<?php echo wp_kses_post( $order_class ); ?> .swiper-container" ).on( "mouseenter", function( e ) {
-								if ( typeof <?php echo wp_kses_post( $swiper ); ?>_swiper.autoplay.stop === "function" ) {
-									<?php echo wp_kses_post( $swiper ); ?>_swiper.autoplay.stop();
-								}
-							} );
-
-							jQuery( ".<?php echo wp_kses_post( $order_class ); ?> .swiper-container" ).on( "mouseleave", function( e ) {
-								if ( typeof <?php echo wp_kses_post( $swiper ); ?>_swiper.autoplay.start === "function" ) {
-									<?php echo wp_kses_post( $swiper ); ?>_swiper.autoplay.start();
-								}
-							} );					
-						<?php
-					}
-					if ( 'true' !== $loop ) {
-						?>				
-							<?php echo wp_kses_post( $swiper ); ?>_swiper.on( 'reachEnd', function() {
-								<?php echo wp_kses_post( $swiper ); ?>_swiper.autoplay = false;
-							} );
-						
-						<?php
-					}
-					?>
-				} );
-			</script>
-			<?php
+			require plugin_dir_path( dirname( __FILE__ ) ) . 'testimonial-slider/assets/controls/controls.php';
 		}
 
 		/**
@@ -338,14 +146,12 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 		 */
 		protected function render() {
 			$settings                           = $this->get_settings_for_display();
-			$show_arrow                         = $settings[ 'show_arrow' ];
 			$show_rating                        = $settings['show_rating'];
 			$order_class                        = 'elementor-element-' . $this->get_id();
 			$use_gravatar                       = $settings['use_gravatar'];
 			$equal_height                       = ( 'equal_height' === $settings[ 'equalize_testimonials_height' ] ) ? ' equal-height' : '';
 			$no_result_text                     = $settings['no_result_text'];
 			$arrows_position                    = $settings[ 'arrows_position' ];
-			$show_control_dot                   = $settings['show_control_dot'];
 			$testimonial_order                  = $settings['testimonial_order'];
 			$show_author_image                  = $settings['show_author_image'];
 			$author_image_size                  = $settings['author_image_size'];
@@ -366,6 +172,85 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 			$equalize_testimonials_height       = $settings['equalize_testimonials_height'];
 			$custom_position_closing_quote_icon = $settings['custom_position_closing_quote_icon'];
 			$custom_position_opening_quote_icon = $settings['custom_position_opening_quote_icon'];
+
+			extract($settings); // To make code more readable.
+
+			$slide_effect             = isset( $slide_effect ) ? $slide_effect : 'slide';
+			
+			$cards_per_slide          = isset( $testimonial_per_slide ) && !empty( $testimonial_per_slide ) ? $testimonial_per_slide : 0;
+			$cards_per_slide_tab      = isset( $testimonial_per_slide_tablet ) && !empty( $testimonial_per_slide_tablet ) ? $testimonial_per_slide_tablet : $cards_per_slide;
+			$cards_per_slide_mob      = isset( $testimonial_per_slide_mobile ) && !empty( $testimonial_per_slide_mobile ) ? $testimonial_per_slide_mobile : $cards_per_slide_tab;
+			
+			$space_between_slides     = isset( $space_between_slides['size'] ) && !empty( $space_between_slides['size'] ) ? $space_between_slides['size'] : 0;
+			$space_between_slides_tab = isset( $space_between_slides_tablet['size'] ) && !empty( $space_between_slides_tablet['size'] ) ? $space_between_slides_tablet['size'] : $space_between_slides;
+			$space_between_slides_mob = isset( $space_between_slides_mobile['size'] ) && !empty( $space_between_slides_mobile['size'] ) ? $space_between_slides_mobile['size'] : $space_between_slides_tab;
+			
+			$slides_per_group         = isset( $slides_per_group ) && !empty( $slides_per_group ) ? $slides_per_group : 3;
+			$slides_per_group_tab     = isset( $slides_per_group_tablet ) && !empty( $slides_per_group_tablet ) ? $slides_per_group_tablet : $slides_per_group;
+			$slides_per_group_mob     = isset( $slides_per_group_mobile ) && !empty( $slides_per_group_mobile ) ? $slides_per_group_mobile : $slides_per_group_tab;
+			
+			$show_arrow               = isset( $show_arrow ) && 'yes' === $show_arrow ? true : false;
+			$next_slide_arrow         = '.elementor-element-'.$this->get_id()." .swiper-button-next";
+			$previous_slide_arrow     = '.elementor-element-'.$this->get_id()." .swiper-button-prev";
+			
+			$transition_duration      = isset( $slide_transition_duration ) && !empty( $slide_transition_duration ) ? $slide_transition_duration : 1000;
+			
+			
+			$show_control_dot         = isset( $show_control_dot ) && 'yes' === $show_control_dot ? true : false;
+			$dynamic_bullets          = isset( $enable_dynamic_dots ) && 'yes' === $enable_dynamic_dots ? true : false;
+			
+			$slider_loop              = isset( $slider_loop ) && 'yes' === $slider_loop ? true : false;
+			$autoplay                 = isset( $autoplay ) && 'yes' === $autoplay ? true : false;
+			$pause_on_hover           = isset( $pause_on_hover ) && 'yes' === $pause_on_hover ? true : false;
+			$autoplay_speed           = isset( $autoplay_speed ) && !empty( $autoplay_speed ) ? $autoplay_speed : 3000;
+			
+			$enable_coverflow_shadow  = isset( $enable_coverflow_shadow ) && 'yes' === $enable_coverflow_shadow ? true : false;
+			$coverflow_rotate         = isset( $coverflow_rotate['size'] ) && !empty ($coverflow_rotate['size'] ) ? $coverflow_rotate['size'] : 40;
+			$coverflow_depth          = isset( $coverflow_depth['size'] ) && !empty( $coverflow_depth['size'] ) ? $coverflow_depth['size'] : 100;
+
+			if ( ! in_array( $slide_effect, array( 'slide', 'coverflow' ), true ) ) {
+				$cards_per_slide      = 1;
+				$space_between_slides = 0;
+				$slides_per_group     = 1;
+
+			}
+
+			$data_atts = array(
+				"effect"                => $slide_effect,
+
+				"coverflowShadow"       => $enable_coverflow_shadow,
+				"coverflowRotate"       => $coverflow_rotate,
+				"coverflowDepth"        => $coverflow_depth,
+				"cardsPerSlide"         => $cards_per_slide,
+				"cardsPerSlideTab"      => $cards_per_slide_tab,
+				"cardsPerSlideMob"      => $cards_per_slide_mob,
+				
+				"spaceBetweenSlides"    => $space_between_slides,
+				"spaceBetweenSlidesTab" => $space_between_slides_tab,
+				"spaceBetweenSlidesMob" => $space_between_slides_mob,
+				
+				"slidesPerGroup"        => $slides_per_group,
+				"slidesPerGroupTab"     => $slides_per_group_tab,
+				"slidesPerGroupMob"     => $slides_per_group_mob,
+				
+				"nextSlideArrow"        => $next_slide_arrow,
+				"previousSlideArrow"    => $previous_slide_arrow,
+				
+				"sliderLoop"            => $slider_loop,
+				
+				"transitionDuration"    => $transition_duration,
+				
+				"showArrow"             => $show_arrow,
+				"showControlDot"        => $show_control_dot,
+				"dynamicBullets"        => $dynamic_bullets,
+				
+				"autoplay"              => $autoplay,
+				"pauseOnHover"          => $pause_on_hover,
+				"autoplaySpeed"         => $autoplay_speed,
+				
+				"clientId"              => "elementor-element-".$this->get_id()
+			);
+
 
 			$args = array(
 				'post_type'      => 'wpmozoae-testimonial',
@@ -414,7 +299,7 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 
 				$control_dot_class = ' ' . $control_dot_style;
 				?> 
-				<div class="wpmozo_swiper_wrapper <?php echo esc_attr( $equal_height ); ?>">
+				<div class="wpmozo_swiper_wrapper <?php echo esc_attr( $equal_height ); ?>" data-attr="<?php echo esc_html( json_encode( $data_atts ) );?>">
 				<div class="wpmozo_testimonial_layout wpmozo_swiper_inner_wrap <?php echo esc_attr( $testimonial_layout ); ?> <?php echo esc_attr( $equal_height_class ); ?>">
 					<div class="swiper-container">
 					<div class="swiper-wrapper">
@@ -444,7 +329,7 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 				</div> <!-- swiper-container -->
 				<?php
 
-				if ( 'yes' === $show_arrow ) {
+				if ( true === $show_arrow ) {
 					$this->add_render_attribute( 'swiper_arrow_next', 
 						array( 
 							'class' => array( 'wpmozo_swiper_layout_icon_next', 'swiper-button-next' ),
@@ -634,7 +519,7 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 
 				?></div> <!-- wpmozo_testimonial_layout --><?php
 
-				if ( 'yes' === $show_control_dot ) {
+				if ( true === $show_control_dot ) {
 					?>
 						<div class="wpmozo_swiper_pagination"><div class="swiper-pagination <?php echo esc_attr( $control_dot_style ); ?>"></div></div>
 					<?php
@@ -642,7 +527,6 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 
 				?></div> <!-- wpmozo_swiper_wrapper --><?php
 			}
-			$this->wpmozo_render_testimonial_script();
 		}
 
 	}

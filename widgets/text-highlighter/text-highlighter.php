@@ -125,7 +125,7 @@ if ( ! class_exists( 'WPMOZO_AE_Text_Highlighter' ) ) {
          */
         protected function register_controls() {
             // Seprate file containing all the code for registering controls.
-            include_once plugin_dir_path( __DIR__ ) . 'text-highlighter/assets/controls/controls.php';
+            require plugin_dir_path( __DIR__ ) . 'text-highlighter/assets/controls/controls.php';
         }
 
         /**

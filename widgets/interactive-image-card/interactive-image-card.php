@@ -115,7 +115,7 @@ if ( ! class_exists( 'WPMOZO_AE_Interactive_Image_Card' ) ) {
 		protected function register_controls() {
 
 			// Seprate file containing all the code for registering controls.
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'interactive-image-card/assets/controls/controls.php';
+			require plugin_dir_path( dirname( __FILE__ ) ) . 'interactive-image-card/assets/controls/controls.php';
 		}
 
 		/**
