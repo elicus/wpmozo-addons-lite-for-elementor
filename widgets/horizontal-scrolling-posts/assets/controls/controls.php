@@ -18,9 +18,6 @@ use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Box_Shadow;
 
-$post_types = wpmozo_ae_get_post_types();
-$taxonomies = get_taxonomies( array(), 'objects' );
-
 // Content.
 $this->start_controls_section(
 	'content_section',
@@ -49,16 +46,6 @@ $this->start_controls_section(
 			'default' => 10,
 		)
 	);
-	$this->add_control(
-		'post_type',
-		array(
-			'label'   => __( 'Post Type', 'wpmozo-addons-lite-for-elementor' ),
-			'type'    => Controls_Manager::SELECT,
-			'options' => $post_types,
-			'default' => 'post',
-		)
-	);
-
 	$this->add_control(
 		'post_order_by',
 		array(
@@ -216,11 +203,11 @@ $this->start_controls_section(
 	$this->add_group_control(
 		Group_Control_Image_Size::get_type(),
 		array(
-			'name'    => 'image_size',
-			'exclude' => array( 'custom' ),
-			'include' => array(),
-			'default' => 'large',
-			'condition'=> array( 'layout' => 'layout1' )
+			'name'      => 'image_size',
+			'exclude'   => array( 'custom' ),
+			'include'   => array(),
+			'default'   => 'large',
+			'condition' => array( 'layout' => 'layout1' ),
 		)
 	);
 	$this->add_control(
@@ -367,9 +354,9 @@ $this->start_controls_section(
 	$this->add_group_control(
 		Group_Control_Text_Shadow::get_type(),
 		array(
-			'name'      => 'heading_text_shadow',
-			'label'     => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-			'selector'  => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_title',
+			'name'     => 'heading_text_shadow',
+			'label'    => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+			'selector' => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_title',
 		)
 	);
 	$this->end_controls_tab();
@@ -401,9 +388,9 @@ $this->start_controls_section(
 	$this->add_group_control(
 		Group_Control_Text_Shadow::get_type(),
 		array(
-			'name'      => 'heading_text_shadow_hover',
-			'label'     => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-			'selector'  => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_title:hover',
+			'name'     => 'heading_text_shadow_hover',
+			'label'    => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+			'selector' => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_title:hover',
 		)
 	);
 	$this->end_controls_tab();
@@ -471,9 +458,9 @@ $this->start_controls_section(
 	$this->add_group_control(
 		Group_Control_Text_Shadow::get_type(),
 		array(
-			'name'      => 'excerpt_text_shadow',
-			'label'     => esc_html__( 'Excerpt Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-			'selector'  => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_excerpt',
+			'name'     => 'excerpt_text_shadow',
+			'label'    => esc_html__( 'Excerpt Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+			'selector' => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_excerpt',
 		)
 	);
 	$this->end_controls_tab();
@@ -505,9 +492,9 @@ $this->start_controls_section(
 	$this->add_group_control(
 		Group_Control_Text_Shadow::get_type(),
 		array(
-			'name'      => 'excerpt_text_shadow_hover',
-			'label'     => esc_html__( 'Excerpt Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-			'selector'  => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_excerpt:hover',
+			'name'     => 'excerpt_text_shadow_hover',
+			'label'    => esc_html__( 'Excerpt Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+			'selector' => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_excerpt:hover',
 		)
 	);
 	$this->end_controls_tab();
@@ -527,10 +514,10 @@ $this->start_controls_section(
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 			'default'    => array(
-				'top'      => 20,
-				'right'    => 20,
-				'bottom'   => 20,
-				'left'     => 20,
+				'top'      => '0',
+				'right'    => '0',
+				'bottom'   => '0',
+				'left'     => '0',
 				'unit'     => 'px',
 				'isLinked' => false,
 			),
@@ -611,6 +598,7 @@ $this->start_controls_section(
 				'selectors' => array(
 					'{{WRAPPER}} .wpmozo_horizontal_scrolling_post_inner::before' => 'background-color: {{VALUE}};',
 				),
+				'condition' => array( 'layout' => 'layout2' ),
 			)
 		);
 			$this->add_group_control(
@@ -663,6 +651,7 @@ $this->start_controls_section(
 					'selectors' => array(
 						'{{WRAPPER}} .wpmozo_horizontal_scrolling_post_inner:hover::before' => 'background-color: {{VALUE}};',
 					),
+					'condition' => array( 'layout' => 'layout2' ),
 				)
 			);
 			$this->add_group_control(
@@ -715,12 +704,20 @@ $this->start_controls_section(
 			$this->add_responsive_control(
 				'post_content_padding',
 				array(
-					'label'      => esc_html__( 'Content Padding', 'wpmozo-addons-lite-for-elementor' ),
-					'type'       => Controls_Manager::DIMENSIONS,
-					'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
-					'selectors'  => array(
+					'label'       => esc_html__( 'Content Padding', 'wpmozo-addons-lite-for-elementor' ),
+					'type'        => Controls_Manager::DIMENSIONS,
+					'default'     => array(
+						'top'    => '20',
+						'right'  => '20',
+						'bottom' => '20',
+						'left'   => '20',
+						'unit'   => 'px',
+					),
+					'size_units'  => array( 'px', '%', 'em', 'rem', 'custom' ),
+					'selectors'   => array(
 						'{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_content_wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
+					'render_type' => 'template',
 				)
 			);
 			$this->start_controls_tabs( 'post_content_styling_tabs' );
@@ -946,9 +943,9 @@ $this->start_controls_section(
 							$this->start_controls_section(
 								'read_more_style_section',
 								array(
-									'label' => esc_html__( 'Button', 'wpmozo-addons-lite-for-elementor' ),
-									'tab'   => Controls_Manager::TAB_STYLE,
-									'condition' => array( 'show_button' => 'yes' )
+									'label'     => esc_html__( 'Button', 'wpmozo-addons-lite-for-elementor' ),
+									'tab'       => Controls_Manager::TAB_STYLE,
+									'condition' => array( 'show_button' => 'yes' ),
 								)
 							);
 							$this->add_responsive_control(
@@ -1467,3 +1464,20 @@ $this->start_controls_section(
 							$this->end_controls_tab();
 							$this->end_controls_tabs();
 							$this->end_controls_section();
+							$this->start_controls_section(
+								'wrapper_background',
+								array(
+									'label' => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
+									'tab'   => Controls_Manager::TAB_STYLE,
+								)
+							);
+								$this->add_group_control(
+									Group_Control_Background::get_type(),
+									array(
+										'name'     => 'wrapper_background',
+										'types'    => array( 'classic', 'gradient' ),
+										'toggle'   => false,
+										'selector' => '{{WRAPPER}} .wpmozo_sticky_posts_scroller',
+									)
+								);
+								$this->end_controls_section();

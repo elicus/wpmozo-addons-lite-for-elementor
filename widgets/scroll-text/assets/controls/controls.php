@@ -61,7 +61,7 @@ use Elementor\Controls_Manager;
 		)
 	);
 	$this->end_controls_section();
-//Animation.
+	// Animation.
 	$this->start_controls_section(
 		'animation_section',
 		array(
@@ -85,88 +85,88 @@ use Elementor\Controls_Manager;
 		)
 	);
 	$this->add_control(
-			'animation_start_pre',
-			array(
-				'label' => esc_html__( 'Animation Start', 'wpmozo-addons-lite-for-elementor' ),
-				'type' => Controls_Manager::HEADING,
-				'separator' => 'before',
-				'condition' => array( 'use_custom_pos!' => 'yes' )
-			)
-		);
+		'animation_start_pre',
+		array(
+			'label'     => esc_html__( 'Animation Start', 'wpmozo-addons-lite-for-elementor' ),
+			'type'      => Controls_Manager::HEADING,
+			'separator' => 'before',
+			'condition' => array( 'use_custom_pos!' => 'yes' ),
+		)
+	);
 	$this->add_responsive_control(
 		'element_start_position_pre',
 		array(
-			'label'   => esc_html__( 'Element', 'wpmozo-addons-lite-for-elementor' ),
-			'type'    => Controls_Manager::SELECT,
-			'default' => 'top',
-			'options' => array(
-				'top'   => esc_html__( 'Top', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Element', 'wpmozo-addons-lite-for-elementor' ),
+			'type'      => Controls_Manager::SELECT,
+			'default'   => 'top',
+			'options'   => array(
+				'top'    => esc_html__( 'Top', 'wpmozo-addons-lite-for-elementor' ),
 				'center' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 				'bottom' => esc_html__( 'Bottom', 'wpmozo-addons-lite-for-elementor' ),
 			),
-			'condition' => array( 'use_custom_pos!' => 'yes' )
+			'condition' => array( 'use_custom_pos!' => 'yes' ),
 		)
 	);
 	$this->add_responsive_control(
 		'viewport_start_position_pre',
 		array(
-			'label'   => esc_html__( 'Viewport', 'wpmozo-addons-lite-for-elementor' ),
-			'type'    => Controls_Manager::SELECT,
-			'default' => 'center',
-			'options' => array(
-				'top'   => esc_html__( 'Top', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Viewport', 'wpmozo-addons-lite-for-elementor' ),
+			'type'        => Controls_Manager::SELECT,
+			'default'     => 'center',
+			'options'     => array(
+				'top'    => esc_html__( 'Top', 'wpmozo-addons-lite-for-elementor' ),
 				'center' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 				'bottom' => esc_html__( 'Bottom', 'wpmozo-addons-lite-for-elementor' ),
 			),
-			'condition' => array( 'use_custom_pos!' => 'yes' ),
-			'description' => esc_html__( 'Choose when the animation should start—for example, ( Element Top, Viewport Center ) means the animation starts when the Top of this Element/Widget reaches the Center of the Viewport.' )
+			'condition'   => array( 'use_custom_pos!' => 'yes' ),
+			'description' => esc_html__( 'Choose when the animation should start—for example, ( Element Top, Viewport Center ) means the animation starts when the Top of this Element/Widget reaches the Center of the Viewport.' ),
 		)
 	);
 	$this->add_control(
 		'animation_end_pre',
 		array(
-			'label' => esc_html__( 'Animation End', 'wpmozo-addons-lite-for-elementor' ),
-			'type' => Controls_Manager::HEADING,
+			'label'     => esc_html__( 'Animation End', 'wpmozo-addons-lite-for-elementor' ),
+			'type'      => Controls_Manager::HEADING,
 			'separator' => 'before',
-			'condition' => array( 'use_custom_pos!' => 'yes' )
+			'condition' => array( 'use_custom_pos!' => 'yes' ),
 		)
 	);
 	$this->add_responsive_control(
 		'element_end_position_pre',
 		array(
-			'label'   => esc_html__( 'Element', 'wpmozo-addons-lite-for-elementor' ),
-			'type'    => Controls_Manager::SELECT,
-			'default' => 'bottom',
-			'options' => array(
-				'top'   => esc_html__( 'Top', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Element', 'wpmozo-addons-lite-for-elementor' ),
+			'type'      => Controls_Manager::SELECT,
+			'default'   => 'bottom',
+			'options'   => array(
+				'top'    => esc_html__( 'Top', 'wpmozo-addons-lite-for-elementor' ),
 				'center' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 				'bottom' => esc_html__( 'Bottom', 'wpmozo-addons-lite-for-elementor' ),
 			),
-			'condition' => array( 'use_custom_pos!' => 'yes' )
+			'condition' => array( 'use_custom_pos!' => 'yes' ),
 		)
 	);
 	$this->add_responsive_control(
 		'viewport_end_position_pre',
 		array(
-			'label'   => esc_html__( 'Viewport', 'wpmozo-addons-lite-for-elementor' ),
-			'type'    => Controls_Manager::SELECT,
-			'default' => 'center',
-			'options' => array(
-				'top'   => esc_html__( 'Top', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Viewport', 'wpmozo-addons-lite-for-elementor' ),
+			'type'        => Controls_Manager::SELECT,
+			'default'     => 'center',
+			'options'     => array(
+				'top'    => esc_html__( 'Top', 'wpmozo-addons-lite-for-elementor' ),
 				'center' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 				'bottom' => esc_html__( 'Bottom', 'wpmozo-addons-lite-for-elementor' ),
 			),
-			'condition' => array( 'use_custom_pos!' => 'yes' ),
-			'description' => esc_html__( 'Choose when the animation should end—for example, ( Element Bottom, Viewport Center ) means the animation ends when the Bottom of this Element/Widget reaches the Center of the Viewport.' )
+			'condition'   => array( 'use_custom_pos!' => 'yes' ),
+			'description' => esc_html__( 'Choose when the animation should end—for example, ( Element Bottom, Viewport Center ) means the animation ends when the Bottom of this Element/Widget reaches the Center of the Viewport.' ),
 		)
 	);
 	$this->add_control(
 		'animation_start',
 		array(
-			'label' => esc_html__( 'Animation Start', 'wpmozo-addons-lite-for-elementor' ),
-			'type' => Controls_Manager::HEADING,
+			'label'     => esc_html__( 'Animation Start', 'wpmozo-addons-lite-for-elementor' ),
+			'type'      => Controls_Manager::HEADING,
 			'separator' => 'before',
-			'condition' => array( 'use_custom_pos' => 'yes' )
+			'condition' => array( 'use_custom_pos' => 'yes' ),
 		)
 	);
 	$this->add_responsive_control(
@@ -174,9 +174,9 @@ use Elementor\Controls_Manager;
 		array(
 			'label'      => esc_html__( 'Element', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => Controls_Manager::SLIDER,
-			'size_units' => array( '%','px' ),
+			'size_units' => array( '%', 'px' ),
 			'range'      => array(
-				'%' => array(
+				'%'  => array(
 					'min' => 0,
 					'max' => 100,
 				),
@@ -189,7 +189,7 @@ use Elementor\Controls_Manager;
 				'unit' => '%',
 				'size' => 0,
 			),
-			'condition' => array( 'use_custom_pos' => 'yes' )
+			'condition'  => array( 'use_custom_pos' => 'yes' ),
 		)
 	);
 	$this->add_responsive_control(
@@ -197,9 +197,9 @@ use Elementor\Controls_Manager;
 		array(
 			'label'      => esc_html__( 'Viewport', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => Controls_Manager::SLIDER,
-			'size_units' => array( '%','px' ),
+			'size_units' => array( '%', 'px' ),
 			'range'      => array(
-				'%' => array(
+				'%'  => array(
 					'min' => -100,
 					'max' => 100,
 				),
@@ -212,16 +212,16 @@ use Elementor\Controls_Manager;
 				'unit' => '%',
 				'size' => 50,
 			),
-			'condition' => array( 'use_custom_pos' => 'yes' )
+			'condition'  => array( 'use_custom_pos' => 'yes' ),
 		)
 	);
 	$this->add_control(
 		'animation_end',
 		array(
-			'label' => esc_html__( 'Animation End', 'wpmozo-addons-lite-for-elementor' ),
-			'type' => Controls_Manager::HEADING,
+			'label'     => esc_html__( 'Animation End', 'wpmozo-addons-lite-for-elementor' ),
+			'type'      => Controls_Manager::HEADING,
 			'separator' => 'before',
-			'condition' => array( 'use_custom_pos' => 'yes' )
+			'condition' => array( 'use_custom_pos' => 'yes' ),
 		)
 	);
 	$this->add_responsive_control(
@@ -229,9 +229,9 @@ use Elementor\Controls_Manager;
 		array(
 			'label'      => esc_html__( 'Element', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => Controls_Manager::SLIDER,
-			'size_units' => array( '%','px' ),
+			'size_units' => array( '%', 'px' ),
 			'range'      => array(
-				'%' => array(
+				'%'  => array(
 					'min' => 0,
 					'max' => 100,
 				),
@@ -244,7 +244,7 @@ use Elementor\Controls_Manager;
 				'unit' => '%',
 				'size' => 100,
 			),
-			'condition' => array( 'use_custom_pos' => 'yes' )
+			'condition'  => array( 'use_custom_pos' => 'yes' ),
 		)
 	);
 	$this->add_responsive_control(
@@ -252,9 +252,9 @@ use Elementor\Controls_Manager;
 		array(
 			'label'      => esc_html__( 'Viewport', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => Controls_Manager::SLIDER,
-			'size_units' => array( '%','px' ),
+			'size_units' => array( '%', 'px' ),
 			'range'      => array(
-				'%' => array(
+				'%'  => array(
 					'min' => -100,
 					'max' => 100,
 				),
@@ -267,7 +267,7 @@ use Elementor\Controls_Manager;
 				'unit' => '%',
 				'size' => 50,
 			),
-			'condition' => array( 'use_custom_pos' => 'yes' )
+			'condition'  => array( 'use_custom_pos' => 'yes' ),
 		)
 	);
 	$this->end_controls_section();
@@ -312,7 +312,7 @@ use Elementor\Controls_Manager;
 				'size' => 6,
 			),
 			'selectors'  => array(
-				'{{WRAPPER}} .wpmozo_scroll_text .wpmozo_scroll_word_blur .wpmozo_st_word, {{WRAPPER}} .wpmozo_scroll_text .wpmozo_scroll_letter_blur .wpmozo_st_letter' => 'filter: blur({{SIZE}}{{UNIT}})',
+				'{{WRAPPER}} .wpmozo_scroll_text .wpmozo_scroll_word_blur .wpmozo_st_word, {{WRAPPER}} .wpmozo_scroll_text .wpmozo_scroll_letter_blur .wpmozo_st_letter' => 'filter: blur({{SIZE}}{{UNIT}});',
 			),
 			'condition'  => array(
 				'scroll_effect' => 'blur',
@@ -325,6 +325,32 @@ use Elementor\Controls_Manager;
 		array(
 			'label' => esc_html__( 'Text', 'wpmozo-addons-lite-for-elementor' ),
 			'tab'   => Controls_Manager::TAB_STYLE,
+		)
+	);
+	$this->add_responsive_control(
+		'scroll_text_alignment',
+		array(
+			'type'      => Controls_Manager::CHOOSE,
+			'label'     => esc_html__( 'Text Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'options'   => array(
+				'left'   => array(
+					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-left',
+				),
+				'center' => array(
+					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-center',
+				),
+				'right'  => array(
+					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-right',
+				),
+			),
+			'default'   => 'left',
+			'toggle'    => true,
+			'selectors' => array(
+				'{{WRAPPER}} .wpmozo_scroll_text_inner' => 'text-align: {{VALUE}};',
+			),
 		)
 	);
 	$this->start_controls_tabs( 'text_tabs' );

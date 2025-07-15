@@ -14,6 +14,7 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
+use Elementor\Group_Control_Background;
 
 $this->start_controls_section(
 	'image_settings',
@@ -40,6 +41,24 @@ $this->start_controls_section(
 			'exclude' => array( 'custom' ),
 			'include' => array(),
 			'default' => 'large',
+		)
+	);
+	$this->add_responsive_control(
+		'start_opacity',
+		array(
+			'label'   => esc_html__( 'On Load Visibility', 'wpmozo-addons-lite-for-elementor' ),
+			'type'    => Controls_Manager::SLIDER,
+			'range'   => array(
+				'px' => array(
+					'min'  => 0,
+					'max'  => 1,
+					'step' => 0.1,
+				),
+			),
+			'default' => array(
+				'unit' => 'px',
+				'size' => 0,
+			),
 		)
 	);
 	$this->add_control(
@@ -133,3 +152,20 @@ $this->start_controls_section(
 	$this->end_controls_tab();
 	$this->end_controls_tabs();
 	$this->end_controls_section();
+	$this->start_controls_section(
+		'wrapper_background',
+		array(
+			'label' => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
+			'tab'   => Controls_Manager::TAB_STYLE,
+		)
+	);
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			array(
+				'name'     => 'wrapper_background',
+				'types'    => array( 'classic', 'gradient' ),
+				'toggle'   => false,
+				'selector' => '{{WRAPPER}} .wpmozo_scroll_zoom_gallery_scroller',
+			)
+		);
+		$this->end_controls_section();

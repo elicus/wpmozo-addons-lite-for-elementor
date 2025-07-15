@@ -51,20 +51,6 @@ $this->start_controls_section(
 			'placeholder' => esc_html__( 'Post Heading', 'wpmozo-addons-lite-for-elementor' ),
 		 )
 	 );
-	/*$this->add_responsive_control( 
-		'display_inline',
-		array( 
-			'label'        => esc_html__( 'Display In Stack', 'wpmozo-addons-lite-for-elementor' ),
-			'type'         => Controls_Manager::SWITCHER,
-			'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-			'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
-			'return_value' => 'column',
-			'default'      => '',
-			'selectors'    => array( 
-				'{{WRAPPER}} .wpmozo_ae_text_wrapper_inner' => 'flex-direction: {{VALUE}};',
-			 ),
-		 )
-	 );*/
 
 	$this->add_responsive_control( 
 		'display_inline',

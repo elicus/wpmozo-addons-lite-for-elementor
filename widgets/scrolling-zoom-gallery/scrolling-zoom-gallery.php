@@ -3,7 +3,7 @@
  * @author    Elicus <hello@elicus.com>
  * @link      https://www.elicus.com/
  * @copyright 2025 Elicus Technologies Private Limited
- * @version   1.0.2
+ * @version   1.0.0
  */
 
 // if this file is called directly, abort.
@@ -112,7 +112,7 @@ if ( ! class_exists( 'WPMOZO_AE_Scrolling_Zoom_Gallery' ) ) {
 		public function get_script_depends() {
 			wp_register_script( 'wpmozo-ae-scrolling-zoom-gallery-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
-			return array( 'wpmozo-ae-scrolling-zoom-gallery-script', 'wpmozo-ae-gsap', 'wpmozo-ae-scrollTrigger' );
+			return array( 'wpmozo-ae-scrolling-zoom-gallery-script', 'wpmozo-ae-imagesloaded', 'wpmozo-ae-gsap', 'wpmozo-ae-scrollTrigger' );
 		}
 
 		/**
@@ -142,9 +142,10 @@ if ( ! class_exists( 'WPMOZO_AE_Scrolling_Zoom_Gallery' ) ) {
 			$images_items   = is_array( $settings['images'] ) ? $settings['images'] : array();
 			$no_images_text = isset( $settings['no_images_text'] ) ? $settings['no_images_text'] : 'No Images Found!';
 			$image_size     = ! empty( $settings['image_size_size'] ) ? esc_attr( $settings['image_size_size'] ) : 'full';
+			$start_opacity  = isset( $settings['start_opacity'] ) && ! empty( $settings['start_opacity']['size'] ) ? esc_attr( $settings['start_opacity']['size'] ) : 0;
 			?>
 			<div class="wpmozo_scrolling_zoom_gallery">
-				<div class="wpmozo_scroll_zoom_gallery_scroller">
+				<div class="wpmozo_scroll_zoom_gallery_scroller" data-start_opacity="<?php echo esc_attr( $start_opacity ); ?>">
 					<div class="wpmozo_scroll_zoom_gallery_wrapper">
 						<div class="wpmozo_scroll_zoom_gallery_inner">
 							<?php if ( ! empty( $images_items ) ) : ?>

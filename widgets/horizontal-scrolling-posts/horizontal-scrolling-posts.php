@@ -156,7 +156,6 @@ if ( ! class_exists( 'WPMOZO_AE_Horizontal_Scrolling_Posts' ) ) {
 			$show_button                = isset( $settings['show_button'] ) ? $settings['show_button'] : 'no';
 			$excerpt_length             = isset( $settings['excerpt_length'] ) ? $settings['excerpt_length'] : '';
 			$button_link_target         = isset( $settings['button_link_target'] ) ? $settings['button_link_target'] : '';
-			$post_type                  = isset( $settings['post_type'] ) && ! empty( $settings['post_type'] ) ? sanitize_text_field( $settings['post_type'] ) : 'post';
 
 			$exclude_posts_array = array();
 			if ( ! empty( $exclude_posts ) ) {
@@ -166,7 +165,7 @@ if ( ! class_exists( 'WPMOZO_AE_Horizontal_Scrolling_Posts' ) ) {
 			if ( 'yes' === $exclude_password_protected ) {
 				$protected_posts = get_posts(
 					array(
-						'post_type'      => $post_type,
+						'post_type'      => 'post',
 						'post_status'    => 'publish',
 						'has_password'   => true,
 						'fields'         => 'ids',
@@ -196,7 +195,7 @@ if ( ! class_exists( 'WPMOZO_AE_Horizontal_Scrolling_Posts' ) ) {
 				// Query sticky posts first.
 				$sticky_query = get_posts(
 					array(
-						'post_type'      => $post_type,
+						'post_type'      => 'post',
 						'post_status'    => 'publish',
 						'post__in'       => $valid_sticky_ids,
 						'orderby'        => $post_order_by,
@@ -209,7 +208,7 @@ if ( ! class_exists( 'WPMOZO_AE_Horizontal_Scrolling_Posts' ) ) {
 				// Then query remaining normal posts.
 				$normal_query = get_posts(
 					array(
-						'post_type'           => $post_type,
+						'post_type'           => 'post',
 						'post_status'         => 'publish',
 						'post__not_in'        => array_merge( $exclude_posts_array, $sticky_posts ),
 						'orderby'             => $post_order_by,
@@ -228,7 +227,7 @@ if ( ! class_exists( 'WPMOZO_AE_Horizontal_Scrolling_Posts' ) ) {
 				}
 
 				$query_args = array(
-					'post_type'      => $post_type,
+					'post_type'      => 'post',
 					'post__in'       => $all_post_ids,
 					'post_status'    => 'publish',
 					'orderby'        => 'post__in',
@@ -237,7 +236,7 @@ if ( ! class_exists( 'WPMOZO_AE_Horizontal_Scrolling_Posts' ) ) {
 			} else {
 				// Frontend or ignore_sticky = yes.
 				$query_args = array(
-					'post_type'           => $post_type,
+					'post_type'           => 'post',
 					'post_status'         => 'publish',
 					'posts_per_page'      => $posts_number,
 					'orderby'             => $post_order_by,

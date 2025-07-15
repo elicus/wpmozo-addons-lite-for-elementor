@@ -452,7 +452,7 @@ $this->start_controls_section(
 				'{{WRAPPER}} .wpmozo_circle_icon svg'  => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				'{{WRAPPER}} .wpmozo_circle_icon span' => 'font-size: {{SIZE}}{{UNIT}};',
 			),
-			'condition' => array( 'use_image!' => 'yes')
+			'condition'  => array( 'use_image!' => 'yes' ),
 		)
 	);
 	$this->start_controls_tabs( 'image_icon_tabs' );
@@ -483,7 +483,7 @@ $this->start_controls_section(
 				'{{WRAPPER}} .wpmozo_circle_icon svg'  => 'color: {{VALUE}}; fill: {{VALUE}};',
 				'{{WRAPPER}} .wpmozo_circle_icon span' => 'color: {{VALUE}};',
 			),
-			'condition' => array( 'use_image!' => 'yes')
+			'condition' => array( 'use_image!' => 'yes' ),
 		)
 	);
 	$this->add_group_control(
@@ -541,7 +541,7 @@ $this->start_controls_section(
 				'{{WRAPPER}} .wpmozo_rotating_text_icon_wrapper:hover .wpmozo_circle_icon svg'  => 'color: {{VALUE}}; fill: {{VALUE}};',
 				'{{WRAPPER}} .wpmozo_rotating_text_icon_wrapper:hover .wpmozo_circle_icon span' => 'color: {{VALUE}};',
 			),
-			'condition' => array( 'use_image!' => 'yes')
+			'condition' => array( 'use_image!' => 'yes' ),
 		)
 	);
 	$this->add_group_control(

@@ -21,7 +21,7 @@ $this->start_controls_section(
 $this->add_control(
 	'select_categories',
 	array(
-		'label'       => esc_html__( 'Select Categories', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Select Categories', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::SELECT2,
 		'label_block' => true,
 		'multiple'    => true,

@@ -122,9 +122,13 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wpmozo-addons-lite-for-elementor-admin.php';
 
 			/**
-			 * The class responsible for defining all actions that occur in the public-facing side of the site.
+			 * The trait containing helper functions.
 			 */
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/trait-helper-functions.php';
+			
+			/**
+			 * The class responsible for defining all actions that occur in the public-facing side of the site.
+			 */
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wpmozo-addons-lite-for-elementor-public.php';
 
 			/**

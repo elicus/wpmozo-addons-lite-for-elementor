@@ -3,7 +3,7 @@
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
  * @copyright   2025 Elicus Technologies Private Limited
- * @version     1.0.1
+ * @version     1.0.2
  */
 
 // if this file is called directly, abort.
@@ -528,7 +528,6 @@ if ( ! class_exists( 'WPMOZO_AE_Logo_Slider' ) ) {
 
 			} else {
 				?>
-
 					<div class="entry">
 						<h1>
 							<?php echo esc_html__( 'No Result Found!', 'wpmozo-addons-lite-for-elementor' ); ?>

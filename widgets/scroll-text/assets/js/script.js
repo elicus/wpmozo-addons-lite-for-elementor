@@ -5,98 +5,96 @@
                 this.change();
             },
             change: function () {
-				jQuery( document ).ready( function($) {
-						if ( $( '.wpmozo_scroll_text' ).length > 0 ) {
-							gsap.registerPlugin( ScrollTrigger );
-							$( '.wpmozo_scroll_text' ).each( function () {
+            	const $this  = this.$element.find('.wpmozo_scroll_text');
+				if ( $this.length > 0 ) {
+					gsap.registerPlugin( ScrollTrigger );
+					$this.each( function () {
 
-								let $thisObj = $( this ),
-									$wrapObj = $thisObj.find( '.wpmozo_scroll_text_wrap' );
+						let $thisObj = $this,
+							$wrapObj = $thisObj.find( '.wpmozo_scroll_text_wrap' );
 
-								// Get variables from data attrs.
-								let $innerWrap   = $wrapObj.find( '.wpmozo_scroll_text_inner' ),
-									originalText = $innerWrap.text().trim(),
-									effect       = $wrapObj.data( 'scroll_effect' ) || 'fade',
-									splitType    = $wrapObj.data( 'split' ) || 'word';
+						// Get variables from data attrs.
+						let $innerWrap   = $wrapObj.find( '.wpmozo_scroll_text_inner' ),
+							originalText = $innerWrap.text().trim(),
+							effect       = $wrapObj.data( 'scroll_effect' ) || 'fade',
+							splitType    = $wrapObj.data( 'split' ) || 'word';
 
-								// Animation values.
-								let startElement = $wrapObj.data( 'animation_start_element_pos' ) || '0%',
-									startViewport = $wrapObj.data( 'animation_start_viewport_pos' ) || '80%',
-									endElement   = $wrapObj.data( 'animation_end_element_pos' ) || '100%',
-									endViewport   = $wrapObj.data( 'animation_end_viewport_pos' ) || '40%'; // we can use top, center, bottom too.
-								
-								let start = startElement + ' ' + startViewport,
-									end   = endElement + ' ' + endViewport;
+						// Animation values.
+						let startElement = $wrapObj.data( 'animation_start_element_pos' ) || '0%',
+							startViewport = $wrapObj.data( 'animation_start_viewport_pos' ) || '80%',
+							endElement   = $wrapObj.data( 'animation_end_element_pos' ) || '100%',
+							endViewport   = $wrapObj.data( 'animation_end_viewport_pos' ) || '40%'; // we can use top, center, bottom too.
+						
+						let start = startElement + ' ' + startViewport,
+							end   = endElement + ' ' + endViewport;
 
-								// Add effect class.
-								$innerWrap.addClass( `wpmozo_scroll_${splitType}_${effect}` );
-								$innerWrap.html( '' );
+						// Add effect class.
+						$innerWrap.addClass( `wpmozo_scroll_${splitType}_${effect}` );
+						$innerWrap.html( '' );
 
-								let spans = [];
-								if ( 'letter' === splitType ) {
-									// Split words first.
-									let words = originalText.split(' ');
+						let spans = [];
+						if ( 'letter' === splitType ) {
+							// Split words first.
+							let words = originalText.split(' ');
 
-									words.forEach( ( word, wIdx ) => {
-										// Create word span.
-										let wordSpan = $( '<span>', { class: 'wpmozo_st_word' } );
+							words.forEach( ( word, wIdx ) => {
+								// Create word span.
+								let wordSpan = $( '<span>', { class: 'wpmozo_st_word' } );
 
-										// Split letters inside word.
-										for ( let i = 0; i < word.length; i++ ) {
-											let letterSpan = $( '<span>', {
-												class: 'wpmozo_st_letter',
-												text: word[i]
-											} );
-
-											wordSpan.append( letterSpan );
-											spans.push( letterSpan[0] ); // This spans to init gsap.
-										}
-
-										// Add space inside the same wordSpan (not as a separate span).
-										if ( wIdx !== words.length - 1 ) {
-											let spaceSpan = $( '<span>', {
-												class: 'wpmozo_st_letter',
-												text: '\u00A0'
-											} );
-
-											wordSpan.append( spaceSpan );
-											spans.push( spaceSpan[0] ); // This spans to init gsap.
-										}
-									
-										$innerWrap.append( wordSpan );
+								// Split letters inside word.
+								for ( let i = 0; i < word.length; i++ ) {
+									let letterSpan = $( '<span>', {
+										class: 'wpmozo_st_letter',
+										text: word[i]
 									} );
-								} else {
-									// Split by words
-									originalText.split(/\s+/).forEach( ( word, i, arr ) => {
-										let span = $( '<span>', {
-											class: 'wpmozo_st_word',
-											text: word + ( i === arr.length - 1 ? '' : ' ' )
-										} );
-										
-										$innerWrap.append( span );
-										spans.push( span[0] ); // This spans to init gsap.
-									} );
+
+									wordSpan.append( letterSpan );
+									spans.push( letterSpan[0] ); // This spans to init gsap.
 								}
 
-								// GSAP timeline
-								let tl = gsap.timeline( {
-									scrollTrigger: {
-										trigger: $thisObj[0],
-										start: start,
-										end: end,
-										scrub: true
-									}
-								} );
-
-								spans.forEach( ( span, i ) => {
-									tl.to( span, {
-										onStart: () => span.classList.add( 'visible' ),
-										onReverseComplete: () => span.classList.remove( 'visible' )
+								// Add space inside the same wordSpan (not as a separate span).
+								if ( wIdx !== words.length - 1 ) {
+									let spaceSpan = $( '<span>', {
+										class: 'wpmozo_st_letter',
+										text: '\u00A0'
 									} );
+
+									wordSpan.append( spaceSpan );
+									spans.push( spaceSpan[0] ); // This spans to init gsap.
+								}
+							
+								$innerWrap.append( wordSpan );
+							} );
+						} else {
+							// Split by words
+							originalText.split(/\s+/).forEach( ( word, i, arr ) => {
+								let span = $( '<span>', {
+									class: 'wpmozo_st_word',
+									text: word + ( i === arr.length - 1 ? '' : ' ' )
 								} );
+								
+								$innerWrap.append( span );
+								spans.push( span[0] ); // This spans to init gsap.
 							} );
 						}
-				} );
+						// GSAP timeline
+						let tl = gsap.timeline( {
+							scrollTrigger: {
+								trigger: $thisObj[0],
+								start: start,
+								end: end,
+								scrub: true
+							}
+						} );
+
+						spans.forEach( ( span, i ) => {
+							tl.to( span, {
+								onStart: () => span.classList.add( 'visible' ),
+								onReverseComplete: () => span.classList.remove( 'visible' )
+							} );
+						} );
+					} );
+				}	
 			},
 		} );
 		elementorFrontend.elementsHandler.attachHandler( "wpmozo_ae_scroll_text", WPMOZOScrollText );

@@ -3,7 +3,7 @@
  * @author    Elicus <hello@elicus.com>
  * @link      https://www.elicus.com/
  * @copyright 2025 Elicus Technologies Private Limited
- * @version   1.0.2
+ * @version   1.0.0
  */
 
 // if this file is called directly, abort.
@@ -140,7 +140,11 @@ if ( ! class_exists( 'WPMOZO_AE_Rotating_Text' ) ) {
 
 			// Split string to characters (support multibyte, emoji etc.).
 			$characters = preg_split( '//u', $rotating_text, -1, PREG_SPLIT_NO_EMPTY );
-			$total      = count( $characters );
+			// Append space if text doesn't already end with one.
+			if ( end( $characters ) !== ' ' ) {
+				$characters[] = ' ';
+			}
+			$total = count( $characters );
 
 			if ( 0 === $total ) {
 				return;
