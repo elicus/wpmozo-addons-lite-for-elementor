@@ -1,10 +1,8 @@
 @font-face {
   font-family: 'wpmozo';
-  src:  url('../../fonts/wpmozo.eot?223s4t');
-  src:  url('../../fonts/wpmozo.eot?223s4t#iefix') format('embedded-opentype'),
-    url('../../fonts/wpmozo.ttf?223s4t') format('truetype'),
-    url('../../fonts/wpmozo.woff?223s4t') format('woff'),
-    url('../../fonts/wpmozo.svg?223s4t#wpmozo') format('svg');
+  src:  url('../../fonts/wpmozo.ttf?11y8td') format('truetype'),
+    url('../../fonts/wpmozo.woff?11y8td') format('woff'),
+    url('../../fonts/wpmozo.svg?11y8td#wpmozo') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +23,18 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.wpmozo-ae-icon-scrolling-zoom-gallery:before {
+  content: "\e946";
+}
+.wpmozo-ae-icon-horizontal-scrolling-posts:before {
+  content: "\e948";
+}
+.wpmozo-ae-icon-rotating-text:before {
+  content: "\e947";
+}
+.wpmozo-ae-icon-scroll-text:before {
+  content: "\e955";
+}
 .wpmozo-ae-icon-mystery-image:before {
   content: "\e939";
 }
