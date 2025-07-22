@@ -111,7 +111,7 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 		 * @return array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-			wp_register_script( 'wpmozo-ae-scroll-stack-cards-script', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION, true );
+			wp_register_script( 'wpmozo-ae-scroll-stack-cards-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION, true );
 
 			return array( 'wpmozo-ae-scroll-stack-cards-script', 'wpmozo-ae-gsap', 'wpmozo-ae-scrollTrigger' );
 		}
@@ -143,23 +143,39 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 
 			$items_content            = isset( $settings['wpmozo_items_content'] ) ? $settings['wpmozo_items_content'] : array();
 			$layout                   = esc_attr( $settings['layout'] );
-			//$layout                 = wpmozo_ae_validate_layout( $layout, array( 'layout1', 'layout2' ) );
 			$title_heading_level      = wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
 			$animation_start_viewport = isset( $settings['animation_start_viewport']['size'] ) ? $settings['animation_start_viewport']['size'] : '';
 			$collapsed_width          = isset( $settings['collapsed_width']['size'] ) ? $settings['collapsed_width']['size'] : '';
 			$items_content            = isset( $settings['wpmozo_items_content'] ) ? $settings['wpmozo_items_content'] : array();
 			$button_icon_placement    = isset( $settings['button_icon_placement'] ) ? $settings['button_icon_placement'] : '';
 
+			// Add attributes for the wrapper.
+			$this->add_render_attribute(
+				'stack_wrapper',
+				'class',
+				array(
+					'wpmozo_scroll_stack_cards_wrapper',
+					'icon_' . $button_icon_placement,
+					'layout-' . $layout,
+				)
+			);
+
+			$this->add_render_attribute( 'stack_wrapper', 'data-layout', esc_attr( $layout ) );
+			$this->add_render_attribute( 'stack_wrapper', 'data-animation_start_viewport_pos', esc_attr( $animation_start_viewport ) . '%' );
+			if ( ! empty( $collapsed_width ) ) {
+				$this->add_render_attribute( 'stack_wrapper', 'data-collapsed_width', esc_attr( $collapsed_width ) . 'px' );
+			}
+
 			?>
-				<div class="dipl_scroll_stack_cards">
-					<div class="dipl-scroll-stack-cards-wrapper icon_<?php echo esc_attr( $button_icon_placement ); ?> layout-<?php echo esc_attr( $layout ); ?>" data-layout="<?php echo esc_attr( $layout ); ?>" data-animation_start_viewport_pos="<?php echo esc_attr( $animation_start_viewport ); ?>%" data-collapsed_width="<?php echo esc_attr( $collapsed_width ); ?>px">
-						<div class="dipl-scroll-stack-cards-items">
+				<div class="wpmozo_scroll_stack_cards">
+					<div <?php $this->print_render_attribute_string( 'stack_wrapper' ); ?>>
+						<div class="wpmozo_scroll_stack_cards_items">
 						<?php foreach ( $items_content as $index => $item ) { ?>
-							<div class="dipl_scroll_stack_cards_item dipl_scroll_stack_cards_item_<?php echo esc_attr( $index ); ?> elementor-repeater-item-<?php echo esc_attr( $item[ '_id' ] ); ?>">
-								<div class="dipl_scroll_stack_cards_item_inner">
-									<div class="dipl_scroll_stack_cards_content_wrapper">
-										<div class="dipl_scroll_stack_cards_icon_wrapper">
-										<?php if( 'yes' === $item['show_icon'] ) { ?>
+							<div class="wpmozo_scroll_stack_cards_item wpmozo_scroll_stack_cards_item_<?php echo esc_attr( $index ); ?> elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+								<div class="wpmozo_scroll_stack_cards_item_inner">
+									<div class="wpmozo_scroll_stack_cards_content_wrapper">
+										<div class="wpmozo_scroll_stack_cards_icon_wrapper">
+										<?php if ( 'yes' === $item['show_icon'] ) { ?>
 											<?php
 											\Elementor\Icons_Manager::render_icon(
 												$item['card_icon'],
@@ -172,9 +188,9 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 											?>
 										<?php } ?>
 										</div>
-										<div class="dipl_scroll_stack_cards_title_wrap">
-											<<?php echo esc_attr( $title_heading_level ); ?> class="dipl_scroll_stack_cards_title"><?php echo esc_html($item['item_title']); ?></<?php echo esc_attr( $title_heading_level ); ?>></div>
-										<div class="dipl_scroll_stack_cards_content">
+										<div class="wpmozo_scroll_stack_cards_title_wrap">
+											<<?php echo esc_attr( $title_heading_level ); ?> class="wpmozo_scroll_stack_cards_title"><?php echo esc_html( $item['item_title'] ); ?></<?php echo esc_attr( $title_heading_level ); ?>></div>
+										<div class="wpmozo_scroll_stack_cards_content">
 											<p><?php echo wp_kses_post( $item['card_item_description'] ); ?></p>
 										</div>
 										<?php
@@ -196,9 +212,9 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 											</div>
 										<?php } ?>
 									</div>
-									<div class="dipl_scroll_stack_cards_image_wrapper">
+									<div class="wpmozo_scroll_stack_cards_image_wrapper">
 										<?php if ( isset( $item['card_item_image']['url'] ) && ! empty( $item['card_item_image']['url'] ) ) { ?>
-											<img decoding="async" src="<?php echo esc_attr( $item['card_item_image']['url'] ); ?>" alt="<?php echo esc_attr( $item['card_item_image_alt'] ); ?>" class="dipl_scroll_stack_cards_image">
+											<img decoding="async" src="<?php echo esc_attr( $item['card_item_image']['url'] ); ?>" alt="<?php echo esc_attr( $item['card_item_image_alt'] ); ?>" class="wpmozo_scroll_stack_cards_image">
 										<?php } ?>
 									</div>
 								</div>

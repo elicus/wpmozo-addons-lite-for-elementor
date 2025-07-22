@@ -6,45 +6,45 @@
             },
             change: function () {
 				jQuery( document ).ready( function($) {
-					if ( $( '.dipl_scroll_stack_cards' ).length > 0 ) {
-						$( document ).find('.dipl_scroll_stack_cards').each( function() {
+					if ( $( '.wpmozo_scroll_stack_cards' ).length > 0 ) {
+						$( document ).find('.wpmozo_scroll_stack_cards').each( function() {
 							let thisObj = $( this );
-							let wrapObj = thisObj.find( '.dipl-scroll-stack-cards-wrapper' );
+							let wrapObj = thisObj.find( '.wpmozo_scroll_stack_cards_wrapper' );
 							if ( 'horizontal' === wrapObj.data( 'layout' ) ) {
-								if ( diplIsLargeScreen() ) {
-									diplInitHorizontalScrollStackCards( thisObj );
+								if ( wpmozoIsLargeScreen() ) {
+									wpmozoInitHorizontalScrollStackCards( thisObj );
 								} else {
-									wrapObj.find( '.dipl_scroll_stack_cards_item' ).css( {
+									wrapObj.find( '.wpmozo_scroll_stack_cards_item' ).css( {
 										width    : '100%',
 										position : 'relative',
 										left     : 'auto'
 									} );
 								}
 							} else {
-								if ( diplIsLargeScreen() ) {
-									diplInitVerticalScrollStackCards( thisObj );
+								if ( wpmozoIsLargeScreen() ) {
+									wpmozoInitVerticalScrollStackCards( thisObj );
 								}
 							}
 						} );
 				
 						// On windows resize.
 						$( window ).on( 'resize', () => {
-							$( document ).find('.dipl_scroll_stack_cards').each( function() {
+							$( document ).find('.wpmozo_scroll_stack_cards').each( function() {
 								let thisObj = $( this );
-								let wrapObj = thisObj.find( '.dipl-scroll-stack-cards-wrapper' );
+								let wrapObj = thisObj.find( '.wpmozo_scroll_stack_cards_wrapper' );
 								if ( 'horizontal' === wrapObj.data( 'layout' ) ) {
-									if ( diplIsLargeScreen() ) {
-										diplInitHorizontalScrollStackCards( thisObj );
+									if ( wpmozoIsLargeScreen() ) {
+										wpmozoInitHorizontalScrollStackCards( thisObj );
 									} else {
-										wrapObj.find( '.dipl_scroll_stack_cards_item' ).css( {
+										wrapObj.find( '.wpmozo_scroll_stack_cards_item' ).css( {
 											width    : '100%',
 											position : 'relative',
 											left     : 'auto'
 										} );
 									}
 								} else {
-									if ( diplIsLargeScreen() ) {
-										diplInitVerticalScrollStackCards( thisObj );
+									if ( wpmozoIsLargeScreen() ) {
+										wpmozoInitVerticalScrollStackCards( thisObj );
 									} else {
 										// Kill if already init.
 										ScrollTrigger.getAll().forEach( trigger => {
@@ -67,11 +67,11 @@
 				} ); // Document ready over.
 				
 				// Init vertical scroll stack cards.
-				function diplInitVerticalScrollStackCards( thisObj ) {
+				function wpmozoInitVerticalScrollStackCards( thisObj ) {
 				
 					let viewportHeight = window.innerHeight;
-					let $wrapper    = thisObj.find( '.dipl-scroll-stack-cards-wrapper' )
-					let items       = $wrapper.find( '.dipl_scroll_stack_cards_item' );
+					let $wrapper    = thisObj.find( '.wpmozo_scroll_stack_cards_wrapper' )
+					let items       = $wrapper.find( '.wpmozo_scroll_stack_cards_item' );
 				
 					// Kill if already init.
 					ScrollTrigger.getAll().forEach( trigger => {
@@ -105,16 +105,16 @@
 							start: `${startPosition} ${viewportPosition}`,
 							end: `+=${totalScroll}`,
 							scrub: 1.1,
-							pin: $wrapper.find( '.dipl-scroll-stack-cards-items' ),
+							pin: $wrapper.find( '.wpmozo_scroll_stack_cards_items' ),
 							pinSpacing: true,
 						}
 					} );
 				
 					items.each( ( i, item ) => {
 						if ( i !== items.length - 1 ) {
-							let icon           = item.querySelector( '.dipl_scroll_stack_cards_icon_wrapper' );
-							let title          = item.querySelector( '.dipl_scroll_stack_cards_title_wrap' );
-							let contentWrapper = item.querySelector( '.dipl_scroll_stack_cards_content_wrapper' );
+							let icon           = item.querySelector( '.wpmozo_scroll_stack_cards_icon_wrapper' );
+							let title          = item.querySelector( '.wpmozo_scroll_stack_cards_title_wrap' );
+							let contentWrapper = item.querySelector( '.wpmozo_scroll_stack_cards_content_wrapper' );
 				
 							let targetHeight = 60;
 							if ( title ) {
@@ -144,10 +144,10 @@
 				}
 				
 				// Init horizontal scroll stack cards.
-				function diplInitHorizontalScrollStackCards( thisObj ) {
-					let $wrapper        = thisObj.find( '.dipl-scroll-stack-cards-wrapper' ),
-						$cardsContainer = $wrapper.find( '.dipl-scroll-stack-cards-items' ),
-						$panels         = $cardsContainer.find( '.dipl_scroll_stack_cards_item' ),
+				function wpmozoInitHorizontalScrollStackCards( thisObj ) {
+					let $wrapper        = thisObj.find( '.wpmozo_scroll_stack_cards_wrapper' ),
+						$cardsContainer = $wrapper.find( '.wpmozo_scroll_stack_cards_items' ),
+						$panels         = $cardsContainer.find( '.wpmozo_scroll_stack_cards_item' ),
 						totalPanels     = $panels.length,
 						initialVisible  = 3,
 						wrapperWidth    = $wrapper.outerWidth(),
@@ -229,7 +229,7 @@
 				}
 				
 				// Check is large screen.
-				function diplIsLargeScreen() {
+				function wpmozoIsLargeScreen() {
 					return window.innerWidth > 980;
 				}				
 			},
