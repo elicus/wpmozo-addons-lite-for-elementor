@@ -40,7 +40,7 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 		 * @return string Widget title.
 		 */
 		public function get_title() {
-			return esc_html__( 'Scroll Stack Cards', 'wpmozo-addons-for-elementor' );
+			return esc_html__( 'Scroll Stack Cards', 'wpmozo-addons-lite-for-elementor' );
 		}
 
 		/**
@@ -96,7 +96,7 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 		 * @return style handle.
 		 */
 		public function get_style_depends() {
-			wp_register_style( 'wpmozo-ae-scroll-stack-cards-style', plugins_url( 'assets/css/style.min.css?tester=' . wp_rand(), __FILE__ ), null, WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION );
+			wp_register_style( 'wpmozo-ae-scroll-stack-cards-style', plugins_url( 'assets/css/style.min.css?tester=' . wp_rand(), __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 			return array( 'wpmozo-ae-scroll-stack-cards-style' );
 		}
 
@@ -111,7 +111,7 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 		 * @return array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-			wp_register_script( 'wpmozo-ae-scroll-stack-cards-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION, true );
+			wp_register_script( 'wpmozo-ae-scroll-stack-cards-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
 			return array( 'wpmozo-ae-scroll-stack-cards-script', 'wpmozo-ae-gsap', 'wpmozo-ae-scrollTrigger' );
 		}
