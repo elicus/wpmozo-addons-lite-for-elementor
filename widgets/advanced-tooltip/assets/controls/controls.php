@@ -31,9 +31,9 @@ $this->add_control(
 	array(
 		'label'       => esc_html__( 'Trigger Action', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::SELECT,
-		'default'     => 'hover',
+		'default'     => 'mouseenter',
 		'options'     => array(
-			'hover' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
+			'mouseenter' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
 			'click' => esc_html__( 'Click', 'wpmozo-addons-lite-for-elementor' ),
 		),
 		'render_type' => 'template',
@@ -50,8 +50,8 @@ $this->add_control(
 			'image'             => esc_html__( 'Image', 'wpmozo-addons-lite-for-elementor' ),
 			'icon'              => esc_html__( 'Icon', 'wpmozo-addons-lite-for-elementor' ),
 			'text'              => esc_html__( 'Text', 'wpmozo-addons-lite-for-elementor' ),
-			'element_css_id'    => esc_html__( 'Element CSS ID', 'wpmozo-addons-lite-for-elementor' ),
-			'element_css_class' => esc_html__( 'Element CSS Class', 'wpmozo-addons-lite-for-elementor' ),
+			'id'    => esc_html__( 'Element CSS ID', 'wpmozo-addons-lite-for-elementor' ),
+			'class' => esc_html__( 'Element CSS Class', 'wpmozo-addons-lite-for-elementor' ),
 		),
 	)
 );
@@ -160,7 +160,7 @@ $this->add_control(
 		 'type'        => Controls_Manager::TEXT,
 		 'label_block' => true,
 		 'condition'   => array(
-			 'trigger_element_type' => 'element_css_id',
+			 'trigger_element_type' => 'id',
 		 ),
 	 )
  );
@@ -171,7 +171,7 @@ $this->add_control(
 		 'type'        => Controls_Manager::TEXT,
 		 'label_block' => true,
 		 'condition'   => array(
-			 'trigger_element_type' => 'element_css_class',
+			 'trigger_element_type' => 'class',
 		 ),
 	 )
  );
@@ -772,6 +772,111 @@ $this->end_controls_tab();
 $this->end_controls_tabs();
 $this->end_controls_section();
 $this->start_controls_section(
+	'trigger_image_section',
+	array(
+		'label' => esc_html__( 'Trigger Image', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'   => Controls_Manager::TAB_STYLE,
+		'condition'  => array(
+			'trigger_element_type' => 'image',
+		),
+	)
+);
+$this->add_responsive_control(
+	'trigger_image_width',
+	array(
+		'label'      => esc_html__( 'Trigger Image Width', 'wpmozo-addons-lite-for-elementor' ),
+		'type'       => Controls_Manager::SLIDER,
+		'size_units' => array( '%' ),
+		'range'      => array(
+			'%' => array(
+				'min' => 1,
+				'max' => 100
+			)
+		),
+		'default'=> array( 'unit'=>'%' ),
+		'selectors'  => array(
+			'{{WRAPPER}} .dipl_tooltip_trigger_image'  => 'width: {{SIZE}}{{UNIT}};',
+		),
+	)
+);
+$this->end_controls_section();
+$this->start_controls_section(
+	'trigger_icon_section',
+	array(
+		'label' => esc_html__( 'Trigger Icon', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'   => Controls_Manager::TAB_STYLE,
+		'condition'  => array(
+			'trigger_element_type' => 'icon',
+		),
+	)
+);
+$this->add_responsive_control(
+	'trigger_icon_size',
+	array(
+		'label'      => esc_html__( 'Trigger Icon Size', 'wpmozo-addons-lite-for-elementor' ),
+		'type'       => Controls_Manager::SLIDER,
+		'size_units' => array( 'px', 'em' ),
+		'separator'  => 'after',
+		'range'      => array(
+			'px' => array(
+				'min' => 1,
+				'max' => 100,
+			),
+			'em' => array(
+				'min' => 1,
+				'max' => 10,
+			),
+		),
+		'default'    => array(
+			'unit' => 'px',
+			'size' => 30,
+		),
+		'selectors'  => array(
+			'{{WRAPPER}} .dipl_tooltip_trigger_element_wrap.trigger_type_icon span.dipl_tooltip_trigger_icon'  => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .dipl_tooltip_trigger_element_wrap.trigger_type_icon svg.dipl_tooltip_trigger_icon'   => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+		),
+	)
+);
+$this->start_controls_tabs( 'trigger_icon_styling_tabs' );
+$this->start_controls_tab(
+	'trigger_icon_normal_tab',
+	array(
+		'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
+	)
+);
+$this->add_control(
+	'trigger_icon_color',
+	array(
+		'label'     => esc_html__( 'Trigger Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+		'type'      => Controls_Manager::COLOR,
+		'selectors' => array(
+			'{{WRAPPER}} .dipl_tooltip_trigger_element_wrap.trigger_type_icon svg'   => 'fill: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .dipl_tooltip_trigger_element_wrap.trigger_type_icon i'     => 'color: {{VALUE}}; transition: 300ms;',
+		),
+	)
+);
+$this->end_controls_tab();
+$this->start_controls_tab(
+	'trigger_icon_hover_tab',
+	array(
+		'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
+	)
+);
+$this->add_control(
+	'trigger_icon_color_hover',
+	array(
+		'label'     => esc_html__( 'Trigger Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+		'type'      => Controls_Manager::COLOR,
+		'selectors' => array(
+			'{{WRAPPER}} .dipl_tooltip_trigger_element_wrap.trigger_type_icon svg:hover'   => 'fill: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .dipl_tooltip_trigger_element_wrap.trigger_type_icon i:hover'     => 'color: {{VALUE}}; transition: 300ms;',
+		),
+	)
+);
+$this->end_controls_tab();
+$this->end_controls_tabs();
+$this->end_controls_section();
+$this->start_controls_section(
 	'trigger_text_section',
 	array(
 		'label' => esc_html__( 'Trigger Text', 'wpmozo-addons-lite-for-elementor' ),
@@ -834,7 +939,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_scroll_stack_cards_title' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_scroll_stack_cards_title' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -1010,7 +1115,7 @@ $this->add_responsive_control(
 			'isLinked' => false,
 		),
 		'selectors'  => array(
-			'{{WRAPPER}} .wpmozo_readmore_button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			'{{WRAPPER}} ' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
 	)
 );
@@ -1175,7 +1280,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_scroll_stack_cards_title' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_scroll_stack_cards_title' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );

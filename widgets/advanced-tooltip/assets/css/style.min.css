@@ -67,13 +67,13 @@
 }
 
 /* Update tooltip default style. */
-.tippy-box[data-theme^=".dipl_advanced_tooltip_"] {
-	background-color: #000000;
-	border-radius: 10px;
-	box-shadow: 0px 2px 18px 0px rgba(0,0,0,0.3);
-}
-.tippy-box[data-theme^=".dipl_advanced_tooltip_"] .tippy-content{
-	padding: 0;
+.tippy-box[data-theme~='light'] {
+    background: #fff;
+    color: #000;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Tooltip content. */
@@ -87,4 +87,27 @@
 .elementor-widget-wpmozo_ae_advanced_tooltip .dipl_tooltip_trigger_icon,
 .elementor-widget-wpmozo_ae_advanced_tooltip .dipl_tooltip_trigger_image{
 	cursor: pointer;
+}
+.elementor-widget-wpmozo_ae_advanced_tooltip .dipl_tooltip_content_text p {
+    margin: 0;
+}
+.elementor-widget-wpmozo_ae_advanced_tooltip .wpmozo_readmore_button {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0.3em;
+    line-height: 1.7em !important;
+    background-color: #fff0;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    border: 2px solid;
+    border-radius: 3px;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-property: all !important;
+    transition-property: all !important;
+    display: inline-flex;
+    flex-flow: nowrap;
+    align-items: center;
+    transition: all 0.3s;
 }
