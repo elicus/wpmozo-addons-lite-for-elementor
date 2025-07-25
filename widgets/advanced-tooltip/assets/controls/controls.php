@@ -881,6 +881,9 @@ $this->start_controls_section(
 	array(
 		'label' => esc_html__( 'Trigger Text', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
+		'condition'  => array(
+			'trigger_element_type' => 'text',
+		),
 	)
 );
 $this->add_responsive_control(
@@ -904,7 +907,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_scroll_stack_cards_title' => 'text-align: {{VALUE}};',
+			'{{WRAPPER}} .trigger_type_text' => 'text-align: {{VALUE}};',
 		),
 	)
 );
@@ -923,7 +926,7 @@ $this->add_group_control(
 		'name'     => 'trigger_text_typography',
 		'label'    => esc_html__( 'Trigger Text Typography', 'wpmozo-addons-lite-for-elementor' ),
 		'exclude'  => array( 'font_size' ),
-		'selector' => '{{WRAPPER}} .wpmozo_scroll_stack_cards_title',
+		'selector' => '{{WRAPPER}} .dipl_tooltip_trigger_text',
 	)
 );
 $this->add_responsive_control(
@@ -939,7 +942,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_scroll_stack_cards_title' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .dipl_tooltip_trigger_text' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -950,7 +953,7 @@ $this->add_responsive_control(
 		'type'      => Controls_Manager::COLOR,
 		'separator' => 'after',
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_scroll_stack_cards_title' => 'color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .dipl_tooltip_trigger_text' => 'color: {{VALUE}}; transition: 300ms;',
 		),
 	)
 );
@@ -967,7 +970,7 @@ $this->add_group_control(
 		'name'     => 'trigger_text_typography_hover',
 		'label'    => esc_html__( 'Trigger Text Typography', 'wpmozo-addons-lite-for-elementor' ),
 		'exclude'  => array( 'font_size' ),
-		'selector' => '{{WRAPPER}} .wpmozo_scroll_stack_cards_title:hover',
+		'selector' => '{{WRAPPER}} .dipl_tooltip_trigger_text:hover',
 	)
 );
 $this->add_responsive_control(
@@ -983,7 +986,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_scroll_stack_cards_title:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .dipl_tooltip_trigger_text:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 		),
 	)
 );
@@ -994,7 +997,7 @@ $this->add_responsive_control(
 		'type'      => Controls_Manager::COLOR,
 		'separator' => 'after',
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_scroll_stack_cards_title:hover' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .dipl_tooltip_trigger_text:hover' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -1005,7 +1008,7 @@ $this->add_group_control(
 	array(
 		'name'     => 'trigger_text_shadow',
 		'label'    => esc_html__( 'Trigger Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-		'selector' => '{{WRAPPER}} .wpmozo_scroll_stack_cards_title',
+		'selector' => '{{WRAPPER}} .dipl_tooltip_trigger_text',
 	)
 );
 $this->end_controls_section();

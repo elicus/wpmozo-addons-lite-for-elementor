@@ -76,6 +76,10 @@
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
+.tippy-box[data-theme~='light'] .tippy-content{
+	padding: 0;
+}
+
 /* Tooltip content. */
 .elementor-widget-wpmozo_ae_advanced_tooltip .dipl_advanced_tooltip_content_wrap{
 	display: none;
@@ -89,7 +93,7 @@
 	cursor: pointer;
 }
 .elementor-widget-wpmozo_ae_advanced_tooltip .dipl_tooltip_content_text p {
-    margin: 0;
+    margin: 0 !important;
 }
 .elementor-widget-wpmozo_ae_advanced_tooltip .wpmozo_readmore_button {
     font-size: 20px;
