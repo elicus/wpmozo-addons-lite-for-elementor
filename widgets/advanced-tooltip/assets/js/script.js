@@ -6,13 +6,13 @@
             },
 
             change: function () {
-                const $tooltips = this.$element.find('.dipl_advanced_tooltip');
+                const $tooltips = this.$element.find('.wpmozo_advanced_tooltip');
 
                 if (!$tooltips.length) return;
 
                 $tooltips.each(function () {
                     let $this = $(this),
-                        $wrap = $this.find('.dipl_tooltip_trigger_element_wrap');
+                        $wrap = $this.find('.wpmozo_tooltip_trigger_element_wrap');
 
                     // Get data attributes or fallback to defaults
                     let triggerType     = $wrap.data('trigger-action') || 'mouseenter',
@@ -23,12 +23,13 @@
                         triggerEl       = $wrap.data('trigger-element') || 'button',
                         triggerSelector = $wrap.data('trigger-selector') || '';
 
+
                     // 🔧 Fix: Look inside current tooltip instance only
-                    let $tooltipContent = $this.find('.dipl_advanced_tooltip_content_wrap');
+                    let $tooltipContent = $this.find('.wpmozo_advanced_tooltip_content_wrap');
                     if (!$tooltipContent.length) return;
 
                     // 🔧 Fix: Localize trigger selector
-                    let $triggerElement = $this.find('.dipl_tooltip_trigger_element');
+                    let $triggerElement = $this.find('.wpmozo_tooltip_trigger_element');
                     if (triggerEl === 'id') {
                         $triggerElement = $('#' + triggerSelector);
                     } else if (triggerEl === 'class') {
@@ -70,8 +71,8 @@
                     });
 
                     // Prevent default on button click
-                    if (triggerType === 'click' && $this.find('.dipl_tooltip_trigger_button').length > 0) {
-                        $this.on('click', '.dipl_tooltip_trigger_button', function (e) {
+                    if (triggerType === 'click' && $this.find('.wpmozo_tooltip_trigger_button').length > 0) {
+                        $this.on('click', '.wpmozo_tooltip_trigger_button', function (e) {
                             e.preventDefault();
                         });
                     }

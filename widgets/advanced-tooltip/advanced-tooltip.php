@@ -112,7 +112,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 * @return array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-			wp_register_script( 'wpmozo-ae-advanced-tooltip-script', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
+			wp_register_script( 'wpmozo-ae-advanced-tooltip-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
 			return array( 'wpmozo-ae-advanced-tooltip-script', 'wpmozo-ae-popper', 'wpmozo-ae-tippy' );
 		}
@@ -141,47 +141,57 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 */
 		protected function render() {
 			$settings = $this->get_settings_for_display();
-		
-			$trigger_action             = isset( $settings['trigger_action'] ) ? $settings['trigger_action'] : '';
-			$trigger_element_type       = isset( $settings['trigger_element_type'] ) ? $settings['trigger_element_type'] : '';
-			$trigger_button_link_url    = isset( $settings['trigger_button_link_url']['url'] ) ? $settings['trigger_button_link_url']['url'] : '';
-			$trigger_button_text        = isset( $settings['trigger_button_text'] ) ? $settings['trigger_button_text'] : '';
-			$trigger_button_link_target = isset( $settings['trigger_button_link_target'] ) ? $settings['trigger_button_link_target'] : '';
-			$trigger_image              = isset( $settings['trigger_image']['url'] ) ? $settings['trigger_image']['url'] : '';
-			$trigger_image_alt_tag      = isset( $settings['trigger_image_alt_tag'] ) ? $settings['trigger_image_alt_tag'] : '';
-			$trigger_icon               = isset( $settings['trigger_icon'] ) ? $settings['trigger_icon'] : '';
-			$trigger_text               = isset( $settings['trigger_text'] ) ? $settings['trigger_text'] : '';
-			$trigger_selector_id        = isset( $settings['trigger_selector_id'] ) ? $settings['trigger_selector_id'] : '';
-			$trigger_selector_class     = isset( $settings['trigger_selector_class'] ) ? $settings['trigger_selector_class'] : '';
-			$tooltip_content_type       = isset( $settings['tooltip_content_type'] ) ? $settings['tooltip_content_type'] : '';
-			$content_type_text          = isset( $settings['content_type_text'] ) ? $settings['content_type_text'] : '';
-			$content_type_image         = isset( $settings['content_type_image']['url'] ) ? $settings['content_type_image']['url'] : '';
-			$content_type_image_alt_tag = isset( $settings['content_type_image_alt_tag'] ) ? $settings['content_type_image_alt_tag'] : '';
+
+			$widget_id                     = $this->get_id(); // Widget instance ID (unique per widget).
+			$page_id                       = get_the_ID(); // Elementor Page/Post ID.
+			$trigger_action                = isset( $settings['trigger_action'] ) ? $settings['trigger_action'] : '';
+			$trigger_element_type          = isset( $settings['trigger_element_type'] ) ? $settings['trigger_element_type'] : '';
+			$trigger_button_link_url       = isset( $settings['trigger_button_link_url']['url'] ) ? $settings['trigger_button_link_url']['url'] : '';
+			$trigger_button_text           = isset( $settings['trigger_button_text'] ) ? $settings['trigger_button_text'] : '';
+			$trigger_button_link_target    = isset( $settings['trigger_button_link_target'] ) ? $settings['trigger_button_link_target'] : '';
+			$trigger_image                 = isset( $settings['trigger_image']['url'] ) ? $settings['trigger_image']['url'] : '';
+			$trigger_image_alt_tag         = isset( $settings['trigger_image_alt_tag'] ) ? $settings['trigger_image_alt_tag'] : '';
+			$trigger_icon                  = isset( $settings['trigger_icon'] ) ? $settings['trigger_icon'] : '';
+			$trigger_text                  = isset( $settings['trigger_text'] ) ? $settings['trigger_text'] : '';
+			$trigger_selector_id           = isset( $settings['trigger_selector_id'] ) ? $settings['trigger_selector_id'] : '';
+			$trigger_selector_class        = isset( $settings['trigger_selector_class'] ) ? $settings['trigger_selector_class'] : '';
+			$tooltip_content_type          = isset( $settings['tooltip_content_type'] ) ? $settings['tooltip_content_type'] : '';
+			$content_type_text             = isset( $settings['content_type_text'] ) ? $settings['content_type_text'] : '';
+			$content_type_image            = isset( $settings['content_type_image']['url'] ) ? $settings['content_type_image']['url'] : '';
+			$content_type_image_alt_tag    = isset( $settings['content_type_image_alt_tag'] ) ? $settings['content_type_image_alt_tag'] : '';
 			$content_type_elementor_layout = isset( $settings['content_type_elementor_layout'] ) ? $settings['content_type_elementor_layout'] : '';
-			$tooltip_width              = isset( $settings['tooltip_width']['size'] ) ? $settings['tooltip_width']['size'] : '';
-			$entrance_animation         = isset( $settings['entrance_animation'] ) ? $settings['entrance_animation'] : '';
-			$animation_duration         = isset( $settings['animation_duration'] ) ? $settings['animation_duration'] : '';
-			$make_interactive_tooltip   = ( 'yes' === $settings['make_interactive_tooltip'] ) ? 'true' : 'false';
-			$button_icon_placement      = isset( $settings['button_icon_placement'] ) ? $settings['button_icon_placement'] : '';
-		
+			$tooltip_width                 = isset( $settings['tooltip_width']['size'] ) ? $settings['tooltip_width']['size'] : '';
+			$entrance_animation            = isset( $settings['entrance_animation'] ) ? $settings['entrance_animation'] : '';
+			$animation_duration            = isset( $settings['tooltip_animation_duration']['size'] ) ? $settings['tooltip_animation_duration']['size'] : '';
+			$make_interactive_tooltip      = ( 'yes' === $settings['make_interactive_tooltip'] ) ? 'true' : 'false';
+			$button_icon_placement         = isset( $settings['button_icon_placement'] ) ? $settings['button_icon_placement'] : '';
+
 			$trigger_selector = '';
 			if ( 'id' === $trigger_element_type && ! empty( $trigger_selector_id ) ) {
 				$trigger_selector = $trigger_selector_id;
 			} elseif ( 'class' === $trigger_element_type && ! empty( $trigger_selector_class ) ) {
 				$trigger_selector = $trigger_selector_class;
 			}
-		
-			// Wrapper attributes
-			$this->add_render_attribute( 'tooltip_wrapper', 'class', array(
-				'dipl_advanced_tooltip',
-				'icon_' . $button_icon_placement,
-			) );
-		
-			// Trigger wrapper
-			$this->add_render_attribute( 'trigger_wrap', 'class', array(
-				'dipl_tooltip_trigger_element_wrap',
-				'trigger_type_' . $trigger_element_type,
-			) );
+
+			// Wrapper attributes.
+			$this->add_render_attribute(
+				'tooltip_wrapper',
+				'class',
+				array(
+					'wpmozo_advanced_tooltip',
+					'icon_' . $button_icon_placement,
+				)
+			);
+
+			// Trigger wrapper.
+			$this->add_render_attribute(
+				'trigger_wrap',
+				'class',
+				array(
+					'wpmozo_tooltip_trigger_element_wrap',
+					'trigger_type_' . $trigger_element_type,
+				)
+			);
 			$this->add_render_attribute( 'trigger_wrap', 'data-trigger-action', $trigger_action );
 			$this->add_render_attribute( 'trigger_wrap', 'data-animation', $entrance_animation );
 			$this->add_render_attribute( 'trigger_wrap', 'data-duration', $animation_duration );
@@ -189,93 +199,107 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 			$this->add_render_attribute( 'trigger_wrap', 'data-tooltip-width', $tooltip_width );
 			$this->add_render_attribute( 'trigger_wrap', 'data-trigger-element', $trigger_element_type );
 			$this->add_render_attribute( 'trigger_wrap', 'data-trigger-selector', $trigger_selector );
-		
-			// Button trigger
+
+			// Button trigger.
 			if ( 'button' === $trigger_element_type ) {
-				$this->add_render_attribute( 'trigger_button', 'class', array(
-					'wpmozo_readmore_button',
-					'dipl_tooltip_trigger_element',
-					'dipl_tooltip_trigger_button',
-				) );
+				$this->add_render_attribute(
+					'trigger_button',
+					'class',
+					array(
+						'wpmozo_readmore_button',
+						'wpmozo_tooltip_trigger_element',
+						'wpmozo_tooltip_trigger_button',
+					)
+				);
 				$this->add_render_attribute( 'trigger_button', 'href', esc_url( $trigger_button_link_url ) );
 				$this->add_render_attribute( 'trigger_button', 'target', esc_attr( $trigger_button_link_target ) );
 			}
-		
-			// Image trigger
+
+			// Image trigger.
 			if ( 'image' === $trigger_element_type ) {
-				$this->add_render_attribute( 'trigger_image', 'class', array(
-					'dipl_tooltip_trigger_element',
-					'dipl_tooltip_trigger_image',
-				) );
+				$this->add_render_attribute(
+					'trigger_image',
+					'class',
+					array(
+						'wpmozo_tooltip_trigger_element',
+						'wpmozo_tooltip_trigger_image',
+					)
+				);
 				$this->add_render_attribute( 'trigger_image', 'src', esc_url( $trigger_image ) );
 				$this->add_render_attribute( 'trigger_image', 'alt', esc_attr( $trigger_image_alt_tag ) );
 				$this->add_render_attribute( 'trigger_image', 'decoding', 'async' );
 			}
-		
-			// Text trigger
+
+			// Text trigger.
 			if ( 'text' === $trigger_element_type ) {
-				$this->add_render_attribute( 'trigger_text', 'class', array(
-					'dipl_tooltip_trigger_element',
-					'dipl_tooltip_trigger_text',
-				) );
+				$this->add_render_attribute(
+					'trigger_text',
+					'class',
+					array(
+						'wpmozo_tooltip_trigger_element',
+						'wpmozo_tooltip_trigger_text',
+					)
+				);
 			}
 			?>
-			<div <?php echo $this->print_render_attribute_string( 'tooltip_wrapper' ); ?>>
-				<div <?php echo $this->print_render_attribute_string( 'trigger_wrap' ); ?>>
+			<div <?php $this->print_render_attribute_string( 'tooltip_wrapper' ); ?>>
+				<div <?php $this->print_render_attribute_string( 'trigger_wrap' ); ?>>
 					<?php if ( 'button' === $trigger_element_type && ! empty( $trigger_button_text ) ) : ?>
 						<div class="wpmozo_readmore_button_wrapper">
-							<a <?php echo $this->print_render_attribute_string( 'trigger_button' ); ?>>
+							<a <?php $this->print_render_attribute_string( 'trigger_button' ); ?>>
 								<span class="wpmozo_button_text"><?php echo esc_html( $trigger_button_text ); ?></span>
 								<?php
 								\Elementor\Icons_Manager::render_icon(
 									$settings['button_icon'],
-									[
+									array(
 										'aria-hidden' => 'true',
 										'class'       => 'wpmozo_button_icon',
-									]
+									)
 								);
 								?>
 							</a>
 						</div>
 					<?php elseif ( 'image' === $trigger_element_type && ! empty( $trigger_image ) ) : ?>
-						<img <?php echo $this->print_render_attribute_string( 'trigger_image' ); ?> aria-expanded="false">
+						<img <?php $this->print_render_attribute_string( 'trigger_image' ); ?> aria-expanded="false">
 					<?php elseif ( 'icon' === $trigger_element_type && ! empty( $trigger_icon ) ) : ?>
 						<?php
 						\Elementor\Icons_Manager::render_icon(
 							$settings['trigger_icon'],
-							[
+							array(
 								'aria-hidden' => 'true',
-								'class'       => 'dipl_tooltip_trigger_element dipl_tooltip_trigger_icon',
-							],
+								'class'       => 'wpmozo_tooltip_trigger_element wpmozo_tooltip_trigger_icon',
+							),
 							'span'
 						);
 						?>
 					<?php elseif ( 'text' === $trigger_element_type && ! empty( $trigger_text ) ) : ?>
-						<span <?php echo $this->print_render_attribute_string( 'trigger_text' ); ?>><?php echo esc_html( $trigger_text ); ?></span>
+						<span <?php $this->print_render_attribute_string( 'trigger_text' ); ?>><?php echo esc_html( $trigger_text ); ?></span>
 					<?php endif; ?>
 				</div>
 		
-				<div class="dipl_advanced_tooltip_content_wrap">
-					<div class="dipl_advanced_tooltip_content">
-						<?php if ( 'text' === $tooltip_content_type && ! empty( $content_type_text ) ) : ?>
-							<div class="dipl_tooltip_content_text">
-								<p><?php echo wp_kses_post( $content_type_text ); ?></p>
-							</div>
-						<?php elseif ( 'image' === $tooltip_content_type && ! empty( $content_type_image ) ) : ?>
-							<img decoding="async" src="<?php echo esc_url( $content_type_image ); ?>" alt="<?php echo esc_attr( $content_type_image_alt_tag ); ?>" class="dipl_tooltip_content_image">
-						<?php elseif ( 'el_library_layout' === $tooltip_content_type && ! empty( $content_type_elementor_layout ) ) : ?>
-							<div class="dipl_tooltip_content_layout wpmozo_el_layout">
-								<?php
-								$plugin_elementor         = \Elementor\Plugin::instance();
-								$elementor_layout_content = $plugin_elementor->frontend->get_builder_content_for_display( $content_type_elementor_layout, true );
-								echo $elementor_layout_content;
-								?>
-							</div>
-						<?php endif; ?>
+				<div class="wpmozo_advanced_tooltip_content_wrap">
+					<div class="elementor-<?php echo esc_attr( $page_id ); ?>">
+						<div class="elementor-element elementor-element-<?php echo esc_attr( $widget_id ); ?> wpmozo_advanced_tooltip_content">
+							<?php if ( 'text' === $tooltip_content_type && ! empty( $content_type_text ) ) : ?>
+								<div class="wpmozo_tooltip_content_text">
+									<p><?php echo wp_kses_post( $content_type_text ); ?></p>
+								</div>
+							<?php elseif ( 'image' === $tooltip_content_type && ! empty( $content_type_image ) ) : ?>
+								<img decoding="async" src="<?php echo esc_url( $content_type_image ); ?>" alt="<?php echo esc_attr( $content_type_image_alt_tag ); ?>" class="wpmozo_tooltip_content_image">
+							<?php elseif ( 'el_library_layout' === $tooltip_content_type && ! empty( $content_type_elementor_layout ) ) : ?>
+								<div class="wpmozo_tooltip_content_layout wpmozo_el_layout">
+									<?php
+									$plugin_elementor         = \Elementor\Plugin::instance();
+									$elementor_layout_content = $plugin_elementor->frontend->get_builder_content_for_display( $content_type_elementor_layout, true );
+									echo $elementor_layout_content;
+									?>
+								</div>
+							<?php endif; ?>
+						</div>
 					</div>
 				</div>
 			</div>
 			<?php
-		}		
+		}
 	}
 }

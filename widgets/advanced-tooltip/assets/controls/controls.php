@@ -34,7 +34,7 @@ $this->add_control(
 		'default'     => 'mouseenter',
 		'options'     => array(
 			'mouseenter' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
-			'click' => esc_html__( 'Click', 'wpmozo-addons-lite-for-elementor' ),
+			'click'      => esc_html__( 'Click', 'wpmozo-addons-lite-for-elementor' ),
 		),
 		'render_type' => 'template',
 	)
@@ -42,16 +42,16 @@ $this->add_control(
 $this->add_control(
 	'trigger_element_type',
 	array(
-		'label'     => esc_html__( 'Trigger Element', 'wpmozo-addons-lite-for-elementor' ),
-		'type'      => Controls_Manager::SELECT,
-		'default'   => 'button',
-		'options'   => array(
-			'button'            => esc_html__( 'Button', 'wpmozo-addons-lite-for-elementor' ),
-			'image'             => esc_html__( 'Image', 'wpmozo-addons-lite-for-elementor' ),
-			'icon'              => esc_html__( 'Icon', 'wpmozo-addons-lite-for-elementor' ),
-			'text'              => esc_html__( 'Text', 'wpmozo-addons-lite-for-elementor' ),
-			'id'    => esc_html__( 'Element CSS ID', 'wpmozo-addons-lite-for-elementor' ),
-			'class' => esc_html__( 'Element CSS Class', 'wpmozo-addons-lite-for-elementor' ),
+		'label'   => esc_html__( 'Trigger Element', 'wpmozo-addons-lite-for-elementor' ),
+		'type'    => Controls_Manager::SELECT,
+		'default' => 'button',
+		'options' => array(
+			'button' => esc_html__( 'Button', 'wpmozo-addons-lite-for-elementor' ),
+			'image'  => esc_html__( 'Image', 'wpmozo-addons-lite-for-elementor' ),
+			'icon'   => esc_html__( 'Icon', 'wpmozo-addons-lite-for-elementor' ),
+			'text'   => esc_html__( 'Text', 'wpmozo-addons-lite-for-elementor' ),
+			'id'     => esc_html__( 'Element CSS ID', 'wpmozo-addons-lite-for-elementor' ),
+			'class'  => esc_html__( 'Element CSS Class', 'wpmozo-addons-lite-for-elementor' ),
 		),
 	)
 );
@@ -133,14 +133,14 @@ $this->add_responsive_control(
 			'value'   => 'far fa-star',
 			'library' => 'fa-regular',
 		),
-		'condition'   => array(
+		'condition' => array(
 			'trigger_element_type' => 'icon',
 		),
 	)
 );
-$this->add_control( 
+$this->add_control(
 	'trigger_text',
-	array( 
+	array(
 		'label'       => esc_html__( 'Trigger Text', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::TEXTAREA,
 		'label_block' => true,
@@ -151,30 +151,30 @@ $this->add_control(
 		'condition'   => array(
 			'trigger_element_type' => 'text',
 		),
-	 )
- );
- $this->add_control(
-	 'trigger_selector_id',
-	 array(
-		 'label'       => esc_html__( 'Trigger Selector ID', 'wpmozo-addons-lite-for-elementor' ),
-		 'type'        => Controls_Manager::TEXT,
-		 'label_block' => true,
-		 'condition'   => array(
-			 'trigger_element_type' => 'id',
-		 ),
-	 )
- );
- $this->add_control(
-	 'trigger_selector_class',
-	 array(
-		 'label'       => esc_html__( 'Trigger Selector Class', 'wpmozo-addons-lite-for-elementor' ),
-		 'type'        => Controls_Manager::TEXT,
-		 'label_block' => true,
-		 'condition'   => array(
-			 'trigger_element_type' => 'class',
-		 ),
-	 )
- );
+	)
+);
+$this->add_control(
+	'trigger_selector_id',
+	array(
+		'label'       => esc_html__( 'Trigger Selector ID', 'wpmozo-addons-lite-for-elementor' ),
+		'type'        => Controls_Manager::TEXT,
+		'label_block' => true,
+		'condition'   => array(
+			'trigger_element_type' => 'id',
+		),
+	)
+);
+$this->add_control(
+	'trigger_selector_class',
+	array(
+		'label'       => esc_html__( 'Trigger Selector Class', 'wpmozo-addons-lite-for-elementor' ),
+		'type'        => Controls_Manager::TEXT,
+		'label_block' => true,
+		'condition'   => array(
+			'trigger_element_type' => 'class',
+		),
+	)
+);
 $this->end_controls_section();
 // Content.
 $this->start_controls_section(
@@ -190,8 +190,8 @@ $this->add_control(
 		'type'        => Controls_Manager::SELECT,
 		'default'     => 'text',
 		'options'     => array(
-			'text' => esc_html__( 'Text', 'wpmozo-addons-lite-for-elementor' ),
-			'image' => esc_html__( 'Image', 'wpmozo-addons-lite-for-elementor' ),
+			'text'              => esc_html__( 'Text', 'wpmozo-addons-lite-for-elementor' ),
+			'image'             => esc_html__( 'Image', 'wpmozo-addons-lite-for-elementor' ),
 			'el_library_layout' => esc_html__( 'Elementor Library Layout', 'wpmozo-addons-lite-for-elementor' ),
 		),
 		'render_type' => 'template',
@@ -316,7 +316,7 @@ $this->add_responsive_control(
 		),
 		'condition' => array(
 			'button_custom_style' => 'yes',
-			'show_button_icon' => 'yes',
+			'show_button_icon'    => 'yes',
 		),
 	)
 );
@@ -345,7 +345,7 @@ $this->add_responsive_control(
 		),
 		'condition'    => array(
 			'button_custom_style' => 'yes',
-			'show_button_icon' => 'yes',
+			'show_button_icon'    => 'yes',
 		),
 	)
 );
@@ -370,7 +370,7 @@ $this->add_responsive_control(
 		),
 		'condition'    => array(
 			'button_custom_style' => 'yes',
-			'show_button_icon' => 'yes',
+			'show_button_icon'    => 'yes',
 		),
 	)
 );
@@ -422,8 +422,8 @@ $this->add_responsive_control(
 			'button_custom_style' => 'yes',
 		),
 		'selectors'  => array(
-			'{{WRAPPER}} .wpmozo_readmore_button'       => 'font-size: {{SIZE}}{{UNIT}};',
-			'{{WRAPPER}} .wpmozo_readmore_button svg'   => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_readmore_button'     => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_readmore_button svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -492,7 +492,7 @@ $this->add_responsive_control(
 			'button_custom_style' => 'yes',
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_readmore_button'   => 'border-color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_readmore_button' => 'border-color: {{VALUE}}; transition: 300ms;',
 		),
 	)
 );
@@ -540,11 +540,11 @@ $this->add_responsive_control(
 		'type'      => Controls_Manager::COLOR,
 		'condition' => array(
 			'button_custom_style' => 'yes',
-			'show_button_icon' => 'yes',
+			'show_button_icon'    => 'yes',
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_readmore_button svg'   => 'fill: {{VALUE}}; transition: 300ms;',
-			'{{WRAPPER}} .wpmozo_readmore_button i'     => 'color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_readmore_button svg' => 'fill: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_readmore_button i'   => 'color: {{VALUE}}; transition: 300ms;',
 		),
 	)
 );
@@ -622,7 +622,7 @@ $this->add_responsive_control(
 			'button_custom_style' => 'yes',
 		),
 		'selectors'  => array(
-			'{{WRAPPER}} .wpmozo_readmore_button:hover'     => 'font-size: {{SIZE}}{{UNIT}}',
+			'{{WRAPPER}} .wpmozo_readmore_button:hover' => 'font-size: {{SIZE}}{{UNIT}}',
 			'{{WRAPPER}} .wpmozo_readmore_button svg:hover' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 		),
 	)
@@ -636,7 +636,7 @@ $this->add_responsive_control(
 			'button_custom_style' => 'yes',
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_readmore_button:hover'     => 'color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_readmore_button:hover' => 'color: {{VALUE}}; transition: 300ms;',
 		),
 	)
 );
@@ -732,11 +732,11 @@ $this->add_responsive_control(
 		'type'      => Controls_Manager::COLOR,
 		'condition' => array(
 			'button_custom_style' => 'yes',
-			'show_button_icon' => 'yes',
+			'show_button_icon'    => 'yes',
 		),
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_readmore_button:hover svg' => 'fill: {{VALUE}}; transition: 300ms;',
-			'{{WRAPPER}} .wpmozo_readmore_button:hover i'   => 'color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_readmore_button:hover i' => 'color: {{VALUE}}; transition: 300ms;',
 		),
 	)
 );
@@ -774,9 +774,9 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'trigger_image_section',
 	array(
-		'label' => esc_html__( 'Trigger Image', 'wpmozo-addons-lite-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_STYLE,
-		'condition'  => array(
+		'label'     => esc_html__( 'Trigger Image', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'       => Controls_Manager::TAB_STYLE,
+		'condition' => array(
 			'trigger_element_type' => 'image',
 		),
 	)
@@ -790,12 +790,12 @@ $this->add_responsive_control(
 		'range'      => array(
 			'%' => array(
 				'min' => 1,
-				'max' => 100
-			)
+				'max' => 100,
+			),
 		),
-		'default'=> array( 'unit'=>'%' ),
+		'default'    => array( 'unit' => '%' ),
 		'selectors'  => array(
-			'{{WRAPPER}} .dipl_tooltip_trigger_image'  => 'width: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_tooltip_trigger_image' => 'width: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -803,9 +803,9 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'trigger_icon_section',
 	array(
-		'label' => esc_html__( 'Trigger Icon', 'wpmozo-addons-lite-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_STYLE,
-		'condition'  => array(
+		'label'     => esc_html__( 'Trigger Icon', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'       => Controls_Manager::TAB_STYLE,
+		'condition' => array(
 			'trigger_element_type' => 'icon',
 		),
 	)
@@ -832,8 +832,8 @@ $this->add_responsive_control(
 			'size' => 30,
 		),
 		'selectors'  => array(
-			'{{WRAPPER}} .dipl_tooltip_trigger_element_wrap.trigger_type_icon span.dipl_tooltip_trigger_icon'  => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
-			'{{WRAPPER}} .dipl_tooltip_trigger_element_wrap.trigger_type_icon svg.dipl_tooltip_trigger_icon'   => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_tooltip_trigger_element_wrap.trigger_type_icon span.wpmozo_tooltip_trigger_icon'  => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_tooltip_trigger_element_wrap.trigger_type_icon svg.wpmozo_tooltip_trigger_icon'   => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 		),
 	)
 );
@@ -850,8 +850,8 @@ $this->add_control(
 		'label'     => esc_html__( 'Trigger Icon Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_tooltip_trigger_element_wrap.trigger_type_icon svg'   => 'fill: {{VALUE}}; transition: 300ms;',
-			'{{WRAPPER}} .dipl_tooltip_trigger_element_wrap.trigger_type_icon i'     => 'color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_tooltip_trigger_element_wrap.trigger_type_icon svg'   => 'fill: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_tooltip_trigger_element_wrap.trigger_type_icon i'     => 'color: {{VALUE}}; transition: 300ms;',
 		),
 	)
 );
@@ -868,8 +868,8 @@ $this->add_control(
 		'label'     => esc_html__( 'Trigger Icon Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_tooltip_trigger_element_wrap.trigger_type_icon svg:hover'   => 'fill: {{VALUE}}; transition: 300ms;',
-			'{{WRAPPER}} .dipl_tooltip_trigger_element_wrap.trigger_type_icon i:hover'     => 'color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_tooltip_trigger_element_wrap.trigger_type_icon svg:hover'   => 'fill: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_tooltip_trigger_element_wrap.trigger_type_icon i:hover'     => 'color: {{VALUE}}; transition: 300ms;',
 		),
 	)
 );
@@ -879,9 +879,9 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'trigger_text_section',
 	array(
-		'label' => esc_html__( 'Trigger Text', 'wpmozo-addons-lite-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_STYLE,
-		'condition'  => array(
+		'label'     => esc_html__( 'Trigger Text', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'       => Controls_Manager::TAB_STYLE,
+		'condition' => array(
 			'trigger_element_type' => 'text',
 		),
 	)
@@ -926,7 +926,7 @@ $this->add_group_control(
 		'name'     => 'trigger_text_typography',
 		'label'    => esc_html__( 'Trigger Text Typography', 'wpmozo-addons-lite-for-elementor' ),
 		'exclude'  => array( 'font_size' ),
-		'selector' => '{{WRAPPER}} .dipl_tooltip_trigger_text',
+		'selector' => '{{WRAPPER}} .wpmozo_tooltip_trigger_text',
 	)
 );
 $this->add_responsive_control(
@@ -942,7 +942,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_tooltip_trigger_text' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_tooltip_trigger_text' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -953,7 +953,7 @@ $this->add_responsive_control(
 		'type'      => Controls_Manager::COLOR,
 		'separator' => 'after',
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_tooltip_trigger_text' => 'color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_tooltip_trigger_text' => 'color: {{VALUE}}; transition: 300ms;',
 		),
 	)
 );
@@ -970,7 +970,7 @@ $this->add_group_control(
 		'name'     => 'trigger_text_typography_hover',
 		'label'    => esc_html__( 'Trigger Text Typography', 'wpmozo-addons-lite-for-elementor' ),
 		'exclude'  => array( 'font_size' ),
-		'selector' => '{{WRAPPER}} .dipl_tooltip_trigger_text:hover',
+		'selector' => '{{WRAPPER}} .wpmozo_tooltip_trigger_text:hover',
 	)
 );
 $this->add_responsive_control(
@@ -986,7 +986,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_tooltip_trigger_text:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_tooltip_trigger_text:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 		),
 	)
 );
@@ -997,7 +997,7 @@ $this->add_responsive_control(
 		'type'      => Controls_Manager::COLOR,
 		'separator' => 'after',
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_tooltip_trigger_text:hover' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_tooltip_trigger_text:hover' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -1008,7 +1008,7 @@ $this->add_group_control(
 	array(
 		'name'     => 'trigger_text_shadow',
 		'label'    => esc_html__( 'Trigger Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-		'selector' => '{{WRAPPER}} .dipl_tooltip_trigger_text',
+		'selector' => '{{WRAPPER}} .wpmozo_tooltip_trigger_text',
 	)
 );
 $this->end_controls_section();
@@ -1022,28 +1022,28 @@ $this->start_controls_section(
 $this->add_control(
 	'entrance_animation',
 	array(
-		'label'     => esc_html__( 'Entrance Animation', 'wpmozo-addons-lite-for-elementor' ),
-		'type'      => Controls_Manager::SELECT,
-		'default'   => 'fade',
-		'options'   => array(
-			'fade'        		 	=> esc_html__( 'Fade', 'wpmozo-addons-lite-for-elementor' ),
-			'scale'       			=> esc_html__( 'Scale', 'wpmozo-addons-lite-for-elementor' ),
-			'scale-subtle'  		=> esc_html__( 'Scale Subtle', 'wpmozo-addons-lite-for-elementor' ),
-			'scale-extreme' 		=> esc_html__( 'Scale Extreme', 'wpmozo-addons-lite-for-elementor' ),
-			'shift-away'         	=> esc_html__( 'Shift Away', 'wpmozo-addons-lite-for-elementor' ),
-			'shift-away-subtle'  	=> esc_html__( 'Shift Away Subtle', 'wpmozo-addons-lite-for-elementor' ),
-			'shift-away-extreme' 	=> esc_html__( 'Shift Away Extreme', 'wpmozo-addons-lite-for-elementor' ),
-			'shift-toward'         	=> esc_html__( 'Shift Toward', 'wpmozo-addons-lite-for-elementor' ),
-			'shift-toward-subtle'  	=> esc_html__( 'Shift Toward Subtle', 'wpmozo-addons-lite-for-elementor' ),
-			'shift-toward-extreme' 	=> esc_html__( 'Shift Toward Extreme', 'wpmozo-addons-lite-for-elementor' ),
-			'perspective' 			=> esc_html__( 'Perspective', 'wpmozo-addons-lite-for-elementor' ),
-			'perspective-subtle'  	=> esc_html__( 'Perspective Subtle', 'wpmozo-addons-lite-for-elementor' ),
-			'perspective-extreme' 	=> esc_html__( 'Perspective Extreme', 'wpmozo-addons-lite-for-elementor' ),
+		'label'   => esc_html__( 'Entrance Animation', 'wpmozo-addons-lite-for-elementor' ),
+		'type'    => Controls_Manager::SELECT,
+		'default' => 'fade',
+		'options' => array(
+			'fade'                 => esc_html__( 'Fade', 'wpmozo-addons-lite-for-elementor' ),
+			'scale'                => esc_html__( 'Scale', 'wpmozo-addons-lite-for-elementor' ),
+			'scale-subtle'         => esc_html__( 'Scale Subtle', 'wpmozo-addons-lite-for-elementor' ),
+			'scale-extreme'        => esc_html__( 'Scale Extreme', 'wpmozo-addons-lite-for-elementor' ),
+			'shift-away'           => esc_html__( 'Shift Away', 'wpmozo-addons-lite-for-elementor' ),
+			'shift-away-subtle'    => esc_html__( 'Shift Away Subtle', 'wpmozo-addons-lite-for-elementor' ),
+			'shift-away-extreme'   => esc_html__( 'Shift Away Extreme', 'wpmozo-addons-lite-for-elementor' ),
+			'shift-toward'         => esc_html__( 'Shift Toward', 'wpmozo-addons-lite-for-elementor' ),
+			'shift-toward-subtle'  => esc_html__( 'Shift Toward Subtle', 'wpmozo-addons-lite-for-elementor' ),
+			'shift-toward-extreme' => esc_html__( 'Shift Toward Extreme', 'wpmozo-addons-lite-for-elementor' ),
+			'perspective'          => esc_html__( 'Perspective', 'wpmozo-addons-lite-for-elementor' ),
+			'perspective-subtle'   => esc_html__( 'Perspective Subtle', 'wpmozo-addons-lite-for-elementor' ),
+			'perspective-extreme'  => esc_html__( 'Perspective Extreme', 'wpmozo-addons-lite-for-elementor' ),
 		),
 	)
 );
 $this->add_control(
-	'animation_duration',
+	'tooltip_animation_duration',
 	array(
 		'type'    => Controls_Manager::SLIDER,
 		'label'   => esc_html__( 'Animation Duration ( ms )', 'wpmozo-addons-lite-for-elementor' ),
@@ -1058,6 +1058,7 @@ $this->add_control(
 			'size' => 400,
 			'unit' => 'ms',
 		),
+		'devices' => array( 'desktop', 'tablet', 'mobile' ),
 	)
 );
 $this->add_control(
@@ -1069,6 +1070,9 @@ $this->add_control(
 		'label_off'    => esc_html__( 'No', 'wpmozo-addons-lite-for-elementor' ),
 		'return_value' => 'yes',
 		'default'      => 'yes',
+		'selectors'    => array(
+			'.tippy-box:before' => 'content: "" !important; overflow: visible !important;',
+		),
 	)
 );
 $this->add_control(
@@ -1098,9 +1102,6 @@ $this->add_responsive_control(
 			'unit' => 'px',
 			'size' => 350,
 		),
-		'selectors'  => array(
-			'{{WRAPPER}} .wpmozo_scroll_stack_cards .layout-horizontal .wpmozo_scroll_stack_cards_item' => 'width: {{SIZE}}{{UNIT}};',
-		),
 	)
 );
 $this->add_responsive_control(
@@ -1118,7 +1119,7 @@ $this->add_responsive_control(
 			'isLinked' => false,
 		),
 		'selectors'  => array(
-			'{{WRAPPER}} ' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			'{{WRAPPER}}.wpmozo_advanced_tooltip_content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
 	)
 );
@@ -1134,10 +1135,7 @@ $this->add_group_control(
 			),
 		),
 		'toggle'         => false,
-		'condition'      => array(
-			'button_custom_style' => 'yes',
-		),
-		'selector'       => '{{WRAPPER}} .wpmozo_readmore_button',
+		'selector'       => '{{WRAPPER}}.wpmozo_advanced_tooltip_content, .tippy-box:has({{WRAPPER}}):before',
 	)
 );
 $this->start_controls_tabs( 'tooltip_styling_tabs' );
@@ -1151,7 +1149,7 @@ $this->add_group_control(
 	Group_Control_Border::get_type(),
 	array(
 		'name'           => 'tooltip_border',
-		'selector'       => '{{WRAPPER}} .wpmozo_scroll_stack_cards_image_wrapper img',
+		'selector'       => '{{WRAPPER}}.wpmozo_advanced_tooltip_content',
 		'fields_options' => array(
 			'border' => array( 'label' => esc_html__( 'Tooltip Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
 			'width'  => array( 'label' => esc_html__( 'Tooltip Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
@@ -1165,10 +1163,10 @@ $this->add_responsive_control(
 		'label'       => esc_html__( 'Tooltip Border Radius', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::DIMENSIONS,
 		'label_block' => true,
-		'separator' => 'after',
+		'separator'   => 'after',
 		'size_units'  => array( 'px', 'em', '%' ),
 		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_scroll_stack_cards_image_wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
+			'{{WRAPPER}}.wpmozo_advanced_tooltip_content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
 		),
 	)
 );
@@ -1183,13 +1181,13 @@ $this->add_group_control(
 	Group_Control_Border::get_type(),
 	array(
 		'name'           => 'tooltip_border_hover',
-		'selector'       => '{{WRAPPER}} .wpmozo_scroll_stack_cards_image_wrapper:hover',
+		'selector'       => '{{WRAPPER}}.wpmozo_advanced_tooltip_content:hover',
 		'fields_options' => array(
 			'border' => array( 'label' => esc_html__( 'Tooltip Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
 			'width'  => array( 'label' => esc_html__( 'Tooltip Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
 			'color'  => array( 'label' => esc_html__( 'Tooltip Border Color', 'wpmozo-addons-lite-for-elementor' ) ),
 		),
-		'separator' => 'none',
+		'separator'      => 'none',
 	)
 );
 $this->add_responsive_control(
@@ -1198,10 +1196,10 @@ $this->add_responsive_control(
 		'label'       => esc_html__( 'Tooltip Border Radius', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::DIMENSIONS,
 		'label_block' => true,
-		'separator' => 'after',
+		'separator'   => 'after',
 		'size_units'  => array( 'px', 'em', '%' ),
 		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_scroll_stack_cards_image_wrapper:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
+			'{{WRAPPER}}.wpmozo_advanced_tooltip_content:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
 		),
 	)
 );
@@ -1211,7 +1209,7 @@ $this->add_group_control(
 	Group_Control_Box_Shadow::get_type(),
 	array(
 		'name'           => 'tooltip_box_shadow',
-		'selector'       => '{{WRAPPER}} .wpmozo_scroll_stack_cards_image_wrapper',
+		'selector'       => '{{WRAPPER}}.wpmozo_advanced_tooltip_content',
 		'fields_options' => array(
 			'box_shadow_type' => array(
 				'label' => esc_html__( 'Tooltip Box Shadow', 'wpmozo-addons-lite-for-elementor' ),
@@ -1248,7 +1246,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_scroll_stack_cards_title' => 'text-align: {{VALUE}};',
+			'{{WRAPPER}}.wpmozo_advanced_tooltip_content' => 'text-align: {{VALUE}};',
 		),
 	)
 );
@@ -1267,7 +1265,7 @@ $this->add_group_control(
 		'name'     => 'tooltip_content_text_typography',
 		'label'    => esc_html__( 'Tooltip Content Text Typography', 'wpmozo-addons-lite-for-elementor' ),
 		'exclude'  => array( 'font_size' ),
-		'selector' => '{{WRAPPER}} .wpmozo_scroll_stack_cards_title',
+		'selector' => '{{WRAPPER}}.wpmozo_advanced_tooltip_content',
 	)
 );
 $this->add_responsive_control(
@@ -1283,7 +1281,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_scroll_stack_cards_title' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}}.wpmozo_advanced_tooltip_content' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -1294,7 +1292,7 @@ $this->add_responsive_control(
 		'type'      => Controls_Manager::COLOR,
 		'separator' => 'after',
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_scroll_stack_cards_title' => 'color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}}.wpmozo_advanced_tooltip_content' => 'color: {{VALUE}}; transition: 300ms;',
 		),
 	)
 );
@@ -1311,7 +1309,7 @@ $this->add_group_control(
 		'name'     => 'tooltip_content_text_typography_hover',
 		'label'    => esc_html__( 'Tooltip Content Text Typography', 'wpmozo-addons-lite-for-elementor' ),
 		'exclude'  => array( 'font_size' ),
-		'selector' => '{{WRAPPER}} .wpmozo_scroll_stack_cards_title:hover',
+		'selector' => '{{WRAPPER}}.wpmozo_advanced_tooltip_content:hover',
 	)
 );
 $this->add_responsive_control(
@@ -1327,7 +1325,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_scroll_stack_cards_title:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}}.wpmozo_advanced_tooltip_content:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 		),
 	)
 );
@@ -1338,7 +1336,7 @@ $this->add_responsive_control(
 		'type'      => Controls_Manager::COLOR,
 		'separator' => 'after',
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_scroll_stack_cards_title:hover' => 'color: {{VALUE}};',
+			'{{WRAPPER}}.wpmozo_advanced_tooltip_content:hover' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -1349,7 +1347,7 @@ $this->add_group_control(
 	array(
 		'name'     => 'tooltip_content_text_shadow',
 		'label'    => esc_html__( 'Tooltip Content Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-		'selector' => '{{WRAPPER}} .wpmozo_scroll_stack_cards_title',
+		'selector' => '{{WRAPPER}}.wpmozo_advanced_tooltip_content',
 	)
 );
 $this->end_controls_section();
