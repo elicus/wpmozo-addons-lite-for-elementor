@@ -111,7 +111,7 @@ if ( ! class_exists( 'WPMOZO_AE_Dropdown_Button' ) ) {
 		 * @return array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-			wp_register_script( 'wpmozo-ae-dropdown-button-script', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
+			wp_register_script( 'wpmozo-ae-dropdown-button-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
 			return array( 'wpmozo-ae-dropdown-button-script' );
 		}
@@ -141,14 +141,14 @@ if ( ! class_exists( 'WPMOZO_AE_Dropdown_Button' ) ) {
 		protected function render() {
 			$settings = $this->get_settings_for_display();
 
-			$dropdown_items_content     = isset( $settings['dropdown_items_content'] ) ? $settings['dropdown_items_content'] : array();
-			$button_text    			= isset( $settings['button_text'] ) ? $settings['button_text'] : '';
-			$trigger_action    			= isset( $settings['trigger_action'] ) ? $settings['trigger_action'] : '';
-			$dropdown_direction    		= isset( $settings['dropdown_direction'] ) ? $settings['dropdown_direction'] : '';
-			$button_icon_placement      = isset( $settings['button_icon_placement'] ) ? $settings['button_icon_placement'] : '';
+			$dropdown_items_content = isset( $settings['dropdown_items_content'] ) ? $settings['dropdown_items_content'] : array();
+			$button_text            = isset( $settings['button_text'] ) ? $settings['button_text'] : '';
+			$trigger_action         = isset( $settings['trigger_action'] ) ? $settings['trigger_action'] : '';
+			$dropdown_direction     = isset( $settings['dropdown_direction'] ) ? $settings['dropdown_direction'] : '';
+			$button_icon_placement  = isset( $settings['button_icon_placement'] ) ? $settings['button_icon_placement'] : '';
 
 			// Add dynamic attributes.
-			$this->add_render_attribute( 'dropdown_button_wrap', 'class', array('wpmozo_dropdown_button_wrap', 'icon_' . $button_icon_placement ) );
+			$this->add_render_attribute( 'dropdown_button_wrap', 'class', array( 'wpmozo_dropdown_button_wrap', 'icon_' . $button_icon_placement ) );
 			$this->add_render_attribute( 'dropdown_button_wrap', 'data-trigger-type', $trigger_action );
 			$this->add_render_attribute( 'dropdown_button_wrap', 'data-direction', $dropdown_direction );
 			?>
@@ -156,20 +156,20 @@ if ( ! class_exists( 'WPMOZO_AE_Dropdown_Button' ) ) {
 					<div <?php $this->print_render_attribute_string( 'dropdown_button_wrap' ); ?>>
 						<div class="wpmozo_dropdown_button_inner">
 								<?php
-									if ( ! empty( $button_text ) ) {
-										?>
+								if ( ! empty( $button_text ) ) {
+									?>
 										<div class="wpmozo_readmore_button_wrapper">
 											<a class="wpmozo_readmore_button" href="#">
 												<span class="wpmozo_button_text"><?php echo esc_html( $button_text ); ?></span>
-												<?php
-												\Elementor\Icons_Manager::render_icon(
-													$settings['button_icon'],
-													array(
-														'aria-hidden' => 'true',
-														'class'       => 'wpmozo_button_icon',
-													)
-												);
-												?>
+											<?php
+											\Elementor\Icons_Manager::render_icon(
+												$settings['button_icon'],
+												array(
+													'aria-hidden' => 'true',
+													'class'       => 'wpmozo_button_icon',
+												)
+											);
+											?>
 											</a>
 										</div>
 								<?php } ?>

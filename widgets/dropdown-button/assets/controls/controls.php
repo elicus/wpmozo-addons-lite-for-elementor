@@ -127,7 +127,7 @@ $repeater = new Repeater();
 			'default'     => 'click',
 			'options'     => array(
 				'hover' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
-				'click'      => esc_html__( 'Click', 'wpmozo-addons-lite-for-elementor' ),
+				'click' => esc_html__( 'Click', 'wpmozo-addons-lite-for-elementor' ),
 			),
 			'render_type' => 'template',
 		)
@@ -135,14 +135,14 @@ $repeater = new Repeater();
 	$this->add_control(
 		'dropdown_direction',
 		array(
-			'label'       => esc_html__( 'Dropdown Direction', 'wpmozo-addons-lite-for-elementor' ),
-			'type'        => Controls_Manager::SELECT,
-			'default'     => 'bottom',
-			'options'     => array(
-				'bottom'     => esc_html__( 'Bottom', 'wpmozo-addons-lite-for-elementor' ),
-				'top'        => esc_html__( 'Top', 'wpmozo-addons-lite-for-elementor' ),
-				'left'       => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
-				'right'      => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+			'label'   => esc_html__( 'Dropdown Direction', 'wpmozo-addons-lite-for-elementor' ),
+			'type'    => Controls_Manager::SELECT,
+			'default' => 'bottom',
+			'options' => array(
+				'bottom' => esc_html__( 'Bottom', 'wpmozo-addons-lite-for-elementor' ),
+				'top'    => esc_html__( 'Top', 'wpmozo-addons-lite-for-elementor' ),
+				'left'   => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+				'right'  => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 			),
 		)
 	);
@@ -215,7 +215,7 @@ $repeater = new Repeater();
 			),
 			'condition' => array(
 				'button_custom_style' => 'yes',
-				'show_button_icon' => 'yes',
+				'show_button_icon'    => 'yes',
 			),
 		)
 	);
@@ -244,7 +244,7 @@ $repeater = new Repeater();
 			),
 			'condition'    => array(
 				'button_custom_style' => 'yes',
-				'show_button_icon' => 'yes',
+				'show_button_icon'    => 'yes',
 			),
 		)
 	);
@@ -269,7 +269,7 @@ $repeater = new Repeater();
 			),
 			'condition'    => array(
 				'button_custom_style' => 'yes',
-				'show_button_icon' => 'yes',
+				'show_button_icon'    => 'yes',
 			),
 		)
 	);
@@ -321,8 +321,8 @@ $repeater = new Repeater();
 				'button_custom_style' => 'yes',
 			),
 			'selectors'  => array(
-				'{{WRAPPER}} .wpmozo_readmore_button'       => 'font-size: {{SIZE}}{{UNIT}};',
-				'{{WRAPPER}} .wpmozo_readmore_button svg'   => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_readmore_button'     => 'font-size: {{SIZE}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_readmore_button svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 			),
 		)
 	);
@@ -391,7 +391,7 @@ $repeater = new Repeater();
 				'button_custom_style' => 'yes',
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_readmore_button'   => 'border-color: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_readmore_button' => 'border-color: {{VALUE}}; transition: 300ms;',
 			),
 		)
 	);
@@ -439,11 +439,11 @@ $repeater = new Repeater();
 			'type'      => Controls_Manager::COLOR,
 			'condition' => array(
 				'button_custom_style' => 'yes',
-				'show_button_icon' => 'yes',
+				'show_button_icon'    => 'yes',
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_readmore_button svg'   => 'fill: {{VALUE}}; transition: 300ms;',
-				'{{WRAPPER}} .wpmozo_readmore_button i'     => 'color: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_readmore_button svg' => 'fill: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_readmore_button i'   => 'color: {{VALUE}}; transition: 300ms;',
 			),
 		)
 	);
@@ -631,7 +631,7 @@ $repeater = new Repeater();
 			'type'      => Controls_Manager::COLOR,
 			'condition' => array(
 				'button_custom_style' => 'yes',
-				'show_button_icon' => 'yes',
+				'show_button_icon'    => 'yes',
 			),
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_readmore_button:hover svg' => 'fill: {{VALUE}}; transition: 300ms;',
@@ -833,7 +833,7 @@ $repeater = new Repeater();
 					'icon'  => 'eicon-text-align-right',
 				),
 			),
-			'default'     => 'left',
+			'default'   => 'left',
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_dropdown_button .wpmozo_dropdown_button_item' => 'text-align: {{VALUE}};',
 			),
