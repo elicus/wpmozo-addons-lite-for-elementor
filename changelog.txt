@@ -1,5 +1,8 @@
 Changelog for WPMozo Addons Lite for Elementor
 
+2025-07-14 - Version 1.6.1
+- NEW: Added admin panel.
+
 2025-07-14 - Version 1.6.0
 - NEW: New widget Horizontal Scrolling Posts.
 - NEW: New widget Rotating Text.

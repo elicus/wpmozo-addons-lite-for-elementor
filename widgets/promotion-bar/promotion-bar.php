@@ -148,8 +148,8 @@ if ( ! class_exists( 'WPMOZO_AE_Promotion_Bar' ) ) {
 			$image                     = 'yes' === $settings['enable_image'] && isset( $settings['timer_image'] ) && '' !== $settings['timer_image'] ? $settings['timer_image'] : '';
 			$date_time                 = $settings['date_time'];
 			$layout                    = esc_attr( $settings['layout'] );
-			$layout                    = wpmozo_ae_validate_layout( $layout, array( 'layout1', 'layout2', 'layout3' ) );
-			$title_heading_level       = wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
+			$layout                    = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_layout( $layout, array( 'layout1', 'layout2', 'layout3' ) );
+			$title_heading_level       = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
 			$hide_days                 = 'yes' === $settings['hide_days'] ? 'yes' : '';
 			$promotion_bar_title       = $settings['promotion_bar_title'];
 			$promotion_bar_description = $settings['promotion_bar_description'];

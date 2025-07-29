@@ -1,72 +1,255 @@
-!(function (e) {
+!(function ($) {
     "use strict";
-    e(function () {
-            // Fill metafields value in hidden field on blur.
-            if ( e('body').find('.wpmozo_ae_team_member_skills').length > 0 ) {
-                e('body').on('blur', '.wpmozo_ae_team_member_skills', function(){
-                    let skills = [];
-                    e('.wpmozo_ae_team_member_skills').each(function(){
-                        let value = e(this).val();
-                        if ( value ){
-                            skills.push( e(this).val() );
-                        }
-                    });
-                    e('#wpmozo_ae_team_member_skills').val(skills);
-                });
-            }
+    $(function () {
+        // Add Row.
+        $('body').on('click', '.wpmozo_repeator_meta_field_add_row', function(){
+            let row  = '<div class="wpmozo_repeator_meta_field_row">';
+                row += '<div class="wpmozo_repeator_meta_field">';
+                row += '<input type="text" class="wpmozo_ae_team_member_skills" placeholder="Skill" required />';
+                row += '<input type="number" class="wpmozo_ae_team_member_skills_value" placeholder="Skill Value Between 0 to 100" step="1" min="0" max="100"/>';
+                row += '</div>';
+                row += '<p class="wpmozo_repeator_meta_field_row_controls">';
+                row += '<span class="wpmozo_repeator_meta_field_add_row_control wpmozo_repeator_meta_field_remove_row">-</span>';
+                row += '<span class="wpmozo_repeator_meta_field_add_row_control wpmozo_repeator_meta_field_add_row">+</span>';
+                row += '</p>'
+                row += '</div>';
 
-            // Fill metafields value in hidden field on blur.
-            if ( e('body').find('.wpmozo_ae_team_member_skills_value').length > 0 ) {
-                e('body').on('blur', '.wpmozo_ae_team_member_skills_value', function(){
-                    let skills_val = [];
-                    e('.wpmozo_ae_team_member_skills_value').each(function(){
-                        let value = e(this).val();
-                        if ( value ) {
-                            skills_val.push( e(this).val() );
-                        }
-                    });
-                    e('#wpmozo_ae_team_member_skills_value').val(skills_val);
-                });
+            if ( $(this).closest('.wpmozo_repeator_meta_field_row').find('.wpmozo_repeator_meta_field_remove_row').length < 1 ) {
+                $(this).closest('.wpmozo_repeator_meta_field_row').find('.wpmozo_repeator_meta_field_row_controls').prepend('<span class="wpmozo_repeator_meta_field_add_row_control wpmozo_repeator_meta_field_remove_row">-</span>');
             }
-            // Add Row.
-            e('body').on('click', '.wpmozo_repeator_meta_field_add_row', function(){
-                let row  = '<div class="wpmozo_repeator_meta_field_row">';
-                    row += '<div class="wpmozo_repeator_meta_field">';
-                    row += '<input type="text" class="wpmozo_ae_team_member_skills" placeholder="Skill" required />';
-                    row += '<input type="number" class="wpmozo_ae_team_member_skills_value" placeholder="Skill Value Between 0 to 100" step="1" min="0" max="100"/>';
-                    row += '</div>';
-                    row += '<p class="wpmozo_repeator_meta_field_row_controls">';
-                    row += '<span class="wpmozo_repeator_meta_field_add_row_control wpmozo_repeator_meta_field_remove_row">-</span>';
-                    row += '<span class="wpmozo_repeator_meta_field_add_row_control wpmozo_repeator_meta_field_add_row">+</span>';
-                    row += '</p>'
-                    row += '</div>';
-
-                if ( e(this).closest('.wpmozo_repeator_meta_field_row').find('.wpmozo_repeator_meta_field_remove_row').length < 1 ) {
-                    e(this).closest('.wpmozo_repeator_meta_field_row').find('.wpmozo_repeator_meta_field_row_controls').prepend('<span class="wpmozo_repeator_meta_field_add_row_control wpmozo_repeator_meta_field_remove_row">-</span>');
-                }
-                e(this).closest('.wpmozo_repeator_meta_field_row').after(row);
-                e(this).closest('.wpmozo_repeator_meta_field_row').find('.wpmozo_repeator_meta_field_row_controls .wpmozo_repeator_meta_field_add_row').remove();
-            });
-            
-            // Remove Row.
-            e('body').on('click', '.wpmozo_repeator_meta_field_remove_row', function(){
-                if ( e(this).parents('.wpmozo_repeator_meta_fields').find('.wpmozo_repeator_meta_field_row').length === 2 ) {
-                    let control = '<span class="wpmozo_repeator_meta_field_add_row_control wpmozo_repeator_meta_field_add_row">+</span>';
-                    if ( e(this).closest('.wpmozo_repeator_meta_field_row').prev('.wpmozo_repeator_meta_field_row').length > 0 ) {
-                        e(this).closest('.wpmozo_repeator_meta_field_row').prev('.wpmozo_repeator_meta_field_row').find('.wpmozo_repeator_meta_field_row_controls .wpmozo_repeator_meta_field_remove_row').remove();
-                        e(this).closest('.wpmozo_repeator_meta_field_row').prev('.wpmozo_repeator_meta_field_row').find('.wpmozo_repeator_meta_field_row_controls').append(control);
-                    } else {
-                        e(this).closest('.wpmozo_repeator_meta_field_row').next('.wpmozo_repeator_meta_field_row').find('.wpmozo_repeator_meta_field_row_controls .wpmozo_repeator_meta_field_remove_row').remove();
-                    }
+            $(this).closest('.wpmozo_repeator_meta_field_row').after(row);
+            $(this).closest('.wpmozo_repeator_meta_field_row').find('.wpmozo_repeator_meta_field_row_controls .wpmozo_repeator_meta_field_add_row').remove();
+        });
+        
+        // Remove Row.
+        $('body').on('click', '.wpmozo_repeator_meta_field_remove_row', function(){
+            if ( $(this).parents('.wpmozo_repeator_meta_fields').find('.wpmozo_repeator_meta_field_row').length === 2 ) {
+                let control = '<span class="wpmozo_repeator_meta_field_add_row_control wpmozo_repeator_meta_field_add_row">+</span>';
+                if ( $(this).closest('.wpmozo_repeator_meta_field_row').prev('.wpmozo_repeator_meta_field_row').length > 0 ) {
+                    $(this).closest('.wpmozo_repeator_meta_field_row').prev('.wpmozo_repeator_meta_field_row').find('.wpmozo_repeator_meta_field_row_controls .wpmozo_repeator_meta_field_remove_row').remove();
+                    $(this).closest('.wpmozo_repeator_meta_field_row').prev('.wpmozo_repeator_meta_field_row').find('.wpmozo_repeator_meta_field_row_controls').append(control);
                 } else {
-                    let control = '<span class="wpmozo_repeator_meta_field_add_row_control wpmozo_repeator_meta_field_add_row">+</span>';
-                    if ( e(this).closest('.wpmozo_repeator_meta_field_row').nextAll('.wpmozo_repeator_meta_field_row').length === 0 ) {
-                        e(this).closest('.wpmozo_repeator_meta_field_row').prev('.wpmozo_repeator_meta_field_row').find('.wpmozo_repeator_meta_field_row_controls').append(control);
-                    }
+                    $(this).closest('.wpmozo_repeator_meta_field_row').next('.wpmozo_repeator_meta_field_row').find('.wpmozo_repeator_meta_field_row_controls .wpmozo_repeator_meta_field_remove_row').remove();
                 }
-                e(this).closest('.wpmozo_repeator_meta_field_row').remove();
-                e('.wpmozo_ae_team_member_skills').trigger('blur');
-                e('.wpmozo_ae_team_member_skills_value').trigger('blur');
+            } else {
+                let control = '<span class="wpmozo_repeator_meta_field_add_row_control wpmozo_repeator_meta_field_add_row">+</span>';
+                if ( $(this).closest('.wpmozo_repeator_meta_field_row').nextAll('.wpmozo_repeator_meta_field_row').length === 0 ) {
+                    $(this).closest('.wpmozo_repeator_meta_field_row').prev('.wpmozo_repeator_meta_field_row').find('.wpmozo_repeator_meta_field_row_controls').append(control);
+                }
+            }
+            $(this).closest('.wpmozo_repeator_meta_field_row').remove();
+            $('.wpmozo_ae_team_member_skills').trigger('blur');
+            $('.wpmozo_ae_team_member_skills_value').trigger('blur');
+        });
+        /**
+         * Change handler for options - Reset Save status
+         */
+        $("body").on("change", ".wpmozo_ae_panel_section .wpmozo_ae_panel_value", function () {
+            const $section = $(this).closest(".wpmozo_ae_panel_section");
+            const $saveBox = $section.find(".wpmozo_ae_panel_save_options");
+            const saveText = $saveBox.find(".wpmozo_ae_panel_save_text").data("text");
+
+            $saveBox.removeClass("success error");
+            $saveBox.find(".wpmozo_ae_panel_save_text").text(saveText);
+        });
+
+        $("body").on("click", ".wpmozo_ae_panel_checkbox, .wpmozo_toggle_slider", function (e) {
+            let $checkbox;
+
+            if ($(this).hasClass("wpmozo_toggle_slider")) {
+                // Toggle slider clicked — find related checkbox and toggle it
+                $checkbox = $(this).prev('.wpmozo_ae_panel_checkbox');
+                const isChecked = $checkbox.is(':checked');
+                $checkbox.prop('checked', !isChecked);
+            } else {
+                // Checkbox directly clicked
+                $checkbox = $(this);
+            }
+
+            const $container = $checkbox.closest(".wpmozo_ae_panel_multiple_checkbox");
+            const $section = $checkbox.closest(".wpmozo_ae_panel_section");
+            const $saveBox = $section.find(".wpmozo_ae_panel_save_options");
+            const saveText = $saveBox.find(".wpmozo_ae_panel_save_text").data("text");
+
+            const selected = $container.find(".wpmozo_ae_panel_checkbox:checked").map(function () {
+                return $(this).val();
+            }).get();
+
+            const all = $container.find(".wpmozo_ae_panel_checkbox").map(function () {
+                return $(this).val();
+            }).get();
+
+            const unselected = all.filter(val => !selected.includes(val));
+
+            $container.find(".wpmozo_active_checkboxes_value").val(selected);
+            $container.find(".wpmozo_inactive_checkboxes_value").val(unselected);
+
+            $saveBox.removeClass("success error");
+            $saveBox.find(".wpmozo_ae_panel_save_text").text(saveText);
+        });
+
+
+        $("body .wpmozo_ae_panel_wrapper:not(.proactive) .wpmozo_pro").each(function () {
+            $(this).find('.wpmozo_ae_panel_checkbox').prop('disabled', true);
+            $(this).find('.wpmozo_toggle_slider').prop('disabled', true);
+        });
+
+        /**
+         * Save settings
+         */
+        $("body").on("click", ".wpmozo_ae_panel_save_options", function (e) {
+            e.preventDefault();
+
+            const $button = $(this);
+            const $section = $button.closest(".wpmozo_ae_panel_active_section");
+
+            if ($button.hasClass("success") || $button.hasClass("error")) {
+                return false;
+            }
+
+            $(".wpmozo_ae_panel_ajax_processor").fadeIn("slow");
+
+            const options = [];
+
+            $section.find("#wpmozo_inactive_widgets").each(function () {
+                const name = $(this).attr("name");
+                const value = $(this).val();
+                options.push({ name, value });
             });
+
+            $.ajax({
+                type: "POST",
+                url: admin_ajax_object.ajaxurl,
+                data: {
+                    action: 'wpmozo_ae_panel_save_settings',
+                    security: admin_ajax_object.ajax_nonce,
+                    options: options
+                },
+                success: function (response) {
+                    console.log(response);
+                    if (response === 'success') {
+                        $button.find(".wpmozo_ae_panel_save_text").text("Saved");
+                        $button.addClass("success");
+                        setTimeout(function () {
+                            $(".wpmozo_ae_panel_ajax_processor").fadeOut("slow");
+                        }, 800);
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                    alert("Oops!! Something went wrong!! Try later!");
+                    $button.addClass("error");
+                    setTimeout(function () {
+                        $(".wpmozo_ae_panel_ajax_processor").fadeOut("slow");
+                    }, 800);
+                }
+            });
+        });
+
+        /**
+         * Select all checkboxes
+         */
+        $(".wpmozo_ae_panel_select_all").click(function () {
+            const $container = $(this).closest(".wpmozo_ae_panel_multiple_checkbox");
+            const $section = $(this).closest(".wpmozo_ae_panel_section");
+            const saveText = $section.find(".wpmozo_ae_panel_save_text").data("text");
+            let selected;
+
+            $section.find(".wpmozo_ae_panel_save_options").removeClass("success error")
+                .find(".wpmozo_ae_panel_save_text").text(saveText);
+
+            if($container.closest('.wpmozo_ae_panel_wrapper.proactive').length){
+                $container.find("input[type='checkbox']").prop("checked", true);
+                selected = $container.find(".wpmozo_ae_panel_checkbox:checked").map(function () {
+                    return $(this).val();
+                }).get();
+            } else {
+                $container.find(".wpmozo_ae_checkbox_wrapper:not(.wpmozo_pro) input[type='checkbox']").prop("checked", true);
+                selected = $container.find(".wpmozo_ae_checkbox_wrapper:not(.wpmozo_pro) .wpmozo_ae_panel_checkbox:checked").map(function () {
+                    return $(this).val();
+                }).get();
+            }
+
+            /*const selected = $container.find(".wpmozo_ae_panel_checkbox:checked").map(function () {
+                return $(this).val();
+            }).get();*/
+
+            $container.find(".wpmozo_inactive_checkboxes_value.wpmozo_panel_value").val("");
+            $container.find(".wpmozo_active_checkboxes_value.wpmozo_panel_value").val(selected);
+        });
+
+        /**
+         * Deselect all checkboxes
+         */
+        $(".wpmozo_ae_panel_deselect_all").click(function () {
+            const $container = $(this).closest(".wpmozo_ae_panel_multiple_checkbox");
+            const $section = $(this).closest(".wpmozo_ae_panel_section");
+            const saveText = $section.find(".wpmozo_ae_panel_save_text").data("text");
+            let all;
+
+            $section.find(".wpmozo_ae_panel_save_options").removeClass("success error")
+                .find(".wpmozo_ae_panel_save_text").text(saveText);
+
+
+            if($container.closest('.wpmozo_ae_panel_wrapper.proactive').length){
+                $container.find("input[type='checkbox']").prop("checked", false);
+                all = $container.find(".wpmozo_ae_panel_checkbox").map(function () {
+                return $(this).val();
+            }).get();
+            } else {
+                $container.find(".wpmozo_ae_checkbox_wrapper:not(.wpmozo_pro) input[type='checkbox']").prop("checked", false);
+                all = $container.find(".wpmozo_ae_checkbox_wrapper:not(.wpmozo_pro) .wpmozo_ae_panel_checkbox").map(function () {
+                return $(this).val();
+            }).get();
+            }
+
+            $container.find(".wpmozo_inactive_checkboxes_value.wpmozo_panel_value").val(all);
+            $container.find(".wpmozo_active_checkboxes_value.wpmozo_panel_value").val("");
+        });
+
+        /**
+         * Handle menu item navigation
+         */
+        $("body").on("click", ".wpmozo_ae_panel_menu_item", function () {
+            const $this = $(this);
+            if ($this.hasClass("wpmozo_ae_panel_active_menu_item")) return false;
+
+            const sectionId = $this.data("href");
+            const $targetSection = $(sectionId);
+            const saveText = $(".wpmozo_ae_panel_save_text").data("text");
+
+            $(".wpmozo_ae_panel_menu_item").removeClass("wpmozo_ae_panel_active_menu_item");
+            $this.addClass("wpmozo_ae_panel_active_menu_item");
+
+            $(".wpmozo_ae_panel_section").removeClass("wpmozo_ae_panel_active_section");
+            $targetSection.addClass("wpmozo_ae_panel_active_section");
+
+            $(".wpmozo_ae_panel_save_options").removeClass("success error")
+                .find(".wpmozo_ae_panel_save_text").text(saveText);
+        });
+
+        /**
+         * Handle blur on team member skill fields
+         */
+        if ($(".wpmozo_ae_team_member_skills").length > 0) {
+            $("body").on("blur", ".wpmozo_ae_team_member_skills", function () {
+                const values = $(".wpmozo_ae_team_member_skills").map(function () {
+                    const val = $(this).val();
+                    return val ? val : null;
+                }).get();
+                $("#wpmozo_ae_team_member_skills").val(values);
+            });
+
+        }
+
+        if ($(".wpmozo_ae_team_member_skills_value").length > 0) {
+            $("body").on("blur", ".wpmozo_ae_team_member_skills_value", function () {
+                const values = $(".wpmozo_ae_team_member_skills_value").map(function () {
+                    const val = $(this).val();
+                    return val ? val : null;
+                }).get();
+                $("#wpmozo_ae_team_member_skills_value").val(values);
+            });
+        }
     });
 })(jQuery);

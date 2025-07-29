@@ -148,8 +148,8 @@ if ( ! class_exists( 'WPMOZO_AE_Horizontal_Scrolling_Posts' ) ) {
 			$posts_number               = isset( $settings['posts_number'] ) && $settings['posts_number'] > 0 ? $settings['posts_number'] : -1;
 			$ignore_sticky_posts        = isset( $settings['ignore_sticky_posts'] ) ? $settings['ignore_sticky_posts'] : 'yes';
 			$layout                     = esc_attr( $settings['layout'] );
-			$layout                     = wpmozo_ae_validate_layout( $layout, array( 'layout1', 'layout2' ) );
-			$title_heading_level        = wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
+			$layout                     = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_layout( $layout, array( 'layout1', 'layout2' ) );
+			$title_heading_level        = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
 			$animation_start_element    = isset( $settings['animation_start_element']['size'] ) ? $settings['animation_start_element']['size'] : '';
 			$animation_start_viewport   = isset( $settings['animation_start_viewport']['size'] ) ? $settings['animation_start_viewport']['size'] : '';
 			$image_size                 = isset( $settings['image_size_size'] ) ? $settings['image_size_size'] : '';

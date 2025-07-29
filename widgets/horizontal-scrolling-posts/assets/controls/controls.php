@@ -1481,3 +1481,31 @@ $this->start_controls_section(
 									)
 								);
 								$this->end_controls_section();
+
+							$this->start_controls_section(
+								'wrapper_padding_section',
+								array(
+									'label' => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
+									'tab'   => Controls_Manager::TAB_STYLE,
+								)
+							);
+								$this->add_responsive_control(
+									'wrapper_padding',
+									array(
+										'label'      => esc_html__( 'Scroller Padding', 'wpmozo-addons-lite-for-elementor' ),
+										'type'       => Controls_Manager::DIMENSIONS,
+										'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
+										'default'    => array(
+											'top'      => '0',
+											'right'    => '0',
+											'bottom'   => '0',
+											'left'     => '0',
+											'unit'     => 'px',
+											'isLinked' => false,
+										),
+										'selectors'  => array(
+											'{{WRAPPER}} .wpmozo_sticky_posts_scroller' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+										),
+									)
+								);
+								$this->end_controls_section();
