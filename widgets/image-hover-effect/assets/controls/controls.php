@@ -12,11 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Typography;
-use Elementor\Group_Control_Background;
-use Elementor\Group_Control_Text_Shadow;
-use Elementor\Group_Control_Box_Shadow;
 
 // Content.
 $this->start_controls_section(
@@ -29,9 +24,9 @@ $this->start_controls_section(
 $this->add_control(
 	'render_image',
 	array(
-		'label'     => esc_html__( 'Select Image', 'wpmozo-addons-lite-for-elementor' ),
-		'type'      => Controls_Manager::MEDIA,
-		'default'   => array(
+		'label'   => esc_html__( 'Select Image', 'wpmozo-addons-lite-for-elementor' ),
+		'type'    => Controls_Manager::MEDIA,
+		'default' => array(
 			'url' => Utils::get_placeholder_image_src(),
 		),
 	)
@@ -51,13 +46,13 @@ $this->add_control(
 		'type'        => Controls_Manager::SELECT,
 		'default'     => 'circle',
 		'options'     => array(
-			'circle' 		=> esc_html__( 'Circle', 'wpmozo-addons-lite-for-elementor' ),
-			'glow'      	=> esc_html__( 'Glow', 'wpmozo-addons-lite-for-elementor' ),
-			'rotate'      	=> esc_html__( 'Rotate', 'wpmozo-addons-lite-for-elementor' ),
-			'flash'      	=> esc_html__( 'Flash', 'wpmozo-addons-lite-for-elementor' ),
+			'circle'        => esc_html__( 'Circle', 'wpmozo-addons-lite-for-elementor' ),
+			'glow'          => esc_html__( 'Glow', 'wpmozo-addons-lite-for-elementor' ),
+			'rotate'        => esc_html__( 'Rotate', 'wpmozo-addons-lite-for-elementor' ),
+			'flash'         => esc_html__( 'Flash', 'wpmozo-addons-lite-for-elementor' ),
 			'flash_instant' => esc_html__( 'Flash Instant', 'wpmozo-addons-lite-for-elementor' ),
 			'diagonal'      => esc_html__( 'Diagonal', 'wpmozo-addons-lite-for-elementor' ),
-			'glitch'      	=> esc_html__( 'Glitch', 'wpmozo-addons-lite-for-elementor' ),
+			'glitch'        => esc_html__( 'Glitch', 'wpmozo-addons-lite-for-elementor' ),
 			'slide_glitch'  => esc_html__( 'Slide Glitch', 'wpmozo-addons-lite-for-elementor' ),
 		),
 		'render_type' => 'template',

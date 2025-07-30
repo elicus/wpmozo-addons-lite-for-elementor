@@ -123,23 +123,22 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Hover_Effect' ) ) {
 		 * @since  1.3.0
 		 * @access protected
 		 */
-		
-		 protected function render() {
+		protected function render() {
 			$settings = $this->get_settings_for_display();
-		
+
 			$image_url    = ! empty( $settings['render_image']['url'] ) ? $settings['render_image']['url'] : '';
 			$image_alt    = ! empty( $settings['image_alt_tag'] ) ? $settings['image_alt_tag'] : '';
 			$hover_effect = ! empty( $settings['hover_effect'] ) ? $settings['hover_effect'] : 'circle';
-		
+
 			// Effect classes.
 			$classes = array( 'wpmozo_image_hover_effect_inner' );
-		
+
 			// Unique ID for applying CSS targeting.
 			$unique_id = 'wpmozo_' . uniqid();
-		
+
 			// Style string only for non-glitch effects.
 			$inline_style = '';
-		
+
 			switch ( $hover_effect ) {
 				case 'circle':
 					$classes[] = 'circle zoom';
@@ -169,12 +168,17 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Hover_Effect' ) ) {
 					}
 					break;
 			}
-		
+
 			?>
 			<div class="wpmozo_image_hover_effect">
 				<?php if ( ! empty( $image_url ) ) : ?>
 					<div class="wpmozo_image_hover_effect_wrapper wpmozo_effect_<?php echo esc_attr( $hover_effect ); ?>">
-						<div class="<?php echo esc_attr( implode( ' ', $classes ) . ' ' . $unique_id ); ?>" <?php if ( $inline_style ) echo 'style="' . esc_attr( $inline_style ) . '"'; ?>>
+						<div class="<?php echo esc_attr( implode( ' ', $classes ) . ' ' . $unique_id ); ?>" 
+						<?php
+						if ( $inline_style ) {
+							echo 'style="' . esc_attr( $inline_style ) . '"';}
+						?>
+						>
 							
 							<img
 								decoding="async"
@@ -210,7 +214,6 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Hover_Effect' ) ) {
 				<?php endif; ?>
 			</div>
 			<?php
-		}		
-							
+		}
 	}
 }
