@@ -8,6 +8,7 @@
 				jQuery( document ).ready( function($) {
 					$( '.wpmozo_dropdown_button' ).each( function () {
 						var $wrap       = $(this).find( '.wpmozo_dropdown_button_wrap' );
+						var $inner      = $wrap.find( '.wpmozo_dropdown_button_inner' );
 						var $button     = $wrap.find( '.wpmozo_readmore_button' );
 						var $menu       = $wrap.find( '.wpmozo_dropdown_menu_items' );
 						var triggerType = $wrap.data( 'trigger-type' ) || 'click';
@@ -17,7 +18,8 @@
 						if ( triggerType === 'hover' ) {
 							$button.on( 'mouseenter', function() {
 								$menu.stop( true, true ).slideDown( 200 );
-							} ).on( 'mouseleave', function() {
+							} );
+							$inner.on( 'mouseleave', function() {
 								$menu.stop( true, true ).slideUp( 200 );
 							} );
 						} else {
@@ -30,7 +32,7 @@
 				
 							// Close dropdown if clicked outside
 							$( document ).on( 'click', function(e) {
-								if ( ! $wrap.is( e.target ) && $wrap.has( e.target ).length === 0 ) {
+								if ( ! $inner.is( e.target ) && $inner.has( e.target ).length === 0 ) {
 									$menu.slideUp( 200 );
 								}
 							} );

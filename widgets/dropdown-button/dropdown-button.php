@@ -159,7 +159,7 @@ if ( ! class_exists( 'WPMOZO_AE_Dropdown_Button' ) ) {
 								if ( ! empty( $button_text ) ) {
 									?>
 										<div class="wpmozo_readmore_button_wrapper">
-											<a class="wpmozo_readmore_button" href="#">
+											<a class="wpmozo_readmore_button">
 												<span class="wpmozo_button_text"><?php echo esc_html( $button_text ); ?></span>
 											<?php
 											\Elementor\Icons_Manager::render_icon(
