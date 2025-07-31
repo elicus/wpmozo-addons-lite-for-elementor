@@ -253,6 +253,9 @@ $this->start_controls_section(
 	array(
 		'label' => esc_html__( 'Trigger Button', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
+		'condition' => array(
+			'trigger_element_type' => 'button',
+		),
 	)
 );
 $this->add_responsive_control(
