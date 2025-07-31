@@ -131,7 +131,7 @@ if ( ! class_exists( 'WPMOZO_AE_Fancy_Heading' ) ) {
 			$pre_heading          = '' !== $settings[ 'pre_heading' ] ? $settings[ 'pre_heading' ] : '';
 			$heading              = '' !== $settings[ 'heading' ] ? $settings[ 'heading' ] : '';
 			$post_heading         = '' !== $settings[ 'post_heading' ] ? $settings[ 'post_heading' ] : '';
-			$global_heading_level = wpmozo_ae_validate_heading_level( $settings[ 'global_heading_level' ] );
+			$global_heading_level = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings[ 'global_heading_level' ] );
 			$inline_tab           = isset( $settings[ 'display_inline_tablet' ] ) && 'flex' === $settings['display_inline_tablet'] ? "flex" : "block";
 			$inline_mob           = isset( $settings[ 'display_inline_mobile' ] ) && 'flex' === $settings['display_inline_mobile'] ? "flex" : "block";
 

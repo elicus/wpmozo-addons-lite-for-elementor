@@ -161,8 +161,8 @@ if ( ! class_exists( 'WPMOZO_AE_Flip_Box' ) ) {
 			$button_text            = $settings[ 'button_text' ];
 			$button_hover_animation = isset( $settings[ 'button_hover_animation' ] ) ? $settings[ 'button_hover_animation' ] : '';
 			$button_url             = isset( $settings[ 'button_url' ][ 'url' ] ) ? $settings[ 'button_url' ][ 'url' ]: '';
-			$front_heading_level    = wpmozo_ae_validate_heading_level( $settings[ 'front_heading_level' ] );
-			$back_heading_level    = wpmozo_ae_validate_heading_level( $settings[ 'back_heading_level' ] );
+			$front_heading_level    = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings[ 'front_heading_level' ] );
+			$back_heading_level    = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings[ 'back_heading_level' ] );
 
 
 			$this->add_render_attribute( 'wpmozo_ae_button', 'class', 'wpmozo_ae_button' );

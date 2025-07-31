@@ -159,7 +159,7 @@ if ( ! class_exists( 'WPMOZO_AE_Tilt_Image' ) ) {
 			$tilt_disable_axis       = $settings[ 'disable_x/y_axis_select' ];
 			$content_animation       = $settings[ 'content_animation_selector' ];
 			$content_alignment       = $settings[ 'content_alignment_selector' ];
-			$title_heading_level     = wpmozo_ae_validate_heading_level( $settings[ 'title_heading_level' ] );
+			$title_heading_level     = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings[ 'title_heading_level' ] );
 			$enable_content_on_hover = isset( $settings[ 'content_on_hover_switcher' ] ) ? $settings[ 'content_on_hover_switcher' ] : '';
 			$button_hover_animation  = isset( $settings[ 'button_hover_animation' ] ) ? $settings[ 'button_hover_animation' ] : '';
 

@@ -272,7 +272,7 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 								</a>
 							</div>
 						<?php endif; ?>
-						<<?php echo esc_attr( wpmozo_ae_validate_heading_level( $settings[ 'heading_level' ] ) ); ?> class="wpmozo_blog_timeline_post_title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></<?php echo esc_attr( wpmozo_ae_validate_heading_level( $settings[ 'heading_level' ] ) ); ?>>
+						<<?php echo esc_attr( wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings[ 'heading_level' ] ) ); ?> class="wpmozo_blog_timeline_post_title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></<?php echo esc_attr( wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings[ 'heading_level' ] ) ); ?>>
 						<div class="wpmozo_blog_timeline_meta">
 							<?php if ( $settings[ 'show_categories' ] ) : ?>
 								<span class="wpmozo_blog_timeline_meta_icon"><i class="fas fa-th"></i></span>

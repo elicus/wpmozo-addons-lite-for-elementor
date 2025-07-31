@@ -146,7 +146,7 @@ if ( ! class_exists( 'WPMOZO_AE_Background_Switcher' ) ) {
 			// Get settings for display.
 			$settings            = $this->get_settings_for_display();
 			$background_items    = isset( $settings['background_item'] ) ? $settings['background_item'] : array();
-			$title_heading_level = wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
+			$title_heading_level = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
 			$transition          = isset( $settings['transition_duration']['size'] ) && ! empty( $settings['transition_duration']['size'] ) ? $settings['transition_duration']['size'] : 300;
 
 			?>
