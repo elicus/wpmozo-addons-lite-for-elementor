@@ -128,7 +128,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Hover_Effect' ) ) {
 
 			$image_url    = ! empty( $settings['render_image']['url'] ) ? $settings['render_image']['url'] : '';
 			$image_alt    = ! empty( $settings['image_alt_tag'] ) ? $settings['image_alt_tag'] : '';
-			$hover_effect = ! empty( $settings['hover_effect'] ) ? $settings['hover_effect'] : 'circle';
+			$hover_effect = ! empty( $settings['hover_effect'] ) ? $settings['hover_effect'] : 'radial';
 
 			// Effect classes.
 			$classes = array( 'wpmozo_image_hover_effect_inner' );
@@ -140,7 +140,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Hover_Effect' ) ) {
 			$inline_style = '';
 
 			switch ( $hover_effect ) {
-				case 'circle':
+				case 'radial':
 					$classes[] = 'circle zoom';
 					break;
 				case 'glow':
