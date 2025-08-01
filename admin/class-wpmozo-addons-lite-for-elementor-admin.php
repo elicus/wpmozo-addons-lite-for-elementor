@@ -112,7 +112,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		 */
 		public function __construct( $settings ) {
 			$this->page_title      = esc_html__( 'WPMozo Addons Lite for Elementor', 'wpmozo-addons-for-elementor' );
-			$this->menu_title      = esc_html__( 'Addons Lite for Elementor', 'wpmozo-addons-for-elementor' );
+			$this->menu_title      = esc_html__( 'Addons for Elementor', 'wpmozo-addons-for-elementor' );
 			$this->menu_slug       = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_SLUG;
 			$this->plugin_name     = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_SLUG;
 			$this->plugin_version  = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION;
@@ -171,7 +171,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		 */
 		public function admin_menu() {
 			$svg_path          = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_PATH . 'admin/assets/images/brandicon.svg';
-			$this->hook_suffix = add_menu_page($this->page_title, $this->menu_title, 'manage_options', $this->menu_slug, array( $this, 'plugin_settings' ), 'data:image/svg+xml;base64,' . base64_encode( file_get_contents( $svg_path ) ), 85 );
+			$this->hook_suffix = add_menu_page($this->page_title, $this->menu_title, 'manage_options', 'wpmozo-addons-for-elementor', array( $this, 'plugin_settings' ), 'data:image/svg+xml;base64,' . base64_encode( file_get_contents( $svg_path ) ), 85 );
 		}
 
 		/**
