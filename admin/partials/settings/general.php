@@ -72,7 +72,7 @@ if ( is_array( $widgets ) && ! empty( $widgets ) ) {
 }
 ?>
 <div class="wpmozo_ae_panel_save_button">
-	<a class="wpmozo_ae_panel_save_options" href="javascript:void(0)">
+	<a class="wpmozo_ae_lite_panel_save_options" href="javascript:void(0)">
 		<span class="wpmozo_ae_panel_save_text" data-text="<?php echo esc_html__( 'Save', 'wpmozo-addons-for-elementor' ); ?>"><?php echo esc_html__( 'Save', 'wpmozo-addons-for-elementor' ); ?></span>
 	</a>
 </div>

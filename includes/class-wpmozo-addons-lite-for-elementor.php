@@ -180,7 +180,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 			$this->loader->add_action( 'save_post', $plugin_admin, 'wpmozo_save_team_member_meta_fields' );
 			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-			$this->loader->add_action( 'wp_ajax_wpmozo_ae_panel_save_settings', $plugin_admin, 'save_options' );
+			$this->loader->add_action( 'wp_ajax_wpmozo_ae_lite_panel_save_settings', $plugin_admin, 'save_options' );
 			if ( ! $plugin_admin->wpmozo_is_team_disabled() ) {
 				// Hook to add meta box.
 				$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'wpmozo_add_team_member_metabox' );

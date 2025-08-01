@@ -46,7 +46,7 @@
          */
         $("body").on("change", ".wpmozo_ae_panel_section .wpmozo_ae_panel_value", function () {
             const $section = $(this).closest(".wpmozo_ae_panel_section");
-            const $saveBox = $section.find(".wpmozo_ae_panel_save_options");
+            const $saveBox = $section.find(".wpmozo_ae_lite_panel_save_options");
             const saveText = $saveBox.find(".wpmozo_ae_panel_save_text").data("text");
 
             $saveBox.removeClass("success error");
@@ -68,7 +68,7 @@
 
             const $container = $checkbox.closest(".wpmozo_ae_panel_multiple_checkbox");
             const $section = $checkbox.closest(".wpmozo_ae_panel_section");
-            const $saveBox = $section.find(".wpmozo_ae_panel_save_options");
+            const $saveBox = $section.find(".wpmozo_ae_lite_panel_save_options");
             const saveText = $saveBox.find(".wpmozo_ae_panel_save_text").data("text");
 
             const selected = $container.find(".wpmozo_ae_panel_checkbox:checked").map(function () {
@@ -97,7 +97,7 @@
         /**
          * Save settings
          */
-        $("body").on("click", ".wpmozo_ae_panel_save_options", function (e) {
+        $("body").on("click", ".wpmozo_ae_lite_panel_save_options", function (e) {
             e.preventDefault();
 
             const $button = $(this);
@@ -121,7 +121,7 @@
                 type: "POST",
                 url: admin_ajax_object.ajaxurl,
                 data: {
-                    action: 'wpmozo_ae_panel_save_settings',
+                    action: 'wpmozo_ae_lite_panel_save_settings',
                     security: admin_ajax_object.ajax_nonce,
                     options: options
                 },
@@ -155,7 +155,7 @@
             const saveText = $section.find(".wpmozo_ae_panel_save_text").data("text");
             let selected;
 
-            $section.find(".wpmozo_ae_panel_save_options").removeClass("success error")
+            $section.find(".wpmozo_ae_lite_panel_save_options").removeClass("success error")
                 .find(".wpmozo_ae_panel_save_text").text(saveText);
 
             if($container.closest('.wpmozo_ae_panel_wrapper.proactive').length){
@@ -187,7 +187,7 @@
             const saveText = $section.find(".wpmozo_ae_panel_save_text").data("text");
             let all;
 
-            $section.find(".wpmozo_ae_panel_save_options").removeClass("success error")
+            $section.find(".wpmozo_ae_lite_panel_save_options").removeClass("success error")
                 .find(".wpmozo_ae_panel_save_text").text(saveText);
 
 
@@ -224,7 +224,7 @@
             $(".wpmozo_ae_panel_section").removeClass("wpmozo_ae_panel_active_section");
             $targetSection.addClass("wpmozo_ae_panel_active_section");
 
-            $(".wpmozo_ae_panel_save_options").removeClass("success error")
+            $(".wpmozo_ae_lite_panel_save_options").removeClass("success error")
                 .find(".wpmozo_ae_panel_save_text").text(saveText);
         });
 
