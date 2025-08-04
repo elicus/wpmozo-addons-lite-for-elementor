@@ -5,7 +5,7 @@
  * This file is used to markup the admin-facing aspects of the plugin.
  *
  * @link       https://wpmozo.com/
- * @since      1.6.1
+ * @since      1.7.0
  */
 
 // if this file is called directly, abort.

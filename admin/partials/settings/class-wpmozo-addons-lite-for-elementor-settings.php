@@ -4,7 +4,7 @@
  *
  * Defines the settings od the plugin.
  *
- * @since      1.6.1
+ * @since      1.7.0
  * @author     Elicus <hello@elicus.com>
  */
 

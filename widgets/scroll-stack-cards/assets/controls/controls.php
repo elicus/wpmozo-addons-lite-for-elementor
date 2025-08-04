@@ -872,12 +872,14 @@ use Elementor\Group_Control_Box_Shadow;
 						'unit' => '%',
 						'size' => 30,
 					),
+					'render_type' => 'template',
 					'selectors'  => array(
-						'{{WRAPPER}} .wpmozo_scroll_stack_cards .wpmozo_scroll_stack_cards_wrapper .wpmozo_scroll_stack_cards_image_wrapper' => 'flex: 0 0 {{SIZE}}{{UNIT}} !important;',
-					),
+						'{{WRAPPER}} .wpmozo_scroll_stack_cards .wpmozo_scroll_stack_cards_wrapper.layout-vertical .wpmozo_scroll_stack_cards_image_wrapper' => 'flex: 0 0 {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_scroll_stack_cards .wpmozo_scroll_stack_cards_wrapper.layout-horizontal .wpmozo_scroll_stack_cards_image_wrapper' => 'width: {{SIZE}}{{UNIT}};',
+					)/*,
 					'condition'  => array(
 						'layout' => 'vertical',
-					),
+					),*/
 				)
 			);
 			$this->start_controls_tabs( 'image_styling_tabs' );
@@ -980,7 +982,7 @@ use Elementor\Group_Control_Box_Shadow;
 					$this->add_responsive_control(
 						'content_margin_right',
 						array(
-							'label'      => esc_html__( 'Content Margin Right', 'wpmozo-addons-lite-for-elementor' ),
+							'label'      => esc_html__( 'Content Margin', 'wpmozo-addons-lite-for-elementor' ),
 							'type'       => Controls_Manager::SLIDER,
 							'size_units' => array( 'px' ),
 							'separator'  => 'after',
@@ -1109,7 +1111,7 @@ use Elementor\Group_Control_Box_Shadow;
 										'size' => 300,
 									),
 									'selectors'  => array(
-										'{{WRAPPER}} .wpmozo_scroll_stack_cards .layout-horizontal .wpmozo_scroll_stack_cards_item' => 'width: {{SIZE}}{{UNIT}};',
+										'{{WRAPPER}} .wpmozo_scroll_stack_cards_wrapper.layout-horizontal .wpmozo_scroll_stack_cards_item_inner' => 'width: {{SIZE}}{{UNIT}};',
 									),
 									'condition'  => array(
 										'layout' => 'horizontal',
@@ -1454,10 +1456,6 @@ use Elementor\Group_Control_Box_Shadow;
 											'min' => 1,
 											'max' => 100,
 										),
-									),
-									'default'    => array(
-										'unit' => 'px',
-										'size' => 8,
 									),
 									'condition'  => array(
 										'button_custom_style' => 'yes',

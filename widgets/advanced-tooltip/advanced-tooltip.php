@@ -21,7 +21,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -35,7 +35,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -49,7 +49,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Retrieve widget keywords.
 		 *
-		 * @since 1.8.0
+		 * @since 1.7.0
 		 * @access public
 		 *
 		 * @return array Widget keywords.
@@ -63,7 +63,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -77,7 +77,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -91,7 +91,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return style handle.
@@ -106,7 +106,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since 1.3.0
+		 * @since 1.7.0
 		 * @access public
 		 *
 		 * @return array Element scripts dependencies.
@@ -122,7 +122,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access protected
 		 */
 		protected function register_controls() {
@@ -136,7 +136,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Written in PHP and used to generate the final HTML.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access protected
 		 */
 		protected function render() {

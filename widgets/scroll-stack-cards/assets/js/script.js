@@ -84,7 +84,26 @@
 				
 					let fullHeights = items.map( (index, element ) => element.scrollHeight ).get();
 				
-					let collapsedHeights = fullHeights.map( ( h, i ) => i === items.length - 1 ? h : 60 );
+					let targetHeights = items.map((i, item) => {
+						let icon           = item.querySelector( '.wpmozo_scroll_stack_cards_icon_wrapper' );
+						let title          = item.querySelector( '.wpmozo_scroll_stack_cards_title_wrap' );
+						let contentWrapper = item.querySelector( '.wpmozo_scroll_stack_cards_content_wrapper' );
+
+						let iconHeight        = ( icon ) ? icon.offsetHeight : 0;
+						let titleHeight       = ( title ) ? $(title).find('.wpmozo_scroll_stack_cards_title').outerHeight(true) : 0;
+						let itemPaddingTop    = parseFloat( window.getComputedStyle( item ).paddingTop ) || 0;
+						let contentPaddingTop = contentWrapper
+							? parseFloat( window.getComputedStyle( contentWrapper ).paddingTop ) || 0
+							: 0;
+						let contentMarginTop = contentWrapper
+							? parseFloat( window.getComputedStyle( contentWrapper ).marginTop ) || 0
+							: 0;
+
+						return iconHeight + titleHeight + itemPaddingTop + contentPaddingTop + contentMarginTop;
+					}).get();
+
+					let collapsedHeights = fullHeights.map((h, i) => i === items.length - 1 ? h : targetHeights[i]);
+
 				
 					let collapsedTotal = collapsedHeights.reduce((acc, h) => acc + h, 0);
 					let fullTotal = fullHeights.reduce((acc, h) => acc + h, 0);
@@ -93,7 +112,7 @@
 						totalScroll = viewportHeight * 1.5;
 					}
 				
-					let sectionHeight = collapsedTotal + totalScroll + 250;
+					let sectionHeight = collapsedTotal + totalScroll;
 						$wrapper.css( 'height', `${sectionHeight}px` );
 				
 					const startPosition    = $wrapper.data( 'animation_start_element_pos' ) || 'top';
@@ -119,13 +138,17 @@
 							let targetHeight = 60;
 							if ( title ) {
 								let iconHeight        = ( icon ) ? icon.offsetHeight : 0;
-								let titleHeight       = ( title ) ? title.offsetHeight : 0;
+								let titleHeight       = ( title ) ? $(title).find('.wpmozo_scroll_stack_cards_title').outerHeight(true) : 0;
 								let itemPaddingTop    = parseFloat( window.getComputedStyle( item ).paddingTop ) || 0;
 								let contentPaddingTop = contentWrapper
 									? parseFloat( window.getComputedStyle( contentWrapper ).paddingTop ) || 0
 								: 0;
+
+								let contentMarginTop = contentWrapper
+									? parseFloat( window.getComputedStyle( contentWrapper ).marginTop ) || 0
+								: 0;
 				
-								targetHeight = iconHeight + titleHeight + itemPaddingTop + contentPaddingTop;
+								targetHeight = iconHeight + titleHeight + itemPaddingTop + contentPaddingTop + contentMarginTop;
 							}
 				
 							tl.fromTo( item,
@@ -170,7 +193,7 @@
 				
 					$panels.each( ( i, el ) => {
 						gsap.set( el, {
-							width: fullPanelWidth,
+							maxWidth: fullPanelWidth,
 							flexShrink: 0
 						} );
 					} );	

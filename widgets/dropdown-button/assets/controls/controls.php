@@ -61,6 +61,22 @@ use Elementor\Group_Control_Box_Shadow;
 			),
 		)
 	);
+	$this->add_responsive_control(
+		'trigger_speed',
+		array(
+			'label'     => esc_html__( 'Dropdown Speed', 'wpmozo-addons-lite-for-elementor' ),
+			'type'      => Controls_Manager::SLIDER,
+			'default'   => array( 'size' => 300 ),
+			'range'     => array(
+				'px' => array(
+					'min'  => 1,
+					'max'  => 10000,
+					'step' => 100,
+				)
+			),
+			'render_type' => 'template'
+		)
+	);
 	$this->end_controls_section();
 	// Content.
 	$this->start_controls_section(

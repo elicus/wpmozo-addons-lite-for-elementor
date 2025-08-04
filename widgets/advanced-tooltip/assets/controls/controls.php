@@ -131,7 +131,7 @@ $this->add_control(
 		'placeholder' => esc_html__( 'Enter Content Here', 'wpmozo-addons-lite-for-elementor' ),
 		'show_label'  => true,
 		'dynamic'     => array( 'active' => true ),
-		'default'     => 'Your content goes here. Edit this text inline or in the widget Content settings. You can also style every aspect of this content in the widget Design settings.',
+		'default'     => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		'condition'   => array(
 			'trigger_element_type' => 'text',
 		),
@@ -797,13 +797,30 @@ $this->start_controls_section(
 		),
 	)
 );
+$this->start_controls_tabs( 'trigger_icon_styling_tabs' );
+$this->start_controls_tab(
+	'trigger_icon_normal_tab',
+	array(
+		'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
+	)
+);
+$this->add_control(
+	'trigger_icon_color',
+	array(
+		'label'     => esc_html__( 'Trigger Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+		'type'      => Controls_Manager::COLOR,
+		'selectors' => array(
+			'{{WRAPPER}} .wpmozo_tooltip_trigger_element_wrap.trigger_type_icon svg'   => 'fill: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_tooltip_trigger_element_wrap.trigger_type_icon i'     => 'color: {{VALUE}}; transition: 300ms;',
+		),
+	)
+);
 $this->add_responsive_control(
 	'trigger_icon_size',
 	array(
 		'label'      => esc_html__( 'Trigger Icon Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::SLIDER,
 		'size_units' => array( 'px', 'em' ),
-		'separator'  => 'after',
 		'range'      => array(
 			'px' => array(
 				'min' => 1,
@@ -821,24 +838,6 @@ $this->add_responsive_control(
 		'selectors'  => array(
 			'{{WRAPPER}} .wpmozo_tooltip_trigger_element_wrap.trigger_type_icon span.wpmozo_tooltip_trigger_icon'  => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 			'{{WRAPPER}} .wpmozo_tooltip_trigger_element_wrap.trigger_type_icon svg.wpmozo_tooltip_trigger_icon'   => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; transition: all 300ms;',
-		),
-	)
-);
-$this->start_controls_tabs( 'trigger_icon_styling_tabs' );
-$this->start_controls_tab(
-	'trigger_icon_normal_tab',
-	array(
-		'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
-	)
-);
-$this->add_control(
-	'trigger_icon_color',
-	array(
-		'label'     => esc_html__( 'Trigger Icon Color', 'wpmozo-addons-lite-for-elementor' ),
-		'type'      => Controls_Manager::COLOR,
-		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_tooltip_trigger_element_wrap.trigger_type_icon svg'   => 'fill: {{VALUE}}; transition: 300ms;',
-			'{{WRAPPER}} .wpmozo_tooltip_trigger_element_wrap.trigger_type_icon i'     => 'color: {{VALUE}}; transition: 300ms;',
 		),
 	)
 );
@@ -860,8 +859,55 @@ $this->add_control(
 		),
 	)
 );
+$this->add_responsive_control(
+	'trigger_icon_size_hover',
+	array(
+		'label'      => esc_html__( 'Trigger Icon Size', 'wpmozo-addons-lite-for-elementor' ),
+		'type'       => Controls_Manager::SLIDER,
+		'size_units' => array( 'px', 'em' ),
+		'range'      => array(
+			'px' => array(
+				'min' => 1,
+				'max' => 100,
+			),
+			'em' => array(
+				'min' => 1,
+				'max' => 10,
+			),
+		),
+		'selectors'  => array(
+			'{{WRAPPER}} .wpmozo_tooltip_trigger_element_wrap.trigger_type_icon span.wpmozo_tooltip_trigger_icon:hover'  => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_tooltip_trigger_element_wrap.trigger_type_icon svg.wpmozo_tooltip_trigger_icon:hover'   => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+		),
+	)
+);
 $this->end_controls_tab();
 $this->end_controls_tabs();
+$this->add_responsive_control(
+	'trigger_icon_alignment',
+	array(
+		'label'     => esc_html__( 'Trigger Icon Alignment', 'wpmozo-addons-lite-for-elementor' ),
+		'type'      => Controls_Manager::CHOOSE,
+		'separator' => 'before',
+		'options'   => array(
+			'left'   => array(
+				'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+				'icon'  => 'eicon-text-align-left',
+			),
+			'center' => array(
+				'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+				'icon'  => 'eicon-text-align-center',
+			),
+			'right'  => array(
+				'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+				'icon'  => 'eicon-text-align-right',
+			),
+		),
+		'selectors' => array(
+			'{{WRAPPER}} .wpmozo_tooltip_trigger_element_wrap.trigger_type_icon' => 'text-align: {{VALUE}};',
+		),
+	)
+);
 $this->end_controls_section();
 $this->start_controls_section(
 	'trigger_text_section',
@@ -1076,7 +1122,7 @@ $this->add_control(
 $this->add_responsive_control(
 	'tooltip_width',
 	array(
-		'label'      => esc_html__( 'Tooltip Width', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Tooltip Max Width', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::SLIDER,
 		'size_units' => array( 'px' ),
 		'range'      => array(
@@ -1094,7 +1140,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'tooltip_padding',
 	array(
-		'label'      => esc_html__( 'Button Padding', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Tooltip Padding', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 		'default'    => array(
