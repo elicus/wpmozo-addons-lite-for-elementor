@@ -1,0 +1,199 @@
+(function ($) {
+    $(window).on("elementor/frontend/init", function () {
+        var WPMOZOImageCardTicker = elementorModules.frontend.handlers.Base.extend({
+            bindEvents: function () {
+                this.change();
+            },
+
+            change: function () {
+				jQuery( document ).ready( function($) {
+					$( document ).find( '.dipl_image_card_ticker' ).each( function() {
+				
+						let $thisObj   = $( this ),
+							$wrapper   = $thisObj.find( '.dipl_image_card_ticker_wrapper' );
+				
+						let layout     = $wrapper.data( 'layout' ) ?? 'marquee';
+				
+						// If marquee layout.
+						$wrapper.imagesLoaded( function() {
+							if ( 'marquee' === layout ) {
+								diplInitImageCardTickerMarquee( $wrapper );
+							} else if ( '3d_circular' === layout ) {
+								diplInitImageCardTicker3DCircle( $wrapper );
+							} else if ( 'curve' === layout ) {
+								diplInitImageCardTickerCurve( $wrapper );
+							}
+						} );
+					} );
+				} ); // Document ready.
+				
+				// Init marquee effect.
+				function diplInitImageCardTickerMarquee( $wrapper ) {
+					gsap.registerPlugin( ScrollTrigger );
+				
+					let $innerWrap = $wrapper.find( '.dipl_image_card_ticker_inner' );
+				
+					let direction    = $wrapper.data( 'direction' ) || 'left',
+						imgWidth     = $wrapper.data( 'image_width' ) || '200',
+						imgHeight    = $wrapper.data( 'image_height' ) || '150',
+						imgGap       = $wrapper.data( 'image_gap' ),
+						speed        = $wrapper.data( 'ticker_speed' ) || '5',
+						pauseOnHover = $wrapper.data( 'pause_on_hover' ) || 'on',
+						isVertical   = [ 'top', 'bottom' ].includes( direction );
+				
+					// This is to make zero value to work.
+					if ( ( ! imgGap || '' === imgGap ) && ( 0 !== parseInt(imgGap) ) ) {
+						imgGap = '30';
+					}
+				
+					let $scWidth   = isVertical ? jQuery( window ).height() : jQuery( window ).width();
+					let $imgSize   = isVertical ? +imgHeight : +imgWidth;
+				
+					// This needs to calc before adding html.
+					let distance   = ( ( isVertical ? +imgHeight : +imgWidth ) + +imgGap ) * +$innerWrap.children().length;
+				
+					let amount     = Math.ceil( $scWidth / $imgSize );
+						amount     = Math.ceil( amount / $innerWrap.children().length );
+				
+					let html = $innerWrap.html();
+					for ( let i = 0; i < amount; i++ ) {
+						const $clones = jQuery( html ).map( function () {
+							return jQuery( this ).addClass( 'dipl-cloned-item' )[0];
+						} );
+						$innerWrap.append( $clones );
+					}
+				
+					let [ startPos, endPos ] = [ 'right', 'bottom' ].includes( direction ) ? [ -distance, 0 ] : [ 0, -distance ];
+				
+					let prop = isVertical ? 'y' : 'x';
+					if ( [ 'right', 'bottom' ].includes( direction ) ){
+						gsap.set( $innerWrap, { [ prop ]: startPos } );
+					}
+				
+					let $items = $innerWrap.children();
+					$items.each( (i, card ) => {
+						gsap.set( card, {
+							width: imgWidth,
+							height: imgHeight,
+							marginRight: isVertical ? 0 : imgGap,
+							marginBottom: isVertical ? imgGap : 0,
+						} );
+					} );
+				
+					let tween = gsap.to( $innerWrap, {
+						[prop]: endPos,
+						duration: speed,
+						ease: 'none',
+						repeat: -1,
+						onRepeat: () => gsap.set( $innerWrap, { [prop]: startPos } )
+					} );
+				
+					// if ( 'off' !== pauseOnHover ) {
+						$innerWrap.on( 'mouseenter', 'img', () => tween.pause() );
+						$innerWrap.on( 'mouseleave', 'img', () => tween.resume() );
+					// }
+					$wrapper.addClass( "marquee-inited" );
+				}
+				
+				// Init 3d circle.
+				function diplInitImageCardTicker3DCircle( $wrapper ) {
+					gsap.registerPlugin( ScrollTrigger );
+				
+					let $innerWrap    = $wrapper.find( '.dipl_image_card_ticker_inner' );
+				
+					let imgWidth      = $wrapper.data( 'image_width' ) || '200',
+						imgHeight     = $wrapper.data( 'image_height' ) || '150',
+						imgGap        = $wrapper.data( 'image_gap' ) || '30',
+						speed         = $wrapper.data( 'ticker_speed' ) || '5',
+						pauseOnHover  = $wrapper.data( 'pause_on_hover' ) || 'on',
+						totalCards    = $innerWrap.children().length,
+						spacingFactor = 1; // keep it static.
+				
+					let baseRadius    = ( imgWidth / 2 ) / Math.tan( Math.PI / totalCards );
+					let radius        = baseRadius * spacingFactor + ( +imgGap / 2 );
+				
+					$wrapper.addClass( 'circle-carousel' );
+				
+					$innerWrap.children().each( ( i, card ) => {
+						let angle = ( 360 / totalCards ) * i;
+						gsap.set( card, {
+							rotationY: angle,
+							width: imgWidth,
+							height: imgHeight,
+							z: radius,
+							transformOrigin: `center center -${radius}px`
+						} );
+					} );
+				
+					let tween = gsap.to( $innerWrap, {
+						rotationY: 360,
+						duration: speed,
+						repeat: -1,
+						ease: 'none',
+						transformOrigin: 'center center',
+						transformStyle: 'preserve-3d',
+						overflow: 'visible',
+						position: 'relative'
+					} );
+				
+					// if ( 'off' !== pauseOnHover ) {
+						$innerWrap.on( 'mouseenter', 'img', () => tween.pause() );
+						$innerWrap.on( 'mouseleave', 'img', () => tween.resume() );
+					// }
+				}
+				
+				// Init Curve.
+				function diplInitImageCardTickerCurve( $wrapper ) {
+					gsap.registerPlugin( ScrollTrigger );
+				
+					let $innerWrap     = $wrapper.find( '.dipl_image_card_ticker_inner' );
+				
+					let imgWidth       = $wrapper.data( 'image_width' ) || '200',
+						imgHeight      = $wrapper.data( 'image_height' ) || '150',
+						imgGap         = $wrapper.data( 'image_gap' ) || '30',
+						speed          = $wrapper.data( 'ticker_speed' ) || '5',
+						pauseOnHover   = $wrapper.data( 'pause_on_hover' ) || 'on',
+						totalItemWidth = ( +imgWidth + +imgGap ) * $innerWrap.children().length;
+				
+					let amount         = Math.ceil( jQuery(window).width() / imgWidth );
+						amount         = Math.ceil( amount / $innerWrap.children().length );
+				
+					let html = $innerWrap.html();
+					for ( let i = 0; i < amount; i++ ) {
+						const $clones = jQuery( html ).map( function () {
+							return jQuery( this ).addClass( 'dipl-cloned-item' )[0];
+						} );
+						$innerWrap.append( $clones );
+					}
+				
+					$wrapper.addClass( 'curve-carousel' );
+				
+					let $items = $innerWrap.children();
+					$items.each( (i, card) => {
+						gsap.set( card, {
+							width: imgWidth,
+							height: imgHeight,
+							marginRight: imgGap
+						} );
+					} );
+					gsap.set( $innerWrap, { x: 0 } );
+				
+					let tween = gsap.to( $innerWrap, {
+						x: `-${totalItemWidth}`,
+						duration: speed,
+						ease: "none",
+						repeat: -1,
+						onRepeat: () => gsap.set( $innerWrap, { x: 0 } )
+					} );
+				
+					// if ( 'off' !== pauseOnHover ) {
+						$innerWrap.on( 'mouseenter', 'img', () => tween.pause() );
+						$innerWrap.on( 'mouseleave', 'img', () => tween.resume() );
+					// }
+				}				
+            },
+        });
+
+        elementorFrontend.elementsHandler.attachHandler("wpmozo_ae_image_card_ticker", WPMOZOImageCardTicker);
+    });
+})(jQuery);
