@@ -15,13 +15,25 @@ A feature-packed plugin designed to complement your Elementor page-building expe
 
 ### [View Demo](https://wpmozoaddons.com "View Demo")
 ## Key Features of the Plugin
-- **41 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
+- **45 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
 - **Enhanced Design Options**: Customize your website design with intuitive controls and a wide array of styling options.
 - **Interactive Elements**: Engage your audience with interactive elements like Interactive Image Card, Flip Box, and Fancy Text.
 - **Responsive and Lightweight**: Ensure a seamless user experience across all devices without compromising on performance.
 
 
 ## Widgets Included in WPMozo Addons Lite for Elementor
+- ### [Dropdown Button](https://wpmozoaddons.com/elementor-dropdown-button/ "Elementor Dropdown Button")
+Display hidden links or content in a compact and user-friendly way with the WPMozo Dropdown Button widget for Elementor, perfect for navigation menus, quick actions, or additional options without cluttering the layout.
+
+- ### [Advanced Tooltip](https://wpmozoaddons.com/elementor-advanced-tooltip/ "Elementor Advanced Tooltip")
+Enhance user interaction on your website with dynamic hover content using WPMozo Advanced Tooltip widget for Elementor, perfect for showcasing extra information in a sleek and modern way.
+
+- ### [Scroll Stack Cards](https://wpmozoaddons.com/elementor-scroll-stack-cards/ "Elementor Scroll Stack Cards")
+Present your content in a neat stacked layout that flows with the scroll using the WPMozo Scroll Stack Cards widget for Elementor, ideal for creating clean, organized, and engaging reading experiences.
+
+- ### [Image Hover Effect](https://wpmozoaddons.com/elementor-image-hover-effect/ "Elementor Image Hover Effect")
+Add stylish visual appeal to your website with interactive hover animations using the WPMozo Image Hover Effect widget for Elementor, ideal for highlighting images with elegant effects and smooth transitions.
+
 - ### [Horizontal Scrolling Posts](https://wpmozoaddons.com/elementor-horizontal-scrolling-posts/ "Elementor Horizontal Scrolling Posts")
 Display your blog posts in a stylish side-scroll layout and grab visitors' attention with the WPMozo Horizontal Scrolling Posts widget for Elementor.
 
@@ -294,10 +306,11 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
-2025-07-11 - Version 1.6.0
-- NEW: New widget Horizontal Scrolling Posts.
-- NEW: New widget Rotating Text.
-- NEW: New widget Scroll Text.
-- NEW: New widget Scrolling Zoom Gallery.
+2025-08-01 - Version 1.7.0
+- NEW: Added admin panel.
+- NEW: New widget Advanced Tooltip.
+- NEW: New widget Dropdown Button.
+- NEW: New widget Scroll Stack Card.
+- NEW: New widget Image Hover Effect.
 
 [See changelog for all versions](https://plugins.svn.wordpress.org/wpmozo-addons-lite-for-elementor/trunk/changelog.txt).
