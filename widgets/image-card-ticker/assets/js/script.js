@@ -6,32 +6,33 @@
             },
 
             change: function () {
-				jQuery( document ).ready( function($) {
-					$( document ).find( '.dipl_image_card_ticker' ).each( function() {
+					const $imagecardticker = this.$element.find( '.wpmozo_image_card_ticker' )
+					if (!$imagecardticker.length) return;
+
+                	$imagecardticker.each(function () {
 				
 						let $thisObj   = $( this ),
-							$wrapper   = $thisObj.find( '.dipl_image_card_ticker_wrapper' );
+							$wrapper   = $thisObj.find( '.wpmozo_image_card_ticker_wrapper' );
 				
 						let layout     = $wrapper.data( 'layout' ) ?? 'marquee';
 				
 						// If marquee layout.
 						$wrapper.imagesLoaded( function() {
 							if ( 'marquee' === layout ) {
-								diplInitImageCardTickerMarquee( $wrapper );
+								wpmozoInitImageCardTickerMarquee( $wrapper );
 							} else if ( '3d_circular' === layout ) {
-								diplInitImageCardTicker3DCircle( $wrapper );
+								wpmozoInitImageCardTicker3DCircle( $wrapper );
 							} else if ( 'curve' === layout ) {
-								diplInitImageCardTickerCurve( $wrapper );
+								wpmozoInitImageCardTickerCurve( $wrapper );
 							}
 						} );
-					} );
-				} ); // Document ready.
+					});
 				
 				// Init marquee effect.
-				function diplInitImageCardTickerMarquee( $wrapper ) {
+				function wpmozoInitImageCardTickerMarquee( $wrapper ) {
 					gsap.registerPlugin( ScrollTrigger );
 				
-					let $innerWrap = $wrapper.find( '.dipl_image_card_ticker_inner' );
+					let $innerWrap = $wrapper.find( '.wpmozo_image_card_ticker_inner' );
 				
 					let direction    = $wrapper.data( 'direction' ) || 'left',
 						imgWidth     = $wrapper.data( 'image_width' ) || '200',
@@ -58,7 +59,7 @@
 					let html = $innerWrap.html();
 					for ( let i = 0; i < amount; i++ ) {
 						const $clones = jQuery( html ).map( function () {
-							return jQuery( this ).addClass( 'dipl-cloned-item' )[0];
+							return jQuery( this ).addClass( 'wpmozo-cloned-item' )[0];
 						} );
 						$innerWrap.append( $clones );
 					}
@@ -96,10 +97,10 @@
 				}
 				
 				// Init 3d circle.
-				function diplInitImageCardTicker3DCircle( $wrapper ) {
+				function wpmozoInitImageCardTicker3DCircle( $wrapper ) {
 					gsap.registerPlugin( ScrollTrigger );
 				
-					let $innerWrap    = $wrapper.find( '.dipl_image_card_ticker_inner' );
+					let $innerWrap    = $wrapper.find( '.wpmozo_image_card_ticker_inner' );
 				
 					let imgWidth      = $wrapper.data( 'image_width' ) || '200',
 						imgHeight     = $wrapper.data( 'image_height' ) || '150',
@@ -143,10 +144,9 @@
 				}
 				
 				// Init Curve.
-				function diplInitImageCardTickerCurve( $wrapper ) {
+				function wpmozoInitImageCardTickerCurve( $wrapper ) {
 					gsap.registerPlugin( ScrollTrigger );
-				
-					let $innerWrap     = $wrapper.find( '.dipl_image_card_ticker_inner' );
+					let $innerWrap     = $wrapper.find( '.wpmozo_image_card_ticker_inner' );
 				
 					let imgWidth       = $wrapper.data( 'image_width' ) || '200',
 						imgHeight      = $wrapper.data( 'image_height' ) || '150',
@@ -161,7 +161,7 @@
 					let html = $innerWrap.html();
 					for ( let i = 0; i < amount; i++ ) {
 						const $clones = jQuery( html ).map( function () {
-							return jQuery( this ).addClass( 'dipl-cloned-item' )[0];
+							return jQuery( this ).addClass( 'wpmozo-cloned-item' )[0];
 						} );
 						$innerWrap.append( $clones );
 					}

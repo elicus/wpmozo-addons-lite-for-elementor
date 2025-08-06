@@ -112,15 +112,15 @@ $this->add_responsive_control(
 		),
 		'devices'        => array( 'desktop', 'tablet', 'mobile' ),
 		'default'        => array(
-			'size' => 5,
+			'size' => 45,
 			'unit' => 'px',
 		),
 		'tablet_default' => array(
-			'size' => 4,
+			'size' => 40,
 			'unit' => 'px',
 		),
 		'mobile_default' => array(
-			'size' => 3,
+			'size' => 35,
 			'unit' => 'px',
 		),
 		'size_units'     => array( 'px' ),
@@ -129,31 +129,6 @@ $this->add_responsive_control(
 );
 $this->end_controls_section();
 // Styling Tab.
-$this->start_controls_section(
-	'container_box_section',
-	array(
-		'label' => esc_html__( 'Container Box', 'wpmozo-addons-lite-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_STYLE,
-	)
-);
-$this->add_responsive_control(
-	'wrap_padding',
-	array(
-		'label'      => esc_html__( 'Wrap Padding', 'wpmozo-addons-lite-for-elementor' ),
-		'type'       => Controls_Manager::DIMENSIONS,
-		'size_units' => array( 'px', 'em', '%' ),
-		'default'    => array(
-			'top'    => 0,
-			'right'  => 0,
-			'bottom' => 0,
-			'left'   => 0,
-		),
-		'selectors'  => array(
-			'{{WRAPPER}} .wpmozo_thumb_slider .single-image' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-		),
-	)
-);
-$this->end_controls_section();
 $this->start_controls_section(
 	'image_styling_section',
 	array(
@@ -173,12 +148,22 @@ $this->add_responsive_control(
 				'max' => 700,
 			),
 		),
+		'devices'        => array( 'desktop', 'tablet', 'mobile' ),
 		'default'        => array(
 			'size' => 200,
 			'unit' => 'px',
 		),
+		'tablet_default' => array(
+			'size' => 180,
+			'unit' => 'px',
+		),
+		'mobile_default' => array(
+			'size' => 150,
+			'unit' => 'px',
+		),
+		'render_type'    => 'template',
 		'selectors'  => array(
-			'{{WRAPPER}} .wpmozo_tooltip_trigger_image' => 'width: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_image_card_ticker_inner img' => 'width: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -194,17 +179,32 @@ $this->add_responsive_control(
 				'max' => 500,
 			),
 		),
+		'devices'        => array( 'desktop', 'tablet', 'mobile' ),
 		'default'        => array(
 			'size' => 150,
 			'unit' => 'px',
 		),
+		'tablet_default' => array(
+			'size' => 130,
+			'unit' => 'px',
+		),
+		'mobile_default' => array(
+			'size' => 100,
+			'unit' => 'px',
+		),
+		'render_type'    => 'template',
 		'selectors'  => array(
-			'{{WRAPPER}} .wpmozo_tooltip_trigger_image' => 'height: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_image_card_ticker_inner img' => 'height: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
 $this->start_controls_tabs(
-	'image_normal_and_hover_tabs'
+	'image_normal_and_hover_tabs',
+	array(
+		'condition'   => array(
+			'layout' => 'marquee',
+		),
+	),
 );
 $this->start_controls_tab(
 	'image_normal_tab',
@@ -216,7 +216,7 @@ $this->add_group_control(
 	Group_Control_Border::get_type(),
 	array(
 		'name'           => 'image_border',
-		'selector'       => '{{WRAPPER}}.wpmozo_advanced_tooltip_content',
+		'selector'       => '{{WRAPPER}} .wpmozo_image_card_ticker_inner img',
 		'fields_options' => array(
 			'border' => array( 'label' => esc_html__( 'Image Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
 			'width'  => array( 'label' => esc_html__( 'Image Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
@@ -233,7 +233,7 @@ $this->add_responsive_control(
 		'separator'   => 'after',
 		'size_units'  => array( 'px', 'em', '%' ),
 		'selectors'   => array(
-			'{{WRAPPER}}.wpmozo_advanced_tooltip_content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
+			'{{WRAPPER}} .wpmozo_image_card_ticker_inner img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
 		),
 	)
 );
@@ -248,7 +248,7 @@ $this->add_group_control(
 	Group_Control_Border::get_type(),
 	array(
 		'name'           => 'image_border_hover',
-		'selector'       => '{{WRAPPER}}.wpmozo_advanced_tooltip_content:hover',
+		'selector'       => '{{WRAPPER}} .wpmozo_image_card_ticker_inner img:hover',
 		'fields_options' => array(
 			'border' => array( 'label' => esc_html__( 'Image Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
 			'width'  => array( 'label' => esc_html__( 'Image Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
@@ -265,7 +265,7 @@ $this->add_responsive_control(
 		'separator'   => 'after',
 		'size_units'  => array( 'px', 'em', '%' ),
 		'selectors'   => array(
-			'{{WRAPPER}}.wpmozo_advanced_tooltip_content:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
+			'{{WRAPPER}} .wpmozo_image_card_ticker_inner img:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
 		),
 	)
 );
@@ -275,11 +275,14 @@ $this->add_group_control(
 	Group_Control_Box_Shadow::get_type(),
 	array(
 		'name'           => 'image_box_shadow',
-		'selector'       => '{{WRAPPER}}.wpmozo_advanced_tooltip_content',
+		'selector'       => '{{WRAPPER}} .wpmozo_image_card_ticker_inner img',
 		'fields_options' => array(
 			'box_shadow_type' => array(
 				'label' => esc_html__( 'Image Box Shadow', 'wpmozo-addons-lite-for-elementor' ),
 			),
+		),
+		'condition'   => array(
+			'layout' => 'marquee',
 		),
 	)
 );
