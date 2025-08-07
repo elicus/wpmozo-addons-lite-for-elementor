@@ -115,9 +115,9 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Card_Ticker' ) ) {
 		 * @return array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-			wp_register_script( 'wpmozo-ae-image-card-ticker-script', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION, true );
+			wp_register_script( 'wpmozo-ae-image-card-ticker-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION, true );
 
-			return array( 'wpmozo-ae-image-card-ticker-script', 'wpmozo-ae-gsap', 'wpmozo-ae-scrollTrigger', 'wpmozo-ae-imagesloaded' );
+			return array( 'wpmozo-ae-image-card-ticker-script', 'wpmozo-ae-gsap', 'wpmozo-ae-imagesloaded' );
 		}
 
 		/**
@@ -142,55 +142,73 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Card_Ticker' ) ) {
 		 * @since 1.8.0
 		 * @access protected
 		 */
-
 		protected function render() {
 			$settings = $this->get_settings_for_display();
-		
+
 			$image_card = is_array( $settings['image_card'] ) ? $settings['image_card'] : array();
 			if ( empty( $image_card ) ) {
-				return; // Exit early if no images
+				return; // Exit early if no images.
 			}
-			$layout            				= ! empty( $settings['layout'] ) ? $settings['layout'] : 'marquee';
-			$marquee_direction 				= ! empty( $settings['marquee_direction'] ) ? $settings['marquee_direction'] : 'left';
-			$marquee_direction_tablet 		= ! empty( $settings['marquee_direction_tablet'] ) ? $settings['marquee_direction_tablet'] : 'left';
-			$marquee_direction_mobile 		= ! empty( $settings['marquee_direction_mobile'] ) ? $settings['marquee_direction_mobile'] : 'left';
-			$images_gap 					= isset( $settings['images_gap']['size'] ) ? $settings['images_gap']['size'] : 30;
-			$images_gap_tablet				= isset( $settings['images_gap_tablet']['size'] ) ? $settings['images_gap_tablet']['size'] : 30;
-			$images_gap_mobile 				= isset( $settings['images_gap_mobile']['size'] ) ? $settings['images_gap_mobile']['size'] : 30;
-			$ticker_speed 					= isset( $settings['ticker_speed']['size'] ) ? $settings['ticker_speed']['size'] : 5;
-			$ticker_speed_tablet 			= isset( $settings['ticker_speed_tablet']['size'] ) ? $settings['ticker_speed_tablet']['size'] : 5;
-			$ticker_speed_mobile 			= isset( $settings['ticker_speed_mobile']['size'] ) ? $settings['ticker_speed_mobile']['size'] : 5;
-			$image_width 					= ! empty( $settings['image_width']['size'] ) ? $settings['image_width']['size'] : 200;
-			$image_width_tablet 			= ! empty( $settings['image_width_tablet']['size'] ) ? $settings['image_width_tablet']['size'] : 200;
-			$image_width_mobile				= ! empty( $settings['image_width_mobile']['size'] ) ? $settings['image_width_mobile']['size'] : 200;
-			$image_height 					= ! empty( $settings['image_height']['size'] ) ? $settings['image_height']['size'] : 150;
-			$image_height_tablet 			= ! empty( $settings['image_height_tablet']['size'] ) ? $settings['image_height_tablet']['size'] : 150;
-			$image_height_mobile 			= ! empty( $settings['image_height_mobile']['size'] ) ? $settings['image_height_mobile']['size'] : 150;
+			$layout              = isset( $settings['layout'] ) && ! empty( $settings['layout'] ) ? $settings['layout'] : 'marquee';
+			$images_gap          = isset( $settings['images_gap']['size'] ) && ! empty( $settings['images_gap']['size'] ) ? $settings['images_gap']['size'] : 30;
+			$images_gap_tablet   = isset( $settings['images_gap_tablet']['size'] ) && ! empty( $settings['images_gap_tablet']['size'] ) ? $settings['images_gap_tablet']['size'] : 30;
+			$images_gap_mobile   = isset( $settings['images_gap_mobile']['size'] ) && ! empty( $settings['images_gap_mobile']['size'] ) ? $settings['images_gap_mobile']['size'] : 30;
+			$ticker_speed        = isset( $settings['ticker_speed']['size'] ) && ! empty( $settings['ticker_speed']['size'] ) ? $settings['ticker_speed']['size'] : 45;
+			$ticker_speed_tablet = isset( $settings['ticker_speed_tablet']['size'] ) && ! empty( $settings['ticker_speed_tablet']['size'] ) ? $settings['ticker_speed_tablet']['size'] : 45;
+			$ticker_speed_mobile = isset( $settings['ticker_speed_mobile']['size'] ) && ! empty( $settings['ticker_speed_mobile']['size'] ) ? $settings['ticker_speed_mobile']['size'] : 45;
+			$image_width         = isset( $settings['image_width']['size'] ) && ! empty( $settings['image_width']['size'] ) ? $settings['image_width']['size'] : 200;
+			$image_width_tablet  = isset( $settings['image_width_tablet']['size'] ) && ! empty( $settings['image_width_tablet']['size'] ) ? $settings['image_width_tablet']['size'] : 200;
+			$image_width_mobile  = isset( $settings['image_width_mobile']['size'] ) && ! empty( $settings['image_width_mobile']['size'] ) ? $settings['image_width_mobile']['size'] : 200;
+			$image_height        = isset( $settings['image_height']['size'] ) && ! empty( $settings['image_height']['size'] ) ? $settings['image_height']['size'] : 150;
+			$image_height_tablet = isset( $settings['image_height_tablet']['size'] ) && ! empty( $settings['image_height_tablet']['size'] ) ? $settings['image_height_tablet']['size'] : 150;
+			$image_height_mobile = isset( $settings['image_height_mobile']['size'] ) && ! empty( $settings['image_height_mobile']['size'] ) ? $settings['image_height_mobile']['size'] : 150;
 
-			// Wrapper attributes
-			$this->add_render_attribute( 'ticker_wrapper', 'class', 'wpmozo_image_card_ticker_wrapper' );
-			$this->add_render_attribute( 'ticker_wrapper', 'class', 'layout-' . $layout );
 			if ( 'marquee' === $layout ) {
-				$this->add_render_attribute( 'ticker_wrapper', 'class', 'direction-' . $marquee_direction );
-				$this->add_render_attribute( 'ticker_wrapper', 'data-direction', $marquee_direction );
-				$this->add_render_attribute( 'ticker_wrapper', 'data-direction_tablet', $marquee_direction_tablet );
-				$this->add_render_attribute( 'ticker_wrapper', 'data-direction_mobile', $marquee_direction_mobile );
+				$direction        = isset( $settings['marquee_direction'] ) && ! empty( $settings['marquee_direction'] ) ? $settings['marquee_direction'] : 'left';
+				$direction_tablet = isset( $settings['marquee_direction_tablet'] ) && ! empty( $settings['marquee_direction_tablet'] ) ? $settings['marquee_direction_tablet'] : 'left';
+				$direction_mobile = isset( $settings['marquee_direction_mobile'] ) && ! empty( $settings['marquee_direction_mobile'] ) ? $settings['marquee_direction_mobile'] : 'left';
+			} else {
+				$direction        = isset( $settings['direction'] ) && ! empty( $settings['direction'] ) ? $settings['direction'] : 'left';
+				$direction_tablet = isset( $settings['direction_tablet'] ) && ! empty( $settings['direction_tablet'] ) ? $settings['direction_tablet'] : 'left';
+				$direction_mobile = isset( $settings['direction_mobile'] ) && ! empty( $settings['direction_mobile'] ) ? $settings['direction_mobile'] : 'left';
 			}
-			$this->add_render_attribute( 'ticker_wrapper', 'data-layout', $layout );
-			$this->add_render_attribute( 'ticker_wrapper', 'data-image_gap', $images_gap );
-			$this->add_render_attribute( 'ticker_wrapper', 'data-image_gap_tablet', $images_gap_tablet );
-			$this->add_render_attribute( 'ticker_wrapper', 'data-image_gap_mobile', $images_gap_mobile );
-			$this->add_render_attribute( 'ticker_wrapper', 'data-ticker_speed', $ticker_speed );
-			$this->add_render_attribute( 'ticker_wrapper', 'data-ticker_speed_tablet', $ticker_speed_tablet );
-			$this->add_render_attribute( 'ticker_wrapper', 'data-ticker_speed_mobile', $ticker_speed_mobile );
-			$this->add_render_attribute( 'ticker_wrapper', 'data-image_width', $image_width );
-			$this->add_render_attribute( 'ticker_wrapper', 'data-image_width_tablet', $image_width_tablet );
-			$this->add_render_attribute( 'ticker_wrapper', 'data-image_width_mobile', $image_width_mobile );
-			$this->add_render_attribute( 'ticker_wrapper', 'data-image_height', $image_height );
-			$this->add_render_attribute( 'ticker_wrapper', 'data-image_height_tablet', $image_height_tablet );
-			$this->add_render_attribute( 'ticker_wrapper', 'data-image_height_mobile', $image_height_mobile );
+			// Base wrapper classes.
+			$this->add_render_attribute(
+				'ticker_wrapper',
+				'class',
+				array(
+					'wpmozo_image_card_ticker_wrapper',
+					'layout-' . $layout,
+					'direction_mobile-' . $direction_mobile,
+					'direction_tablet-' . $direction_tablet,
+					'direction-' . $direction,
+				)
+			);
 
-			
+			// Common data attributes.
+			$attributes = array(
+				'layout'              => $layout,
+				'direction'           => $direction,
+				'direction_tablet'    => $direction_tablet,
+				'direction_mobile'    => $direction_mobile,
+				'image_gap'           => $images_gap,
+				'image_gap_tablet'    => $images_gap_tablet,
+				'image_gap_mobile'    => $images_gap_mobile,
+				'ticker_speed'        => $ticker_speed,
+				'ticker_speed_tablet' => $ticker_speed_tablet,
+				'ticker_speed_mobile' => $ticker_speed_mobile,
+				'image_width'         => $image_width,
+				'image_width_tablet'  => $image_width_tablet,
+				'image_width_mobile'  => $image_width_mobile,
+				'image_height'        => $image_height,
+				'image_height_tablet' => $image_height_tablet,
+				'image_height_mobile' => $image_height_mobile,
+			);
+
+			foreach ( $attributes as $key => $value ) {
+				$this->add_render_attribute( 'ticker_wrapper', 'data-' . $key, $value );
+			}
+
 			?>
 			<div class="wpmozo_image_card_ticker">
 			<?php if ( 'curve' === $layout ) : ?>
@@ -209,9 +227,11 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Card_Ticker' ) ) {
 							<?php
 							foreach ( $image_card as $item ) {
 								if ( ! empty( $item['id'] ) ) {
-									if ( '3d_circular' === $layout || 'curve' === $layout ) { ?>
+									if ( '3d_circular' === $layout || 'curve' === $layout ) {
+										?>
 										<div class="wpmozo_image_card_ticker_image_wrapper"><?php echo wp_get_attachment_image( $item['id'], 'full' ); ?></div>
-									<?php } else {
+										<?php
+									} else {
 										echo wp_get_attachment_image( $item['id'], 'full' );
 									}
 								}
@@ -222,6 +242,6 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Card_Ticker' ) ) {
 				</div>
 			</div>
 			<?php
-		}		
+		}
 	}
 }

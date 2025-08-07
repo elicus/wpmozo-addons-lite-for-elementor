@@ -1,5 +1,11 @@
 <?php
-// if this file is called directly, abort.
+/**
+ * Prevent direct access to this file.
+ *
+ * This check ensures the file is being accessed through WordPress,
+ * and not directly via URL.
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -43,29 +49,52 @@ $this->add_control(
 		'type'        => Controls_Manager::SELECT,
 		'options'     => array(
 			'marquee'     => esc_html__( 'Marquee', 'wpmozo-addons-lite-for-elementor' ),
-			'3d_circular'      => esc_html__( '3D Circular', 'wpmozo-addons-lite-for-elementor' ),
-			'curve' => esc_html__( 'Curve', 'wpmozo-addons-lite-for-elementor' ),
+			'3d_circular' => esc_html__( '3D Circular', 'wpmozo-addons-lite-for-elementor' ),
+			'curve'       => esc_html__( 'Curve', 'wpmozo-addons-lite-for-elementor' ),
 		),
 		'default'     => 'marquee',
 		'render_type' => 'template',
 	)
 );
-$this->add_control(
+$this->add_responsive_control(
 	'marquee_direction',
 	array(
-		'label'       => __( 'Marquee Direction', 'wpmozo-addons-lite-for-elementor' ),
-		'label_block' => false,
-		'type'        => Controls_Manager::SELECT,
-		'options'     => array(
-			'left'     	=> esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
-			'right' 	=> esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
-			'top' 		=> esc_html__( 'Top', 'wpmozo-addons-lite-for-elementor' ),
-			'bottom' 	=> esc_html__( 'Bottom', 'wpmozo-addons-lite-for-elementor' ),
+		'label'          => __( 'Direction', 'wpmozo-addons-lite-for-elementor' ),
+		'label_block'    => false,
+		'type'           => Controls_Manager::SELECT,
+		'options'        => array(
+			'left'   => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+			'right'  => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+			'top'    => esc_html__( 'Top', 'wpmozo-addons-lite-for-elementor' ),
+			'bottom' => esc_html__( 'Bottom', 'wpmozo-addons-lite-for-elementor' ),
 		),
-		'default'     => 'left',
-		'render_type' => 'template',
-		'condition'   => array(
+		'devices'        => array( 'desktop', 'tablet', 'mobile' ),
+		'default'        => 'left',
+		'tablet_default' => 'left',
+		'mobile_default' => 'left',
+		'render_type'    => 'template',
+		'condition'      => array(
 			'layout' => 'marquee',
+		),
+	)
+);
+$this->add_responsive_control(
+	'direction',
+	array(
+		'label'          => __( 'Direction', 'wpmozo-addons-lite-for-elementor' ),
+		'label_block'    => false,
+		'type'           => Controls_Manager::SELECT,
+		'options'        => array(
+			'left'  => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+			'right' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+		),
+		'devices'        => array( 'desktop', 'tablet', 'mobile' ),
+		'default'        => 'left',
+		'tablet_default' => 'left',
+		'mobile_default' => 'left',
+		'render_type'    => 'template',
+		'condition'      => array(
+			'layout!' => 'marquee',
 		),
 	)
 );
@@ -76,7 +105,7 @@ $this->add_responsive_control(
 		'type'           => Controls_Manager::SLIDER,
 		'range'          => array(
 			'px' => array(
-				'min'  => 0,
+				'min'  => 1,
 				'max'  => 200,
 				'step' => 1,
 			),
@@ -113,15 +142,12 @@ $this->add_responsive_control(
 		'devices'        => array( 'desktop', 'tablet', 'mobile' ),
 		'default'        => array(
 			'size' => 45,
-			'unit' => 'px',
 		),
 		'tablet_default' => array(
-			'size' => 40,
-			'unit' => 'px',
+			'size' => 45,
 		),
 		'mobile_default' => array(
-			'size' => 35,
-			'unit' => 'px',
+			'size' => 45,
 		),
 		'size_units'     => array( 'px' ),
 		'render_type'    => 'template',
@@ -139,10 +165,10 @@ $this->start_controls_section(
 $this->add_responsive_control(
 	'image_width',
 	array(
-		'label'      => esc_html__( 'Image Width', 'wpmozo-addons-lite-for-elementor' ),
-		'type'       => Controls_Manager::SLIDER,
-		'size_units' => array( 'px' ),
-		'range'      => array(
+		'label'          => esc_html__( 'Image Width', 'wpmozo-addons-lite-for-elementor' ),
+		'type'           => Controls_Manager::SLIDER,
+		'size_units'     => array( 'px' ),
+		'range'          => array(
 			'px' => array(
 				'min' => 50,
 				'max' => 700,
@@ -162,7 +188,7 @@ $this->add_responsive_control(
 			'unit' => 'px',
 		),
 		'render_type'    => 'template',
-		'selectors'  => array(
+		'selectors'      => array(
 			'{{WRAPPER}} .wpmozo_image_card_ticker_inner img' => 'width: {{SIZE}}{{UNIT}};',
 		),
 	)
@@ -170,10 +196,10 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'image_height',
 	array(
-		'label'      => esc_html__( 'Image Height', 'wpmozo-addons-lite-for-elementor' ),
-		'type'       => Controls_Manager::SLIDER,
-		'size_units' => array( 'px' ),
-		'range'      => array(
+		'label'          => esc_html__( 'Image Height', 'wpmozo-addons-lite-for-elementor' ),
+		'type'           => Controls_Manager::SLIDER,
+		'size_units'     => array( 'px' ),
+		'range'          => array(
 			'px' => array(
 				'min' => 50,
 				'max' => 500,
@@ -193,7 +219,7 @@ $this->add_responsive_control(
 			'unit' => 'px',
 		),
 		'render_type'    => 'template',
-		'selectors'  => array(
+		'selectors'      => array(
 			'{{WRAPPER}} .wpmozo_image_card_ticker_inner img' => 'height: {{SIZE}}{{UNIT}};',
 		),
 	)
@@ -201,7 +227,7 @@ $this->add_responsive_control(
 $this->start_controls_tabs(
 	'image_normal_and_hover_tabs',
 	array(
-		'condition'   => array(
+		'condition' => array(
 			'layout' => 'marquee',
 		),
 	),
@@ -271,6 +297,33 @@ $this->add_responsive_control(
 );
 $this->end_controls_tab();
 $this->end_controls_tabs();
+$this->add_responsive_control(
+	'image_alignment',
+	array(
+		'label'     => esc_html__( 'Image Alignment', 'wpmozo-addons-lite-for-elementor' ),
+		'type'      => Controls_Manager::CHOOSE,
+		'options'   => array(
+			'start'  => array(
+				'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+				'icon'  => 'eicon-text-align-left',
+			),
+			'center' => array(
+				'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+				'icon'  => 'eicon-text-align-center',
+			),
+			'end'    => array(
+				'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+				'icon'  => 'eicon-text-align-right',
+			),
+		),
+		'selectors' => array(
+			'{{WRAPPER}} .wpmozo_image_card_ticker_inner' => 'align-items: {{VALUE}};',
+		),
+		'condition' => array(
+			'layout' => 'marquee',
+		),
+	)
+);
 $this->add_group_control(
 	Group_Control_Box_Shadow::get_type(),
 	array(
@@ -281,7 +334,7 @@ $this->add_group_control(
 				'label' => esc_html__( 'Image Box Shadow', 'wpmozo-addons-lite-for-elementor' ),
 			),
 		),
-		'condition'   => array(
+		'condition'      => array(
 			'layout' => 'marquee',
 		),
 	)
