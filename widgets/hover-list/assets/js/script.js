@@ -1,15 +1,16 @@
 ( function ( $ ) {
     $( window ).on( "elementor/frontend/init", function () {
-        var WPMOZODropdownButton = elementorModules.frontend.handlers.Base.extend( {
+        var WPMOZOHoverList = elementorModules.frontend.handlers.Base.extend( {
             bindEvents: function () {
                 this.change();
             },
             change: function () {
-				jQuery( document ).ready( function($) {
-					$( '.dipl_hover_list' ).each(function () {
-						dipl_init_hover_list( $( this ) )
-					} );
-				} ); // Over document ready.
+				//jQuery( document ).ready( function($) {
+					//$( '.dipl_hover_list' ).each(function () {
+						const $this = this.$element.find('.dipl_hover_list');
+						dipl_init_hover_list( $this )
+					//} );
+				//} ); // Over document ready.
 				
 				// Init hover list.
 				function dipl_init_hover_list( thisObj ) {
@@ -54,6 +55,6 @@
 				}							
 			},
 		} );
-		elementorFrontend.elementsHandler.attachHandler( "wpmozo_ae_dropdown_button", WPMOZODropdownButton );
+		elementorFrontend.elementsHandler.attachHandler( "wpmozo_ae_hover_list", WPMOZOHoverList );
 	} );
 } )( jQuery );

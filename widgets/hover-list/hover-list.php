@@ -113,7 +113,7 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 		public function get_script_depends() {
 			wp_register_script( 'wpmozo-ae-hover-list-script', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
-			return array( 'wpmozo-ae-hover-list-script' );
+			return array( 'wpmozo-ae-hover-list-script', 'wpmozo-ae-gsap' );
 		}
 
 		/**
@@ -141,46 +141,66 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 		protected function render() {
 			$settings = $this->get_settings_for_display();
 
-			$list_items_content 	= isset( $settings['list_items_content'] ) ? $settings['list_items_content'] : array();
-			$button_text            = isset( $settings['button_text'] ) ? $settings['button_text'] : '';
-			$trigger_action         = isset( $settings['trigger_action'] ) ? $settings['trigger_action'] : '';
-			$dropdown_direction     = isset( $settings['dropdown_direction'] ) ? $settings['dropdown_direction'] : '';
-			$button_icon_placement  = isset( $settings['button_icon_placement'] ) ? $settings['button_icon_placement'] : '';
-
+			$wpmozo_items_content 	= isset( $settings['wpmozo_items_content'] ) ? $settings['wpmozo_items_content'] : array();
+			$title_heading_level    = wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
+			$hide_last_divider      = isset( $settings['hide_last_divider'] ) && ! empty( $settings['hide_last_divider'] ) ? $settings['hide_last_divider'] : '';
+			
 			
 			?>
-				<div class="et_pb_module dipl_hover_list dipl_hover_list_0">
-					<div class="et_pb_module_inner">
-						<div class="dipl-hover-list-wrapper">
-							<div class="dipl-hover-list-cursor" style="background-image: url(&quot;http://elicus-divi.local/wp-content/uploads/2025/01/pexels-nikita-khandelwal-178978-819805-1.jpg&quot;); translate: none; rotate: none; scale: none; opacity: 0; visibility: hidden; transform: translate(-20px, -20px) scale(0.1, 0.1); top: 354px; left: 414px;"></div>
-							<div class="dipl-hover-list-inner">
-								<div class="et_pb_module dipl_hover_list_item dipl_hover_list_item_0">
-									<div data-image="http://elicus-divi.local/wp-content/uploads/2025/01/pexels-tarun-reddy-362129-984802-1.jpg" class="dipl-hover-list-item-wrapper">
+				<div class="dipl_hover_list">
+					<div class="dipl-hover-list-wrapper">
+						<div class="dipl-hover-list-cursor"></div>
+						<div class="dipl-hover-list-inner <?php echo esc_attr( $hide_last_divider ); ?>">
+							<?php foreach ( $wpmozo_items_content as $index => $item ) { ?>
+								<div class="dipl_hover_list_item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+									<div data-image="<?php echo esc_url( $item['item_image']['url'] ); ?>" class="dipl-hover-list-item-wrapper">
 										<div class="dipl-hover-list-item-inner">
-											<div class="dipl_hover_list_title_wrapper"><span class="et-pb-icon dipl_hover_list_icon">1</span>
-												<h4 class="dipl_hover_list_title">Jaipur</h4></div>
-											<div class="dipl_hover_list_description">Hello jaipur</div>
-											<div class="dipl_hover_list_subtitle">Jagatpura</div>
-											<div class="et_pb_button_wrapper"><a class="et_pb_button" href="#">Read more</a></div>
+											<div class="dipl_hover_list_title_wrapper">
+												<?php
+													\Elementor\Icons_Manager::render_icon(
+														$item['item_icon'],
+														array(
+															'aria-hidden' => 'true',
+															'class'       => 'dipl_hover_list_icon',
+														),
+														'span'
+													);
+												?>
+												<<?php echo esc_attr( $title_heading_level ); ?> class="dipl_hover_list_title"><?php echo esc_html( $item['item_title'] ); ?></<?php echo esc_attr( $title_heading_level ); ?>>
+											</div>
+											<div class="dipl_hover_list_description"><?php echo esc_html( $item['item_description'] ); ?></div>
+											<div class="dipl_hover_list_subtitle"><?php echo esc_html( $item['item_subtitle'] ); ?></div>
+											
+
+
+
+											<?php
+											if ( 'yes' === $item['show_button'] ) {
+												?>
+												<div class="wpmozo_readmore_button_wrapper">
+													<a class="wpmozo_readmore_button" href="<?php echo esc_url( $item['button_link_url']['url'] ); ?>" target="<?php echo esc_attr( $item['button_link_target'] ); ?>">
+														<span class="wpmozo_button_text"><?php echo esc_html( $item['button_text'] ); ?></span>
+														<?php
+														\Elementor\Icons_Manager::render_icon(
+															$settings['button_icon'],
+															array(
+																'aria-hidden' => 'true',
+																'class'       => 'wpmozo_button_icon',
+															)
+														);
+														?>
+													</a>
+												</div>
+											<?php } ?>
+
+
+
 										</div>
 										<div class="dipl-hover-list-item-overlay"></div>
 										<div class="dipl-hover-list-item-divider"></div>
 									</div>
 								</div>
-								<div class="et_pb_module dipl_hover_list_item dipl_hover_list_item_1">
-									<div data-image="http://elicus-divi.local/wp-content/uploads/2025/01/pexels-nikita-khandelwal-178978-819805-1.jpg" class="dipl-hover-list-item-wrapper">
-										<div class="dipl-hover-list-item-inner">
-											<div class="dipl_hover_list_title_wrapper"><span class="et-pb-icon dipl_hover_list_icon"></span>
-												<h4 class="dipl_hover_list_title">Sri Ganganagar</h4></div>
-											<div class="dipl_hover_list_description">Hello SGNR</div>
-											<div class="dipl_hover_list_subtitle">Tatarsar</div>
-											<div class="et_pb_button_wrapper"><a class="et_pb_button" href="#">Read more</a></div>
-										</div>
-										<div class="dipl-hover-list-item-overlay"></div>
-										<div class="dipl-hover-list-item-divider"></div>
-									</div>
-								</div>
-							</div>
+							<?php } ?>
 						</div>
 					</div>
 				</div>
