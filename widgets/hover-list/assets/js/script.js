@@ -6,25 +6,25 @@
             },
             change: function () {
 				//jQuery( document ).ready( function($) {
-					//$( '.dipl_hover_list' ).each(function () {
-						const $this = this.$element.find('.dipl_hover_list');
-						dipl_init_hover_list( $this )
+					//$( '.wpmozo_hover_list' ).each(function () {
+						const $this = this.$element.find('.wpmozo_hover_list');
+						wpmozo_init_hover_list( $this )
 					//} );
 				//} ); // Over document ready.
 				
 				// Init hover list.
-				function dipl_init_hover_list( thisObj ) {
-					let $cursor = thisObj.find( '.dipl-hover-list-cursor' ).eq(0);
+				function wpmozo_init_hover_list( thisObj ) {
+					let $cursor = thisObj.find( '.wpmozo_hover_list_cursor' ).eq(0);
 				
 					// Set the background hover effect.
-					thisObj.find( '.dipl_hover_list_item' ).each( function() {
-						let imageUrl = jQuery( this ).find( '.dipl-hover-list-item-wrapper' ).attr( 'data-image' );
+					thisObj.find( '.wpmozo_hover_list_item' ).each( function() {
+						let imageUrl = jQuery( this ).find( '.wpmozo_hover_list_item_wrapper' ).attr( 'data-image' );
 						jQuery( this ).hover( function () {
 							$cursor.css( 'background-image', 'url(' + imageUrl + ')' );
 						} );
 					} );
 				
-					let $overlays = thisObj.find( '.dipl-hover-list-item-overlay' );
+					let $overlays = thisObj.find( '.wpmozo_hover_list_item_overlay' );
 					$overlays.on( 'mousemove', function (e) {
 						TweenLite.to( $cursor, 0.3, { scale: 1, autoAlpha: 1 } );
 						TweenLite.to( $cursor, 0.5, {

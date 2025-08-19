@@ -145,31 +145,31 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 			$title_heading_level  = wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
 			$hide_last_divider    = isset( $settings['hide_last_divider'] ) && ! empty( $settings['hide_last_divider'] ) ? $settings['hide_last_divider'] : '';
 			?>
-				<div class="dipl_hover_list">
-					<div class="dipl-hover-list-wrapper">
-						<div class="dipl-hover-list-cursor"></div>
-						<div class="dipl-hover-list-inner <?php echo esc_attr( $hide_last_divider ); ?>">
+				<div class="wpmozo_hover_list">
+					<div class="wpmozo_hover_list_wrapper">
+						<div class="wpmozo_hover_list_cursor"></div>
+						<div class="wpmozo_hover_list_inner <?php echo esc_attr( $hide_last_divider ); ?>">
 							<?php foreach ( $wpmozo_items_content as $index => $item ) { ?>
-								<div class="dipl_hover_list_item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-									<div data-image="<?php echo esc_url( $item['item_image']['url'] ); ?>" class="dipl-hover-list-item-wrapper">
-										<div class="dipl-hover-list-item-inner">
-											<div class="dipl_hover_list_title_wrapper">
+								<div class="wpmozo_hover_list_item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+									<div data-image="<?php echo esc_url( $item['item_image']['url'] ); ?>" class="wpmozo_hover_list_item_wrapper">
+										<div class="wpmozo_hover_list_item_inner">
+											<div class="wpmozo_hover_list_title_wrapper">
 												<?php
 												if ( 'yes' === $item['show_icon'] ) {
 													\Elementor\Icons_Manager::render_icon(
 														$item['item_icon'],
 														array(
 															'aria-hidden' => 'true',
-															'class'       => 'dipl_hover_list_icon',
+															'class'       => 'wpmozo_hover_list_icon',
 														),
 														'span'
 													);
 												}
 												?>
-												<<?php echo esc_attr( $title_heading_level ); ?> class="dipl_hover_list_title"><?php echo esc_html( $item['item_title'] ); ?></<?php echo esc_attr( $title_heading_level ); ?>>
+												<<?php echo esc_attr( $title_heading_level ); ?> class="wpmozo_hover_list_title"><?php echo esc_html( $item['item_title'] ); ?></<?php echo esc_attr( $title_heading_level ); ?>>
 											</div>
-											<div class="dipl_hover_list_description"><?php echo esc_html( $item['item_description'] ); ?></div>
-											<div class="dipl_hover_list_subtitle"><?php echo esc_html( $item['item_subtitle'] ); ?></div>
+											<div class="wpmozo_hover_list_description"><?php echo esc_html( $item['item_description'] ); ?></div>
+											<div class="wpmozo_hover_list_subtitle"><?php echo esc_html( $item['item_subtitle'] ); ?></div>
 											<?php
 											if ( 'yes' === $item['show_button'] ) {
 												?>
@@ -189,8 +189,8 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 												</div>
 											<?php } ?>
 										</div>
-										<div class="dipl-hover-list-item-overlay"></div>
-										<div class="dipl-hover-list-item-divider"></div>
+										<div class="wpmozo_hover_list_item_overlay"></div>
+										<div class="wpmozo_hover_list_item_divider"></div>
 									</div>
 								</div>
 							<?php } ?>

@@ -1,4 +1,4 @@
-.elementor-widget-wpmozo_ae_hover_list .dipl-hover-list-item-inner{
+.elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_item_inner{
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
@@ -6,7 +6,7 @@
 }
 
 /* Cursor. */
-.elementor-widget-wpmozo_ae_hover_list .dipl-hover-list-cursor{
+.elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_cursor{
 	position: fixed;
 	width: 400px;
 	height: 400px;
@@ -23,29 +23,29 @@
 }
 
 /* Item. */
-.elementor-widget-wpmozo_ae_hover_list .dipl_hover_list .dipl-hover-list-wrapper .dipl_hover_list_item{
+.elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list .wpmozo_hover_list_wrapper .wpmozo_hover_list_item{
 	margin-bottom: 0;
 	padding: 15px;
 }
-.elementor-widget-wpmozo_ae_hover_list .dipl_hover_list_title_wrapper{
+.elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_title_wrapper{
 	display: flex;
 	align-items: center;
 	flex: 0 0 20%;
 }
-.elementor-widget-wpmozo_ae_hover_list .dipl_hover_list_title_wrapper .dipl_hover_list_title{
+.elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_title_wrapper .wpmozo_hover_list_title{
 	padding: 0;
 	margin: 0;
 }
-.elementor-widget-wpmozo_ae_hover_list .dipl_hover_list_title_wrapper .dipl_hover_list_icon{
+.elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_title_wrapper .wpmozo_hover_list_icon{
 	margin-right: 15px;
 }
-.elementor-widget-wpmozo_ae_hover_list .dipl_hover_list_description{
+.elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_description{
 	flex: 0 0 40%;
 }
-.elementor-widget-wpmozo_ae_hover_list .dipl_hover_list_subtitle{
+.elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_subtitle{
 	flex: 1;
 }
-.elementor-widget-wpmozo_ae_hover_list .dipl-hover-list-item-overlay {
+.elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_item_overlay {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -54,16 +54,16 @@
 	z-index: 1;
 }
 
-.elementor-widget-wpmozo_ae_hover_list .dipl_hover_list_item .wpmozo_readmore_button_wrapper .wpmozo_readmore_button{
+.elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_item .wpmozo_readmore_button_wrapper .wpmozo_readmore_button{
 	position: relative;
 	z-index: 2;
 }
 
-.elementor-widget-wpmozo_ae_hover_list .dipl-hover-list-item-divider{
+.elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_item_divider{
 	border: 0 solid #000;
 }
 
-.elementor-widget-wpmozo_ae_hover_list .dipl_hover_list_item{
+.elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_item{
 	position: relative;
 }
 
@@ -88,26 +88,26 @@
     transition: all 0.3s;
 }
 
-.elementor-widget-wpmozo_ae_hover_list .wpmozo_hide_last_divider .dipl_hover_list_item:last-child .dipl-hover-list-item-divider{
+.elementor-widget-wpmozo_ae_hover_list .wpmozo_hide_last_divider .wpmozo_hover_list_item:last-child .wpmozo_hover_list_item_divider{
     display:none;
 }
 @media screen and (max-width: 980px) {
-    .elementor-widget-wpmozo_ae_hover_list .dipl-hover-list-item-inner{
+    .elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_item_inner{
 		flex-direction: column;
 		align-items: flex-start;
 	}
-	.elementor-widget-wpmozo_ae_hover_list .dipl_hover_list_item .dipl_hover_list_title_wrapper,
-	.elementor-widget-wpmozo_ae_hover_list .dipl_hover_list_item .dipl_hover_list_description,
-	.elementor-widget-wpmozo_ae_hover_list .dipl_hover_list_item .dipl_hover_list_subtitle{
+	.elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_item .wpmozo_hover_list_title_wrapper,
+	.elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_item .wpmozo_hover_list_description,
+	.elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_item .wpmozo_hover_list_subtitle{
 		flex: 0 0 100% !important;
 		width: 100% !important;
 		margin-bottom: 15px;
 	}
-	.elementor-widget-wpmozo_ae_hover_list .dipl_hover_list_item .wpmozo_readmore_button_wrapper{
+	.elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_item .wpmozo_readmore_button_wrapper{
 		flex: 0 0 100% !important;
 		width: 100% !important;
 	}
-	.elementor-widget-wpmozo_ae_hover_list .dipl-hover-list-cursor{
+	.elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_cursor{
 		width: 200px;
 		height: 200px;
 	}

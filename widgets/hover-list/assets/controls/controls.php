@@ -179,7 +179,7 @@ $repeater = new Repeater();
 				),
 			),
 			'toggle'         => false,
-			'selector'       => '{{WRAPPER}} .dipl_hover_list .dipl_hover_list_item{{CURRENT_ITEM}}',
+			'selector'       => '{{WRAPPER}} .wpmozo_hover_list .wpmozo_hover_list_item{{CURRENT_ITEM}}',
 		)
 	);
 	$this->add_control(
@@ -259,7 +259,7 @@ $repeater = new Repeater();
 				'size' => 20,
 			),
 			'selectors'  => array(
-				'{{WRAPPER}} .dipl_hover_list_title_wrapper' => 'flex: 0 0 {{SIZE}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_hover_list_title_wrapper' => 'flex: 0 0 {{SIZE}}{{UNIT}};',
 			),
 		)
 	);
@@ -284,7 +284,7 @@ $repeater = new Repeater();
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .dipl_hover_list_title_wrapper' => 'justify-content: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_hover_list_title_wrapper' => 'justify-content: {{VALUE}};',
 			),
 		)
 	);
@@ -303,7 +303,7 @@ $repeater = new Repeater();
 			'name'     => 'title_typography',
 			'label'    => esc_html__( 'Title Typography', 'wpmozo-addons-lite-for-elementor' ),
 			'exclude'  => array( 'font_size' ),
-			'selector' => '{{WRAPPER}} .dipl_hover_list_title',
+			'selector' => '{{WRAPPER}} .wpmozo_hover_list_title',
 		)
 	);
 	$this->add_responsive_control(
@@ -319,7 +319,7 @@ $repeater = new Repeater();
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .dipl_hover_list_title' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+				'{{WRAPPER}} .wpmozo_hover_list_title' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 			),
 		)
 	);
@@ -330,7 +330,7 @@ $repeater = new Repeater();
 			'type'      => Controls_Manager::COLOR,
 			'separator' => 'after',
 			'selectors' => array(
-				'{{WRAPPER}} .dipl_hover_list_title' => 'color: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_hover_list_title' => 'color: {{VALUE}}; transition: 300ms;',
 			),
 		)
 	);
@@ -347,7 +347,7 @@ $repeater = new Repeater();
 			'name'     => 'title_typography_hover',
 			'label'    => esc_html__( 'Title Typography', 'wpmozo-addons-lite-for-elementor' ),
 			'exclude'  => array( 'font_size' ),
-			'selector' => '{{WRAPPER}} .dipl_hover_list_title:hover',
+			'selector' => '{{WRAPPER}} .wpmozo_hover_list_title:hover',
 		)
 	);
 	$this->add_responsive_control(
@@ -363,7 +363,7 @@ $repeater = new Repeater();
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .dipl_hover_list_title:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+				'{{WRAPPER}} .wpmozo_hover_list_title:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 			),
 		)
 	);
@@ -374,7 +374,7 @@ $repeater = new Repeater();
 			'type'      => Controls_Manager::COLOR,
 			'separator' => 'after',
 			'selectors' => array(
-				'{{WRAPPER}} .dipl_hover_list_title:hover' => 'color: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_hover_list_title:hover' => 'color: {{VALUE}};',
 			),
 		)
 	);
@@ -385,7 +385,7 @@ $repeater = new Repeater();
 		array(
 			'name'     => 'title_text_shadow',
 			'label'    => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-			'selector' => '{{WRAPPER}} .dipl_hover_list_title',
+			'selector' => '{{WRAPPER}} .wpmozo_hover_list_title',
 		)
 	);
 	$this->end_controls_section();
@@ -417,7 +417,7 @@ $repeater = new Repeater();
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .dipl_hover_list_subtitle' => 'text-align: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_hover_list_subtitle' => 'text-align: {{VALUE}};',
 			),
 		)
 	);
@@ -436,7 +436,7 @@ $repeater = new Repeater();
 			'name'     => 'subtitle_typography',
 			'label'    => esc_html__( 'Subtitle Typography', 'wpmozo-addons-lite-for-elementor' ),
 			'exclude'  => array( 'font_size' ),
-			'selector' => '{{WRAPPER}} .dipl_hover_list_subtitle',
+			'selector' => '{{WRAPPER}} .wpmozo_hover_list_subtitle',
 		)
 	);
 	$this->add_responsive_control(
@@ -452,7 +452,7 @@ $repeater = new Repeater();
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .dipl_hover_list_subtitle' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+				'{{WRAPPER}} .wpmozo_hover_list_subtitle' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 			),
 		)
 	);
@@ -463,7 +463,7 @@ $repeater = new Repeater();
 			'type'      => Controls_Manager::COLOR,
 			'separator' => 'after',
 			'selectors' => array(
-				'{{WRAPPER}} .dipl_hover_list_subtitle' => 'color: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_hover_list_subtitle' => 'color: {{VALUE}}; transition: 300ms;',
 			),
 		)
 	);
@@ -480,7 +480,7 @@ $repeater = new Repeater();
 			'name'     => 'subtitle_typography_hover',
 			'label'    => esc_html__( 'Sub Title Typography', 'wpmozo-addons-lite-for-elementor' ),
 			'exclude'  => array( 'font_size' ),
-			'selector' => '{{WRAPPER}} .dipl_hover_list_subtitle:hover',
+			'selector' => '{{WRAPPER}} .wpmozo_hover_list_subtitle:hover',
 		)
 	);
 	$this->add_responsive_control(
@@ -496,7 +496,7 @@ $repeater = new Repeater();
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .dipl_hover_list_subtitle:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+				'{{WRAPPER}} .wpmozo_hover_list_subtitle:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 			),
 		)
 	);
@@ -507,7 +507,7 @@ $repeater = new Repeater();
 			'type'      => Controls_Manager::COLOR,
 			'separator' => 'after',
 			'selectors' => array(
-				'{{WRAPPER}} .dipl_hover_list_subtitle:hover' => 'color: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_hover_list_subtitle:hover' => 'color: {{VALUE}};',
 			),
 		)
 	);
@@ -518,7 +518,7 @@ $repeater = new Repeater();
 		array(
 			'name'     => 'subtitle_text_shadow',
 			'label'    => esc_html__( 'Subtitle Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-			'selector' => '{{WRAPPER}} .dipl_hover_list_subtitle',
+			'selector' => '{{WRAPPER}} .wpmozo_hover_list_subtitle',
 		)
 	);
 	$this->end_controls_section();
@@ -546,7 +546,7 @@ $repeater = new Repeater();
 				'size' => 40,
 			),
 			'selectors'  => array(
-				'{{WRAPPER}} .dipl_hover_list_description' => 'flex: 0 0 {{SIZE}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_hover_list_description' => 'flex: 0 0 {{SIZE}}{{UNIT}};',
 			),
 		)
 	);
@@ -565,7 +565,7 @@ $repeater = new Repeater();
 				'isLinked' => false,
 			),
 			'selectors'  => array(
-				'{{WRAPPER}} .dipl_hover_list_description' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_hover_list_description' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			),
 		)
 	);
@@ -590,7 +590,7 @@ $repeater = new Repeater();
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .dipl_hover_list_description' => 'text-align: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_hover_list_description' => 'text-align: {{VALUE}};',
 			),
 		)
 	);
@@ -609,7 +609,7 @@ $repeater = new Repeater();
 			'name'     => 'description_typography',
 			'label'    => esc_html__( 'Description Typography', 'wpmozo-addons-lite-for-elementor' ),
 			'exclude'  => array( 'font_size' ),
-			'selector' => '{{WRAPPER}} .dipl_hover_list_description',
+			'selector' => '{{WRAPPER}} .wpmozo_hover_list_description',
 		)
 	);
 	$this->add_responsive_control(
@@ -625,7 +625,7 @@ $repeater = new Repeater();
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .dipl_hover_list_description' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+				'{{WRAPPER}} .wpmozo_hover_list_description' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 			),
 		)
 	);
@@ -636,7 +636,7 @@ $repeater = new Repeater();
 			'type'      => Controls_Manager::COLOR,
 			'separator' => 'after',
 			'selectors' => array(
-				'{{WRAPPER}} .dipl_hover_list_description' => 'color: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_hover_list_description' => 'color: {{VALUE}}; transition: 300ms;',
 			),
 		)
 	);
@@ -653,7 +653,7 @@ $repeater = new Repeater();
 			'name'     => 'description_typography_hover',
 			'label'    => esc_html__( 'Description Typography', 'wpmozo-addons-lite-for-elementor' ),
 			'exclude'  => array( 'font_size' ),
-			'selector' => '{{WRAPPER}} .dipl_hover_list_description:hover',
+			'selector' => '{{WRAPPER}} .wpmozo_hover_list_description:hover',
 		)
 	);
 	$this->add_responsive_control(
@@ -669,7 +669,7 @@ $repeater = new Repeater();
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .dipl_hover_list_description:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+				'{{WRAPPER}} .wpmozo_hover_list_description:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 			),
 		)
 	);
@@ -680,7 +680,7 @@ $repeater = new Repeater();
 			'type'      => Controls_Manager::COLOR,
 			'separator' => 'after',
 			'selectors' => array(
-				'{{WRAPPER}} .dipl_hover_list_description:hover' => 'color: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_hover_list_description:hover' => 'color: {{VALUE}};',
 			),
 		)
 	);
@@ -691,7 +691,7 @@ $repeater = new Repeater();
 		array(
 			'name'     => 'description_text_shadow',
 			'label'    => esc_html__( 'Description Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-			'selector' => '{{WRAPPER}} .dipl_hover_list_description',
+			'selector' => '{{WRAPPER}} .wpmozo_hover_list_description',
 		)
 	);
 	$this->end_controls_section();
@@ -724,8 +724,8 @@ $repeater = new Repeater();
 				'size' => 30,
 			),
 			'selectors'  => array(
-				'{{WRAPPER}} .dipl_hover_list_title_wrapper span.dipl_hover_list_icon'  => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
-				'{{WRAPPER}} .dipl_hover_list_title_wrapper svg.dipl_hover_list_icon'   => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+				'{{WRAPPER}} .wpmozo_hover_list_title_wrapper span.wpmozo_hover_list_icon'  => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+				'{{WRAPPER}} .wpmozo_hover_list_title_wrapper svg.wpmozo_hover_list_icon'   => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 			),
 		)
 	);
@@ -742,8 +742,8 @@ $repeater = new Repeater();
 			'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => array(
-				'{{WRAPPER}} .dipl_hover_list_title_wrapper svg'   => 'fill: {{VALUE}}; transition: 300ms;',
-				'{{WRAPPER}} .dipl_hover_list_title_wrapper span'     => 'color: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_hover_list_title_wrapper svg'   => 'fill: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_hover_list_title_wrapper span'     => 'color: {{VALUE}}; transition: 300ms;',
 			),
 		)
 	);
@@ -760,8 +760,8 @@ $repeater = new Repeater();
 			'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => array(
-				'{{WRAPPER}} .dipl_hover_list_title_wrapper svg:hover'   => 'fill: {{VALUE}}; transition: 300ms;',
-				'{{WRAPPER}} .dipl_hover_list_title_wrapper span:hover'     => 'color: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_hover_list_title_wrapper svg:hover'   => 'fill: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_hover_list_title_wrapper span:hover'     => 'color: {{VALUE}}; transition: 300ms;',
 			),
 		)
 	);
@@ -782,7 +782,7 @@ $repeater = new Repeater();
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 			'selectors'  => array(
-				'{{WRAPPER}} .dipl_hover_list .dipl-hover-list-cursor' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_hover_list .wpmozo_hover_list_cursor' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			),
 		)
 	);
@@ -803,7 +803,7 @@ $repeater = new Repeater();
 				'size' => 400,
 			),
 			'selectors'  => array(
-				'{{WRAPPER}} .dipl_hover_list .dipl-hover-list-cursor' => 'width:{{SIZE}}{{UNIT}}; height:{{SIZE}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_hover_list .wpmozo_hover_list_cursor' => 'width:{{SIZE}}{{UNIT}}; height:{{SIZE}}{{UNIT}};',
 			),
 		)
 	);
@@ -818,7 +818,7 @@ $repeater = new Repeater();
 		Group_Control_Border::get_type(),
 		array(
 			'name'           => 'image_border',
-			'selector'       => '{{WRAPPER}} .dipl_hover_list .dipl-hover-list-cursor',
+			'selector'       => '{{WRAPPER}} .wpmozo_hover_list .wpmozo_hover_list_cursor',
 			'fields_options' => array(
 				'border' => array( 'label' => esc_html__( 'Image Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
 				'width'  => array( 'label' => esc_html__( 'Image Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
@@ -835,7 +835,7 @@ $repeater = new Repeater();
 			'size_units'  => array( 'px', 'em', '%' ),
 			'separator'   => 'after',
 			'selectors'   => array(
-				'{{WRAPPER}} .dipl_hover_list .dipl-hover-list-cursor' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
+				'{{WRAPPER}} .wpmozo_hover_list .wpmozo_hover_list_cursor' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
 			),
 		)
 	);
@@ -850,7 +850,7 @@ $repeater = new Repeater();
 		Group_Control_Border::get_type(),
 		array(
 			'name'           => 'image_hover_border',
-			'selector'       => '{{WRAPPER}} .dipl_hover_list .dipl-hover-list-cursor:hover',
+			'selector'       => '{{WRAPPER}} .wpmozo_hover_list .wpmozo_hover_list_cursor:hover',
 			'fields_options' => array(
 				'border' => array( 'label' => esc_html__( 'Image Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
 				'width'  => array( 'label' => esc_html__( 'Image Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
@@ -867,7 +867,7 @@ $repeater = new Repeater();
 			'size_units'  => array( 'px', 'em', '%' ),
 			'separator'   => 'after',
 			'selectors'   => array(
-				'{{WRAPPER}} .dipl_hover_list .dipl-hover-list-cursor:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_hover_list .wpmozo_hover_list_cursor:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			),
 		)
 	);
@@ -877,7 +877,7 @@ $repeater = new Repeater();
 		Group_Control_Box_Shadow::get_type(),
 		array(
 			'name'           => 'image_box_shadow',
-			'selector'       => '{{WRAPPER}} .dipl_hover_list .dipl-hover-list-cursor',
+			'selector'       => '{{WRAPPER}} .wpmozo_hover_list .wpmozo_hover_list_cursor',
 			'fields_options' => array(
 				'box_shadow_type' => array(
 					'label' => esc_html__( 'Image Box Shadow', 'wpmozo-addons-lite-for-elementor' ),
@@ -910,7 +910,7 @@ $repeater = new Repeater();
 				'size' => 0,
 			),
 			'selectors'  => array(
-				'{{WRAPPER}} .dipl-hover-list-item-divider' => 'border-top-width: {{SIZE}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_hover_list_item_divider' => 'border-top-width: {{SIZE}}{{UNIT}};',
 			),
 		)
 	);
@@ -932,7 +932,7 @@ $repeater = new Repeater();
 				'none'   => esc_html__( 'None', 'wpmozo-addons-lite-for-elementor' ),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .dipl-hover-list-item-divider' => 'border-top-style: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_hover_list_item_divider' => 'border-top-style: {{VALUE}};',
 			),
 		)
 	);
@@ -962,7 +962,7 @@ $repeater = new Repeater();
 			'type'      => Controls_Manager::COLOR,
 			'default'   => '#d3d3d3',
 			'selectors' => array(
-				'{{WRAPPER}} .dipl-hover-list-item-divider' => 'border-top-color: {{VALUE}}; transition: all 300ms;',
+				'{{WRAPPER}} .wpmozo_hover_list_item_divider' => 'border-top-color: {{VALUE}}; transition: all 300ms;',
 			),
 		)
 	);
@@ -981,7 +981,7 @@ $repeater = new Repeater();
 				'isLinked' => false,
 			),
 			'selectors'  => array(
-				'{{WRAPPER}} .dipl-hover-list-item-divider' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_hover_list_item_divider' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			),
 		)
 	);
@@ -998,7 +998,7 @@ $repeater = new Repeater();
 			'label'     => esc_html__( 'Divider Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => array(
-				'{{WRAPPER}} .dipl-hover-list-item-wrapper:hover .dipl-hover-list-item-divider' => 'border-top-color: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_hover_list_item_wrapper:hover .wpmozo_hover_list_item_divider' => 'border-top-color: {{VALUE}};',
 			),
 		)
 	);
@@ -1009,7 +1009,7 @@ $repeater = new Repeater();
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 			'selectors'  => array(
-				'{{WRAPPER}} .dipl-hover-list-item-wrapper:hover .dipl-hover-list-item-divider' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_hover_list_item_wrapper:hover .wpmozo_hover_list_item_divider' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			),
 		)
 	);
