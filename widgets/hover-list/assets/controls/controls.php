@@ -270,7 +270,7 @@ $repeater = new Repeater();
 			'type'      => Controls_Manager::CHOOSE,
 			'separator' => 'after',
 			'options'   => array(
-				'start'   => array(
+				'start'  => array(
 					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-left',
 				),
@@ -278,7 +278,7 @@ $repeater = new Repeater();
 					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-center',
 				),
-				'end'  => array(
+				'end'    => array(
 					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-text-align-right',
 				),
@@ -899,17 +899,17 @@ $repeater = new Repeater();
 			'label'      => esc_html__( 'Divider Size', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => Controls_Manager::SLIDER,
 			'size_units' => array( 'px' ),
-			'range' => array(
+			'range'      => array(
 				'px' => array(
 					'min' => 0,
 					'max' => 20,
 				),
 			),
-			'default' => array(
+			'default'    => array(
 				'unit' => 'px',
 				'size' => 0,
 			),
-			'selectors' => array(
+			'selectors'  => array(
 				'{{WRAPPER}} .dipl-hover-list-item-divider' => 'border-top-width: {{SIZE}}{{UNIT}};',
 			),
 		)
@@ -917,10 +917,10 @@ $repeater = new Repeater();
 	$this->add_responsive_control(
 		'divider_style',
 		array(
-			'label'   => esc_html__( 'Divider Style', 'wpmozo-addons-lite-for-elementor' ),
-			'type'    => Controls_Manager::SELECT,
-			'default' => 'solid',
-			'options' => array(
+			'label'     => esc_html__( 'Divider Style', 'wpmozo-addons-lite-for-elementor' ),
+			'type'      => Controls_Manager::SELECT,
+			'default'   => 'solid',
+			'options'   => array(
 				'solid'  => esc_html__( 'Solid', 'wpmozo-addons-lite-for-elementor' ),
 				'dashed' => esc_html__( 'Dashed', 'wpmozo-addons-lite-for-elementor' ),
 				'dotted' => esc_html__( 'Dotted', 'wpmozo-addons-lite-for-elementor' ),
@@ -980,7 +980,7 @@ $repeater = new Repeater();
 				'unit'     => 'px',
 				'isLinked' => false,
 			),
-			'selectors' => array(
+			'selectors'  => array(
 				'{{WRAPPER}} .dipl-hover-list-item-divider' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			),
 		)
@@ -1008,7 +1008,7 @@ $repeater = new Repeater();
 			'label'      => esc_html__( 'Divider Margin', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
-			'selectors' => array(
+			'selectors'  => array(
 				'{{WRAPPER}} .dipl-hover-list-item-wrapper:hover .dipl-hover-list-item-divider' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			),
 		)
@@ -1084,7 +1084,7 @@ $repeater = new Repeater();
 			),
 			'condition' => array(
 				'button_custom_style' => 'yes',
-				'show_button_icon' => 'yes',
+				'show_button_icon'    => 'yes',
 			),
 		)
 	);
@@ -1113,7 +1113,7 @@ $repeater = new Repeater();
 			),
 			'condition'    => array(
 				'button_custom_style' => 'yes',
-				'show_button_icon' => 'yes',
+				'show_button_icon'    => 'yes',
 			),
 		)
 	);
@@ -1138,7 +1138,7 @@ $repeater = new Repeater();
 			),
 			'condition'    => array(
 				'button_custom_style' => 'yes',
-				'show_button_icon' => 'yes',
+				'show_button_icon'    => 'yes',
 			),
 		)
 	);
@@ -1190,8 +1190,8 @@ $repeater = new Repeater();
 				'button_custom_style' => 'yes',
 			),
 			'selectors'  => array(
-				'{{WRAPPER}} .wpmozo_readmore_button'       => 'font-size: {{SIZE}}{{UNIT}};',
-				'{{WRAPPER}} .wpmozo_readmore_button svg'   => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_readmore_button'     => 'font-size: {{SIZE}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_readmore_button svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 			),
 		)
 	);
@@ -1260,7 +1260,7 @@ $repeater = new Repeater();
 				'button_custom_style' => 'yes',
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_readmore_button'   => 'border-color: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_readmore_button' => 'border-color: {{VALUE}}; transition: 300ms;',
 			),
 		)
 	);
@@ -1308,11 +1308,11 @@ $repeater = new Repeater();
 			'type'      => Controls_Manager::COLOR,
 			'condition' => array(
 				'button_custom_style' => 'yes',
-				'show_button_icon' => 'yes',
+				'show_button_icon'    => 'yes',
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_readmore_button svg'   => 'fill: {{VALUE}}; transition: 300ms;',
-				'{{WRAPPER}} .wpmozo_readmore_button i'     => 'color: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_readmore_button svg' => 'fill: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_readmore_button i'   => 'color: {{VALUE}}; transition: 300ms;',
 			),
 		)
 	);
@@ -1500,7 +1500,7 @@ $repeater = new Repeater();
 			'type'      => Controls_Manager::COLOR,
 			'condition' => array(
 				'button_custom_style' => 'yes',
-				'show_button_icon' => 'yes',
+				'show_button_icon'    => 'yes',
 			),
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_readmore_button:hover svg' => 'fill: {{VALUE}}; transition: 300ms;',

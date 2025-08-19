@@ -111,7 +111,7 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 		 * @return array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-			wp_register_script( 'wpmozo-ae-hover-list-script', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
+			wp_register_script( 'wpmozo-ae-hover-list-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
 			return array( 'wpmozo-ae-hover-list-script', 'wpmozo-ae-gsap' );
 		}
@@ -141,11 +141,9 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 		protected function render() {
 			$settings = $this->get_settings_for_display();
 
-			$wpmozo_items_content 	= isset( $settings['wpmozo_items_content'] ) ? $settings['wpmozo_items_content'] : array();
-			$title_heading_level    = wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
-			$hide_last_divider      = isset( $settings['hide_last_divider'] ) && ! empty( $settings['hide_last_divider'] ) ? $settings['hide_last_divider'] : '';
-			
-			
+			$wpmozo_items_content = isset( $settings['wpmozo_items_content'] ) ? $settings['wpmozo_items_content'] : array();
+			$title_heading_level  = wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
+			$hide_last_divider    = isset( $settings['hide_last_divider'] ) && ! empty( $settings['hide_last_divider'] ) ? $settings['hide_last_divider'] : '';
 			?>
 				<div class="dipl_hover_list">
 					<div class="dipl-hover-list-wrapper">
@@ -157,6 +155,7 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 										<div class="dipl-hover-list-item-inner">
 											<div class="dipl_hover_list_title_wrapper">
 												<?php
+												if ( 'yes' === $item['show_icon'] ) {
 													\Elementor\Icons_Manager::render_icon(
 														$item['item_icon'],
 														array(
@@ -165,15 +164,12 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 														),
 														'span'
 													);
+												}
 												?>
 												<<?php echo esc_attr( $title_heading_level ); ?> class="dipl_hover_list_title"><?php echo esc_html( $item['item_title'] ); ?></<?php echo esc_attr( $title_heading_level ); ?>>
 											</div>
 											<div class="dipl_hover_list_description"><?php echo esc_html( $item['item_description'] ); ?></div>
 											<div class="dipl_hover_list_subtitle"><?php echo esc_html( $item['item_subtitle'] ); ?></div>
-											
-
-
-
 											<?php
 											if ( 'yes' === $item['show_button'] ) {
 												?>
@@ -192,9 +188,6 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 													</a>
 												</div>
 											<?php } ?>
-
-
-
 										</div>
 										<div class="dipl-hover-list-item-overlay"></div>
 										<div class="dipl-hover-list-item-divider"></div>
