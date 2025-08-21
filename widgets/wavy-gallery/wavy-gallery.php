@@ -140,47 +140,48 @@ if ( ! class_exists( 'WPMOZO_AE_Wavy_Gallery' ) ) {
 		protected function render() {
 			$settings       = $this->get_settings_for_display();
 			$page_id        = get_the_ID(); // Elementor Page/Post ID.
+			$widget_id      = $this->get_id(); // Widget instance ID (unique per widget).
 			$images_items   = is_array( $settings['images'] ) ? $settings['images'] : array();
 			$no_images_text = isset( $settings['no_images_text'] ) ? $settings['no_images_text'] : 'No Images Found!';
 			$image_size     = ! empty( $settings['image_size_size'] ) ? esc_attr( $settings['image_size_size'] ) : 'full';
 			?>
-			<div class="dipl_wavy_gallery" data-page_id="<?php echo esc_attr( $page_id ); ?>">
+			<div class="wpmozo_wavy_gallery" data-page_id="<?php echo esc_attr( $page_id ); ?>">
 				<div class="et_pb_module_inner">
-					<div class="dipl_wavy_gallery_wrapper">
-						<div class="dipl_wavy_gallery_items">
-							<?php if ( ! empty( $images_items ) ) : ?>
+					<div class="wpmozo_wavy_gallery_wrapper">
+						<?php if ( ! empty( $images_items ) ) : ?>
+							<div class="wpmozo_wavy_gallery_items">
 								<?php foreach ( $images_items as $items ) : ?>
 									<?php if ( isset( $items['id'] ) && ! empty( $items['id'] ) ) : 
 										$image_id = $items['id'];
 										$alt_text = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
 										$img_title = get_the_title( $image_id );  
-									?>
-										<div class="dipl_wavy_gallery_item">
-										<?php
-											echo wp_get_attachment_image(
-												$image_id,
-												$image_size,
-												false,
-												array(
-													'loading' => 'eager',
-													'class' => 'wpmozo_wavy_gallery_image',
-													'alt' => esc_attr( $alt_text ),
-													'title'   => esc_attr( $img_title ),
-												)
-											);
 										?>
+										<div class="wpmozo_wavy_gallery_item">
+											<?php
+												echo wp_get_attachment_image(
+													$image_id,
+													$image_size,
+													false,
+													array(
+														'loading' => 'eager',
+														'class' => 'wpmozo_wavy_gallery_image',
+														'alt' => esc_attr( $alt_text ),
+														'title'   => esc_attr( $img_title ),
+													)
+												);
+											?>
 										</div>
 									<?php endif; ?>
 								<?php endforeach; ?>
-							<?php else : ?>
-								<div class="wpmozo_wavy_gallery_no_item">
-									<h3><?php echo esc_html( $no_images_text ); ?></h3>
-								</div>
-							<?php endif; ?>
-						</div>
-						<div class="dipl_wavy_gallery_overlay">
-							<div class="dipl_wavy_gallery_overlay_items"></div>
-							<div class="dipl_wavy_gallery_overlay_item_title"></div>
+							</div>
+						<?php else : ?>
+							<div class="wpmozo_wavy_gallery_no_item">
+								<h3><?php echo esc_html( $no_images_text ); ?></h3>
+							</div>
+						<?php endif; ?>
+						<div class="elementor-element elementor-element-<?php echo esc_attr( $widget_id ); ?> wpmozo_wavy_gallery_overlay">
+							<div class="wpmozo_wavy_gallery_overlay_items"></div>
+							<div class="wpmozo_wavy_gallery_overlay_item_title"></div>
 						</div>
 					</div>
 				</div>
