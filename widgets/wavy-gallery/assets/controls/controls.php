@@ -292,11 +292,11 @@ $this->add_group_control(
 		'types'          => array( 'classic', 'gradient' ),
 		'fields_options' => array(
 			'background' => array(
-				'label'    => esc_html__( 'Lightbox Background', 'wpmozo-addons-lite-for-elementor' ),
-				'default'  => 'classic',
+				'label'   => esc_html__( 'Lightbox Background', 'wpmozo-addons-lite-for-elementor' ),
+				'default' => 'classic',
 			),
 			'color'      => array(
-				'default'  => '#000000B3',
+				'default' => '#000000B3',
 			),
 		),
 		'toggle'         => false,
@@ -306,18 +306,18 @@ $this->add_group_control(
 $this->add_responsive_control(
 	'lightbox_image_width',
 	array(
-		'label'          => esc_html__( 'Image Width', 'wpmozo-addons-lite-for-elementor' ),
-		'type'           => Controls_Manager::SLIDER,
-		'size_units'     => array( 'px' ),
-		'range'          => array(
+		'label'       => esc_html__( 'Image Width', 'wpmozo-addons-lite-for-elementor' ),
+		'type'        => Controls_Manager::SLIDER,
+		'size_units'  => array( 'px' ),
+		'range'       => array(
 			'px' => array(
 				'min' => 50,
 				'max' => 500,
 			),
 		),
-		'devices'        => array( 'desktop', 'tablet', 'mobile' ),
-		'render_type'    => 'template',
-		'selectors'      => array(
+		'devices'     => array( 'desktop', 'tablet', 'mobile' ),
+		'render_type' => 'template',
+		'selectors'   => array(
 			'{{WRAPPER}}.active .wpmozo_wavy_gallery_overlay_items .wpmozo_wavy_gallery_item' => 'width: {{SIZE}}{{UNIT}};',
 		),
 	)
@@ -325,18 +325,18 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'lightbox_image_height',
 	array(
-		'label'          => esc_html__( 'Image Height', 'wpmozo-addons-lite-for-elementor' ),
-		'type'           => Controls_Manager::SLIDER,
-		'size_units'     => array( 'px' ),
-		'range'          => array(
+		'label'       => esc_html__( 'Image Height', 'wpmozo-addons-lite-for-elementor' ),
+		'type'        => Controls_Manager::SLIDER,
+		'size_units'  => array( 'px' ),
+		'range'       => array(
 			'px' => array(
 				'min' => 50,
 				'max' => 500,
 			),
 		),
-		'devices'        => array( 'desktop', 'tablet', 'mobile' ),
-		'render_type'    => 'template',
-		'selectors'      => array(
+		'devices'     => array( 'desktop', 'tablet', 'mobile' ),
+		'render_type' => 'template',
+		'selectors'   => array(
 			'{{WRAPPER}}.active .wpmozo_wavy_gallery_overlay_items .wpmozo_wavy_gallery_item' => 'height: {{SIZE}}{{UNIT}};',
 		),
 	)
@@ -544,7 +544,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Background Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'default'   => '#eaeaea',
-		'separator'   => 'before',
+		'separator' => 'before',
 		'selectors' => array(
 			'{{WRAPPER}}.active .wpmozo_wavy_gallery_overlay_item_title' => 'background-color: {{VALUE}}',
 		),

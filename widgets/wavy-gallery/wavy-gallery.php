@@ -110,7 +110,7 @@ if ( ! class_exists( 'WPMOZO_AE_Wavy_Gallery' ) ) {
 		 * @return array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-			wp_register_script( 'wpmozo-ae-wavy-gallery-script', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
+			wp_register_script( 'wpmozo-ae-wavy-gallery-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
 			return array( 'wpmozo-ae-wavy-gallery-script', 'wpmozo-ae-gsap', 'wpmozo-ae-scrollTrigger', 'wpmozo-ae-scrollToPlugin' );
 		}
@@ -151,10 +151,11 @@ if ( ! class_exists( 'WPMOZO_AE_Wavy_Gallery' ) ) {
 						<?php if ( ! empty( $images_items ) ) : ?>
 							<div class="wpmozo_wavy_gallery_items">
 								<?php foreach ( $images_items as $items ) : ?>
-									<?php if ( isset( $items['id'] ) && ! empty( $items['id'] ) ) : 
-										$image_id = $items['id'];
-										$alt_text = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
-										$img_title = get_the_title( $image_id );  
+									<?php
+									if ( isset( $items['id'] ) && ! empty( $items['id'] ) ) :
+										$image_id  = $items['id'];
+										$alt_text  = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
+										$img_title = get_the_title( $image_id );
 										?>
 										<div class="wpmozo_wavy_gallery_item">
 											<?php
