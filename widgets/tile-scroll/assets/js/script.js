@@ -6,46 +6,76 @@
                 this.change();
             },
             change: function () {
-  
-                // --- Utils: Preload images ---
-                function preloadImages(selector = 'img') {
-                    return new Promise((resolve) => {
-                        if (typeof imagesLoaded === "undefined") {
-                            console.error("❌ imagesLoaded not found! Make sure it's enqueued.");
-                            resolve();
-                            return;
+                document.getElementById('tile_scroll').classList.remove('loading');
+
+                var $el = this.$element.find('#tile_scroll');
+                if (!$el.length) return;
+
+                const scroll = new LocomotiveScroll({
+                    el: document.querySelector('body'),
+                    smooth: true,
+                    getSpeed: true,
+                    getDirection: true,
+                    reloadOnContextChange: true,
+                    tablet: { smooth: false },
+                    smartphone: { smooth: false }
+                });
+
+                $el.addClass('has-scroll-init has-scroll-smooth');
+                document.documentElement.classList.remove(
+                    'has-scroll-init',
+                    'has-scroll-smooth',
+                    'has-scroll-scrolling'
+                );
+
+                let scrollTimeout;
+                scroll.on('scroll', (args) => {
+                    clearTimeout(scrollTimeout);
+
+                    $el.addClass('has-scroll-scrolling');
+                    document.documentElement.classList.remove('has-scroll-scrolling');
+
+                    console.log('direction:', args.direction, 'speed:', args.speed);
+
+                    scrollTimeout = setTimeout(() => {
+                        $el.removeClass('has-scroll-scrolling');
+                    }, 150);
+                });
+
+                // ✅ Function to clone lines for repeat effect
+                function repeatTiles() {
+                    const lines = $el[0].querySelectorAll('.tiles__line');
+                    lines.forEach(line => {
+                        // Agar already clone nahi hai to ek extra clone add karo
+                        if (!line.classList.contains('is-cloned')) {
+                            const clone = line.cloneNode(true);
+                            clone.classList.add('is-cloned');
+                            line.parentNode.appendChild(clone);
                         }
-                        imagesLoaded(document.querySelectorAll(selector), { background: true }, resolve);
                     });
                 }
-  
-                // --- Main ---
-                Promise.all([
-                    preloadImages('.tiles__line-img')
-                ]).then(() => {
-                    // Remove loader class
-                    document.getElementById('tile_scroll').classList.remove('loading');
-  
-                    // Initialize Locomotive Scroll
-                    if (typeof LocomotiveScroll === "undefined") {
-                        console.error("❌ LocomotiveScroll not found! Make sure it's enqueued.");
-                        return;
-                    }
-  
-                    const scroll = new LocomotiveScroll({
-                        el: document.querySelector('[data-scroll-container]'),
-                        smooth: true
-                    });
-  
-                    // Refresh after preload
+
+                // ✅ Call repeat before imagesLoaded
+                repeatTiles();
+
+                // ✅ Update after init
+                scroll.update();
+
+                // ✅ Update after background images load
+                imagesLoaded($el[0].querySelectorAll('.tiles__line-img'), { background: true }, function () {
+                    console.log('Background images loaded!');
+                    repeatTiles();
                     scroll.update();
                 });
-  
+
+                // ✅ Update after full window load (fallback)
+                window.addEventListener('load', () => {
+                    repeatTiles();
+                    scroll.update();
+                });
             },
         });
   
-        // Attach handler to Elementor widget
         elementorFrontend.elementsHandler.attachHandler("wpmozo_ae_tile_scroll", WPMOZOTileScroll);
     });
-  })(jQuery);
-  
+})(jQuery);

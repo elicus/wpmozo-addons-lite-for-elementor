@@ -112,7 +112,7 @@ if ( ! class_exists( 'WPMOZO_AE_Tile_Scroll' ) ) {
 		public function get_script_depends() {
 			wp_register_script( 'wpmozo-ae-tile-scroll-script', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
-			return array( 'wpmozo-ae-tile-scroll-script', 'wpmozo-ae-imagesLoaded', 'wpmozo-ae-locomotiveScroll' );
+			return array( 'wpmozo-ae-imagesloaded', 'wpmozo-ae-locomotiveScroll', 'wpmozo-ae-tile-scroll-script' );
 		}
 
 		/**
@@ -139,48 +139,28 @@ if ( ! class_exists( 'WPMOZO_AE_Tile_Scroll' ) ) {
 		 */
 		protected function render() {
 			$settings       = $this->get_settings_for_display();
-			$page_id        = get_the_ID(); // Elementor Page/Post ID.
-			$widget_id      = $this->get_id(); // Widget instance ID (unique per widget).
 			$images_items   = is_array( $settings['images'] ) ? $settings['images'] : array();
 			$no_images_text = isset( $settings['no_images_text'] ) ? $settings['no_images_text'] : 'No Images Found!';
-			//$image_size     = ! empty( $settings['image_size_size'] ) ? esc_attr( $settings['image_size_size'] ) : 'full';
+		
+			
+			$repeat_count = 2;
 			?>
-			<div id="tile_scroll" class="demo-1 loading">
-				<div data-scroll-container class="mainclass">
+			<div id="tile_scroll" class="loading">
+				<div data-scroll-container>
 					<section class="tiles tiles--rotated" id="grid2">
 						<div class="tiles__wrap">
 						<?php if ( ! empty( $images_items ) ) : ?>
-							<div class="tiles__line" data-scroll data-scroll-speed="1" data-scroll-target="#grid2" data-scroll-direction="horizontal">
-								<div class="tiles__line-img"></div>
-								<div class="tiles__line-img"></div>
-								<div class="tiles__line-img"></div>
-								<?php foreach ( $images_items as $items ) : ?>
-								<div class="tiles__line-img" style="background-image:url(<?php echo esc_url( $items['url'] ); ?>)"></div>
-								<?php endforeach; ?>
-							</div>
-							<div class="tiles__line" data-scroll data-scroll-speed="-1" data-scroll-target="#grid2" data-scroll-direction="horizontal">
-								<div class="tiles__line-img"></div>
-								<?php foreach ( $images_items as $items ) : ?>
-								<div class="tiles__line-img" style="background-image:url(<?php echo esc_url( $items['url'] ); ?>)"></div>
-								<?php endforeach; ?>
-							</div>
-							<div class="tiles__line" data-scroll data-scroll-speed="1" data-scroll-target="#grid2" data-scroll-direction="horizontal">
-								<?php foreach ( $images_items as $items ) : ?>
-								<div class="tiles__line-img" style="background-image:url(<?php echo esc_url( $items['url'] ); ?>)"></div>
-								<?php endforeach; ?>
-							</div>
-							<div class="tiles__line" data-scroll data-scroll-speed="-1" data-scroll-target="#grid2" data-scroll-direction="horizontal">
-								<?php foreach ( $images_items as $items ) : ?>
-								<div class="tiles__line-img" style="background-image:url(<?php echo esc_url( $items['url'] ); ?>)"></div>
-								<?php endforeach; ?>
-							</div>
-							<div class="tiles__line" data-scroll data-scroll-speed="1" data-scroll-target="#grid2" data-scroll-direction="horizontal">
-								<?php foreach ( $images_items as $items ) : ?>
-								<div class="tiles__line-img" style="background-image:url(<?php echo esc_url( $items['url'] ); ?>)"></div>
-								<?php endforeach; ?>
-								<div class="tiles__line-img"></div>
-								<div class="tiles__line-img"></div>
-							</div>
+		
+							<?php foreach ( [10, -10] as $speed ) : ?>
+								<div class="tiles__line" data-scroll data-scroll-speed="<?php echo esc_attr( $speed ); ?>" data-scroll-target="#grid2" data-scroll-direction="horizontal">
+									<?php for ( $i = 0; $i < $repeat_count; $i++ ) : ?>
+										<?php foreach ( $images_items as $items ) : ?>
+											<div class="tiles__line-img" style="background-image:url(<?php echo esc_url( $items['url'] ); ?>)"></div>
+										<?php endforeach; ?>
+									<?php endfor; ?>
+								</div>
+							<?php endforeach; ?>
+		
 						<?php else : ?>
 							<div class="wpmozo_tile_scroll_no_item">
 								<h3><?php echo esc_html( $no_images_text ); ?></h3>
@@ -191,6 +171,6 @@ if ( ! class_exists( 'WPMOZO_AE_Tile_Scroll' ) ) {
 				</div>
 			</div>
 			<?php
-		}
+		}		
 	}
 }
