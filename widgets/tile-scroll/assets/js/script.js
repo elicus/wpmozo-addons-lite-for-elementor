@@ -42,13 +42,32 @@
                     }, 150);
                 });
 
-                // ✅ Function to clone lines for repeat effect
+                // ✅ Function to shuffle array
+                function shuffleArray(array) {
+                    for (let i = array.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [array[i], array[j]] = [array[j], array[i]];
+                    }
+                    return array;
+                }
+
+                // ✅ Function to clone lines with random shuffle
                 function repeatTiles() {
                     const lines = $el[0].querySelectorAll('.tiles__line');
                     lines.forEach(line => {
-                        // Agar already clone nahi hai to ek extra clone add karo
                         if (!line.classList.contains('is-cloned')) {
                             const clone = line.cloneNode(true);
+
+                            // get all images in clone
+                            const imgs = Array.from(clone.querySelectorAll('.tiles__line-img'));
+
+                            // shuffle
+                            const shuffled = shuffleArray(imgs);
+
+                            // clear and append shuffled
+                            clone.innerHTML = "";
+                            shuffled.forEach(img => clone.appendChild(img));
+
                             clone.classList.add('is-cloned');
                             line.parentNode.appendChild(clone);
                         }
