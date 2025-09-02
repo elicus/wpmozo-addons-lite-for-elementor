@@ -141,44 +141,48 @@ if ( ! class_exists( 'WPMOZO_AE_Tile_Scroll' ) ) {
 			$settings       = $this->get_settings_for_display();
 			$page_id        = get_the_ID(); // Elementor Page/Post ID.
 			$widget_id      = $this->get_id(); // Widget instance ID (unique per widget).
-			$images_items   = is_array( $settings['images'] ) ? $settings['images'] : array();
-			$no_images_text = isset( $settings['no_images_text'] ) ? $settings['no_images_text'] : 'No Images Found!';
-			//$image_size     = ! empty( $settings['image_size_size'] ) ? esc_attr( $settings['image_size_size'] ) : 'full';
+			$images_items   = $settings['images'];
+			$scroll_speed   = ! empty( $settings['scroll_speed'] ) ? intval( $settings['scroll_speed'] ) : 10;
+			//$images_items 	= ! empty( $settings['images'] ) && is_array( $settings['images'] ) ? $settings['images'] : [];
+			$no_images_text    = isset( $settings['no_images_text'] ) && ! empty( $settings['no_images_text'] ) ? $settings['no_images_text'] : 'No Images Found!';
+			
+			$repeat_count   = ! empty( $settings['repeat_count'] ) ? max( 3, intval( $settings['repeat_count'] ) ) : 5;
 			?>
+			<?php if ( ! empty( $images_items ) && is_array( $images_items ) ) : ?>
 			<div id="tile_scroll" class="loading">
 				<div data-scroll-container>
 					<section class="tiles tiles--rotated" id="grid2">
 						<div class="tiles__wrap">
-						<?php if ( ! empty( $images_items ) ) : ?>
-
-							<?php foreach ( [10, -10] as $speed ) : ?>
-								<?php 
-									$shuffled_images = $images_items;
-									shuffle( $shuffled_images ); // ✅ random order each line
-								?>
+							<?php 
+							// loop repeat count ke hisaab se chalega
+							for ( $i = 0; $i < $repeat_count; $i++ ) :
+								// even = 10, odd = -10
+								$speed = ( $i % 2 === 0 ) ? $scroll_speed : -$scroll_speed;
+							?>
 								<div class="tiles__line" 
 									data-scroll 
 									data-scroll-speed="<?php echo esc_attr( $speed ); ?>" 
 									data-scroll-target="#grid2" 
 									data-scroll-direction="horizontal">
-									<?php foreach ( $shuffled_images as $items ) : ?>
+		
+									<?php foreach ( $images_items as $item ) : ?>
 										<div class="tiles__line-img" 
-											style="background-image:url(<?php echo esc_url( $items['url'] ); ?>)">
+											style="background-image:url(<?php echo esc_url( $item['url'] ); ?>)">
 										</div>
 									<?php endforeach; ?>
+		
 								</div>
-							<?php endforeach; ?>
-
-						<?php else : ?>
-							<div class="wpmozo_tile_scroll_no_item">
-								<h3><?php echo esc_html( $no_images_text ); ?></h3>
-							</div>
-						<?php endif; ?>
+							<?php endfor; ?>
 						</div>
 					</section>
 				</div>
 			</div>
+			<?php else : ?>
+				<div class="wpmozo_tile_scroll_no_item">
+					<h3><?php echo esc_html( $no_images_text ); ?></h3>
+				</div>
+			<?php endif; ?>
 			<?php
-		}
+		}		
 	}
 }
