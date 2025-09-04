@@ -141,6 +141,8 @@ if ( ! class_exists( 'WPMOZO_AE_Tile_Scroll' ) ) {
 			$settings       = $this->get_settings_for_display();
 			$page_id        = get_the_ID(); // Elementor Page/Post ID.
 			$widget_id      = $this->get_id(); // Widget instance ID (unique per widget).
+			$layout         = esc_attr( $settings['layout'] );
+			$layout         = wpmozo_ae_validate_layout( $layout, array( 'layout1', 'layout2' ) );
 			$images_items   = $settings['images'];
 			$scroll_speed   = ! empty( $settings['scroll_speed'] ) ? intval( $settings['scroll_speed'] ) : 10;
 			//$images_items 	= ! empty( $settings['images'] ) && is_array( $settings['images'] ) ? $settings['images'] : [];
@@ -149,34 +151,14 @@ if ( ! class_exists( 'WPMOZO_AE_Tile_Scroll' ) ) {
 			$repeat_count   = ! empty( $settings['repeat_count'] ) ? max( 3, intval( $settings['repeat_count'] ) ) : 5;
 			?>
 			<?php if ( ! empty( $images_items ) && is_array( $images_items ) ) : ?>
-			<div id="tile_scroll" class="loading">
-				<div data-scroll-container>
-					<section class="tiles tiles--rotated" id="grid2">
-						<div class="tiles__wrap">
-							<?php 
-							// loop repeat count ke hisaab se chalega
-							for ( $i = 0; $i < $repeat_count; $i++ ) :
-								// even = 10, odd = -10
-								$speed = ( $i % 2 === 0 ) ? $scroll_speed : -$scroll_speed;
-							?>
-								<div class="tiles__line" 
-									data-scroll 
-									data-scroll-speed="<?php echo esc_attr( $speed ); ?>" 
-									data-scroll-target="#grid2" 
-									data-scroll-direction="horizontal">
-		
-									<?php foreach ( $images_items as $item ) : ?>
-										<div class="tiles__line-img" 
-											style="background-image:url(<?php echo esc_url( $item['url'] ); ?>)">
-										</div>
-									<?php endforeach; ?>
-		
-								</div>
-							<?php endfor; ?>
-						</div>
-					</section>
-				</div>
-			</div>
+				<?php
+					if ( in_array( $layout, array( 'layout1', 'layout2' ), true ) ) {
+						$layout_path = plugin_dir_path( __DIR__ ) . "tile-scroll/assets/layouts/$layout.php";
+						if ( file_exists( $layout_path ) ) {
+							include $layout_path;
+						}
+					}
+				?>
 			<?php else : ?>
 				<div class="wpmozo_tile_scroll_no_item">
 					<h3><?php echo esc_html( $no_images_text ); ?></h3>

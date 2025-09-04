@@ -118,6 +118,7 @@
 	background-position: 50% 50%;
 }
 
+
 .tiles--perspective .tiles__line-img {
 	backface-visibility: hidden;
 	outline: 1px solid transparent;

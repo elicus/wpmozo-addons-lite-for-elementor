@@ -58,6 +58,9 @@ $this->add_control(
 		'step'    => 1,
 		'default' => 10,
 		'render_type'    => 'template',
+		'condition'   => array(
+			'layout' => 'layout1',
+		),
 	)
 );
 $this->add_control(
@@ -75,6 +78,18 @@ $this->start_controls_section(
 	array(
 		'label' => esc_html__( 'Display', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
+	)
+);
+$this->add_control(
+	'layout',
+	array(
+		'label'   => esc_html__( 'Layout', 'wpmozo-addons-lite-for-elementor' ),
+		'type'    => Controls_Manager::SELECT,
+		'options' => array(
+			'layout1' => esc_html__( 'Layout 1', 'wpmozo-addons-lite-for-elementor' ),
+			'layout2' => esc_html__( 'Layout 2', 'wpmozo-addons-lite-for-elementor' ),
+		),
+		'default' => 'layout1',
 	)
 );
 $this->add_responsive_control(
@@ -107,15 +122,20 @@ $this->add_responsive_control(
 		'selectors'      => array(
 			'{{WRAPPER}} .tiles__wrap .tiles__line .tiles__line-img' => 'margin: {{SIZE}}{{UNIT}};',
 		),
+		'condition'   => array(
+			'layout' => 'layout1',
+		),
 	)
 );
 $this->end_controls_section();
-// Styling Tab.
 $this->start_controls_section(
 	'container_settings',
 	array(
 		'label' => esc_html__( 'Container', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
+		'condition'   => array(
+			'layout' => 'layout1',
+		),
 	)
 );
 $this->add_responsive_control(
@@ -125,22 +145,22 @@ $this->add_responsive_control(
 		'type'           => Controls_Manager::SLIDER,
 		'range'          => array(
 			'px' => array(
-				'min'  => 700,
+				'min'  => 300,
 				'max'  => 1400,
 				'step' => 1,
 			),
 		),
 		'devices'        => array( 'desktop', 'tablet', 'mobile' ),
 		'default'        => array(
-			'size' => 300,
+			'size' => 700,
 			'unit' => 'px',
 		),
 		'tablet_default' => array(
-			'size' => 300,
+			'size' => 700,
 			'unit' => 'px',
 		),
 		'mobile_default' => array(
-			'size' => 300,
+			'size' => 500,
 			'unit' => 'px',
 		),
 		'size_units'     => array( 'px' ),
@@ -151,6 +171,108 @@ $this->add_responsive_control(
 	)
 );
 $this->end_controls_section();
+$this->start_controls_section(
+	'position_settings',
+	array(
+		'label' => esc_html__( 'Position', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'   => Controls_Manager::TAB_CONTENT,
+		'condition'   => array(
+			'layout' => 'layout1',
+		),
+	)
+);
+$this->add_responsive_control(
+	'horizontal_position',
+	array(
+		'label'          => esc_html__( 'Horizontal', 'wpmozo-addons-lite-for-elementor' ),
+		'type'           => Controls_Manager::SLIDER,
+		'range'          => array(
+			'%' => array(
+				'min'  => 10,
+				'max'  => 100,
+				'step' => 1,
+			),
+		),
+		'devices'        => array( 'desktop', 'tablet', 'mobile' ),
+		'default'        => array(
+			'size' => 50,
+			'unit' => '%',
+		),
+		'tablet_default' => array(
+			'size' => 50,
+			'unit' => '%',
+		),
+		'mobile_default' => array(
+			'size' => 50,
+			'unit' => '%',
+		),
+		'size_units'     => array( '%' ),
+		'render_type'    => 'template',
+	)
+);
+$this->add_responsive_control(
+	'vertical_position',
+	array(
+		'label'          => esc_html__( 'Vertical', 'wpmozo-addons-lite-for-elementor' ),
+		'type'           => Controls_Manager::SLIDER,
+		'range'          => array(
+			'%' => array(
+				'min'  => 10,
+				'max'  => 100,
+				'step' => 1,
+			),
+		),
+		'devices'        => array( 'desktop', 'tablet', 'mobile' ),
+		'default'        => array(
+			'size' => 50,
+			'unit' => '%',
+		),
+		'tablet_default' => array(
+			'size' => 50,
+			'unit' => '%',
+		),
+		'mobile_default' => array(
+			'size' => 50,
+			'unit' => '%',
+		),
+		'size_units'     => array( '%' ),
+		'render_type'    => 'template',
+	)
+);
+$this->add_responsive_control(
+	'rotation',
+	array(
+		'label'          => esc_html__( 'Rotation', 'wpmozo-addons-lite-for-elementor' ),
+		'type'           => Controls_Manager::SLIDER,
+		'range'          => array(
+			'deg' => array(
+				'min'  => 0,
+				'max'  => 360,
+				'step' => 1,
+			),
+		),
+		'devices'        => array( 'desktop', 'tablet', 'mobile' ),
+		'default'        => array(
+			'size' => 22,
+			'unit' => 'deg',
+		),
+		'tablet_default' => array(
+			'size' => 22,
+			'unit' => 'deg',
+		),
+		'mobile_default' => array(
+			'size' => 22,
+			'unit' => 'deg',
+		),
+		'size_units'     => array( 'deg' ),
+		'render_type'    => 'template',
+		'selectors'      => array(
+			'{{WRAPPER}} #tile_scroll .tiles.tiles--rotated .tiles__wrap' => 'transform: translate3d(-{{horizontal_position.SIZE}}{{horizontal_position.UNIT}}, -{{vertical_position.SIZE}}{{vertical_position.UNIT}}, 0) rotate({{SIZE}}{{UNIT}});',
+		),
+	)
+);
+$this->end_controls_section();
+// Styling Tab.
 $this->start_controls_section(
 	'image_section',
 	array(
