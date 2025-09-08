@@ -4,8 +4,9 @@
 	position: relative;
 	overflow: hidden;
 }
-
-
+.tiles--fixed .tiles__line{
+	justify-content: center;
+}
 .tiles--columns-rotated {
 	--tiles-height: 180vmax;
 }
@@ -213,6 +214,7 @@
 /*! locomotive-scroll v3.5.4 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
 #tile_scroll.has-scroll-smooth {
 	overflow: hidden !important; 
+	outline:2px solid blue;
 }
   
 #tile_scroll.has-scroll-dragging {

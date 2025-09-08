@@ -7,6 +7,13 @@
             },
             change: function () {
                 document.getElementById('tile_scroll').classList.remove('loading');
+                // Initial page state classes
+                document.documentElement.classList.add("is-loaded");
+                document.documentElement.classList.remove("is-loading");
+
+                setTimeout(function () {
+                    document.documentElement.classList.add("is-ready");
+                }, 300);
 
                 var $el = this.$element.find('#tile_scroll');
                 if (!$el.length) return;
@@ -14,6 +21,7 @@
                 const scroll = new LocomotiveScroll({
                     el: document.querySelector('body'),
                     smooth: true,
+                    getDirection: true
                 });
 
                 $el.addClass('has-scroll-init has-scroll-smooth');

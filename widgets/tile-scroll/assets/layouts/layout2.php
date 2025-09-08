@@ -30,8 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 								data-scroll 
 								data-scroll-speed="<?php echo esc_attr( $speed ); ?>" 
 								data-scroll-direction="horizontal"
-								style="background-image:url(<?php echo esc_url( $item['url'] ); ?>)">
-							</div>
+								style="background-image:url(<?php echo esc_url( $item['url'] ); ?>)"></div>
 						<?php 
 							$index++;
 							endforeach; 
