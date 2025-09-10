@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div id="tile_scroll">
-	<section class="tiles tiles--fixed">
+	<section class="tiles tiles--fixed" id="grid2">
 		<div class="tiles__wrap">
 			<?php 
 				for ( $i = 0; $i < $repeat_count; $i++ ) : ?>
@@ -29,6 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<div class="tiles__line-img" 
 								data-scroll 
 								data-scroll-speed="<?php echo esc_attr( $speed ); ?>" 
+								data-scroll-target="#grid2"
 								data-scroll-direction="horizontal"
 								style="background-image:url(<?php echo esc_url( $item['url'] ); ?>)"></div>
 						<?php 

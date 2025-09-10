@@ -142,7 +142,7 @@ if ( ! class_exists( 'WPMOZO_AE_Tile_Scroll' ) ) {
 			$page_id        = get_the_ID(); // Elementor Page/Post ID.
 			$widget_id      = $this->get_id(); // Widget instance ID (unique per widget).
 			$layout         = esc_attr( $settings['layout'] );
-			$layout         = wpmozo_ae_validate_layout( $layout, array( 'layout1', 'layout2' ) );
+			$layout         = wpmozo_ae_validate_layout( $layout, array( 'layout1', 'layout2', 'layout3', 'layout4' ) );
 			$images_items   = $settings['images'];
 			$scroll_speed   = ! empty( $settings['scroll_speed'] ) ? intval( $settings['scroll_speed'] ) : 10;
 			//$images_items 	= ! empty( $settings['images'] ) && is_array( $settings['images'] ) ? $settings['images'] : [];
@@ -152,7 +152,7 @@ if ( ! class_exists( 'WPMOZO_AE_Tile_Scroll' ) ) {
 			?>
 			<?php if ( ! empty( $images_items ) && is_array( $images_items ) ) : ?>
 				<?php
-					if ( in_array( $layout, array( 'layout1', 'layout2' ), true ) ) {
+					if ( in_array( $layout, array( 'layout1', 'layout2', 'layout3', 'layout4' ), true ) ) {
 						$layout_path = plugin_dir_path( __DIR__ ) . "tile-scroll/assets/layouts/$layout.php";
 						if ( file_exists( $layout_path ) ) {
 							include $layout_path;

@@ -10,17 +10,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 	<div id="tile_scroll">
-		<section class="tiles tiles--rotated" id="grid">
+		<section class="tiles" id="grid4">
 			<div class="tiles__wrap">
 				<?php 
 				for ( $i = 0; $i < $repeat_count; $i++ ) :
 					// even = 10, odd = -10
 					$speed = ( $i % 2 === 0 ) ? $scroll_speed : -$scroll_speed;
 				?>
-					<div class="tiles__line" data-scroll-section 
+					<div class="tiles__line" data-scroll-section
 						data-scroll 
 						data-scroll-speed="<?php echo esc_attr( $speed ); ?>" 
-						data-scroll-target="#grid" 
+						data-scroll-target="#grid4" 
 						data-scroll-direction="horizontal">
 
 						<?php foreach ( $images_items as $item ) : ?>

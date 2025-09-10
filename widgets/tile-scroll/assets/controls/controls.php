@@ -59,7 +59,7 @@ $this->add_control(
 		'default' => 10,
 		'render_type'    => 'template',
 		'condition'   => array(
-			'layout' => 'layout1',
+			'layout' => array( 'layout1', 'layout3' ),
 		),
 	)
 );
@@ -88,6 +88,8 @@ $this->add_control(
 		'options' => array(
 			'layout1' => esc_html__( 'Layout 1', 'wpmozo-addons-lite-for-elementor' ),
 			'layout2' => esc_html__( 'Layout 2', 'wpmozo-addons-lite-for-elementor' ),
+			'layout3' => esc_html__( 'Layout 3', 'wpmozo-addons-lite-for-elementor' ),
+			'layout4' => esc_html__( 'Layout 4', 'wpmozo-addons-lite-for-elementor' ),
 		),
 		'default' => 'layout1',
 	)
@@ -121,9 +123,6 @@ $this->add_responsive_control(
 		'render_type'    => 'template',
 		'selectors'      => array(
 			'{{WRAPPER}} .tiles__wrap .tiles__line .tiles__line-img' => 'margin: {{SIZE}}{{UNIT}};',
-		),
-		'condition'   => array(
-			'layout' => 'layout1',
 		),
 	)
 );

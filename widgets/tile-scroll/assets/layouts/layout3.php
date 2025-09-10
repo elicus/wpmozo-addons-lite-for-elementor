@@ -9,8 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 
-	<div id="tile_scroll">
-		<section class="tiles tiles--rotated" id="grid">
+	<div id="tile_scroll" class="o-scroll">
+		<section class="tiles tiles--columns" id="grid3">
 			<div class="tiles__wrap">
 				<?php 
 				for ( $i = 0; $i < $repeat_count; $i++ ) :
@@ -20,8 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<div class="tiles__line" data-scroll-section 
 						data-scroll 
 						data-scroll-speed="<?php echo esc_attr( $speed ); ?>" 
-						data-scroll-target="#grid" 
-						data-scroll-direction="horizontal">
+						data-scroll-target="#grid3" 
+						data-scroll-direction="vertical">
 
 						<?php foreach ( $images_items as $item ) : ?>
 							<div class="tiles__line-img" 
