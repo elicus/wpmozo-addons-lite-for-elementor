@@ -17,8 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 					// even = 10, odd = -10
 					$speed = ( $i % 2 === 0 ) ? $scroll_speed : -$scroll_speed;
 				?>
-					<div class="tiles__line" data-scroll-section 
-						data-scroll 
+					<div class="tiles__line" data-scroll-section
+						data-scroll
 						data-scroll-speed="<?php echo esc_attr( $speed ); ?>" 
 						data-scroll-target="#grid" 
 						data-scroll-direction="horizontal">

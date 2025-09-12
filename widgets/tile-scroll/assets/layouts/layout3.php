@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 
-	<div id="tile_scroll" class="o-scroll">
+	<div id="tile_scroll">
 		<section class="tiles tiles--columns" id="grid3">
 			<div class="tiles__wrap">
 				<?php 

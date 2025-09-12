@@ -21,7 +21,7 @@
                 const scroll = new LocomotiveScroll({
                     el: document.querySelector('body'),
                     smooth: true,
-                    getDirection: true
+                    getDirection: true,
                 });
 
                 $el.addClass('has-scroll-init has-scroll-smooth');
