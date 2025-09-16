@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 use Elementor\Widget_Base;
+use Elementor\Utils;
 
 if ( ! class_exists( 'WPMOZO_AE_Split_Image' ) ) {
 	class WPMOZO_AE_Split_Image extends Widget_Base {
@@ -117,7 +118,6 @@ if ( ! class_exists( 'WPMOZO_AE_Split_Image' ) ) {
 			return array( 'wpmozo-ae-splitimage-script' );
 		}
 
-
 		/**
 		 * Register widget controls.
 		 *
@@ -147,12 +147,23 @@ if ( ! class_exists( 'WPMOZO_AE_Split_Image' ) ) {
 
 			$image_url = '';
 			$image_id  = '';
+
 			if ( ! empty( $settings['split_image']['id'] ) ) {
 				$image_id  = $settings['split_image']['id'];
 				$image_url = $settings['split_image']['url'];
-			}
+			} else {
+				// Fallback Elementor's placeholder image.
+				$image_url = Utils::get_placeholder_image_src();
+				$image_id  = attachment_url_to_postid( $image_url );
 
-			$aspect_ratio = $image_id ? wpmozo_get_image_aspect_ratio( $image_id ) : false;
+				// If the placeholder image doesn't return an ID, set a fixed fallback.
+				if ( ! $image_id ) {
+					$image_id = 0; // fallback.
+				}
+			}
+			// Use helper function if ID exists, otherwise fallback to a fixed aspect ratio.
+			$aspect_ratio = $image_id ? wpmozo_get_image_aspect_ratio( $image_id ) : '3/2';
+
 			?>
 		
 			<div class="wpmozo_split_image">
