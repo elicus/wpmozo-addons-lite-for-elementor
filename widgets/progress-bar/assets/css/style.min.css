@@ -41,7 +41,7 @@
 	from { background-position: 40px 0; }
 	to { background-position: 0 0; }
 }
-/* Bar verticle. */
+/* Bar vertical. */
 .elementor-widget-wpmozo_ae_progress_bar .dipl_progress_bar_wrapper[data-bar_direction="vertical"]{
 	width: 30px;
 	height: 500px;
