@@ -152,8 +152,15 @@ if ( ! class_exists( 'WPMOZO_AE_Progress_Bar' ) ) {
 		
 			<div class="et_pb_module dipl_progress_bar dipl_progress_bar_0">
 				<div class="et_pb_module_inner">
-					<div class="dipl_progress_bar_wrapper dipl_progress_bar_layout_<?php echo esc_attr($layout); ?> dipl_progress_bar_<?php echo esc_attr($show_striped); ?>" data-show_number="<?php echo esc_attr($progress_number); ?>" data-bar_direction="<?php echo esc_attr($bar_direction); ?>">
+					<div class="dipl_progress_bar_wrapper dipl_progress_bar_layout_<?php echo esc_attr($layout); ?> dipl_progress_bar_<?php echo esc_attr($show_striped); ?>" data-show_number="<?php echo esc_attr($progress_number); ?>" <?php if( 'bar' === $layout ){ ?>data-bar_direction="<?php echo esc_attr($bar_direction); ?>"<?php } ?>>
 						<div class="dipl_progress_bar_inner" style="width: 72.0842%; height: 100%;">
+							<?php if( 'circle' === $layout ){ ?>
+								<svg class="dipl_progress_bar_circle" viewBox="0 0 100 100">
+									<circle class="dipl_fill_progress_bar_bg" cx="50" cy="50" r="45"></circle>
+									<circle class="dipl_circle_bg" cx="50" cy="50" r="45"></circle>
+									<circle class="dipl_circle_fg" cx="50" cy="50" r="45"></circle>
+								</svg>
+							<?php } ?>
 							<span class="dipl_progress_bar_percent">72%</span>
 						</div>
 					</div>

@@ -120,12 +120,25 @@ $this->start_controls_tab(
 	)
 );
 $this->add_control( 
+	'circle_background_color',
+	array( 
+		'label'     => esc_html__( 'Circle Background Color', 'wpmozo-addons-lite-for-elementor' ),
+		'type'      => Controls_Manager::COLOR,
+		'selectors' => array( 
+			'{{WRAPPER}} .dipl_progress_bar_layout_circle svg circle.dipl_fill_progress_bar_bg' => 'fill: {{VALUE}} !important;',
+		),
+		'condition'    => array( 
+			'layout' => 'circle',
+		),
+	)
+);
+$this->add_control( 
 	'bar_empty_color',
 	array( 
 		'label'     => esc_html__( 'Bar Empty Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array( 
-			'{{WRAPPER}} .dipl_progress_bar_wrapper' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .dipl_progress_bar_layout_circle .dipl_progress_bar_inner .dipl_progress_bar_circle circle.dipl_circle_bg' => 'stroke: {{VALUE}};',
 		),
 	)
 );
@@ -135,7 +148,8 @@ $this->add_control(
 		'label'     => esc_html__( 'Bar Filled Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array( 
-			'{{WRAPPER}} .dipl_progress_bar_layout_bar .dipl_progress_bar_inner' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .dipl_progress_bar_layout_bar .dipl_progress_bar_inner' => 'background-color: {{VALUE}};', 
+			'{{WRAPPER}} .dipl_progress_bar_inner svg .dipl_circle_fg' => 'stroke: {{VALUE}};',
 		),
 	)
 );
@@ -171,12 +185,25 @@ $this->start_controls_tab(
 	)
 );
 $this->add_control( 
+	'circle_background_color_hover',
+	array( 
+		'label'     => esc_html__( 'Circle Background Color', 'wpmozo-addons-lite-for-elementor' ),
+		'type'      => Controls_Manager::COLOR,
+		'selectors' => array( 
+			'{{WRAPPER}} .dipl_progress_bar_inner .dipl_progress_bar_circle .dipl_fill_progress_bar_bg:hover, {{WRAPPER}} .dipl_progress_bar_layout_circle .dipl_progress_bar_percent:hover + {{WRAPPER}} .dipl_progress_bar_layout_circle svg circle.dipl_fill_progress_bar_bg' => 'fill: {{VALUE}} !important; background-color: {{VALUE}} !important;',
+		),
+		'condition'    => array( 
+			'layout' => 'circle',
+		),
+	)
+);
+$this->add_control( 
 	'bar_empty_color_hover',
 	array( 
 		'label'     => esc_html__( 'Bar Empty Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array( 
-			'{{WRAPPER}} .dipl_progress_bar_wrapper:hover' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .dipl_progress_bar_layout_circle .dipl_progress_bar_inner .dipl_progress_bar_circle circle.dipl_circle_bg:hover' => 'stroke: {{VALUE}};',
 		),
 	)
 );
@@ -185,8 +212,9 @@ $this->add_control(
 	array( 
 		'label'     => esc_html__( 'Bar Filled Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
-		'selectors' => array( 
-			'{{WRAPPER}} .dipl_progress_bar_layout_bar .dipl_progress_bar_inner:hover' => 'background-color: {{VALUE}};',
+		'selectors' => array(  
+			'{{WRAPPER}} .dipl_progress_bar_layout_bar .dipl_progress_bar_inner:hover' => 'background-color: {{VALUE}};', 
+			'{{WRAPPER}} .dipl_progress_bar_inner svg .dipl_circle_fg:hover' => 'stroke: {{VALUE}};',
 		),
 	)
 );
