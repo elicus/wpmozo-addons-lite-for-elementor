@@ -141,28 +141,36 @@ if ( ! class_exists( 'WPMOZO_AE_Progress_Bar' ) ) {
 		protected function render() {
 			$settings = $this->get_settings_for_display();
 
-			//$rows            = isset( $settings['image_row']['size'] ) ? $settings['image_row']['size'] : 3;
-			$layout            = isset( $settings['layout'] ) ? $settings['layout'] : 'bar';
-			$progress_number   = ( 'yes' === $settings['show_progress_number'] ) ? 'on' : 'off';
-			$show_striped      = ( 'yes' === $settings['show_striped'] ) ? 'striped' : 'no_striped';
-			$bar_direction     = isset( $settings['bar_direction'] ) ? $settings['bar_direction'] : 'horizontal';
-			$no_images_text    = isset( $settings['no_images_text'] ) && ! empty( $settings['no_images_text'] ) ? $settings['no_images_text'] : 'No Images Found!';
+			$layout          = isset( $settings['layout'] ) ? $settings['layout'] : 'bar';
+			$progress_number = ( 'yes' === $settings['show_progress_number'] ) ? 'on' : 'off';
+			$show_striped    = ( 'yes' === $settings['show_striped'] ) ? 'striped' : 'no_striped';
+			$bar_direction   = isset( $settings['bar_direction'] ) ? $settings['bar_direction'] : 'horizontal';
 
 			?>
 		
-			<div class="et_pb_module dipl_progress_bar dipl_progress_bar_0">
-				<div class="et_pb_module_inner">
-					<div class="dipl_progress_bar_wrapper dipl_progress_bar_layout_<?php echo esc_attr($layout); ?> dipl_progress_bar_<?php echo esc_attr($show_striped); ?>" data-show_number="<?php echo esc_attr($progress_number); ?>" <?php if( 'bar' === $layout ){ ?>data-bar_direction="<?php echo esc_attr($bar_direction); ?>"<?php } ?>>
-						<div class="dipl_progress_bar_inner" style="width: 72.0842%; height: 100%;">
-							<?php if( 'circle' === $layout ){ ?>
-								<svg class="dipl_progress_bar_circle" viewBox="0 0 100 100">
-									<circle class="dipl_fill_progress_bar_bg" cx="50" cy="50" r="45"></circle>
-									<circle class="dipl_circle_bg" cx="50" cy="50" r="45"></circle>
-									<circle class="dipl_circle_fg" cx="50" cy="50" r="45"></circle>
-								</svg>
-							<?php } ?>
-							<span class="dipl_progress_bar_percent">72%</span>
-						</div>
+			<div class="wpmozo_progress_bar">
+				<div class="wpmozo_progress_bar_wrapper wpmozo_progress_bar_layout_<?php echo esc_attr( $layout ); ?> wpmozo_progress_bar_<?php echo esc_attr( $show_striped ); ?>" data-show_number="<?php echo esc_attr( $progress_number ); ?>" 
+				<?php
+				if ( 'bar' === $layout ) {
+					?>
+					data-bar_direction="<?php echo esc_attr( $bar_direction ); ?>"<?php } ?>>
+					<div class="wpmozo_progress_bar_inner">
+						<?php if ( 'bar' === $layout ) { ?>
+							<span class="wpmozo_progress_bar_percent"></span>
+						<?php } elseif ( 'circle' === $layout ) { ?>
+							<svg class="wpmozo_progress_bar_circle" viewBox="0 0 100 100">
+								<circle class="wpmozo_fill_progress_bar_bg" cx="50" cy="50" r="45"></circle>
+								<circle class="wpmozo_circle_bg" cx="50" cy="50" r="45"></circle>
+								<circle class="wpmozo_circle_fg" cx="50" cy="50" r="45"></circle>
+							</svg>
+							<span class="wpmozo_progress_bar_percent"></span>
+						<?php } elseif ( 'half_circle' === $layout ) { ?>
+							<svg class="wpmozo_half_circle" viewBox="0 0 200 100">
+								<path class="wpmozo_circle_bg" d="M 10 100 A 90 90 0 0 1 190 100"></path>
+								<path class="wpmozo_circle_fg" d="M 10 100 A 90 90 0 0 1 190 100"></path>
+							</svg>
+							<span class="wpmozo_progress_bar_percent"></span>
+						<?php } ?>	
 					</div>
 				</div>
 			</div>
