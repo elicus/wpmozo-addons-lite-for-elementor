@@ -35,9 +35,9 @@
 .elementor-widget-wpmozo_ae_progress_bar .wpmozo_progress_bar_striped .wpmozo_progress_bar_inner{
 	background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 	background-size: 40px 40px;
-	animation: dipl-stripe-slide 1s linear infinite;
+	animation: wpmozo-stripe-slide 1s linear infinite;
 }
-@keyframes dipl-stripe-slide {
+@keyframes wpmozo-stripe-slide {
 	from { background-position: 40px 0; }
 	to { background-position: 0 0; }
 }

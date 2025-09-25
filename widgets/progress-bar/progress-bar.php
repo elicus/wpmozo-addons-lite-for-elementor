@@ -113,7 +113,7 @@ if ( ! class_exists( 'WPMOZO_AE_Progress_Bar' ) ) {
 		 * @return array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-			wp_register_script( 'wpmozo-ae-progress-bar-script', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
+			wp_register_script( 'wpmozo-ae-progress-bar-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
 			return array( 'wpmozo-ae-progress-bar-script' );
 		}
@@ -156,20 +156,26 @@ if ( ! class_exists( 'WPMOZO_AE_Progress_Bar' ) ) {
 					data-bar_direction="<?php echo esc_attr( $bar_direction ); ?>"<?php } ?>>
 					<div class="wpmozo_progress_bar_inner">
 						<?php if ( 'bar' === $layout ) { ?>
-							<span class="wpmozo_progress_bar_percent"></span>
+							<?php if ( 'yes' === $settings['show_progress_number'] ) { ?>
+								<span class="wpmozo_progress_bar_percent"></span>
+							<?php } ?>
 						<?php } elseif ( 'circle' === $layout ) { ?>
 							<svg class="wpmozo_progress_bar_circle" viewBox="0 0 100 100">
 								<circle class="wpmozo_fill_progress_bar_bg" cx="50" cy="50" r="45"></circle>
 								<circle class="wpmozo_circle_bg" cx="50" cy="50" r="45"></circle>
 								<circle class="wpmozo_circle_fg" cx="50" cy="50" r="45"></circle>
 							</svg>
-							<span class="wpmozo_progress_bar_percent"></span>
+							<?php if ( 'yes' === $settings['show_progress_number'] ) { ?>
+								<span class="wpmozo_progress_bar_percent"></span>
+							<?php } ?>
 						<?php } elseif ( 'half_circle' === $layout ) { ?>
 							<svg class="wpmozo_half_circle" viewBox="0 0 200 100">
 								<path class="wpmozo_circle_bg" d="M 10 100 A 90 90 0 0 1 190 100"></path>
 								<path class="wpmozo_circle_fg" d="M 10 100 A 90 90 0 0 1 190 100"></path>
 							</svg>
-							<span class="wpmozo_progress_bar_percent"></span>
+							<?php if ( 'yes' === $settings['show_progress_number'] ) { ?>
+								<span class="wpmozo_progress_bar_percent"></span>
+							<?php } ?>
 						<?php } ?>	
 					</div>
 				</div>
