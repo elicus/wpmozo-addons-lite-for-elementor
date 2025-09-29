@@ -876,10 +876,7 @@ use Elementor\Group_Control_Box_Shadow;
 					'selectors'  => array(
 						'{{WRAPPER}} .wpmozo_scroll_stack_cards .wpmozo_scroll_stack_cards_wrapper.layout-vertical .wpmozo_scroll_stack_cards_image_wrapper' => 'flex: 0 0 {{SIZE}}{{UNIT}};',
 						'{{WRAPPER}} .wpmozo_scroll_stack_cards .wpmozo_scroll_stack_cards_wrapper.layout-horizontal .wpmozo_scroll_stack_cards_image_wrapper' => 'width: {{SIZE}}{{UNIT}};',
-					)/*,
-					'condition'  => array(
-						'layout' => 'vertical',
-					),*/
+					)
 				)
 			);
 			$this->start_controls_tabs( 'image_styling_tabs' );

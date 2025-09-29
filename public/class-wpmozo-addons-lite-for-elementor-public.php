@@ -17,6 +17,26 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		use HelperTraits\Wpmozo_Ae_Helper_Functions;
 
 		/**
+		 * Initialize required files and funcitons.
+		 *
+		 * @since    1.0.0
+		 */
+		public function init() {
+
+			$this->include_files();
+		}
+
+		/**
+		 * Include file with helper funcitons.
+		 *
+		 * @since    1.0.0
+		 */
+		public function include_files() {
+			require_once plugin_dir_path( __DIR__ ) . 'includes/wpmozo-helper-functions.php';
+
+		}
+
+		/**
 		 * Register the editor styles
 		 *
 		 * @since 1.0.0
@@ -177,7 +197,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 	        }
 	        $offset_number      = absint( $offset_number );
 	        $page               = absint( $page );
-	        $offset_number      = ( $testimonial_number * ( $page - 1 ) ) + $offset_number;
+	        $offset_number      = ( intval($testimonial_number) * ( $page - 1 ) ) + $offset_number;
 
 	        $args = array(
 	            'post_type'      => 'wpmozoae-testimonial',
