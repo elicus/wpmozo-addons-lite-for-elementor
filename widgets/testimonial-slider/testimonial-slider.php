@@ -157,7 +157,7 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 			$author_image_size                  = $settings['author_image_size'];
 			$control_dot_style                  = $settings['control_dot_style'];
 			$testimonial_layout                 = esc_attr( $settings[ 'testimonial_layout' ] );
-			$testimonial_layout                 = wpmozo_ae_validate_layout( $testimonial_layout, array( 'layout1', 'layout2' ) );
+			$testimonial_layout                 = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_layout( $testimonial_layout, array( 'layout1', 'layout2' ) );
 			$testimonial_number                 = $settings['testimonial_number'];
 			$include_categories                 = isset( $settings['include_categories'] ) && '' !== $settings['include_categories'] ? implode(',', $settings['include_categories'] ) : '';
 			$testimonial_number                 = ( 0 === $testimonial_number ) ? -1 : (int) $testimonial_number;

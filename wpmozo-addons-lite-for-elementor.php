@@ -2,8 +2,8 @@
 /**
  * Plugin Name: WPMozo Addons Lite for Elementor
  * Plugin URI: https://wpmozo.com
- * Description: WPMozo Addons Lite for Elementor is a premium multipurpose plugin that comes with multiple exceptional widgets. Using these unique and powerful widgets, you'll be able to create different web page elements that would increase your site's functionality as well as appearance.
- * Version: 1.6.0
+ * Description: WPMozo Addons Lite for Elementor is a free multipurpose plugin that comes with a set of essential Elementor widgets. These powerful and easy-to-use widgets help you build engaging web pages and improve your site’s overall design and functionality.
+ * Version: 1.8.0
  * Author: Elicus
  * Author URI: https://elicus.com/
  * License: GPL-2.0+
@@ -13,8 +13,8 @@
  * Requires at least: 5.3
  * Requires PHP: 5.6
  * Tested up to: 6.8
- * Elementor tested up to: 3.30.2
- * Elementor Pro tested up to: 3.30.0
+ * Elementor tested up to: 3.33.2
+ * Elementor Pro tested up to: 3.32.1
  *
  * WPMozo Addons Lite for Elementor - A plugin for WordPress and Elementor.
  * Copyright © 2025 Elicus Technologies Private Limited
@@ -130,8 +130,8 @@ function wpmozo_lite_check_dependencies() {
 	}
 }
 $plugin_file = 'elementor/elementor.php';
-if ( file_exists( WP_PLUGIN_DIR . '/' . $plugin_file ) && is_plugin_active( $plugin_file ) ) {
-	wpmozo_lite_handle_plugin_activation();
+if ( file_exists(WP_PLUGIN_DIR . '/' . $plugin_file) && is_plugin_active($plugin_file) ) {
+    add_action( 'init', 'wpmozo_lite_handle_plugin_activation' ) ;
 }
 
 /**
@@ -151,7 +151,7 @@ function wpmozo_addons_lite_for_elementor() {
  */
 function wpmozo_lite_handle_plugin_activation() {
     define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_SLUG', 'wpmozo-addons-lite-for-elementor' );
-    define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION', '1.6.0' );
+    define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION', '1.8.0' );
     define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_URL', plugin_dir_url( __FILE__ ) );
     define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_PATH', plugin_dir_path( __FILE__ ) );
     define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME', plugin_basename( __FILE__ ) );

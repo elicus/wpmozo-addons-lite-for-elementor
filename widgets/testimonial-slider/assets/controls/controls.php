@@ -76,7 +76,7 @@ $this->start_controls_section( 'content_section',
             'type'          => Controls_Manager::SELECT2,
             'label_block'   => true,
             'multiple'      => true,
-            'options'       => wpmozo_ae_get_testimonial_categories(),            
+            'options'       => wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_get_testimonial_categories(),            
         )
     );
     $this->add_control( 

@@ -18,91 +18,6 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Box_Shadow;
-
-// Content.
-$this->start_controls_section(
-	'dropdown_items_section',
-	array(
-		'label' => esc_html__( 'Dropdown Items', 'wpmozo-addons-lite-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_CONTENT,
-	)
-);
-$repeater = new Repeater();
-
-	$repeater->add_control(
-		'dropdown_item_text',
-		array(
-			'label'       => esc_html__( 'Item Text', 'wpmozo-addons-lite-for-elementor' ),
-			'type'        => Controls_Manager::TEXT,
-			'default'     => esc_html__( 'Item Text', 'wpmozo-addons-lite-for-elementor' ),
-			'label_block' => true,
-		)
-	);
-	$repeater->add_control(
-		'dropdown_item_url',
-		array(
-			'label'       => esc_html__( 'Item Url', 'wpmozo-addons-lite-for-elementor' ),
-			'type'        => Controls_Manager::URL,
-			'options'     => array( 'url', 'is_external', 'nofollow' ),
-			'default'     => array(
-				'url'         => '',
-				'is_external' => true,
-				'nofollow'    => true,
-			),
-			'label_block' => true,
-		)
-	);
-	$repeater->add_control(
-		'dropdown_link_target',
-		array(
-			'label'       => esc_html__( 'Link Target', 'wpmozo-addons-lite-for-elementor' ),
-			'label_block' => false,
-			'type'        => Controls_Manager::SELECT,
-			'options'     => array(
-				'_blank' => esc_html__( 'In New Tab', 'wpmozo-addons-lite-for-elementor' ),
-				'_self'  => esc_html__( 'In The Same Window', 'wpmozo-addons-lite-for-elementor' ),
-			),
-			'default'     => '_self',
-		)
-	);
-	$repeater->add_control(
-		'background_heading',
-		array(
-			'label'     => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::HEADING,
-			'separator' => 'before',
-		)
-	);
-	$repeater->add_group_control(
-		Group_Control_Background::get_type(),
-		array(
-			'name'           => 'dropdown_item_background',
-			'types'          => array( 'classic', 'gradient' ),
-			'fields_options' => array(
-				'background' => array(
-					'label'   => esc_html__( 'Item Background', 'wpmozo-addons-lite-for-elementor' ),
-					'default' => 'classic',
-				),
-			),
-			'toggle'         => false,
-			'selector'       => '{{WRAPPER}} .wpmozo_dropdown_button .wpmozo_dropdown_button_item{{CURRENT_ITEM}} a',
-		)
-	);
-	$this->add_control(
-		'dropdown_items_content',
-		array(
-			'label'       => esc_html__( 'Dropdown Item', 'wpmozo-addons-lite-for-elementor' ),
-			'type'        => Controls_Manager::REPEATER,
-			'fields'      => $repeater->get_controls(),
-			'default'     => array(
-				array(
-					'dropdown_item_text' => esc_html__( 'Item Text', 'wpmozo-addons-lite-for-elementor' ),
-				),
-			),
-			'title_field' => '{{{ dropdown_item_text }}}',
-		)
-	);
-	$this->end_controls_section();
 	// Display.
 	$this->start_controls_section(
 		'display_section',
@@ -146,7 +61,109 @@ $repeater = new Repeater();
 			),
 		)
 	);
+	$this->add_responsive_control(
+		'trigger_speed',
+		array(
+			'label'     => esc_html__( 'Dropdown Speed', 'wpmozo-addons-lite-for-elementor' ),
+			'type'      => Controls_Manager::SLIDER,
+			'default'   => array( 'size' => 300 ),
+			'range'     => array(
+				'px' => array(
+					'min'  => 1,
+					'max'  => 10000,
+					'step' => 100,
+				)
+			),
+			'render_type' => 'template'
+		)
+	);
 	$this->end_controls_section();
+	// Content.
+	$this->start_controls_section(
+		'dropdown_items_section',
+		array(
+			'label' => esc_html__( 'Dropdown Items', 'wpmozo-addons-lite-for-elementor' ),
+			'tab'   => Controls_Manager::TAB_CONTENT,
+		)
+	);
+	$repeater = new Repeater();
+
+		$repeater->add_control(
+			'dropdown_item_text',
+			array(
+				'label'       => esc_html__( 'Item Text', 'wpmozo-addons-lite-for-elementor' ),
+				'type'        => Controls_Manager::TEXT,
+				'default'     => esc_html__( 'Item Text', 'wpmozo-addons-lite-for-elementor' ),
+				'label_block' => true,
+			)
+		);
+		$repeater->add_control(
+			'dropdown_item_url',
+			array(
+				'label'       => esc_html__( 'Item Url', 'wpmozo-addons-lite-for-elementor' ),
+				'type'        => Controls_Manager::URL,
+				'options'     => array( 'url', 'is_external', 'nofollow' ),
+				'default'     => array(
+					'url'         => '',
+					'is_external' => true,
+					'nofollow'    => true,
+				),
+				'label_block' => true,
+			)
+		);
+		$repeater->add_control(
+			'background_heading',
+			array(
+				'label'     => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			)
+		);
+		$repeater->add_group_control(
+			Group_Control_Background::get_type(),
+			array(
+				'name'           => 'dropdown_item_background',
+				'types'          => array( 'classic', 'gradient' ),
+				'fields_options' => array(
+					'background' => array(
+						'label'   => esc_html__( 'Item Background', 'wpmozo-addons-lite-for-elementor' ),
+						'default' => '',
+					),
+				),
+				'toggle'         => false,
+				'selector'       => '{{WRAPPER}} .wpmozo_dropdown_button .wpmozo_dropdown_button_item{{CURRENT_ITEM}}',
+			)
+		);
+		$repeater->add_group_control(
+			Group_Control_Background::get_type(),
+			array(
+				'name'           => 'dropdown_item_background_hover',
+				'types'          => array( 'classic', 'gradient' ),
+				'fields_options' => array(
+					'background' => array(
+						'label'   => esc_html__( 'Item Background (Hover)', 'wpmozo-addons-lite-for-elementor' ),
+						'default' => '',
+					),
+				),
+				'toggle'         => false,
+				'selector'       => '{{WRAPPER}} .wpmozo_dropdown_button .wpmozo_dropdown_button_item{{CURRENT_ITEM}}:hover',
+			)
+		);
+		$this->add_control(
+			'dropdown_items_content',
+			array(
+				'label'       => esc_html__( 'Dropdown Item', 'wpmozo-addons-lite-for-elementor' ),
+				'type'        => Controls_Manager::REPEATER,
+				'fields'      => $repeater->get_controls(),
+				'default'     => array(
+					array(
+						'dropdown_item_text' => esc_html__( 'Item Text', 'wpmozo-addons-lite-for-elementor' ),
+					),
+				),
+				'title_field' => '{{{ dropdown_item_text }}}',
+			)
+		);
+		$this->end_controls_section();
 	// General styling tab.
 	$this->start_controls_section(
 		'button_style_section',
@@ -258,9 +275,9 @@ $repeater = new Repeater();
 			'return_value' => 'yes',
 			'default'      => '',
 			'selectors'    => array(
-				'{{WRAPPER}} .icon_row-reverse .wpmozo_readmore_button_wrapper .wpmozo_readmore_button .wpmozo_button_icon, {{WRAPPER}} .icon_row-reverse .wpmozo_readmore_button_wrapper .wpmozo_readmore_button svg'              => 'opacity: 0; transition: all 300ms; margin-right: -{{button_text_size.SIZE}}{{button_text_size.UNIT}};',
+				'{{WRAPPER}} .icon_row-reverse .wpmozo_readmore_button_wrapper .wpmozo_readmore_button .wpmozo_button_icon, {{WRAPPER}} .icon_row-reverse .wpmozo_readmore_button_wrapper .wpmozo_readmore_button svg'              => 'opacity: 0; margin-right: -{{button_text_size.SIZE}}{{button_text_size.UNIT}};',
 				'{{WRAPPER}} .icon_row-reverse .wpmozo_readmore_button_wrapper .wpmozo_readmore_button:hover .wpmozo_button_icon, {{WRAPPER}} .icon_row-reverse .wpmozo_readmore_button_wrapper .wpmozo_readmore_button:hover svg'  => 'opacity: 1; margin-right:0;',
-				'{{WRAPPER}} .icon_row .wpmozo_readmore_button_wrapper .wpmozo_readmore_button .wpmozo_button_icon, {{WRAPPER}} .icon_row .wpmozo_readmore_button_wrapper .wpmozo_readmore_button svg'                              => 'opacity: 0; transition: all 300ms; margin-left: -{{button_text_size.SIZE}}{{button_text_size.UNIT}};',
+				'{{WRAPPER}} .icon_row .wpmozo_readmore_button_wrapper .wpmozo_readmore_button .wpmozo_button_icon, {{WRAPPER}} .icon_row .wpmozo_readmore_button_wrapper .wpmozo_readmore_button svg'                              => 'opacity: 0;  margin-left: -{{button_text_size.SIZE}}{{button_text_size.UNIT}};',
 				'{{WRAPPER}} .icon_row .wpmozo_readmore_button_wrapper .wpmozo_readmore_button:hover .wpmozo_button_icon, {{WRAPPER}} .icon_row .wpmozo_readmore_button_wrapper .wpmozo_readmore_button:hover svg'                  => 'opacity: 1; margin-left:0;',
 				'{{WRAPPER}} .wpmozo_readmore_button_wrapper .wpmozo_readmore_button .wpmozo_button_icon'                                                                                                                           => ' min-width:{{button_text_size.SIZE}}{{button_text_size.UNIT}};',
 				'{{WRAPPER}} .wpmozo_readmore_button_wrapper .wpmozo_readmore_button'                                                                                                                                               => 'gap:0px;',
@@ -335,7 +352,7 @@ $repeater = new Repeater();
 				'button_custom_style' => 'yes',
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_readmore_button' => 'color: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_readmore_button' => 'color: {{VALUE}};',
 			),
 		)
 	);
@@ -391,7 +408,7 @@ $repeater = new Repeater();
 				'button_custom_style' => 'yes',
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_readmore_button' => 'border-color: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_readmore_button' => 'border-color: {{VALUE}};',
 			),
 		)
 	);
@@ -442,8 +459,8 @@ $repeater = new Repeater();
 				'show_button_icon'    => 'yes',
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_readmore_button svg' => 'fill: {{VALUE}}; transition: 300ms;',
-				'{{WRAPPER}} .wpmozo_readmore_button i'   => 'color: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_readmore_button svg' => 'fill: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_readmore_button i'   => 'color: {{VALUE}};',
 			),
 		)
 	);
@@ -535,7 +552,7 @@ $repeater = new Repeater();
 				'button_custom_style' => 'yes',
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_readmore_button:hover'     => 'color: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_readmore_button:hover'     => 'color: {{VALUE}};',
 			),
 		)
 	);
@@ -587,7 +604,7 @@ $repeater = new Repeater();
 				'button_custom_style' => 'yes',
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_readmore_button:hover' => 'border-color: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_readmore_button:hover' => 'border-color: {{VALUE}};',
 			),
 		)
 	);
@@ -634,8 +651,8 @@ $repeater = new Repeater();
 				'show_button_icon'    => 'yes',
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_readmore_button:hover svg' => 'fill: {{VALUE}}; transition: 300ms;',
-				'{{WRAPPER}} .wpmozo_readmore_button:hover i'   => 'color: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_readmore_button:hover svg' => 'fill: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_readmore_button:hover i'   => 'color: {{VALUE}};',
 			),
 		)
 	);
@@ -714,17 +731,7 @@ $repeater = new Repeater();
 				'isLinked' => false,
 			),
 			'selectors'  => array(
-				'{{WRAPPER}} .wpmozo_dropdown_menu_items' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-			),
-		)
-	);
-	$this->add_control(
-		'dropdown_background',
-		array(
-			'label'     => esc_html__( 'Dropdown Background', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::COLOR,
-			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_dropdown_menu_items' => 'background-color: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_dropdown_menu_items .wpmozo_dropdown_button_item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			),
 		)
 	);
@@ -733,6 +740,16 @@ $repeater = new Repeater();
 		'dropdown_menu_normal_tab',
 		array(
 			'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
+		)
+	);
+	$this->add_control(
+		'dropdown_background',
+		array(
+			'label'     => esc_html__( 'Dropdown Background', 'wpmozo-addons-lite-for-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'selectors' => array(
+				'{{WRAPPER}} .wpmozo_dropdown_menu_items .wpmozo_dropdown_button_item' => 'background-color: {{VALUE}};',
+			),
 		)
 	);
 	$this->add_group_control(
@@ -756,7 +773,7 @@ $repeater = new Repeater();
 			'size_units'  => array( 'px', 'em', '%' ),
 			'separator'   => 'after',
 			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_dropdown_menu_items' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
+				'{{WRAPPER}} .wpmozo_dropdown_menu_items' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			),
 		)
 	);
@@ -765,6 +782,17 @@ $repeater = new Repeater();
 		'dropdown_menu_hover_tab',
 		array(
 			'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
+		)
+	);
+	$this->add_control(
+		'dropdown_background_hover',
+		array(
+			'label'     => esc_html__( 'Dropdown Background', 'wpmozo-addons-lite-for-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'selectors' => array(
+				'{{WRAPPER}} .wpmozo_dropdown_menu_items .wpmozo_dropdown_button_item:hover' => 'background-color: {{VALUE}};',
+			),
+			'separator' => 'none'
 		)
 	);
 	$this->add_group_control(
@@ -788,7 +816,7 @@ $repeater = new Repeater();
 			'size_units'  => array( 'px', 'em', '%' ),
 			'separator'   => 'after',
 			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_dropdown_menu_items:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
+				'{{WRAPPER}} .wpmozo_dropdown_menu_items:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			),
 		)
 	);
@@ -870,7 +898,7 @@ $repeater = new Repeater();
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_dropdown_button_item a' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+				'{{WRAPPER}} .wpmozo_dropdown_button_item a' => 'font-size: {{SIZE}}{{UNIT}};',
 			),
 		)
 	);
@@ -881,7 +909,7 @@ $repeater = new Repeater();
 			'type'      => Controls_Manager::COLOR,
 			'separator' => 'after',
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_dropdown_button_item a' => 'color: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_dropdown_button_item a' => 'color: {{VALUE}};',
 			),
 		)
 	);
@@ -914,7 +942,7 @@ $repeater = new Repeater();
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_dropdown_button_item a:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+				'{{WRAPPER}} .wpmozo_dropdown_button_item a:hover' => 'font-size: {{SIZE}}{{UNIT}};',
 			),
 		)
 	);

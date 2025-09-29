@@ -200,39 +200,3 @@ if ( ! function_exists( 'wpmozo_ae_validate_select2' ) ) {
 	    return false;
 	}
 }
-
-/**
- * Get CSS aspect ratio from an image URL.
- *
- * @since    1.4.0
- * @param string $image_url Image URL.
- * @return string|false Aspect ratio string (e.g., "16 / 9") or false on failure.
- */
-if ( ! function_exists( 'wpmozo_get_image_aspect_ratio' ) ) {
-	function wpmozo_get_image_aspect_ratio( $image_id ) {
-		$image = wp_get_attachment_image_src( $image_id, 'full' );
-		if ( ! $image ) {
-			return false;
-		}
-
-		$width  = (int) $image[1];
-		$height = (int) $image[2];
-
-		if ( $width === 0 || $height === 0 ) {
-			return false;
-		}
-
-		// Get GCD (Greatest Common Divisor).
-		$gcd = function( $a, $b ) use ( &$gcd ) {
-			return $b === 0 ? $a : $gcd( $b, $a % $b );
-		};
-
-		$divisor = $gcd( $width, $height );
-
-		$w = $width / $divisor;
-		$h = $height / $divisor;
-
-		// Example: "1920 / 1279"
-		return sprintf( '%d / %d', $w, $h );
-	}
-}

@@ -3,7 +3,7 @@
  * @author    Elicus <hello@elicus.com>
  * @link      https://www.elicus.com/
  * @copyright 2025 Elicus Technologies Private Limited
- * @version   1.0.2
+ * @version   1.0.0
  */
 
 // if this file is called directly, abort.
@@ -20,7 +20,7 @@ if ( ! class_exists( 'WPMOZO_AE_Dropdown_Button' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -34,7 +34,7 @@ if ( ! class_exists( 'WPMOZO_AE_Dropdown_Button' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -48,7 +48,7 @@ if ( ! class_exists( 'WPMOZO_AE_Dropdown_Button' ) ) {
 		 *
 		 * Retrieve widget keywords.
 		 *
-		 * @since 1.8.0
+		 * @since 1.7.0
 		 * @access public
 		 *
 		 * @return array Widget keywords.
@@ -62,7 +62,7 @@ if ( ! class_exists( 'WPMOZO_AE_Dropdown_Button' ) ) {
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -76,7 +76,7 @@ if ( ! class_exists( 'WPMOZO_AE_Dropdown_Button' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -90,7 +90,7 @@ if ( ! class_exists( 'WPMOZO_AE_Dropdown_Button' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return style handle.
@@ -105,7 +105,7 @@ if ( ! class_exists( 'WPMOZO_AE_Dropdown_Button' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since 1.3.0
+		 * @since 1.7.0
 		 * @access public
 		 *
 		 * @return array Element scripts dependencies.
@@ -121,13 +121,13 @@ if ( ! class_exists( 'WPMOZO_AE_Dropdown_Button' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access protected
 		 */
 		protected function register_controls() {
 
 			// Separate file containing all the code for registering controls.
-			include_once plugin_dir_path( __DIR__ ) . 'dropdown-button/assets/controls/controls.php';
+			require plugin_dir_path( __DIR__ ) . 'dropdown-button/assets/controls/controls.php';
 		}
 
 		/**
@@ -135,7 +135,7 @@ if ( ! class_exists( 'WPMOZO_AE_Dropdown_Button' ) ) {
 		 *
 		 * Written in PHP and used to generate the final HTML.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access protected
 		 */
 		protected function render() {
@@ -145,12 +145,17 @@ if ( ! class_exists( 'WPMOZO_AE_Dropdown_Button' ) ) {
 			$button_text            = isset( $settings['button_text'] ) ? $settings['button_text'] : '';
 			$trigger_action         = isset( $settings['trigger_action'] ) ? $settings['trigger_action'] : '';
 			$dropdown_direction     = isset( $settings['dropdown_direction'] ) ? $settings['dropdown_direction'] : '';
+			$trigger_speed     = isset( $settings['trigger_speed']['size'] ) ? $settings['trigger_speed']['size'] : 300;
 			$button_icon_placement  = isset( $settings['button_icon_placement'] ) ? $settings['button_icon_placement'] : '';
 
 			// Add dynamic attributes.
-			$this->add_render_attribute( 'dropdown_button_wrap', 'class', array( 'wpmozo_dropdown_button_wrap', 'icon_' . $button_icon_placement ) );
-			$this->add_render_attribute( 'dropdown_button_wrap', 'data-trigger-type', $trigger_action );
-			$this->add_render_attribute( 'dropdown_button_wrap', 'data-direction', $dropdown_direction );
+			$this->add_render_attribute( 'dropdown_button_wrap',
+				array( 
+					'class' => array( 'wpmozo_dropdown_button_wrap', 'icon_' . $button_icon_placement ),
+					'data-trigger-type' => $trigger_action,
+					'data-direction' => $dropdown_direction,
+					'data-trigger-speed' => $trigger_speed
+					 ) );
 			?>
 				<div class="wpmozo_dropdown_button">
 					<div <?php $this->print_render_attribute_string( 'dropdown_button_wrap' ); ?>>
@@ -174,9 +179,11 @@ if ( ! class_exists( 'WPMOZO_AE_Dropdown_Button' ) ) {
 										</div>
 								<?php } ?>
 							<div class="wpmozo_dropdown_menu_items">
-								<?php foreach ( $dropdown_items_content as $index => $item ) { ?>
+								<?php foreach ( $dropdown_items_content as $index => $item ) { 
+									$this->add_link_attributes('dropdown_item'.$index, $item['dropdown_item_url'])
+									?>
 									<div class="wpmozo_dropdown_button_item wpmozo_dropdown_button_item_<?php echo esc_attr( $index ); ?> elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-										<a href="<?php echo esc_url( $item['dropdown_item_url']['url'] ); ?>" target="<?php echo esc_attr( $item['dropdown_link_target'] ); ?>"><?php echo esc_attr( $item['dropdown_item_text'] ); ?></a>
+										<a <?php $this->print_render_attribute_string('dropdown_item'.$index) ?>><?php echo esc_attr( $item['dropdown_item_text'] ); ?></a>
 									</div>
 								<?php } ?>
 							</div>

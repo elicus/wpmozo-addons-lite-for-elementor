@@ -153,7 +153,7 @@ if ( ! class_exists( 'WPMOZO_AE_Masonry_Gallery' ) ) {
 			$show_caption                     = $settings[ 'caption_switcher' ];
 			$caption_area                     = $settings[ 'caption_show_select' ];
 			$lightbox_title_and_caption_style = $settings[ 'title_caption_style_select' ];
-			$title_heading_level              = wpmozo_ae_validate_heading_level( $settings[ 'title_heading_level' ] );
+			$title_heading_level              = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings[ 'title_heading_level' ] );
 			$column_count                     = $settings[ 'select_number_of_column' ];
 			$column_spacing                   = $settings [ 'column_spacing_slider' ][ 'size' ] . $settings [ 'column_spacing_slider' ][ 'unit' ];
 			$gallery_images                   = '';

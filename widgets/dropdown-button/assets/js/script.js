@@ -12,28 +12,29 @@
 						var $button     = $wrap.find( '.wpmozo_readmore_button' );
 						var $menu       = $wrap.find( '.wpmozo_dropdown_menu_items' );
 						var triggerType = $wrap.data( 'trigger-type' ) || 'click';
+						var triggerSpeed = $wrap.data( 'trigger-speed' ) || 300;
 				
 						// Hide the menu initially
 						$menu.hide();
 						if ( triggerType === 'hover' ) {
 							$button.on( 'mouseenter', function() {
-								$menu.stop( true, true ).slideDown( 200 );
+								$menu.stop( true, true ).slideDown( triggerSpeed );
 							} );
 							$inner.on( 'mouseleave', function() {
-								$menu.stop( true, true ).slideUp( 200 );
+								$menu.stop( true, true ).slideUp( triggerSpeed );
 							} );
 						} else {
 							// Toggle on click
 							$button.on( 'click', function(e) {
 								e.preventDefault();
 								e.stopPropagation();
-								$menu.stop( true, true ).slideToggle( 200 );
+								$menu.stop( true, true ).slideToggle( triggerSpeed );
 							} );
 				
 							// Close dropdown if clicked outside
 							$( document ).on( 'click', function(e) {
 								if ( ! $inner.is( e.target ) && $inner.has( e.target ).length === 0 ) {
-									$menu.slideUp( 200 );
+									$menu.slideUp( triggerSpeed );
 								}
 							} );
 						}

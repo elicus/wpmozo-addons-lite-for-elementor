@@ -30,9 +30,9 @@
 
                     // 🔧 Fix: Localize trigger selector
                     let $triggerElement = $this.find('.wpmozo_tooltip_trigger_element');
-                    if (triggerEl === 'id') {
+                    if (triggerEl === 'element_css_id') {
                         $triggerElement = $('#' + triggerSelector);
-                    } else if (triggerEl === 'class') {
+                    } else if (triggerEl === 'element_css_class') {
                         $triggerElement = $('.' + triggerSelector);
                     }
 

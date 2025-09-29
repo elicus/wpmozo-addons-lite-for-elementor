@@ -3,7 +3,7 @@
  * @author    Elicus <hello@elicus.com>
  * @link      https://www.elicus.com/
  * @copyright 2025 Elicus Technologies Private Limited
- * @version   1.0.2
+ * @version   1.0.0
  */
 
 // if this file is called directly, abort.
@@ -21,7 +21,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Hover_Effect' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -35,7 +35,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Hover_Effect' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -49,7 +49,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Hover_Effect' ) ) {
 		 *
 		 * Retrieve widget keywords.
 		 *
-		 * @since 1.8.0
+		 * @since 1.7.0
 		 * @access public
 		 *
 		 * @return array Widget keywords.
@@ -63,7 +63,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Hover_Effect' ) ) {
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -77,7 +77,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Hover_Effect' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -91,7 +91,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Hover_Effect' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return style handle.
@@ -106,13 +106,13 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Hover_Effect' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access protected
 		 */
 		protected function register_controls() {
 
 			// Separate file containing all the code for registering controls.
-			include_once plugin_dir_path( __DIR__ ) . 'image-hover-effect/assets/controls/controls.php';
+			require plugin_dir_path( __DIR__ ) . 'image-hover-effect/assets/controls/controls.php';
 		}
 
 		/**
@@ -120,7 +120,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Hover_Effect' ) ) {
 		 *
 		 * Written in PHP and used to generate the final HTML.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access protected
 		 */
 		protected function render() {
@@ -173,11 +173,11 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Hover_Effect' ) ) {
 			<div class="wpmozo_image_hover_effect">
 				<?php if ( ! empty( $image_url ) ) : ?>
 					<div class="wpmozo_image_hover_effect_wrapper wpmozo_effect_<?php echo esc_attr( $hover_effect ); ?>">
-						<div class="<?php echo esc_attr( implode( ' ', $classes ) . ' ' . $unique_id ); ?>" 
 						<?php
-						if ( $inline_style ) {
-							echo 'style="' . esc_attr( $inline_style ) . '"';}
-						?>
+						if ( $inline_style ) { ?>
+							<style><?php if( 'slide_glitch' === $hover_effect ){ echo '.'.esc_attr( implode( '.', $classes ) . '.' . $unique_id );?>::before,<?php echo '.'.esc_attr( implode( '.', $classes ) . '.' . $unique_id );?>::after { <?php echo esc_attr( $inline_style ); ?> } <?php } else{echo '.'.esc_attr( implode( '.', $classes ) . '.' . $unique_id );?> { <?php echo esc_attr( $inline_style ); ?> }<?php } ?></style> 
+						<?php } ?>
+						<div class="<?php echo esc_attr( implode( ' ', $classes ) . ' ' . $unique_id ); ?>" 
 						>
 							
 							<img

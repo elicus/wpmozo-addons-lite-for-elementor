@@ -4,7 +4,7 @@
  *
  * Defines the settings od the plugin.
  *
- * @since      1.6.0
+ * @since      1.7.0
  * @author     Elicus <hello@elicus.com>
  */
 
@@ -17,7 +17,7 @@ class WPMOZO_Addons_Lite_For_Elementor_Settings {
 	/**
 	 * Plugin option name.
 	 *
-	 * @since    1.0.0
+	 * @since    1.6.1
 	 * @access   protected
 	 * @var      string    $plugin_option    The plugin option name where all the settings are stored.
 	 */
@@ -26,7 +26,7 @@ class WPMOZO_Addons_Lite_For_Elementor_Settings {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
+	 * @since    1.6.1
 	 * @param    string $plugin_option     The name of this plugin.
 	 */
 	public function __construct( $plugin_option ) {
@@ -51,6 +51,7 @@ class WPMOZO_Addons_Lite_For_Elementor_Settings {
 		$inactive_default = $atts['inactive_default'];
 		$info             = $atts['info'];
 		$options          = $atts['options'];
+		$pros             = $atts['pros'];
 
 		$value          = $widgets;
 		$inactive_value = $inactive_default;
@@ -79,12 +80,29 @@ class WPMOZO_Addons_Lite_For_Elementor_Settings {
 			$value = array_map( 'sanitize_text_field', $value );
 
 			foreach ( $options as $key => $option ) {
-				$checked = in_array( $key, explode( ',', $inactive_value ), true ) ? '' : checked( 1, 1, false );
-				$list   .= '
-				<span class="wpmozo_ae_checkbox_wrapper wpmozo-ae-icon-'.$key.'">
-					<label for="' . esc_attr( $key ) . '">' . ucwords( esc_html( $option ) ) . '</label>
-					<input type="checkbox" class="wpmozo_ae_panel_checkbox" id="' . esc_attr( $key ) . '" value="' . esc_attr( $key ) . '" ' . esc_attr( $checked ) . '>
-				</span>';
+				if( in_array( $option, $pros ) ){
+					$checked = in_array( $key, explode( ',', $inactive_value ), true ) ? '' : checked( 1, 1, false );
+					$list   .= '
+					<span class="wpmozo_ae_checkbox_wrapper wpmozo-ae-icon-'.$key.' wpmozo_pro">
+						<label for="' . esc_attr( $key ) . '">' . ucwords( esc_html( $option ) ) . '</label>
+						<input disabled type="checkbox" class="wpmozo_ae_panel_checkbox" id="' . esc_attr( $key ) . '" value="' . esc_attr( $key ) . '" ' . (defined('WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION') ? esc_attr( $checked ) : '') . '>
+						<span class="wpmozo_toggle_slider">
+						    <span class="wpmozo_toggle_dot"></span>
+						</span>
+					</span>';
+				}else{
+
+					$checked = in_array( $key, explode( ',', $inactive_value ), true ) ? '' : checked( 1, 1, false );
+					$list   .= '
+					<span class="wpmozo_ae_checkbox_wrapper wpmozo-ae-icon-'.$key.'">
+						<label for="' . esc_attr( $key ) . '">' . ucwords( esc_html( $option ) ) . '</label>
+						<input type="checkbox" class="wpmozo_ae_panel_checkbox" id="' . esc_attr( $key ) . '" value="' . esc_attr( $key ) . '" ' . esc_attr( $checked ) . '>
+						<span class="wpmozo_toggle_slider">
+						    <span class="wpmozo_toggle_dot"></span>
+						</span>
+					</span>';
+				}
+
 			}
 
 			return sprintf(

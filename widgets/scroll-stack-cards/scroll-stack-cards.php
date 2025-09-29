@@ -3,7 +3,7 @@
  * @author    Elicus <hello@elicus.com>
  * @link      https://www.elicus.com/
  * @copyright 2025 Elicus Technologies Private Limited
- * @version   1.0.2
+ * @version   1.0.0
  */
 
 // if this file is called directly, abort.
@@ -20,7 +20,7 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -34,7 +34,7 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -48,7 +48,7 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 		 *
 		 * Retrieve widget keywords.
 		 *
-		 * @since 1.8.0
+		 * @since 1.7.0
 		 * @access public
 		 *
 		 * @return array Widget keywords.
@@ -62,7 +62,7 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -76,7 +76,7 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -90,7 +90,7 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return style handle.
@@ -105,7 +105,7 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since 1.3.0
+		 * @since 1.7.0
 		 * @access public
 		 *
 		 * @return array Element scripts dependencies.
@@ -121,13 +121,13 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access protected
 		 */
 		protected function register_controls() {
 
 			// Separate file containing all the code for registering controls.
-			include_once plugin_dir_path( __DIR__ ) . 'scroll-stack-cards/assets/controls/controls.php';
+			require plugin_dir_path( __DIR__ ) . 'scroll-stack-cards/assets/controls/controls.php';
 		}
 
 		/**
@@ -135,7 +135,7 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 		 *
 		 * Written in PHP and used to generate the final HTML.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access protected
 		 */
 		protected function render() {
@@ -143,8 +143,8 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 
 			$items_content            = isset( $settings['wpmozo_items_content'] ) ? $settings['wpmozo_items_content'] : array();
 			$layout                   = esc_attr( $settings['layout'] );
-			$title_heading_level      = wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
-			$animation_start_viewport = isset( $settings['animation_start_viewport']['size'] ) ? $settings['animation_start_viewport']['size'] : '';
+			$title_heading_level      = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
+			$animation_start_viewport = isset( $settings['animation_start_viewport']['size'] ) && '' !== $settings['animation_start_viewport']['size'] ? $settings['animation_start_viewport']['size'] : 0;
 			$collapsed_width          = isset( $settings['collapsed_width']['size'] ) ? $settings['collapsed_width']['size'] : '';
 			$items_content            = isset( $settings['wpmozo_items_content'] ) ? $settings['wpmozo_items_content'] : array();
 			$button_icon_placement    = isset( $settings['button_icon_placement'] ) ? $settings['button_icon_placement'] : '';
@@ -152,19 +152,13 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 			// Add attributes for the wrapper.
 			$this->add_render_attribute(
 				'stack_wrapper',
-				'class',
 				array(
-					'wpmozo_scroll_stack_cards_wrapper',
-					'icon_' . $button_icon_placement,
-					'layout-' . $layout,
+					'class'                             => array( 'wpmozo_scroll_stack_cards_wrapper', 'icon_' . $button_icon_placement, 'layout-' . $layout ),
+					'data-layout'                       => esc_attr( $layout ),
+					'data-animation_start_viewport_pos' => esc_attr( $animation_start_viewport ) . '%',
+					'data-collapsed_width'              => esc_attr( $collapsed_width ) . 'px'
 				)
 			);
-
-			$this->add_render_attribute( 'stack_wrapper', 'data-layout', esc_attr( $layout ) );
-			$this->add_render_attribute( 'stack_wrapper', 'data-animation_start_viewport_pos', esc_attr( $animation_start_viewport ) . '%' );
-			if ( ! empty( $collapsed_width ) ) {
-				$this->add_render_attribute( 'stack_wrapper', 'data-collapsed_width', esc_attr( $collapsed_width ) . 'px' );
-			}
 
 			?>
 				<div class="wpmozo_scroll_stack_cards">
@@ -195,9 +189,18 @@ if ( ! class_exists( 'WPMOZO_AE_Scroll_Stack_Cards' ) ) {
 										</div>
 										<?php
 										if ( 'yes' === $item['show_button'] && '' !== $item['button_link_url']['url'] && '' !== $item['button_text'] ) {
+											$this->add_render_attribute(
+												'wpmozo_ae_button'.$index,
+												array(
+													'class' => 'wpmozo_readmore_button',
+												)
+											);
+											if ( '' !== $item[ 'button_link_url' ] ) {
+												$this->add_link_attributes( 'wpmozo_ae_button'.$index, $item[ 'button_link_url' ] );
+											}
 											?>
 											<div class="wpmozo_readmore_button_wrapper">
-												<a class="wpmozo_readmore_button" href="<?php echo esc_url( $item['button_link_url']['url'] ); ?>" target="<?php echo esc_attr( $item['button_link_target'] ); ?>">
+												<a <?php $this->print_render_attribute_string( 'wpmozo_ae_button'.$index ); ?>>
 													<span class="wpmozo_button_text"><?php echo esc_html( $item['button_text'] ); ?></span>
 													<?php
 													\Elementor\Icons_Manager::render_icon(

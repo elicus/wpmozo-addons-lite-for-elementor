@@ -280,6 +280,7 @@ $this->add_group_control(
 			'width'  => array( 'label' => esc_html__( 'Image Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
 			'color'  => array( 'label' => esc_html__( 'Image Border Color', 'wpmozo-addons-lite-for-elementor' ) ),
 		),
+		'separator' => 'none'
 	)
 );
 $this->add_responsive_control(

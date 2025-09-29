@@ -3,7 +3,7 @@
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
  * @copyright   2025 Elicus Technologies Private Limited
- * @version     1.0.1
+ * @version     1.2.0
  */
 
 // if this file is called directly, abort.
@@ -15,7 +15,6 @@ use WPMOZO\HelperTraits;
 if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 	class WPMOZO_Addons_Lite_For_Elementor_Public {
 		use HelperTraits\Wpmozo_Ae_Helper_Functions;
-		
 
 		/**
 		 * Initialize required files and funcitons.
@@ -209,11 +208,11 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 
 			foreach ( $defaults as $key => $default ) {
 	            // phpcs:ignore ET.Sniffs.ValidatedSanitizedInput.InputNotSanitized
-				${$key} = trim( sanitize_text_field( wp_unslash( isset( $_POST['props'][ $key ] ) ? $_POST['props'][ $key ] : $default ) ) );
-			}
-			$offset_number = absint( $offset_number );
-			$page          = absint( $page );
-			$offset_number = ( $testimonial_number * ( $page - 1 ) ) + $offset_number;
+	            ${$key} = trim( sanitize_text_field( wp_unslash( isset( $_POST['props'][$key] ) ? $_POST['props'][$key] : $default ) ) );
+	        }
+	        $offset_number      = absint( $offset_number );
+	        $page               = absint( $page );
+	        $offset_number      = ( intval($testimonial_number) * ( $page - 1 ) ) + $offset_number;
 
 			$args = array(
 				'post_type'      => 'wpmozoae-testimonial',
@@ -303,9 +302,9 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		public function register_oembed_widget( $widgets_manager ) {
 
 			$plugin_option = get_option( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION, array() );
-			if ( defined( 'WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION' ) && isset( $plugin_option['wpmozo_inactive_widgets'] ) && '' !== $plugin_option['wpmozo_inactive_widgets'] ) {
-				$inactive_widgets = explode( ',', $plugin_option['wpmozo_inactive_widgets'] );
-				$active_widgets   = array_diff( $this->get_all_widgets(), $inactive_widgets );
+			if ( isset( $plugin_option['wpmozo_inactive_widgets'] ) && '' !== $plugin_option['wpmozo_inactive_widgets'] ) {
+				$inactive_widgets  	= explode( ',', $plugin_option['wpmozo_inactive_widgets'] );
+				$active_widgets 	= array_diff( $this->get_all_widgets(), $inactive_widgets );
 			} else {
 				$active_widgets = $this->get_all_widgets();
 			}

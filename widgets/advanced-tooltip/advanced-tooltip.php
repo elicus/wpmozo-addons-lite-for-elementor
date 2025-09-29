@@ -3,7 +3,7 @@
  * @author    Elicus <hello@elicus.com>
  * @link      https://www.elicus.com/
  * @copyright 2025 Elicus Technologies Private Limited
- * @version   1.0.2
+ * @version   1.0.0
  */
 
 // if this file is called directly, abort.
@@ -21,7 +21,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -35,7 +35,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -49,7 +49,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Retrieve widget keywords.
 		 *
-		 * @since 1.8.0
+		 * @since 1.7.0
 		 * @access public
 		 *
 		 * @return array Widget keywords.
@@ -63,7 +63,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -77,7 +77,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -91,7 +91,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access public
 		 *
 		 * @return style handle.
@@ -106,7 +106,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since 1.3.0
+		 * @since 1.7.0
 		 * @access public
 		 *
 		 * @return array Element scripts dependencies.
@@ -122,13 +122,13 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access protected
 		 */
 		protected function register_controls() {
 
 			// Separate file containing all the code for registering controls.
-			include_once plugin_dir_path( __DIR__ ) . 'advanced-tooltip/assets/controls/controls.php';
+			require plugin_dir_path( __DIR__ ) . 'advanced-tooltip/assets/controls/controls.php';
 		}
 
 		/**
@@ -136,7 +136,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 		 *
 		 * Written in PHP and used to generate the final HTML.
 		 *
-		 * @since  1.3.0
+		 * @since  1.7.0
 		 * @access protected
 		 */
 		protected function render() {
@@ -146,9 +146,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 			$page_id                       = get_the_ID(); // Elementor Page/Post ID.
 			$trigger_action                = isset( $settings['trigger_action'] ) ? $settings['trigger_action'] : '';
 			$trigger_element_type          = isset( $settings['trigger_element_type'] ) ? $settings['trigger_element_type'] : '';
-			$trigger_button_link_url       = isset( $settings['trigger_button_link_url']['url'] ) ? $settings['trigger_button_link_url']['url'] : '';
 			$trigger_button_text           = isset( $settings['trigger_button_text'] ) ? $settings['trigger_button_text'] : '';
-			$trigger_button_link_target    = isset( $settings['trigger_button_link_target'] ) ? $settings['trigger_button_link_target'] : '';
 			$trigger_image                 = isset( $settings['trigger_image']['url'] ) ? $settings['trigger_image']['url'] : '';
 			$trigger_image_alt_tag         = isset( $settings['trigger_image_alt_tag'] ) ? $settings['trigger_image_alt_tag'] : '';
 			$trigger_icon                  = isset( $settings['trigger_icon'] ) ? $settings['trigger_icon'] : '';
@@ -167,9 +165,9 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 			$button_icon_placement         = isset( $settings['button_icon_placement'] ) ? $settings['button_icon_placement'] : '';
 
 			$trigger_selector = '';
-			if ( 'id' === $trigger_element_type && ! empty( $trigger_selector_id ) ) {
+			if ( 'element_css_id' === $trigger_element_type && ! empty( $trigger_selector_id ) ) {
 				$trigger_selector = $trigger_selector_id;
-			} elseif ( 'class' === $trigger_element_type && ! empty( $trigger_selector_class ) ) {
+			} elseif ( 'element_css_class' === $trigger_element_type && ! empty( $trigger_selector_class ) ) {
 				$trigger_selector = $trigger_selector_class;
 			}
 
@@ -186,19 +184,18 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 			// Trigger wrapper.
 			$this->add_render_attribute(
 				'trigger_wrap',
-				'class',
 				array(
-					'wpmozo_tooltip_trigger_element_wrap',
-					'trigger_type_' . $trigger_element_type,
+					'class'                 => array( 'wpmozo_tooltip_trigger_element_wrap', 'trigger_type_' . $trigger_element_type),
+					'data-trigger-action'   => $trigger_action,
+					'data-animation'        => $entrance_animation,
+					'data-duration'         => $animation_duration,
+					'data-interactive'      => $make_interactive_tooltip,
+					'data-tooltip-width'    => $tooltip_width,
+					'data-trigger-element'  => $trigger_element_type,
+					'data-trigger-selector' => $trigger_selector
+
 				)
 			);
-			$this->add_render_attribute( 'trigger_wrap', 'data-trigger-action', $trigger_action );
-			$this->add_render_attribute( 'trigger_wrap', 'data-animation', $entrance_animation );
-			$this->add_render_attribute( 'trigger_wrap', 'data-duration', $animation_duration );
-			$this->add_render_attribute( 'trigger_wrap', 'data-interactive', $make_interactive_tooltip );
-			$this->add_render_attribute( 'trigger_wrap', 'data-tooltip-width', $tooltip_width );
-			$this->add_render_attribute( 'trigger_wrap', 'data-trigger-element', $trigger_element_type );
-			$this->add_render_attribute( 'trigger_wrap', 'data-trigger-selector', $trigger_selector );
 
 			// Button trigger.
 			if ( 'button' === $trigger_element_type ) {
@@ -211,23 +208,21 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 						'wpmozo_tooltip_trigger_button',
 					)
 				);
-				$this->add_render_attribute( 'trigger_button', 'href', esc_url( $trigger_button_link_url ) );
-				$this->add_render_attribute( 'trigger_button', 'target', esc_attr( $trigger_button_link_target ) );
+				$this->add_link_attributes( 'trigger_button', $settings['trigger_button_link_url'] );
 			}
 
 			// Image trigger.
 			if ( 'image' === $trigger_element_type ) {
 				$this->add_render_attribute(
 					'trigger_image',
-					'class',
-					array(
-						'wpmozo_tooltip_trigger_element',
-						'wpmozo_tooltip_trigger_image',
+					array('class'  =>
+						array('wpmozo_tooltip_trigger_element',
+						'wpmozo_tooltip_trigger_image'),
+						'src'      => esc_url( $trigger_image ),
+						'alt'      => esc_attr( $trigger_image_alt_tag ),
+						'decoding' => 'async'
 					)
 				);
-				$this->add_render_attribute( 'trigger_image', 'src', esc_url( $trigger_image ) );
-				$this->add_render_attribute( 'trigger_image', 'alt', esc_attr( $trigger_image_alt_tag ) );
-				$this->add_render_attribute( 'trigger_image', 'decoding', 'async' );
 			}
 
 			// Text trigger.
@@ -274,7 +269,14 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Tooltip' ) ) {
 						?>
 					<?php elseif ( 'text' === $trigger_element_type && ! empty( $trigger_text ) ) : ?>
 						<span <?php $this->print_render_attribute_string( 'trigger_text' ); ?>><?php echo esc_html( $trigger_text ); ?></span>
-					<?php endif; ?>
+					<?php endif; 
+					if ( Plugin::$instance->editor->is_edit_mode() && ( 'element_css_id' === $settings['trigger_element_type'] || 'element_css_class' === $settings['trigger_element_type'] ) ) {
+						?>
+							<h5> 
+								<?php echo esc_html( ( ucwords( str_ireplace( '_', ' ', $settings['trigger_element_type'] ) ) ) . ' Modal ( Just a placeholder for Builder ) ' ); ?>
+							</h5>
+						<?php
+					} ?>
 				</div>
 		
 				<div class="wpmozo_advanced_tooltip_content_wrap">

@@ -19,181 +19,6 @@ use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Box_Shadow;
 
-// Content.
-$this->start_controls_section(
-	'card_items_section',
-	array(
-		'label' => esc_html__( 'Card Items', 'wpmozo-addons-lite-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_CONTENT,
-	)
-);
-$repeater = new Repeater();
-
-	$repeater->add_responsive_control(
-		'item_title',
-		array(
-			'label'       => esc_html__( 'Title', 'wpmozo-addons-lite-for-elementor' ),
-			'type'        => Controls_Manager::TEXT,
-			'default'     => esc_html__( 'Card Title', 'wpmozo-addons-lite-for-elementor' ),
-			'label_block' => true,
-		)
-	);
-	$repeater->add_responsive_control(
-		'card_item_description',
-		array(
-			'label'       => esc_html__( 'Content', 'wpmozo-addons-lite-for-elementor' ),
-			'type'        => Controls_Manager::WYSIWYG,
-			'default'     => esc_html__( 'Item Content', 'wpmozo-addons-lite-for-elementor' ),
-			'label_block' => true,
-		)
-	);
-	$repeater->add_control(
-		'card_item_image',
-		array(
-			'label'   => esc_html__( 'Card Image', 'wpmozo-addons-lite-for-elementor' ),
-			'type'    => Controls_Manager::MEDIA,
-			'default' => array(
-				'url' => Utils::get_placeholder_image_src(),
-				'id'  => 'thisistheimage',
-			),
-		)
-	);
-	$repeater->add_responsive_control(
-		'card_item_image_alt',
-		array(
-			'label' => esc_html__( 'Image Alt Tag', 'wpmozo-addons-lite-for-elementor' ),
-			'type'  => Controls_Manager::TEXT,
-		)
-	);
-	$repeater->add_control(
-		'icon_heading',
-		array(
-			'label'     => esc_html__( 'Icon', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::HEADING,
-			'separator' => 'before',
-		)
-	);
-	$repeater->add_control(
-		'show_icon',
-		array(
-			'label'        => esc_html__( 'Show Icon', 'wpmozo-addons-lite-for-elementor' ),
-			'type'         => Controls_Manager::SWITCHER,
-			'default'      => '',
-			'return_value' => 'yes',
-		)
-	);
-	$repeater->add_responsive_control(
-		'card_icon',
-		array(
-			'label'     => esc_html__( 'Card Icon', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::ICONS,
-			'default'   => array(
-				'value'   => 'far fa-star',
-				'library' => 'fa-regular',
-			),
-			'condition' => array(
-				'show_icon' => 'yes',
-			),
-		)
-	);
-	$repeater->add_control(
-		'button_heading',
-		array(
-			'label'     => esc_html__( 'Button', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::HEADING,
-			'separator' => 'before',
-		)
-	);
-	$repeater->add_control(
-		'show_button',
-		array(
-			'label'        => esc_html__( 'Show Button', 'wpmozo-addons-lite-for-elementor' ),
-			'type'         => Controls_Manager::SWITCHER,
-			'default'      => '',
-			'return_value' => 'yes',
-		)
-	);
-	$repeater->add_control(
-		'button_text',
-		array(
-			'label'       => esc_html__( 'Button Text', 'wpmozo-addons-lite-for-elementor' ),
-			'type'        => Controls_Manager::TEXT,
-			'label_block' => true,
-			'default'     => 'Read More',
-			'condition'   => array(
-				'show_button' => 'yes',
-			),
-		)
-	);
-	$repeater->add_control(
-		'button_link_url',
-		array(
-			'label'       => esc_html__( 'Button Link Url', 'wpmozo-addons-lite-for-elementor' ),
-			'type'        => Controls_Manager::URL,
-			'options'     => array( 'url', 'is_external', 'nofollow' ),
-			'default'     => array(
-				'url'         => '',
-				'is_external' => true,
-				'nofollow'    => true,
-			),
-			'label_block' => true,
-			'condition'   => array(
-				'show_button' => 'yes',
-			),
-		)
-	);
-	$repeater->add_control(
-		'button_link_target',
-		array(
-			'label'       => esc_html__( 'Button Link Target', 'wpmozo-addons-lite-for-elementor' ),
-			'label_block' => false,
-			'type'        => Controls_Manager::SELECT,
-			'options'     => array(
-				'_blank' => esc_html__( 'In New Tab', 'wpmozo-addons-lite-for-elementor' ),
-				'_self'  => esc_html__( 'In The Same Window', 'wpmozo-addons-lite-for-elementor' ),
-			),
-			'default'     => '_self',
-			'condition'   => array( 'show_button' => 'yes' ),
-		)
-	);
-	$repeater->add_control(
-		'background_heading',
-		array(
-			'label'     => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::HEADING,
-			'separator' => 'before',
-		)
-	);
-	$repeater->add_group_control(
-		Group_Control_Background::get_type(),
-		array(
-			'name'           => 'card_background',
-			'types'          => array( 'classic', 'gradient' ),
-			'fields_options' => array(
-				'background' => array(
-					'label'   => esc_html__( 'Card Background', 'wpmozo-addons-lite-for-elementor' ),
-					'default' => 'classic',
-				),
-			),
-			'toggle'         => false,
-			'selector'       => '{{WRAPPER}} .wpmozo_scroll_stack_cards .wpmozo_scroll_stack_cards_item{{CURRENT_ITEM}}',
-		)
-	);
-	$this->add_control(
-		'wpmozo_items_content',
-		array(
-			'label'       => esc_html__( 'Card Item', 'wpmozo-addons-lite-for-elementor' ),
-			'type'        => Controls_Manager::REPEATER,
-			'fields'      => $repeater->get_controls(),
-			'default'     => array(
-				array(
-					'item_title' => esc_html__( 'Card Title', 'wpmozo-addons-lite-for-elementor' ),
-				),
-			),
-			'title_field' => '{{{ item_title }}}',
-		)
-	);
-	$this->end_controls_section();
 
 	// Display.
 	$this->start_controls_section(
@@ -254,6 +79,153 @@ $repeater = new Repeater();
 		)
 	);
 	$this->end_controls_section();
+	// Content.
+	$this->start_controls_section(
+		'card_items_section',
+		array(
+			'label' => esc_html__( 'Card Items', 'wpmozo-addons-lite-for-elementor' ),
+			'tab'   => Controls_Manager::TAB_CONTENT,
+		)
+	);
+	$repeater = new Repeater();
+
+		$repeater->add_responsive_control(
+			'item_title',
+			array(
+				'label'       => esc_html__( 'Title', 'wpmozo-addons-lite-for-elementor' ),
+				'type'        => Controls_Manager::TEXT,
+				'default'     => esc_html__( 'Card Title', 'wpmozo-addons-lite-for-elementor' ),
+				'label_block' => true,
+			)
+		);
+		$repeater->add_responsive_control(
+			'card_item_description',
+			array(
+				'label'       => esc_html__( 'Content', 'wpmozo-addons-lite-for-elementor' ),
+				'type'        => Controls_Manager::WYSIWYG,
+				'default'     => esc_html__( 'Item Content', 'wpmozo-addons-lite-for-elementor' ),
+				'label_block' => true,
+			)
+		);
+		$repeater->add_control(
+			'card_item_image',
+			array(
+				'label'   => esc_html__( 'Card Image', 'wpmozo-addons-lite-for-elementor' ),
+				'type'    => Controls_Manager::MEDIA,
+				'default' => array(
+					'url' => Utils::get_placeholder_image_src(),
+					'id'  => 'thisistheimage',
+				),
+			)
+		);
+		$repeater->add_responsive_control(
+			'card_item_image_alt',
+			array(
+				'label' => esc_html__( 'Image Alt Tag', 'wpmozo-addons-lite-for-elementor' ),
+				'type'  => Controls_Manager::TEXT,
+			)
+		);
+		$repeater->add_control(
+			'show_icon',
+			array(
+				'label'        => esc_html__( 'Show Icon', 'wpmozo-addons-lite-for-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => '',
+				'return_value' => 'yes',
+				'separator'    => 'before'
+			)
+		);
+		$repeater->add_responsive_control(
+			'card_icon',
+			array(
+				'label'     => esc_html__( 'Card Icon', 'wpmozo-addons-lite-for-elementor' ),
+				'type'      => Controls_Manager::ICONS,
+				'default'   => array(
+					'value'   => 'far fa-star',
+					'library' => 'fa-regular',
+				),
+				'condition' => array(
+					'show_icon' => 'yes',
+				),
+			)
+		);
+		$repeater->add_control(
+			'show_button',
+			array(
+				'label'        => esc_html__( 'Show Button', 'wpmozo-addons-lite-for-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => '',
+				'return_value' => 'yes',
+			)
+		);
+		$repeater->add_control(
+			'button_text',
+			array(
+				'label'       => esc_html__( 'Button Text', 'wpmozo-addons-lite-for-elementor' ),
+				'type'        => Controls_Manager::TEXT,
+				'label_block' => true,
+				'default'     => 'Read More',
+				'condition'   => array(
+					'show_button' => 'yes',
+				),
+			)
+		);
+		$repeater->add_control(
+			'button_link_url',
+			array(
+				'label'       => esc_html__( 'Button Link Url', 'wpmozo-addons-lite-for-elementor' ),
+				'type'        => Controls_Manager::URL,
+				'options'     => array( 'url', 'is_external', 'nofollow' ),
+				'default'     => array(
+					'url'         => '',
+					'is_external' => true,
+					'nofollow'    => true,
+				),
+				'label_block' => true,
+				'condition'   => array(
+					'show_button' => 'yes',
+				),
+			)
+		);
+		$repeater->add_control(
+			'background_heading',
+			array(
+				'label'     => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			)
+		);
+		$repeater->add_group_control(
+			Group_Control_Background::get_type(),
+			array(
+				'name'           => 'card_background',
+				'types'          => array( 'classic', 'gradient' ),
+				'fields_options' => array(
+					'background' => array(
+						'label'   => esc_html__( 'Card Background', 'wpmozo-addons-lite-for-elementor' ),
+						'default' => 'classic',
+					),
+				),
+				'toggle'         => false,
+				'selector'       => '{{WRAPPER}} .wpmozo_scroll_stack_cards .wpmozo_scroll_stack_cards_item{{CURRENT_ITEM}}',
+			)
+		);
+		$this->add_control(
+			'wpmozo_items_content',
+			array(
+				'label'       => esc_html__( 'Card Item', 'wpmozo-addons-lite-for-elementor' ),
+				'type'        => Controls_Manager::REPEATER,
+				'fields'      => $repeater->get_controls(),
+				'default'     => array(
+					array(
+						'item_title' => esc_html__( 'Card Title', 'wpmozo-addons-lite-for-elementor' ),
+					),
+				),
+				'title_field' => '{{{ item_title }}}',
+			)
+		);
+		$this->end_controls_section();
+
 	// General styling tab.
 	$this->start_controls_section(
 		'title_section',
@@ -842,6 +814,7 @@ $repeater = new Repeater();
 						'{{WRAPPER}} .wpmozo_scroll_stack_cards_icon_wrapper svg'   => 'fill: {{VALUE}}; transition: 300ms;',
 						'{{WRAPPER}} .wpmozo_scroll_stack_cards_icon_wrapper i'     => 'color: {{VALUE}}; transition: 300ms;',
 					),
+					'separator' => 'none'
 				)
 			);
 			$this->end_controls_tab();
@@ -900,12 +873,11 @@ $repeater = new Repeater();
 						'unit' => '%',
 						'size' => 30,
 					),
+					'render_type' => 'template',
 					'selectors'  => array(
-						'{{WRAPPER}} .wpmozo_scroll_stack_cards .wpmozo_scroll_stack_cards_wrapper .wpmozo_scroll_stack_cards_image_wrapper' => 'flex: 0 0 {{SIZE}}{{UNIT}} !important;',
-					),
-					'condition'  => array(
-						'layout' => 'vertical',
-					),
+						'{{WRAPPER}} .wpmozo_scroll_stack_cards .wpmozo_scroll_stack_cards_wrapper.layout-vertical .wpmozo_scroll_stack_cards_image_wrapper' => 'flex: 0 0 {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .wpmozo_scroll_stack_cards .wpmozo_scroll_stack_cards_wrapper.layout-horizontal .wpmozo_scroll_stack_cards_image_wrapper' => 'width: {{SIZE}}{{UNIT}};',
+					)
 				)
 			);
 			$this->start_controls_tabs( 'image_styling_tabs' );
@@ -1008,7 +980,7 @@ $repeater = new Repeater();
 					$this->add_responsive_control(
 						'content_margin_right',
 						array(
-							'label'      => esc_html__( 'Content Margin Right', 'wpmozo-addons-lite-for-elementor' ),
+							'label'      => esc_html__( 'Content Margin', 'wpmozo-addons-lite-for-elementor' ),
 							'type'       => Controls_Manager::SLIDER,
 							'size_units' => array( 'px' ),
 							'separator'  => 'after',
@@ -1137,7 +1109,7 @@ $repeater = new Repeater();
 										'size' => 300,
 									),
 									'selectors'  => array(
-										'{{WRAPPER}} .wpmozo_scroll_stack_cards .layout-horizontal .wpmozo_scroll_stack_cards_item' => 'width: {{SIZE}}{{UNIT}};',
+										'{{WRAPPER}} .wpmozo_scroll_stack_cards_wrapper.layout-horizontal .wpmozo_scroll_stack_cards_item_inner' => 'width: {{SIZE}}{{UNIT}};',
 									),
 									'condition'  => array(
 										'layout' => 'horizontal',
@@ -1483,10 +1455,6 @@ $repeater = new Repeater();
 											'max' => 100,
 										),
 									),
-									'default'    => array(
-										'unit' => 'px',
-										'size' => 8,
-									),
 									'condition'  => array(
 										'button_custom_style' => 'yes',
 									),
@@ -1541,7 +1509,7 @@ $repeater = new Repeater();
 										'button_custom_style' => 'yes',
 									),
 									'selectors'  => array(
-										'{{WRAPPER}} .wpmozo_readmore_button_wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+										'{{WRAPPER}} .wpmozo_readmore_button_wrapper .wpmozo_readmore_button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 									),
 								)
 							);
@@ -1725,7 +1693,7 @@ $repeater = new Repeater();
 										'button_custom_style' => 'yes',
 									),
 									'selectors'  => array(
-										'{{WRAPPER}} .wpmozo_readmore_button_wrapper:hover' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+										'{{WRAPPER}} .wpmozo_readmore_button_wrapper .wpmozo_readmore_button:hover' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 									),
 								)
 							);

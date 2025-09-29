@@ -362,7 +362,7 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 			$order_class                         = 'elementor-element-'.$this->get_id();
 
 			$layout 							 = esc_attr( $settings[ 'layout' ] );
-			$layout 							 = wpmozo_ae_validate_layout( $layout, array( 'layout1', 'layout2' ) );
+			$layout 							 = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_layout( $layout, array( 'layout1', 'layout2' ) );
 			$number_of_members 					 = esc_attr( $settings[ 'number_of_members' ] );
 			$team_order 						 = esc_attr( $settings[ 'team_order' ] );
 			$team_order_by 						 = esc_attr( $settings[ 'team_order_by' ] );
@@ -375,7 +375,7 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 			$enable_member_link					 = esc_attr( $settings[ 'enable_member_link' ] );
 			$member_link_target					 = esc_attr( $settings[ 'member_link_target' ] );
 			$show_skills 						 = esc_attr( $settings[ 'show_skills' ] );
-			$name_text_heading_level			 = wpmozo_ae_validate_heading_level( $settings[ 'name_text_heading_level' ] );
+			$name_text_heading_level			 = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings[ 'name_text_heading_level' ] );
 			$designation_heading_level 			 = esc_attr( $settings[ 'designation_heading_level' ] );
 
 

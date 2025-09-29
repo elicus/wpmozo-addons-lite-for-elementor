@@ -11,10 +11,11 @@
 						function () {
 							gsap.registerPlugin(ScrollTrigger);
 							$this.each( ( index, gallery ) => {
-								let scroller     = gallery.querySelector( '.wpmozo_scroll_zoom_gallery_scroller' ),
-									innerObj     = gallery.querySelector( '.wpmozo_scroll_zoom_gallery_inner' ),
-									images       = gallery.querySelectorAll( '.wpmozo_scroll_zoom_gallery_item' ),
-									startOpacity = parseFloat( scroller.dataset.start_opacity ),
+								let $section         = $this;
+								let scroller         = $section.find( '.wpmozo_scroll_zoom_gallery_scroller' );
+								let innerObj     = $section.find( '.wpmozo_scroll_zoom_gallery_inner' ),
+									images       = $section.find( '.wpmozo_scroll_zoom_gallery_item' ),
+									startOpacity = parseFloat( scroller.data('start_opacity') ),
 									imageCount   = images.length;
 								let tl = gsap.timeline( {
 									defaults: {
@@ -34,7 +35,8 @@
 										onLeaveBack: () => document.documentElement.classList.remove( 'wpmozo_hide_scrollbar' )
 									}
 								} );
-								images.forEach( ( img, i ) => {
+								console.log($(images));
+								images.each( ( img, i ) => {
 									let translateZ = ( i + 1 ) * 200 + 100,
 										transZ = '-' + ( i + 1 ) * 200;
 									tl.to( innerObj, { z: translateZ } ).fromTo( img, { opacity: startOpacity, z: transZ }, { opacity: 1, z: transZ }, i );
