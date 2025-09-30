@@ -74,6 +74,8 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 
 			wp_register_style( 'wpmozo-ae-justifiedGallery-style', plugins_url( 'assets/css/justifiedGallery/justifiedGallery.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
+			wp_register_style( 'wpmozo-ae-locomotiveScroll-style', plugins_url( 'assets/css/locomotiveScroll/locomotiveScroll.min.css', plugin_dir_path( __FILE__ ) ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+
 			wp_enqueue_style(
 	            'wpmozo-ae-icons',
 	            plugins_url( 'assets/css/wpmozoicon/wpmozoicon.min.css', plugin_dir_path( __FILE__ ) ),
@@ -120,6 +122,10 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 			wp_register_script( 'wpmozo-ae-gsap', plugins_url( 'assets/js/gsap/gsap.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
 			wp_register_script( 'wpmozo-ae-scrollTrigger', plugins_url( 'assets/js/scrollTrigger/scrollTrigger.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+
+			wp_register_script( 'wpmozo-ae-locomotiveScroll', plugins_url( 'assets/js/locomotiveScroll/locomotiveScroll.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+
+			wp_register_script( 'wpmozo-ae-scrollToPlugin', plugins_url( 'assets/js/scrollToPlugin/scrollToPlugin.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
 		}
 
