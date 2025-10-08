@@ -11,11 +11,9 @@
 						wpmozo_init_hover_list( $this )
 					//} );
 				//} ); // Over document ready.
-				
 				// Init hover list.
 				function wpmozo_init_hover_list( thisObj ) {
 					let $cursor = thisObj.find( '.wpmozo_hover_list_cursor' ).eq(0);
-				
 					// Set the background hover effect.
 					thisObj.find( '.wpmozo_hover_list_item' ).each( function() {
 						let imageUrl = jQuery( this ).find( '.wpmozo_hover_list_item_wrapper' ).attr( 'data-image' );
@@ -23,8 +21,7 @@
 							$cursor.css( 'background-image', 'url(' + imageUrl + ')' );
 						} );
 					} );
-				
-					let $overlays = thisObj.find( '.wpmozo_hover_list_item_overlay' );
+					let $overlays = thisObj.find( '.wpmozo_hover_list_item_inner' );
 					$overlays.on( 'mousemove', function (e) {
 						TweenLite.to( $cursor, 0.3, { scale: 1, autoAlpha: 1 } );
 						TweenLite.to( $cursor, 0.5, {
@@ -35,7 +32,6 @@
 							delay: 0.03
 						} );
 					} );
-				
 					// Adjust 768 to your breakpoint.
 					if ( window.innerWidth <= 767 ) { 
 						$overlays.on( 'mousemove', function(e) {
@@ -48,7 +44,6 @@
 							} );
 						} );
 					}
-				
 					$overlays.on( 'mouseout', function () {
 						TweenLite.to( $cursor, 0.3, { scale: 0.1, autoAlpha: 0 } );
 					} );

@@ -142,7 +142,7 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 			$settings = $this->get_settings_for_display();
 
 			$wpmozo_items_content = isset( $settings['wpmozo_items_content'] ) ? $settings['wpmozo_items_content'] : array();
-			$title_heading_level  = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
+			$title_heading_level  = wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
 			$hide_last_divider    = isset( $settings['hide_last_divider'] ) && ! empty( $settings['hide_last_divider'] ) ? $settings['hide_last_divider'] : '';
 			?>
 				<div class="wpmozo_hover_list">
@@ -174,7 +174,7 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 											if ( 'yes' === $item['show_button'] ) {
 												?>
 												<div class="wpmozo_readmore_button_wrapper">
-													<a class="wpmozo_readmore_button" href="<?php echo esc_url( $item['button_link_url']['url'] ); ?>" target="<?php echo esc_attr( $item['button_link_target'] ); ?>">
+													<a class="wpmozo_readmore_button" href="<?php echo esc_url( $item['button_link_url']['url'] ); ?>" target="<?php echo esc_attr( $item['button_link_url']['is_external'] ); ?>">
 														<span class="wpmozo_button_text"><?php echo esc_html( $item['button_text'] ); ?></span>
 														<?php
 														\Elementor\Icons_Manager::render_icon(
@@ -190,9 +190,9 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 											<?php } ?>
 										</div>
 										<div class="wpmozo_hover_list_item_overlay"></div>
-										<div class="wpmozo_hover_list_item_divider"></div>
 									</div>
 								</div>
+								<div class="wpmozo_hover_list_item_divider"></div>
 							<?php } ?>
 						</div>
 					</div>
