@@ -6,7 +6,6 @@
 	position: relative;
 	padding: 15px;
 }
-
 /* Cursor. */
 .elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_cursor{
 	position: fixed;
@@ -24,7 +23,6 @@
 	transition: transform 0.3s ease, opacity 0.3s ease;
 	z-index: 1;
 }
-
 /* Item. */
 .elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list .wpmozo_hover_list_wrapper .wpmozo_hover_list_item{
 	margin-bottom: 0;
@@ -55,20 +53,16 @@
 	height: 100%;
 	z-index: 4;
 }
-
 .elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_item .wpmozo_readmore_button_wrapper .wpmozo_readmore_button{
 	position: relative;
 	z-index: 2;
 }
-
 .elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_item_divider{
 	border: 0 solid #000;
 }
-
 .elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_item{
 	position: relative;
 }
-
 .elementor-widget-wpmozo_ae_hover_list .wpmozo_readmore_button {
     font-size: 20px;
     font-weight: 500;
@@ -89,13 +83,9 @@
     align-items: center;
     transition: all 0.3s;
 }
-
 .elementor-widget-wpmozo_ae_hover_list .wpmozo_hide_last_divider .wpmozo_hover_list_item_divider:last-child {
 	display: none !important;
 }
-
-
-
 @media screen and (max-width: 980px) {
     .elementor-widget-wpmozo_ae_hover_list .wpmozo_hover_list_item_inner{
 		flex-direction: column;
