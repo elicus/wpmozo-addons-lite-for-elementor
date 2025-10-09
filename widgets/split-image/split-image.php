@@ -55,7 +55,7 @@ if ( ! class_exists( 'WPMOZO_AE_Split_Image' ) ) {
 		 * @return array Widget keywords.
 		 */
 		public function get_keywords() {
-			return array( 'wpmz split image', 'wpmozo split image' );
+			return array( 'wpmz split image', 'wpmozo split image', 'wpmz splitimage', 'wpmozo splitimage' );
 		}
 
 		/**
@@ -162,7 +162,7 @@ if ( ! class_exists( 'WPMOZO_AE_Split_Image' ) ) {
 				}
 			}
 			// Use helper function if ID exists, otherwise fallback to a fixed aspect ratio.
-			$aspect_ratio = $image_id ? wpmozo_get_image_aspect_ratio( $image_id ) : '3/2';
+			$aspect_ratio = $image_id ? wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_get_image_aspect_ratio( $image_id ) : '3/2';
 
 			?>
 		

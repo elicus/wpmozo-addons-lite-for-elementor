@@ -53,7 +53,7 @@ if ( ! class_exists( 'WPMOZO_AE_Wavy_Gallery' ) ) {
 		 * @return array Widget keywords.
 		 */
 		public function get_keywords() {
-			return array( 'wpmz wavy gallery', 'wpmozo wavy gallery' );
+			return array( 'wpmz wavy gallery', 'wpmozo wavy gallery', 'wpmozo wavygallery', 'wpmz wavygallery' );
 		}
 
 		/**
@@ -112,7 +112,7 @@ if ( ! class_exists( 'WPMOZO_AE_Wavy_Gallery' ) ) {
 		public function get_script_depends() {
 			wp_register_script( 'wpmozo-ae-wavy-gallery-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
-			return array( 'wpmozo-ae-wavy-gallery-script', 'wpmozo-ae-gsap', 'wpmozo-ae-scrollTrigger', 'wpmozo-ae-scrollToPlugin' );
+			return array(  'wpmozo-ae-gsap', 'wpmozo-ae-scrollTrigger', 'wpmozo-ae-scrollToPlugin','wpmozo-ae-wavy-gallery-script' );
 		}
 
 		/**
