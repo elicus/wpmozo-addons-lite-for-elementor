@@ -294,8 +294,11 @@ if ( ! class_exists( 'WPMOZO_AE_Post_Ticker' ) ) {
 						);
 						?>
 						<div <?php $this->print_render_attribute_string( 'wpmozo_post_ticker_wrap' ); ?>>
-							<?php if ( $ticker_label ) : ?>
-								<div class="wpmozo_post_ticker_label"><?php echo esc_html( $ticker_label ); ?></div>
+							<?php if ( $ticker_label ) : 
+								$this->add_render_attribute( 'ticker_label','class', 'wpmozo_post_ticker_label' );
+								$this->add_inline_editing_attributes( 'ticker_label','none');
+								?>
+								<div <?php $this->print_render_attribute_string( 'ticker_label' ); ?>><?php echo esc_html( $ticker_label ); ?></div>
 							<?php endif; ?>
 							<div class="wpmozo_post_ticker_items">
 								<div class="wpmozo_post_ticker_bar">

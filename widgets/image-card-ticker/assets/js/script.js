@@ -64,7 +64,7 @@
 						imgHeight = $wrapper.data('image_height_mobile') || '150',
 						imgGap = $wrapper.data('image_gap_mobile'),
 						speed = $wrapper.data('ticker_speed_mobile') || '45',
-						pauseOnHover = $wrapper.data('pause_on_hover') || 'on',
+						pauseOnHover = $wrapper.data('pause_on_hover') || 'yes',
 						isVertical = ['top', 'bottom'].includes(direction);
 		
 					if ((!imgGap || '' === imgGap) && (0 !== parseInt(imgGap))) {
@@ -109,8 +109,11 @@
 						onRepeat: () => gsap.set($innerWrap, { [prop]: startPos })
 					});
 		
-					$innerWrap.on('mouseenter', 'img', () => tween.pause());
-					$innerWrap.on('mouseleave', 'img', () => tween.resume());
+					// Pause on hover
+					if (pauseOnHover === 'yes') {
+						$innerWrap.on('mouseenter', 'img', () => tween.pause());
+						$innerWrap.on('mouseleave', 'img', () => tween.resume());
+					}
 		
 					$wrapper.addClass("marquee-inited");
 				}
@@ -125,7 +128,7 @@
 						imgHeight = $wrapper.data('image_height_tablet') || '150',
 						imgGap = $wrapper.data('image_gap_tablet'),
 						speed = $wrapper.data('ticker_speed_tablet') || '45',
-						pauseOnHover = $wrapper.data('pause_on_hover') || 'on',
+						pauseOnHover = $wrapper.data('pause_on_hover') || 'yes',
 						isVertical = ['top', 'bottom'].includes(direction);
 		
 					if ((!imgGap || '' === imgGap) && (0 !== parseInt(imgGap))) {
@@ -170,8 +173,11 @@
 						onRepeat: () => gsap.set($innerWrap, { [prop]: startPos })
 					});
 		
-					$innerWrap.on('mouseenter', 'img', () => tween.pause());
-					$innerWrap.on('mouseleave', 'img', () => tween.resume());
+					// Pause on hover
+					if (pauseOnHover === 'yes') {
+						$innerWrap.on('mouseenter', 'img', () => tween.pause());
+						$innerWrap.on('mouseleave', 'img', () => tween.resume());
+					}
 		
 					$wrapper.addClass("marquee-inited");
 				}
@@ -186,7 +192,7 @@
 						imgHeight = $wrapper.data('image_height') || '150',
 						imgGap = $wrapper.data('image_gap'),
 						speed = $wrapper.data('ticker_speed') || '45',
-						pauseOnHover = $wrapper.data('pause_on_hover') || 'on',
+						pauseOnHover = $wrapper.data('pause_on_hover') || 'yes',
 						isVertical = ['top', 'bottom'].includes(direction);
 
 					if ((!imgGap || '' === imgGap) && (0 !== parseInt(imgGap))) {
@@ -231,8 +237,11 @@
 						onRepeat: () => gsap.set($innerWrap, { [prop]: startPos })
 					});
 
-					$innerWrap.on('mouseenter', 'img', () => tween.pause());
-					$innerWrap.on('mouseleave', 'img', () => tween.resume());
+					// Pause on hover
+					if (pauseOnHover === 'yes') {
+						$innerWrap.on('mouseenter', 'img', () => tween.pause());
+						$innerWrap.on('mouseleave', 'img', () => tween.resume());
+					}
 
 					$wrapper.addClass("marquee-inited");
 				}
@@ -246,9 +255,9 @@
 					let imgWidth = $wrapper.data('image_width_mobile') || '200',
 						imgHeight = $wrapper.data('image_height_mobile') || '150',
 						direction = $wrapper.data('direction_mobile') || 'left',
-						imgGap = $wrapper.data('image_gap_mobile') || '30',
+						imgGap = $wrapper.data('image_gap_mobile'),
 						speed = $wrapper.data('ticker_speed_mobile') || '45',
-						pauseOnHover = $wrapper.data('pause_on_hover') || 'on',
+						pauseOnHover = $wrapper.data('pause_on_hover') || 'yes',
 						totalCards = $innerWrap.children().length,
 						spacingFactor = 1;
 
@@ -282,8 +291,11 @@
 						position: 'relative'
 					});
 
-					$innerWrap.on('mouseenter', 'img', () => tween.pause());
-					$innerWrap.on('mouseleave', 'img', () => tween.resume());
+					// Pause on hover
+					if (pauseOnHover === 'yes') {
+						$innerWrap.on('mouseenter', 'img', () => tween.pause());
+						$innerWrap.on('mouseleave', 'img', () => tween.resume());
+					}
 				}
 				// 3D Circular tablet responsive.
 				function wpmozoInitImageCardTicker3DCircleTablet($wrapper) {
@@ -294,9 +306,9 @@
 					let imgWidth = $wrapper.data('image_width_tablet') || '200',
 						imgHeight = $wrapper.data('image_height_tablet') || '150',
 						direction = $wrapper.data('direction_tablet') || 'left',
-						imgGap = $wrapper.data('image_gap_tablet') || '30',
+						imgGap = $wrapper.data('image_gap_tablet'),
 						speed = $wrapper.data('ticker_speed_tablet') || '45',
-						pauseOnHover = $wrapper.data('pause_on_hover') || 'on',
+						pauseOnHover = $wrapper.data('pause_on_hover') || 'yes',
 						totalCards = $innerWrap.children().length,
 						spacingFactor = 1;
 
@@ -330,8 +342,11 @@
 						position: 'relative'
 					});
 
-					$innerWrap.on('mouseenter', 'img', () => tween.pause());
-					$innerWrap.on('mouseleave', 'img', () => tween.resume());
+					// Pause on hover
+					if (pauseOnHover === 'yes') {
+						$innerWrap.on('mouseenter', 'img', () => tween.pause());
+						$innerWrap.on('mouseleave', 'img', () => tween.resume());
+					}
 				}
 				// 3D Circular desktop responsive.
 				function wpmozoInitImageCardTicker3DCircle($wrapper) {
@@ -342,9 +357,9 @@
 					let imgWidth = $wrapper.data('image_width') || '200',
 						imgHeight = $wrapper.data('image_height') || '150',
 						direction = $wrapper.data('direction') || 'left',
-						imgGap = $wrapper.data('image_gap') || '30',
+						imgGap = $wrapper.data('image_gap'),
 						speed = $wrapper.data('ticker_speed') || '45',
-						pauseOnHover = $wrapper.data('pause_on_hover') || 'on',
+						pauseOnHover = $wrapper.data('pause_on_hover') || 'yes',
 						totalCards = $innerWrap.children().length,
 						spacingFactor = 1;
 
@@ -378,8 +393,11 @@
 						position: 'relative'
 					});
 
-					$innerWrap.on('mouseenter', 'img', () => tween.pause());
-					$innerWrap.on('mouseleave', 'img', () => tween.resume());
+					// Pause on hover
+					if (pauseOnHover === 'yes') {
+						$innerWrap.on('mouseenter', 'img', () => tween.pause());
+						$innerWrap.on('mouseleave', 'img', () => tween.resume());
+					}
 				}
 
 				// Curve mobile responsive.
@@ -391,9 +409,9 @@
 					let imgWidth = $wrapper.data('image_width') || '200',
 						imgHeight = $wrapper.data('image_height') || '150',
 						direction = $wrapper.data('direction') || 'left',
-						imgGap = $wrapper.data('image_gap') || '30',
+						imgGap = $wrapper.data('image_gap'),
 						speed = $wrapper.data('ticker_speed') || '45',
-						pauseOnHover = $wrapper.data('pause_on_hover') || 'on';
+						pauseOnHover = $wrapper.data('pause_on_hover') || 'yes';
 				
 					let totalItemWidth = (+imgWidth + +imgGap) * $innerWrap.children().length;
 				
@@ -456,7 +474,7 @@
 					});
 				
 					// Pause on hover
-					if (pauseOnHover === 'on') {
+					if (pauseOnHover === 'yes') {
 						$innerWrap.on('mouseenter', 'img', () => tween.pause());
 						$innerWrap.on('mouseleave', 'img', () => tween.resume());
 					}
@@ -470,9 +488,9 @@
 					let imgWidth = $wrapper.data('image_width') || '200',
 						imgHeight = $wrapper.data('image_height') || '150',
 						direction = $wrapper.data('direction') || 'left',
-						imgGap = $wrapper.data('image_gap') || '30',
+						imgGap = $wrapper.data('image_gap'),
 						speed = $wrapper.data('ticker_speed') || '45',
-						pauseOnHover = $wrapper.data('pause_on_hover') || 'on';
+						pauseOnHover = $wrapper.data('pause_on_hover') || 'yes';
 				
 					let totalItemWidth = (+imgWidth + +imgGap) * $innerWrap.children().length;
 				
@@ -535,7 +553,7 @@
 					});
 				
 					// Pause on hover
-					if (pauseOnHover === 'on') {
+					if (pauseOnHover === 'yes') {
 						$innerWrap.on('mouseenter', 'img', () => tween.pause());
 						$innerWrap.on('mouseleave', 'img', () => tween.resume());
 					}
@@ -549,9 +567,9 @@
 					let imgWidth = $wrapper.data('image_width') || '200',
 						imgHeight = $wrapper.data('image_height') || '150',
 						direction = $wrapper.data('direction') || 'left',
-						imgGap = $wrapper.data('image_gap') || '30',
+						imgGap = $wrapper.data('image_gap'),
 						speed = $wrapper.data('ticker_speed') || '45',
-						pauseOnHover = $wrapper.data('pause_on_hover') || 'on';
+						pauseOnHover = $wrapper.data('pause_on_hover') || 'yes';
 				
 					let totalItemWidth = (+imgWidth + +imgGap) * $innerWrap.children().length;
 				
@@ -603,6 +621,14 @@
 					gsap.set($innerWrap, { x: startX });
 				
 					// Animate using GSAP
+					let wrapWidth = $wrapper.width(),
+						wrapHalf = wrapWidth/2,
+						wrapQart = wrapWidth/4,
+						wrap3Quart = wrapQart*3,
+						wrapHeight = $wrapper.height(),
+						wrapHHalf = wrapHeight/2,
+						wrapHQart = wrapHeight/4,
+						wrapH3Quart = wrapHQart*3;
 					let tween = gsap.to($innerWrap, {
 						x: endX,
 						duration: speed,
@@ -610,13 +636,22 @@
 						repeat: -1,
 						onRepeat: () => {
 							gsap.set($innerWrap, { x: startX });
-						}
+						},
 					});
-				
+
+					let svgHtmlMac = '<svg width="0" height="0" style="position:absolute"> <defs> <mask id="wpmozo_image_card_ticker_curve_mask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse"> <rect width="100%" height="100%" fill="black" /> <path d="M0,0 Q'+wrapHalf+','+wrapHQart+' '+wrapWidth+',0 V'+wrapHeight+' Q'+wrapHalf+','+wrapH3Quart+' 0,'+wrapHeight+' Z" fill="white" /> </mask> </defs> </svg>';
+
+					let svgHtmlChr = '<svg width="0" height="0" style="position:absolute"> <defs> <mask id="wpmozo_image_card_ticker_curve_mask" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox"> <rect width="100%" height="100%" fill="black" /> <path d="M0,0 Q0.5,0.25 1,0 V1 Q0.5,0.75 0,1 Z" fill="white" /> </mask> </defs> </svg>';
+
 					// Pause on hover
-					if (pauseOnHover === 'on') {
+					if (pauseOnHover === 'yes') {
 						$innerWrap.on('mouseenter', 'img', () => tween.pause());
 						$innerWrap.on('mouseleave', 'img', () => tween.resume());
+					}
+					if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+						$wrapper.append(svgHtmlMac);
+					} else{
+						$wrapper.append(svgHtmlChr);
 					}
 				}								
 			},

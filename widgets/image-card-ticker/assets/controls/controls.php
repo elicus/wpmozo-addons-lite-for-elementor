@@ -98,6 +98,27 @@ $this->add_responsive_control(
 		),
 	)
 );
+$this->add_control( 
+	'pause_on_hover',
+	array( 
+		'label'        => esc_html__( 'Pause on Hover', 'wpmozo-addons-lite-for-elementor' ),
+		'type'         => Controls_Manager::CHOOSE,
+		'label_block'  => true,
+		'options'      => array( 
+			'no'  => array( 
+				'title' => esc_html__( 'No', 'wpmozo-addons-lite-for-elementor' ),
+				'icon'  => 'eicon-close',
+			 ),
+			'yes' => array( 
+				'title' => esc_html__( 'Yes', 'wpmozo-addons-lite-for-elementor' ),
+				'icon'  => 'eicon-check',
+			 ),
+		 ),
+		'default'      => 'yes',
+		'toggle'       => false,
+		'label_block'  => false,
+	 )
+ );
 $this->add_responsive_control(
 	'images_gap',
 	array(
@@ -105,7 +126,7 @@ $this->add_responsive_control(
 		'type'           => Controls_Manager::SLIDER,
 		'range'          => array(
 			'px' => array(
-				'min'  => 1,
+				'min'  => 0,
 				'max'  => 200,
 				'step' => 1,
 			),
@@ -322,6 +343,7 @@ $this->add_responsive_control(
 		),
 		'condition' => array(
 			'layout' => 'marquee',
+			'marquee_direction' => array('top','bottom')
 		),
 	)
 );

@@ -15,10 +15,9 @@ if ( is_array( $widgets ) && ! empty( $widgets ) ) {
 		$key                  = sanitize_text_field( $mod );
 		$widgets_list[ $key ] = esc_html( str_replace( '-', ' ', $mod ) );
 	}
-	/*array_push($widgets_list, $var);*/
 
 	$pro_widgets = array(
-		/*'content-toggle'             => 'Content Toggle',
+		'content-toggle'             => 'Content Toggle',
 		'instagram'                  => 'Instagram',
 		'advanced-blog'              => 'Advanced Blogs',
 		'ajax-search'                => 'AJAX Search',
@@ -43,10 +42,7 @@ if ( is_array( $widgets ) && ! empty( $widgets ) ) {
 		'facebook-page'              => 'Facebook Page',
 		'hero-slider'                => 'Hero Slider',
 		'horizontal-scrolling-card'  => 'Horizontal Scrolling Card',
-		'hover-list'                 => 'Hover List',
-		'split-image'                => 'Split Image',
-		'image-card-ticker'          => 'Image Card Ticker',
-		'marquee-text'               => 'Marquee Text'*/
+		'marquee-text'               => 'Marquee Text'
 	);
 	$pro_widgets = apply_filters( 'wpmozo_add_pro_widgets_to_panel', $pro_widgets );
 	$widgets_list = array_merge( $widgets_list, array_unique( $pro_widgets )  ) ;

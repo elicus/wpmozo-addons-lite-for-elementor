@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'wpmozo';
-  src:  url('../../fonts/wpmozo.ttf?q56b82') format('truetype'),
-    url('../../fonts/wpmozo.woff?q56b82') format('woff'),
-    url('../../fonts/wpmozo.svg?q56b82#wpmozo') format('svg');
+  src:  url('../../fonts/wpmozo.ttf?t2p93b') format('truetype'),
+    url('../../fonts/fonts/wpmozo.woff?t2p93b') format('woff'),
+    url('../../fonts/wpmozo.svg?t2p93b#WPMozoIcons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -21,6 +21,24 @@
     font-size: 28px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+.wpmozo-ae-icon-tile-scroll:before {
+  content: "\e95e";
+}
+.wpmozo-ae-icon-business-hours:before {
+  content: "\e95f";
+}
+.wpmozo-ae-icon-progress-bar:before {
+  content: "\e95c";
+}
+.wpmozo-ae-icon-wavy-gallery:before {
+  content: "\e95b";
+}
+.wpmozo-ae-icon-table-of-content:before {
+  content: "\e95a";
+}
+.wpmozo-ae-icon-split-image:before {
+  content: "\e95d";
 }
 .wpmozo-ae-icon-section:before {
   content: "\e921";
@@ -46,22 +64,16 @@
 .wpmozo-ae-icon-horizontal-scrolling-card:before {
   content: "\e958";
 }
-.wpmozo-ae-icon-advanced-tooltip:before {
-  content: "\e94e";
-}
-.wpmozo-ae-icon-dropdown-button:before {
-  content: "\e949";
-}
 .wpmozo-ae-icon-marquee-text:before {
   content: "\e959";
 }
-.wpmozo-ae-icon-tooltip:before {
+.wpmozo-ae-icon-advanced-tooltip:before {
   content: "\e94e";
 }
 .wpmozo-ae-icon-image-hover-effect:before {
   content: "\e94d";
 }
-.wpmozo-ae-icon-drop-down-button:before {
+.wpmozo-ae-icon-dropdown-button:before {
   content: "\e949";
 }
 .wpmozo-ae-icon-image-card-ticker:before {
@@ -196,7 +208,7 @@
 .wpmozo-ae-icon-blog-timeline:before {
   content: "\e916";
 }
-.wpmozo-ae-icon-business-hours:before {
+.wpmozo-ae-icon-business-hours1:before {
   content: "\e917";
 }
 .wpmozo-ae-icon-team-grid:before {

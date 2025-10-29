@@ -146,20 +146,6 @@ $repeater = new Repeater();
 		)
 	);
 	$repeater->add_control(
-		'button_link_target',
-		array(
-			'label'       => esc_html__( 'Button Link Target', 'wpmozo-addons-lite-for-elementor' ),
-			'label_block' => false,
-			'type'        => Controls_Manager::SELECT,
-			'options'     => array(
-				'_blank' => esc_html__( 'In New Tab', 'wpmozo-addons-lite-for-elementor' ),
-				'_self'  => esc_html__( 'In The Same Window', 'wpmozo-addons-lite-for-elementor' ),
-			),
-			'default'     => '_self',
-			'condition'   => array( 'show_button' => 'yes' ),
-		)
-	);
-	$repeater->add_control(
 		'background_heading',
 		array(
 			'label'     => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
@@ -260,6 +246,25 @@ $repeater = new Repeater();
 			),
 			'selectors'  => array(
 				'{{WRAPPER}} .wpmozo_hover_list_title_wrapper' => 'flex: 0 0 {{SIZE}}{{UNIT}};',
+			),
+		)
+	);
+	$this->add_responsive_control(
+		'title_padding',
+		array(
+			'label'      => esc_html__( 'Title Padding', 'wpmozo-addons-lite-for-elementor' ),
+			'type'       => Controls_Manager::DIMENSIONS,
+			'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
+			'default'    => array(
+				'top'      => 0,
+				'right'    => 10,
+				'bottom'   => 0,
+				'left'     => 10,
+				'unit'     => 'px',
+				'isLinked' => false,
+			),
+			'selectors'  => array(
+				'{{WRAPPER}} .wpmozo_hover_list_title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			),
 		)
 	);
@@ -374,7 +379,7 @@ $repeater = new Repeater();
 			'type'      => Controls_Manager::COLOR,
 			'separator' => 'after',
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_hover_list_title:hover' => 'color: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_hover_list .wpmozo_hover_list_item_inner .wpmozo_hover_list_title_wrapper .wpmozo_hover_list_title:hover' => 'color: {{VALUE}};',
 			),
 		)
 	);
@@ -394,6 +399,46 @@ $repeater = new Repeater();
 		array(
 			'label' => esc_html__( 'Subtitle Text', 'wpmozo-addons-lite-for-elementor' ),
 			'tab'   => Controls_Manager::TAB_STYLE,
+		)
+	);
+	$this->add_responsive_control(
+		'subtitle_width',
+		array(
+			'label'      => esc_html__( 'Subtitle Width', 'wpmozo-addons-lite-for-elementor' ),
+			'type'       => Controls_Manager::SLIDER,
+			'size_units' => array( '%' ),
+			'range'      => array(
+				'%' => array(
+					'min' => 1,
+					'max' => 100,
+				),
+			),
+			'default'    => array(
+				'unit' => '%',
+				'size' => 22,
+			),
+			'selectors'  => array(
+				'{{WRAPPER}} .wpmozo_hover_list_subtitle' => 'flex: 0 0 {{SIZE}}{{UNIT}};',
+			),
+		)
+	);
+	$this->add_responsive_control(
+		'subtitle_padding',
+		array(
+			'label'      => esc_html__( 'Subtitle Padding', 'wpmozo-addons-lite-for-elementor' ),
+			'type'       => Controls_Manager::DIMENSIONS,
+			'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
+			'default'    => array(
+				'top'      => 0,
+				'right'    => 10,
+				'bottom'   => 0,
+				'left'     => 10,
+				'unit'     => 'px',
+				'isLinked' => false,
+			),
+			'selectors'  => array(
+				'{{WRAPPER}} .wpmozo_hover_list_subtitle' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			),
 		)
 	);
 	$this->add_responsive_control(
@@ -543,7 +588,7 @@ $repeater = new Repeater();
 			),
 			'default'    => array(
 				'unit' => '%',
-				'size' => 40,
+				'size' => 35,
 			),
 			'selectors'  => array(
 				'{{WRAPPER}} .wpmozo_hover_list_description' => 'flex: 0 0 {{SIZE}}{{UNIT}};',
@@ -708,7 +753,6 @@ $repeater = new Repeater();
 			'label'      => esc_html__( 'Icon Size', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => Controls_Manager::SLIDER,
 			'size_units' => array( 'px', 'em' ),
-			'separator'  => 'after',
 			'range'      => array(
 				'px' => array(
 					'min' => 1,
@@ -776,22 +820,12 @@ $repeater = new Repeater();
 		)
 	);
 	$this->add_responsive_control(
-		'image_padding',
-		array(
-			'label'      => esc_html__( 'Image Padding', 'wpmozo-addons-lite-for-elementor' ),
-			'type'       => Controls_Manager::DIMENSIONS,
-			'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
-			'selectors'  => array(
-				'{{WRAPPER}} .wpmozo_hover_list .wpmozo_hover_list_cursor' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-			),
-		)
-	);
-	$this->add_responsive_control(
 		'image_size',
 		array(
 			'label'      => esc_html__( 'Image Size', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => Controls_Manager::SLIDER,
 			'size_units' => array( 'px' ),
+			'separator'  => 'after',
 			'range'      => array(
 				'px' => array(
 					'min' => 10,
@@ -800,18 +834,11 @@ $repeater = new Repeater();
 			),
 			'default'    => array(
 				'unit' => 'px',
-				'size' => 400,
+				'size' => 200,
 			),
 			'selectors'  => array(
 				'{{WRAPPER}} .wpmozo_hover_list .wpmozo_hover_list_cursor' => 'width:{{SIZE}}{{UNIT}}; height:{{SIZE}}{{UNIT}};',
 			),
-		)
-	);
-	$this->start_controls_tabs( 'image_styling_tabs' );
-	$this->start_controls_tab(
-		'image_normal_tab',
-		array(
-			'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
 		)
 	);
 	$this->add_group_control(
@@ -839,40 +866,6 @@ $repeater = new Repeater();
 			),
 		)
 	);
-	$this->end_controls_tab();
-	$this->start_controls_tab(
-		'image_hover_tab',
-		array(
-			'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
-		)
-	);
-	$this->add_group_control(
-		Group_Control_Border::get_type(),
-		array(
-			'name'           => 'image_hover_border',
-			'selector'       => '{{WRAPPER}} .wpmozo_hover_list .wpmozo_hover_list_cursor:hover',
-			'fields_options' => array(
-				'border' => array( 'label' => esc_html__( 'Image Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
-				'width'  => array( 'label' => esc_html__( 'Image Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
-				'color'  => array( 'label' => esc_html__( 'Image Border Color', 'wpmozo-addons-lite-for-elementor' ) ),
-			),
-		)
-	);
-	$this->add_responsive_control(
-		'image_hover_border_radius',
-		array(
-			'label'       => esc_html__( 'Image Border Radius', 'wpmozo-addons-lite-for-elementor' ),
-			'type'        => Controls_Manager::DIMENSIONS,
-			'label_block' => true,
-			'size_units'  => array( 'px', 'em', '%' ),
-			'separator'   => 'after',
-			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_hover_list .wpmozo_hover_list_cursor:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-			),
-		)
-	);
-	$this->end_controls_tab();
-	$this->end_controls_tabs();
 	$this->add_group_control(
 		Group_Control_Box_Shadow::get_type(),
 		array(
@@ -998,7 +991,7 @@ $repeater = new Repeater();
 			'label'     => esc_html__( 'Divider Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_hover_list_item_wrapper:hover .wpmozo_hover_list_item_divider' => 'border-top-color: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_hover_list_item:hover + .wpmozo_hover_list_item_divider' => 'border-top-color: {{VALUE}};',
 			),
 		)
 	);
@@ -1009,7 +1002,7 @@ $repeater = new Repeater();
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 			'selectors'  => array(
-				'{{WRAPPER}} .wpmozo_hover_list_item_wrapper:hover .wpmozo_hover_list_item_divider' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_hover_list_item:hover + .wpmozo_hover_list_item_divider' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			),
 		)
 	);
@@ -1047,7 +1040,27 @@ $repeater = new Repeater();
 			),
 		)
 	);
-
+	$this->add_responsive_control(
+		'button_width',
+		array(
+			'label'      => esc_html__( 'Button Width', 'wpmozo-addons-lite-for-elementor' ),
+			'type'       => Controls_Manager::SLIDER,
+			'size_units' => array( '%' ),
+			'range'      => array(
+				'%' => array(
+					'min' => 1,
+					'max' => 100,
+				),
+			),
+			'default'    => array(
+				'unit' => '%',
+				'size' => 20,
+			),
+			'selectors'  => array(
+				'{{WRAPPER}} .wpmozo_readmore_button_wrapper' => 'width: {{SIZE}}{{UNIT}};',
+			),
+		)
+	);
 	$this->add_control(
 		'button_custom_style',
 		array(
@@ -1208,7 +1221,21 @@ $repeater = new Repeater();
 			),
 		)
 	);
-
+	$this->add_responsive_control(
+		'button_icon_color',
+		array(
+			'label'     => esc_html__( 'Button Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'condition' => array(
+				'button_custom_style' => 'yes',
+				'show_button_icon'    => 'yes',
+			),
+			'selectors' => array(
+				'{{WRAPPER}} .wpmozo_readmore_button svg' => 'fill: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_readmore_button i'   => 'color: {{VALUE}}; transition: 300ms;',
+			),
+		)
+	);
 	$this->add_group_control(
 		Group_Control_Background::get_type(),
 		array(
@@ -1299,21 +1326,6 @@ $repeater = new Repeater();
 			),
 			'exclude'     => array( 'font_size' ),
 			'selector'    => '{{WRAPPER}} .wpmozo_readmore_button',
-		)
-	);
-	$this->add_responsive_control(
-		'button_icon_color',
-		array(
-			'label'     => esc_html__( 'Button Icon Color', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::COLOR,
-			'condition' => array(
-				'button_custom_style' => 'yes',
-				'show_button_icon'    => 'yes',
-			),
-			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_readmore_button svg' => 'fill: {{VALUE}}; transition: 300ms;',
-				'{{WRAPPER}} .wpmozo_readmore_button i'   => 'color: {{VALUE}}; transition: 300ms;',
-			),
 		)
 	);
 	$this->add_responsive_control(
@@ -1408,7 +1420,21 @@ $repeater = new Repeater();
 			),
 		)
 	);
-
+	$this->add_responsive_control(
+		'button_icon_color_hover',
+		array(
+			'label'     => esc_html__( 'Button Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+			'type'      => Controls_Manager::COLOR,
+			'condition' => array(
+				'button_custom_style' => 'yes',
+				'show_button_icon'    => 'yes',
+			),
+			'selectors' => array(
+				'{{WRAPPER}} .wpmozo_readmore_button:hover svg' => 'fill: {{VALUE}}; transition: 300ms;',
+				'{{WRAPPER}} .wpmozo_readmore_button:hover i'   => 'color: {{VALUE}}; transition: 300ms;',
+			),
+		)
+	);
 	$this->add_group_control(
 		Group_Control_Background::get_type(),
 		array(
@@ -1494,21 +1520,6 @@ $repeater = new Repeater();
 		)
 	);
 	$this->add_responsive_control(
-		'button_icon_color_hover',
-		array(
-			'label'     => esc_html__( 'Button Icon Color', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::COLOR,
-			'condition' => array(
-				'button_custom_style' => 'yes',
-				'show_button_icon'    => 'yes',
-			),
-			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_readmore_button:hover svg' => 'fill: {{VALUE}}; transition: 300ms;',
-				'{{WRAPPER}} .wpmozo_readmore_button:hover i'   => 'color: {{VALUE}}; transition: 300ms;',
-			),
-		)
-	);
-	$this->add_responsive_control(
 		'button_margin_hover',
 		array(
 			'label'      => esc_html__( 'Button Margin', 'wpmozo-addons-lite-for-elementor' ),
@@ -1538,4 +1549,27 @@ $repeater = new Repeater();
 	);
 	$this->end_controls_tab();
 	$this->end_controls_tabs();
+	$this->end_controls_section();
+	$this->start_controls_section(
+		'background_style_section',
+		array(
+			'label' => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
+			'tab'   => Controls_Manager::TAB_STYLE,
+		)
+	);
+	$this->add_group_control(
+		Group_Control_Background::get_type(),
+		array(
+			'name'           => 'items_background',
+			'types'          => array( 'classic', 'gradient' ),
+			'fields_options' => array(
+				'background' => array(
+					'label'   => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
+					'default' => 'classic',
+				),
+			),
+			'toggle'         => false,
+			'selector'       => '{{WRAPPER}} .wpmozo_hover_list .wpmozo_hover_list_item',
+		)
+	);
 	$this->end_controls_section();

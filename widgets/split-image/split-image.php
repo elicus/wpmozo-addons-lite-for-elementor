@@ -3,7 +3,7 @@
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
  * @copyright   2025 Elicus Technologies Private Limited
- * @version     1.0.2
+ * @version     1.0.0
  */
 
 // if this file is called directly, abort.
@@ -21,7 +21,7 @@ if ( ! class_exists( 'WPMOZO_AE_Split_Image' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since 1.0.0
+		 * @since 1.8.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -35,7 +35,7 @@ if ( ! class_exists( 'WPMOZO_AE_Split_Image' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since 1.0.0
+		 * @since 1.8.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -49,7 +49,7 @@ if ( ! class_exists( 'WPMOZO_AE_Split_Image' ) ) {
 		 *
 		 * Retrieve widget keywords.
 		 *
-		 * @since 1.4.0
+		 * @since 1.8.0
 		 * @access public
 		 *
 		 * @return array Widget keywords.
@@ -63,7 +63,7 @@ if ( ! class_exists( 'WPMOZO_AE_Split_Image' ) ) {
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since 1.0.0
+		 * @since 1.8.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -77,7 +77,7 @@ if ( ! class_exists( 'WPMOZO_AE_Split_Image' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since 1.0.0
+		 * @since 1.8.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -91,7 +91,7 @@ if ( ! class_exists( 'WPMOZO_AE_Split_Image' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since 1.0.0
+		 * @since 1.8.0
 		 * @access public
 		 *
 		 * @return style handle.
@@ -107,7 +107,7 @@ if ( ! class_exists( 'WPMOZO_AE_Split_Image' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since 1.0.0
+		 * @since 1.8.0
 		 * @access public
 		 *
 		 * @return array Element scripts dependencies.
@@ -123,7 +123,7 @@ if ( ! class_exists( 'WPMOZO_AE_Split_Image' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since 1.0.0
+		 * @since 1.8.0
 		 * @access protected
 		 */
 		protected function register_controls() {
@@ -135,7 +135,7 @@ if ( ! class_exists( 'WPMOZO_AE_Split_Image' ) ) {
 		 *
 		 * Written in PHP and used to generate the final HTML.
 		 *
-		 * @since 1.0.0
+		 * @since 1.8.0
 		 * @access protected
 		 */
 		protected function render() {

@@ -99,7 +99,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Card_Ticker' ) ) {
 		 * @return style handle.
 		 */
 		public function get_style_depends() {
-			wp_register_style( 'wpmozo-ae-image-card-ticker-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION );
+			wp_register_style( 'wpmozo-ae-image-card-ticker-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
 			return array( 'wpmozo-ae-image-card-ticker-style' );
 		}
@@ -115,7 +115,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Card_Ticker' ) ) {
 		 * @return array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-			wp_register_script( 'wpmozo-ae-image-card-ticker-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION, true );
+			wp_register_script( 'wpmozo-ae-image-card-ticker-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
 			return array( 'wpmozo-ae-image-card-ticker-script', 'wpmozo-ae-gsap', 'wpmozo-ae-imagesloaded' );
 		}
@@ -150,9 +150,10 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Card_Ticker' ) ) {
 				return; // Exit early if no images.
 			}
 			$layout              = isset( $settings['layout'] ) && ! empty( $settings['layout'] ) ? $settings['layout'] : 'marquee';
-			$images_gap          = isset( $settings['images_gap']['size'] ) && ! empty( $settings['images_gap']['size'] ) ? $settings['images_gap']['size'] : 30;
-			$images_gap_tablet   = isset( $settings['images_gap_tablet']['size'] ) && ! empty( $settings['images_gap_tablet']['size'] ) ? $settings['images_gap_tablet']['size'] : 30;
-			$images_gap_mobile   = isset( $settings['images_gap_mobile']['size'] ) && ! empty( $settings['images_gap_mobile']['size'] ) ? $settings['images_gap_mobile']['size'] : 30;
+			$pause_on_hover      = isset( $settings['pause_on_hover'] ) && ! empty( $settings['pause_on_hover'] ) ? $settings['pause_on_hover'] : 'yes';
+			$images_gap          = isset( $settings['images_gap']['size'] ) && ! empty( $settings['images_gap'] ) ? $settings['images_gap']['size'] : 30;
+			$images_gap_tablet   = isset( $settings['images_gap_tablet']['size'] ) && ! empty( $settings['images_gap'] ) ? $settings['images_gap_tablet']['size'] : 30;
+			$images_gap_mobile   = isset( $settings['images_gap_mobile']['size'] ) && ! empty( $settings['images_gap'] ) ? $settings['images_gap_mobile']['size'] : 30;
 			$ticker_speed        = isset( $settings['ticker_speed']['size'] ) && ! empty( $settings['ticker_speed']['size'] ) ? $settings['ticker_speed']['size'] : 45;
 			$ticker_speed_tablet = isset( $settings['ticker_speed_tablet']['size'] ) && ! empty( $settings['ticker_speed_tablet']['size'] ) ? $settings['ticker_speed_tablet']['size'] : 45;
 			$ticker_speed_mobile = isset( $settings['ticker_speed_mobile']['size'] ) && ! empty( $settings['ticker_speed_mobile']['size'] ) ? $settings['ticker_speed_mobile']['size'] : 45;
@@ -188,6 +189,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Card_Ticker' ) ) {
 			// Common data attributes.
 			$attributes = array(
 				'layout'              => $layout,
+				'pause_on_hover'      => $pause_on_hover,
 				'direction'           => $direction,
 				'direction_tablet'    => $direction_tablet,
 				'direction_mobile'    => $direction_mobile,
@@ -212,14 +214,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Card_Ticker' ) ) {
 			?>
 			<div class="wpmozo_image_card_ticker">
 			<?php if ( 'curve' === $layout ) : ?>
-			<svg width="0" height="0" style="position:absolute">
-				<defs>
-					<mask id="wpmozo_image_card_ticker_curve_mask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
-						<rect x="0" y="0" width="1" height="1" fill="black"></rect>
-						<path d="M0,0 Q0.5,0.25 1,0 V1 Q0.5,0.75 0,1 Z" fill="white"></path>
-					</mask>
-				</defs>
-			</svg>
+			
 		<?php endif; ?> 
 				<div class="wpmozo_image_card_ticker_inner_wrap">
 				<div <?php $this->print_render_attribute_string( 'ticker_wrapper' ); ?>>
