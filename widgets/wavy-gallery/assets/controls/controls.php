@@ -439,7 +439,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'image_title_text_color',
 	array(
-		'label'     => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'default'   => '#000000',
 		'selectors' => array(
@@ -450,7 +450,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'image_title_text_size',
 	array(
-		'label'     => esc_html__( 'Text Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SLIDER,
 		'range'     => array(
 			'px' => array(
@@ -504,7 +504,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'image_title_text_color_hover',
 	array(
-		'label'     => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'{{WRAPPER}}.wpmozo_wavy_gallery_overlay .wpmozo_wavy_gallery_overlay_item_title:hover' => 'color: {{VALUE}}',
@@ -514,7 +514,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'image_title_text_size_hover',
 	array(
-		'label'     => esc_html__( 'Text Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SLIDER,
 		'range'     => array(
 			'px' => array(

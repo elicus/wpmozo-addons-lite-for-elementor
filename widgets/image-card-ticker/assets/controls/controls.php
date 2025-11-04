@@ -186,7 +186,7 @@ $this->start_controls_section(
 $this->add_responsive_control(
 	'image_width',
 	array(
-		'label'          => esc_html__( 'Image Width', 'wpmozo-addons-lite-for-elementor' ),
+		'label'          => esc_html__( 'Width', 'wpmozo-addons-lite-for-elementor' ),
 		'type'           => Controls_Manager::SLIDER,
 		'size_units'     => array( 'px' ),
 		'range'          => array(
@@ -217,7 +217,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'image_height',
 	array(
-		'label'          => esc_html__( 'Image Height', 'wpmozo-addons-lite-for-elementor' ),
+		'label'          => esc_html__( 'Height', 'wpmozo-addons-lite-for-elementor' ),
 		'type'           => Controls_Manager::SLIDER,
 		'size_units'     => array( 'px' ),
 		'range'          => array(
@@ -264,17 +264,12 @@ $this->add_group_control(
 	array(
 		'name'           => 'image_border',
 		'selector'       => '{{WRAPPER}} .wpmozo_image_card_ticker_inner img',
-		'fields_options' => array(
-			'border' => array( 'label' => esc_html__( 'Image Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
-			'width'  => array( 'label' => esc_html__( 'Image Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
-			'color'  => array( 'label' => esc_html__( 'Image Border Color', 'wpmozo-addons-lite-for-elementor' ) ),
-		),
 	)
 );
 $this->add_responsive_control(
 	'image_border_radius',
 	array(
-		'label'       => esc_html__( 'Image Border Radius', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Border Radius', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::DIMENSIONS,
 		'label_block' => true,
 		'separator'   => 'after',
@@ -296,18 +291,13 @@ $this->add_group_control(
 	array(
 		'name'           => 'image_border_hover',
 		'selector'       => '{{WRAPPER}} .wpmozo_image_card_ticker_inner img:hover',
-		'fields_options' => array(
-			'border' => array( 'label' => esc_html__( 'Image Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
-			'width'  => array( 'label' => esc_html__( 'Image Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
-			'color'  => array( 'label' => esc_html__( 'Image Border Color', 'wpmozo-addons-lite-for-elementor' ) ),
-		),
 		'separator' => 'none'
 	)
 );
 $this->add_responsive_control(
 	'image_border_radius_hover',
 	array(
-		'label'       => esc_html__( 'Image Border Radius', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Border Radius', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::DIMENSIONS,
 		'label_block' => true,
 		'separator'   => 'after',
@@ -322,7 +312,7 @@ $this->end_controls_tabs();
 $this->add_responsive_control(
 	'image_alignment',
 	array(
-		'label'     => esc_html__( 'Image Alignment', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::CHOOSE,
 		'options'   => array(
 			'start'  => array(
@@ -352,11 +342,6 @@ $this->add_group_control(
 	array(
 		'name'           => 'image_box_shadow',
 		'selector'       => '{{WRAPPER}} .wpmozo_image_card_ticker_inner img',
-		'fields_options' => array(
-			'box_shadow_type' => array(
-				'label' => esc_html__( 'Image Box Shadow', 'wpmozo-addons-lite-for-elementor' ),
-			),
-		),
 		'condition'      => array(
 			'layout' => 'marquee',
 		),

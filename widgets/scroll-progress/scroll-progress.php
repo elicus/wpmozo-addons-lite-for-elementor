@@ -13,8 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 use Elementor\Widget_Base;
 use Elementor\Utils;
 
-if ( ! class_exists( 'WPMOZO_AE_Progress_Bar' ) ) {
-	class WPMOZO_AE_Progress_Bar extends Widget_Base {
+if ( ! class_exists( 'WPMOZO_AE_Scroll_Progress' ) ) {
+	class WPMOZO_AE_Scroll_Progress extends Widget_Base {
 
 		/**
 		 * Get widget name.
@@ -27,7 +27,7 @@ if ( ! class_exists( 'WPMOZO_AE_Progress_Bar' ) ) {
 		 * @return string Widget name.
 		 */
 		public function get_name() {
-			return 'wpmozo_ae_progress_bar';
+			return 'wpmozo_ae_scroll_progress';
 		}
 
 		/**
@@ -41,7 +41,7 @@ if ( ! class_exists( 'WPMOZO_AE_Progress_Bar' ) ) {
 		 * @return string Widget title.
 		 */
 		public function get_title() {
-			return esc_html__( 'Progress Bar', 'wpmozo-addons-lite-for-elementor' );
+			return esc_html__( 'Scroll Progress', 'wpmozo-addons-lite-for-elementor' );
 		}
 
 		/**
@@ -55,7 +55,7 @@ if ( ! class_exists( 'WPMOZO_AE_Progress_Bar' ) ) {
 		 * @return array Widget keywords.
 		 */
 		public function get_keywords() {
-			return array( 'wpmz progress bar', 'wpmozo progress bar' );
+			return array( 'wpmz progress bar', 'wpmozo progress bar','wpmz scroll progress', 'wpmozo scroll progress','wpmz scroll tracker', 'wpmozo scroll tracker' );
 		}
 
 		/**
@@ -69,7 +69,7 @@ if ( ! class_exists( 'WPMOZO_AE_Progress_Bar' ) ) {
 		 * @return string Widget icon.
 		 */
 		public function get_icon() {
-			return 'wpmozo-ae-icon-progress-bar wpmozo-ae-brandicon';
+			return 'wpmozo-ae-icon-scroll-progress wpmozo-ae-brandicon';
 		}
 
 		/**
@@ -98,8 +98,8 @@ if ( ! class_exists( 'WPMOZO_AE_Progress_Bar' ) ) {
 		 */
 		public function get_style_depends() {
 
-			wp_register_style( 'wpmozo-ae-progress-bar-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
-			return array( 'wpmozo-ae-progress-bar-style' );
+			wp_register_style( 'wpmozo-ae-scroll-progress-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
+			return array( 'wpmozo-ae-scroll-progress-style' );
 		}
 
 		/**
@@ -113,9 +113,9 @@ if ( ! class_exists( 'WPMOZO_AE_Progress_Bar' ) ) {
 		 * @return array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-			wp_register_script( 'wpmozo-ae-progress-bar-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
+			wp_register_script( 'wpmozo-ae-scroll-progress-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
-			return array( 'wpmozo-ae-progress-bar-script' );
+			return array( 'wpmozo-ae-scroll-progress-script' );
 		}
 
 		/**
@@ -127,7 +127,7 @@ if ( ! class_exists( 'WPMOZO_AE_Progress_Bar' ) ) {
 		 * @access protected
 		 */
 		protected function register_controls() {
-			require plugin_dir_path( __DIR__ ) . 'progress-bar/assets/controls/controls.php';
+			require plugin_dir_path( __DIR__ ) . 'scroll-progress/assets/controls/controls.php';
 		}
 
 		/**
@@ -148,22 +148,22 @@ if ( ! class_exists( 'WPMOZO_AE_Progress_Bar' ) ) {
 
 			?>
 		
-			<div class="wpmozo_progress_bar">
-				<div class="wpmozo_progress_bar_wrapper wpmozo_progress_bar_layout_<?php echo esc_attr( $layout ); ?> wpmozo_progress_bar_<?php echo esc_attr( $show_striped ); ?>" data-show_number="<?php echo esc_attr( $progress_number ); ?>" 
+			<div class="wpmozo_scroll_progress">
+				<div class="wpmozo_scroll_progress_wrapper wpmozo_scroll_progress_layout_<?php echo esc_attr( $layout ); ?> wpmozo_scroll_progress_<?php echo esc_attr( $show_striped ); ?>" data-show_number="<?php echo esc_attr( $progress_number ); ?>" 
 				<?php
 				if ( 'bar' === $layout ) {
 					?>
 					data-bar_direction="<?php echo esc_attr( $bar_direction ); ?>"<?php } ?>>
-					<div class="wpmozo_progress_bar_inner">
+					<div class="wpmozo_scroll_progress_inner">
 						<?php if ( 'bar' === $layout ) { ?>
 						<?php } elseif ( 'circle' === $layout ) { ?>
-							<svg class="wpmozo_progress_bar_circle" viewBox="0 0 100 100">
-								<circle class="wpmozo_fill_progress_bar_bg" cx="50" cy="50" r="45"></circle>
+							<svg class="wpmozo_scroll_progress_circle" viewBox="0 0 100 100">
+								<circle class="wpmozo_fill_scroll_progress_bg" cx="50" cy="50" r="45"></circle>
 								<circle class="wpmozo_circle_bg" cx="50" cy="50" r="45"></circle>
 								<circle class="wpmozo_circle_fg" cx="50" cy="50" r="45"></circle>
 							</svg>
 							<?php if ( 'yes' === $settings['show_progress_number'] ) { ?>
-								<span class="wpmozo_progress_bar_percent"></span>
+								<span class="wpmozo_scroll_progress_percent"></span>
 							<?php } ?>
 						<?php } elseif ( 'half_circle' === $layout ) { ?>
 							<svg class="wpmozo_half_circle" viewBox="0 0 200 100">
@@ -171,12 +171,12 @@ if ( ! class_exists( 'WPMOZO_AE_Progress_Bar' ) ) {
 								<path class="wpmozo_circle_fg" d="M 10 100 A 90 90 0 0 1 190 100"></path>
 							</svg>
 							<?php if ( 'yes' === $settings['show_progress_number'] ) { ?>
-								<span class="wpmozo_progress_bar_percent"></span>
+								<span class="wpmozo_scroll_progress_percent"></span>
 							<?php } ?>
 						<?php } ?>	
 					</div>
 					<?php if ( 'yes' === $settings['show_progress_number'] ) { ?>
-						<span class="wpmozo_progress_bar_percent"></span>
+						<span class="wpmozo_scroll_progress_percent"></span>
 					<?php } ?>
 				</div>
 			</div>

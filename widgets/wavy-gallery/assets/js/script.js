@@ -202,9 +202,10 @@
                             $overlayContent.find('.wpmozo_wavy_gallery_item').off('click').on('click', function () {
                                 gsap.to($overlayContent[0], {
                                     duration: 1,
-                                    scrollTo: {
+                                    scrollLeft: this.offsetLeft - ( $overlayContent[0].offsetWidth / 2 ) + ( this.offsetWidth / 2 ),
+                                    /*scrollTo: {
                                         x: this.offsetLeft - ($overlayContent[0].offsetWidth / 2) + (this.offsetWidth / 2)
-                                    },
+                                    },*/
                                     ease: "sine.out",
                                     onUpdate: updateOverlayTitle
                                 });

@@ -33,7 +33,7 @@ A feature-packed plugin designed to complement your Elementor page-building expe
 
 5. [Post Ticker](https://wpmozoaddons.com/elementor-post-ticker/) - Display your latest posts or news headlines in an eye-catching scrolling format using the WPMozo Post Ticker widget for Elementor. It’s perfect for highlighting recent updates, announcements, or trending topics on your WordPress website in a dynamic and engaging way.
 
-6. [Progress Bar](https://wpmozoaddons.com/elementor-progress-bar/) - Show a live progress indicator that fills as users scroll through your WordPress website's page with the WPMozo Progress Bar widget for Elementor. Perfect for long pages, reading indicators, or creative visual feedback.
+6. [Scroll Progress](https://wpmozoaddons.com/elementor-scroll-progress/) - Show a live progress indicator that fills as users scroll through your WordPress website's page with the WPMozo Scroll Progress widget for Elementor. Perfect for long pages, reading indicators, or creative visual feedback.
 
 7. [Dropdown Button](https://wpmozoaddons.com/elementor-dropdown-button/) - Display hidden links or content in a compact and user-friendly way with the WPMozo Dropdown Button widget for Elementor, perfect for navigation menus, quick actions, or additional options without cluttering the layout.
 
@@ -282,7 +282,7 @@ For a detailed list of server requirements, please refer to the official WordPre
 - NEW: New widget Split Image.
 - NEW: New widget Wavy Gallery.
 - NEW: New widget Post Ticker.
-- NEW: New widget Progress Bar.
+- NEW: New widget Scroll Progress.
 - NEW: New widget Hover List.
 
 [See changelog for all versions](https://plugins.svn.wordpress.org/wpmozo-addons-lite-for-elementor/trunk/changelog.txt).

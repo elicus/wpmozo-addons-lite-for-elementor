@@ -5,7 +5,7 @@ Changelog for WPMozo Addons Lite for Elementor
 - NEW: New widget Split Image.
 - NEW: New widget Wavy Gallery.
 - NEW: New widget Post Ticker.
-- NEW: New widget Progress Bar.
+- NEW: New widget Scroll Progress.
 - NEW: New widget Hover List.
 
 2025-08-01 - Version 1.7.0

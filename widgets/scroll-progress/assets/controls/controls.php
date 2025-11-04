@@ -93,29 +93,31 @@ $this->start_controls_section(
 $this->add_responsive_control(
 	'bar_size',
 	array(
-		'label'     => esc_html__( 'Bar Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SLIDER,
 		'range'     => array(
+			'%' => array(
+				'min'  => 1,
+				'max'  => 100,
+				'step' => 1,
+			),
 			'px' => array(
 				'min'  => 5,
-				'max'  => 150,
+				'max'  => 500,
 				'step' => 1,
 			),
 		),
-		'default'   => array(
-			'unit' => 'px',
-			'size' => 30,
-		),
+		'size_units' => array( 'px', '%' ),
 		'selectors' => array(
-			'{{WRAPPER}}.direction_horizontal .wpmozo_progress_bar_layout_bar' => 'height: {{SIZE}}{{UNIT}};',
-			'{{WRAPPER}}.direction_vertical .wpmozo_progress_bar_layout_bar' => 'width: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}}.direction_horizontal .wpmozo_scroll_progress_layout_bar' => 'height: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}}.direction_vertical .wpmozo_scroll_progress_layout_bar,{{WRAPPER}} .wpmozo_scroll_progress .wpmozo_scroll_progress_layout_circle,{{WRAPPER}} .wpmozo_scroll_progress .wpmozo_scroll_progress_layout_half_circle' => 'width: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
 $this->add_responsive_control(
 	'bar_height',
 	array(
-		'label'     => esc_html__( 'Bar Height', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Height', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SLIDER,
 		'range'     => array(
 			'px' => array(
@@ -129,7 +131,7 @@ $this->add_responsive_control(
 			'size' => 500,
 		),
 		'selectors' => array(
-			'{{WRAPPER}}.direction_vertical .wpmozo_progress_bar_layout_bar' => 'height: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}}.direction_vertical .wpmozo_scroll_progress_layout_bar' => 'height: {{SIZE}}{{UNIT}};',
 		),
 		'condition' => array(
 			'bar_direction' => 'vertical',
@@ -148,10 +150,10 @@ $this->start_controls_tab(
 $this->add_control(
 	'circle_background_color',
 	array(
-		'label'     => esc_html__( 'Circle Background Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Background Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_progress_bar_layout_circle svg circle.wpmozo_fill_progress_bar_bg, {{WRAPPER}} .wpmozo_progress_bar_inner .wpmozo_half_circle .wpmozo_circle_bg' => 'fill: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_scroll_progress_layout_circle svg circle.wpmozo_fill_scroll_progress_bg, {{WRAPPER}} .wpmozo_scroll_progress_inner .wpmozo_half_circle .wpmozo_circle_bg' => 'fill: {{VALUE}};',
 		),
 		'condition' => array(
 			'layout!' => 'bar',
@@ -161,22 +163,22 @@ $this->add_control(
 $this->add_control(
 	'bar_empty_color',
 	array(
-		'label'     => esc_html__( 'Bar Empty Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Empty Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_progress_bar_layout_circle .wpmozo_progress_bar_inner .wpmozo_progress_bar_circle circle.wpmozo_circle_bg, {{WRAPPER}} .wpmozo_progress_bar_inner .wpmozo_half_circle .wpmozo_circle_bg' => 'stroke: {{VALUE}};',
-			'{{WRAPPER}} .wpmozo_progress_bar_wrapper.wpmozo_progress_bar_layout_bar' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_scroll_progress_layout_circle .wpmozo_scroll_progress_inner .wpmozo_scroll_progress_circle circle.wpmozo_circle_bg, {{WRAPPER}} .wpmozo_scroll_progress_inner .wpmozo_half_circle .wpmozo_circle_bg' => 'stroke: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_scroll_progress_wrapper.wpmozo_scroll_progress_layout_bar' => 'background-color: {{VALUE}};',
 		),
 	)
 );
 $this->add_control(
 	'bar_filled_color',
 	array(
-		'label'     => esc_html__( 'Bar Filled Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Filled Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_progress_bar_layout_bar .wpmozo_progress_bar_inner' => 'background-color: {{VALUE}};',
-			'{{WRAPPER}} .wpmozo_progress_bar_inner svg .wpmozo_circle_fg' => 'stroke: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_scroll_progress_layout_bar .wpmozo_scroll_progress_inner' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_scroll_progress_inner svg .wpmozo_circle_fg' => 'stroke: {{VALUE}};',
 		),
 	)
 );
@@ -184,12 +186,7 @@ $this->add_group_control(
 	Group_Control_Border::get_type(),
 	array(
 		'name'           => 'bar_border',
-		'selector'       => '{{WRAPPER}} .wpmozo_progress_bar_layout_bar',
-		'fields_options' => array(
-			'border' => array( 'label' => esc_html__( 'Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
-			'width'  => array( 'label' => esc_html__( 'Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
-			'color'  => array( 'label' => esc_html__( 'Border Color', 'wpmozo-addons-lite-for-elementor' ) ),
-		),
+		'selector'       => '{{WRAPPER}} .wpmozo_scroll_progress_layout_bar',
 		'condition' => array( 'layout' => 'bar' )
 	)
 );
@@ -201,7 +198,7 @@ $this->add_responsive_control(
 		'label_block' => true,
 		'size_units'  => array( 'px', 'em', '%' ),
 		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_progress_bar_layout_bar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_scroll_progress_layout_bar' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
 		'condition' => array( 'layout' => 'bar' )
 	)
@@ -216,24 +213,24 @@ $this->start_controls_tab(
 $this->add_control(
 	'circle_background_color_hover',
 	array(
-		'label'     => esc_html__( 'Circle Background Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Background Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array( '
-			{{WRAPPER}} .wpmozo_progress_bar_inner .wpmozo_progress_bar_circle:has( .wpmozo_circle_bg:hover ) > .wpmozo_fill_progress_bar_bg,
+			{{WRAPPER}} .wpmozo_scroll_progress_inner .wpmozo_scroll_progress_circle:has( .wpmozo_circle_bg:hover ) > .wpmozo_fill_scroll_progress_bg,
 
-			{{WRAPPER}} .wpmozo_progress_bar_inner .wpmozo_progress_bar_circle:has( .wpmozo_circle_fg:hover ) > .wpmozo_fill_progress_bar_bg,
+			{{WRAPPER}} .wpmozo_scroll_progress_inner .wpmozo_scroll_progress_circle:has( .wpmozo_circle_fg:hover ) > .wpmozo_fill_scroll_progress_bg,
 
-			{{WRAPPER}} .wpmozo_progress_bar_inner .wpmozo_progress_bar_circle .wpmozo_fill_progress_bar_bg:hover,
+			{{WRAPPER}} .wpmozo_scroll_progress_inner .wpmozo_scroll_progress_circle .wpmozo_fill_scroll_progress_bg:hover,
 
-			{{WRAPPER}} .wpmozo_progress_bar_inner:has(.wpmozo_progress_bar_percent:hover) .wpmozo_progress_bar_circle .wpmozo_fill_progress_bar_bg,
-
-
+			{{WRAPPER}} .wpmozo_scroll_progress_inner:has(.wpmozo_scroll_progress_percent:hover) .wpmozo_scroll_progress_circle .wpmozo_fill_scroll_progress_bg,
 
 
-			{{WRAPPER}} .wpmozo_progress_bar_inner:has(.wpmozo_progress_bar_percent:hover) .wpmozo_half_circle .wpmozo_circle_bg,
 
-			{{WRAPPER}} .wpmozo_progress_bar_inner .wpmozo_half_circle .wpmozo_circle_bg:hover,
-			{{WRAPPER}} .wpmozo_progress_bar_inner .wpmozo_half_circle:has(.wpmozo_circle_fg:hover) .wpmozo_circle_bg
+
+			{{WRAPPER}} .wpmozo_scroll_progress_inner:has(.wpmozo_scroll_progress_percent:hover) .wpmozo_half_circle .wpmozo_circle_bg,
+
+			{{WRAPPER}} .wpmozo_scroll_progress_inner .wpmozo_half_circle .wpmozo_circle_bg:hover,
+			{{WRAPPER}} .wpmozo_scroll_progress_inner .wpmozo_half_circle:has(.wpmozo_circle_fg:hover) .wpmozo_circle_bg
 			' => 'fill: {{VALUE}}; background-color: {{VALUE}};',
 		),
 		'condition' => array(
@@ -244,19 +241,19 @@ $this->add_control(
 $this->add_control(
 	'bar_empty_color_hover',
 	array(
-		'label'     => esc_html__( 'Bar Empty Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Empty Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array( '
-			{{WRAPPER}} .wpmozo_progress_bar_layout_circle .wpmozo_progress_bar_inner .wpmozo_progress_bar_circle circle.wpmozo_circle_bg:hover,
-			{{WRAPPER}} .wpmozo_progress_bar_layout_circle .wpmozo_progress_bar_inner .wpmozo_progress_bar_circle circle.wpmozo_fill_progress_bar_bg:hover ~ circle.wpmozo_circle_bg,
-			{{WRAPPER}} .wpmozo_progress_bar_layout_circle .wpmozo_progress_bar_inner:has(.wpmozo_progress_bar_percent:hover) .wpmozo_circle_bg,
-			{{WRAPPER}} .wpmozo_progress_bar_layout_circle .wpmozo_progress_bar_inner .wpmozo_progress_bar_circle:has(.wpmozo_circle_fg:hover) .wpmozo_circle_bg,
-			{{WRAPPER}} .wpmozo_progress_bar_inner:has(.wpmozo_progress_bar_percent:hover) .wpmozo_circle_bg,
-			{{WRAPPER}} .wpmozo_progress_bar_inner .wpmozo_half_circle .wpmozo_circle_bg:hover,
-			{{WRAPPER}} .wpmozo_progress_bar_inner .wpmozo_half_circle:has(.wpmozo_circle_fg:hover) .wpmozo_circle_bg' 
+			{{WRAPPER}} .wpmozo_scroll_progress_layout_circle .wpmozo_scroll_progress_inner .wpmozo_scroll_progress_circle circle.wpmozo_circle_bg:hover,
+			{{WRAPPER}} .wpmozo_scroll_progress_layout_circle .wpmozo_scroll_progress_inner .wpmozo_scroll_progress_circle circle.wpmozo_fill_scroll_progress_bg:hover ~ circle.wpmozo_circle_bg,
+			{{WRAPPER}} .wpmozo_scroll_progress_layout_circle .wpmozo_scroll_progress_inner:has(.wpmozo_scroll_progress_percent:hover) .wpmozo_circle_bg,
+			{{WRAPPER}} .wpmozo_scroll_progress_layout_circle .wpmozo_scroll_progress_inner .wpmozo_scroll_progress_circle:has(.wpmozo_circle_fg:hover) .wpmozo_circle_bg,
+			{{WRAPPER}} .wpmozo_scroll_progress_inner:has(.wpmozo_scroll_progress_percent:hover) .wpmozo_circle_bg,
+			{{WRAPPER}} .wpmozo_scroll_progress_inner .wpmozo_half_circle .wpmozo_circle_bg:hover,
+			{{WRAPPER}} .wpmozo_scroll_progress_inner .wpmozo_half_circle:has(.wpmozo_circle_fg:hover) .wpmozo_circle_bg' 
 			=> 'stroke: {{VALUE}};',
 
-			'{{WRAPPER}} .wpmozo_progress_bar_wrapper.wpmozo_progress_bar_layout_bar:hover' 
+			'{{WRAPPER}} .wpmozo_scroll_progress_wrapper.wpmozo_scroll_progress_layout_bar:hover' 
 			=> 'background-color: {{VALUE}};',
 		),
 	)
@@ -264,22 +261,22 @@ $this->add_control(
 $this->add_control(
 	'bar_filled_color_hover',
 	array(
-		'label'     => esc_html__( 'Bar Filled Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Filled Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array( '
 
-			{{WRAPPER}} .wpmozo_progress_bar_wrapper.wpmozo_progress_bar_layout_bar .wpmozo_progress_bar_inner:hover:not(.wpmozo_progress_bar_layout_bar:hover),
-			{{WRAPPER}} .wpmozo_progress_bar_wrapper.wpmozo_progress_bar_layout_bar:hover .wpmozo_progress_bar_inner,
-			{{WRAPPER}} .wpmozo_progress_bar_wrapper.wpmozo_progress_bar_layout_bar:has(.wpmozo_progress_bar_percent:hover) .wpmozo_progress_bar_inner' 
+			{{WRAPPER}} .wpmozo_scroll_progress_wrapper.wpmozo_scroll_progress_layout_bar .wpmozo_scroll_progress_inner:hover:not(.wpmozo_scroll_progress_layout_bar:hover),
+			{{WRAPPER}} .wpmozo_scroll_progress_wrapper.wpmozo_scroll_progress_layout_bar:hover .wpmozo_scroll_progress_inner,
+			{{WRAPPER}} .wpmozo_scroll_progress_wrapper.wpmozo_scroll_progress_layout_bar:has(.wpmozo_scroll_progress_percent:hover) .wpmozo_scroll_progress_inner' 
 			=> 'background-color: {{VALUE}};',
 			
 			'
-			{{WRAPPER}} .wpmozo_progress_bar_inner svg:has(.wpmozo_circle_bg:hover) .wpmozo_circle_fg,
-			{{WRAPPER}} .wpmozo_progress_bar_inner .wpmozo_progress_bar_circle .wpmozo_circle_fg:hover,
-			{{WRAPPER}} .wpmozo_progress_bar_inner .wpmozo_progress_bar_circle:has(.wpmozo_fill_progress_bar_bg:hover) .wpmozo_circle_fg,
-			{{WRAPPER}} .wpmozo_progress_bar_inner:has(.wpmozo_progress_bar_percent:hover) .wpmozo_progress_bar_circle .wpmozo_circle_fg,
-			{{WRAPPER}} .wpmozo_progress_bar_inner .wpmozo_half_circle .wpmozo_circle_fg:hover,
-			{{WRAPPER}} .wpmozo_progress_bar_inner:has(.wpmozo_progress_bar_percent:hover) .wpmozo_half_circle .wpmozo_circle_fg' 
+			{{WRAPPER}} .wpmozo_scroll_progress_inner svg:has(.wpmozo_circle_bg:hover) .wpmozo_circle_fg,
+			{{WRAPPER}} .wpmozo_scroll_progress_inner .wpmozo_scroll_progress_circle .wpmozo_circle_fg:hover,
+			{{WRAPPER}} .wpmozo_scroll_progress_inner .wpmozo_scroll_progress_circle:has(.wpmozo_fill_scroll_progress_bg:hover) .wpmozo_circle_fg,
+			{{WRAPPER}} .wpmozo_scroll_progress_inner:has(.wpmozo_scroll_progress_percent:hover) .wpmozo_scroll_progress_circle .wpmozo_circle_fg,
+			{{WRAPPER}} .wpmozo_scroll_progress_inner .wpmozo_half_circle .wpmozo_circle_fg:hover,
+			{{WRAPPER}} .wpmozo_scroll_progress_inner:has(.wpmozo_scroll_progress_percent:hover) .wpmozo_half_circle .wpmozo_circle_fg' 
 			=> 'stroke: {{VALUE}};',
 		),
 	)
@@ -288,12 +285,7 @@ $this->add_group_control(
 	Group_Control_Border::get_type(),
 	array(
 		'name'           => 'bar_border_hover',
-		'selector'       => '{{WRAPPER}} .wpmozo_progress_bar_layout_bar:hover',
-		'fields_options' => array(
-			'border' => array( 'label' => esc_html__( 'Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
-			'width'  => array( 'label' => esc_html__( 'Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
-			'color'  => array( 'label' => esc_html__( 'Border Color', 'wpmozo-addons-lite-for-elementor' ) ),
-		),
+		'selector'       => '{{WRAPPER}} .wpmozo_scroll_progress_layout_bar:hover',
 	)
 );
 $this->add_responsive_control(
@@ -304,7 +296,7 @@ $this->add_responsive_control(
 		'label_block' => true,
 		'size_units'  => array( 'px', 'em', '%' ),
 		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_progress_bar_layout_bar:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_scroll_progress_layout_bar:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
 	)
 );
@@ -322,7 +314,7 @@ $this->start_controls_section(
 $this->add_responsive_control(
 	'percentage_alignment',
 	array(
-		'label'       => esc_html__( 'Percentage Alignment', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::CHOOSE,
 		'label_block' => true,
 		'separator'   => 'after',
@@ -345,7 +337,7 @@ $this->add_responsive_control(
 		),
 		'default'     => 'center',
 		'toggle'      => true,
-		'selectors'   => array( '{{WRAPPER}} .wpmozo_progress_bar_layout_bar .wpmozo_progress_bar_percent' => 'align-self: {{VALUE}};' ),
+		'selectors'   => array( '{{WRAPPER}} .wpmozo_scroll_progress_layout_bar .wpmozo_scroll_progress_percent' => 'align-self: {{VALUE}};' ),
 	)
 );
 $this->start_controls_tabs(
@@ -360,10 +352,10 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'percentage_color',
 	array(
-		'label'     => esc_html__( 'Percentage Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_progress_bar_percent' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_scroll_progress_percent' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -371,15 +363,15 @@ $this->add_group_control(
 	Group_Control_Typography::get_type(),
 	array(
 		'name'     => 'percentage_typography',
-		'label'    => esc_html__( 'Percentage Typography', 'wpmozo-addons-lite-for-elementor' ),
+		'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
 		'exclude'  => array( 'font_size' ),
-		'selector' => '{{WRAPPER}} .wpmozo_progress_bar_percent',
+		'selector' => '{{WRAPPER}} .wpmozo_scroll_progress_percent',
 	)
 );
 $this->add_responsive_control(
 	'percentage_size',
 	array(
-		'label'     => esc_html__( 'Percentage Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SLIDER,
 		'range'     => array(
 			'px' => array(
@@ -389,7 +381,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_progress_bar_percent' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_scroll_progress_percent' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 		'separator' => 'after'
 	)
@@ -404,10 +396,10 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'percentage_color_hover',
 	array(
-		'label'     => esc_html__( 'Percentage Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_progress_bar_percent:hover' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_scroll_progress_percent:hover' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -417,13 +409,13 @@ $this->add_group_control(
 		'name'     => 'percentage_typography_hover',
 		'label'    => esc_html__( 'Percentage Typography', 'wpmozo-addons-lite-for-elementor' ),
 		'exclude'  => array( 'font_size' ),
-		'selector' => '{{WRAPPER}} .wpmozo_progress_bar_percent:hover',
+		'selector' => '{{WRAPPER}} .wpmozo_scroll_progress_percent:hover',
 	)
 );
 $this->add_responsive_control(
 	'percentage_size_hover',
 	array(
-		'label'     => esc_html__( 'Percentage Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SLIDER,
 		'range'     => array(
 			'px' => array(
@@ -433,7 +425,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_progress_bar_percent:hover' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_scroll_progress_percent:hover' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 		'separator' => 'after'
 	)
@@ -444,8 +436,21 @@ $this->add_group_control(
 	Group_Control_Text_Shadow::get_type(),
 	array(
 		'name'      => 'percentage_shadow',
-		'label'     => esc_html__( 'Percentage Shadow', 'wpmozo-addons-lite-for-elementor' ),
-		'selector'  => '{{WRAPPER}} .wpmozo_progress_bar_percent',
+		'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+		'selector'  => '{{WRAPPER}} .wpmozo_scroll_progress_percent',
+	)
+);
+$this->add_responsive_control(
+	'percentage_padding',
+	array(
+		'label'       => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
+		'type'        => Controls_Manager::DIMENSIONS,
+		'label_block' => true,
+		'size_units'  => array( 'px', 'em', '%' ),
+		'selectors'   => array(
+			'{{WRAPPER}} .wpmozo_scroll_progress_percent' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+		),
+		'condition' => array( 'layout' => 'bar' )
 	)
 );
 $this->end_controls_section();

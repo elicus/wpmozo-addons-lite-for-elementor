@@ -100,7 +100,7 @@ if ( ! class_exists( 'WPMOZO_AE_Post_Ticker' ) ) {
 		public function get_style_depends() {
 
 			wp_register_style( 'wpmozo-ae-post-ticker-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
-			return array( 'wpmozo-ae-post-ticker-style', 'wpmozo-ae-swiper-style' );
+			return array( 'wpmozo-ae-post-ticker-style', 'wpmozo-ae-swiper-style','wpmozo-ae-font-awesome-style' );
 		}
 
 		/**
@@ -360,29 +360,92 @@ if ( ! class_exists( 'WPMOZO_AE_Post_Ticker' ) ) {
 									</div>
 			
 									<!-- Navigation Arrows -->
-									<?php if ( 'on' === $show_arrows ) : ?>
-										<div class="wpmozo_swiper_navigation wpmozo_arrows_position">
-											<?php
-											Icons_Manager::render_icon(
-												$settings['previous_arrow_icon'],
-												array(
-													'aria-hidden' => 'true',
-													'class' => array( 'wpmozo_swiper_icon_prev', 'swiper-button-prev' ),
-													'data-prev_slide_arrow' => $settings['previous_arrow_icon']['value'],
-												),
-												'i'
-											);
-											Icons_Manager::render_icon(
-												$settings['next_arrow_icon'],
-												array(
-													'aria-hidden' => 'true',
-													'class' => array( 'wpmozo_swiper_icon_next', 'swiper-button-next' ),
-													'data-next_slide_arrow' => $settings['next_arrow_icon']['value'],
-												),
-												'i'
-											);
-											?>
+									<?php if ( 'on' === $show_arrows ) : 
+										$this->add_render_attribute( 'swiper_arrow_next', 
+											array( 
+												'class' => array( 'wpmozo_swiper_icon_next', 'swiper-button-next' ),
+												'aria-hidden' => 'true',
+												'data-next_slide_arrow' => $settings[ 'next_arrow_icon' ][ 'value' ]
+											 ) 
+										 );				
+										$this->add_render_attribute( 'swiper_arrow_prev', 
+											array( 
+												'class' => array( 'wpmozo_swiper_icon_prev', 'swiper-button-prev' ),
+												'aria-hidden' => 'true',
+												'data-previous_slide_arrow' => $settings[ 'previous_arrow_icon' ][ 'value' ]
+											 ) 
+										 );
+										?>
+										
+
+
+
+
+										<div class="wpmozo_swiper_navigation wpmozo_arrows_position" >
+											<?php 
+												if( 'svg' !== $settings[ 'previous_arrow_icon' ][ 'library' ] ) {
+													Icons_Manager::render_icon( 
+														$settings[ 'previous_arrow_icon' ],
+														array(
+															'aria-hidden' => 'true',
+															'class' => array( 'wpmozo_swiper_icon_prev', 'swiper-button-prev' ),
+															'data-prev_slide_arrow' => $settings['previous_arrow_icon']['value'],
+														),
+														'i'
+													 );
+													
+												}
+												if( 'svg' === $settings[ 'previous_arrow_icon' ][ 'library' ] ) {	
+													?><div <?php $this->print_render_attribute_string( 'swiper_arrow_prev' ) ?>><?php
+															Icons_Manager::render_icon( 
+																$settings[ 'previous_arrow_icon' ],
+																array(
+																	'aria-hidden' => 'true',
+																	'class' => array( 'wpmozo_swiper_icon_prev', 'swiper-button-prev' ),
+																	'data-prev_slide_arrow' => $settings['previous_arrow_icon']['value'],
+																),
+																'i'
+															 )
+													?></div><?php
+												} ; ?> 
+											<?php 
+											if( 'svg' !== $settings[ 'next_arrow_icon' ][ 'library' ] ) {
+												Icons_Manager::render_icon( 
+													$settings[ 'next_arrow_icon' ],
+													array(
+														'aria-hidden' => 'true',
+														'class' => array( 'wpmozo_swiper_icon_next', 'swiper-button-next' ),
+														'data-next_slide_arrow' => $settings['next_arrow_icon']['value'],
+													),
+													'i'
+												 );
+												
+											}
+											if( 'svg' === $settings[ 'next_arrow_icon' ][ 'library' ] ) {	
+												?><div <?php $this->print_render_attribute_string( 'swiper_arrow_next' )?> ><?php 
+														Icons_Manager::render( 
+															$settings[ 'next_arrow_icon' ],
+															array(
+																'aria-hidden' => 'true',
+																'class' => array( 'wpmozo_swiper_icon_next', 'swiper-button-next' ),
+																'data-next_slide_arrow' => $settings['next_arrow_icon']['value'],
+															),
+															'i'
+														 )
+													?></div><?php
+											} ?>  
 										</div>
+
+
+
+
+
+
+
+
+
+
+
 									<?php endif; ?>
 								</div>
 							</div>
