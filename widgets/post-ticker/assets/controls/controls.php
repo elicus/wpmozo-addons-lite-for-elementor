@@ -133,7 +133,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'post_item_separator_type',
 		array(
-			'label'     => esc_html__( 'Post Item Separator Type', 'wpmozo-addons-for-elementor' ),
+			'label'     => esc_html__( 'Separator Type', 'wpmozo-addons-for-elementor' ),
 			'type'      => Controls_Manager::SELECT,
 			'options'   => array(
 				'custom' => esc_html__( 'Custom', 'wpmozo-addons-for-elementor' ),
@@ -148,13 +148,10 @@ $this->start_controls_section(
 	$this->add_control(
 		'custom_separator',
 		array(
-			'label'       => __( 'Custom Post Item Separator', 'wpmozo-addons-for-elementor' ),
+			'label'       => __( 'Custom Separator', 'wpmozo-addons-for-elementor' ),
 			'type'        => Controls_Manager::TEXT,
 			'label_block' => true,
 			'default'     => '|',
-			'selectors'   => array(
-				'{{WRAPPER}} .wpmozo_ticker_effect_scroll .wpmozo_post_ticker_item::after' => 'content: "{{VALUE}}" !important;',
-			),
 			'condition'   => array(
 				'post_item_separator_type' => 'custom',
 				'ticker_effect'            => 'scroll',
@@ -164,7 +161,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'icon_separator',
 		array(
-			'label'     => esc_html__( 'Post Item Separator Icon', 'wpmozo-addons-for-elementor' ),
+			'label'     => esc_html__( 'Separator Icon', 'wpmozo-addons-for-elementor' ),
 			'type'      => Controls_Manager::ICONS,
 			'default'   => array(
 				'value'   => 'fa fa-angle-right',
@@ -689,7 +686,7 @@ $this->start_controls_section(
 	$this->start_controls_section(
 		'separator_section',
 		array(
-			'label'     => esc_html__( 'Post Item Separator', 'wpmozo-addons-for-elementor' ),
+			'label'     => esc_html__( 'Separator', 'wpmozo-addons-for-elementor' ),
 			'tab'       => Controls_Manager::TAB_STYLE,
 			'condition' => array(
 				'ticker_effect' => 'scroll',
@@ -721,7 +718,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'separator_icon_color',
 		array(
-			'label'     => esc_html__( 'Separator Color', 'wpmozo-addons-for-elementor' ),
+			'label'     => esc_html__( 'Color', 'wpmozo-addons-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_ticker_icon_separator i, .wpmozo_ticker_effect_scroll .wpmozo_post_ticker_item::after' => 'color: {{VALUE}};',

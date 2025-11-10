@@ -179,7 +179,7 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'image_styling_section',
 	array(
-		'label' => esc_html__( 'Image Styling', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Image', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	)
 );

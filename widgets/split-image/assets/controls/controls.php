@@ -118,6 +118,7 @@ $this->add_group_control(
 	array(
 		'name'           => 'portion_border',
 		'selector'       => '{{WRAPPER}} .wpmozo_split_image .wpmozo_split_image_portion',
+		'separator'      => 'none'
 	)
 );
 $this->add_responsive_control(
@@ -145,6 +146,7 @@ $this->add_group_control(
 	array(
 		'name'           => 'portion_border_hover',
 		'selector'       => '{{WRAPPER}} .wpmozo_split_image .wpmozo_split_image_portion:hover',
+		'separator'      => 'none'
 	)
 );
 $this->add_responsive_control(

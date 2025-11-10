@@ -36,7 +36,7 @@ $this->add_control(
 $this->add_control(
 	'image_alt_tag',
 	array(
-		'label'       => esc_html__( 'Image Alt Text', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Alt Text', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::TEXT,
 		'label_block' => true,
 	)
@@ -65,7 +65,7 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'image_border_section',
 	array(
-		'label'     => esc_html__( 'Image Border', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Border', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'       => Controls_Manager::TAB_STYLE,
 	)
 );
@@ -81,17 +81,12 @@ $this->add_group_control(
 	array(
 		'name'           => 'image_border',
 		'selector'       => '{{WRAPPER}} .wpmozo_image_hover_effect_inner',
-		'fields_options' => array(
-			'border' => array( 'label' => esc_html__( 'Image Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
-			'width'  => array( 'label' => esc_html__( 'Image Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
-			'color'  => array( 'label' => esc_html__( 'Image Border Color', 'wpmozo-addons-lite-for-elementor' ) ),
-		),
 	)
 );
 $this->add_responsive_control(
 	'image_border_radius',
 	array(
-		'label'       => esc_html__( 'Image Border Radius', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Border Radius', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::DIMENSIONS,
 		'label_block' => true,
 		'separator'   => 'after',
@@ -113,18 +108,13 @@ $this->add_group_control(
 	array(
 		'name'           => 'image_border_hover',
 		'selector'       => '{{WRAPPER}} .wpmozo_image_hover_effect_inner:hover',
-		'fields_options' => array(
-			'border' => array( 'label' => esc_html__( 'Image Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
-			'width'  => array( 'label' => esc_html__( 'Image Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
-			'color'  => array( 'label' => esc_html__( 'Image Border Color', 'wpmozo-addons-lite-for-elementor' ) ),
-		),
 		'separator'      => 'none',
 	)
 );
 $this->add_responsive_control(
 	'image_border_radius_hover',
 	array(
-		'label'       => esc_html__( 'Image Border Radius', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Border Radius', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::DIMENSIONS,
 		'label_block' => true,
 		'separator'   => 'after',
@@ -143,7 +133,7 @@ $this->add_group_control(
 		'selector'       => '{{WRAPPER}} .wpmozo_image_hover_effect_inner',
 		'fields_options' => array(
 			'box_shadow_type' => array(
-				'label' => esc_html__( 'Image Box Shadow', 'wpmozo-addons-lite-for-elementor' ),
+				'label' => esc_html__( 'Box Shadow', 'wpmozo-addons-lite-for-elementor' ),
 			),
 		),
 	)

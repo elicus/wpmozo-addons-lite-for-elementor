@@ -5,13 +5,12 @@
                 this.change();
             },
             change: function () {
-                jQuery( document ).ready( function($) {
-                    if ( $( '.wpmozo_split_image' ).length > 0 ) {
-                        $( '.wpmozo_split_image' ).each( function() {
+                const $this = this.$element.find(".wpmozo_split_image");
+                    if ( $this.length > 0 ) {
+                        $this.each( function() {
                             wpmozo_init_split_image( $( this ) );
                         } );
                     }
-                } ); // over document ready.
                 
                 // Init split image.
                 function wpmozo_init_split_image( thisObj ) {

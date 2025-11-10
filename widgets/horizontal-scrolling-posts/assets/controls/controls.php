@@ -265,7 +265,7 @@ $this->start_controls_section(
 	$this->add_control(
 		'title_heading_level',
 		array(
-			'label'       => esc_html__( 'Title Heading Level', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Heading Level', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => true,
 			'options'     => array(
@@ -302,7 +302,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'title_alignment',
 		array(
-			'label'     => esc_html__( 'Title Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::CHOOSE,
 			'options'   => array(
 				'left'   => array(
@@ -344,7 +344,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'title_color',
 		array(
-			'label'     => esc_html__( 'Title Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_title' => 'color: {{VALUE}}; transition: 300ms;',
@@ -355,7 +355,7 @@ $this->start_controls_section(
 		Group_Control_Text_Shadow::get_type(),
 		array(
 			'name'     => 'heading_text_shadow',
-			'label'    => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+			'label'    => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 			'selector' => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_title',
 		)
 	);
@@ -378,7 +378,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'title_color_hover',
 		array(
-			'label'     => esc_html__( 'Title Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_title:hover' => 'color: {{VALUE}};',
@@ -389,7 +389,7 @@ $this->start_controls_section(
 		Group_Control_Text_Shadow::get_type(),
 		array(
 			'name'     => 'heading_text_shadow_hover',
-			'label'    => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+			'label'    => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 			'selector' => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_title:hover',
 		)
 	);
@@ -406,7 +406,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'excerpt_alignment',
 		array(
-			'label'     => esc_html__( 'Excerpt Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::CHOOSE,
 			'options'   => array(
 				'left'   => array(
@@ -448,7 +448,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'excerpt_color',
 		array(
-			'label'     => esc_html__( 'Excerpt Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_excerpt' => 'color: {{VALUE}}; transition: 300ms;',
@@ -459,7 +459,7 @@ $this->start_controls_section(
 		Group_Control_Text_Shadow::get_type(),
 		array(
 			'name'     => 'excerpt_text_shadow',
-			'label'    => esc_html__( 'Excerpt Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+			'label'    => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 			'selector' => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_excerpt',
 		)
 	);
@@ -482,7 +482,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'excerpt_color_hover',
 		array(
-			'label'     => esc_html__( 'Excerpt Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_excerpt:hover' => 'color: {{VALUE}}; transition: 300ms;',
@@ -493,7 +493,7 @@ $this->start_controls_section(
 		Group_Control_Text_Shadow::get_type(),
 		array(
 			'name'     => 'excerpt_text_shadow_hover',
-			'label'    => esc_html__( 'Excerpt Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+			'label'    => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 			'selector' => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_excerpt:hover',
 		)
 	);
@@ -510,7 +510,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'post_item_padding',
 		array(
-			'label'      => esc_html__( 'Post Item Padding', 'wpmozo-addons-lite-for-elementor' ),
+			'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 			'default'    => array(
@@ -529,7 +529,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'post_item_width',
 		array(
-			'label'      => esc_html__( 'Post Item Width', 'wpmozo-addons-lite-for-elementor' ),
+			'label'      => esc_html__( 'Width', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => Controls_Manager::SLIDER,
 			'size_units' => array( 'px' ),
 			'separator'  => 'before',
@@ -551,7 +551,7 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'post_item_height',
 		array(
-			'label'      => esc_html__( 'Post Item Height', 'wpmozo-addons-lite-for-elementor' ),
+			'label'      => esc_html__( 'Height', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => Controls_Manager::SLIDER,
 			'size_units' => array( 'px' ),
 			'separator'  => 'after',
@@ -583,7 +583,7 @@ $this->start_controls_section(
 		$this->add_control(
 			'post_background_color',
 			array(
-				'label'     => esc_html__( 'Post Background Color', 'wpmozo-addons-lite-for-elementor' ),
+				'label'     => esc_html__( 'Background Color', 'wpmozo-addons-lite-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_wrapper' => 'background-color: {{VALUE}}; transition: 300ms;',
@@ -606,17 +606,12 @@ $this->start_controls_section(
 				array(
 					'name'           => 'post_item_border',
 					'selector'       => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_wrapper',
-					'fields_options' => array(
-						'border' => array( 'label' => esc_html__( 'Post Item Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
-						'width'  => array( 'label' => esc_html__( 'Post Item Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
-						'color'  => array( 'label' => esc_html__( 'Post Item Border Color', 'wpmozo-addons-lite-for-elementor' ) ),
-					),
 				)
 			);
 			$this->add_responsive_control(
 				'post_item_border_radius',
 				array(
-					'label'       => esc_html__( 'Post Item Border Radius', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Border Radius', 'wpmozo-addons-lite-for-elementor' ),
 					'type'        => Controls_Manager::DIMENSIONS,
 					'label_block' => true,
 					'size_units'  => array( 'px', 'em', '%' ),
@@ -636,7 +631,7 @@ $this->start_controls_section(
 			$this->add_control(
 				'post_background_color_hover',
 				array(
-					'label'     => esc_html__( 'Post Background Color', 'wpmozo-addons-lite-for-elementor' ),
+					'label'     => esc_html__( 'Background Color', 'wpmozo-addons-lite-for-elementor' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
 						'{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_wrapper:hover' => 'background-color: {{VALUE}}; transition: 300ms;',
@@ -659,17 +654,12 @@ $this->start_controls_section(
 				array(
 					'name'           => 'post_item_hover_border',
 					'selector'       => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_wrapper:hover',
-					'fields_options' => array(
-						'border' => array( 'label' => esc_html__( 'Post Item Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
-						'width'  => array( 'label' => esc_html__( 'Post Item Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
-						'color'  => array( 'label' => esc_html__( 'Post Item Border Color', 'wpmozo-addons-lite-for-elementor' ) ),
-					),
 				)
 			);
 			$this->add_responsive_control(
 				'post_item_hover_border_radius',
 				array(
-					'label'       => esc_html__( 'Post Item Border Radius', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Border Radius', 'wpmozo-addons-lite-for-elementor' ),
 					'type'        => Controls_Manager::DIMENSIONS,
 					'label_block' => true,
 					'size_units'  => array( 'px', 'em', '%' ),
@@ -688,7 +678,7 @@ $this->start_controls_section(
 					'selector'       => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_wrapper',
 					'fields_options' => array(
 						'box-shadow' => array(
-							'label' => esc_html__( 'Post Item Box Shadow', 'wpmozo-addons-lite-for-elementor' ),
+							'label' => esc_html__( 'Box Shadow', 'wpmozo-addons-lite-for-elementor' ),
 						),
 					),
 				)
@@ -704,7 +694,7 @@ $this->start_controls_section(
 			$this->add_responsive_control(
 				'post_content_padding',
 				array(
-					'label'       => esc_html__( 'Content Padding', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 					'type'        => Controls_Manager::DIMENSIONS,
 					'default'     => array(
 						'top'    => '20',
@@ -730,7 +720,7 @@ $this->start_controls_section(
 				$this->add_control(
 					'post_content_background_color',
 					array(
-						'label'     => esc_html__( 'Content Background Color', 'wpmozo-addons-lite-for-elementor' ),
+						'label'     => esc_html__( 'Background Color', 'wpmozo-addons-lite-for-elementor' ),
 						'type'      => Controls_Manager::COLOR,
 						'selectors' => array(
 							'{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_content_wrapper' => 'background-color: {{VALUE}}; transition: 300ms;',
@@ -742,17 +732,12 @@ $this->start_controls_section(
 						array(
 							'name'           => 'post_content_border',
 							'selector'       => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_content_wrapper',
-							'fields_options' => array(
-								'border' => array( 'label' => esc_html__( 'Content Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
-								'width'  => array( 'label' => esc_html__( 'Content Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
-								'color'  => array( 'label' => esc_html__( 'Content Border Color', 'wpmozo-addons-lite-for-elementor' ) ),
-							),
 						)
 					);
 					$this->add_responsive_control(
 						'post_content_border_radius',
 						array(
-							'label'       => esc_html__( 'Content Border Radius', 'wpmozo-addons-lite-for-elementor' ),
+							'label'       => esc_html__( 'Border Radius', 'wpmozo-addons-lite-for-elementor' ),
 							'type'        => Controls_Manager::DIMENSIONS,
 							'label_block' => true,
 							'size_units'  => array( 'px', 'em', '%' ),
@@ -771,7 +756,7 @@ $this->start_controls_section(
 					$this->add_control(
 						'post_content_background_color_hover',
 						array(
-							'label'     => esc_html__( 'Content Background Color', 'wpmozo-addons-lite-for-elementor' ),
+							'label'     => esc_html__( 'Background Color', 'wpmozo-addons-lite-for-elementor' ),
 							'type'      => Controls_Manager::COLOR,
 							'selectors' => array(
 								'{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_content_wrapper:hover' => 'background-color: {{VALUE}}; transition: 300ms;',
@@ -783,17 +768,12 @@ $this->start_controls_section(
 						array(
 							'name'           => 'post_content_hover_border',
 							'selector'       => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_content_wrapper:hover',
-							'fields_options' => array(
-								'border' => array( 'label' => esc_html__( 'Content Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
-								'width'  => array( 'label' => esc_html__( 'Content Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
-								'color'  => array( 'label' => esc_html__( 'Content Border Color', 'wpmozo-addons-lite-for-elementor' ) ),
-							),
 						)
 					);
 					$this->add_responsive_control(
 						'post_content_hover_border_radius',
 						array(
-							'label'       => esc_html__( 'Content Border Radius', 'wpmozo-addons-lite-for-elementor' ),
+							'label'       => esc_html__( 'Border Radius', 'wpmozo-addons-lite-for-elementor' ),
 							'type'        => Controls_Manager::DIMENSIONS,
 							'label_block' => true,
 							'size_units'  => array( 'px', 'em', '%' ),
@@ -818,7 +798,7 @@ $this->start_controls_section(
 					$this->add_responsive_control(
 						'image_padding',
 						array(
-							'label'      => esc_html__( 'Image Padding', 'wpmozo-addons-lite-for-elementor' ),
+							'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 							'type'       => Controls_Manager::DIMENSIONS,
 							'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 							'selectors'  => array(
@@ -840,7 +820,7 @@ $this->start_controls_section(
 					$this->add_responsive_control(
 						'image_height',
 						array(
-							'label'      => esc_html__( 'Image Height', 'wpmozo-addons-lite-for-elementor' ),
+							'label'      => esc_html__( 'Height', 'wpmozo-addons-lite-for-elementor' ),
 							'type'       => Controls_Manager::SLIDER,
 							'size_units' => array( 'px' ),
 							'separator'  => 'after',
@@ -873,17 +853,12 @@ $this->start_controls_section(
 								array(
 									'name'           => 'image_border',
 									'selector'       => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_wrapper .wpmozo_horizontal_scrolling_posts_image',
-									'fields_options' => array(
-										'border' => array( 'label' => esc_html__( 'Image Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
-										'width'  => array( 'label' => esc_html__( 'Image Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
-										'color'  => array( 'label' => esc_html__( 'Image Border Color', 'wpmozo-addons-lite-for-elementor' ) ),
-									),
 								)
 							);
 							$this->add_responsive_control(
 								'image_border_radius',
 								array(
-									'label'       => esc_html__( 'Image Border Radius', 'wpmozo-addons-lite-for-elementor' ),
+									'label'       => esc_html__( 'Border Radius', 'wpmozo-addons-lite-for-elementor' ),
 									'type'        => Controls_Manager::DIMENSIONS,
 									'label_block' => true,
 									'size_units'  => array( 'px', 'em', '%' ),
@@ -905,17 +880,12 @@ $this->start_controls_section(
 								array(
 									'name'           => 'image_hover_border',
 									'selector'       => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_wrapper .wpmozo_horizontal_scrolling_posts_image:hover',
-									'fields_options' => array(
-										'border' => array( 'label' => esc_html__( 'Image Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
-										'width'  => array( 'label' => esc_html__( 'Image Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
-										'color'  => array( 'label' => esc_html__( 'Image Border Color', 'wpmozo-addons-lite-for-elementor' ) ),
-									),
 								)
 							);
 							$this->add_responsive_control(
 								'image_hover_border_radius',
 								array(
-									'label'       => esc_html__( 'Image Border Radius', 'wpmozo-addons-lite-for-elementor' ),
+									'label'       => esc_html__( 'Border Radius', 'wpmozo-addons-lite-for-elementor' ),
 									'type'        => Controls_Manager::DIMENSIONS,
 									'label_block' => true,
 									'size_units'  => array( 'px', 'em', '%' ),
@@ -932,11 +902,6 @@ $this->start_controls_section(
 								array(
 									'name'           => 'image_box_shadow',
 									'selector'       => '{{WRAPPER}} .wpmozo_horizontal_scrolling_posts_wrapper .wpmozo_horizontal_scrolling_posts_image',
-									'fields_options' => array(
-										'box-shadow' => array(
-											'label' => esc_html__( 'Image Box Shadow', 'wpmozo-addons-lite-for-elementor' ),
-										),
-									),
 								)
 							);
 							$this->end_controls_section();
@@ -951,7 +916,7 @@ $this->start_controls_section(
 							$this->add_responsive_control(
 								'read_more_alignment',
 								array(
-									'label'     => esc_html__( 'Button Alignment', 'wpmozo-addons-lite-for-elementor' ),
+									'label'     => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 									'type'      => Controls_Manager::CHOOSE,
 									'options'   => array(
 										'left'   => array(
@@ -976,7 +941,7 @@ $this->start_controls_section(
 							$this->add_control(
 								'button_custom_style',
 								array(
-									'label'        => esc_html__( 'Use Custom Style For Button', 'wpmozo-addons-lite-for-elementor' ),
+									'label'        => esc_html__( 'Use Custom Styles', 'wpmozo-addons-lite-for-elementor' ),
 									'type'         => Controls_Manager::SWITCHER,
 									'label_on'     => esc_html__( 'Yes', 'wpmozo-addons-lite-for-elementor' ),
 									'label_off'    => esc_html__( 'No', 'wpmozo-addons-lite-for-elementor' ),
@@ -1017,7 +982,7 @@ $this->start_controls_section(
 							$this->add_responsive_control(
 								'button_icon_placement',
 								array(
-									'label'        => esc_html__( 'Button Icon Placement', 'wpmozo-addons-lite-for-elementor' ),
+									'label'        => esc_html__( 'Icon Placement', 'wpmozo-addons-lite-for-elementor' ),
 									'type'         => Controls_Manager::CHOOSE,
 									'options'      => array(
 										'row-reverse' => array(
@@ -1045,7 +1010,7 @@ $this->start_controls_section(
 							$this->add_responsive_control(
 								'show_button_icon_on_hover',
 								array(
-									'label'        => esc_html__( 'Only Show Icon On Hover For Button', 'wpmozo-addons-lite-for-elementor' ),
+									'label'        => esc_html__( 'Show Icon On Hover', 'wpmozo-addons-lite-for-elementor' ),
 									'type'         => Controls_Manager::SWITCHER,
 									'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
 									'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
@@ -1070,7 +1035,7 @@ $this->start_controls_section(
 							$this->add_group_control(
 								Group_Control_Text_Shadow::get_type(),
 								array(
-									'label'       => esc_html__( 'Button Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+									'label'       => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 									'label_block' => true,
 									'name'        => 'button_text_shadow',
 									'condition'   => array(
@@ -1092,9 +1057,61 @@ $this->start_controls_section(
 								)
 							);
 							$this->add_responsive_control(
+								'button_text_color',
+								array(
+									'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
+									'type'      => Controls_Manager::COLOR,
+									'condition' => array(
+										'button_custom_style' => 'yes',
+									),
+									'selectors' => array(
+										'{{WRAPPER}} .wpmozo_readmore_button' => 'color: {{VALUE}}; transition: 300ms;',
+									),
+								)
+							);
+							$this->add_responsive_control(
+								'button_icon_color',
+								array(
+									'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+									'type'      => Controls_Manager::COLOR,
+									'condition' => array(
+										'button_custom_style' => 'yes',
+										'show_button_icon' => 'yes',
+									),
+									'selectors' => array(
+										'{{WRAPPER}} .wpmozo_readmore_button svg'   => 'fill: {{VALUE}}; transition: 300ms;',
+										'{{WRAPPER}} .wpmozo_readmore_button i'     => 'color: {{VALUE}}; transition: 300ms;',
+									),
+								)
+							);
+							$this->add_group_control(
+								Group_Control_Background::get_type(),
+								array(
+									'name'           => 'button_background',
+									'types'          => array( 'classic', 'gradient' ),
+									'toggle'         => false,
+									'condition'      => array(
+										'button_custom_style' => 'yes',
+									),
+									'selector'       => '{{WRAPPER}} .wpmozo_readmore_button',
+								)
+							);
+							$this->add_group_control(
+								Group_Control_Typography::get_type(),
+								array(
+									'label_block' => true,
+									'name'        => 'button_typography',
+									'condition'   => array(
+										'button_custom_style' => 'yes',
+									),
+									'exclude'     => array( 'font_size' ),
+									'selector'    => '{{WRAPPER}} .wpmozo_readmore_button',
+								)
+							);
+							$this->add_responsive_control(
 								'button_text_size',
 								array(
-									'label'      => esc_html__( 'Button Text Size', 'wpmozo-addons-lite-for-elementor' ),
+									'label'      => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 									'type'       => Controls_Manager::SLIDER,
 									'size_units' => array( 'px', 'em' ),
 									'range'      => array(
@@ -1118,38 +1135,6 @@ $this->start_controls_section(
 										'{{WRAPPER}} .wpmozo_readmore_button'       => 'font-size: {{SIZE}}{{UNIT}};',
 										'{{WRAPPER}} .wpmozo_readmore_button svg'   => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 									),
-								)
-							);
-							$this->add_responsive_control(
-								'button_text_color',
-								array(
-									'label'     => esc_html__( 'Button Text Color', 'wpmozo-addons-lite-for-elementor' ),
-									'type'      => Controls_Manager::COLOR,
-									'condition' => array(
-										'button_custom_style' => 'yes',
-									),
-									'selectors' => array(
-										'{{WRAPPER}} .wpmozo_readmore_button' => 'color: {{VALUE}}; transition: 300ms;',
-									),
-								)
-							);
-
-							$this->add_group_control(
-								Group_Control_Background::get_type(),
-								array(
-									'name'           => 'button_background',
-									'types'          => array( 'classic', 'gradient' ),
-									'fields_options' => array(
-										'background' => array(
-											'label'   => esc_html__( 'Button Background', 'wpmozo-addons-lite-for-elementor' ),
-											'default' => 'classic',
-										),
-									),
-									'toggle'         => false,
-									'condition'      => array(
-										'button_custom_style' => 'yes',
-									),
-									'selector'       => '{{WRAPPER}} .wpmozo_readmore_button',
 								)
 							);
 							$this->add_responsive_control(
@@ -1213,38 +1198,10 @@ $this->start_controls_section(
 									),
 								)
 							);
-							$this->add_group_control(
-								Group_Control_Typography::get_type(),
-								array(
-									'label'       => esc_html__( 'Button Typography', 'wpmozo-addons-lite-for-elementor' ),
-									'label_block' => true,
-									'name'        => 'button_typography',
-									'condition'   => array(
-										'button_custom_style' => 'yes',
-									),
-									'exclude'     => array( 'font_size' ),
-									'selector'    => '{{WRAPPER}} .wpmozo_readmore_button',
-								)
-							);
-							$this->add_responsive_control(
-								'button_icon_color',
-								array(
-									'label'     => esc_html__( 'Button Icon Color', 'wpmozo-addons-lite-for-elementor' ),
-									'type'      => Controls_Manager::COLOR,
-									'condition' => array(
-										'button_custom_style' => 'yes',
-										'show_button_icon' => 'yes',
-									),
-									'selectors' => array(
-										'{{WRAPPER}} .wpmozo_readmore_button svg'   => 'fill: {{VALUE}}; transition: 300ms;',
-										'{{WRAPPER}} .wpmozo_readmore_button i'     => 'color: {{VALUE}}; transition: 300ms;',
-									),
-								)
-							);
 							$this->add_responsive_control(
 								'button_margin',
 								array(
-									'label'      => esc_html__( 'Button Margin', 'wpmozo-addons-lite-for-elementor' ),
+									'label'      => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
 									'type'       => Controls_Manager::DIMENSIONS,
 									'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 									'default'    => array(
@@ -1266,7 +1223,7 @@ $this->start_controls_section(
 							$this->add_responsive_control(
 								'button_padding',
 								array(
-									'label'      => esc_html__( 'Button Padding', 'wpmozo-addons-lite-for-elementor' ),
+									'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 									'type'       => Controls_Manager::DIMENSIONS,
 									'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 									'default'    => array(
@@ -1296,9 +1253,61 @@ $this->start_controls_section(
 								)
 							);
 							$this->add_responsive_control(
+								'button_text_color_hover',
+								array(
+									'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
+									'type'      => Controls_Manager::COLOR,
+									'condition' => array(
+										'button_custom_style' => 'yes',
+									),
+									'selectors' => array(
+										'{{WRAPPER}} .wpmozo_readmore_button:hover'     => 'color: {{VALUE}}; transition: 300ms;',
+									),
+								)
+							);
+							$this->add_responsive_control(
+								'button_icon_color_hover',
+								array(
+									'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+									'type'      => Controls_Manager::COLOR,
+									'condition' => array(
+										'button_custom_style' => 'yes',
+										'show_button_icon' => 'yes',
+									),
+									'selectors' => array(
+										'{{WRAPPER}} .wpmozo_readmore_button:hover svg' => 'fill: {{VALUE}}; transition: 300ms;',
+										'{{WRAPPER}} .wpmozo_readmore_button:hover i'   => 'color: {{VALUE}}; transition: 300ms;',
+									),
+								)
+							);
+							$this->add_group_control(
+								Group_Control_Background::get_type(),
+								array(
+									'name'           => 'button_background_hover',
+									'types'          => array( 'classic', 'gradient' ),
+									'toggle'         => false,
+									'condition'      => array(
+										'button_custom_style' => 'yes',
+									),
+									'selector'       => '{{WRAPPER}} .wpmozo_readmore_button:hover',
+								)
+							);
+							$this->add_group_control(
+								Group_Control_Typography::get_type(),
+								array(
+									'label_block' => true,
+									'name'        => 'button_typography_hover',
+									'condition'   => array(
+										'button_custom_style' => 'yes',
+									),
+									'exclude'     => array( 'font_size' ),
+									'selector'    => '{{WRAPPER}} .wpmozo_readmore_button:hover',
+								)
+							);
+							$this->add_responsive_control(
 								'button_text_size_hover',
 								array(
-									'label'      => esc_html__( 'Button Text Size', 'wpmozo-addons-lite-for-elementor' ),
+									'label'      => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 									'type'       => Controls_Manager::SLIDER,
 									'size_units' => array( 'px', 'em' ),
 									'range'      => array(
@@ -1318,38 +1327,6 @@ $this->start_controls_section(
 										'{{WRAPPER}} .wpmozo_readmore_button:hover'     => 'font-size: {{SIZE}}{{UNIT}}',
 										'{{WRAPPER}} .wpmozo_readmore_button svg:hover' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 									),
-								)
-							);
-							$this->add_responsive_control(
-								'button_text_color_hover',
-								array(
-									'label'     => esc_html__( 'Button Text Color', 'wpmozo-addons-lite-for-elementor' ),
-									'type'      => Controls_Manager::COLOR,
-									'condition' => array(
-										'button_custom_style' => 'yes',
-									),
-									'selectors' => array(
-										'{{WRAPPER}} .wpmozo_readmore_button:hover'     => 'color: {{VALUE}}; transition: 300ms;',
-									),
-								)
-							);
-
-							$this->add_group_control(
-								Group_Control_Background::get_type(),
-								array(
-									'name'           => 'button_background_hover',
-									'types'          => array( 'classic', 'gradient' ),
-									'fields_options' => array(
-										'background' => array(
-											'label'   => esc_html__( 'Button Background', 'wpmozo-addons-lite-for-elementor' ),
-											'default' => 'classic',
-										),
-									),
-									'toggle'         => false,
-									'condition'      => array(
-										'button_custom_style' => 'yes',
-									),
-									'selector'       => '{{WRAPPER}} .wpmozo_readmore_button:hover',
 								)
 							);
 							$this->add_responsive_control(
@@ -1405,38 +1382,10 @@ $this->start_controls_section(
 									),
 								)
 							);
-							$this->add_group_control(
-								Group_Control_Typography::get_type(),
-								array(
-									'label'       => esc_html__( 'Button Typography', 'wpmozo-addons-lite-for-elementor' ),
-									'label_block' => true,
-									'name'        => 'button_typography_hover',
-									'condition'   => array(
-										'button_custom_style' => 'yes',
-									),
-									'exclude'     => array( 'font_size' ),
-									'selector'    => '{{WRAPPER}} .wpmozo_readmore_button:hover',
-								)
-							);
-							$this->add_responsive_control(
-								'button_icon_color_hover',
-								array(
-									'label'     => esc_html__( 'Button Icon Color', 'wpmozo-addons-lite-for-elementor' ),
-									'type'      => Controls_Manager::COLOR,
-									'condition' => array(
-										'button_custom_style' => 'yes',
-										'show_button_icon' => 'yes',
-									),
-									'selectors' => array(
-										'{{WRAPPER}} .wpmozo_readmore_button:hover svg' => 'fill: {{VALUE}}; transition: 300ms;',
-										'{{WRAPPER}} .wpmozo_readmore_button:hover i'   => 'color: {{VALUE}}; transition: 300ms;',
-									),
-								)
-							);
 							$this->add_responsive_control(
 								'button_margin_hover',
 								array(
-									'label'      => esc_html__( 'Button Margin', 'wpmozo-addons-lite-for-elementor' ),
+									'label'      => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
 									'type'       => Controls_Manager::DIMENSIONS,
 									'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 									'condition'  => array(
@@ -1450,7 +1399,7 @@ $this->start_controls_section(
 							$this->add_responsive_control(
 								'button_padding_hover',
 								array(
-									'label'      => esc_html__( 'Button Padding', 'wpmozo-addons-lite-for-elementor' ),
+									'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 									'type'       => Controls_Manager::DIMENSIONS,
 									'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 									'condition'  => array(

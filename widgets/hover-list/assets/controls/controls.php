@@ -79,8 +79,10 @@ $repeater = new Repeater();
 	$repeater->add_control(
 		'show_icon',
 		array(
-			'label'        => esc_html__( 'Show Icon', 'wpmozo-addons-lite-for-elementor' ),
+			'label'        => esc_html__( 'Icon', 'wpmozo-addons-lite-for-elementor' ),
 			'type'         => Controls_Manager::SWITCHER,
+			'label_on'     => esc_html__( 'Show', 'wpmozo-addons-lite-for-elementor' ),
+			'label_off'    => esc_html__( 'Hide', 'wpmozo-addons-lite-for-elementor' ),
 			'default'      => '',
 			'return_value' => 'yes',
 		)
@@ -110,8 +112,10 @@ $repeater = new Repeater();
 	$repeater->add_control(
 		'show_button',
 		array(
-			'label'        => esc_html__( 'Show Button', 'wpmozo-addons-lite-for-elementor' ),
+			'label'        => esc_html__( 'Button', 'wpmozo-addons-lite-for-elementor' ),
 			'type'         => Controls_Manager::SWITCHER,
+			'label_on'     => esc_html__( 'Show', 'wpmozo-addons-lite-for-elementor' ),
+			'label_off'    => esc_html__( 'Hide', 'wpmozo-addons-lite-for-elementor' ),
 			'default'      => '',
 			'return_value' => 'yes',
 		)
@@ -242,6 +246,7 @@ $repeater = new Repeater();
 		array(
 			'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
+			'separator' => 'none',
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_hover_list_title' => 'color: {{VALUE}}; transition: 300ms;',
 			),
@@ -286,6 +291,7 @@ $repeater = new Repeater();
 		array(
 			'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
+			'separator' => 'none',
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_hover_list .wpmozo_hover_list_item_inner .wpmozo_hover_list_title_wrapper .wpmozo_hover_list_title:hover' => 'color: {{VALUE}};',
 			),
@@ -397,7 +403,7 @@ $repeater = new Repeater();
 	$this->start_controls_section(
 		'subtitle_section',
 		array(
-			'label' => esc_html__( 'Subtitle Text', 'wpmozo-addons-lite-for-elementor' ),
+			'label' => esc_html__( 'Subtitle', 'wpmozo-addons-lite-for-elementor' ),
 			'tab'   => Controls_Manager::TAB_STYLE,
 		)
 	);
@@ -415,6 +421,7 @@ $repeater = new Repeater();
 		array(
 			'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
+			'separator' => 'none',
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_hover_list_subtitle' => 'color: {{VALUE}}; transition: 300ms;',
 			),
@@ -459,6 +466,7 @@ $repeater = new Repeater();
 		array(
 			'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
+			'separator' => 'none',
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_hover_list_subtitle:hover' => 'color: {{VALUE}};',
 			),
@@ -587,6 +595,7 @@ $repeater = new Repeater();
 		array(
 			'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
+			'separator' => 'none',
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_hover_list_description' => 'color: {{VALUE}}; transition: 300ms;',
 			),
@@ -631,6 +640,7 @@ $repeater = new Repeater();
 		array(
 			'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
+			'separator' => 'none',
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_hover_list_description:hover' => 'color: {{VALUE}};',
 			),
@@ -748,7 +758,7 @@ $repeater = new Repeater();
 	$this->add_responsive_control(
 		'icon_size',
 		array(
-			'label'      => esc_html__( 'Icon Size', 'wpmozo-addons-lite-for-elementor' ),
+			'label'      => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => Controls_Manager::SLIDER,
 			'size_units' => array( 'px', 'em' ),
 			'range'      => array(
@@ -781,7 +791,7 @@ $repeater = new Repeater();
 	$this->add_control(
 		'icon_color',
 		array(
-			'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_hover_list_title_wrapper svg'   => 'fill: {{VALUE}}; transition: 300ms;',
@@ -799,7 +809,7 @@ $repeater = new Repeater();
 	$this->add_control(
 		'icon_color_hover',
 		array(
-			'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_hover_list_title_wrapper svg:hover'   => 'fill: {{VALUE}}; transition: 300ms;',
@@ -820,7 +830,7 @@ $repeater = new Repeater();
 	$this->add_responsive_control(
 		'image_size',
 		array(
-			'label'      => esc_html__( 'Image Size', 'wpmozo-addons-lite-for-elementor' ),
+			'label'      => esc_html__( 'Size', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => Controls_Manager::SLIDER,
 			'size_units' => array( 'px' ),
 			'range'      => array(
@@ -1546,7 +1556,7 @@ $repeater = new Repeater();
 			'selector'       => '{{WRAPPER}} .wpmozo_hover_list .wpmozo_hover_list_item',
 		)
 	);
-	$this->start_controls_tabs( 'container_margin_padding_tabs', array( 'separator' => 'before' ) );
+	$this->start_controls_tabs( 'container_margin_padding_tabs' );
 
 	// Tab 1.
 	$this->start_controls_tab( 

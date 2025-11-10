@@ -89,7 +89,7 @@ $this->end_controls_section();
 $this->start_controls_section( 
 	'global_text_settings',
 	array( 
-		'label' => esc_html__( 'Global Text Settings', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Global Text', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	 )
  );
@@ -141,7 +141,7 @@ $this->start_controls_section(
 	$this->add_responsive_control( 
 		'global_text_alignment_when_flex_column',
 		array( 
-			'label'       => esc_html__( 'Text Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => true,
 			'separator'   => 'before',
@@ -172,7 +172,7 @@ $this->start_controls_section(
 	$this->add_responsive_control( 
 		'global_text_alignment_when_flex_row',
 		array( 
-			'label'       => esc_html__( 'Text Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => true,
 			'separator'   => 'before',
@@ -203,7 +203,7 @@ $this->start_controls_section(
 	$this->add_responsive_control( 
 		'global_text_color',
 		array( 
-			'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#000',
@@ -227,27 +227,130 @@ $this->end_controls_section();
 $this->start_controls_section( 
 	'pre_text_settings',
 	array( 
-		'label' => esc_html__( 'Pre Text Settings', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Pre Text', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	 )
  );
+	// Pre text normal and hover state control section.
+	$this->start_controls_tabs( 'pre_text_hover_control' );
+
+		// Pre text normal tab.
+		$this->start_controls_tab( 
+			'pre_text_normal_state',
+			array( 
+				'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
+			 )
+		 );
+			$this->add_responsive_control( 
+				'pre_text_color',
+				array( 
+					'label'       => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
+					'label_block' => false,
+					'type'        => Controls_Manager::COLOR,
+					'default'     => '',
+					'selectors'   => array( 
+						'{{WRAPPER}} .wpmozo_ae_pre_text' => 'color: {{VALUE}};',
+					 ),
+				 )
+			 );
+			$this->add_group_control( 
+				Group_Control_Background::get_type(),
+				array( 
+					'name'     => 'pre_text_background',
+					'types'    => array( 'classic', 'gradient' ),
+					'selector' => '{{WRAPPER}} .wpmozo_ae_pre_text',
+				 )
+			 );
+			$this->add_group_control( 
+				Group_Control_Text_Shadow::get_type(),
+				array( 
+					'name'      => 'pre_text_shadow',
+					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+					'selector'  => '{{WRAPPER}} .wpmozo_ae_pre_text',
+				 )
+			 );
+		$this->end_controls_tab();
+
+		// Pre text hover tab.
+		$this->start_controls_tab( 
+			'pre_text_hover_state',
+			array( 
+				'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
+			 )
+		 );
+			$this->add_responsive_control( 
+				'pre_text_hover_state_color',
+				array( 
+					'label'       => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
+					'label_block' => false,
+					'type'        => Controls_Manager::COLOR,
+					'default'     => '',
+					'selectors'   => array( 
+						'{{WRAPPER}} .wpmozo_ae_pre_text:hover' => 'color: {{VALUE}};',
+					 ),
+				 )
+			 );
+			$this->add_group_control( 
+				Group_Control_Background::get_type(),
+				array( 
+					'name'     => 'pre_text_hover_state_background',
+					'types'    => array( 'classic', 'gradient' ),
+					'selector' => '{{WRAPPER}} .wpmozo_ae_pre_text:hover',
+				 )
+			 );
+			$this->add_group_control( 
+				Group_Control_Text_Shadow::get_type(),
+				array( 
+					'name'      => 'pre_text_hover_state_shadow',
+					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+					'selector'  => '{{WRAPPER}} .wpmozo_ae_pre_text:hover',
+				 )
+			 );
+			$this->add_responsive_control( 
+				'pre_text_transition_control',
+				array( 
+					'type'      => Controls_Manager::SLIDER,
+					'label'     => esc_html__( 'Transition Duration (ms)', 'wpmozo-addons-lite-for-elementor' ),
+					'range'     => array( 
+						'ms' => array( 
+							'min'  => 0,
+							'max'  => 10000,
+							'step' => 100,
+						 ),
+					 ),
+					'default'   => array( 
+						'size' => 1000,
+						'unit' => 'ms',
+					 ),
+					'selectors' => array( 
+						'{{WRAPPER}} .wpmozo_ae_pre_text' => 'transition: color {{SIZE}}{{UNIT}}, text-shadow {{SIZE}}{{UNIT}}, background {{SIZE}}{{UNIT}};',
+					 ),
+				 )
+			 );
+		$this->end_controls_tab();
+	$this->end_controls_tabs();
+	$this->add_control(
+		'pre_heading_tab_divider',
+		array(
+			'type' => Controls_Manager::DIVIDER,
+		)
+	);
 	$this->add_group_control( 
 		Group_Control_Typography::get_type(),
 		array( 
-			'label'       => esc_html__( 'Pre Typography', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => true,
 			'name'        => 'pre_text_typography',
+			'separator'   => 'before',
 			'selector'    => '{{WRAPPER}} .wpmozo_ae_pre_text',
 		 )
 	 );
-
 	$this->add_responsive_control( 
 		'pre_text_alignment',
 		array( 
-			'label'       => esc_html__( 'Text Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => true,
-			'separator'   => 'before',
 			'options'     =>
 			array( 
 				'start' =>
@@ -270,124 +373,6 @@ $this->start_controls_section(
 			'toggle'      => true,
 			'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_pre_text' => 'align-self: {{VALUE}};text-align: {{VALUE}};' ),
 			'condition'   => array( 'display_inline' => 'flex' ),
-		 )
-	 );
-	$this->add_control( 
-		'pre_styling_section_subheading',
-		array( 
-			'label'     => esc_html__( 'Styling', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::HEADING,
-			'separator' => 'before',
-		 )
-	 );
-	// Pre text normal and hover state control section.
-	$this->start_controls_tabs( 'pre_text_hover_control' );
-
-		// Pre text normal tab.
-		$this->start_controls_tab( 
-			'pre_text_normal_state',
-			array( 
-				'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
-			 )
-		 );
-			$this->add_responsive_control( 
-				'pre_text_color',
-				array( 
-					'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
-					'label_block' => false,
-					'type'        => Controls_Manager::COLOR,
-					'default'     => '',
-					'selectors'   => array( 
-						'{{WRAPPER}} .wpmozo_ae_pre_text' => 'color: {{VALUE}};',
-					 ),
-				 )
-			 );
-			$this->add_group_control( 
-				Group_Control_Background::get_type(),
-				array( 
-					'name'     => 'pre_text_background',
-					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
-					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} .wpmozo_ae_pre_text',
-				 )
-			 );
-			$this->add_group_control( 
-				Group_Control_Text_Shadow::get_type(),
-				array( 
-					'name'      => 'pre_text_shadow',
-					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_pre_text',
-					'separator' => 'before',
-				 )
-			 );
-		$this->end_controls_tab();
-
-		// Pre text hover tab.
-		$this->start_controls_tab( 
-			'pre_text_hover_state',
-			array( 
-				'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
-			 )
-		 );
-			$this->add_responsive_control( 
-				'pre_text_hover_state_color',
-				array( 
-					'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
-					'label_block' => false,
-					'type'        => Controls_Manager::COLOR,
-					'default'     => '',
-					'selectors'   => array( 
-						'{{WRAPPER}} .wpmozo_ae_pre_text:hover' => 'color: {{VALUE}};',
-					 ),
-				 )
-			 );
-			$this->add_group_control( 
-				Group_Control_Background::get_type(),
-				array( 
-					'name'     => 'pre_text_hover_state_background',
-					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
-					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} .wpmozo_ae_pre_text:hover',
-				 )
-			 );
-			$this->add_group_control( 
-				Group_Control_Text_Shadow::get_type(),
-				array( 
-					'name'      => 'pre_text_hover_state_shadow',
-					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_pre_text:hover',
-					'separator' => 'before',
-				 )
-			 );
-			$this->add_responsive_control( 
-				'pre_text_transition_control',
-				array( 
-					'type'      => Controls_Manager::SLIDER,
-					'label'     => esc_html__( 'Transition Duration ( ms )', 'wpmozo-addons-lite-for-elementor' ),
-					'range'     => array( 
-						'ms' => array( 
-							'min'  => 0,
-							'max'  => 10000,
-							'step' => 100,
-						 ),
-					 ),
-					'default'   => array( 
-						'size' => 1000,
-						'unit' => 'ms',
-					 ),
-					'selectors' => array( 
-						'{{WRAPPER}} .wpmozo_ae_pre_text' => 'transition: color {{SIZE}}{{UNIT}}, text-shadow {{SIZE}}{{UNIT}}, background {{SIZE}}{{UNIT}};',
-					 ),
-				 )
-			 );
-		$this->end_controls_tab();
-	$this->end_controls_tabs();
-	$this->add_control( 
-		'pre_spacing_subheading',
-		array( 
-			'label'     => esc_html__( 'Spacing', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::HEADING,
-			'separator' => 'before',
 		 )
 	 );
 	// Pre text margin and padding control section.
@@ -437,14 +422,118 @@ $this->end_controls_section();
 $this->start_controls_section( 
 	'main_text_settings',
 	array( 
-		'label' => esc_html__( 'Main Text Settings', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Main Text', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	 )
  );
+	// Main text normal and hover state control section.
+	$this->start_controls_tabs( 'main_text_hover_control' );
+
+		// Main text normal tab.
+		$this->start_controls_tab( 
+			'main_text_normal_state',
+			array( 
+				'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
+			 )
+		 );
+			$this->add_responsive_control( 
+				'main_text_color',
+				array( 
+					'label'       => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
+					'label_block' => false,
+					'type'        => Controls_Manager::COLOR,
+					'default'     => '',
+					'selectors'   => array( 
+						'{{WRAPPER}} .wpmozo_ae_main_text' => 'color: {{VALUE}};',
+					 ),
+				 )
+			 );
+			$this->add_group_control( 
+				Group_Control_Background::get_type(),
+				array( 
+					'name'     => 'main_text_background',
+					'types'    => array( 'classic', 'gradient' ),
+					'selector' => '{{WRAPPER}} .wpmozo_ae_main_text',
+				 )
+			 );
+			$this->add_group_control( 
+				Group_Control_Text_Shadow::get_type(),
+				array( 
+					'name'      => 'main_text_shadow',
+					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+					'selector'  => '{{WRAPPER}} .wpmozo_ae_main_text',
+				 )
+			 );
+		$this->end_controls_tab();
+
+		// Main text hover tab.
+		$this->start_controls_tab( 
+			'main_text_hover_state',
+			array( 
+				'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
+			 )
+		 );
+			$this->add_responsive_control( 
+				'main_text_hover_state_color',
+				array( 
+					'label'       => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
+					'label_block' => false,
+					'type'        => Controls_Manager::COLOR,
+					'default'     => '',
+					'selectors'   => array( 
+						'{{WRAPPER}} .wpmozo_ae_main_text:hover' => 'color: {{VALUE}};',
+					 ),
+				 )
+			 );
+			$this->add_group_control( 
+				Group_Control_Background::get_type(),
+				array( 
+					'name'     => 'main_text_hover_state_background',
+					'types'    => array( 'classic', 'gradient' ),
+					'selector' => '{{WRAPPER}} .wpmozo_ae_main_text:hover',
+				 )
+			 );
+			$this->add_group_control( 
+				Group_Control_Text_Shadow::get_type(),
+				array( 
+					'name'      => 'main_text_hover_state_shadow',
+					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+					'selector'  => '{{WRAPPER}} .wpmozo_ae_main_text:hover',
+				 )
+			 );
+			$this->add_responsive_control( 
+				'main_text_transition_control',
+				array( 
+					'type'      => Controls_Manager::SLIDER,
+					'label'     => esc_html__( 'Transition Duration (ms)', 'wpmozo-addons-lite-for-elementor' ),
+					'range'     => array( 
+						'ms' => array( 
+							'min'  => 0,
+							'max'  => 10000,
+							'step' => 100,
+						 ),
+					 ),
+					'default'   => array( 
+						'size' => 1000,
+						'unit' => 'ms',
+					 ),
+					'selectors' => array( 
+						'{{WRAPPER}} .wpmozo_ae_main_text' => 'transition: color {{SIZE}}{{UNIT}}, text-shadow {{SIZE}}{{UNIT}}, background {{SIZE}}{{UNIT}};',
+					 ),
+				 )
+			 );
+		$this->end_controls_tab();
+	$this->end_controls_tabs();
+	$this->add_control(
+		'main_heading_tab_divider',
+		array(
+			'type' => Controls_Manager::DIVIDER,
+		)
+	);
 	$this->add_group_control( 
 		Group_Control_Typography::get_type(),
 		array( 
-			'label'       => esc_html__( 'Main Typography', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => true,
 			'name'        => 'main_text_typography',
 			'selector'    => '{{WRAPPER}} .wpmozo_ae_main_text',
@@ -453,10 +542,9 @@ $this->start_controls_section(
 	$this->add_responsive_control( 
 		'main_text_alignment',
 		array( 
-			'label'       => esc_html__( 'Text Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => true,
-			'separator'   => 'before',
 			'options'     =>
 			array( 
 				'start' =>
@@ -481,125 +569,6 @@ $this->start_controls_section(
 				'{{WRAPPER}} .wpmozo_ae_main_text' => 'align-self: {{VALUE}};text-align: {{VALUE}};',
 			 ),
 			'condition'   => array( 'display_inline' => 'flex' ),
-		 )
-	 );
-	$this->add_control( 
-		'main_styling_section_subheading',
-		array( 
-			'label'     => esc_html__( 'Styling', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::HEADING,
-			'separator' => 'before',
-		 )
-	 );
-
-	// Main text normal and hover state control section.
-	$this->start_controls_tabs( 'main_text_hover_control' );
-
-		// Main text normal tab.
-		$this->start_controls_tab( 
-			'main_text_normal_state',
-			array( 
-				'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
-			 )
-		 );
-			$this->add_responsive_control( 
-				'main_text_color',
-				array( 
-					'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
-					'label_block' => false,
-					'type'        => Controls_Manager::COLOR,
-					'default'     => '',
-					'selectors'   => array( 
-						'{{WRAPPER}} .wpmozo_ae_main_text' => 'color: {{VALUE}};',
-					 ),
-				 )
-			 );
-			$this->add_group_control( 
-				Group_Control_Background::get_type(),
-				array( 
-					'name'     => 'main_text_background',
-					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
-					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} .wpmozo_ae_main_text',
-				 )
-			 );
-			$this->add_group_control( 
-				Group_Control_Text_Shadow::get_type(),
-				array( 
-					'name'      => 'main_text_shadow',
-					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_main_text',
-					'separator' => 'before',
-				 )
-			 );
-		$this->end_controls_tab();
-
-		// Main text hover tab.
-		$this->start_controls_tab( 
-			'main_text_hover_state',
-			array( 
-				'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
-			 )
-		 );
-			$this->add_responsive_control( 
-				'main_text_hover_state_color',
-				array( 
-					'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
-					'label_block' => false,
-					'type'        => Controls_Manager::COLOR,
-					'default'     => '',
-					'selectors'   => array( 
-						'{{WRAPPER}} .wpmozo_ae_main_text:hover' => 'color: {{VALUE}};',
-					 ),
-				 )
-			 );
-			$this->add_group_control( 
-				Group_Control_Background::get_type(),
-				array( 
-					'name'     => 'main_text_hover_state_background',
-					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
-					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} .wpmozo_ae_main_text:hover',
-				 )
-			 );
-			$this->add_group_control( 
-				Group_Control_Text_Shadow::get_type(),
-				array( 
-					'name'      => 'main_text_hover_state_shadow',
-					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_main_text:hover',
-					'separator' => 'before',
-				 )
-			 );
-			$this->add_responsive_control( 
-				'main_text_transition_control',
-				array( 
-					'type'      => Controls_Manager::SLIDER,
-					'label'     => esc_html__( 'Transition Duration ( ms )', 'wpmozo-addons-lite-for-elementor' ),
-					'range'     => array( 
-						'ms' => array( 
-							'min'  => 0,
-							'max'  => 10000,
-							'step' => 100,
-						 ),
-					 ),
-					'default'   => array( 
-						'size' => 1000,
-						'unit' => 'ms',
-					 ),
-					'selectors' => array( 
-						'{{WRAPPER}} .wpmozo_ae_main_text' => 'transition: color {{SIZE}}{{UNIT}}, text-shadow {{SIZE}}{{UNIT}}, background {{SIZE}}{{UNIT}};',
-					 ),
-				 )
-			 );
-		$this->end_controls_tab();
-	$this->end_controls_tabs();
-	$this->add_control( 
-		'main_spacing_subheading',
-		array( 
-			'label'     => esc_html__( 'Spacing', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::HEADING,
-			'separator' => 'before',
 		 )
 	 );
 
@@ -652,14 +621,121 @@ $this->end_controls_section();
 $this->start_controls_section( 
 	'post_text_settings',
 	array( 
-		'label' => esc_html__( 'Post Text Settings', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Post Text', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	 )
  );
+
+	// Post text normal and hover state control section.
+	$this->start_controls_tabs( 'post_text_hover_control' );
+
+		// Post text normal tab.
+		$this->start_controls_tab( 
+			'post_text_normal_state',
+			array( 
+				'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
+			 )
+		 );
+			$this->add_responsive_control( 
+				'post_text_color',
+				array( 
+					'label'       => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
+					'label_block' => false,
+					'type'        => Controls_Manager::COLOR,
+					'default'     => '',
+					'selectors'   => array( 
+						'{{WRAPPER}} .wpmozo_ae_post_text' => 'color: {{VALUE}};',
+					 ),
+				 )
+			 );
+			$this->add_group_control( 
+				Group_Control_Background::get_type(),
+				array( 
+					'name'     => 'post_text_background',
+					'types'    => array( 'classic', 'gradient' ),
+					'selector' => '{{WRAPPER}} .wpmozo_ae_post_text',
+				 )
+			 );
+			$this->add_group_control( 
+				Group_Control_Text_Shadow::get_type(),
+				array( 
+					'name'      => 'post_text_shadow',
+					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+					'selector'  => '{{WRAPPER}} .wpmozo_ae_post_text',
+				 )
+			 );
+		$this->end_controls_tab();
+
+		// Post text hover tab.
+		$this->start_controls_tab( 
+			'post_text_hover_state',
+			array( 
+				'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
+			 )
+		 );
+			$this->add_responsive_control( 
+				'post_text_hover_state_color',
+				array( 
+					'label'       => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
+					'label_block' => false,
+					'type'        => Controls_Manager::COLOR,
+					'default'     => '',
+					'selectors'   => array( 
+						'{{WRAPPER}} .wpmozo_ae_post_text:hover' => 'color: {{VALUE}};',
+					 ),
+				 )
+			 );
+			$this->add_group_control( 
+				Group_Control_Background::get_type(),
+				array( 
+					'name'     => 'post_text_hover_state_background',
+					'types'    => array( 'classic', 'gradient' ),
+					'selector' => '{{WRAPPER}} .wpmozo_ae_post_text:hover',
+				 )
+			 );
+			$this->add_group_control( 
+				Group_Control_Text_Shadow::get_type(),
+				array( 
+					'name'      => 'post_text_hover_state_shadow',
+					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+					'selector'  => '{{WRAPPER}} .wpmozo_ae_post_text:hover',
+				 )
+			 );
+			$this->add_responsive_control( 
+				'post_text_transition_control',
+				array( 
+					'type'      => Controls_Manager::SLIDER,
+					'label'     => esc_html__( 'Transition Duration (ms)', 'wpmozo-addons-lite-for-elementor' ),
+					'range'     => array( 
+						'ms' => array( 
+							'min'  => 0,
+							'max'  => 10000,
+							'step' => 100,
+						 ),
+
+					 ),
+					'default'   => array( 
+						'size' => 1000,
+						'unit' => 'ms',
+					 ),
+
+					'selectors' => array( 
+						'{{WRAPPER}} .wpmozo_ae_post_text' => 'transition: color {{SIZE}}{{UNIT}}, text-shadow {{SIZE}}{{UNIT}}, background {{SIZE}}{{UNIT}};',
+					 ),
+				 )
+			 );
+		$this->end_controls_tab();
+	$this->end_controls_tabs();
+	$this->add_control(
+		'post_heading_tab_divider',
+		array(
+			'type' => Controls_Manager::DIVIDER,
+		)
+	);
 	$this->add_group_control( 
 		Group_Control_Typography::get_type(),
 		array( 
-			'label'       => esc_html__( 'Post Typography', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => true,
 			'name'        => 'post_typography',
 			'selector'    => '{{WRAPPER}} .wpmozo_ae_post_text',
@@ -668,10 +744,9 @@ $this->start_controls_section(
 	$this->add_responsive_control( 
 		'post_text_alignment',
 		array( 
-			'label'       => esc_html__( 'Text Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => true,
-			'separator'   => 'before',
 			'options'     =>
 			array( 
 				'start' =>
@@ -698,128 +773,6 @@ $this->start_controls_section(
 			'condition'   => array( 'display_inline' => 'flex' ),
 		 )
 	 );
-	$this->add_control( 
-		'post_styling_section_subheading',
-		array( 
-			'label'     => esc_html__( 'Styling', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::HEADING,
-			'separator' => 'before',
-		 )
-	 );
-
-	// Post text normal and hover state control section.
-	$this->start_controls_tabs( 'post_text_hover_control' );
-
-		// Post text normal tab.
-		$this->start_controls_tab( 
-			'post_text_normal_state',
-			array( 
-				'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
-			 )
-		 );
-			$this->add_responsive_control( 
-				'post_text_color',
-				array( 
-					'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
-					'label_block' => false,
-					'type'        => Controls_Manager::COLOR,
-					'default'     => '',
-					'selectors'   => array( 
-						'{{WRAPPER}} .wpmozo_ae_post_text' => 'color: {{VALUE}};',
-					 ),
-				 )
-			 );
-			$this->add_group_control( 
-				Group_Control_Background::get_type(),
-				array( 
-					'name'     => 'post_text_background',
-					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
-					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} .wpmozo_ae_post_text',
-				 )
-			 );
-			$this->add_group_control( 
-				Group_Control_Text_Shadow::get_type(),
-				array( 
-					'name'      => 'post_text_shadow',
-					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_post_text',
-					'separator' => 'before',
-				 )
-			 );
-		$this->end_controls_tab();
-
-		// Post text hover tab.
-		$this->start_controls_tab( 
-			'post_text_hover_state',
-			array( 
-				'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
-			 )
-		 );
-			$this->add_responsive_control( 
-				'post_text_hover_state_color',
-				array( 
-					'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
-					'label_block' => false,
-					'type'        => Controls_Manager::COLOR,
-					'default'     => '',
-					'selectors'   => array( 
-						'{{WRAPPER}} .wpmozo_ae_post_text:hover' => 'color: {{VALUE}};',
-					 ),
-				 )
-			 );
-			$this->add_group_control( 
-				Group_Control_Background::get_type(),
-				array( 
-					'name'     => 'post_text_hover_state_background',
-					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
-					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} .wpmozo_ae_post_text:hover',
-				 )
-			 );
-			$this->add_group_control( 
-				Group_Control_Text_Shadow::get_type(),
-				array( 
-					'name'      => 'post_text_hover_state_shadow',
-					'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-					'selector'  => '{{WRAPPER}} .wpmozo_ae_post_text:hover',
-					'separator' => 'before',
-				 )
-			 );
-			$this->add_responsive_control( 
-				'post_text_transition_control',
-				array( 
-					'type'      => Controls_Manager::SLIDER,
-					'label'     => esc_html__( 'Transition Duration ( ms )', 'wpmozo-addons-lite-for-elementor' ),
-					'range'     => array( 
-						'ms' => array( 
-							'min'  => 0,
-							'max'  => 10000,
-							'step' => 100,
-						 ),
-
-					 ),
-					'default'   => array( 
-						'size' => 1000,
-						'unit' => 'ms',
-					 ),
-
-					'selectors' => array( 
-						'{{WRAPPER}} .wpmozo_ae_post_text' => 'transition: color {{SIZE}}{{UNIT}}, text-shadow {{SIZE}}{{UNIT}}, background {{SIZE}}{{UNIT}};',
-					 ),
-				 )
-			 );
-		$this->end_controls_tab();
-	$this->end_controls_tabs();
-	$this->add_control( 
-		'post_spacing_subheading',
-		array( 
-			'label'     => esc_html__( 'Spacing', 'wpmozo-addons-lite-for-elementor' ),
-			'type'      => Controls_Manager::HEADING,
-			'separator' => 'before',
-		 )
-	 );
-
 	$this->start_controls_tabs( 'post_text_padding_margin_control_tabs' );
 
 		// Post text padding tab.

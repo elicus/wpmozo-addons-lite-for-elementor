@@ -244,7 +244,6 @@ $this->start_controls_section(
 					 ),
 			 ),
 			'default'     => 'h2',
-			'separator'   => 'before',
 			'toggle'      => false,
 		 )
 	 );
@@ -260,7 +259,6 @@ $this->start_controls_section(
 				'title_text_color',
 				array( 
 					'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
-					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '#222',
 					'selectors'   => array( 
@@ -299,7 +297,6 @@ $this->start_controls_section(
 				'title_text_hover_state_color',
 				array( 
 					'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
-					'label_block' => true,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
 					'selectors'   => array( 
@@ -401,7 +398,6 @@ $this->start_controls_section(
 				'content_text_color',
 				array( 
 					'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
-					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '#222',
 					'selectors'   => array( 
@@ -440,7 +436,6 @@ $this->start_controls_section(
 				'content_text_hover_state_color',
 				array( 
 					'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
-					'label_block' => true,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
 					'selectors'   => array( 
@@ -556,6 +551,7 @@ $this->start_controls_section(
 				 ),
 			 ),
 			'toggle'    => true,
+			'separator' => 'after',
 			'selectors' => array( 
 				'{{WRAPPER}} .wpmozo_ae_image_card_wrapper_inner' => 'text-align: {{VALUE}};',
 			 ),
