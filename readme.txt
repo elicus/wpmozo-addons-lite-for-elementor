@@ -277,7 +277,7 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
-2025-10-29 - Version 1.8.0
+2025-11-11 - Version 1.8.0
 - NEW: New widget Image Card Ticker.
 - NEW: New widget Split Image.
 - NEW: New widget Wavy Gallery.
