@@ -341,6 +341,11 @@ use Elementor\Group_Control_Box_Shadow;
 		array(
 			'name'           => 'button_background',
 			'types'          => array( 'classic', 'gradient' ),
+			'fields_options' => array(
+				'background' => array(
+					'default' => 'classic',
+				),
+			),
 			'toggle'         => false,
 			'condition'      => array(
 				'button_custom_style' => 'yes',
