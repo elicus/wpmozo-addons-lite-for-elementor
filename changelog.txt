@@ -1,5 +1,9 @@
 Changelog for WPMozo Addons Lite for Elementor
 
+2025-11-21 - Version 1.8.1
+- FIXED: Issue with Hover List widget styles with site editor.
+
+
 2025-11-11 - Version 1.8.0
 - NEW: New widget Image Card Ticker.
 - NEW: New widget Split Image.

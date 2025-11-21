@@ -127,7 +127,7 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 		protected function register_controls() {
 
 			// Separate file containing all the code for registering controls.
-			include_once plugin_dir_path( __DIR__ ) . 'hover-list/assets/controls/controls.php';
+			require plugin_dir_path( __DIR__ ) . 'hover-list/assets/controls/controls.php';
 		}
 
 		/**
