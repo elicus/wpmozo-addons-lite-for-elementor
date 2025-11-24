@@ -3,7 +3,7 @@ Contributors: elicus
 Tags: elementor, page builder, addons, elementor extension, elementor addon
 Requires at least: 5.3
 Tested up to: 6.8
-Stable tag: 1.8.0
+Stable tag: 1.8.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -277,12 +277,7 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
-2025-11-11 - Version 1.8.0
-- NEW: New widget Image Card Ticker.
-- NEW: New widget Split Image.
-- NEW: New widget Wavy Gallery.
-- NEW: New widget Post Ticker.
-- NEW: New widget Scroll Progress.
-- NEW: New widget Hover List.
+2025-11-21 - Version 1.8.1
+- FIXED: Issue with Hover List widget styles with site editor.
 
 [See changelog for all versions](https://plugins.svn.wordpress.org/wpmozo-addons-lite-for-elementor/trunk/changelog.txt).
