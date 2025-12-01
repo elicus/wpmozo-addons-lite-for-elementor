@@ -159,7 +159,7 @@ if ( ! class_exists( 'WPMOZO_AE_Floating_Image' ) ) {
 								<?php endif; ?>									
 									<div class="wpmozo_floating_images_wrapper">
 										<div class="wpmozo_floating_image_item elementor-repeater-item-<?php echo esc_attr( $single_item[ '_id' ] ); ?>">				
-												<img decoding="async" class="wpmozo_floating_img" src="<?php echo esc_attr( $single_item[ 'image' ][ 'url' ] ); ?>" alt="<?php echo '' !== $settings[ 'image_alt_text' ] ? esc_attr( $settings[ 'image_alt_text' ] ) : esc_attr( $settings[ 'image' ]['alt'] ) ; ; ?>" >	
+												<img decoding="async" class="wpmozo_floating_img" src="<?php echo esc_attr( $single_item[ 'image' ][ 'url' ] ); ?>" alt="<?php echo '' !== $single_item[ 'image_alt_text' ] ? esc_attr( $single_item[ 'image_alt_text' ] ) : esc_attr( $single_item[ 'image' ]['alt'] ) ; ; ?>" >	
 										</div>					
 									</div>	
 								<?php
