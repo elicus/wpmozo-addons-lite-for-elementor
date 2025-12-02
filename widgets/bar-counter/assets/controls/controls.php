@@ -64,7 +64,7 @@ $this->start_controls_section(
 	$this->add_control( 
 		'display_empty_bar',
 		array( 
-			'label'        => esc_html__( 'Display Empty Bar/Chunks', 'wpmozo-addons-lite-for-elementor' ),
+			'label'        => esc_html__( 'Empty Bar/Chunks', 'wpmozo-addons-lite-for-elementor' ),
 			'type'         => Controls_Manager::SWITCHER,
 			'label_on'     => esc_html__( 'Show', 'wpmozo-addons-lite-for-elementor' ),
 			'label_off'    => esc_html__( 'Hide', 'wpmozo-addons-lite-for-elementor' ),
@@ -285,7 +285,7 @@ $this->start_controls_section(
 			$this->add_control( 
 				'title_heading_level',
 				array( 
-					'label'       => esc_html__( 'Title Heading Level', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Heading Level', 'wpmozo-addons-lite-for-elementor' ),
 					'type'        => Controls_Manager::CHOOSE,
 					'label_block' => true,
 					'options'     => array( 
@@ -321,7 +321,7 @@ $this->start_controls_section(
 			$this->add_responsive_control( 
 				'title_color',
 				array( 
-					'label'     => esc_html__( 'Title Text Color', 'wpmozo-addons-lite-for-elementor' ),
+					'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array( 
 						'{{WRAPPER}} .wpmozo_bar_counter_wrapper .wpmozo_bar_counter_title' => 'color: {{VALUE}};',
@@ -332,7 +332,7 @@ $this->start_controls_section(
 				Group_Control_Typography::get_type(),
 				array( 
 					'name'     => 'title_typography',
-					'label'    => esc_html__( 'Title Typography', 'wpmozo-addons-lite-for-elementor' ),
+					'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'selector' => '{{WRAPPER}} .wpmozo_bar_counter_wrapper .wpmozo_bar_counter_title',
 				 )
 			 );
@@ -340,14 +340,14 @@ $this->start_controls_section(
 				Group_Control_Text_Shadow::get_type(),
 				array( 
 					'name'     => 'title_text_shadow',
-					'label'    => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+					'label'    => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 					'selector' => '{{WRAPPER}} .wpmozo_bar_counter_wrapper .wpmozo_bar_counter_title',
 				 )
 			 );
 			$this->add_responsive_control( 
 				'title_alignment',
 				array( 
-					'label'       => esc_html__( 'Title Text Alignment', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 					'type'        => Controls_Manager::CHOOSE,
 					'label_block' => true,
 					'options'     => array( 
@@ -386,7 +386,7 @@ $this->start_controls_section(
 			$this->add_responsive_control( 
 				'percentage_color',
 				array( 
-					'label'     => esc_html__( 'Percentage Text Color', 'wpmozo-addons-lite-for-elementor' ),
+					'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array( 
 						'{{WRAPPER}} .wpmozo_bar_counter_bar_wrapper .wpmozo_bar_counter_percent' => 'color: {{VALUE}};',
@@ -397,7 +397,7 @@ $this->start_controls_section(
 				Group_Control_Typography::get_type(),
 				array( 
 					'name'     => 'percentage_typography',
-					'label'    => esc_html__( 'Percentage Typography', 'wpmozo-addons-lite-for-elementor' ),
+					'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'selector' => '{{WRAPPER}} .wpmozo_bar_counter_bar_wrapper .wpmozo_bar_counter_percent',
 				 )
 			 );
@@ -405,14 +405,14 @@ $this->start_controls_section(
 				Group_Control_Text_Shadow::get_type(),
 				array( 
 					'name'     => 'percentage_text_shadow',
-					'label'    => esc_html__( 'Percentage Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+					'label'    => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 					'selector' => '{{WRAPPER}} .wpmozo_bar_counter_bar_wrapper .wpmozo_bar_counter_percent',
 				 )
 			 );
 			$this->add_responsive_control( 
 				'percentage_alignment',
 				array( 
-					'label'       => esc_html__( 'Percentage Text Alignment', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 					'type'        => Controls_Manager::CHOOSE,
 					'label_block' => true,
 					'options'     => array( 

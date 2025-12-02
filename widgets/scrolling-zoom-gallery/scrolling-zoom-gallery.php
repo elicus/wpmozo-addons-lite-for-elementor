@@ -110,7 +110,7 @@ if ( ! class_exists( 'WPMOZO_AE_Scrolling_Zoom_Gallery' ) ) {
 		 * @return array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-			wp_register_script( 'wpmozo-ae-scrolling-zoom-gallery-script', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
+			wp_register_script( 'wpmozo-ae-scrolling-zoom-gallery-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
 			return array( 'wpmozo-ae-scrolling-zoom-gallery-script', 'wpmozo-ae-imagesloaded', 'wpmozo-ae-gsap', 'wpmozo-ae-scrollTrigger' );
 		}

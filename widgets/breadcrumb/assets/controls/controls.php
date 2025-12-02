@@ -17,7 +17,7 @@ $this->start_controls_section( 'wpmozo_bc_settings_tab',
  );
 $this->add_control( 'breadcrumb_layout',
 	array( 
-		'label'   => esc_html__( 'Breadcrumbs Layout', 'wpmozo-addons-lite-for-elementor' ),
+		'label'   => esc_html__( 'Layout', 'wpmozo-addons-lite-for-elementor' ),
 		'type'    => Controls_Manager::SELECT,
 		'default' => 'layout1',
 		'options' => array( 
@@ -50,7 +50,7 @@ $this->start_controls_section(
  );
 $this->add_control( 'separator_type',
 	array( 
-		'label'   => esc_html__( 'Separator Type', 'wpmozo-addons-lite-for-elementor' ),
+		'label'   => esc_html__( 'Type', 'wpmozo-addons-lite-for-elementor' ),
 		'type'    => Controls_Manager::SELECT,
 		'default' => 'text_separator',
 		'options' => array( 
@@ -90,7 +90,7 @@ $this->add_control( 'separator_icon',
  );
 $this->add_responsive_control( 'separator_font_size',
 	array( 
-		'label'      => esc_html__( 'Separator Font Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::SLIDER,
 		'size_units' => array( 'px' ),
 		'range'      => array( 
@@ -120,7 +120,7 @@ $this->start_controls_tab( 'separator_color_normal_tab',
  );
 $this->add_control( 'separator_color',
 	array( 
-		'label'     => esc_html__( 'Separator Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'condition' => array( 
 			'breadcrumb_layout' => 'layout2',
@@ -139,7 +139,7 @@ $this->start_controls_tab( 'separator_hover_color_tab',
  );
 $this->add_control( 'separator_hover_color',
 	array( 
-		'label'     => esc_html__( 'Separator Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'condition' => array( 
 			'breadcrumb_layout' => 'layout2',
@@ -170,7 +170,7 @@ $this->start_controls_tab( 'breadcrumb_background_color_tab',
  );
 $this->add_responsive_control( 'breadcrumb_background_color',
 	array( 
-		'label'     => esc_html__( 'Breadcrumbs Background Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Background Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array( 
 			'{{WRAPPER}} .layout1 .wpmozo_breadcrumb_inner li .breadcrumb_item .breadcrumb_page' => 'background-color: {{VALUE}};',
@@ -187,7 +187,7 @@ $this->start_controls_tab( 'breadcrumb_background_color_tab_hover',
  );
 $this->add_responsive_control( 'breadcrumb_hover_background_color',
 	array( 
-		'label'     => esc_html__( 'Breadcrumbs Background Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Background Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array( 
 			'{{WRAPPER}} .layout1 .wpmozo_breadcrumb_inner li .breadcrumb_item .breadcrumb_page:hover' => 'background-color: {{VALUE}};',
@@ -233,7 +233,7 @@ $this->add_control( 'enable_opacity',
  );
 $this->add_responsive_control( 'opacity_slider',
 	array( 
-		'label' => esc_html__( 'Decrease Opacity By', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Opacity', 'wpmozo-addons-lite-for-elementor' ),
 		'type'  => Controls_Manager::SLIDER,
 		'range' => array( 
 			'px' => array( 
@@ -252,7 +252,7 @@ $this->add_responsive_control( 'opacity_slider',
  );
 $this->add_responsive_control( 'breadcrumb_item_padding',
 	array( 
-		'label'      => esc_html__( 'Breadcrumbs Items Padding', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 		'default'    => array( 
@@ -308,7 +308,7 @@ $this->add_control( 'use_icon_switcher',
  );
 $this->add_control( 'display_only_icon_switcher',
 	array( 
-		'label'     => esc_html__( 'Hide Text ( Display Icon Only )', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Hide Text (Display Icon Only)', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SWITCHER,
 		'label_on'  => esc_html__( 'Yes', 'wpmozo-addons-lite-for-elementor' ),
 		'label_off' => esc_html__( 'No', 'wpmozo-addons-lite-for-elementor' ),
@@ -320,7 +320,7 @@ $this->add_control( 'display_only_icon_switcher',
  );
 $this->add_control( 'home_link_icon',
 	array( 
-		'label'   => esc_html__( 'Home Link Icon', 'wpmozo-addons-lite-for-elementor' ),
+		'label'   => esc_html__( 'Icon', 'wpmozo-addons-lite-for-elementor' ),
 		'type'    => Controls_Manager::ICONS,
 		'default' => array( 
 			'value'   => 'far fa-star',
@@ -333,7 +333,7 @@ $this->add_control( 'home_link_icon',
  );
 $this->add_responsive_control( 'home_link_icon_size',
 	array( 
-		'label'      => esc_html__( 'Home Link Icon Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::SLIDER,
 		'size_units' => array( 'px' ),
 		'range'      => array( 
@@ -357,7 +357,7 @@ $this->add_responsive_control( 'home_link_icon_size',
  );
 $this->add_responsive_control( 'home_link_icon_color',
 	array( 
-		'label'     => esc_html__( 'Home Link Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'condition' => array( 
 			'use_icon_switcher' => 'yes',
@@ -385,7 +385,7 @@ $this->add_control( 'global_settings',
 $this->add_responsive_control( 'global_text_alignment',
 	array( 
 		'type'    => Controls_Manager::CHOOSE,
-		'label'   => esc_html__( 'Global Text Alignment', 'wpmozo-addons-lite-for-elementor' ),
+		'label'   => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 		'options' => array( 
 			'left' => array( 
 				'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
@@ -420,7 +420,7 @@ $this->start_controls_tab( 'global_text_size_tab',
  );
 $this->add_responsive_control( 'global_text_size',
 	array( 
-		'label'      => esc_html__( 'Global Text Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::SLIDER,
 		'size_units' => array( 'px' ),
 		'range'      => array( 
@@ -446,7 +446,7 @@ $this->start_controls_tab( 'global_text_size_tab_hover',
  );
 $this->add_responsive_control( 'global_text_size_hover',
 	array( 
-		'label'      => esc_html__( 'Global Text Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::SLIDER,
 		'size_units' => array( 'px' ),
 		'range'      => array( 
@@ -498,7 +498,7 @@ $this->start_controls_tab( 'text_color_tab',
  );
 $this->add_responsive_control( 'text_color',
 	array( 
-		'label'     => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array( 
 			'{{WRAPPER}} .wpmozo_last_page' => 'color: {{VALUE}};',
@@ -513,7 +513,7 @@ $this->start_controls_tab( 'text_color_tab_hover',
  );
 $this->add_responsive_control( 'text_color_hover',
 	array( 
-		'label'     => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array( 
 			'{{WRAPPER}} .wpmozo_last_page:hover' => 'color: {{VALUE}};',
@@ -524,7 +524,7 @@ $this->end_controls_tab();
 $this->end_controls_tabs();
 $this->add_control( 'link_text_settings',
 	array( 
-		'label'     => esc_html__( 'Link Text Settings', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Link Text', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::HEADING,
 		'separator' => 'before',
 	 )
@@ -540,7 +540,7 @@ $this->add_group_control( Group_Control_Typography::get_type(),
  );
 $this->add_group_control( Group_Control_Text_Shadow::get_type(),
 	array( 
-		'label'       => esc_html__( 'Link Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'link_shadow',
 		'selector'    => '{{WRAPPER}} .wpmozo_breadcrumb_inner li .wpmozo_home_page',
@@ -554,7 +554,7 @@ $this->start_controls_tab( 'link_text_color_tab',
  );
 $this->add_responsive_control( 'link_color',
 	array( 
-		'label'     => esc_html__( 'Link Text Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array( 
 			'{{WRAPPER}} .wpmozo_home_page' => 'color: {{VALUE}};',
@@ -569,7 +569,7 @@ $this->start_controls_tab( 'link_text_color_tab_hover',
  );
 $this->add_responsive_control( 'link_color_hover',
 	array( 
-		'label'     => esc_html__( 'Link Text Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array( 
 			'{{WRAPPER}} .wpmozo_home_page:hover' => 'color: {{VALUE}};',

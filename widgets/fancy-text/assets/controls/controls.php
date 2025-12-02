@@ -45,7 +45,7 @@ $this->end_controls_section();
 $this->start_controls_section( 
 	'fancy_text_settings',
 	array( 
-		'label' => esc_html__( 'Fancy Text Styling', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Fancy Text', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	 )
  );
@@ -266,16 +266,6 @@ $this->start_controls_section(
 			'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_text_wrapper .wpmozo_ae_text_wrapper_inner' => 'text-align: {{VALUE}};' ),
 		 )
 	 );
-$this->end_controls_section();
-
-// Fancy text typography controls start here.
-$this->start_controls_section( 
-	'fancy_text_typography',
-	array( 
-		'label' => esc_html__( 'Fancy Text Typography', 'wpmozo-addons-lite-for-elementor' ),
-		'tab'   => Controls_Manager::TAB_STYLE,
-	 )
- );
 	$this->add_group_control( 
 		Group_Control_Typography::get_type(),
 		array( 

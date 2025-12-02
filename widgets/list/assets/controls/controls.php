@@ -137,7 +137,7 @@ $this->add_responsive_control(
 	'list_alignment_default',
 	array(
 		'type'    => Controls_Manager::CHOOSE,
-		'label'   => esc_html__( 'List Alignment', 'wpmozo-addons-lite-for-elementor' ),
+		'label'   => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 		'options' => array(
 			'start' => array(
 				'title' => esc_html__( 'Start', 'wpmozo-addons-lite-for-elementor' ),
@@ -184,7 +184,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'tab_text_color',
 	array(
-		'label'     => esc_html__( 'Item Text Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_list_item_text' => 'color: {{VALUE}}; transition: all 300ms;',
@@ -194,7 +194,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'item_text_font_size',
 	array(
-		'label'      => esc_html__( 'Item Text Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::SLIDER,
 		'size_units' => array('px', 'em'),
 		'range'      => array(
@@ -219,7 +219,7 @@ $this->add_responsive_control(
 $this->add_group_control(
 	Group_Control_Typography::get_type(),
 	array(
-		'label'       => esc_html__( 'Item Typography', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'item_typography',
 		'exclude'     => array('font_size'),
@@ -230,7 +230,6 @@ $this->add_group_control(
     Group_Control_Background::get_type(),
     array( 
         'name'      => 'item_bg_color',
-        'label'     => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
         'types'     => array( 'classic', 'gradient' ),
         'selector'  => "{{WRAPPER}} .wpmozo_list_item_content_wrapper",
     )
@@ -239,7 +238,6 @@ $this->add_group_control(
     Group_Control_Border::get_type(),
     array( 
         'name'     => 'item_border',
-        'label'    => esc_html__( 'Border', 'wpmozo-addons-lite-for-elementor' ),
         'selector' => "{{WRAPPER}} .wpmozo_list_item_content_wrapper",
     )
 );
@@ -264,7 +262,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'item_text_color_hover',
 	array(
-		'label'     => esc_html__( 'Item Text Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_list_item_text:hover' => 'color: {{VALUE}};',
@@ -274,7 +272,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'item_text_font_size_hover',
 	array(
-		'label'      => esc_html__( 'Item Text Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Text Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::SLIDER,
 		'size_units' => array( 'px', 'em' ),
 		'range'      => array(
@@ -295,7 +293,7 @@ $this->add_responsive_control(
 $this->add_group_control(
 	Group_Control_Typography::get_type(),
 	array(
-		'label'       => esc_html__( 'Item Typography', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'item_hover_typography',
 		'exclude'     => array('font_size'),
@@ -306,7 +304,6 @@ $this->add_group_control(
     Group_Control_Background::get_type(),
     array( 
         'name'      => 'item_hover_bg_color',
-        'label'     => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
         'types'     => array( 'classic', 'gradient' ),
         'selector'  => "{{WRAPPER}} .wpmozo_list_item_content_wrapper:hover",
     )
@@ -315,7 +312,6 @@ $this->add_group_control(
     Group_Control_Border::get_type(),
     array( 
         'name'     => 'item_hover_border',
-        'label'    => esc_html__( 'Border', 'wpmozo-addons-lite-for-elementor' ),
         'selector' => "{{WRAPPER}} .wpmozo_list_item_content_wrapper:hover",
     )
 );
@@ -357,7 +353,7 @@ $this->add_responsive_control(
 $this->add_group_control(
 	Group_Control_Text_Shadow::get_type(),
 	array(
-		'label'       => esc_html__( 'Item Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'item_text_shadow',
 		'selector'    => '{{WRAPPER}} .wpmozo_list_item_text',
@@ -437,7 +433,7 @@ $this->start_controls_section(
 $this->add_responsive_control(
 	'icon_font_size',
 	array(
-		'label'      => esc_html__( 'Icon Font Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::SLIDER,
 		'size_units' => array( 'px' ),
 		'range'      => array(
@@ -605,7 +601,7 @@ $this->start_controls_section(
 $this->add_responsive_control(
 	'thumbnail_width',
 	array(
-		'label'      => esc_html__( 'Thumbnail Width', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Width', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::SLIDER,
 		'size_units' => array( 'px' ),
 		'range'      => array(
@@ -699,7 +695,7 @@ $this->start_controls_tab(
 $this->add_control(
 	'divider_color',
 	array(
-		'label'     => esc_html__( 'Divider Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'default'   => '#d3d3d3',
 		'selectors' => array(
@@ -711,7 +707,7 @@ $this->add_control(
 $this->add_responsive_control(
 	'divider_margin',
 	array(
-		'label'      => esc_html__( 'Divider Margin', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 		'default'    => array(
@@ -737,7 +733,7 @@ $this->start_controls_tab(
 $this->add_control(
 	'divider_color_hover',
 	array(
-		'label'     => esc_html__( 'Divider Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_list_default .wpmozo_list_item_wrap:hover .wpmozo_list_divider' => 'border-top-color: {{VALUE}};',
@@ -748,7 +744,7 @@ $this->add_control(
 $this->add_responsive_control(
 	'divider_margin_hover',
 	array(
-		'label'      => esc_html__( 'Divider Margin', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 		'selectors' => array(

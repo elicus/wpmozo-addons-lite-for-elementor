@@ -127,12 +127,38 @@ $this->add_control(
 $this->add_responsive_control(
 	'overlay_background_color',
 	array(
-		'label'       => esc_html__( 'Overlay Background Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Background Color', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => false,
 		'type'        => Controls_Manager::COLOR,
 		'default'     => '#0000006E',
 		'selectors'   => array(
 			'{{WRAPPER}} .wpmozo_mystery_image_overlay:before' => 'background-color:{{VALUE}};',
+		),
+		'condition'   => array( 'enable_overlay' => 'yes' ),
+	)
+);
+$this->add_responsive_control(
+	'overlay_icon_select',
+	array(
+		'label'     => esc_html__( 'Icon', 'wpmozo-addons-lite-for-elementor' ),
+		'type'      => Controls_Manager::ICONS,
+		'default'   => array(
+			'value'   => 'fas fa-image',
+			'library' => 'fa-solid',
+		),
+		'condition' => array( 'enable_overlay' => 'yes' ),
+	)
+);
+$this->add_responsive_control(
+	'overlay_icon_color',
+	array(
+		'label'       => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label_block' => false,
+		'type'        => Controls_Manager::COLOR,
+		'default'     => '#ffffff',
+		'selectors'   => array(
+			'{{WRAPPER}} .wpmozo_mystery_image_overlay span.wpmozo_overlay_icon' => 'color:{{VALUE}};',
+			'{{WRAPPER}} .wpmozo_mystery_image_overlay svg.wpmozo_overlay_icon' => 'color:{{VALUE}}; fill:{{VALUE}};',
 		),
 		'condition'   => array( 'enable_overlay' => 'yes' ),
 	)
@@ -173,32 +199,6 @@ $this->add_responsive_control(
 		'condition'  => array( 'enable_overlay' => 'yes' ),
 	)
 );
-$this->add_responsive_control(
-	'overlay_icon_color',
-	array(
-		'label'       => esc_html__( 'Overlay Icon Color', 'wpmozo-addons-lite-for-elementor' ),
-		'label_block' => false,
-		'type'        => Controls_Manager::COLOR,
-		'default'     => '#ffffff',
-		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_mystery_image_overlay span.wpmozo_overlay_icon' => 'color:{{VALUE}};',
-			'{{WRAPPER}} .wpmozo_mystery_image_overlay svg.wpmozo_overlay_icon' => 'color:{{VALUE}}; fill:{{VALUE}};',
-		),
-		'condition'   => array( 'enable_overlay' => 'yes' ),
-	)
-);
-$this->add_responsive_control(
-	'overlay_icon_select',
-	array(
-		'label'     => esc_html__( 'Overlay Icon', 'wpmozo-addons-lite-for-elementor' ),
-		'type'      => Controls_Manager::ICONS,
-		'default'   => array(
-			'value'   => 'fas fa-image',
-			'library' => 'fa-solid',
-		),
-		'condition' => array( 'enable_overlay' => 'yes' ),
-	)
-);
 $this->end_controls_section();
 $this->start_controls_section(
 	'lightbox_tab',
@@ -211,7 +211,7 @@ $this->start_controls_section(
 $this->add_control(
 	'lightbox_background_color',
 	array(
-		'label'     => esc_html__( 'Lightbox Background Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Background Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'default'   => '#0000006E',
 		'selectors' => array(

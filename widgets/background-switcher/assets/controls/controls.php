@@ -257,7 +257,7 @@ $this->add_control(
 	'title_heading_level',
 	array(
 		'type'        => Controls_Manager::CHOOSE,
-		'label'       => esc_html__( 'Title Heading', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Heading Level', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'options'     => array(
 			'h1' => array(
@@ -299,7 +299,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'title_text_color',
 	array(
-		'label'     => esc_html__( 'Title Text Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'default'   => '#ffffff',
 		'selectors' => array(
@@ -307,10 +307,20 @@ $this->add_responsive_control(
 		),
 	)
 );
+$this->add_group_control(
+	Group_Control_Typography::get_type(),
+	array(
+		'label'       => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
+		'label_block' => true,
+		'name'        => 'title_text_typography',
+		'exclude'     => array( 'font_size' ),
+		'selector'    => '{{WRAPPER}} .wpmozo_bg_switcher_title',
+	)
+);
 $this->add_responsive_control(
 	'title_text_size',
 	array(
-		'label'     => esc_html__( 'Title Text Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SLIDER,
 		'range'     => array(
 			'px' => array(
@@ -325,19 +335,9 @@ $this->add_responsive_control(
 	)
 );
 $this->add_group_control(
-	Group_Control_Typography::get_type(),
-	array(
-		'label'       => esc_html__( 'Title Typography', 'wpmozo-addons-lite-for-elementor' ),
-		'label_block' => true,
-		'name'        => 'title_text_typography',
-		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .wpmozo_bg_switcher_title',
-	)
-);
-$this->add_group_control(
 	Group_Control_Text_Shadow::get_type(),
 	array(
-		'label'       => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'title_text_shadow',
 		'selector'    => '{{WRAPPER}} .wpmozo_bg_switcher_title',
@@ -353,17 +353,27 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'title_text_color_hover',
 	array(
-		'label'     => esc_html__( 'Title Text Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_bg_switcher_title:hover' => 'color: {{VALUE}};',
 		),
 	)
 );
+$this->add_group_control(
+	Group_Control_Typography::get_type(),
+	array(
+		'label'       => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
+		'label_block' => true,
+		'name'        => 'title_text_typography_hover',
+		'exclude'     => array( 'font_size' ),
+		'selector'    => '{{WRAPPER}} .wpmozo_bg_switcher_title:hover',
+	)
+);
 $this->add_responsive_control(
 	'title_text_size_hover',
 	array(
-		'label'     => esc_html__( 'Title Text Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SLIDER,
 		'range'     => array(
 			'px' => array(
@@ -378,19 +388,9 @@ $this->add_responsive_control(
 	)
 );
 $this->add_group_control(
-	Group_Control_Typography::get_type(),
-	array(
-		'label'       => esc_html__( 'Title Typography', 'wpmozo-addons-lite-for-elementor' ),
-		'label_block' => true,
-		'name'        => 'title_text_typography_hover',
-		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .wpmozo_bg_switcher_title:hover',
-	)
-);
-$this->add_group_control(
 	Group_Control_Text_Shadow::get_type(),
 	array(
-		'label'       => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'title_text_shadow_hover',
 		'selector'    => '{{WRAPPER}} .wpmozo_bg_switcher_title:hover',
@@ -402,7 +402,7 @@ $this->add_responsive_control(
 	'title_alignment',
 	array(
 		'type'      => Controls_Manager::CHOOSE,
-		'label'     => esc_html__( 'Title Alignment', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 		'options'   => array(
 			'left'   => array(
 				'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
@@ -441,7 +441,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'description_text_color',
 	array(
-		'label'     => esc_html__( 'Description Text Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_bg_switcher_desc' => 'color: {{VALUE}};',
@@ -451,7 +451,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'description_text_size',
 	array(
-		'label'     => esc_html__( 'Description Text Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SLIDER,
 		'range'     => array(
 			'px' => array(
@@ -472,7 +472,7 @@ $this->add_responsive_control(
 $this->add_group_control(
 	Group_Control_Typography::get_type(),
 	array(
-		'label'       => esc_html__( 'Description Typography', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'description_text_typography',
 		'exclude'     => array( 'font_size' ),
@@ -482,7 +482,7 @@ $this->add_group_control(
 $this->add_group_control(
 	Group_Control_Text_Shadow::get_type(),
 	array(
-		'label'       => esc_html__( 'Description Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'description_text_shadow',
 		'selector'    => '{{WRAPPER}} .wpmozo_bg_switcher_desc',
@@ -498,7 +498,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'description_text_color_hover',
 	array(
-		'label'     => esc_html__( 'Description Text Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_bg_switcher_desc:hover' => 'color: {{VALUE}};',
@@ -508,7 +508,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'description_text_size_hover',
 	array(
-		'label'     => esc_html__( 'Description Text Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SLIDER,
 		'range'     => array(
 			'px' => array(
@@ -525,7 +525,7 @@ $this->add_responsive_control(
 $this->add_group_control(
 	Group_Control_Typography::get_type(),
 	array(
-		'label'       => esc_html__( 'Description Typography', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'description_text_typography_hover',
 		'exclude'     => array( 'font_size' ),
@@ -535,7 +535,7 @@ $this->add_group_control(
 $this->add_group_control(
 	Group_Control_Text_Shadow::get_type(),
 	array(
-		'label'       => esc_html__( 'Description Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'description_text_shadow_hover',
 		'selector'    => '{{WRAPPER}} .wpmozo_bg_switcher_desc:hover',
@@ -547,7 +547,7 @@ $this->add_responsive_control(
 	'description_alignment',
 	array(
 		'type'      => Controls_Manager::CHOOSE,
-		'label'     => esc_html__( 'Description Alignment', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 		'options'   => array(
 			'left'   => array(
 				'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
@@ -579,7 +579,7 @@ $this->start_controls_section(
 $this->add_responsive_control(
 	'button_alignment',
 	array(
-		'label'     => esc_html__( 'Button Alignment', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::CHOOSE,
 		'options'   => array(
 			'left'   => array(
@@ -604,7 +604,7 @@ $this->add_responsive_control(
 $this->add_control(
 	'button_custom_style',
 	array(
-		'label'        => esc_html__( 'Use Custom Style For Button', 'wpmozo-addons-lite-for-elementor' ),
+		'label'        => esc_html__( 'Use Custom Styles', 'wpmozo-addons-lite-for-elementor' ),
 		'type'         => Controls_Manager::SWITCHER,
 		'label_on'     => esc_html__( 'Yes', 'wpmozo-addons-lite-for-elementor' ),
 		'label_off'    => esc_html__( 'No', 'wpmozo-addons-lite-for-elementor' ),
@@ -673,7 +673,7 @@ $this->add_responsive_control(
 $this->add_control(
 	'show_button_icon_on_hover',
 	array(
-		'label'        => esc_html__( 'Only Show Icon On Hover For Button', 'wpmozo-addons-lite-for-elementor' ),
+		'label'        => esc_html__( 'Show Icon On Hover', 'wpmozo-addons-lite-for-elementor' ),
 		'type'         => Controls_Manager::SWITCHER,
 		'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
 		'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
@@ -698,7 +698,7 @@ $this->add_control(
 $this->add_group_control(
 	Group_Control_Text_Shadow::get_type(),
 	array(
-		'label'       => esc_html__( 'Button Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'button_text_shadow',
 		'condition'   => array(
@@ -716,13 +716,67 @@ $this->start_controls_tab(
 		'label'     => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
 		'condition' => array(
 			'button_custom_style' => 'yes',
+		)
+	)
+);
+$this->add_responsive_control(
+	'button_text_color',
+	array(
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
+		'type'      => Controls_Manager::COLOR,
+		'condition' => array(
+			'button_custom_style' => 'yes',
 		),
+		'separator' => 'none',
+		'selectors' => array(
+			'{{WRAPPER}} .wpmozo_read_more_button' => 'color: {{VALUE}}; transition: 300ms;',
+		),
+	)
+);
+$this->add_responsive_control(
+	'button_icon_color',
+	array(
+		'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+		'type'      => Controls_Manager::COLOR,
+		'condition' => array(
+			'button_custom_style' => 'yes',
+			'show_button_icon'    => 'yes',
+		),
+		'selectors' => array(
+			'{{WRAPPER}} .wpmozo_read_more_button svg' => 'fill: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_read_more_button i'   => 'color: {{VALUE}};',
+		),
+	)
+);
+$this->add_group_control(
+	Group_Control_Background::get_type(),
+	array(
+		'name'           => 'button_background',
+		'types'          => array( 'classic', 'gradient' ),
+		'toggle'         => false,
+		'condition'      => array(
+			'button_custom_style' => 'yes',
+		),
+		'selector'       => '{{WRAPPER}} .wpmozo_read_more_button',
+	)
+);
+$this->add_group_control(
+	Group_Control_Typography::get_type(),
+	array(
+		'label'       => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
+		'label_block' => true,
+		'name'        => 'button_typography',
+		'condition'   => array(
+			'button_custom_style' => 'yes',
+		),
+		'exclude'     => array( 'font_size' ),
+		'selector'    => '{{WRAPPER}} .wpmozo_read_more_button',
 	)
 );
 $this->add_responsive_control(
 	'button_text_size',
 	array(
-		'label'      => esc_html__( 'Button Text Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::SLIDER,
 		'size_units' => array( 'px', 'em' ),
 		'range'      => array(
@@ -746,38 +800,6 @@ $this->add_responsive_control(
 			'{{WRAPPER}} .wpmozo_read_more_button'     => 'font-size: {{SIZE}}{{UNIT}};',
 			'{{WRAPPER}} .wpmozo_read_more_button svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 		),
-	)
-);
-$this->add_responsive_control(
-	'button_text_color',
-	array(
-		'label'     => esc_html__( 'Button Text Color', 'wpmozo-addons-lite-for-elementor' ),
-		'type'      => Controls_Manager::COLOR,
-		'condition' => array(
-			'button_custom_style' => 'yes',
-		),
-		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_read_more_button' => 'color: {{VALUE}}; transition: 300ms;',
-		),
-	)
-);
-
-$this->add_group_control(
-	Group_Control_Background::get_type(),
-	array(
-		'name'           => 'button_background',
-		'types'          => array( 'classic', 'gradient' ),
-		'fields_options' => array(
-			'background' => array(
-				'label'   => esc_html__( 'Button Background', 'wpmozo-addons-lite-for-elementor' ),
-				'default' => 'classic',
-			),
-		),
-		'toggle'         => false,
-		'condition'      => array(
-			'button_custom_style' => 'yes',
-		),
-		'selector'       => '{{WRAPPER}} .wpmozo_read_more_button',
 	)
 );
 $this->add_group_control(
@@ -813,38 +835,10 @@ $this->add_responsive_control(
 		),
 	)
 );
-$this->add_group_control(
-	Group_Control_Typography::get_type(),
-	array(
-		'label'       => esc_html__( 'Button Typography', 'wpmozo-addons-lite-for-elementor' ),
-		'label_block' => true,
-		'name'        => 'button_typography',
-		'condition'   => array(
-			'button_custom_style' => 'yes',
-		),
-		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .wpmozo_read_more_button',
-	)
-);
-$this->add_responsive_control(
-	'button_icon_color',
-	array(
-		'label'     => esc_html__( 'Button Icon Color', 'wpmozo-addons-lite-for-elementor' ),
-		'type'      => Controls_Manager::COLOR,
-		'condition' => array(
-			'button_custom_style' => 'yes',
-			'show_button_icon'    => 'yes',
-		),
-		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_read_more_button svg' => 'fill: {{VALUE}};',
-			'{{WRAPPER}} .wpmozo_read_more_button i'   => 'color: {{VALUE}};',
-		),
-	)
-);
 $this->add_responsive_control(
 	'button_padding',
 	array(
-		'label'      => esc_html__( 'Button Padding', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 		'default'    => array(
@@ -870,13 +864,67 @@ $this->start_controls_tab(
 		'label'     => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
 		'condition' => array(
 			'button_custom_style' => 'yes',
+		)
+	)
+);
+$this->add_responsive_control(
+	'button_text_color_hover',
+	array(
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
+		'type'      => Controls_Manager::COLOR,
+		'condition' => array(
+			'button_custom_style' => 'yes',
 		),
+		'separator' => 'none',
+		'selectors' => array(
+			'{{WRAPPER}} .wpmozo_read_more_button:hover' => 'color: {{VALUE}};',
+		),
+	)
+);
+$this->add_responsive_control(
+	'button_icon_color_hover',
+	array(
+		'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+		'type'      => Controls_Manager::COLOR,
+		'condition' => array(
+			'button_custom_style' => 'yes',
+			'show_button_icon'    => 'yes',
+		),
+		'selectors' => array(
+			'{{WRAPPER}} .wpmozo_read_more_button:hover svg' => 'fill: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_read_more_button:hover i' => 'color: {{VALUE}};',
+		),
+	)
+);
+$this->add_group_control(
+	Group_Control_Background::get_type(),
+	array(
+		'name'           => 'button_background_hover',
+		'types'          => array( 'classic', 'gradient' ),
+		'toggle'         => false,
+		'condition'      => array(
+			'button_custom_style' => 'yes',
+		),
+		'selector'       => '{{WRAPPER}} .wpmozo_read_more_button:hover',
+	)
+);
+$this->add_group_control(
+	Group_Control_Typography::get_type(),
+	array(
+		'label'       => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
+		'label_block' => true,
+		'name'        => 'button_typography_hover',
+		'condition'   => array(
+			'button_custom_style' => 'yes',
+		),
+		'exclude'     => array( 'font_size' ),
+		'selector'    => '{{WRAPPER}} .wpmozo_read_more_button:hover',
 	)
 );
 $this->add_responsive_control(
 	'button_text_size_hover',
 	array(
-		'label'      => esc_html__( 'Button Text Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::SLIDER,
 		'size_units' => array( 'px', 'em' ),
 		'range'      => array(
@@ -896,38 +944,6 @@ $this->add_responsive_control(
 			'{{WRAPPER}} .wpmozo_read_more_button:hover' => 'font-size: {{SIZE}}{{UNIT}};',
 			'{{WRAPPER}} .wpmozo_read_more_button:hover svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 		),
-	)
-);
-$this->add_responsive_control(
-	'button_text_color_hover',
-	array(
-		'label'     => esc_html__( 'Button Text Color', 'wpmozo-addons-lite-for-elementor' ),
-		'type'      => Controls_Manager::COLOR,
-		'condition' => array(
-			'button_custom_style' => 'yes',
-		),
-		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_read_more_button:hover' => 'color: {{VALUE}};',
-		),
-	)
-);
-
-$this->add_group_control(
-	Group_Control_Background::get_type(),
-	array(
-		'name'           => 'button_background_hover',
-		'types'          => array( 'classic', 'gradient' ),
-		'fields_options' => array(
-			'background' => array(
-				'label'   => esc_html__( 'Button Background', 'wpmozo-addons-lite-for-elementor' ),
-				'default' => 'classic',
-			),
-		),
-		'toggle'         => false,
-		'condition'      => array(
-			'button_custom_style' => 'yes',
-		),
-		'selector'       => '{{WRAPPER}} .wpmozo_read_more_button:hover',
 	)
 );
 $this->add_group_control(
@@ -963,38 +979,10 @@ $this->add_responsive_control(
 		),
 	)
 );
-$this->add_group_control(
-	Group_Control_Typography::get_type(),
-	array(
-		'label'       => esc_html__( 'Button Typography', 'wpmozo-addons-lite-for-elementor' ),
-		'label_block' => true,
-		'name'        => 'button_typography_hover',
-		'condition'   => array(
-			'button_custom_style' => 'yes',
-		),
-		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .wpmozo_read_more_button:hover',
-	)
-);
-$this->add_responsive_control(
-	'button_icon_color_hover',
-	array(
-		'label'     => esc_html__( 'Button Icon Color', 'wpmozo-addons-lite-for-elementor' ),
-		'type'      => Controls_Manager::COLOR,
-		'condition' => array(
-			'button_custom_style' => 'yes',
-			'show_button_icon'    => 'yes',
-		),
-		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_read_more_button:hover svg' => 'fill: {{VALUE}};',
-			'{{WRAPPER}} .wpmozo_read_more_button:hover i' => 'color: {{VALUE}};',
-		),
-	)
-);
 $this->add_responsive_control(
 	'button_padding_hover',
 	array(
-		'label'      => esc_html__( 'Button Padding', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 		'separator'  => 'after',
@@ -1011,7 +999,7 @@ $this->end_controls_tabs();
 $this->add_responsive_control(
 	'button_margin',
 	array(
-		'label'      => esc_html__( 'Button Margin', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 		'default'    => array(

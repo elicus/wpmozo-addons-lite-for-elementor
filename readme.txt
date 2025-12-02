@@ -3,7 +3,7 @@ Contributors: elicus
 Tags: elementor, page builder, addons, elementor extension, elementor addon
 Requires at least: 5.3
 Tested up to: 6.8
-Stable tag: 1.6.1
+Stable tag: 1.8.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,220 +15,191 @@ A feature-packed plugin designed to complement your Elementor page-building expe
 
 ### [View Demo](https://wpmozoaddons.com "View Demo")
 ## Key Features of the Plugin
-- **45 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
+- **51 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
 - **Enhanced Design Options**: Customize your website design with intuitive controls and a wide array of styling options.
 - **Interactive Elements**: Engage your audience with interactive elements like Interactive Image Card, Flip Box, and Fancy Text.
 - **Responsive and Lightweight**: Ensure a seamless user experience across all devices without compromising on performance.
 
 
 ## Widgets Included in WPMozo Addons Lite for Elementor
-- ### [Dropdown Button](https://wpmozoaddons.com/elementor-dropdown-button/ "Elementor Dropdown Button")
-Display hidden links or content in a compact and user-friendly way with the WPMozo Dropdown Button widget for Elementor, perfect for navigation menus, quick actions, or additional options without cluttering the layout.
 
-- ### [Advanced Tooltip](https://wpmozoaddons.com/elementor-advanced-tooltip/ "Elementor Advanced Tooltip")
-Enhance user interaction on your website with dynamic hover content using WPMozo Advanced Tooltip widget for Elementor, perfect for showcasing extra information in a sleek and modern way.
+1. [Hover List](https://wpmozoaddons.com/elementor-hover-list/) - Add interactivity and elegance to your WordPress website with the WPMozo Hover List widget for Elementor. Reveal image when users hover over list items, perfect for features, services, or team highlights.
 
-- ### [Scroll Stack Cards](https://wpmozoaddons.com/elementor-scroll-stack-cards/ "Elementor Scroll Stack Cards")
-Present your content in a neat stacked layout that flows with the scroll using the WPMozo Scroll Stack Cards widget for Elementor, ideal for creating clean, organized, and engaging reading experiences.
+2. [Image Card Ticker](https://wpmozoaddons.com/elementor-image-card-ticker/) - Combine motion and design with the WPMozo Image Card Ticker widget for Elementor. Seamlessly showcase images in various ticker layouts that add both energy and visual storytelling to the content of your WordPress website.
 
-- ### [Image Hover Effect](https://wpmozoaddons.com/elementor-image-hover-effect/ "Elementor Image Hover Effect")
-Add stylish visual appeal to your website with interactive hover animations using the WPMozo Image Hover Effect widget for Elementor, ideal for highlighting images with elegant effects and smooth transitions.
+3. [Split Image](https://wpmozoaddons.com/elementor-split-image/) - Create visually appealing layouts by splitting a single image into multiple sections using the WPMozo Split Image widget for Elementor. Achieve unique mosaic or grid-style effects, adding artistic depth and modern design flair to your WordPress website.
 
-- ### [Horizontal Scrolling Posts](https://wpmozoaddons.com/elementor-horizontal-scrolling-posts/ "Elementor Horizontal Scrolling Posts")
-Display your blog posts in a stylish side-scroll layout and grab visitors' attention with the WPMozo Horizontal Scrolling Posts widget for Elementor.
+4. [Wavy Gallery](https://wpmozoaddons.com/elementor-wavy-gallery/) - Showcase your images in a stunning wave-style gallery with the WPMozo Wavy Gallery widget for Elementor. Add smooth motion and unique visual flow to your WordPress website’s media section, making your gallery stand out.
 
-- ### [Rotating Text](https://wpmozoaddons.com/elementor-rotating-text/ "Elementor Rotating Text")
-Highlight key words or phrases with smooth rotating effects using the WPMozo Rotating Text widget for Elementor—perfect for drawing attention and boosting engagement.
+5. [Post Ticker](https://wpmozoaddons.com/elementor-post-ticker/) - Display your latest posts or news headlines in an eye-catching scrolling format using the WPMozo Post Ticker widget for Elementor. It’s perfect for highlighting recent updates, announcements, or trending topics on your WordPress website in a dynamic and engaging way.
 
-- ### [Scroll Text](https://wpmozoaddons.com/elementor-scroll-text/ "Elementor Scroll Text")
-Add animated scrolling text to your WordPress site with the WPMozo Scroll Text widget for Elementor—perfect for highlighting important messages with smooth scroll effects.
+6. [Scroll Progress](https://wpmozoaddons.com/elementor-scroll-progress/) - Show a live progress indicator that fills as users scroll through your WordPress website's page with the WPMozo Scroll Progress widget for Elementor. Perfect for long pages, reading indicators, or creative visual feedback.
 
-- ### [Scrolling Zoom Gallery](https://wpmozoaddons.com/elementor-scrolling-zoom-gallery/ "Elementor Scrolling Zoom Gallery")
-Showcase your images with stylish scroll and zoom effects using the WPMozo Scrolling Zoom Gallery widget for Elementor—ideal for creating interactive, eye-catching image galleries.
+7. [Dropdown Button](https://wpmozoaddons.com/elementor-dropdown-button/) - Display hidden links or content in a compact and user-friendly way with the WPMozo Dropdown Button widget for Elementor, perfect for navigation menus, quick actions, or additional options without cluttering the layout.
 
-- ### [Image Stack](https://wpmozoaddons.com/elementor-image-stack/ "Elementor Image Stack")
-Showcase images and icons in an expandable stack and make your WordPress website amazing with the WPMozo Image Stack widget for Elementor.
+8. [Advanced Tooltip](https://wpmozoaddons.com/elementor-advanced-tooltip/) - Enhance user interaction on your website with dynamic hover content using WPMozo Advanced Tooltip widget for Elementor, perfect for showcasing extra information in a sleek and modern way.
 
-- ### [Background Switcher](https://wpmozoaddons.com/elementor-background-switcher/ "Elementor Background Switcher")
-Display content on your WordPress website with various background in a single widget be it image, color or gradient using the WPMozo Background Switcher widget.
+9. [Scroll Stack Cards](https://wpmozoaddons.com/elementor-scroll-stack-cards/) - Present your content in a neat stacked layout that flows with the scroll using the WPMozo Scroll Stack Cards widget for Elementor, ideal for creating clean, organized, and engaging reading experiences.
 
-- ### [Mystery Image](https://wpmozoaddons.com/elementor-mystery-image/ "Elementor Mystery Image")
-Show one random image from a number of images on you WordPress website whenever the page is refreshed using the WPMozo Mystery Image widget.
+10. [Image Hover Effect](https://wpmozoaddons.com/elementor-image-hover-effect/) - Add stylish visual appeal to your website with interactive hover animations using the WPMozo Image Hover Effect widget for Elementor, ideal for highlighting images with elegant effects and smooth transitions.
 
-- ### [Promotion Bar](https://wpmozoaddons.com/elementor-promotion-bar/ "Elementor Promotion Bar")
-Highlight announcements, offers, or seasonal deals with the WPMozo Promotion Bar widget for Elementor. Perfect for grabbing user attention and boosting conversions.
+11. [Horizontal Scrolling Posts](https://wpmozoaddons.com/elementor-horizontal-scrolling-posts/) - Display your blog posts in a stylish side-scroll layout and grab visitors' attention with the WPMozo Horizontal Scrolling Posts widget for Elementor.
 
-- ### [Before After Slider](https://wpmozoaddons.com/elementor-before-and-after-slider/ "Elementor Before After Slider")
-Display a before and after version of any element in form of images using the WPMozo Before After Slider widget for Elementor.
+12. [Rotating Text](https://wpmozoaddons.com/elementor-rotating-text/) - Highlight key words or phrases with smooth rotating effects using the WPMozo Rotating Text widget for Elementor—perfect for drawing attention and boosting engagement.
 
-- ### [Fancy Heading](https://wpmozoaddons.com/elementor-fancy-heading/ "Elementor Fancy Heading")
-To make your headings stand out, try the WPMozo Fancy Heading widget for Elementor. Customize the pre-heading, heading, and post-heading sections to style your headings in three distinct parts, whether in a single line or stacked format.
+13. [Scroll Text](https://wpmozoaddons.com/elementor-scroll-text/) - Add animated scrolling text to your WordPress site with the WPMozo Scroll Text widget for Elementor—perfect for highlighting important messages with smooth scroll effects.
 
-- ### [Fancy Text](https://wpmozoaddons.com/elementor-fancy-text/ "Elementor Fancy Text")
-The Fancy Text widget for Elementor adds creativity and engagement to your text. Customize the text color, incorporate images, and utilize advanced options to style your text exactly how you like it.
+14. [Scrolling Zoom Gallery](https://wpmozoaddons.com/elementor-scrolling-zoom-gallery/) - Showcase your images with stylish scroll and zoom effects using the WPMozo Scrolling Zoom Gallery widget for Elementor—ideal for creating interactive, eye-catching image galleries.
 
-- ### [Flip Box](https://wpmozoaddons.com/elementor-flip-box/ "Elementor Flip Box")
-Create captivating flip boxes using this widget to showcase your content in an interactive and engaging manner.
+15. [Image Stack](https://wpmozoaddons.com/elementor-image-stack/) - Showcase images and icons in an expandable stack and make your WordPress website amazing with the WPMozo Image Stack widget for Elementor.
 
-- ### [Interactive Image Card](https://wpmozoaddons.com/elementor-interactive-image-card/ "Elementor Interactive Image Card")
-The Interactive Image Card widget offers a seamless way to display content on images, utilizing captivating animation effects without the need for complex CSS.
+16. [Background Switcher](https://wpmozoaddons.com/elementor-background-switcher/) - Display content on your WordPress website with various backgrounds in a single widget—be it image, color, or gradient—using the WPMozo Background Switcher widget.
 
-- ### [Image Card](https://wpmozoaddons.com/elementor-image-card/ "Elementor Image Card")
-Make your images more engaging by combining content, icons, and "read more" links using the Image Card widget from WPMozo Addons Lite for Elementor.
+17. [Mystery Image](https://wpmozoaddons.com/elementor-mystery-image/) - Show one random image from multiple images on your WordPress website whenever the page is refreshed using the WPMozo Mystery Image widget.
 
-- ### [Masonry Gallery](https://wpmozoaddons.com/elementor-masonry-gallery/ "Elementor Masonry Gallery")
-Craft beautiful masonry galleries with the WPMozo Addons Lite for Elementor, offering intuitive features without the need for CSS. Customize number of columns, lightbox functionality, optimized image gaps, and enhanced visibility for an appealing showcase.
+18. [Promotion Bar](https://wpmozoaddons.com/elementor-promotion-bar/) - Highlight announcements, offers, or seasonal deals with the WPMozo Promotion Bar widget for Elementor. Perfect for grabbing user attention and boosting conversions.
 
-- ### [Pricing Table](https://wpmozoaddons.com/elementor-pricing-table/ "Elementor Pricing Table")
-Create pricing tables in Elementor using the pricing table widget.
+19. [Before After Slider](https://wpmozoaddons.com/elementor-before-and-after-slider/) - Display a before and after version of any element in the form of images using the WPMozo Before After Slider widget for Elementor.
 
-- ### [Tilt Image](https://wpmozoaddons.com/elementor-tilt-image/ "Elementor Tilt Image")
-Add the Tilt Image widget from WPMozo Addons Lite for Elementor to your page. It allows images to tilt in multiple directions upon user hover, and customize with buttons, content, overlay effects, 3D touches, and more to creatively enhance their appearance.
+20. [Fancy Heading](https://wpmozoaddons.com/elementor-fancy-heading/) - Make your headings stand out with the WPMozo Fancy Heading widget for Elementor. Customize pre-heading, heading, and post-heading sections in single-line or stacked formats for creative styling.
 
-- ### [Logo Slider](https://wpmozoaddons.com/elementor-logo-slider/ "Elementor Logo Slider")
-Showcase client logos or partner brands, perfect for displaying affiliations or endorsements on your Elementor-powered WordPress website.
+21. [Fancy Text](https://wpmozoaddons.com/elementor-fancy-text/) - Add creativity and engagement to your text using the Fancy Text widget for Elementor. Customize colors, incorporate images, and style your text exactly how you like it.
 
-- ### [Bar Counter](https://wpmozoaddons.com/elementor-progress-bar-counter/ "Elementor Bar Counter")
-Highlight progress or achievements with bar counters, allowing you to showcase statistics or milestones effectively on your Elementor-built WordPress site.
+22. [Flip Box](https://wpmozoaddons.com/elementor-flip-box/) - Create captivating flip boxes using this widget to showcase your content in an interactive and engaging manner.
 
-- ### [Floating Image](https://wpmozoaddons.com/elementor-floating-image/ "Elementor Floating Image")
-Create captivating visual effects with floating images.
+23. [Interactive Image Card](https://wpmozoaddons.com/elementor-interactive-image-card/) - Display content on images with smooth animations using the Interactive Image Card widget for Elementor—no need for complex CSS.
 
-- ### [Image Magnifier](https://wpmozoaddons.com/elementor-image-magnifier/ "Elementor Image Magnifier")
-Enable users to zoom in on images for a closer look, enhancing the viewing experience for visuals on your Elementor-powered WordPress website.
+24. [Image Card](https://wpmozoaddons.com/elementor-image-card/) - Make your images more engaging by combining content, icons, and “read more” links using the Image Card widget from WPMozo Addons Lite for Elementor.
 
-- ### [Team Slider](https://wpmozoaddons.com/elementor-team-slider/ "Elementor Team Slider")
-Showcase team members or staff in an amazing slider. Perfect for introducing your team or personnel on your website.
+25. [Masonry Gallery](https://wpmozoaddons.com/elementor-masonry-gallery/) - Craft beautiful masonry galleries with the WPMozo Addons Lite for Elementor. Customize columns, enable lightbox, optimize image gaps, and enhance visibility for an appealing showcase.
 
-- ### [Breadcrumb](https://wpmozoaddons.com/elementor-breadcrumbs/ "Elementor Breadcrumb")
-Display navigational breadcrumbs on your page using the Breadcrumb widget for Elementor.
+26. [Pricing Table](https://wpmozoaddons.com/elementor-pricing-table/) - Create and display responsive pricing tables easily using the WPMozo Pricing Table widget for Elementor.
 
-- ### [Scroll Image](https://wpmozoaddons.com/elementor-scroll-image/ "Elementor Scroll Image")
-Showcase images with a smooth scrolling effect using the Scroll Image widget for Elementor.
+27. [Tilt Image](https://wpmozoaddons.com/elementor-tilt-image/) - Add tilt effects to images that respond to user hover with the WPMozo Tilt Image widget for Elementor. Customize with overlays, buttons, and 3D enhancements.
 
-- ### [Separator](https://wpmozoaddons.com/elementor-separator/ "Elementor Separator")
-Add stylish and customizable separators between sections with the Separator widget for Elementor.
+28. [Logo Slider](https://wpmozoaddons.com/elementor-logo-slider/) - Showcase client logos or partner brands with the WPMozo Logo Slider widget for Elementor—perfect for displaying affiliations and endorsements.
 
-- ### [Star Rating](https://wpmozoaddons.com/elementor-star-rating/ "Elementor Star Rating")
-Display customer ratings and reviews elegantly using the Star Rating widget for Elementor.
+29. [Bar Counter](https://wpmozoaddons.com/elementor-progress-bar-counter/) - Highlight progress or achievements with animated bar counters using the WPMozo Bar Counter widget for Elementor.
 
-- ### [Text Animator](https://wpmozoaddons.com/elementor-text-animator/ "Elementor Text Animator")
-Animate your text with various effects to grab attention using the Text Animator widget for Elementor.
+30. [Floating Image](https://wpmozoaddons.com/elementor-floating-image/) - Create captivating visual effects with animated floating images using the WPMozo Floating Image widget for Elementor.
 
-- ### [Text Highlighter](https://wpmozoaddons.com/elementor-text-highlighter/ "Elementor Text Highlighter")
-Highlight important text using the Text Highlighter widget for Elementor.
+31. [Image Magnifier](https://wpmozoaddons.com/elementor-image-magnifier/) - Allow users to zoom in on images for a closer look using the WPMozo Image Magnifier widget for Elementor.
 
-- ### [Advanced Button](https://wpmozoaddons.com/elementor-advanced-button/ "Elementor Advanced Button")
-Add enhanced functionality and styling options to buttons, including hover effects, animations, and customization with Advanced Button widget.
+32. [Team Slider](https://wpmozoaddons.com/elementor-team-slider/) - Showcase team members or staff in a stylish slider with the WPMozo Team Slider widget for Elementor.
 
-- ### [Lottie](https://wpmozoaddons.com/elementor-lottie/ "Elementor Lottie")
-Show interactive animations with customizable controls, triggers, and responsiveness using the Lottie Widget.
+33. [Breadcrumb](https://wpmozoaddons.com/elementor-breadcrumbs/) - Display navigational breadcrumbs on your pages using the WPMozo Breadcrumb widget for Elementor.
 
-- ### [Testimonial Slider](https://wpmozoaddons.com/elementor-testimonial-slider/ "Elementor Testimonial Slider")
-Show testimonials with amazing sliders on your Elementor website in style and make an impression on you users with the Testimonial Slider Widget.
+34. [Scroll Image](https://wpmozoaddons.com/elementor-scroll-image/) - Showcase images with smooth scrolling effects using the WPMozo Scroll Image widget for Elementor.
 
-- ### [Twitter Embedded Tweet](https://wpmozoaddons.com/elementor-twitter-widgets/ "Elementor Twitter Embedded Tweet Widget")
-Embed your Tweets an show than on you Elementor wibsite pages with a number of customization options with the Twitter Embedded Tweet Widget.
+35. [Separator](https://wpmozoaddons.com/elementor-separator/) - Add stylish and customizable dividers between sections with the WPMozo Separator widget for Elementor.
 
-- ### [Twitter Follow Button](https://wpmozoaddons.com/elementor-twitter-widgets/ "Elementor Twitter Follow Widget")
-Use the Twitter Follow Button Widget to make users follow you on your twitter account right from your Elementor website page.
+36. [Star Rating](https://wpmozoaddons.com/elementor-star-rating/) - Display customer ratings and reviews elegantly using the WPMozo Star Rating widget for Elementor.
 
-- ### [Twitter Share Button](https://wpmozoaddons.com/elementor-twitter-widgets/ "Elementor Twitter Share Widget")
-Make users share post on their accounts containing your content right from your Elementor website page with the Twitter Share Button Widget.
+37. [Text Animator](https://wpmozoaddons.com/elementor-text-animator/) - Animate your text with stylish motion effects using the WPMozo Text Animator widget for Elementor.
 
-- ### [Blog Timeline](https://wpmozoaddons.com/elementor-blog-timeline/ "Elementor Blog Timeline")
-Showcase your blogs in a stylish and user friendly timline and make you Elementor website stunning with the Blog Timeline Widget.
+38. [Text Highlighter](https://wpmozoaddons.com/elementor-text-highlighter/) - Highlight important text or phrases with the WPMozo Text Highlighter widget for Elementor.
 
-- ### [List](https://wpmozoaddons.com/elementor-list/ "Elementor List")
-Show lists on your Elementor website in style using the List Widget.
+39. [Advanced Button](https://wpmozoaddons.com/elementor-advanced-button/) - Add enhanced styling, animations, and hover effects to buttons using the WPMozo Advanced Button widget for Elementor.
 
-- ### [Price List](https://wpmozoaddons.com/elementor-price-list/ "Elementor Price List")
-Display pricing elegantly on your Elementor website with the Price List Widget.
+40. [Lottie](https://wpmozoaddons.com/elementor-lottie/) - Add interactive animations with full customization and control using the WPMozo Lottie widget for Elementor.
 
-- ### [Facebook Like](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Like")
-Add a Facebook Like button to your Elementor website, allowing users to like your content directly from your page.
+41. [Testimonial Slider](https://wpmozoaddons.com/elementor-testimonial-slider/) - Display testimonials beautifully with the WPMozo Testimonial Slider widget for Elementor—boost credibility and user engagement.
 
-- ### [Facebook Share](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Share")
-Enable users to share your content on Facebook with their facebook accounts using the Facebook Share Widget for Elementor.
+42. [Twitter Embedded Tweet](https://wpmozoaddons.com/elementor-twitter-widgets/) - Embed Tweets directly on your Elementor website using the Twitter Embedded Tweet widget for Elementor.
 
-- ### [Facebook Comments](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Comments")
-Integrate Facebook Comments into your Elementor website with the Facebook Comments Widget enabling users to comment on your content using their Facebook accounts.
+43. [Twitter Follow Button](https://wpmozoaddons.com/elementor-twitter-widgets/) - Let visitors follow your Twitter account directly from your Elementor website with the Twitter Follow Button widget.
 
-- ### [Facebook Embedded Video](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Embedded Video")
-Embed Facebook videos directly into your Elementor website with customizable controls and responsive design using the Facebook Embedded Video Widget.
+44. [Twitter Share Button](https://wpmozoaddons.com/elementor-twitter-widgets/) - Allow users to share posts from your website to their Twitter profiles using the Twitter Share Button widget for Elementor.
+
+45. [Blog Timeline](https://wpmozoaddons.com/elementor-blog-timeline/) - Showcase your blog posts in an attractive timeline layout using the WPMozo Blog Timeline widget for Elementor.
+
+46. [List](https://wpmozoaddons.com/elementor-list/) - Display lists beautifully on your Elementor website using the WPMozo List widget.
+
+47. [Price List](https://wpmozoaddons.com/elementor-price-list/) - Display prices and items elegantly using the WPMozo Price List widget for Elementor.
+
+48. [Facebook Like](https://wpmozoaddons.com/elementor-facebook-widgets/) - Add a Facebook Like button to your website using the WPMozo Facebook Like widget for Elementor.
+
+49. [Facebook Share](https://wpmozoaddons.com/elementor-facebook-widgets/) - Allow users to share your content on Facebook using the WPMozo Facebook Share widget for Elementor.
+
+50. [Facebook Comments](https://wpmozoaddons.com/elementor-facebook-widgets/) - Enable Facebook comments on your site using the WPMozo Facebook Comments widget for Elementor.
+
+51. [Facebook Embedded Video](https://wpmozoaddons.com/elementor-facebook-widgets/) - Embed Facebook videos directly into your website using the WPMozo Facebook Embedded Video widget for Elementor.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Premium Version Available
-Upgrade to the premium version to [WPMozo Addons for Elementor](https://wpmozo.com/product/wpmozo-addons-for-elementor/) and unlock additional features, dedicated support, and exclusive widgets. 
+Upgrade to the premium version [WPMozo Addons for Elementor](https://wpmozo.com/product/wpmozo-addons-for-elementor/) and unlock additional features, dedicated support, and exclusive widgets. 
 
-- ### [Modal Popup](https://wpmozoaddons.com/elementor-modal-popup/ "Elementor Modal Popup")
-Create interactive popups to engage your users using the Modal Popup widget for Elementor.
+1. [Modal Popup](https://wpmozoaddons.com/elementor-modal-popup/) - Create interactive popups to engage your users using the Modal Popup widget for Elementor.
 
-- ### [WooCommerce Product Carousel](https://wpmozoaddons.com/elementor-woocommerce-product-carousel/ "Elementor WooCommerce Product Carousel")
-Create an interactive WooCommerce product carousel on your Elementor based website.
+2. [WooCommerce Product Carousel](https://wpmozoaddons.com/elementor-woocommerce-product-carousel/) - Create an interactive WooCommerce product carousel on your Elementor based website.
 
-- ### [WooCommerce Product Grid](https://wpmozoaddons.com/elementor-woocommerce-product-grid/ "Elementor WooCommerce Product Grid")
-Display your WooCommerce product in masonry or grid format.
+3. [WooCommerce Product Grid](https://wpmozoaddons.com/elementor-woocommerce-product-grid/) - Display your WooCommerce products in masonry or grid format using the WooCommerce Product Grid widget for Elementor.
 
-- ### [Ajax Search](https://wpmozoaddons.com/elementor-ajax-search/ "Elementor Ajax Search")
-A live search widget for Elementor with support for WooCommerce products.
+4. [Ajax Search](https://wpmozoaddons.com/elementor-ajax-search/) - Add a live search experience to your Elementor website with support for WooCommerce products using the Ajax Search widget.
 
-- ### [Content Toggle](https://wpmozoaddons.com/elementor-content-toggle/ "Elementor Content Toggle")
-An ideal tool to let you display content in form of toggle.
+5. [Content Toggle](https://wpmozoaddons.com/elementor-content-toggle/) - Display content in an interactive toggle format using the Content Toggle widget for Elementor, perfect for FAQs, comparisons, or layered content.
 
-- ### [Instagram Feed](https://wpmozoaddons.com/elementor-instagram-feed/ "Elementor Instagram Feed")
-This widget will let you display Instagram feed on your website.
+6. [Instagram Feed](https://wpmozoaddons.com/elementor-instagram-feed/) - Display your Instagram feed directly on your website using the Instagram Feed widget for Elementor.
 
-- ### [Image Hotspot](https://wpmozoaddons.com/elementor-image-hotspot/ "Elementor Image Hotspot")
-Create interactive image hotspots and display information about individual locations or objects inside an image.
+7. [Image Hotspot](https://wpmozoaddons.com/elementor-image-hotspot/) - Create interactive image hotspots that display information about specific locations or objects using the Image Hotspot widget for Elementor.
 
-- ### [Advanced Blog](https://wpmozoaddons.com/elementor-advanced-blog/ "Elementor Advanced Blog")
-Create a stunning blog page on Elementor with the advanced blog module.
+8. [Advanced Blog](https://wpmozoaddons.com/elementor-advanced-blog/) - Design a beautiful and modern blog layout in Elementor using the Advanced Blog widget, complete with styling and layout options.
 
-- ### [Timeline](https://wpmozoaddons.com/elementor-timeline/ "Elementor Timeline")
-A widget that will allow you to create timeline sections in Elementor.
+9. [Timeline](https://wpmozoaddons.com/elementor-timeline/) - Create engaging timeline sections on your Elementor website using the Timeline widget, perfect for showcasing history or progress.
 
-- ### [Instagram Feed Carousel](https://wpmozoaddons.com/elementor-instagram-feed-carousel/ "Elementor Instagram Feed Carousel")
-Showcase Instagram feed images on your Elementor website in a responsive, customizable carousel layout with navigation controls using the Instagram Feed Carousel widget.
+10. [Instagram Feed Carousel](https://wpmozoaddons.com/elementor-instagram-feed-carousel/) - Showcase your Instagram feed in a responsive carousel layout with navigation controls using the Instagram Feed Carousel widget for Elementor.
 
-- ### [Advanced Tabs](https://wpmozoaddons.com/elementor-advanced-tabs/ "Elementor Advanced Tabs")
-Show content or Elementor templates in tabs with Advanced Tabs widget.
+11. [Advanced Tabs](https://wpmozoaddons.com/elementor-advanced-tabs/) - Display content or Elementor templates inside tabs using the Advanced Tabs widget for Elementor.
 
-- ### [Dynamic Gallery](https://wpmozoaddons.com/elementor-dynamic-gallery/ "Elementor Dynamic Gallery")
-Display stunning galleries in Elementor using filters and various customization options with Dynamic Gallery widget.
+12. [Dynamic Gallery](https://wpmozoaddons.com/elementor-dynamic-gallery/) - Create dynamic galleries with filters and advanced customization using the Dynamic Gallery widget for Elementor.
 
-- ### [Testimonial Grid](https://wpmozoaddons.com/elementor-testimonial-grid/ "Elementor Testimonial Grid")
-Showcase feedbacks and reviews in a grid on you Elementor website with masonry support using the Testimonial Grid Widget.
+13. [Testimonial Grid](https://wpmozoaddons.com/elementor-testimonial-grid/) - Showcase testimonials, feedback, and reviews in a responsive grid layout using the Testimonial Grid widget for Elementor.
 
-- ### [Advanced Blog Slider](https://wpmozoaddons.com/elementor-advanced-blog-slider/ "Elementor Advanced Blog Slider")
-Make it easier for your users to go through blogs by showing them in a slider in Elementor using the Advanced Blog Slider Widget.
+14. [Advanced Blog Slider](https://wpmozoaddons.com/elementor-advanced-blog-slider/) - Present your blog posts in a stylish slider format using the Advanced Blog Slider widget for Elementor.
 
-- ### [Team Grid](https://wpmozoaddons.com/elementor-team-grid/ "Elementor Team Grid")
-Display team members, their skills and much more in a grid on you Elementor website with masonry support using the Team Grid Widget.
+15. [Team Grid](https://wpmozoaddons.com/elementor-team-grid/) - Display your team members, their skills, and profiles in a grid layout using the Team Grid widget for Elementor.
 
-- ### [Twitter Timeline](https://wpmozoaddons.com/elementor-twitter-widgets/ "Elementor Twitter Timeline")
-Showcase all posts from you Twitter account on your Elementor website page with the Twitte Timeline Widget.
+16. [Twitter Timeline](https://wpmozoaddons.com/elementor-twitter-widgets/) - Embed your Twitter feed directly on your Elementor website with the Twitter Timeline widget.
 
-- ### [WooComerce Product Categories](https://wpmozoaddons.com/elementor-product-categories/ "Elementor Product Categories")
-Display all your shop products according to categories in Elementor using the Product Categories Widget.
+17. [WooCommerce Product Categories](https://wpmozoaddons.com/elementor-product-categories/) - Display your WooCommerce products organized by categories using the Product Categories widget for Elementor.
 
-- ### [Gravity Form Styler](https://wpmozoaddons.com/elementor-gravity-form-styler/ "Elementor Gravity Form Styler")
-Get amazing customization options to style and make your gravity forms elegant and showcase them on your Elementor website using the Gravity Form Styler Widget.
+18. [Gravity Form Styler](https://wpmozoaddons.com/elementor-gravity-form-styler/) - Style your Gravity Forms with advanced customization options using the Gravity Form Styler widget for Elementor.
 
-- ### [Product Gallery](https://wpmozoaddons.com/elementor-product-gallery/ "Elementor Product Gallery")
-Show products with multiple images in a superb gallery on your Elementor website using the Product Gallery Widget.
+19. [Product Gallery](https://wpmozoaddons.com/elementor-product-gallery/) - Showcase products with multiple images in an elegant gallery using the Product Gallery widget for Elementor.
 
-- ### [Product Accordion](https://wpmozoaddons.com/elementor-product-accordion/ "Elementor Product Accordion")
-Organize and showcase products in a user friendly way while displaying product details in a sleek, collapsible accordion format on your Elementor website using the Product Accordion Widget.
+20. [Product Accordion](https://wpmozoaddons.com/elementor-product-accordion/) - Organize your WooCommerce products in collapsible sections using the Product Accordion widget for Elementor.
 
-- ### [Image Carousel](https://wpmozoaddons.com/elementor-image-carousel/ "Elementor Image Carousel")
-Showcase your images in a dynamic and interactive carousel on your Elementor website using the Image Carousel Widget.
+21. [Image Carousel](https://wpmozoaddons.com/elementor-image-carousel/) - Showcase your images in a dynamic and responsive carousel using the Image Carousel widget for Elementor.
 
-- ### [Facebook Embedded Post](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Embedded Post")
-Easily integrate and display Facebook posts directly on your Elementor website using the Facebook Embedded Post Widget, allowing you to share social content seamlessly while maintaining engagement and authenticity.
+22. [Facebook Embedded Post](https://wpmozoaddons.com/elementor-facebook-widgets/) - Embed Facebook posts directly into your Elementor website using the Facebook Embedded Post widget for seamless social integration.
 
-- ### [Facebook Page](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Page")
-Effortlessly embed and showcase your Facebook page on your Elementor website using the Facebook Page Widget.
+23. [Facebook Page](https://wpmozoaddons.com/elementor-facebook-widgets/) - Embed and showcase your Facebook page directly on your Elementor website using the Facebook Page widget.
+
+24. [Marquee Text](https://wpmozoaddons.com/elementor-marquee-text/) - Add continuously scrolling text effects to your WordPress website with the Marquee Text widget for Elementor, perfect for creating eye-catching headlines and ticker-style animations.
+
+25. [Horizontal Scrolling Card](https://wpmozoaddons.com/elementor-horizontal-scrolling-card/) - Display cards in a smooth scrolling layouts with the Horizontal Scrolling Card widget for Elementor in a modern interactive style.
+
+26. [Hero Slider](https://wpmozoaddons.com/elementor-hero-slider/) - Create stunning, full-width hero sections with sliders using the Hero Slider widget for Elementor, designed to make impactful first impressions on your WordPress website.
+
 
 == Documentation and Support ==
 - For detailed usage instructions, check out the [plugin documentation](https://wpmozo.com/documentation/wpmozo-addons-for-elementor/).
@@ -306,11 +277,7 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
-2025-08-01 - Version 1.7.0
-- NEW: Added admin panel.
-- NEW: New widget Advanced Tooltip.
-- NEW: New widget Dropdown Button.
-- NEW: New widget Scroll Stack Card.
-- NEW: New widget Image Hover Effect.
+2025-11-21 - Version 1.8.1
+- FIXED: Issue with Hover List widget styles with site editor.
 
 [See changelog for all versions](https://plugins.svn.wordpress.org/wpmozo-addons-lite-for-elementor/trunk/changelog.txt).

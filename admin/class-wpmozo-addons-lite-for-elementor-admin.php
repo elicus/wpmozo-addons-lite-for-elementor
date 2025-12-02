@@ -206,6 +206,11 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 						    ?>
 						</ul>
 					</div>
+						<div class="wpmozo_ae_banner">
+							<a href="https://wpmozo.com/black-friday#wpmz-ae-bf-sale" target="_blank">
+								<img src="https://cdn.wpmozoaddons.com/wpmozo-addons-for-elementor/thumbnails/sale-banner/wpmozo-sale-banner.webp">
+							</a>
+						</div>
 					<div class="wpmozo_ae_panel_section_wrapper" >
 						<?php include_once plugin_dir_path( __FILE__ ) . 'partials/admin-display.php'; ?>
 						<?php

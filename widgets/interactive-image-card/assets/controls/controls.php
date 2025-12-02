@@ -307,7 +307,7 @@ $this->start_controls_section(
 	$this->add_control( 
 		'title_heading_level',
 		array( 
-			'label'       => esc_html__( 'Title Heading Level', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Heading Level', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => true,
 			'options'     =>
@@ -360,7 +360,7 @@ $this->start_controls_section(
 			$this->add_responsive_control( 
 				'title_text_color',
 				array( 
-					'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '#222',
@@ -372,7 +372,7 @@ $this->start_controls_section(
 			$this->add_group_control( 
 				Group_Control_Typography::get_type(),
 				array( 
-					'label'       => esc_html__( 'Title Typography', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'name'        => 'title_text_typography',
 					'selector'    => '{{WRAPPER}} .wpmozo_ae_interactive_image_card_title',
@@ -399,7 +399,7 @@ $this->start_controls_section(
 			$this->add_responsive_control( 
 				'title_text_hover_state_color',
 				array( 
-					'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => false,
 					'type'        => Controls_Manager::COLOR,
 					'default'     => '',
@@ -411,7 +411,7 @@ $this->start_controls_section(
 			$this->add_group_control( 
 				Group_Control_Typography::get_type(),
 				array( 
-					'label'       => esc_html__( 'Title Typography', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'name'        => 'title_text_hover_state_typography',
 					'selector'    => '{{WRAPPER}} figure:hover .wpmozo_ae_interactive_image_card_title',
@@ -431,7 +431,7 @@ $this->start_controls_section(
 	$this->add_responsive_control( 
 		'title_text_alignment',
 		array( 
-			'label'       => esc_html__( 'Title Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => true,
 			'options'     => array( 
@@ -472,7 +472,7 @@ $this->start_controls_section(
 	$this->add_responsive_control( 
 		'content_text_color',
 		array( 
-			'label'       => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#222',
@@ -484,7 +484,7 @@ $this->start_controls_section(
 	$this->add_group_control( 
 		Group_Control_Typography::get_type(),
 		array( 
-			'label'       => esc_html__( 'Content Typography', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => true,
 			'name'        => 'content_text_typography',
 			'selector'    => '{{WRAPPER}} .wpmozo_ae_interactive_image_card_wrapper_content',
@@ -502,7 +502,7 @@ $this->start_controls_section(
 	$this->add_responsive_control( 
 		'content_text_alignment',
 		array( 
-			'label'       => esc_html__( 'Content Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => true,
 			'options'     => array( 
@@ -539,8 +539,7 @@ $this->start_controls_section(
 		'label'     => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'       => Controls_Manager::TAB_ADVANCED,
 		'condition' => array( 
-			'image_size_size!' => 'full',
-			'image_size_size!' => 'custom',
+			'image_size_size!' => array('full','custom'),
 		 ),
 	 )
  );

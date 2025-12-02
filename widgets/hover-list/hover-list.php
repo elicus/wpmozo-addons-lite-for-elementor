@@ -3,7 +3,7 @@
  * @author    Elicus <hello@elicus.com>
  * @link      https://www.elicus.com/
  * @copyright 2025 Elicus Technologies Private Limited
- * @version   1.0.2
+ * @version   1.0.0
  */
 
 // if this file is called directly, abort.
@@ -20,7 +20,7 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since  1.3.0
+		 * @since  1.8.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -34,7 +34,7 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since  1.3.0
+		 * @since  1.8.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -62,7 +62,7 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since  1.3.0
+		 * @since  1.8.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -76,7 +76,7 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since  1.3.0
+		 * @since  1.8.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -90,7 +90,7 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since  1.3.0
+		 * @since  1.8.0
 		 * @access public
 		 *
 		 * @return style handle.
@@ -105,7 +105,7 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since 1.3.0
+		 * @since 1.8.0
 		 * @access public
 		 *
 		 * @return array Element scripts dependencies.
@@ -121,13 +121,13 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since  1.3.0
+		 * @since  1.8.0
 		 * @access protected
 		 */
 		protected function register_controls() {
 
 			// Separate file containing all the code for registering controls.
-			include_once plugin_dir_path( __DIR__ ) . 'hover-list/assets/controls/controls.php';
+			require plugin_dir_path( __DIR__ ) . 'hover-list/assets/controls/controls.php';
 		}
 
 		/**
@@ -135,7 +135,7 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 		 *
 		 * Written in PHP and used to generate the final HTML.
 		 *
-		 * @since  1.3.0
+		 * @since  1.8.0
 		 * @access protected
 		 */
 		protected function render() {
@@ -149,7 +149,13 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 					<div class="wpmozo_hover_list_wrapper">
 						<div class="wpmozo_hover_list_cursor"></div>
 						<div class="wpmozo_hover_list_inner <?php echo esc_attr( $hide_last_divider ); ?>">
-							<?php foreach ( $wpmozo_items_content as $index => $item ) { ?>
+							<?php foreach ( $wpmozo_items_content as $index => $item ) { 
+								$hover_list_item_title_key = $this->get_repeater_setting_key( 'item_title', 'wpmozo_items_content', $index );
+								
+								$hover_list_item_desc_key = $this->get_repeater_setting_key( 'item_description', 'wpmozo_items_content', $index );
+								
+								$hover_list_item_sub_key = $this->get_repeater_setting_key( 'item_subtitle', 'wpmozo_items_content', $index );
+								?>
 								<div class="wpmozo_hover_list_item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
 									<div data-image="<?php echo esc_url( $item['item_image']['url'] ); ?>" class="wpmozo_hover_list_item_wrapper">
 										<div class="wpmozo_hover_list_item_inner">
@@ -165,11 +171,19 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 														'span'
 													);
 												}
+												$this->add_render_attribute($hover_list_item_title_key, 'class','wpmozo_hover_list_title');
+												$this->add_inline_editing_attributes($hover_list_item_title_key,'none');
+
+												$this->add_render_attribute($hover_list_item_desc_key, 'class','wpmozo_hover_list_description');
+												$this->add_inline_editing_attributes($hover_list_item_desc_key,'none');
+
+												$this->add_render_attribute($hover_list_item_sub_key, 'class','wpmozo_hover_list_subtitle');
+												$this->add_inline_editing_attributes($hover_list_item_sub_key,'none');
 												?>
-												<<?php echo esc_attr( $title_heading_level ); ?> class="wpmozo_hover_list_title"><?php echo esc_html( $item['item_title'] ); ?></<?php echo esc_attr( $title_heading_level ); ?>>
+												<<?php echo esc_attr( $title_heading_level ).' '; $this->print_render_attribute_string($hover_list_item_title_key)?> ><?php echo esc_html( $item['item_title'] ); ?></<?php echo esc_attr( $title_heading_level ); ?>>
 											</div>
-											<div class="wpmozo_hover_list_description"><?php echo esc_html( $item['item_description'] ); ?></div>
-											<div class="wpmozo_hover_list_subtitle"><?php echo esc_html( $item['item_subtitle'] ); ?></div>
+											<div <?php $this->print_render_attribute_string($hover_list_item_desc_key) ?>><?php echo esc_html( $item['item_description'] ); ?></div>
+											<div <?php $this->print_render_attribute_string($hover_list_item_sub_key)?>><?php echo esc_html( $item['item_subtitle'] ); ?></div>
 											<?php
 											if ( 'yes' === $item['show_button'] ) {
 												?>

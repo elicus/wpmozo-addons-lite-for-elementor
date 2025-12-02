@@ -527,7 +527,7 @@ $this->start_controls_section(
     $this->add_responsive_control( 
         'buttons_alignment',
         array( 
-            'label'     => esc_html__( 'Buttons Alignment', 'wpmozo-addons-lite-for-elementor' ),
+            'label'     => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
             'type'      => Controls_Manager::CHOOSE,
             'options'   => array( 
                 'left'    => array( 
@@ -571,7 +571,7 @@ $this->start_controls_section(
             $this->add_group_control( 
                 Group_Control_Typography::get_type(),
                 array( 
-                    'label'       => esc_html__( 'Button Typography', 'wpmozo-addons-lite-for-elementor' ),
+                    'label'       => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
                     'label_block' => true,
                     'name'        => 'buttons_typography',
                     'selector'    => '{{WRAPPER}} .wpmozo_primary_text_with_icon .wpmozo_button_text',
@@ -597,7 +597,7 @@ $this->start_controls_section(
             $this->add_responsive_control( 
                 'buttons_icon_color',
                 array( 
-                    'label'       => esc_html__( 'Button Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+                    'label'       => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
                     'label_block' => false,
                     'type'        => Controls_Manager::COLOR,
                     'default'     => '#2EA3F2',

@@ -95,7 +95,7 @@ $this->start_controls_section(
 			$this->add_control( 
 				'before_label_text',
 				array( 
-					'label'       => __( 'Enter Lable', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => __( 'Enter Label', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'type'        => Controls_Manager::TEXT,
 					'dynamic'     => array( 'active' => true ),
@@ -192,7 +192,7 @@ $this->start_controls_section(
 			$this->add_control( 
 				'after_label_text',
 				array( 
-					'label'       => __( 'Enter Lable', 'wpmozo-addons-lite-for-elementor' ),
+					'label'       => __( 'Enter Label', 'wpmozo-addons-lite-for-elementor' ),
 					'label_block' => true,
 					'type'        => Controls_Manager::TEXT,
 					'dynamic'     => array( 'active' => true ),
@@ -227,7 +227,7 @@ $this->end_controls_section();
 $this->start_controls_section( 
 	'before_after_slider_styling_section',
 	array( 
-		'label' => esc_html__( 'Slider Styling', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Slider', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	 )
  );
@@ -235,7 +235,7 @@ $this->start_controls_section(
 	$this->add_control( 
 		'slider_orientation_select',
 		array( 
-			'label'       => __( 'Slider Orientation', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => __( 'Orientation', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
 			'options'     => array( 
@@ -355,7 +355,7 @@ $this->end_controls_section();
 $this->start_controls_section( 
 	'slider_label_text_styling',
 	array( 
-		'label'      => esc_html__( 'Label Text Settings', 'wpmozo-addons-lite-for-elementor' ),
+		'label'      => esc_html__( 'Label Text', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'        => Controls_Manager::TAB_STYLE,
 		'conditions' => array( 
 			'relation' => 'or',
@@ -378,7 +378,7 @@ $this->start_controls_section(
 	$this->add_responsive_control( 
 		'label_text_color',
 		array( 
-			'label'       => esc_html__( 'Label Text Color', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#fff',
@@ -389,7 +389,7 @@ $this->start_controls_section(
 	$this->add_group_control( 
 		Group_Control_Typography::get_type(),
 		array( 
-			'label'       => esc_html__( 'Label Typography', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => true,
 			'name'        => 'label_text_typography',
 			'separator'   => 'after',
@@ -402,7 +402,7 @@ $this->start_controls_section(
 		Group_Control_Text_Shadow::get_type(),
 		array( 
 			'name'      => 'label_text_shadow',
-			'label'     => esc_html__( 'Label Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
+			'label'     => esc_html__( 'Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 			'separator' => 'after',
 			'selector'  => '{{WRAPPER}} .twentytwenty-before-label:before, {{WRAPPER}} .twentytwenty-after-label:before',
 			'separator' => 'before',

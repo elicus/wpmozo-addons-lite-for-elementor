@@ -118,11 +118,7 @@ $this->add_group_control(
 	array(
 		'name'           => 'portion_border',
 		'selector'       => '{{WRAPPER}} .wpmozo_split_image .wpmozo_split_image_portion',
-		'fields_options' => array(
-			'border' => array( 'label' => esc_html__( 'Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
-			'width'  => array( 'label' => esc_html__( 'Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
-			'color'  => array( 'label' => esc_html__( 'Border Color', 'wpmozo-addons-lite-for-elementor' ) ),
-		),
+		'separator'      => 'none'
 	)
 );
 $this->add_responsive_control(
@@ -150,11 +146,7 @@ $this->add_group_control(
 	array(
 		'name'           => 'portion_border_hover',
 		'selector'       => '{{WRAPPER}} .wpmozo_split_image .wpmozo_split_image_portion:hover',
-		'fields_options' => array(
-			'border' => array( 'label' => esc_html__( 'Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
-			'width'  => array( 'label' => esc_html__( 'Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
-			'color'  => array( 'label' => esc_html__( 'Border Color', 'wpmozo-addons-lite-for-elementor' ) ),
-		),
+		'separator'      => 'none'
 	)
 );
 $this->add_responsive_control(

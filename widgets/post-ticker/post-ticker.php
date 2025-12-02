@@ -22,7 +22,7 @@ if ( ! class_exists( 'WPMOZO_AE_Post_Ticker' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since 1.0.0
+		 * @since 1.8.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -36,7 +36,7 @@ if ( ! class_exists( 'WPMOZO_AE_Post_Ticker' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since 1.0.0
+		 * @since 1.8.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -50,7 +50,7 @@ if ( ! class_exists( 'WPMOZO_AE_Post_Ticker' ) ) {
 		 *
 		 * Retrieve widget keywords.
 		 *
-		 * @since 1.0.0
+		 * @since 1.8.0
 		 * @access public
 		 *
 		 * @return array Widget keywords.
@@ -64,7 +64,7 @@ if ( ! class_exists( 'WPMOZO_AE_Post_Ticker' ) ) {
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since 1.0.0
+		 * @since 1.8.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -78,7 +78,7 @@ if ( ! class_exists( 'WPMOZO_AE_Post_Ticker' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since 1.0.0
+		 * @since 1.8.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -92,7 +92,7 @@ if ( ! class_exists( 'WPMOZO_AE_Post_Ticker' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since 1.0.0
+		 * @since 1.8.0
 		 * @access public
 		 *
 		 * @return style handle.
@@ -100,7 +100,7 @@ if ( ! class_exists( 'WPMOZO_AE_Post_Ticker' ) ) {
 		public function get_style_depends() {
 
 			wp_register_style( 'wpmozo-ae-post-ticker-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
-			return array( 'wpmozo-ae-post-ticker-style', 'wpmozo-ae-swiper-style' );
+			return array( 'wpmozo-ae-post-ticker-style', 'wpmozo-ae-swiper-style','wpmozo-ae-font-awesome-style' );
 		}
 
 		/**
@@ -108,7 +108,7 @@ if ( ! class_exists( 'WPMOZO_AE_Post_Ticker' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since 1.3.0
+		 * @since 1.8.0
 		 * @access public
 		 *
 		 * @return array Element scripts dependencies.
@@ -125,7 +125,7 @@ if ( ! class_exists( 'WPMOZO_AE_Post_Ticker' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since 1.0.0
+		 * @since 1.8.0
 		 * @access protected
 		 */
 		protected function register_controls() {
@@ -139,7 +139,7 @@ if ( ! class_exists( 'WPMOZO_AE_Post_Ticker' ) ) {
 		 *
 		 * Written in PHP and used to generate the final HTML.
 		 *
-		 * @since 1.0.0
+		 * @since 1.8.0
 		 * @access protected
 		 */
 		protected function render() {
@@ -152,127 +152,118 @@ if ( ! class_exists( 'WPMOZO_AE_Post_Ticker' ) ) {
 			$posts_number               = isset( $settings['posts_number'] ) && $settings['posts_number'] > 0 ? $settings['posts_number'] : -1;
 			$ticker_label               = isset( $settings['ticker_label'] ) ? $settings['ticker_label'] : 'Breaking News';
 			$ticker_effect              = isset( $settings['ticker_effect'] ) ? $settings['ticker_effect'] : 'scroll';
-			$post_item_separator_type   = isset( $settings['post_item_separator_type'] ) ? $settings['post_item_separator_type'] : 'custom';
 			$scroll_effect_speed        = isset( $settings['scroll_effect_speed'] ) ? $settings['scroll_effect_speed'] : '70';
 			$slide_alignment            = isset( $settings['slide_alignment'] ) ? $settings['slide_alignment'] : 'horizontal';
 			$effect_delay               = isset( $settings['effect_delay'] ) ? $settings['effect_delay'] : '2500';
 			$transition_duration        = isset( $settings['transition_duration'] ) ? $settings['transition_duration'] : '700';
 			$show_arrows                = 'yes' === $settings['show_arrows'] ? 'on' : 'off';
 			$ignore_sticky_posts        = isset( $settings['ignore_sticky_posts'] ) ? $settings['ignore_sticky_posts'] : 'yes';
+			$post_item_separator_type   = isset( $settings['post_item_separator_type'] ) ? $settings['post_item_separator_type'] : 'custom';
+			$custom_separator = isset($settings['custom_separator']) ? $settings['custom_separator'] : '';
+
+			if ( ! empty( $custom_separator ) ) {
+				// Escape quotes and slashes properly for CSS
+				$separator_safe = addslashes( $custom_separator );
+
+				echo '<style>
+					.elementor-'. get_the_ID().' .elementor-element.elementor-element-'.$this->get_id().' .wpmozo_ticker_effect_scroll .wpmozo_post_ticker_item::after {
+						content: "' . $separator_safe . '" !important;
+					}
+				</style>';
+			}
 
 			$post_type = isset( $settings['post_type'] ) && ! empty( $settings['post_type'] ) ? sanitize_text_field( $settings['post_type'] ) : 'post';
+			$exclude_posts_array = array();
 
-			// Fetch sticky posts if not ignoring them.
-			$sticky_posts = array();
-			if ( 'yes' !== $ignore_sticky_posts ) {
-				$sticky_posts = get_option( 'sticky_posts' );
-			}
-
-			// Define the normal post args.
-			$args = array(
-				'post_type'      => $post_type,
-				'posts_per_page' => $posts_number,
-				'post_status'    => 'publish',
-				'orderby'        => $post_order_by,
-				'order'          => $post_order,
-			);
-
-			// Exclude specific posts (Ensure it's applied correctly).
 			if ( ! empty( $exclude_posts ) ) {
-				$exclude_posts_array = array_map( 'trim', explode( ',', $exclude_posts ) );
-
-				// Apply the exclusion to both sticky and non-sticky posts.
-				if ( ! empty( $sticky_posts ) ) {
-					// Remove excluded sticky posts from the sticky list.
-					$sticky_posts = array_diff( $sticky_posts, $exclude_posts_array );
-				}
-
-				// Add the updated exclusion list to the query.
-				$args['post__not_in'] = $exclude_posts_array;
+				$exclude_posts_array = array_map( 'absint', explode( ',', $exclude_posts ) );
 			}
 
-			// Exclude password-protected posts if set.
 			if ( 'yes' === $exclude_password_protected ) {
-				$args['has_password'] = false;
-
-				// Initialize 'post__not_in' if it's not set already.
-				if ( ! isset( $args['post__not_in'] ) ) {
-					$args['post__not_in'] = array();
-				}
-
-				// Exclude sticky posts that are also password-protected.
-				if ( ! empty( $sticky_posts ) ) {
-					foreach ( $sticky_posts as $sticky_post_id ) {
-						// Check if the sticky post is password-protected.
-						if ( post_password_required( get_post( $sticky_post_id ) ) ) {
-							// Add to 'post__not_in' if password-protected.
-							$args['post__not_in'][] = $sticky_post_id;
-						}
-					}
-				}
-			}
-
-			// Handle normal posts query.
-			$query_args = $args;
-			if ( 'yes' === $ignore_sticky_posts && ! empty( $sticky_posts ) ) {
-				// Exclude sticky posts from the normal posts query if ignoring sticky posts.
-				$query_args['post__not_in'] = array_merge( $query_args['post__not_in'], $sticky_posts );
-			}
-
-			// Run the query for regular posts.
-			$query = new WP_Query( $query_args );
-
-			// Handle sticky posts query if not ignoring.
-			$sticky_query = null;
-			if ( 'yes' !== $ignore_sticky_posts && ! empty( $sticky_posts ) ) {
-				$sticky_args = array(
-					'post__in'            => $sticky_posts, // Filter sticky posts by exclusion.
-					'posts_per_page'      => $posts_number,
-					'ignore_sticky_posts' => 1, // Don't ignore sticky posts in this query.
-					'orderby'             => $post_order_by,
-					'order'               => $post_order,
+				$protected_posts = get_posts(
+					array(
+						'post_type'      => $post_type,
+						'post_status'    => 'publish',
+						'has_password'   => true,
+						'fields'         => 'ids',
+						'posts_per_page' => -1,
+					)
 				);
 
-				if ( 'yes' === $exclude_password_protected ) {
-					// Exclude password-protected sticky posts.
-					$sticky_args['has_password'] = false;
+				if ( ! empty( $protected_posts ) ) {
+					$exclude_posts_array = array_merge( $exclude_posts_array, $protected_posts );
+				}
+			}
+			$exclude_posts_array = array_unique( $exclude_posts_array );
+			
+
+			$sticky_posts        = get_option( 'sticky_posts' );
+			$sticky_posts        = is_array( $sticky_posts ) ? array_map( 'absint', $sticky_posts ) : array();
+
+			$all_post_ids = array();
+
+			$is_ignore_sticky = ( 'yes' === $ignore_sticky_posts );
+
+			// Editor mode fix for sticky behavior.
+			if ( ! $is_ignore_sticky && ! empty( $sticky_posts ) ) {
+				// Remove excluded sticky posts.
+				$valid_sticky_ids = array_diff( $sticky_posts, $exclude_posts_array );
+
+				// Query sticky posts first.
+				$sticky_query = get_posts(
+					array(
+						'post_type'      => $post_type,
+						'post_status'    => 'publish',
+						'post__in'       => $valid_sticky_ids,
+						'orderby'        => $post_order_by,
+						'order'          => $post_order,
+						'fields'         => 'ids',
+						'posts_per_page' => $posts_number,
+					)
+				);
+
+				// Then query remaining normal posts.
+				$normal_query = get_posts(
+					array(
+						'post_type'           => $post_type,
+						'post_status'         => 'publish',
+						'post__not_in'        => array_merge( $exclude_posts_array, $sticky_posts ),
+						'orderby'             => $post_order_by,
+						'order'               => $post_order,
+						'fields'              => 'ids',
+						'ignore_sticky_posts' => 1,
+						'posts_per_page'      => $posts_number,
+					)
+				);
+
+				$all_post_ids = array_merge( $sticky_query, $normal_query );
+				$all_post_ids = array_unique( $all_post_ids );
+
+				if ( $posts_number > 0 ) {
+					$all_post_ids = array_slice( $all_post_ids, 0, $posts_number );
 				}
 
-				$sticky_query = new WP_Query( $sticky_args );
+				$query_args = array(
+					'post_type'      => $post_type,
+					'post__in'       => $all_post_ids,
+					'post_status'    => 'publish',
+					'orderby'        => 'post__in',
+					'posts_per_page' => count( $all_post_ids ),
+				);
+			} else {
+				// Frontend or ignore_sticky = yes.
+				$query_args = array(
+					'post_type'           => $post_type,
+					'post_status'         => 'publish',
+					'posts_per_page'      => $posts_number,
+					'orderby'             => $post_order_by,
+					'order'               => $post_order,
+					'post__not_in'        => $exclude_posts_array,
+					'ignore_sticky_posts' => $is_ignore_sticky ? 1 : 0,
+				);
 			}
 
-			// Merge results from both queries (normal posts and sticky posts).
-			$all_posts = array();
-
-			// Add sticky posts first if not ignoring sticky posts.
-			if ( $sticky_query && $sticky_query->have_posts() ) {
-				while ( $sticky_query->have_posts() ) :
-					$sticky_query->the_post();
-					$all_posts[] = get_the_ID();
-				endwhile;
-			}
-
-			// Add regular posts.
-			if ( $query->have_posts() ) {
-				while ( $query->have_posts() ) :
-					$query->the_post();
-					$all_posts[] = get_the_ID();
-				endwhile;
-			}
-
-			// Remove duplicates by using array_unique based on post IDs.
-			$all_posts = array_unique( $all_posts );
-
-			// Now query the posts based on the merged unique list of post IDs.
-			$final_query_args = array(
-				'post_type'      => $post_type,
-				'post__in'       => $all_posts,
-				'orderby'        => 'post__in', // Maintain the order as per the merged list.
-				'posts_per_page' => $posts_number,
-				'post_status'    => 'publish',
-			);
-
-			$final_query = new WP_Query( $final_query_args );
+			$final_query = new WP_Query( $query_args );
 
 			// Only render if there are posts (merged sticky + normal posts).
 			if ( $final_query->have_posts() ) :
@@ -294,8 +285,11 @@ if ( ! class_exists( 'WPMOZO_AE_Post_Ticker' ) ) {
 						);
 						?>
 						<div <?php $this->print_render_attribute_string( 'wpmozo_post_ticker_wrap' ); ?>>
-							<?php if ( $ticker_label ) : ?>
-								<div class="wpmozo_post_ticker_label"><?php echo esc_html( $ticker_label ); ?></div>
+							<?php if ( $ticker_label ) : 
+								$this->add_render_attribute( 'ticker_label','class', 'wpmozo_post_ticker_label' );
+								$this->add_inline_editing_attributes( 'ticker_label','none');
+								?>
+								<div <?php $this->print_render_attribute_string( 'ticker_label' ); ?>><?php echo esc_html( $ticker_label ); ?></div>
 							<?php endif; ?>
 							<div class="wpmozo_post_ticker_items">
 								<div class="wpmozo_post_ticker_bar">
@@ -357,28 +351,75 @@ if ( ! class_exists( 'WPMOZO_AE_Post_Ticker' ) ) {
 									</div>
 			
 									<!-- Navigation Arrows -->
-									<?php if ( 'on' === $show_arrows ) : ?>
-										<div class="wpmozo_swiper_navigation wpmozo_arrows_position">
-											<?php
-											Icons_Manager::render_icon(
-												$settings['previous_arrow_icon'],
-												array(
-													'aria-hidden' => 'true',
-													'class' => array( 'wpmozo_swiper_icon_prev', 'swiper-button-prev' ),
-													'data-prev_slide_arrow' => $settings['previous_arrow_icon']['value'],
-												),
-												'i'
-											);
-											Icons_Manager::render_icon(
-												$settings['next_arrow_icon'],
-												array(
-													'aria-hidden' => 'true',
-													'class' => array( 'wpmozo_swiper_icon_next', 'swiper-button-next' ),
-													'data-next_slide_arrow' => $settings['next_arrow_icon']['value'],
-												),
-												'i'
-											);
-											?>
+									<?php if ( 'on' === $show_arrows ) : 
+										$this->add_render_attribute( 'swiper_arrow_next', 
+											array( 
+												'class' => array( 'wpmozo_swiper_icon_next', 'swiper-button-next' ),
+												'aria-hidden' => 'true',
+												'data-next_slide_arrow' => $settings[ 'next_arrow_icon' ][ 'value' ]
+											 ) 
+										 );				
+										$this->add_render_attribute( 'swiper_arrow_prev', 
+											array( 
+												'class' => array( 'wpmozo_swiper_icon_prev', 'swiper-button-prev' ),
+												'aria-hidden' => 'true',
+												'data-previous_slide_arrow' => $settings[ 'previous_arrow_icon' ][ 'value' ]
+											 ) 
+										 );
+										?>
+										<div class="wpmozo_swiper_navigation wpmozo_arrows_position" >
+											<?php 
+												if( 'svg' !== $settings[ 'previous_arrow_icon' ][ 'library' ] ) {
+													Icons_Manager::render_icon( 
+														$settings[ 'previous_arrow_icon' ],
+														array(
+															'aria-hidden' => 'true',
+															'class' => array( 'wpmozo_swiper_icon_prev', 'swiper-button-prev' ),
+															'data-prev_slide_arrow' => $settings['previous_arrow_icon']['value'],
+														),
+														'i'
+													 );
+													
+												}
+												if( 'svg' === $settings[ 'previous_arrow_icon' ][ 'library' ] ) {	
+													?><div <?php $this->print_render_attribute_string( 'swiper_arrow_prev' ) ?>><?php
+															Icons_Manager::render_icon( 
+																$settings[ 'previous_arrow_icon' ],
+																array(
+																	'aria-hidden' => 'true',
+																	'class' => array( 'wpmozo_swiper_icon_prev', 'swiper-button-prev' ),
+																	'data-prev_slide_arrow' => $settings['previous_arrow_icon']['value'],
+																),
+																'i'
+															 )
+													?></div><?php
+												} ; ?> 
+											<?php 
+											if( 'svg' !== $settings[ 'next_arrow_icon' ][ 'library' ] ) {
+												Icons_Manager::render_icon( 
+													$settings[ 'next_arrow_icon' ],
+													array(
+														'aria-hidden' => 'true',
+														'class' => array( 'wpmozo_swiper_icon_next', 'swiper-button-next' ),
+														'data-next_slide_arrow' => $settings['next_arrow_icon']['value'],
+													),
+													'i'
+												 );
+												
+											}
+											if( 'svg' === $settings[ 'next_arrow_icon' ][ 'library' ] ) {	
+												?><div <?php $this->print_render_attribute_string( 'swiper_arrow_next' )?> ><?php 
+														Icons_Manager::render( 
+															$settings[ 'next_arrow_icon' ],
+															array(
+																'aria-hidden' => 'true',
+																'class' => array( 'wpmozo_swiper_icon_next', 'swiper-button-next' ),
+																'data-next_slide_arrow' => $settings['next_arrow_icon']['value'],
+															),
+															'i'
+														 )
+													?></div><?php
+											} ?>  
 										</div>
 									<?php endif; ?>
 								</div>

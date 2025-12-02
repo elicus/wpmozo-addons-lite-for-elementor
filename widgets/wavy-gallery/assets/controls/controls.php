@@ -69,7 +69,7 @@ $this->add_responsive_control(
 		'type'           => Controls_Manager::SLIDER,
 		'range'          => array(
 			'px' => array(
-				'min'  => 1,
+				'min'  => 0,
 				'max'  => 200,
 				'step' => 1,
 			),
@@ -101,7 +101,7 @@ $this->add_responsive_control(
 		'type'           => Controls_Manager::SLIDER,
 		'range'          => array(
 			'%' => array(
-				'min'  => 1,
+				'min'  => 0,
 				'max'  => 10,
 				'step' => 1,
 			),
@@ -227,7 +227,7 @@ $this->add_responsive_control(
 		'separator'   => 'after',
 		'size_units'  => array( 'px', 'em', '%' ),
 		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_wavy_gallery_items .wpmozo_wavy_gallery_item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
+			'{{WRAPPER}} .wpmozo_wavy_gallery_items .wpmozo_wavy_gallery_item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
 	)
 );
@@ -259,7 +259,7 @@ $this->add_responsive_control(
 		'separator'   => 'after',
 		'size_units'  => array( 'px', 'em', '%' ),
 		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_wavy_gallery_items .wpmozo_wavy_gallery_item:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
+			'{{WRAPPER}} .wpmozo_wavy_gallery_items .wpmozo_wavy_gallery_item:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
 	)
 );
@@ -371,7 +371,7 @@ $this->add_responsive_control(
 		'separator'   => 'after',
 		'size_units'  => array( 'px', 'em', '%' ),
 		'selectors'   => array(
-			'{{WRAPPER}}.wpmozo_wavy_gallery_overlay .wpmozo_wavy_gallery_overlay_items .wpmozo_wavy_gallery_item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
+			'{{WRAPPER}}.wpmozo_wavy_gallery_overlay .wpmozo_wavy_gallery_overlay_items .wpmozo_wavy_gallery_item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
 	)
 );
@@ -403,7 +403,7 @@ $this->add_responsive_control(
 		'separator'   => 'after',
 		'size_units'  => array( 'px', 'em', '%' ),
 		'selectors'   => array(
-			'{{WRAPPER}}.wpmozo_wavy_gallery_overlay .wpmozo_wavy_gallery_overlay_items .wpmozo_wavy_gallery_item:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
+			'{{WRAPPER}}.wpmozo_wavy_gallery_overlay .wpmozo_wavy_gallery_overlay_items .wpmozo_wavy_gallery_item:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
 	)
 );
@@ -439,7 +439,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'image_title_text_color',
 	array(
-		'label'     => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'default'   => '#000000',
 		'selectors' => array(
@@ -450,7 +450,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'image_title_text_size',
 	array(
-		'label'     => esc_html__( 'Text Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SLIDER,
 		'range'     => array(
 			'px' => array(
@@ -460,7 +460,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}}.wpmozo_wavy_gallery_overlay .wpmozo_wavy_gallery_overlay_item_title' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}}.wpmozo_wavy_gallery_overlay .wpmozo_wavy_gallery_overlay_item_title' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -483,6 +483,17 @@ $this->add_group_control(
 		'selector'    => '{{WRAPPER}}.wpmozo_wavy_gallery_overlay .wpmozo_wavy_gallery_overlay_item_title',
 	)
 );
+$this->add_responsive_control(
+	'image_title_background_color',
+	array(
+		'label'     => esc_html__( 'Background Color', 'wpmozo-addons-lite-for-elementor' ),
+		'type'      => Controls_Manager::COLOR,
+		'default'   => '#eaeaea',
+		'selectors' => array(
+			'{{WRAPPER}}.active .wpmozo_wavy_gallery_overlay_item_title' => 'background-color: {{VALUE}}',
+		),
+	)
+);
 $this->end_controls_tab();
 $this->start_controls_tab(
 	'image_title_hover_tab',
@@ -493,7 +504,7 @@ $this->start_controls_tab(
 $this->add_responsive_control(
 	'image_title_text_color_hover',
 	array(
-		'label'     => esc_html__( 'Text Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'{{WRAPPER}}.wpmozo_wavy_gallery_overlay .wpmozo_wavy_gallery_overlay_item_title:hover' => 'color: {{VALUE}}',
@@ -503,7 +514,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'image_title_text_size_hover',
 	array(
-		'label'     => esc_html__( 'Text Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::SLIDER,
 		'range'     => array(
 			'px' => array(
@@ -513,7 +524,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}}.wpmozo_wavy_gallery_overlay .wpmozo_wavy_gallery_overlay_item_title:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}}.wpmozo_wavy_gallery_overlay .wpmozo_wavy_gallery_overlay_item_title:hover' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -536,37 +547,25 @@ $this->add_group_control(
 		'selector'    => '{{WRAPPER}}.wpmozo_wavy_gallery_overlay .wpmozo_wavy_gallery_overlay_item_title:hover',
 	)
 );
-$this->end_controls_tab();
-$this->end_controls_tabs();
 $this->add_responsive_control(
-	'image_title_background_color',
+	'image_title_background_color_hover',
 	array(
 		'label'     => esc_html__( 'Background Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
-		'default'   => '#eaeaea',
-		'separator' => 'before',
+		'default'   => '',
 		'selectors' => array(
-			'{{WRAPPER}}.active .wpmozo_wavy_gallery_overlay_item_title' => 'background-color: {{VALUE}}',
+			'{{WRAPPER}}.active .wpmozo_wavy_gallery_overlay_item_title:hover' => 'background-color: {{VALUE}}',
 		),
 	)
 );
-$this->add_responsive_control(
-	'image_title_margin',
+$this->end_controls_tab();
+$this->end_controls_tabs();
+
+$this->start_controls_tabs( 'image_spacing_tabs', array('separator' => 'before') );
+$this->start_controls_tab(
+	'image_title_padding_tab',
 	array(
-		'label'      => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
-		'type'       => Controls_Manager::DIMENSIONS,
-		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
-		'default'    => array(
-			'top'      => 15,
-			'right'    => 0,
-			'bottom'   => 2,
-			'left'     => 0,
-			'unit'     => 'px',
-			'isLinked' => false,
-		),
-		'selectors'  => array(
-			'{{WRAPPER}}.active .wpmozo_wavy_gallery_overlay_item_title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-		),
+		'label' => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' )
 	)
 );
 $this->add_responsive_control(
@@ -585,6 +584,32 @@ $this->add_responsive_control(
 		),
 		'selectors'  => array(
 			'{{WRAPPER}}.active .wpmozo_wavy_gallery_overlay_item_title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+		),
+	)
+);
+$this->end_controls_tab();
+$this->start_controls_tab(
+	'image_title_margin_tab',
+	array(
+		'label' => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
+	)
+);
+$this->add_responsive_control(
+	'image_title_margin',
+	array(
+		'label'      => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
+		'type'       => Controls_Manager::DIMENSIONS,
+		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
+		'default'    => array(
+			'top'      => 15,
+			'right'    => 0,
+			'bottom'   => 2,
+			'left'     => 0,
+			'unit'     => 'px',
+			'isLinked' => false,
+		),
+		'selectors'  => array(
+			'{{WRAPPER}}.active .wpmozo_wavy_gallery_overlay_item_title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
 	)
 );

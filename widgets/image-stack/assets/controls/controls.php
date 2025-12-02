@@ -268,7 +268,7 @@ $repeater->add_control(
 $repeater->add_responsive_control(
 	'icon_color',
 	array(
-		'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_image_stack_wrap .wpmozo_image_stack_item{{CURRENT_ITEM}} .wpmozo_ae_stack_item_icon' => 'color: {{VALUE}};',
@@ -282,7 +282,7 @@ $repeater->add_responsive_control(
 $repeater->add_responsive_control(
 	'stack_item_shape',
 	array(
-		'label'       => esc_html__( 'Icon Shape', 'wpmozo-addons-lite-for-elementor' ),
+		'label'       => esc_html__( 'Shape', 'wpmozo-addons-lite-for-elementor' ),
 		'default'     => '',
 		'toggle'      => true,
 		'render_type' => 'template',
@@ -316,7 +316,7 @@ $repeater->add_responsive_control(
 $repeater->add_responsive_control(
 	'stack_item_shape_background_color',
 	array(
-		'label'     => esc_html__( 'Icon Shape Background', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Shape Background', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_image_stack_wrap .wpmozo_image_stack_inner .wpmozo_image_stack_item{{CURRENT_ITEM}} .stack_item-type-icon' => 'background-color: {{VALUE}};',
@@ -430,14 +430,14 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'global_icon_styling',
 	array(
-		'label' => esc_html__( 'Global Icon Styling', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Icon', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	)
 );
 $this->add_responsive_control(
 	'global_icon_color',
 	array(
-		'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_image_stack_wrap .wpmozo_image_stack_item .wpmozo_ae_stack_item_icon' => 'color: {{VALUE}};',
@@ -448,7 +448,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'global_icon_shape',
 	array(
-		'label'     => esc_html__( 'Icon Shape', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Shape', 'wpmozo-addons-lite-for-elementor' ),
 		'default'   => '0.0',
 		'type'      => Controls_Manager::CHOOSE,
 		'options'   => array(
@@ -476,7 +476,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'global_icon_shape_background_color',
 	array(
-		'label'     => esc_html__( 'Icon Shape Background', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Shape Background', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_image_stack_wrap .wpmozo_image_stack_item .wpmozo_stack_item_wrapper:has(.wpmozo_ae_stack_item_icon)' => 'background-color: {{VALUE}};',
@@ -511,7 +511,7 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'global_stack_item_image_styling',
 	array(
-		'label' => esc_html__( 'Global Image Styling', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Image', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 
 	)
@@ -521,7 +521,7 @@ $this->add_responsive_control(
 	'global_stack_item_image_size',
 	array(
 		'type'           => Controls_Manager::SLIDER,
-		'label'          => esc_html__( 'Image Size', 'wpmozo-addons-lite-for-elementor' ),
+		'label'          => esc_html__( 'Size', 'wpmozo-addons-lite-for-elementor' ),
 		'range'          => array(
 			'px' => array(
 				'min' => 32,
@@ -559,7 +559,7 @@ $this->add_responsive_control(
 	'global_stack_item_image_border_radius',
 	array(
 		'type'           => Controls_Manager::SLIDER,
-		'label'          => esc_html__( 'Image Border Radius', 'wpmozo-addons-lite-for-elementor' ),
+		'label'          => esc_html__( 'Border Radius', 'wpmozo-addons-lite-for-elementor' ),
 		'range'          => array(
 			'px' => array(
 				'min' => 1,
@@ -595,7 +595,7 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'global_tooltip',
 	array(
-		'label'     => esc_html__( 'Tooltip Styling', 'wpmozo-addons-lite-for-elementor' ),
+		'label'     => esc_html__( 'Tooltip', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'       => Controls_Manager::TAB_STYLE,
 		'condition' => array(
 			'enable_tooltip' => 'yes',
@@ -716,11 +716,11 @@ $this->add_control(
 $this->add_control(
 	'show_speech_bubble',
 	array(
-		'label'        => esc_html__( 'Show Speech Bubble', 'wpmozo-addons-lite-for-elementor' ),
+		'label'        => esc_html__( 'Speech Bubble', 'wpmozo-addons-lite-for-elementor' ),
 		'type'         => Controls_Manager::SWITCHER,
 		'separator'    => 'before',
-		'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
-		'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
+		'label_on'     => esc_html__( 'Show', 'wpmozo-addons-lite-for-elementor' ),
+		'label_off'    => esc_html__( 'Hide', 'wpmozo-addons-lite-for-elementor' ),
 		'return_value' => 'yes',
 		'default'      => 'yes',
 	)
