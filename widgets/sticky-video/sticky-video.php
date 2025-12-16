@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Elementor\Widget_Base;
+use Elementor\Icons_Manager;
+
 if ( ! class_exists( 'WPMOZO_AE_Sticky_Video' ) ) {
 	class WPMOZO_AE_Wavy_Gallery extends Widget_Base {
 		/**
@@ -141,17 +143,35 @@ if ( ! class_exists( 'WPMOZO_AE_Sticky_Video' ) ) {
 			$settings       = $this->get_settings_for_display();
 			$page_id        = get_the_ID(); // Elementor Page/Post ID.
 			$widget_id      = $this->get_id(); // Widget instance ID (unique per widget).
-			$images_items   = is_array( $settings['images'] ) ? $settings['images'] : array();
-			$no_images_text = isset( $settings['no_images_text'] ) ? $settings['no_images_text'] : 'No Images Found!';
+			$sticky_video   = ! empty( $settings['sticky_video']['url'] ) ? $settings['sticky_video']['url'] : '';
+			$video_image    = ! empty( $settings['video_image']['url'] ) ? $settings['video_image']['url'] : '';
+			$play_icon      = $settings['play_icon'];
+			$video_position = isset( $settings['video_position'] ) ? $settings['video_position'] : 'bottom_right';
 			$image_size     = ! empty( $settings['image_size_size'] ) ? esc_attr( $settings['image_size_size'] ) : 'full';
 			?>
-			<div class="et_pb_module dipl_sticky_video dipl_sticky_video_0">
-				<div class="et_pb_module_inner">
-					<div class="dipl_sticky_video_wrapper">
-						<div class="dipl_sticky_video_inner dipl_position_bottom_right">
-							<div class="et_pb_video_box">
-								<video controls="">
-									<source type="video/mp4" src="http://elicus-divi.local/wp-content/uploads/2024/06/file_example_MP4_480_1_5MG.mp4"> </video>
+			<div class="wpmozo_sticky_video">
+				<div class="wpmozo_sticky_video_wrapper">
+					<div class="wpmozo_sticky_video_inner wpmozo_position_<?php echo esc_attr( $video_position ); ?>">
+						<div class="wpmozo_video_box">
+						<?php if ( ! empty( $sticky_video ) ) { ?>
+							<video controls="">
+								<source type="video/mp4" src="<?php echo esc_url( $sticky_video ); ?>">
+							</video>
+							<?php } ?>
+							<div style="background-image:url(<?php echo esc_url( $video_image ); ?>)" class="wpmozo_video_overlay">
+								<div class="wpmozo_video_overlay_hover">
+									<a href="#" class="wpmozo_video_play">
+										<?php if ( ! empty( $play_icon ) ) { 
+											Icons_Manager::render_icon(
+												$settings['play_icon'],
+												array(
+													'class' => array( 'wpmozo_play_icon' ),
+													'aria-hidden' => 'true',
+												)
+											);
+										} ?>
+									</a>
+								</div>
 							</div>
 						</div>
 					</div>

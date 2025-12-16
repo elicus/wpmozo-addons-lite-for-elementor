@@ -9,30 +9,30 @@
                     const diplAllStickyVideos = [];
                     // Utility Functions.
                     function makeSticky( $el ) {
-                        const $inner = $el.find( '.dipl_sticky_video_inner' );
+                        const $inner = $el.find( '.wpmozo_sticky_video_inner' );
                         // Remove sticky/placeholder from other videos.
-                        $( '.dipl_sticky_video_inner' ).not( $inner ).each( function() {
+                        $( '.wpmozo_sticky_video_inner' ).not( $inner ).each( function() {
                             const $otherInner = $( this );
-                            const $wrapper    = $otherInner.closest( '.dipl_sticky_video' );
+                            const $wrapper    = $otherInner.closest( '.wpmozo_sticky_video' );
                             removeSticky( $wrapper );
                         } );
                         if ( ! $inner.hasClass( 'is-sticky' ) ) {
                             if ( ! $el.data( 'placeholder' ) ) {
-                                const $ph = $( '<div class="dipl_sticky_video_placeholder"></div>' );
+                                const $ph = $( '<div class="wpmozo_sticky_video_placeholder"></div>' );
                                 $ph.height( $el.outerHeight() );
                                 $ph.insertAfter( $el );
                                 $el.data( 'placeholder', $ph );
                             }
                             $inner.addClass( 'is-sticky' );
-                            $inner.parents( '.et_pb_section' ).css( 'z-index', '999' );
+                            $inner.parents( '.wpmozo_section' ).css( 'z-index', '999' );
                         }
                     }
                 
                     function removeSticky( $el ) {
-                        const $inner = $el.find( '.dipl_sticky_video_inner' );
+                        const $inner = $el.find( '.wpmozo_sticky_video_inner' );
                         if ( $inner.hasClass( 'is-sticky' ) ) {
                             $inner.removeClass( 'is-sticky' );
-                            $inner.parents( '.et_pb_section' ).css( 'z-index', '' );
+                            $inner.parents( '.wpmozo_section' ).css( 'z-index', '' );
                         }
                         const $ph = $el.data( 'placeholder' );
                         if ( $ph ) {
@@ -52,9 +52,9 @@
                     function initDiplStickyVideo( $wrapper ) {
                         const $iframe     = $wrapper.find( 'iframe' );
                         const $html5Video = $wrapper.find( 'video' );
-                        const $overlay    = $wrapper.find( '.et_pb_video_overlay' );
-                        const $playBtn    = $wrapper.find( '.et_pb_video_play' );
-                        const $inner      = $wrapper.find( '.dipl_sticky_video_inner' );
+                        const $overlay    = $wrapper.find( '.wpmozo_video_overlay' );
+                        const $playBtn    = $wrapper.find( '.wpmozo_video_play' );
+                        const $inner      = $wrapper.find( '.wpmozo_sticky_video_inner' );
                 
                         const index  = diplAllStickyVideos.length;
                         let videoObj = {
@@ -203,7 +203,7 @@
                     } );
                 
                     // Initialize all videos.
-                    $( '.dipl_sticky_video' ).each( function () {
+                    $( '.wpmozo_sticky_video' ).each( function () {
                         initDiplStickyVideo( $(this) );
                     } );
                 
