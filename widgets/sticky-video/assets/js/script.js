@@ -1,21 +1,38 @@
 ( function ( $ ) {
     $( window ).on( "elementor/frontend/init", function () {
+
         var WPMOZOStickyVideo = elementorModules.frontend.handlers.Base.extend( {
+
             bindEvents: function () {
                 this.change();
             },
+
             change: function () {
-                jQuery( document ).ready( function($) {
-                    const diplAllStickyVideos = [];
+
+                var self = this;
+
+                jQuery( document ).ready( function ( $ ) {
+
+                    // ONLY CHANGE: widget scoped element
+                    const $widget = self.$element.find( '.wpmozo_sticky_video' );
+
+                    if ( ! $widget.length ) {
+                        return;
+                    }
+
+                    const wpmozoAllStickyVideos = [];
+
                     // Utility Functions.
                     function makeSticky( $el ) {
                         const $inner = $el.find( '.wpmozo_sticky_video_inner' );
-                        // Remove sticky/placeholder from other videos.
-                        $( '.wpmozo_sticky_video_inner' ).not( $inner ).each( function() {
+
+                        // Remove sticky/placeholder from other videos (same widget scope)
+                        $widget.find( '.wpmozo_sticky_video_inner' ).not( $inner ).each( function () {
                             const $otherInner = $( this );
                             const $wrapper    = $otherInner.closest( '.wpmozo_sticky_video' );
                             removeSticky( $wrapper );
                         } );
+
                         if ( ! $inner.hasClass( 'is-sticky' ) ) {
                             if ( ! $el.data( 'placeholder' ) ) {
                                 const $ph = $( '<div class="wpmozo_sticky_video_placeholder"></div>' );
@@ -27,7 +44,7 @@
                             $inner.parents( '.wpmozo_section' ).css( 'z-index', '999' );
                         }
                     }
-                
+
                     function removeSticky( $el ) {
                         const $inner = $el.find( '.wpmozo_sticky_video_inner' );
                         if ( $inner.hasClass( 'is-sticky' ) ) {
@@ -40,126 +57,131 @@
                             $el.removeData( 'placeholder' );
                         }
                     }
-                
+
                     function isOutOfViewport( $el ) {
                         const rectTop   = $el.offset().top;
-                        const scrollTop = $(window).scrollTop();
-                        const winHeight = $(window).height();
+                        const scrollTop = $( window ).scrollTop();
+                        const winHeight = $( window ).height();
                         return ( scrollTop > rectTop + $el.outerHeight() || scrollTop + winHeight < rectTop );
                     }
-                
+
                     // Initialize single video.
-                    function initDiplStickyVideo( $wrapper ) {
+                    function initWpmozoStickyVideo( $wrapper ) {
+
                         const $iframe     = $wrapper.find( 'iframe' );
                         const $html5Video = $wrapper.find( 'video' );
                         const $overlay    = $wrapper.find( '.wpmozo_video_overlay' );
                         const $playBtn    = $wrapper.find( '.wpmozo_video_play' );
                         const $inner      = $wrapper.find( '.wpmozo_sticky_video_inner' );
-                
-                        const index  = diplAllStickyVideos.length;
+
+                        const index = wpmozoAllStickyVideos.length;
+
                         let videoObj = {
                             $wrapper,
                             $inner,
                             isPlaying: false,
-                            type: 'other', // default HTML5.
+                            type: 'other',
                             video: null
                         };
-                
-                        // YouTube or Vimeo.
+
+                        // YouTube / Vimeo
                         if ( $iframe.length ) {
-                            const iframe = $iframe.get(0);
+
+                            const iframe = $iframe.get( 0 );
                             if ( ! iframe.id ) {
-                                iframe.id = "dipl-video-" + index;
+                                iframe.id = "wpmozo-video-" + index;
                             }
-                
+
                             const src       = $iframe.attr( 'src' ) || '';
                             const isVimeo   = src.includes( 'vimeo.com' );
                             const isYouTube = src.includes( 'youtube.com' ) || src.includes( 'youtu.be' );
-                
+
                             videoObj.type   = isVimeo ? 'vimeo' : ( isYouTube ? 'youtube' : 'other' );
                             videoObj.iframe = iframe;
-                
-                            // Replace the src with some extra params if not.
-                            // Need those to work play/push custom events.
+
                             let newSrc = src;
+
                             if ( isYouTube && ! newSrc.includes( 'enablejsapi=1' ) ) {
                                 newSrc += ( newSrc.includes( '?' ) ? '&' : '?' ) + 'enablejsapi=1';
                             } else if ( isVimeo ) {
                                 if ( ! newSrc.includes( 'api=1' ) ) {
-                                    newSrc += ( newSrc.includes('?') ? '&' : '?' ) + 'api=1';
+                                    newSrc += ( newSrc.includes( '?' ) ? '&' : '?' ) + 'api=1';
                                 }
                                 if ( ! newSrc.includes( 'player_id=' ) ) {
-                                    newSrc += ( newSrc.includes('?') ? '&' : '?' ) + 'player_id=' + encodeURIComponent( iframe.id );
+                                    newSrc += ( newSrc.includes( '?' ) ? '&' : '?' ) + 'player_id=' + iframe.id;
                                 }
                             }
+
                             if ( newSrc !== src ) {
                                 $iframe.attr( 'src', newSrc );
                             }
-                
-                            // Vimeo Player SDK.
+
                             if ( isVimeo ) {
                                 const vimeoPlayer    = new Vimeo.Player( iframe );
                                 videoObj.vimeoPlayer = vimeoPlayer;
-                
-                                vimeoPlayer.on( 'play', function () { handlePlay( videoObj ); } );
-                                vimeoPlayer.on( 'pause', function () { handlePause( videoObj ); } );
-                                vimeoPlayer.on( 'ended', function () { handlePause( videoObj ); } );
+
+                                vimeoPlayer.on( 'play',  () => handlePlay( videoObj ) );
+                                vimeoPlayer.on( 'pause', () => handlePause( videoObj ) );
+                                vimeoPlayer.on( 'ended', () => handlePause( videoObj ) );
                             }
-                
-                            // YouTube: use IFrame API for reliable events.
+
                             if ( isYouTube ) {
-                                function initYouTubePlayer() {
-                                    videoObj.player = new YT.Player( iframe.id, { events: {
-                                        'onStateChange': function(event) {
-                                            if ( event.data === YT.PlayerState.PLAYING ) {
-                                                handlePlay( videoObj );
-                                            } else if ( event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED ) {
-                                                handlePause( videoObj );
+                                function initYT() {
+                                    videoObj.player = new YT.Player( iframe.id, {
+                                        events: {
+                                            onStateChange: function ( event ) {
+                                                if ( event.data === YT.PlayerState.PLAYING ) {
+                                                    handlePlay( videoObj );
+                                                } else if (
+                                                    event.data === YT.PlayerState.PAUSED ||
+                                                    event.data === YT.PlayerState.ENDED
+                                                ) {
+                                                    handlePause( videoObj );
+                                                }
                                             }
                                         }
-                                    } } );
+                                    } );
                                 }
-                                if ( typeof YT !== 'undefined' && typeof YT.Player !== 'undefined' ) {
-                                    initYouTubePlayer();
+
+                                if ( window.YT && YT.Player ) {
+                                    initYT();
                                 } else {
-                                    // YouTube API not loaded yet.
-                                    window.onYouTubeIframeAPIReady = initYouTubePlayer;
+                                    window.onYouTubeIframeAPIReady = initYT;
                                 }
                             }
                         }
-                
-                        // HTML5 video.
+
+                        // HTML5
                         if ( $html5Video.length ) {
-                            const video    = $html5Video.get(0);
+                            const video    = $html5Video.get( 0 );
                             videoObj.type  = 'html5';
                             videoObj.video = video;
-                
-                            video.addEventListener( 'play', function () { handlePlay( videoObj ); } );
-                            video.addEventListener( 'pause', function () { handlePause( videoObj ); } );
-                            video.addEventListener( 'ended', function () { handlePause( videoObj ); } );
+
+                            video.addEventListener( 'play',  () => handlePlay( videoObj ) );
+                            video.addEventListener( 'pause', () => handlePause( videoObj ) );
+                            video.addEventListener( 'ended', () => handlePause( videoObj ) );
                         }
-                
-                        diplAllStickyVideos.push( videoObj );
-                
-                        // Play button click.
-                        $playBtn.on( 'click', function (e) {
+
+                        wpmozoAllStickyVideos.push( videoObj );
+
+                        $playBtn.on( 'click', function ( e ) {
                             e.preventDefault();
                             $overlay.fadeOut( 200 );
                             handlePlay( videoObj );
                         } );
                     }
-                
-                    // Handle play for any type.
+
                     function handlePlay( videoObj ) {
+
                         videoObj.isPlaying = true;
                         videoObj.$inner.addClass( 'video-is-playing' );
-                
-                        diplAllStickyVideos.forEach( ( vid ) => {
+
+                        wpmozoAllStickyVideos.forEach( function ( vid ) {
                             if ( vid !== videoObj ) {
                                 vid.isPlaying = false;
                                 vid.$inner.removeClass( 'video-is-playing is-sticky' );
-                                
                                 removeSticky( vid.$wrapper );
+
                                 if ( vid.type === 'youtube' && vid.player ) {
                                     vid.player.pauseVideo();
                                 } else if ( vid.type === 'vimeo' && vid.vimeoPlayer ) {
@@ -169,30 +191,25 @@
                                 }
                             }
                         } );
-                
+
                         if ( videoObj.type === 'youtube' && videoObj.player ) {
                             videoObj.player.playVideo();
                         } else if ( videoObj.type === 'vimeo' && videoObj.vimeoPlayer ) {
                             videoObj.vimeoPlayer.play();
-                        } else if ( videoObj.type === 'html5' && videoObj.video ) {
-                            if ( videoObj.video.paused ) {
-                                videoObj.video.play();
-                            }
+                        } else if ( videoObj.type === 'html5' && videoObj.video && videoObj.video.paused ) {
+                            videoObj.video.play();
                         }
                     }
-                
-                    // Handle pause for any type.
+
                     function handlePause( videoObj ) {
                         videoObj.isPlaying = false;
                         videoObj.$inner.removeClass( 'video-is-playing' );
-                        // removeSticky( videoObj.$wrapper );
                     }
-                
-                    // Sticky on scroll.
-                    $( window).on( 'scroll resize', function () {
-                        diplAllStickyVideos.forEach( ( vid ) => {
+
+                    $( window ).on( 'scroll resize', function () {
+                        wpmozoAllStickyVideos.forEach( function ( vid ) {
                             if (
-                                ( vid.isPlaying || vid.$inner.hasClass('video-is-playing') ) && 
+                                ( vid.isPlaying || vid.$inner.hasClass( 'video-is-playing' ) ) &&
                                 isOutOfViewport( vid.$wrapper )
                             ) {
                                 makeSticky( vid.$wrapper );
@@ -201,16 +218,20 @@
                             }
                         } );
                     } );
-                
-                    // Initialize all videos.
-                    $( '.wpmozo_sticky_video' ).each( function () {
-                        initDiplStickyVideo( $(this) );
-                    } );
-                
-                    window.initDiplStickyVideo = initDiplStickyVideo;
-                } );                             
-            },
+
+                    // ONLY CHANGE: init only THIS widget
+                    initWpmozoStickyVideo( $widget );
+
+                    window.initWpmozoStickyVideo = initWpmozoStickyVideo;
+
+                } );
+            }
         } );
-        elementorFrontend.elementsHandler.attachHandler( "wpmozo_ae_sticky_video", WPMOZOStickyVideo );
+
+        elementorFrontend.elementsHandler.attachHandler(
+            "wpmozo_ae_sticky_video",
+            WPMOZOStickyVideo
+        );
+
     } );
 } )( jQuery );

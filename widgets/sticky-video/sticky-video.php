@@ -15,7 +15,7 @@ use Elementor\Widget_Base;
 use Elementor\Icons_Manager;
 
 if ( ! class_exists( 'WPMOZO_AE_Sticky_Video' ) ) {
-	class WPMOZO_AE_Wavy_Gallery extends Widget_Base {
+	class WPMOZO_AE_Sticky_Video extends Widget_Base {
 		/**
 		 * Get widget name.
 		 *
@@ -112,7 +112,7 @@ if ( ! class_exists( 'WPMOZO_AE_Sticky_Video' ) ) {
 		 * @return array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-			wp_register_script( 'wpmozo-ae-sticky-video-script', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
+			wp_register_script( 'wpmozo-ae-sticky-video-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
 			return array(  'wpmozo-ae-sticky-video-script' );
 		}
@@ -131,6 +131,27 @@ if ( ! class_exists( 'WPMOZO_AE_Sticky_Video' ) ) {
 			require plugin_dir_path( __DIR__ ) . 'sticky-video/assets/controls/controls.php';
 		}
 
+
+		/**
+		 * Check YouTube URL and return video ID
+		 */
+		private function get_youtube_id( $url ) {
+			if ( preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $matches ) ) {
+				return $matches[1];
+			}
+			return false;
+		}
+
+		/**
+		 * Check Vimeo URL and return video ID
+		 */
+		private function get_vimeo_id( $url ) {
+			if ( preg_match( '/vimeo\.com\/(?:video\/)?([0-9]+)/', $url, $matches ) ) {
+				return $matches[1];
+			}
+			return false;
+		}
+
 		/**
 		 * Render widget output on the frontend.
 		 *
@@ -140,44 +161,95 @@ if ( ! class_exists( 'WPMOZO_AE_Sticky_Video' ) ) {
 		 * @access protected
 		 */
 		protected function render() {
-			$settings       = $this->get_settings_for_display();
-			$page_id        = get_the_ID(); // Elementor Page/Post ID.
-			$widget_id      = $this->get_id(); // Widget instance ID (unique per widget).
-			$sticky_video   = ! empty( $settings['sticky_video']['url'] ) ? $settings['sticky_video']['url'] : '';
-			$video_image    = ! empty( $settings['video_image']['url'] ) ? $settings['video_image']['url'] : '';
-			$play_icon      = $settings['play_icon'];
-			$video_position = isset( $settings['video_position'] ) ? $settings['video_position'] : 'bottom_right';
-			$image_size     = ! empty( $settings['image_size_size'] ) ? esc_attr( $settings['image_size_size'] ) : 'full';
+
+			$settings = $this->get_settings_for_display();
+		
+			$sticky_video   = $settings['sticky_video']['url'] ?? '';
+			$video_image    = $settings['video_image']['url'] ?? '';
+			$play_icon      = $settings['play_icon'] ?? '';
+			$video_position = $settings['video_position'] ?? 'bottom_right';
+		
+			$youtube_id = $sticky_video ? $this->get_youtube_id( $sticky_video ) : false;
+			$vimeo_id   = $sticky_video ? $this->get_vimeo_id( $sticky_video ) : false;
+		
+			$this->add_render_attribute(
+				'sticky_inner',
+				'class',
+				array(
+					'wpmozo_sticky_video_inner',
+					'wpmozo_position_' . esc_attr( $video_position ),
+				)
+			);
+		
+			$this->add_render_attribute(
+				'video_overlay',
+				'class',
+				'wpmozo_video_overlay'
+			);
+		
+			if ( ! empty( $video_image ) ) {
+				$this->add_render_attribute(
+					'video_overlay',
+					'style',
+					'background-image:url(' . esc_url( $video_image ) . ')'
+				);
+			}
 			?>
+		
 			<div class="wpmozo_sticky_video">
 				<div class="wpmozo_sticky_video_wrapper">
-					<div class="wpmozo_sticky_video_inner wpmozo_position_<?php echo esc_attr( $video_position ); ?>">
+					<div <?php $this->print_render_attribute_string( 'sticky_inner' ); ?>>
 						<div class="wpmozo_video_box">
-						<?php if ( ! empty( $sticky_video ) ) { ?>
-							<video controls="">
-								<source type="video/mp4" src="<?php echo esc_url( $sticky_video ); ?>">
-							</video>
-							<?php } ?>
-							<div style="background-image:url(<?php echo esc_url( $video_image ); ?>)" class="wpmozo_video_overlay">
+		
+							<?php if ( $youtube_id ) : ?>
+		
+								<iframe
+									src="https://www.youtube.com/embed/<?php echo esc_attr( $youtube_id ); ?>?enablejsapi=1&rel=0"
+									frameborder="0"
+									allow="autoplay; encrypted-media"
+									allowfullscreen>
+								</iframe>
+		
+							<?php elseif ( $vimeo_id ) : ?>
+		
+								<iframe
+									src="https://player.vimeo.com/video/<?php echo esc_attr( $vimeo_id ); ?>?api=1&player_id=vimeo_<?php echo esc_attr( $vimeo_id ); ?>"
+									frameborder="0"
+									allow="autoplay; fullscreen"
+									allowfullscreen>
+								</iframe>
+		
+							<?php elseif ( ! empty( $sticky_video ) ) : ?>
+		
+								<video controls>
+									<source src="<?php echo esc_url( $sticky_video ); ?>" type="video/mp4">
+								</video>
+		
+							<?php endif; ?>
+		
+							<div <?php $this->print_render_attribute_string( 'video_overlay' ); ?>>
 								<div class="wpmozo_video_overlay_hover">
 									<a href="#" class="wpmozo_video_play">
-										<?php if ( ! empty( $play_icon ) ) { 
+										<?php
+										if ( ! empty( $play_icon ) ) {
 											Icons_Manager::render_icon(
-												$settings['play_icon'],
+												$play_icon,
 												array(
-													'class' => array( 'wpmozo_play_icon' ),
+													'class'       => array( 'wpmozo_play_icon' ),
 													'aria-hidden' => 'true',
 												)
 											);
-										} ?>
+										}
+										?>
 									</a>
 								</div>
 							</div>
+		
 						</div>
 					</div>
 				</div>
 			</div>
 			<?php
-		}
+		}				
 	}
 }

@@ -12,12 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use Elementor\Utils;
 use Elementor\Controls_Manager;
-use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Box_Shadow;
-use Elementor\Group_Control_Typography;
-use Elementor\Group_Control_Background;
-use Elementor\Group_Control_Text_Shadow;
 
 $this->start_controls_section(
 	'video_settings',
@@ -129,14 +124,6 @@ $this->add_responsive_control(
 		'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
-		'default'    => array(
-			'top'      => 10,
-			'right'    => 20,
-			'bottom'   => 10,
-			'left'     => 20,
-			'unit'     => 'px',
-			'isLinked' => false,
-		),
 		'selectors'  => array(
 			'{{WRAPPER}} .wpmozo_sticky_video .wpmozo_sticky_video_inner.is-sticky' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
@@ -148,14 +135,6 @@ $this->add_responsive_control(
 		'label'      => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
-		'default'    => array(
-			'top'      => 15,
-			'right'    => 0,
-			'bottom'   => 2,
-			'left'     => 0,
-			'unit'     => 'px',
-			'isLinked' => false,
-		),
 		'selectors'  => array(
 			'{{WRAPPER}} .wpmozo_sticky_video .wpmozo_sticky_video_inner.is-sticky' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
@@ -198,14 +177,6 @@ $this->add_responsive_control(
 		'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
-		'default'    => array(
-			'top'      => 10,
-			'right'    => 20,
-			'bottom'   => 10,
-			'left'     => 20,
-			'unit'     => 'px',
-			'isLinked' => false,
-		),
 		'selectors'  => array(
 			'{{WRAPPER}} .wpmozo_sticky_video .wpmozo_sticky_video_inner.is-sticky:hover' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
@@ -217,14 +188,6 @@ $this->add_responsive_control(
 		'label'      => esc_html__( 'Margin', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
-		'default'    => array(
-			'top'      => 15,
-			'right'    => 0,
-			'bottom'   => 2,
-			'left'     => 0,
-			'unit'     => 'px',
-			'isLinked' => false,
-		),
 		'selectors'  => array(
 			'{{WRAPPER}} .wpmozo_sticky_video .wpmozo_sticky_video_inner.is-sticky:hover' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
@@ -270,7 +233,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Icon', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::ICONS,
 		'default'   => array(
-			'value'   => 'far fa-star',
+			'value'   => 'far fa-play-circle',
 			'library' => 'fa-regular',
 		),
 	)
@@ -401,7 +364,7 @@ $this->add_responsive_control(
 		'type'      => Controls_Manager::COLOR,
 		'default'   => '#00000099',
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_sticky_video .wpmozo_video_overlay_hover:hover' => 'background-color: {{VALUE}}',
+			'{{WRAPPER}} .wpmozo_sticky_video .wpmozo_video_overlay_hover:hover' => 'background-color: {{VALUE}}; transition: all 300ms;',
 		),
 	)
 );
