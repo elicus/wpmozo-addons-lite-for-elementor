@@ -187,6 +187,17 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 				// Hook to save meta box data.
 				$this->loader->add_action( 'save_post', $plugin_admin, 'wpmozo_save_team_member_meta_fields' );
 			}
+			if ( ! $plugin_admin->wpmozo_is_blog_categories_disabled() ) {
+				// Hook to add meta box.
+				$this->loader->add_action( 'category_add_form_fields', $plugin_admin, 'wpmozo_add_post_category_image_field' );
+				// Hook to save meta box data.
+				$this->loader->add_action( 'category_edit_form_fields', $plugin_admin, 'wpmozo_edit_post_category_image_field' );
+				$this->loader->add_action( 'created_category', $plugin_admin, 'wpmozo_save_post_category_image' );
+				$this->loader->add_action( 'edited_category', $plugin_admin, 'wpmozo_save_post_category_image' );
+				$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'wpmozo_blog_category_enqueue_scripts' );
+				$this->loader->add_filter( 'manage_edit-category_columns', $plugin_admin, 'wpmozo_category_image_columns' );
+				$this->loader->add_filter( 'manage_category_custom_column', $plugin_admin, 'wpmozo_category_image_column' );
+			}
 			if ( ! $plugin_admin->wpmozo_is_testimonial_disabled() ) {
 				// Hook to add meta box.
 				$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'wpmozo_add_testimonial_metabox' );

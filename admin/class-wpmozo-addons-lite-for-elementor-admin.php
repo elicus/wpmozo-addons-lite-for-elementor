@@ -299,6 +299,188 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 
 	        return false;
 	    }
+// Blog Categories Functions.
+		/**
+		 * Check if blog categories related widgets are disabled in pro version.
+		 *
+		 * @since    1.1.0
+		 */
+		public function wpmozo_is_blog_categories_disabled() {
+	        $plugin_options = get_option( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION );
+	        if ( defined( 'WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION' ) && isset( $plugin_options['wpmozo_inactive_widgets'] ) ) {
+	            $widgets = explode( ',', $plugin_options['wpmozo_inactive_widgets'] );
+	            if (
+	                in_array( 'blog-categories', $widgets ) 
+	            ) {
+	                return true;
+	            }
+	        } else {
+	            return false;
+	        }
+
+	        return false;
+	    }
+
+
+	/**
+	 * Add image field for category,
+	 * for add category form.
+	 * 
+	 * @since 1.19.0
+	 */
+	public function dipl_add_post_category_image_field( $taxonomy ) {
+		// Placeholder image.
+		$placeholder_image = "{$this->plugin_dir_url}includes/assets/divi-plus-placeholder-300.png";
+		?>
+		<div class="form-field term-group">
+			<label for="dipl_category_thumbnail"><?php esc_html_e( 'Category Image', 'divi-plus' ); ?></label>
+			<div id="dipl_category_thumbnail_preview" style="float:left; margin-right:10px;">
+				<img src="<?php echo esc_url( $placeholder_image ); ?>" width="60px" height="60px" />
+			</div>
+			<div style="line-height:60px;">
+				<input type="hidden" id="dipl_category_thumbnail" name="dipl_category_thumbnail" value="" />
+				<button type="button" class="dipl_upload_category_image_button button"><?php esc_html_e( 'Upload/Add image', 'divi-plus' ); ?></button>
+				<button type="button" class="dipl_remove_category_image_button button" style="display: none;"><?php esc_html_e( 'Remove image', 'divi-plus' ); ?></button>
+			</div>
+
+			<?php
+			// Nonce for security — action/field names can be anything unique.
+			wp_nonce_field( 'dipl_save_category_image', 'dipl_category_image_nonce' ); ?>
+			<div class="clear"></div>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Add image field for category,
+	 * for edit category form.
+	 * 
+	 * @since 1.19.0
+	 */
+	public function dipl_edit_post_category_image_field( $term, $taxonomy ) {
+		$image_id  = get_term_meta( $term->term_id, 'dipl_category_thumbnail', true );
+		$image_url = $image_id ? wp_get_attachment_thumb_url( $image_id ) : "{$this->plugin_dir_url}includes/assets/divi-plus-placeholder-300.png";
+		?>
+		<tr class="form-field term-group-wrap">
+			<th scope="row"><label><?php esc_html_e( 'Category Image', 'textdomain' ); ?></label></th>
+			<td>
+				<div id="dipl_category_thumbnail_preview" style="float:left; margin-right:10px;">
+					<img src="<?php echo esc_url( $image_url ); ?>" width="60px" height="60px" />
+				</div>
+				<div style="line-height:60px;">
+					<input type="hidden" id="dipl_category_thumbnail" name="dipl_category_thumbnail" value="<?php echo esc_attr( $image_id ); ?>" />
+					<button type="button" class="dipl_upload_category_image_button button"><?php esc_html_e( 'Upload/Add image', 'divi-plus' ); ?></button>
+					<button type="button" class="dipl_remove_category_image_button button"
+						style="<?php echo ( empty( $image_id ) ) ? 'display: none' : ''; ?>"
+					><?php esc_html_e( 'Remove image', 'divi-plus' ); ?></button>
+				</div>
+				<?php
+				// Nonce for security — action/field names can be anything unique.
+				wp_nonce_field( 'dipl_save_category_image', 'dipl_category_image_nonce' ); ?>
+				<div class="clear"></div>
+			</td>
+		</tr>
+		<?php
+	}
+
+	/**
+	 * Save post category image.
+	 * 
+	 * @since 1.19.0
+	 */
+	public function dipl_save_post_category_image( $term_id, $tt_id ) {
+		// Verify nonce — use wp_verify_nonce so function doesn't die (safer in hooks).
+		if (
+			! isset( $_POST['dipl_category_image_nonce'] ) ||
+			! wp_verify_nonce(
+				sanitize_text_field( wp_unslash( $_POST['dipl_category_image_nonce'] ) ),
+				'dipl_save_category_image'
+			)
+		) {
+			return;
+		}
+
+		// Optional: capability check (extra safety).
+		if ( ! current_user_can( 'manage_categories' ) ) {
+			return;
+		}
+		
+		if ( isset( $_POST['dipl_category_thumbnail'] ) ) {
+			update_term_meta( $term_id, 'dipl_category_thumbnail', absint( $_POST['dipl_category_thumbnail'] ) );
+		}
+	}
+
+	/**
+	 * Category Image column.
+	 * 
+	 * @param mixed $columns Columns array.
+	 * @return array
+	 * 
+	 * @since 1.19.0
+	 */
+	public function dipl_category_image_columns( $columns ) {
+		$new_columns = array();
+		if ( isset( $columns['cb'] ) ) {
+			$new_columns['cb'] = $columns['cb'];
+			unset( $columns['cb'] );
+		}
+
+		$new_columns['dipl_image'] = __( 'Image', 'woocommerce' );
+
+		$columns           = array_merge( $new_columns, $columns );
+		$columns['handle'] = '';
+
+		return $columns;
+	}
+
+	/**
+	 * Category image column value added.
+	 *
+	 * @param string $columns Column HTML output.
+	 * @param string $column Column name.
+	 * @param int    $id Product ID.
+	 *
+	 * @return string
+	 * 
+	 * @since 1.19.0
+	 */
+	public function dipl_category_image_column( $columns, $column, $id ) {
+		if ( 'dipl_image' === $column ) {
+
+			// Get image url.
+			$image_id  = get_term_meta( $id, 'dipl_category_thumbnail', true );
+			$image_url = $image_id ? wp_get_attachment_thumb_url( $image_id ) : "{$this->plugin_dir_url}includes/assets/divi-plus-placeholder-300.png";
+			
+			// Final Image.
+			$columns = '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr__( 'Category Image', 'dipl' ) . '" class="wp-post-image" height="48" width="48" />';
+		}
+		return $columns;
+	}
+
+	/**
+	 * Add category upload image.
+	 * 
+	 * @since 1.19.0
+	 */
+	public function dipl_blog_category_enqueue_scripts( $hook ) {
+		// Load only on category edit/add pages.
+		if ( 'edit-tags.php' !== $hook && 'term.php' !== $hook ) {
+			return;
+		}
+
+		wp_enqueue_media();
+		wp_enqueue_script( 'jquery' );
+
+		// Load image upload field script.
+		wp_enqueue_script( 'dipl-category-media-upload-script', "{$this->plugin_dir_url}includes/assets/js/category-media-upload.min.js", array('jquery'), $this->version, true );
+
+		// Localize variables.
+		wp_localize_script( 'dipl-category-media-upload-script', 'diplMediaUploadObj', array(
+			'frame_title'        => esc_html__( 'Select or Upload Image', 'divi-plus' ),
+			'upload_button_text' => esc_html__( 'Use this image', 'divi-plus' ),
+			'placeholder_image'  => "{$this->plugin_dir_url}includes/assets/divi-plus-placeholder-300.png",
+		) );
+	}
 
         /**
     	 * Check if testimonials related widgets are disabled.
