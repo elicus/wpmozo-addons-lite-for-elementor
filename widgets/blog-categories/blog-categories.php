@@ -149,13 +149,14 @@ if ( ! class_exists( 'WPMOZO_AE_Blog_Categories' ) ) {
 			/*------------------------------------
 			 * Required Variables (From Controls)
 			 *-----------------------------------*/
-			$number        = ! empty( $settings['number_of_categories'] ) ? intval( $settings['number_of_categories'] ) : 10;
-			$selected_cats = ! empty( $settings['select_categories'] ) ? $settings['select_categories'] : array();
-			$order         = ! empty( $settings['category_order'] ) ? $settings['category_order'] : 'desc';
-			$order_by      = ! empty( $settings['category_order_by'] ) ? $settings['category_order_by'] : 'name';
-			$hide_empty    = ( 'yes' === $settings['hide_empty'] );
-			$columns       = ! empty( $settings['number_of_columns'] ) ? intval( $settings['number_of_columns'] ) : 3;
-		
+			$number                = ! empty( $settings['number_of_categories'] ) ? intval( $settings['number_of_categories'] ) : 10;
+			$selected_cats         = ! empty( $settings['select_categories'] ) ? $settings['select_categories'] : array();
+			$order                 = ! empty( $settings['category_order'] ) ? $settings['category_order'] : 'desc';
+			$order_by              = ! empty( $settings['category_order_by'] ) ? $settings['category_order_by'] : 'name';
+			$hide_empty            = ( 'yes' === $settings['hide_empty'] );
+			$columns               = ! empty( $settings['number_of_columns'] ) ? intval( $settings['number_of_columns'] ) : 3;
+			$post_count_text       = ! empty( $settings['post_count_text'] ) ? $settings['post_count_text'] : 'Articles';
+			$show_as_super_number  = ( 'yes' === $settings['show_as_super_number'] );
 			/*------------------------------------
 			 * Layout & Heading Validation
 			 *-----------------------------------*/
@@ -163,12 +164,12 @@ if ( ! class_exists( 'WPMOZO_AE_Blog_Categories' ) ) {
 			$layout = wpmozo_addons_lite_for_elementor()::$public_instance
 				->wpmozo_ae_validate_layout(
 					$layout,
-					array( 'layout1', 'layout2', 'layout3', 'layout4', 'layout5', 'layout6' )
+					array( 'layout1', 'layout2', 'layout3' )
 				);
 		
 			$title_heading_level = wpmozo_addons_lite_for_elementor()::$public_instance
 				->wpmozo_ae_validate_heading_level(
-					$settings['title_heading_level'],
+					$settings['heading_level'],
 					array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' )
 				);
 		
@@ -199,98 +200,18 @@ if ( ! class_exists( 'WPMOZO_AE_Blog_Categories' ) ) {
 				return;
 			}
 		
-			/*------------------------------------
-			 * Wrapper Attributes
-			 *-----------------------------------*/
-			$this->add_render_attribute( 'outer', 'class', 'dipl_blog_categories' );
-			$this->add_render_attribute( 'wrapper', 'class', array(
-				'dipl_blog_categories_wrapper',
-				$layout, // layout1
-			) );
 			?>
-		
-			<div <?php echo $this->get_render_attribute_string( 'outer' ); ?>>
-				<div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
-					<div class="dipl_blog_categories_inner">
-		
-						<?php foreach ( $categories as $category ) :
-		
-							$cat_id    = $category->term_id;
-							$cat_name  = $category->name;
-							$cat_slug  = $category->slug;
-							$cat_count = intval( $category->count );
-							$cat_link  = get_term_link( $category );
-		
-							if ( is_wp_error( $cat_link ) ) {
-								continue;
-							}
-		
-							/*------------------------------------
-							 * Category Item Attributes
-							 *-----------------------------------*/
-							$this->add_render_attribute( 'cat_item', array(
-								'id'    => 'dipl_blog_category_' . esc_attr( $cat_id ),
-								'class' => array(
-									'dipl_blog_category_item',
-									'category_' . esc_attr( $cat_slug ),
-								),
-							) );
-		
-							/*------------------------------------
-							 * Category Background Image (Optional)
-							 *-----------------------------------*/
-							$thumb_id = get_term_meta( $cat_id, 'thumbnail_id', true );
-							if ( $thumb_id ) {
-								$image_url = wp_get_attachment_image_url( $thumb_id, 'full' );
-								if ( $image_url ) {
-									$this->add_render_attribute(
-										'cat_item',
-										'style',
-										'background-image:url(' . esc_url( $image_url ) . ');'
-									);
-								}
-							}
-							?>
-		
-							<div <?php echo $this->get_render_attribute_string( 'cat_item' ); ?>>
-								<div class="dipl_blog_category_item_inner">
-									<div class="dipl_blog_category_content">
-		
-										<<?php echo esc_attr( $title_heading_level ); ?>
-											class="dipl_blog_category_name"
-											id="<?php echo esc_attr( $cat_slug ); ?>">
-											<?php echo esc_html( $cat_name ); ?>
-										</<?php echo esc_attr( $title_heading_level ); ?>>
-		
-										<?php if ( 'yes' === $settings['show_post_count'] ) : ?>
-											<div class="dipl_blog_category_count_wrap">
-												<span class="dipl_blog_category_count">
-													<?php
-													printf(
-														esc_html__( '%d Articles', 'wpmozo-addons-lite-for-elementor' ),
-														$cat_count
-													);
-													?>
-												</span>
-											</div>
-										<?php endif; ?>
-		
-									</div>
-								</div>
-		
-								<a href="<?php echo esc_url( $cat_link ); ?>" class="dipl_abs_link">
-									<?php echo esc_html( $cat_name ); ?>
-								</a>
-							</div>
-		
-							<?php
-							$this->remove_render_attribute( 'cat_item' );
-						endforeach; ?>
-		
-					</div>
+			<div class="dipl_blog_categories">
+				<div class="dipl_blog_categories_wrapper <?php echo esc_attr( $layout ); ?>">
+					<?php
+					$layout_file = plugin_dir_path( __DIR__ ) . "blog-categories/assets/layouts/{$layout}.php";
+
+					if ( file_exists( $layout_file ) ) {
+						include $layout_file;
+					}
+					?>
 				</div>
-			</div>
-		
+			</div>	
 			<?php
 		}				
 	}

@@ -125,6 +125,9 @@ $this->add_control(
 			'7' => esc_html__( '7', 'wpmozo-addons-lite-for-elementor' ),
 		),
 		'default'     => '3',
+		'selectors'   => array(
+			'{{WRAPPER}} .dipl_blog_categories .dipl_blog_categories_inner' => 'grid-template-columns: repeat( {{VALUE}} ,1fr) !important;',
+		),
 	)
 );
 $this->add_responsive_control(
@@ -153,7 +156,9 @@ $this->add_responsive_control(
 			'unit' => 'px',
 		),
 		'size_units'     => array( 'px' ),
-		'render_type'    => 'template',
+		'selectors'   => array(
+			'{{WRAPPER}} .dipl_blog_categories .dipl_blog_categories_inner' => 'gap: {{SIZE}}{{UNIT}} !important;',
+		),
 	)
 );
 $this->add_control(
@@ -183,9 +188,10 @@ $this->add_control(
 		'label'       => esc_html__( 'Post Count Text', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::TEXT,
 		'label_block' => true,
-		'placeholder' => esc_html__( 'The categories you requested could not be found. Try changing your widget settings or create some new posts.', 'wpmozo-addons-lite-for-elementor' ),
-		'condition' => array(
-			'show_post_count' => 'yes',
+		'placeholder' => esc_html__( 'Articles', 'wpmozo-addons-lite-for-elementor' ),
+		'default'     => esc_html__( 'Articles', 'wpmozo-addons-lite-for-elementor' ),
+		'condition'   => array(
+			'show_post_count'       => 'yes',
 			'show_as_super_number!' => 'yes',
 		),
 	)
