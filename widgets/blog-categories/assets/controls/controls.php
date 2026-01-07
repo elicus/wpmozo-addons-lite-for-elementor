@@ -1,5 +1,8 @@
 <?php
-// if this file is called directly, abort.
+/**
+ * If this file is called directly, abort.
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -63,7 +66,7 @@ $this->start_controls_section(
 				'name'          => esc_html__( 'Name', 'wpmozo-addons-lite-for-elementor' ),
 				'slug'          => esc_html__( 'Slug', 'wpmozo-addons-lite-for-elementor' ),
 				'term_id'       => esc_html__( 'Term ID', 'wpmozo-addons-lite-for-elementor' ),
-				'post_count'    => esc_html__( 'Post Count', 'wpmozo-addons-lite-for-elementor' ),
+				'count'         => esc_html__( 'Post Count', 'wpmozo-addons-lite-for-elementor' ),
 				'menu_order'    => esc_html__( 'Menu Order', 'wpmozo-addons-lite-for-elementor' ),
 			),
 			'default'     => 'name',
@@ -126,7 +129,7 @@ $this->add_control(
 		),
 		'default'     => '3',
 		'selectors'   => array(
-			'{{WRAPPER}} .dipl_blog_categories .dipl_blog_categories_inner' => 'grid-template-columns: repeat( {{VALUE}} ,1fr) !important;',
+			'{{WRAPPER}} .wpmozo_blog_categories .wpmozo_blog_categories_inner' => 'grid-template-columns: repeat( {{VALUE}} ,1fr) !important;',
 		),
 	)
 );
@@ -157,7 +160,7 @@ $this->add_responsive_control(
 		),
 		'size_units'     => array( 'px' ),
 		'selectors'   => array(
-			'{{WRAPPER}} .dipl_blog_categories .dipl_blog_categories_inner' => 'gap: {{SIZE}}{{UNIT}} !important;',
+			'{{WRAPPER}} .wpmozo_blog_categories .wpmozo_blog_categories_inner' => 'gap: {{SIZE}}{{UNIT}} !important;',
 		),
 	)
 );
@@ -262,7 +265,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_blog_category_name' => 'text-align: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_blog_category_name' => 'text-align: {{VALUE}};',
 		),
 	)
 );
@@ -271,7 +274,7 @@ $this->add_group_control(
 	array(
 		'name'      => 'heading_text_shadow',
 		'label'     => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-		'selector'  => '{{WRAPPER}} .dipl_blog_category_name',
+		'selector'  => '{{WRAPPER}} .wpmozo_blog_category_name',
 		'separator' => 'before',
 	)
 );
@@ -290,7 +293,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Title Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_blog_category_name' => 'color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_blog_category_name' => 'color: {{VALUE}}; transition: 300ms;',
 		),
 	)
 );
@@ -299,10 +302,9 @@ $this->add_group_control(
 	array(
 		'name'     => 'title_typography',
 		'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
-		'selector' => '{{WRAPPER}} .dipl_blog_category_name',
+		'selector' => '{{WRAPPER}} .wpmozo_blog_category_name',
 	)
 );
-
 $this->end_controls_tab();
 $this->start_controls_tab(
 	'post_heading_hover_tab',
@@ -316,7 +318,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Title Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_blog_category_name:hover' => 'color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_blog_category_name:hover' => 'color: {{VALUE}}; transition: 300ms;',
 		),
 	)
 );
@@ -325,7 +327,7 @@ $this->add_group_control(
 	array(
 		'name'     => 'title_typography_hover',
 		'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
-		'selector' => '{{WRAPPER}} .dipl_blog_category_name:hover',
+		'selector' => '{{WRAPPER}} .wpmozo_blog_category_name:hover',
 	)
 );
 $this->end_controls_tab();
@@ -358,7 +360,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_blog_category_count' => 'text-align: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_blog_category_count_wrap' => 'text-align: {{VALUE}};',
 		),
 	)
 );
@@ -372,7 +374,7 @@ $this->add_responsive_control(
 			'unit' => 'px',
 		),
 		'selectors'  => array(
-			'{{WRAPPER}} .dipl_blog_category_count' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_blog_category_count' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
 	)
 );
@@ -386,7 +388,7 @@ $this->add_responsive_control(
 			'unit' => 'px',
 		),
 		'selectors'  => array(
-			'{{WRAPPER}} .dipl_blog_category_count' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_blog_category_count' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
 	)
 );
@@ -405,8 +407,16 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Post Count Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_blog_category_count' => 'color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_blog_category_count' => 'color: {{VALUE}}; transition: 300ms;',
 		),
+	)
+);
+$this->add_group_control(
+	Group_Control_Typography::get_type(),
+	array(
+		'name'     => 'post_count_typography',
+		'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
+		'selector' => '{{WRAPPER}} .wpmozo_blog_category_count',
 	)
 );
 $this->add_group_control(
@@ -419,19 +429,16 @@ $this->add_group_control(
 				'label'   => esc_html__( 'Post Count Background', 'wpmozo-addons-lite-for-elementor' ),
 				'default' => 'classic',
 			),
-			'color'      => array(
-				'default' => 'rgba(244,244,244,0.7)',
-			),
 		),
 		'toggle'         => false,
-		'selector'       => '{{WRAPPER}} .dipl_blog_category_count',
+		'selector'       => '{{WRAPPER}} .wpmozo_blog_category_count',
 	)
 );
 $this->add_group_control(
 	Group_Control_Border::get_type(),
 	array(
 		'name'           => 'post_border',
-		'selector'       => '{{WRAPPER}} .dipl_blog_category_count',
+		'selector'       => '{{WRAPPER}} .wpmozo_blog_category_count',
 		'fields_options' => array(
 			'border' => array( 'label' => esc_html__( 'Post Count Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
 			'width'  => array( 'label' => esc_html__( 'Post Count Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
@@ -447,7 +454,7 @@ $this->add_responsive_control(
 		'label_block' => true,
 		'size_units'  => array( 'px', 'em', '%' ),
 		'selectors'   => array(
-			'{{WRAPPER}} .dipl_blog_category_count' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};overflow:hidden;transition:all 300ms;',
+			'{{WRAPPER}} .wpmozo_blog_category_count' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};overflow:hidden;transition:all 300ms;',
 		),
 	)
 );
@@ -464,8 +471,16 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Post Count Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_blog_category_count:hover' => 'color: {{VALUE}}; transition: 300ms;',
+			'{{WRAPPER}} .wpmozo_blog_category_count:hover' => 'color: {{VALUE}}; transition: 300ms;',
 		),
+	)
+);
+$this->add_group_control(
+	Group_Control_Typography::get_type(),
+	array(
+		'name'     => 'post_count_typography_hover',
+		'label'    => esc_html__( 'Typography', 'wpmozo-addons-lite-for-elementor' ),
+		'selector' => '{{WRAPPER}} .wpmozo_blog_category_count:hover',
 	)
 );
 $this->add_group_control(
@@ -480,14 +495,14 @@ $this->add_group_control(
 			),
 		),
 		'toggle'         => false,
-		'selector'       => '{{WRAPPER}} .dipl_blog_category_count:hover',
+		'selector'       => '{{WRAPPER}} .wpmozo_blog_category_count:hover',
 	)
 );
 $this->add_group_control(
 	Group_Control_Border::get_type(),
 	array(
 		'name'           => 'post_count_border_hover',
-		'selector'       => '{{WRAPPER}} .dipl_blog_category_count:hover',
+		'selector'       => '{{WRAPPER}} .wpmozo_blog_category_count:hover',
 		'fields_options' => array(
 			'border' => array( 'label' => esc_html__( 'Post Count Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
 			'width'  => array( 'label' => esc_html__( 'Post Count Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
@@ -503,7 +518,7 @@ $this->add_responsive_control(
 		'label_block' => true,
 		'size_units'  => array( 'px', 'em', '%' ),
 		'selectors'   => array(
-			'{{WRAPPER}} .dipl_blog_category_count:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_blog_category_count:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
 		),
 	)
 );
@@ -514,7 +529,7 @@ $this->add_group_control(
 	array(
 		'name'      => 'post_count_text_shadow',
 		'label'     => esc_html__( 'Post Count Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
-		'selector'  => '{{WRAPPER}} .dipl_blog_category_count',
+		'selector'  => '{{WRAPPER}} .wpmozo_blog_category_count',
 		'separator' => 'before',
 	)
 );
@@ -558,7 +573,7 @@ $this->add_responsive_control(
 			'thumbnail_custom_width' => 'yes',
 		),
 		'selectors'  => array(
-			'{{WRAPPER}} .wpmozo_readmore_button' => 'width: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_category_image_wrapper img' => 'width: {{SIZE}}{{UNIT}};min-width: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -591,7 +606,7 @@ $this->add_responsive_control(
 			'thumbnail_custom_height' => 'yes',
 		),
 		'selectors'  => array(
-			'{{WRAPPER}} .wpmozo_readmore_button' => 'height: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_category_image_wrapper img' => 'height: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -605,7 +620,7 @@ $this->add_responsive_control(
 			'unit' => 'px',
 		),
 		'selectors'  => array(
-			'{{WRAPPER}} .wpmozo_advanced_blog_slider .wpmozo_swiper_wrapper .wpmozo_swiper_layout .wpmozo_advanced_blog_post_slide .wpmozo_advanced_blog_slider_post .wpmozo_advanced_blog_slider_content_wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_category_image_wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
 	)
 );
@@ -613,7 +628,7 @@ $this->add_group_control(
 	Group_Control_Box_Shadow::get_type(),
 	array(
 		'name'           => 'thumbnail_box_shadow',
-		'selector'       => '{{WRAPPER}} .wpmozo_wrapper .wpmozo_advanced_blog_slider_post',
+		'selector'       => '{{WRAPPER}} .wpmozo_category_image_wrapper img',
 		'fields_options' => array(
 			'box-shadow' => array(
 				'label' => esc_html__( 'Thumbnail Box Shadow', 'wpmozo-addons-lite-for-elementor' ),
@@ -632,7 +647,7 @@ $this->add_group_control(
 	Group_Control_Border::get_type(),
 	array(
 		'name'           => 'thumbnail_border',
-		'selector'       => '{{WRAPPER}} .wpmozo_wrapper .wpmozo_advanced_blog_slider_post_image',
+		'selector'       => '{{WRAPPER}} .wpmozo_category_image_wrapper img',
 		'fields_options' => array(
 			'border' => array( 'label' => esc_html__( 'Thumbnail Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
 			'width'  => array( 'label' => esc_html__( 'Thumbnail Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
@@ -648,7 +663,7 @@ $this->add_responsive_control(
 		'label_block' => true,
 		'size_units'  => array( 'px', 'em', '%' ),
 		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_wrapper .wpmozo_advanced_blog_slider_post_image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
+			'{{WRAPPER}} .wpmozo_category_image_wrapper img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
 		),
 	)
 );
@@ -663,7 +678,7 @@ $this->add_group_control(
 	Group_Control_Border::get_type(),
 	array(
 		'name'           => 'thumbnail_hover_border',
-		'selector'       => '{{WRAPPER}} .wpmozo_wrapper .wpmozo_advanced_blog_slider_post_image:hover',
+		'selector'       => '{{WRAPPER}} .wpmozo_category_image_wrapper img:hover',
 		'fields_options' => array(
 			'border' => array( 'label' => esc_html__( 'Thumbnail Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
 			'width'  => array( 'label' => esc_html__( 'Thumbnail Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
@@ -679,7 +694,7 @@ $this->add_responsive_control(
 		'label_block' => true,
 		'size_units'  => array( 'px', 'em', '%' ),
 		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_wrapper .wpmozo_advanced_blog_slider_post_image:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_category_image_wrapper img:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
 		),
 	)
 );
@@ -703,13 +718,9 @@ $this->add_group_control(
 				'label'   => esc_html__( 'Item Background', 'wpmozo-addons-lite-for-elementor' ),
 				'default' => 'classic',
 			),
-			'color'      => array(
-				'default' => 'rgba(244,244,244,0.7)',
-			),
 		),
 		'toggle'         => false,
-		'selector'       => '{{WRAPPER}} .dipl_blog_categories_wrapper.layout1 .dipl_blog_category_item::before',
-							'{{WRAPPER}} .dipl_blog_categories_wrapper:not(.layout1) .dipl_blog_category_item',
+		'selector'       => '{{WRAPPER}} .wpmozo_blog_categories_wrapper.layout1 .wpmozo_blog_category_item::before, {{WRAPPER}} .wpmozo_blog_categories_wrapper:not(.layout1) .wpmozo_blog_category_item',
 	)
 );
 $this->add_responsive_control(
@@ -722,7 +733,7 @@ $this->add_responsive_control(
 			'unit' => 'px',
 		),
 		'selectors'  => array(
-			'{{WRAPPER}} .dipl_blog_categories_wrapper .dipl_blog_category_item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_blog_categories_wrapper .wpmozo_blog_category_item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
 	)
 );
@@ -730,7 +741,7 @@ $this->add_group_control(
 	Group_Control_Box_Shadow::get_type(),
 	array(
 		'name'           => 'category_item_box_shadow',
-		'selector'       => '{{WRAPPER}} .dipl_blog_categories_wrapper .dipl_blog_category_item',
+		'selector'       => '{{WRAPPER}} .wpmozo_blog_categories_wrapper .wpmozo_blog_category_item',
 		'fields_options' => array(
 			'box-shadow' => array(
 				'label' => esc_html__( 'Item Box Shadow', 'wpmozo-addons-lite-for-elementor' ),
@@ -749,7 +760,7 @@ $this->add_group_control(
 	Group_Control_Border::get_type(),
 	array(
 		'name'           => 'category_item_border',
-		'selector'       => '{{WRAPPER}} .dipl_blog_categories_wrapper .dipl_blog_category_item',
+		'selector'       => '{{WRAPPER}} .wpmozo_blog_categories_wrapper .wpmozo_blog_category_item',
 		'fields_options' => array(
 			'border' => array( 'label' => esc_html__( 'Item Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
 			'width'  => array( 'label' => esc_html__( 'Item Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
@@ -765,7 +776,7 @@ $this->add_responsive_control(
 		'label_block' => true,
 		'size_units'  => array( 'px', 'em', '%' ),
 		'selectors'   => array(
-			'{{WRAPPER}} .dipl_blog_categories_wrapper .dipl_blog_category_item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
+			'{{WRAPPER}} .wpmozo_blog_categories_wrapper .wpmozo_blog_category_item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
 		),
 	)
 );
@@ -780,7 +791,7 @@ $this->add_group_control(
 	Group_Control_Border::get_type(),
 	array(
 		'name'           => 'category_item_hover_border',
-		'selector'       => '{{WRAPPER}} .dipl_blog_categories_wrapper .dipl_blog_category_item',
+		'selector'       => '{{WRAPPER}} .wpmozo_blog_categories_wrapper .wpmozo_blog_category_item',
 		'fields_options' => array(
 			'border' => array( 'label' => esc_html__( 'Item Border Type', 'wpmozo-addons-lite-for-elementor' ) ),
 			'width'  => array( 'label' => esc_html__( 'Item Border Width', 'wpmozo-addons-lite-for-elementor' ) ),
@@ -796,7 +807,7 @@ $this->add_responsive_control(
 		'label_block' => true,
 		'size_units'  => array( 'px', 'em', '%' ),
 		'selectors'   => array(
-			'{{WRAPPER}} .dipl_blog_categories_wrapper .dipl_blog_category_item:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_blog_categories_wrapper .wpmozo_blog_category_item:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};transition:all 300ms;',
 		),
 	)
 );

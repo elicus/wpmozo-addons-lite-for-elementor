@@ -98,26 +98,11 @@ if ( ! class_exists( 'WPMOZO_AE_Blog_Categories' ) ) {
 		 * @return style handle.
 		 */
 		public function get_style_depends() {
-			wp_register_style( 'wpmozo-ae-blog-categories-style', plugins_url( 'assets/css/style.min.css', __FILE__ ) );
+			wp_register_style( 'wpmozo-ae-blog-categories-style', plugins_url( 'assets/css/style.min.css', __FILE__ ), null, WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION );
 
-			return array( 'wpmozo-ae-blog-categories-style', 'wpmozo-ae-swiper-style', 'wpmozo-ae-font-awesome-style' );
+			return array( 'wpmozo-ae-blog-categories-style' );
 		}
 
-		/**
-		 * Get script dependencies.
-		 *
-		 * Retrieve the list of script dependencies the element requires.
-		 *
-		 * @since 1.7.0
-		 * @access public
-		 *
-		 * @return array Element scripts dependencies.
-		 */
-		public function get_script_depends() {
-			wp_register_script( 'wpmozo-blog-categories-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION, true );
-
-			return array( 'wpmozo-blog-categories-script', 'wpmozo-ae-swiper' );
-		}
 
 		/**
 		 * Register widget controls.
@@ -144,38 +129,29 @@ if ( ! class_exists( 'WPMOZO_AE_Blog_Categories' ) ) {
 		 */
 		protected function render() {
 
-			$settings = $this->get_settings_for_display();
-		
-			/*------------------------------------
-			 * Required Variables (From Controls)
-			 *-----------------------------------*/
-			$number                = ! empty( $settings['number_of_categories'] ) ? intval( $settings['number_of_categories'] ) : 10;
-			$selected_cats         = ! empty( $settings['select_categories'] ) ? $settings['select_categories'] : array();
-			$order                 = ! empty( $settings['category_order'] ) ? $settings['category_order'] : 'desc';
-			$order_by              = ! empty( $settings['category_order_by'] ) ? $settings['category_order_by'] : 'name';
-			$hide_empty            = ( 'yes' === $settings['hide_empty'] );
-			$columns               = ! empty( $settings['number_of_columns'] ) ? intval( $settings['number_of_columns'] ) : 3;
-			$post_count_text       = ! empty( $settings['post_count_text'] ) ? $settings['post_count_text'] : 'Articles';
-			$show_as_super_number  = ( 'yes' === $settings['show_as_super_number'] );
-			/*------------------------------------
-			 * Layout & Heading Validation
-			 *-----------------------------------*/
+			$settings             = $this->get_settings_for_display();
+			$number               = ! empty( $settings['number_of_categories'] ) ? intval( $settings['number_of_categories'] ) : 10;
+			$selected_cats        = ! empty( $settings['select_categories'] ) ? $settings['select_categories'] : array();
+			$order                = ! empty( $settings['category_order'] ) ? $settings['category_order'] : 'desc';
+			$order_by             = ! empty( $settings['category_order_by'] ) ? $settings['category_order_by'] : 'name';
+			$hide_empty           = ( 'yes' === $settings['hide_empty'] );
+			$columns              = ! empty( $settings['number_of_columns'] ) ? intval( $settings['number_of_columns'] ) : 3;
+			$post_count_text      = ! empty( $settings['post_count_text'] ) ? $settings['post_count_text'] : 'Articles';
+			$show_as_super_number = ( 'yes' === $settings['show_as_super_number'] );
+
 			$layout = esc_attr( $settings['layout'] );
 			$layout = wpmozo_addons_lite_for_elementor()::$public_instance
 				->wpmozo_ae_validate_layout(
 					$layout,
 					array( 'layout1', 'layout2', 'layout3' )
 				);
-		
+
 			$title_heading_level = wpmozo_addons_lite_for_elementor()::$public_instance
 				->wpmozo_ae_validate_heading_level(
 					$settings['heading_level'],
 					array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' )
 				);
-		
-			/*------------------------------------
-			 * Category Query Args
-			 *-----------------------------------*/
+
 			$args = array(
 				'taxonomy'   => 'category',
 				'number'     => $number,
@@ -183,26 +159,23 @@ if ( ! class_exists( 'WPMOZO_AE_Blog_Categories' ) ) {
 				'order'      => $order,
 				'hide_empty' => $hide_empty,
 			);
-		
+
 			if ( ! empty( $selected_cats ) ) {
 				$args['include'] = array_map( 'intval', $selected_cats );
 			}
-		
+
 			$categories = get_terms( $args );
-		
-			/*------------------------------------
-			 * No Result
-			 *-----------------------------------*/
+
 			if ( empty( $categories ) || is_wp_error( $categories ) ) {
 				if ( ! empty( $settings['no_result_text'] ) ) {
-					echo '<div class="dipl_no_result">' . esc_html( $settings['no_result_text'] ) . '</div>';
+					echo '<div class="wpmozo_no_result">' . esc_html( $settings['no_result_text'] ) . '</div>';
 				}
 				return;
 			}
-		
+
 			?>
-			<div class="dipl_blog_categories">
-				<div class="dipl_blog_categories_wrapper <?php echo esc_attr( $layout ); ?>">
+			<div class="wpmozo_blog_categories">
+				<div class="wpmozo_blog_categories_wrapper <?php echo esc_attr( $layout ); ?>">
 					<?php
 					$layout_file = plugin_dir_path( __DIR__ ) . "blog-categories/assets/layouts/{$layout}.php";
 
@@ -213,6 +186,6 @@ if ( ! class_exists( 'WPMOZO_AE_Blog_Categories' ) ) {
 				</div>
 			</div>	
 			<?php
-		}				
+		}
 	}
 }

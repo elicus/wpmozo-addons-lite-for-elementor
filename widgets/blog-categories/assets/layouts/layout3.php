@@ -1,13 +1,17 @@
 <?php
-// Exit if accessed directly
+/**
+ * If this file is called directly, abort.
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
 
-<div class="dipl_blog_categories_inner">
+<div class="wpmozo_blog_categories_inner">
 
-	<?php foreach ( $categories as $category ) :
+	<?php
+	foreach ( $categories as $category ) :
 
 		$cat_id    = $category->term_id;
 		$cat_name  = $category->name;
@@ -15,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		$cat_link  = get_term_link( $category );
 		$cat_count = $category->count;
 
-		// Category Thumbnail
+		// Category Thumbnail.
 		$thumbnail_id = get_term_meta( $cat_id, 'wpmozo_category_thumbnail', true );
 		$image_html   = '';
 
@@ -33,34 +37,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
 
 		<div
-			id="dipl_blog_category_<?php echo esc_attr( $cat_id ); ?>"
-			class="dipl_blog_category_item category_<?php echo esc_attr( $cat_slug ); ?>"
+			id="wpmozo_blog_category_<?php echo esc_attr( $cat_id ); ?>"
+			class="wpmozo_blog_category_item category_<?php echo esc_attr( $cat_slug ); ?>"
 		>
-			<div class="dipl_blog_category_item_inner">
+			<div class="wpmozo_blog_category_item_inner">
 
 				<?php if ( ! empty( $image_html ) ) : ?>
-					<div class="dipl_category_image_wrapper">
+					<div class="wpmozo_category_image_wrapper">
 						<?php echo $image_html; ?>
 					</div>
 				<?php endif; ?>
 
-				<div class="dipl_blog_category_content">
+				<div class="wpmozo_blog_category_content">
 					<<?php echo esc_html( $title_heading_level ); ?>
-						class="dipl_blog_category_name"
+						class="wpmozo_blog_category_name"
 						id="<?php echo esc_attr( $cat_slug ); ?>">
 						<?php echo esc_html( $cat_name ); ?>
 					</<?php echo esc_html( $title_heading_level ); ?>>
 				</div>
 
 				<?php if ( 'yes' === $settings['show_post_count'] ) : ?>
-					<span class="dipl_blog_category_count">
+					<span class="wpmozo_blog_category_count">
 						<?php echo esc_html( $cat_count ); ?>
 					</span>
 				<?php endif; ?>
 
 			</div>
 
-			<a href="<?php echo esc_url( $cat_link ); ?>" class="dipl_abs_link">
+			<a href="<?php echo esc_url( $cat_link ); ?>" class="wpmozo_abs_link">
 				<?php echo esc_html( $cat_name ); ?>
 			</a>
 		</div>

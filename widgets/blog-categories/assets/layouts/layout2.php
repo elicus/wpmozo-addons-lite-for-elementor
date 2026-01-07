@@ -1,13 +1,17 @@
 <?php
-// Exit if accessed directly
+/**
+ * If this file is called directly, abort.
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
 
-<div class="dipl_blog_categories_inner">
+<div class="wpmozo_blog_categories_inner">
 
-	<?php foreach ( $categories as $category ) :
+	<?php
+	foreach ( $categories as $category ) :
 
 		$cat_id    = $category->term_id;
 		$cat_name  = $category->name;
@@ -15,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		$cat_link  = get_term_link( $category );
 		$cat_count = $category->count;
 
-		// Category Thumbnail
+		// Category Thumbnail.
 		$thumbnail_id = get_term_meta( $cat_id, 'wpmozo_category_thumbnail', true );
 		$image_html   = '';
 
@@ -33,37 +37,38 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
 
 		<div
-			id="dipl_blog_category_<?php echo esc_attr( $cat_id ); ?>"
-			class="dipl_blog_category_item category_<?php echo esc_attr( $cat_slug ); ?>"
+			id="wpmozo_blog_category_<?php echo esc_attr( $cat_id ); ?>"
+			class="wpmozo_blog_category_item category_<?php echo esc_attr( $cat_slug ); ?>"
 		>
-			<div class="dipl_blog_category_item_inner">
-				<div class="dipl_blog_category_content">
+			<div class="wpmozo_blog_category_item_inner">
+				<div class="wpmozo_blog_category_content">
 
 					<?php if ( ! empty( $image_html ) ) : ?>
-						<div class="dipl_category_image_wrapper">
+						<div class="wpmozo_category_image_wrapper">
 							<?php echo $image_html; ?>
 						</div>
 					<?php endif; ?>
 
 					<<?php echo esc_html( $title_heading_level ); ?>
-						class="dipl_blog_category_name"
+						class="wpmozo_blog_category_name"
 						id="<?php echo esc_attr( $cat_slug ); ?>">
 						<?php echo esc_html( $cat_name ); ?>
 						<?php if ( 'yes' === $settings['show_as_super_number'] ) { ?>
-							<span class="dipl_blog_category_count dipl_sup_number">
+							<span class="wpmozo_blog_category_count wpmozo_sup_number">
 								(<?php echo esc_html( $cat_count ); ?>)
 							</span>
 						<?php } ?>
 					</<?php echo esc_html( $title_heading_level ); ?>>
 
 					<?php if ( 'yes' === $settings['show_post_count'] ) : ?>
-						<div class="dipl_blog_category_count_wrap">
+						<div class="wpmozo_blog_category_count_wrap">
 						<?php
-							if ( ! empty( $settings['post_count_text'] ) && 'yes' !== $settings['show_as_super_number'] ) { ?>
-								<span class="dipl_blog_category_count">
+						if ( ! empty( $settings['post_count_text'] ) && 'yes' !== $settings['show_as_super_number'] ) {
+							?>
+								<span class="wpmozo_blog_category_count">
 									<?php
-										echo esc_html( $cat_count );
-										echo ' ' . esc_html( $settings['post_count_text'] );
+									echo esc_html( $cat_count );
+									echo ' ' . esc_html( $settings['post_count_text'] );
 									?>
 								</span>
 							<?php } ?>
@@ -73,7 +78,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 			</div>
 
-			<a href="<?php echo esc_url( $cat_link ); ?>" class="dipl_abs_link">
+			<a href="<?php echo esc_url( $cat_link ); ?>" class="wpmozo_abs_link">
 				<?php echo esc_html( $cat_name ); ?>
 			</a>
 		</div>
