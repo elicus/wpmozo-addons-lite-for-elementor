@@ -114,7 +114,7 @@ if ( ! class_exists( 'WPMOZO_AE_Sticky_Video' ) ) {
 		public function get_script_depends() {
 			wp_register_script( 'wpmozo-ae-sticky-video-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
-			return array(  'wpmozo-ae-sticky-video-script' );
+			return array( 'wpmozo-ae-sticky-video-script' );
 		}
 
 		/**
@@ -133,7 +133,11 @@ if ( ! class_exists( 'WPMOZO_AE_Sticky_Video' ) ) {
 
 
 		/**
-		 * Check YouTube URL and return video ID
+		 * Check YouTube URL and return video ID.
+		 *
+		 * @param string $url Video URL.
+		 *
+		 * @return string|false YouTube video ID on success, false on failure.
 		 */
 		private function get_youtube_id( $url ) {
 			if ( preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $matches ) ) {
@@ -143,7 +147,11 @@ if ( ! class_exists( 'WPMOZO_AE_Sticky_Video' ) ) {
 		}
 
 		/**
-		 * Check Vimeo URL and return video ID
+		 * Check Vimeo URL and return video ID.
+		 *
+		 * @param string $url Video URL.
+		 *
+		 * @return string|false Vimeo video ID on success, false on failure.
 		 */
 		private function get_vimeo_id( $url ) {
 			if ( preg_match( '/vimeo\.com\/(?:video\/)?([0-9]+)/', $url, $matches ) ) {
@@ -163,15 +171,15 @@ if ( ! class_exists( 'WPMOZO_AE_Sticky_Video' ) ) {
 		protected function render() {
 
 			$settings = $this->get_settings_for_display();
-		
+
 			$sticky_video   = $settings['sticky_video']['url'] ?? '';
 			$video_image    = $settings['video_image']['url'] ?? '';
 			$play_icon      = $settings['play_icon'] ?? '';
 			$video_position = $settings['video_position'] ?? 'bottom_right';
-		
+
 			$youtube_id = $sticky_video ? $this->get_youtube_id( $sticky_video ) : false;
 			$vimeo_id   = $sticky_video ? $this->get_vimeo_id( $sticky_video ) : false;
-		
+
 			$this->add_render_attribute(
 				'sticky_inner',
 				'class',
@@ -180,13 +188,13 @@ if ( ! class_exists( 'WPMOZO_AE_Sticky_Video' ) ) {
 					'wpmozo_position_' . esc_attr( $video_position ),
 				)
 			);
-		
+
 			$this->add_render_attribute(
 				'video_overlay',
 				'class',
 				'wpmozo_video_overlay'
 			);
-		
+
 			if ( ! empty( $video_image ) ) {
 				$this->add_render_attribute(
 					'video_overlay',
@@ -250,6 +258,6 @@ if ( ! class_exists( 'WPMOZO_AE_Sticky_Video' ) ) {
 				</div>
 			</div>
 			<?php
-		}				
+		}
 	}
 }

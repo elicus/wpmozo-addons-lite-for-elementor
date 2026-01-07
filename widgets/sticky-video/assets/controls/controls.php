@@ -44,9 +44,9 @@ $this->start_controls_section(
 $this->add_control(
 	'video_image',
 	array(
-		'label'      => esc_html__( 'Add Image', 'wpmozo-addons-lite-for-elementor' ),
-		'type'       => Controls_Manager::MEDIA,
-		'default'   => array(
+		'label'   => esc_html__( 'Add Image', 'wpmozo-addons-lite-for-elementor' ),
+		'type'    => Controls_Manager::MEDIA,
+		'default' => array(
 			'url' => Utils::get_placeholder_image_src(),
 		),
 	)
@@ -99,10 +99,10 @@ $this->add_control(
 		'label_block'  => false,
 		'type'         => Controls_Manager::SELECT,
 		'options'      => array(
-			'top_left'      => esc_html__( 'Top Left', 'wpmozo-addons-lite-for-elementor' ),
-			'top_right'     => esc_html__( 'Top Right', 'wpmozo-addons-lite-for-elementor' ),
-			'bottom_left'   => esc_html__( 'Bottom Left', 'wpmozo-addons-lite-for-elementor' ),
-			'bottom_right'  => esc_html__( 'Bottom Right', 'wpmozo-addons-lite-for-elementor' ),
+			'top_left'     => esc_html__( 'Top Left', 'wpmozo-addons-lite-for-elementor' ),
+			'top_right'    => esc_html__( 'Top Right', 'wpmozo-addons-lite-for-elementor' ),
+			'bottom_left'  => esc_html__( 'Bottom Left', 'wpmozo-addons-lite-for-elementor' ),
+			'bottom_right' => esc_html__( 'Bottom Right', 'wpmozo-addons-lite-for-elementor' ),
 		),
 		'default'      => 'bottom_right',
 		'prefix_class' => 'wpmozo_content_pos_',
@@ -230,9 +230,9 @@ $this->start_controls_section(
 $this->add_responsive_control(
 	'play_icon',
 	array(
-		'label'     => esc_html__( 'Icon', 'wpmozo-addons-lite-for-elementor' ),
-		'type'      => Controls_Manager::ICONS,
-		'default'   => array(
+		'label'   => esc_html__( 'Icon', 'wpmozo-addons-lite-for-elementor' ),
+		'type'    => Controls_Manager::ICONS,
+		'default' => array(
 			'value'   => 'far fa-play-circle',
 			'library' => 'fa-regular',
 		),
@@ -294,7 +294,7 @@ $this->add_responsive_control(
 			'{{WRAPPER}} .wpmozo_sticky_video .wpmozo_video_play span.wpmozo_play_icon' => 'font-size: {{SIZE}}{{UNIT}};',
 			'{{WRAPPER}} .wpmozo_sticky_video .wpmozo_video_play svg.wpmozo_play_icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 		),
-		'condition'    => array(
+		'condition'  => array(
 			'custom_icon_size' => 'yes',
 		),
 	)
@@ -342,7 +342,7 @@ $this->add_responsive_control(
 			'{{WRAPPER}} .wpmozo_sticky_video .wpmozo_video_play span.wpmozo_play_icon:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 			'{{WRAPPER}} .wpmozo_sticky_video .wpmozo_video_play svg.wpmozo_play_icon:hover' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 		),
-		'condition'    => array(
+		'condition'  => array(
 			'custom_icon_size' => 'yes',
 		),
 	)
