@@ -4,7 +4,7 @@
  *
  * @since      1.0.0
  * @author     Elicus <hello@elicus.com>
- * @copyright  2025 Elicus Technologies Private Limited
+ * @copyright  2026 Elicus Technologies Private Limited
  */
 
 // if this file is called directly, abort.
@@ -156,7 +156,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 
 			wp_localize_script(
 				$this->plugin_name,
-				'admin_ajax_object',
+				'wpmozo_ae_lite_admin_ajax_object',
 				array(
 					'ajaxurl'    => admin_url( 'admin-ajax.php' ),
 					'ajax_nonce' => $nonce,
@@ -206,11 +206,13 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 						    ?>
 						</ul>
 					</div>
-						<div class="wpmozo_ae_banner">
-							<a href="https://wpmozo.com/black-friday#wpmz-ae-bf-sale" target="_blank">
-								<img src="https://cdn.wpmozoaddons.com/wpmozo-addons-for-elementor/thumbnails/sale-banner/wpmozo-sale-banner.webp">
-							</a>
-						</div>
+					<?php if (!defined('WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION')){ ?>
+					<div class="wpmozo_ae_banner">
+						<a href="https://wpmozo.com/black-friday#wpmz-ae-bf-sale" target="_blank">
+							<img src="https://cdn.wpmozoaddons.com/wpmozo-addons-for-elementor/thumbnails/sale-banner/wpmozo-sale-banner.webp">
+						</a>
+					</div>
+					<?php } ?>
 					<div class="wpmozo_ae_panel_section_wrapper" >
 						<?php include_once plugin_dir_path( __FILE__ ) . 'partials/admin-display.php'; ?>
 						<?php
@@ -363,6 +365,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 					'show_ui'           => true,
 					'show_in_menu'      => true,
 					'show_in_nav_menus' => true,
+					'show_in_rest'      => true,
 					'has_archive'       => true,
 					'query_var'         => true,
 					'capability_type'   => 'post',
@@ -402,6 +405,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 					'show_ui'           => true,
 					'show_in_menu'      => true,
 					'show_in_nav_menus' => true,
+					'show_in_rest'      => true,
 					'has_archive'       => true,
 					'query_var'         => true,
 					'capability_type'   => 'post',

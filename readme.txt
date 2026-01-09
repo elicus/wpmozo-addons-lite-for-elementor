@@ -2,8 +2,8 @@
 Contributors: elicus
 Tags: elementor, page builder, addons, elementor extension, elementor addon
 Requires at least: 5.3
-Tested up to: 6.8
-Stable tag: 1.8.1
+Tested up to: 6.9
+Stable tag: 1.8.2
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -277,7 +277,7 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
-2025-11-21 - Version 1.8.1
-- FIXED: Issue with Hover List widget styles with site editor.
+2026-01-10 - Version 1.8.2
+- FIXED: Issue with Testimonial Slider, Floating Image and Advanced Tooltip widget styles.
 
 [See changelog for all versions](https://plugins.svn.wordpress.org/wpmozo-addons-lite-for-elementor/trunk/changelog.txt).
