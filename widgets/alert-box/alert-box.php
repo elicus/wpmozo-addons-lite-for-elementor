@@ -7,14 +7,14 @@
  */
 
 // If this file is called directly, abort.
-if ( !defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use \Elementor\Widget_Base;
-use \Elementor\Icons_Manager;
+use Elementor\Widget_Base;
+use Elementor\Icons_Manager;
 
-if ( !class_exists( 'WPMOZO_AE_Alert_Box' ) ) {
+if ( ! class_exists( 'WPMOZO_AE_Alert_Box' ) ) {
 	class WPMOZO_AE_Alert_Box extends Widget_Base {
 		/**
 		 * Get widget name.
@@ -55,7 +55,7 @@ if ( !class_exists( 'WPMOZO_AE_Alert_Box' ) ) {
 		 * @return array Widget keywords.
 		 */
 		public function get_keywords() {
-			return array( 'wpmz alert box','wpmozo alert box' );
+			return array( 'wpmz alert box', 'wpmozo alert box' );
 		}
 
 		/**
@@ -112,7 +112,7 @@ if ( !class_exists( 'WPMOZO_AE_Alert_Box' ) ) {
 		 * @return array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-			wp_register_script( 'wpmozo-ae-alert-box-script', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
+			wp_register_script( 'wpmozo-ae-alert-box-script', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
 			return array( 'wpmozo-ae-alert-box-script' );
 		}
@@ -127,7 +127,7 @@ if ( !class_exists( 'WPMOZO_AE_Alert_Box' ) ) {
 		 */
 		protected function register_controls() {
 			// Seprate file containing all the code for registering controls.
-			require plugin_dir_path( dirname( __FILE__ ) ) . 'alert-box/assets/controls/controls.php';
+			require plugin_dir_path( __DIR__ ) . 'alert-box/assets/controls/controls.php';
 		}
 
 		/**
@@ -139,43 +139,30 @@ if ( !class_exists( 'WPMOZO_AE_Alert_Box' ) ) {
 		 * @access protected
 		 */
 		protected function render() {
-			$settings             = $this->get_settings_for_display();
-			$alert_title          = isset($settings['alert_title']) ? $settings['alert_title'] : '';
-			$alert_description    = isset($settings['alert_description']) ? $settings['alert_description'] : '';
-			$use_alert_box_image  = 'yes' === $settings['use_alert_box_image'] ? 'yes' : '';
-			$alert_box_image      = isset( $settings['alert_box_image']['url'] ) ? $settings['alert_box_image']['url'] : '';
-			$alert_box_image_alt  = isset($settings['alert_box_image_alt']) ? $settings['alert_box_image_alt'] : '';
-			$layout               = esc_attr( $settings['layout'] );
-			$layout               = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_layout( $layout, array( 'layout1', 'layout2') );
-			$title_heading_level  = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
-			$show_close_button    = 'yes' === $settings['show_close_button'] ? 'yes' : '';
-			$show_alert_button    = 'yes' === $settings['show_alert_button'] ? 'yes' : '';
-			$button_text          = isset($settings['button_text']) ? $settings['button_text'] : '';
-			$button_link_url      = isset( $settings['button_link_url']['url'] ) ? $settings['button_link_url']['url'] : '';
+			$settings            = $this->get_settings_for_display();
+			$alert_title         = isset( $settings['alert_title'] ) ? $settings['alert_title'] : '';
+			$alert_description   = isset( $settings['alert_description'] ) ? $settings['alert_description'] : '';
+			$use_alert_box_image = 'yes' === $settings['use_alert_box_image'] ? 'dipl-used-image' : '';
+			$alert_box_image     = isset( $settings['alert_box_image']['url'] ) ? $settings['alert_box_image']['url'] : '';
+			$alert_box_image_alt = isset( $settings['alert_box_image_alt'] ) ? $settings['alert_box_image_alt'] : '';
+			$layout              = esc_attr( $settings['layout'] );
+			$layout              = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_layout( $layout, array( 'layout1', 'layout2' ) );
+			$title_heading_level = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
+			$show_close_button   = 'yes' === $settings['show_close_button'] ? 'yes' : '';
+			$show_alert_button   = 'yes' === $settings['show_alert_button'] ? 'yes' : '';
+			$button_text         = isset( $settings['button_text'] ) ? $settings['button_text'] : '';
+			$button_url          = isset( $settings['button_url']['url'] ) ? $settings['button_url']['url'] : '';
 
 			?>
 			<div class="dipl_alert_box">
-				<div class="dipl_alert_box_wrapper layout1">
-					<div class="dipl_alert_box_inner">
-						<div class="dipl_alert_box_image_wrap"><span class="et-pb-icon"></span></div>
-						<div class="dipl_alert_box_content">
-							<<?php echo esc_html( $title_heading_level ); ?> class="dipl_alert_box_title"><?php echo esc_html( $alert_title ); ?></<?php echo esc_html( $title_heading_level ); ?>>
-							<div class="dipl_alert_box_description"><?php echo esc_html( $alert_description ); ?></div>
-						</div>
-						<div class="et_pb_button_wrapper"><a class="et_pb_button" href="<?php echo esc_url( $button_link_url ); ?>"><?php echo esc_html( $button_text ); ?></a></div>
-						<a href="#" class="dipl-alert-box-close-btn">
-						<span class="et-pb-icon">
-						<?php \Elementor\Icons_Manager::render_icon(
-						$settings['button_icon'],
-							array(
-								'aria-hidden' => 'true',
-								'class'       => 'wpmozo_button_icon',
-							)
-						);
-						?>
-						</span>
-						</a>
-					</div>
+				<div class="dipl_alert_box_wrapper <?php echo esc_attr( $layout ); ?> icon_<?php echo esc_attr( $settings['button_icon_placement'] ); ?>">
+				<?php
+					$layout_file = plugin_dir_path( __DIR__ ) . "alert-box/assets/layouts/{$layout}.php";
+
+				if ( file_exists( $layout_file ) ) {
+					include $layout_file;
+				}
+				?>
 				</div>
 			</div>
 			<?php
