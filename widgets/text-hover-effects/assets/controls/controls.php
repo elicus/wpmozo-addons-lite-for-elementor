@@ -72,7 +72,10 @@ $this->add_control(
 		'label'     => esc_html__( 'Hover Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_text_hover_effects_text:hover' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect1 .dipl_text_hover_effects_text>span::before' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect2 .dipl_text_hover_effects_text>span:hover' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect3 .dipl_text_hover_effects_text>span span::before, {{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect3 .dipl_text_hover_effects_text>span span::after' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect4 .dipl_text_hover_effects_text > span span::before' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -82,7 +85,12 @@ $this->add_control(
 		'label'     => esc_html__( 'Bar/Line Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .dipl_text_hover_effects_text>span::before' => 'border-color: {{VALUE}};',
+			'{{WRAPPER}} .dipl_text_hover_effects_text>span::before' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect1 .dipl_text_hover_effects_text>span::after' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect2 .dipl_text_hover_effects_text>span::before' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect3 .dipl_text_hover_effects_text>span::before, {{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect3 .dipl_text_hover_effects_text>span::after' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect4 .dipl_text_hover_effects_text>span::after' => 'background-color: {{VALUE}};',
 		),
 	)
 );
