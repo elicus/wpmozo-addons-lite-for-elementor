@@ -126,118 +126,138 @@ if ( ! class_exists( 'WPMOZO_AE_Text_Hover_Effects' ) ) {
 			$settings    = $this->get_settings_for_display();
 			$text_effect = ! empty( $settings['text_effect'] ) ? $settings['text_effect'] : 'effect1';
 			$text        = ! empty( $settings['text_to_effect'] ) ? $settings['text_to_effect'] : '';
-		
-			$text_parts = [];
-		
-			/* ================================
-			 * Effect 7
-			 * ================================ */
+
+			$text_parts = array();
+
+			/*
+			================================
+			* Effect 7
+			* ================================
+			*/
+
 			if ( 'effect7' === $text_effect ) {
-		
+
 				$text_parts[] = '<span data-text="' . esc_attr( $text ) . '">';
 				$text_parts[] = esc_html( $text );
 				$text_parts[] = '</span>';
-		
-			/* ================================
-			 * Effect 6
-			 * ================================ */
+
+				/*
+				================================
+				* Effect 6
+				* ================================
+				*/
+
 			} elseif ( 'effect6' === $text_effect ) {
-		
+
 				$text_parts[] = '<span>';
 				$text_parts[] = esc_html( $text );
 				$text_parts[] = '<span data-text="' . esc_attr( $text ) . '"></span>';
 				$text_parts[] = '<span data-text="' . esc_attr( $text ) . '"></span>';
 				$text_parts[] = '</span>';
-		
-			/* ================================
-			 * Effect 5 (per-letter animation)
-			 * ================================ */
+
+				/*
+				================================
+				* Effect 5 (per-letter animation)
+				* ================================
+				*/
+
 			} elseif ( 'effect5' === $text_effect ) {
-		
+
 				$words      = explode( ' ', $text );
 				$delay      = 0;
-				$words_html = [];
-		
+				$words_html = array();
+
 				foreach ( $words as $word ) {
-		
-					$chars       = str_split( $word );
-					$char_spans  = [];
-		
+
+					$chars      = str_split( $word );
+					$char_spans = array();
+
 					foreach ( $chars as $ch ) {
 						$char_spans[] =
 							'<span style="transition-delay:' . esc_attr( $delay ) . 's;">' .
 								esc_html( $ch ) .
 							'</span>';
-		
+
 						$delay += 0.1;
 					}
-		
+
 					$words_html[] = '<span>' . implode( '', $char_spans ) . '</span> ';
 				}
-		
+
 				$text_parts[] = '<span data-text="' . esc_attr( $text ) . '">';
 				$text_parts[] = implode( '', $words_html );
 				$text_parts[] = '</span>';
-		
-			/* ================================
-			 * Effect 4
-			 * ================================ */
+
+				/*
+				================================
+				* Effect 4
+				* ================================
+				*/
+
 			} elseif ( 'effect4' === $text_effect ) {
-		
+
 				$text_parts[] = '<span>';
 				$text_parts[] = '<span data-text="' . esc_attr( $text ) . '">';
 				$text_parts[] = esc_html( $text );
 				$text_parts[] = '</span>';
 				$text_parts[] = '</span>';
-		
-			/* ================================
-			 * Effect 3 (split text)
-			 * ================================ */
+
+				/*
+				================================
+				* Effect 3 (split text)
+				* ================================
+				*/
+
 			} elseif ( 'effect3' === $text_effect ) {
-		
+
 				$len   = strlen( $text );
 				$left  = substr( $text, 0, ceil( $len / 2 ) );
 				$right = substr( $text, ceil( $len / 2 ) );
-		
+
 				$text_parts[] = '<span>';
 				$text_parts[] = '<span data-text-left="' . esc_attr( $left ) . '" data-text-right="' . esc_attr( $right ) . '">';
 				$text_parts[] = esc_html( $text );
 				$text_parts[] = '</span>';
 				$text_parts[] = '</span>';
-		
-			/* ================================
-			 * Effect 2
-			 * ================================ */
+
+				/*
+				================================
+				* Effect 2
+				* ================================
+				*/
+
 			} elseif ( 'effect2' === $text_effect ) {
-		
+
 				$text_parts[] = '<span>';
 				$text_parts[] = esc_html( $text );
 				$text_parts[] = '</span>';
-		
-			/* ================================
-			 * Default (Effect 1)
-			 * ================================ */
+
+				/*
+				================================
+				* Default (Effect 1)
+				* ================================
+				*/
+
 			} else {
-		
+
 				$text_parts[] = '<span data-text="' . esc_attr( $text ) . '">';
 				$text_parts[] = esc_html( $text );
 				$text_parts[] = '</span>';
 			}
-		
+
 			$text_html = implode( '', $text_parts );
-			
-			
+
 			?>
 		
-			<div class="dipl_text_hover_effects">
-				<div class="dipl_text_hover_effects_wrapper dipl_text_<?php echo esc_attr( $text_effect ); ?>">
-					<div class="dipl_text_hover_effects_text">
-					<?php echo $text_html; ?>
+			<div class="wpmozo_text_hover_effects">
+				<div class="wpmozo_text_hover_effects_wrapper wpmozo_text_<?php echo esc_attr( $text_effect ); ?>">
+					<div class="wpmozo_text_hover_effects_text">
+					<?php echo wp_kses_post( $text_html ); ?>
 					</div>
 				</div>
 			</div>
 		
 			<?php
-		}		
+		}
 	}
 }

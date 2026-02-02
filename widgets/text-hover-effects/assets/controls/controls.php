@@ -62,7 +62,7 @@ $this->add_control(
 		'label'     => esc_html__( 'Normal Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_text_hover_effects_text' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects_text' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -72,10 +72,13 @@ $this->add_control(
 		'label'     => esc_html__( 'Hover Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect1 .dipl_text_hover_effects_text>span::before' => 'color: {{VALUE}};',
-			'{{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect2 .dipl_text_hover_effects_text>span:hover' => 'color: {{VALUE}};',
-			'{{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect3 .dipl_text_hover_effects_text>span span::before, {{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect3 .dipl_text_hover_effects_text>span span::after' => 'color: {{VALUE}};',
-			'{{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect4 .dipl_text_hover_effects_text > span span::before' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect1 .wpmozo_text_hover_effects_text>span::before' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect2 .wpmozo_text_hover_effects_text>span:hover' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect3 .wpmozo_text_hover_effects_text>span span::before, {{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect3 .wpmozo_text_hover_effects_text>span span::after' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect4 .wpmozo_text_hover_effects_text > span span::before' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect5 .wpmozo_text_hover_effects_text>span:hover span' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect6 .wpmozo_text_hover_effects_text>span span::before' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect7 .wpmozo_text_hover_effects_text>span:hover' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -85,12 +88,13 @@ $this->add_control(
 		'label'     => esc_html__( 'Bar/Line Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_text_hover_effects_text>span::before' => 'border-color: {{VALUE}};',
-			'{{WRAPPER}} .dipl_text_hover_effects_text>span::before' => 'color: {{VALUE}};',
-			'{{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect1 .dipl_text_hover_effects_text>span::after' => 'background-color: {{VALUE}};',
-			'{{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect2 .dipl_text_hover_effects_text>span::before' => 'background-color: {{VALUE}};',
-			'{{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect3 .dipl_text_hover_effects_text>span::before, {{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect3 .dipl_text_hover_effects_text>span::after' => 'background-color: {{VALUE}};',
-			'{{WRAPPER}} .dipl_text_hover_effects .dipl_text_effect4 .dipl_text_hover_effects_text>span::after' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect1 .wpmozo_text_hover_effects_text>span::after' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect2 .wpmozo_text_hover_effects_text>span::before' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect3 .wpmozo_text_hover_effects_text>span::before, {{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect3 .wpmozo_text_hover_effects_text>span::after' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect4 .wpmozo_text_hover_effects_text>span::after' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect5 .wpmozo_text_hover_effects_text>span::before' => 'border-color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect6 .wpmozo_text_hover_effects_text>span::before' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect7 .wpmozo_text_hover_effects_text>span::before' => 'background-color: {{VALUE}};',
 		),
 	)
 );
@@ -115,7 +119,7 @@ $this->add_responsive_control(
 		),
 		'toggle'    => true,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_text_hover_effects_text' => 'text-align: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects_text' => 'text-align: {{VALUE}};',
 		),
 	)
 );
@@ -134,12 +138,12 @@ $this->add_responsive_control(
 		'range'     => array(
 			'px' => array(
 				'min'  => 1,
-				'max'  => 100,
+				'max'  => 1000,
 				'step' => 1,
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_text_hover_effects_text' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects_text' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -150,7 +154,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'title_text_typography',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .dipl_text_hover_effects_text',
+		'selector'    => '{{WRAPPER}} .wpmozo_text_hover_effects_text',
 	)
 );
 $this->add_group_control(
@@ -159,7 +163,7 @@ $this->add_group_control(
 		'label'       => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'title_text_shadow',
-		'selector'    => '{{WRAPPER}} .dipl_text_hover_effects_text',
+		'selector'    => '{{WRAPPER}} .wpmozo_text_hover_effects_text',
 	)
 );
 $this->end_controls_tab();
@@ -177,12 +181,12 @@ $this->add_responsive_control(
 		'range'     => array(
 			'px' => array(
 				'min'  => 1,
-				'max'  => 100,
+				'max'  => 1000,
 				'step' => 1,
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_text_hover_effects_text:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_text_hover_effects_text:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 		),
 	)
 );
@@ -193,7 +197,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'title_text_typography_hover',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .dipl_text_hover_effects_text:hover',
+		'selector'    => '{{WRAPPER}} .wpmozo_text_hover_effects_text:hover',
 	)
 );
 $this->add_group_control(
@@ -202,7 +206,7 @@ $this->add_group_control(
 		'label'       => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'title_text_shadow_hover',
-		'selector'    => '{{WRAPPER}} .dipl_text_hover_effects_text:hover',
+		'selector'    => '{{WRAPPER}} .wpmozo_text_hover_effects_text:hover',
 	)
 );
 $this->end_controls_tab();
