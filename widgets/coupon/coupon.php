@@ -124,14 +124,14 @@ if ( ! class_exists( 'WPMOZO_AE_Coupon' ) ) {
 		 */
 		protected function render() {
 			$settings             = $this->get_settings_for_display();
-			$title         		  = isset( $settings['title'] ) ? $settings['title'] : '';
+			$title                = isset( $settings['title'] ) ? $settings['title'] : '';
 			$coupon_code          = isset( $settings['coupon_code'] ) ? $settings['coupon_code'] : '';
 			$description          = isset( $settings['description'] ) ? $settings['description'] : '';
 			$show_expiry_date     = 'yes' === $settings['show_expiry_date'] ? 'yes' : '';
 			$expiry_date          = isset( $settings['expiry_date'] ) ? $settings['expiry_date'] : '';
 			$expiry_date_format   = isset( $settings['expiry_date_format'] ) ? $settings['expiry_date_format'] : '';
 			$layout               = esc_attr( $settings['layout'] );
-			$layout               = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_layout( $layout, array( 'layout1', 'layout2' ) );
+			$layout               = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_layout( $layout, array( 'layout1', 'layout2', 'layout3' ) );
 			$title_heading_level  = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings['title_heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
 			$show_offer_discount  = 'yes' === $settings['show_offer_discount'] ? 'yes' : '';
 			$offer_discount       = isset( $settings['offer_discount'] ) ? $settings['offer_discount'] : '';
@@ -143,16 +143,17 @@ if ( ! class_exists( 'WPMOZO_AE_Coupon' ) ) {
 
 			if ( 'yes' === $show_expiry_date && ! empty( $expiry_date ) ) {
 
-				// Convert expiry date to timestamp
-				$expiry_timestamp  = strtotime( $expiry_date );
-				$current_timestamp = current_time( 'timestamp' );
+				// Convert expiry date to timestamp.
+				$expiry_timestamp = strtotime( $expiry_date );
+				// $current_timestamp = current_time( 'timestamp' );
+				$current_timestamp = strtotime( current_time( 'mysql' ) );
 
-				// Fallback date format
+				// Fallback date format.
 				$date_format = ! empty( $expiry_date_format ) ? $expiry_date_format : 'M j, Y';
 
 				if ( $expiry_timestamp ) {
 
-					// Expired
+					// Expired.
 					if ( $current_timestamp > $expiry_timestamp ) {
 
 						$expiry_text  = esc_html__( 'Expired', 'wpmozo-addons-lite-for-elementor' );
@@ -169,8 +170,8 @@ if ( ! class_exists( 'WPMOZO_AE_Coupon' ) ) {
 			}
 
 			?>
-			<div class="dipl_coupon">
-				<div class="dipl_coupon_wrapper <?php echo esc_attr( $layout ); ?>">
+			<div class="wpmozo_coupon">
+				<div class="wpmozo_coupon_wrapper <?php echo esc_attr( $layout ); ?>">
 					<?php
 						$layout_file = plugin_dir_path( __DIR__ ) . "coupon/assets/layouts/{$layout}.php";
 

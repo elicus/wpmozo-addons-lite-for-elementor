@@ -1,15 +1,15 @@
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon{
 	padding: 15px;
 	border: 1px solid #333333;
 	border-radius: 5px;
 }
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon .dipl_coupon_title{
+/* .elementor-widget-wpmozo_ae_coupon .wpmozo_coupon .wpmozo_coupon_title{
 	font-size: 24px;
-}
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon .dipl_coupon_description{
+} */
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon .wpmozo_coupon_description{
 	font-size: 16px;
 }
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon .dipl_coupon_code{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon .wpmozo_coupon_code{
 	background-color: #ffffff;
 	color: #0095f6;
 	padding: 10px 15px;
@@ -20,20 +20,20 @@
 	border-radius: 5px;
 	min-width: 150px;
 }
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon_expiry_message.date-expired{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon_expiry_message.date-expired{
 	font-weight: 600;
 	color: #ff0000;
 }
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon_expiry_message.date-active{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon_expiry_message.date-active{
 	font-weight: 600;
 	color: #28a745;
 }
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon_offer_wrapper{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon_offer_wrapper{
 	border: 0 solid #000000;
 }
 
 /* Offer box. */
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon_offer_wrapper.dipl_offer_box{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon_offer_wrapper.wpmozo_offer_box{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -44,14 +44,14 @@
 	overflow: hidden;
 	min-width: 100px;
 }
-.elementor-widget-wpmozo_ae_coupon .dipl_offer_box .dipl_coupon_offer_discount{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_offer_box .wpmozo_coupon_offer_discount{
 	display: block;
 	width: 100%;
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
 }
-.elementor-widget-wpmozo_ae_coupon .dipl_offer_box .dipl_coupon_offer_label{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_offer_box .wpmozo_coupon_offer_label{
 	display: block;
 	width: 100%;
     background-color: black;
@@ -60,7 +60,7 @@
 }
 
 /* Offer Badge. */
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon_offer_wrapper.dipl_offer_badge{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon_offer_wrapper.wpmozo_offer_badge{
     background-color: #000000;
     color: #ffffff;
     display: inline-block;
@@ -70,53 +70,53 @@
 }
 
 /* Layout 1. */
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon_wrapper.layout1 .dipl_coupon_inner{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon_wrapper.layout1 .wpmozo_coupon_inner{
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
 	gap: 20px;
 }
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon_wrapper.layout1 .dipl_coupon_content_wrapper{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon_wrapper.layout1 .wpmozo_coupon_content_wrapper{
 	flex: 1;
 	min-width: 200px;
 }
 
 /* Layout 2. */
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon_wrapper.layout2 .dipl_coupon_inner{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon_wrapper.layout2 .wpmozo_coupon_inner{
     text-align: center;
 }
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon_wrapper.layout2 .dipl_offer_badge{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon_wrapper.layout2 .wpmozo_offer_badge{
 	margin-bottom: 20px;
 }
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon_wrapper.layout2 .dipl_coupon_content_wrapper{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon_wrapper.layout2 .wpmozo_coupon_content_wrapper{
 	margin-bottom: 15px;
 }
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon_wrapper.layout2 .dipl_coupon_code{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon_wrapper.layout2 .wpmozo_coupon_code{
 	display: inline-block;
 }
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon_wrapper.layout2 .dipl_coupon_expiry_message{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon_wrapper.layout2 .wpmozo_coupon_expiry_message{
 	margin-top: 5px;
 }
 
 /* Layout 3. */
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon_wrapper.layout3 .dipl_coupon_inner{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon_wrapper.layout3 .wpmozo_coupon_inner{
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-start;
 	justify-content: space-between;
 	gap: 20px;
 }
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon_wrapper.layout3 .dipl_coupon_content_wrapper{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon_wrapper.layout3 .wpmozo_coupon_content_wrapper{
 	flex: 1;
 	min-width: 200px;
 }
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon_wrapper.layout3 .dipl_coupon_code_wrapper{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon_wrapper.layout3 .wpmozo_coupon_code_wrapper{
 	margin-top: 10px;
 }
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon_wrapper.layout3 .dipl_coupon_code{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon_wrapper.layout3 .wpmozo_coupon_code{
 	display: inline-block;
 }
-.elementor-widget-wpmozo_ae_coupon .dipl_coupon_wrapper.layout3 .dipl_coupon_expiry_message{
+.elementor-widget-wpmozo_ae_coupon .wpmozo_coupon_wrapper.layout3 .wpmozo_coupon_expiry_message{
 	margin-top: 5px;
 }

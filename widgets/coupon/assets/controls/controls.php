@@ -35,8 +35,8 @@ $this->add_control(
 	array(
 		'label'       => esc_html__( 'Coupon Code', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::TEXT,
-		'default'     => esc_html__( 'COUPON', 'wpmozo-addons-lite-for-elementor' ),
-		'placeholder' => esc_html__( 'COUPON', 'wpmozo-addons-lite-for-elementor' ),
+		'default'     => esc_html__( 'COUPON-50', 'wpmozo-addons-lite-for-elementor' ),
+		'placeholder' => esc_html__( 'COUPON-50', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 	)
 );
@@ -58,14 +58,14 @@ $this->add_control(
 		'label_on'     => esc_html__( 'Yes', 'wpmozo-addons-lite-for-elementor' ),
 		'label_off'    => esc_html__( 'No', 'wpmozo-addons-lite-for-elementor' ),
 		'return_value' => 'yes',
-		'default'      => 'no',
+		'default'      => 'yes',
 	)
 );
 $this->add_control(
 	'expiry_date',
 	array(
-		'label' => esc_html__( 'Expiry Date', 'wpmozo-addons-lite-for-elementor' ),
-		'type'  => Controls_Manager::DATE_TIME,
+		'label'     => esc_html__( 'Expiry Date', 'wpmozo-addons-lite-for-elementor' ),
+		'type'      => Controls_Manager::DATE_TIME,
 		'condition' => array(
 			'show_expiry_date' => 'yes',
 		),
@@ -79,7 +79,7 @@ $this->add_control(
 		'default'     => esc_html__( 'M j, Y', 'wpmozo-addons-lite-for-elementor' ),
 		'placeholder' => esc_html__( 'M j, Y', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
-		'condition' => array(
+		'condition'   => array(
 			'show_expiry_date' => 'yes',
 		),
 	)
@@ -101,6 +101,7 @@ $this->add_control(
 		'options' => array(
 			'layout1' => esc_html__( 'Layout 1', 'wpmozo-addons-lite-for-elementor' ),
 			'layout2' => esc_html__( 'Layout 2', 'wpmozo-addons-lite-for-elementor' ),
+			'layout3' => esc_html__( 'Layout 3', 'wpmozo-addons-lite-for-elementor' ),
 		),
 	)
 );
@@ -121,7 +122,7 @@ $this->add_control(
 		'label'       => esc_html__( 'Offer Discount', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::TEXT,
 		'label_block' => true,
-		'condition' => array(
+		'condition'   => array(
 			'show_offer_discount' => 'yes',
 		),
 	)
@@ -132,7 +133,7 @@ $this->add_control(
 		'label'       => esc_html__( 'Offer Discount Label', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::TEXT,
 		'label_block' => true,
-		'condition' => array(
+		'condition'   => array(
 			'show_offer_discount' => 'yes',
 		),
 	)
@@ -179,7 +180,7 @@ $this->add_control(
 				'icon'  => 'eicon-editor-h6',
 			),
 		),
-		'default'     => 'h3',
+		'default'     => 'h2',
 		'toggle'      => false,
 	)
 );
@@ -196,7 +197,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Title Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_coupon_title' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -213,7 +214,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_coupon_title' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -224,7 +225,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'title_text_typography',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_title',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_title',
 	)
 );
 $this->add_group_control(
@@ -233,7 +234,7 @@ $this->add_group_control(
 		'label'       => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'title_text_shadow',
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_title',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_title',
 	)
 );
 $this->end_controls_tab();
@@ -249,7 +250,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Title Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title:hover' => 'color: {{VALUE}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_coupon_title:hover' => 'color: {{VALUE}}; transition: all 300ms;',
 		),
 	)
 );
@@ -266,7 +267,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_coupon_title:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 		),
 	)
 );
@@ -277,7 +278,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'title_text_typography_hover',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_title:hover',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_title:hover',
 	)
 );
 $this->add_group_control(
@@ -286,36 +287,11 @@ $this->add_group_control(
 		'label'       => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'title_text_shadow_hover',
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_title:hover',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_title:hover',
 	)
 );
 $this->end_controls_tab();
 $this->end_controls_tabs();
-$this->add_responsive_control(
-	'title_alignment',
-	array(
-		'type'      => Controls_Manager::CHOOSE,
-		'label'     => esc_html__( 'Title Alignment', 'wpmozo-addons-lite-for-elementor' ),
-		'options'   => array(
-			'left'   => array(
-				'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
-				'icon'  => 'eicon-text-align-left',
-			),
-			'center' => array(
-				'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
-				'icon'  => 'eicon-text-align-center',
-			),
-			'right'  => array(
-				'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
-				'icon'  => 'eicon-text-align-right',
-			),
-		),
-		'toggle'    => true,
-		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title' => 'text-align: {{VALUE}};',
-		),
-	)
-);
 $this->end_controls_section();
 $this->start_controls_section(
 	'description_styling',
@@ -337,7 +313,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Description Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_description' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_coupon_description' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -358,7 +334,7 @@ $this->add_responsive_control(
 			'size' => 14,
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_description' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_coupon_description' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -369,7 +345,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'description_text_typography',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_description',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_description',
 	)
 );
 $this->add_group_control(
@@ -378,7 +354,7 @@ $this->add_group_control(
 		'label'       => esc_html__( 'Description Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'description_text_shadow',
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_description',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_description',
 	)
 );
 $this->end_controls_tab();
@@ -394,7 +370,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Description Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_description:hover' => 'color: {{VALUE}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_coupon_description:hover' => 'color: {{VALUE}}; transition: all 300ms;',
 		),
 	)
 );
@@ -411,7 +387,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_description:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_coupon_description:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 		),
 	)
 );
@@ -422,7 +398,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'description_text_typography_hover',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_description:hover',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_description:hover',
 	)
 );
 $this->add_group_control(
@@ -431,36 +407,11 @@ $this->add_group_control(
 		'label'       => esc_html__( 'Description Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'description_text_shadow_hover',
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_description:hover',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_description:hover',
 	)
 );
 $this->end_controls_tab();
 $this->end_controls_tabs();
-$this->add_responsive_control(
-	'description_alignment',
-	array(
-		'type'      => Controls_Manager::CHOOSE,
-		'label'     => esc_html__( 'Description Alignment', 'wpmozo-addons-lite-for-elementor' ),
-		'options'   => array(
-			'left'   => array(
-				'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
-				'icon'  => 'eicon-text-align-left',
-			),
-			'center' => array(
-				'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
-				'icon'  => 'eicon-text-align-center',
-			),
-			'right'  => array(
-				'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
-				'icon'  => 'eicon-text-align-right',
-			),
-		),
-		'toggle'    => true,
-		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_description' => 'text-align: {{VALUE}}',
-		),
-	)
-);
 $this->end_controls_section();
 $this->start_controls_section(
 	'coupon_code_styling',
@@ -482,7 +433,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Coupon Code Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_coupon_code' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -499,7 +450,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_coupon_code' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -510,7 +461,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'coupon_code_text_typography',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_title',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_code',
 	)
 );
 $this->add_group_control(
@@ -519,7 +470,7 @@ $this->add_group_control(
 		'label'       => esc_html__( 'Coupon Code Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'coupon_code_text_shadow',
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_title',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_code',
 	)
 );
 $this->end_controls_tab();
@@ -535,7 +486,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Coupon Code Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title:hover' => 'color: {{VALUE}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_coupon_code:hover' => 'color: {{VALUE}}; transition: all 300ms;',
 		),
 	)
 );
@@ -552,7 +503,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_coupon_code:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 		),
 	)
 );
@@ -563,7 +514,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'coupon_code_text_typography_hover',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_title:hover',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_code:hover',
 	)
 );
 $this->add_group_control(
@@ -572,7 +523,7 @@ $this->add_group_control(
 		'label'       => esc_html__( 'Coupon Code Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'coupon_code_text_shadow_hover',
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_title:hover',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_code:hover',
 	)
 );
 $this->end_controls_tab();
@@ -599,7 +550,7 @@ $this->add_responsive_control(
 		'label_block' => false,
 		'type'        => Controls_Manager::COLOR,
 		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_coupon_offer_discount' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -620,7 +571,7 @@ $this->add_responsive_control(
 			'size' => 14,
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_coupon_offer_discount' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -631,7 +582,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'discount_text_typography',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_offer_discount',
 	)
 );
 $this->add_group_control(
@@ -649,7 +600,7 @@ $this->add_group_control(
 				'label' => esc_html__( 'Discount Border Color', 'wpmozo-addons-lite-for-elementor' ),
 			),
 		),
-		'selector'       => '{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label',
+		'selector'       => '{{WRAPPER}} .wpmozo_coupon_wrapper .wpmozo_coupon_offer_wrapper',
 	)
 );
 $this->add_control(
@@ -660,7 +611,7 @@ $this->add_control(
 		'type'        => Controls_Manager::COLOR,
 		'separator'   => 'after',
 		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_coupon_wrapper .wpmozo_coupon_offer_wrapper' => 'background-color: {{VALUE}};',
 		),
 	)
 );
@@ -678,7 +629,7 @@ $this->add_responsive_control(
 		'label_block' => false,
 		'type'        => Controls_Manager::COLOR,
 		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label:hover' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_coupon_offer_discount:hover' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -695,7 +646,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label:hover' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_coupon_offer_discount:hover' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -706,7 +657,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'discount_text_typography_hover',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label:hover',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_offer_discount:hover',
 	)
 );
 $this->add_group_control(
@@ -724,7 +675,7 @@ $this->add_group_control(
 				'label' => esc_html__( 'Discount Border Color', 'wpmozo-addons-lite-for-elementor' ),
 			),
 		),
-		'selector'       => '{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label:hover',
+		'selector'       => '{{WRAPPER}} .wpmozo_coupon_wrapper .wpmozo_coupon_offer_wrapper:hover',
 	)
 );
 $this->add_control(
@@ -735,7 +686,7 @@ $this->add_control(
 		'type'        => Controls_Manager::COLOR,
 		'separator'   => 'after',
 		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label:hover' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_coupon_wrapper .wpmozo_coupon_offer_wrapper:hover' => 'background-color: {{VALUE}};',
 		),
 	)
 );
@@ -747,7 +698,7 @@ $this->add_group_control(
 		'label'       => esc_html__( 'Discount Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'discount_text_shadow',
-		'selector'    => '{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_offer_discount',
 	)
 );
 $this->end_controls_section();
@@ -772,7 +723,7 @@ $this->add_responsive_control(
 		'label_block' => false,
 		'type'        => Controls_Manager::COLOR,
 		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_coupon_offer_label' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -793,7 +744,7 @@ $this->add_responsive_control(
 			'size' => 14,
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_coupon_offer_label' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -804,7 +755,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'discount_label_text_typography',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_offer_label',
 	)
 );
 $this->add_control(
@@ -815,7 +766,10 @@ $this->add_control(
 		'type'        => Controls_Manager::COLOR,
 		'separator'   => 'after',
 		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_coupon_wrapper .wpmozo_coupon_offer_label' => 'background-color: {{VALUE}};',
+		),
+		'condition'   => array(
+			'layout!' => 'layout2',
 		),
 	)
 );
@@ -833,7 +787,7 @@ $this->add_responsive_control(
 		'label_block' => false,
 		'type'        => Controls_Manager::COLOR,
 		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label:hover' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_coupon_offer_label:hover' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -850,7 +804,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label:hover' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_coupon_offer_label:hover' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -861,7 +815,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'discount_label_text_typography_hover',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label:hover',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_offer_label:hover',
 	)
 );
 $this->add_control(
@@ -872,7 +826,10 @@ $this->add_control(
 		'type'        => Controls_Manager::COLOR,
 		'separator'   => 'after',
 		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label:hover' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_coupon_wrapper .wpmozo_coupon_offer_label:hover' => 'background-color: {{VALUE}};',
+		),
+		'condition'   => array(
+			'layout!' => 'layout2',
 		),
 	)
 );
@@ -884,7 +841,7 @@ $this->add_group_control(
 		'label'       => esc_html__( 'Label Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'discount_label_text_shadow',
-		'selector'    => '{{WRAPPER}} .wpmozo_pb_timer_box .wpmozo_pb_label',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_offer_label',
 	)
 );
 $this->end_controls_section();
@@ -908,7 +865,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Expiry Date Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_coupon_expiry_message' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -925,7 +882,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_coupon_expiry_message' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -936,7 +893,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'expiry_date_text_typography',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_title',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_expiry_message',
 	)
 );
 $this->add_group_control(
@@ -945,7 +902,7 @@ $this->add_group_control(
 		'label'       => esc_html__( 'Expiry Date Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'expiry_date_text_shadow',
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_title',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_expiry_message',
 	)
 );
 $this->end_controls_tab();
@@ -961,7 +918,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Expiry Date Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title:hover' => 'color: {{VALUE}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_coupon_expiry_message:hover' => 'color: {{VALUE}}; transition: all 300ms;',
 		),
 	)
 );
@@ -978,7 +935,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_coupon_expiry_message:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 		),
 	)
 );
@@ -989,7 +946,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'expiry_date_text_typography_hover',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_title:hover',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_expiry_message:hover',
 	)
 );
 $this->add_group_control(
@@ -998,7 +955,7 @@ $this->add_group_control(
 		'label'       => esc_html__( 'Expiry Date Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'expiry_date_text_shadow_hover',
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_title:hover',
+		'selector'    => '{{WRAPPER}} .wpmozo_coupon_expiry_message:hover',
 	)
 );
 $this->end_controls_tab();
@@ -1024,7 +981,7 @@ $this->add_responsive_control(
 		),
 		'toggle'    => true,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title' => 'text-align: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_coupon_expiry_message' => 'text-align: {{VALUE}};',
 		),
 	)
 );
