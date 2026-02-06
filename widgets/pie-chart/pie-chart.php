@@ -101,7 +101,7 @@ if ( ! class_exists( 'WPMOZO_AE_Pie_Chart' ) ) {
 		public function get_script_depends() {
 			wp_register_script( 'wpmozo-ae-pie-chart-script', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 
-			return array( 'wpmozo-ae-pie-chart-script' );
+			return array( 'wpmozo-ae-pie-chart-script', 'wpmozo-ae-chart' );
 		}
 
 		/**
@@ -128,20 +128,103 @@ if ( ! class_exists( 'WPMOZO_AE_Pie_Chart' ) ) {
 		 * @access protected
 		 */
 		protected function render() {
-			$settings                 = $this->get_settings_for_display();
-			$items_content            = isset( $settings['wpmozo_items_content'] ) ? $settings['wpmozo_items_content'] : array();
-			$icon_shape               = isset( $settings['icon_shape'] ) ? $settings['icon_shape'] : '';
+
+			$settings = $this->get_settings_for_display();
+		
+			// -----------------------------
+			// Repeater Safety Check
+			// -----------------------------
+			if ( empty( $settings['pie_chart_items'] ) || ! is_array( $settings['pie_chart_items'] ) ) {
+				return;
+			}
+		
+			$labels        = [];
+			$values        = [];
+			$bg_colors     = [];
+			$border_colors = [];
+		
+			// -----------------------------
+			// Repeater Loop (PHP ONLY)
+			// -----------------------------
+			foreach ( $settings['pie_chart_items'] as $item ) {
+		
+				if ( empty( $item['item_label'] ) || $item['item_value'] === '' ) {
+					continue;
+				}
+		
+				$labels[] = esc_html( $item['item_label'] );
+		
+				// Chart.js numeric values
+				$values[] = floatval( $item['item_value'] );
+		
+				$bg_colors[] = ! empty( $item['item_background_color'] )
+					? esc_attr( $item['item_background_color'] )
+					: 'rgba(0,0,0,0.2)';
+		
+				$border_colors[] = ! empty( $item['item_border_color'] )
+					? esc_attr( $item['item_border_color'] )
+					: '#000000';
+			}
+		
+			// Agar valid items hi nahi bache
+			if ( empty( $labels ) ) {
+				return;
+			}
+		
+			// -----------------------------
+			// Border Size
+			// -----------------------------
+			$border_width = ! empty( $settings['pie_chart_border_size']['size'] )
+				? intval( $settings['pie_chart_border_size']['size'] )
+				: 1;
+		
+			// -----------------------------
+			// Chart Data (JS expects this)
+			// -----------------------------
+			$chart_data = [
+				'labels'   => $labels,
+				'datasets' => [
+					[
+						'data'            => $values,
+						'backgroundColor' => $bg_colors,
+						'borderColor'     => $border_colors,
+						'borderWidth'     => $border_width,
+					]
+				]
+			];
+		
+			// -----------------------------
+			// Responsive Heights
+			// -----------------------------
+			$height_desktop = ! empty( $settings['pie_chart_height']['size'] )
+				? intval( $settings['pie_chart_height']['size'] )
+				: 400;
+		
+			$height_tablet = ! empty( $settings['pie_chart_height_tablet']['size'] )
+				? intval( $settings['pie_chart_height_tablet']['size'] )
+				: $height_desktop;
+		
+			$height_mobile = ! empty( $settings['pie_chart_height_mobile']['size'] )
+				? intval( $settings['pie_chart_height_mobile']['size'] )
+				: $height_tablet;
+		
+			// -----------------------------
+			// Final Output (JS-friendly)
+			// -----------------------------
 			?>
-			<div class="et_pb_module dipl_pie_chart dipl_pie_chart_0">
-				<div class="et_pb_module_inner">
-					<div class="dipl_pie_chart_wrapper" data-chart="{&quot;labels&quot;:[&quot;India&quot;,&quot;South Africa&quot;,&quot;Sir Lanka&quot;,&quot;Canada&quot;],&quot;datasets&quot;:[{&quot;data&quot;:[&quot;45&quot;,&quot;20&quot;,&quot;15&quot;,&quot;20&quot;],&quot;backgroundColor&quot;:[&quot;#7CDA24&quot;,&quot;rgba(54, 162, 235, 0.2)&quot;,&quot;#EDF000&quot;,&quot;#E02B20&quot;],&quot;borderColor&quot;:[&quot;#E02B20&quot;,&quot;#0C71C3&quot;,&quot;#8300E9&quot;,&quot;#000000&quot;],&quot;borderWidth&quot;:&quot;2&quot;}]}" data-chart_height="382" data-chart_height_tablet="" data-chart_height_phone="" style="height: 382px;">
-						<div class="dipl_pie_chart_inner">
-							<canvas id="dipl_pie_chart_0--canvas" height="764" style="display: block; box-sizing: border-box; height: 382px; width: 1080px;" width="2160"></canvas>
-						</div>
+			<div class="dipl_pie_chart">
+				<div class="dipl_pie_chart_wrapper"
+					data-chart="<?php echo esc_attr( wp_json_encode( $chart_data ) ); ?>"
+					data-chart_height="<?php echo esc_attr( $height_desktop ); ?>"
+					data-chart_height_tablet="<?php echo esc_attr( $height_tablet ); ?>"
+					data-chart_height_phone="<?php echo esc_attr( $height_mobile ); ?>"
+				>
+					<div class="dipl_pie_chart_inner">
+						<canvas></canvas>
 					</div>
 				</div>
 			</div>
 			<?php
-		}
+		}				
 	}
 }
