@@ -57,7 +57,7 @@ if ( ! class_exists( 'WPMOZO_AE_Pie_Chart' ) ) {
 		 * @return array Widget keywords.
 		 */
 		public function get_keywords() {
-			return array( 'wpmz pie chart','wpmozo pie chart' );
+			return array( 'wpmz pie chart', 'wpmozo pie chart' );
 		}
 
 		/**
@@ -130,101 +130,115 @@ if ( ! class_exists( 'WPMOZO_AE_Pie_Chart' ) ) {
 		protected function render() {
 
 			$settings = $this->get_settings_for_display();
-		
+
+			// -----------------------------
+			// Helper: Empty Message Output
+			// -----------------------------
+			$render_empty_message = function () {
+				?>
+				<div class="wpmozo_pie_chart wpmozo_pie_chart_empty">
+					<div class="wpmozo_pie_chart_empty_message">
+						<?php echo esc_html__( 'No pies found! Please add some pie items to view result.', 'wpmozo-addons-lite-for-elementor' ); ?>
+					</div>
+				</div>
+				<?php
+			};
+
 			// -----------------------------
 			// Repeater Safety Check
 			// -----------------------------
 			if ( empty( $settings['pie_chart_items'] ) || ! is_array( $settings['pie_chart_items'] ) ) {
+				$render_empty_message();
 				return;
 			}
-		
-			$labels        = [];
-			$values        = [];
-			$bg_colors     = [];
-			$border_colors = [];
-		
+
+			$labels        = array();
+			$values        = array();
+			$bg_colors     = array();
+			$border_colors = array();
+
 			// -----------------------------
-			// Repeater Loop (PHP ONLY)
+			// Repeater Loop
 			// -----------------------------
 			foreach ( $settings['pie_chart_items'] as $item ) {
-		
-				if ( empty( $item['item_label'] ) || $item['item_value'] === '' ) {
+
+				if ( empty( $item['item_label'] ) || '' === $item['item_value'] ) {
 					continue;
 				}
-		
+
 				$labels[] = esc_html( $item['item_label'] );
-		
-				// Chart.js numeric values
 				$values[] = floatval( $item['item_value'] );
-		
+
 				$bg_colors[] = ! empty( $item['item_background_color'] )
 					? esc_attr( $item['item_background_color'] )
 					: 'rgba(0,0,0,0.2)';
-		
+
 				$border_colors[] = ! empty( $item['item_border_color'] )
 					? esc_attr( $item['item_border_color'] )
 					: '#000000';
 			}
-		
-			// Agar valid items hi nahi bache
+
+			// -----------------------------
+			// No Valid Pie Items
+			// -----------------------------
 			if ( empty( $labels ) ) {
+				$render_empty_message();
 				return;
 			}
-		
+
 			// -----------------------------
 			// Border Size
 			// -----------------------------
 			$border_width = ! empty( $settings['pie_chart_border_size']['size'] )
 				? intval( $settings['pie_chart_border_size']['size'] )
 				: 1;
-		
+
 			// -----------------------------
-			// Chart Data (JS expects this)
+			// Chart Data
 			// -----------------------------
-			$chart_data = [
+			$chart_data = array(
 				'labels'   => $labels,
-				'datasets' => [
-					[
+				'datasets' => array(
+					array(
 						'data'            => $values,
 						'backgroundColor' => $bg_colors,
 						'borderColor'     => $border_colors,
 						'borderWidth'     => $border_width,
-					]
-				]
-			];
-		
+					),
+				),
+			);
+
 			// -----------------------------
 			// Responsive Heights
 			// -----------------------------
 			$height_desktop = ! empty( $settings['pie_chart_height']['size'] )
 				? intval( $settings['pie_chart_height']['size'] )
 				: 400;
-		
+
 			$height_tablet = ! empty( $settings['pie_chart_height_tablet']['size'] )
 				? intval( $settings['pie_chart_height_tablet']['size'] )
 				: $height_desktop;
-		
+
 			$height_mobile = ! empty( $settings['pie_chart_height_mobile']['size'] )
 				? intval( $settings['pie_chart_height_mobile']['size'] )
 				: $height_tablet;
-		
+
 			// -----------------------------
-			// Final Output (JS-friendly)
+			// Final Output (Chart)
 			// -----------------------------
 			?>
-			<div class="dipl_pie_chart">
-				<div class="dipl_pie_chart_wrapper"
+			<div class="wpmozo_pie_chart">
+				<div class="wpmozo_pie_chart_wrapper"
 					data-chart="<?php echo esc_attr( wp_json_encode( $chart_data ) ); ?>"
 					data-chart_height="<?php echo esc_attr( $height_desktop ); ?>"
 					data-chart_height_tablet="<?php echo esc_attr( $height_tablet ); ?>"
-					data-chart_height_phone="<?php echo esc_attr( $height_mobile ); ?>"
-				>
-					<div class="dipl_pie_chart_inner">
+					data-chart_height_phone="<?php echo esc_attr( $height_mobile ); ?>" >
+					<div class="wpmozo_pie_chart_inner">
 						<canvas></canvas>
 					</div>
 				</div>
 			</div>
 			<?php
-		}				
+		}
 	}
 }

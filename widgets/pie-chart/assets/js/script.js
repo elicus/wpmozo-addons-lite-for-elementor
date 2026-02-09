@@ -14,7 +14,7 @@
             initPieChart: function () {
 
                 var self     = this;
-                const $wrapper = this.$element.find( '.dipl_pie_chart_wrapper' );
+                const $wrapper = this.$element.find( '.wpmozo_pie_chart_wrapper' );
                 const $canvas  = $wrapper.find( 'canvas' )[0];
 
                 if ( ! $canvas ) {
