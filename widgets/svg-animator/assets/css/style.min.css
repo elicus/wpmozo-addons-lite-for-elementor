@@ -1,0 +1,30 @@
+.elementor-widget-wpmozo_ae_svg_animator .dipl_svg_animator_wrapper{
+    position: relative;
+}
+
+/* SVG base reset. */
+.elementor-widget-wpmozo_ae_svg_animator .dipl_svg_animator_inner svg{
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+/* Ensure animation visible (for stroke-based animations). */
+.elementor-widget-wpmozo_ae_svg_animator .dipl_svg_animator_inner svg * {
+    stroke: currentColor;  /* this allows color option to control stroke */
+    fill: none;            /* ensures path animation effect is visible */
+    stroke-width: 2;       /* optional default */
+    transition: none;      /* will be overridden by JS */
+}
+
+/* Prevent multiple activations automatically. */
+.elementor-widget-wpmozo_ae_svg_animator .dipl_svg_animator_wrapper.dipl-animated svg * {
+    pointer-events: auto;
+}
+/* Re-animate on click cursor */
+.elementor-widget-wpmozo_ae_svg_animator .dipl_svg_animator_wrapper[data-re_animate_on_click="on"] svg {
+    cursor: pointer;
+}
+/* Optional – prevent line distortion on scaling */
+.elementor-widget-wpmozo_ae_svg_animator .dipl_svg_animator_inner svg * {
+    vector-effect: non-scaling-stroke;
+}
