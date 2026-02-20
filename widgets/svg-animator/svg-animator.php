@@ -126,6 +126,7 @@ if ( ! class_exists( 'WPMOZO_AE_Svg_Animator' ) ) {
             // Seprate file containing all the code for registering controls.
             require plugin_dir_path( __DIR__ ) . 'svg-animator/assets/controls/controls.php';
         }
+        
 
         /**
          * Render widget output on the frontend.
@@ -136,43 +137,92 @@ if ( ! class_exists( 'WPMOZO_AE_Svg_Animator' ) ) {
          * @access protected
          */
         protected function render() {
-            $settings        = $this->get_settings_for_display();
-            $widget_id       = $this->get_id();
+            $settings  = $this->get_settings_for_display();
+            $widget_id = $this->get_id();
+        
+            $svg_image = ! empty( $settings['svg_image']['url'] ) ? esc_url( $settings['svg_image']['url'] ) : '';
+        
+            $animation_type   = ! empty( $settings['animation_type'] ) ? $settings['animation_type'] : 'delayed';
+            $animation_time   = ! empty( $settings['animation_time']['size'] ) ? intval( $settings['animation_time']['size'] ) : 1000;
+            $animation_curves = ! empty( $settings['animation_curves'] ) ? $settings['animation_curves'] : 'linear';
+        
+            $re_animate_on_click = ( isset( $settings['re_animate_on_click'] ) && 'yes' === $settings['re_animate_on_click'] ) ? 'on' : 'off';
+        
+            if ( empty( $svg_image ) ) {
+                return;
+            }
+        
+            // Try fetching SVG content
+            $svg_content = wpmozo_get_svg_content( $svg_image ); // helper function (below)
+        
+            if ( empty( $svg_content ) ) {
+                return;
+            }
 
-            $pre_text        = $settings[ 'prefix_text' ];
-            $content_text    = explode( '|',$settings[ 'animated_text' ] );
-            $post_text       = $settings[ 'postfix_text' ];
-            $animation_type  = $settings[ 'animation_type' ];   
-            $heading_level   = 'p' !== $settings[ 'display_tag' ] ? wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings[ 'display_tag' ] ) : 'p';      
-            $animation_delay = '' !== $settings[ 'animations_delay' ] ? $settings[ 'animations_delay' ][ 'size' ] : 0;
-            $animation_time  = ( isset( $settings[ 'animation_time' ] ) && '' !== $settings[ 'animation_time' ] ) ? $settings[ 'animation_time' ][ 'size' ] : 500;
-            $typing_speed    = ( isset( $settings[ 'typing_time' ] ) && '' !== $settings[ 'typing_time' ] ) ? $settings[ 'typing_time' ][ 'size' ] : 100;
-            $erasing_speed   = ( isset( $settings[ 'erasing_time' ] ) && '' !== $settings[ 'erasing_time' ] ) ? $settings[ 'erasing_time' ][ 'size' ] : 100;
-            $stop_animation  = '' !== $settings[ 'animation_on_hover' ] ? 'on' : 'off';
-            $this->add_render_attribute( 'animated_text', array('class' => array('wpmozo_animated_text', 'wpmozo_main_part'), 'data-wait-time' => $animation_delay, 'data-animation-time' => $animation_time, 'data-text' => $settings['animated_text'], 'data-stop-animation-on-hover' => $stop_animation ) );
-            if( 'typing' === $animation_type ) {
-                $this->add_render_attribute( 'animated_text', array( 'data-typing-time' => $typing_speed, 'data-erasing-time' => $erasing_speed ) );
-            }
-            if( '' !== $pre_text ) {
-                $pre_text = '<span class="wpmozo_pre_svg_wrapper wpmozo_pre_post">'. $pre_text .'</span>';
-            } else {
-                $pre_text = '';
-            }
-            if( !empty( $content_text[0] ) ) {
-                $content_text = '<span '.$this->get_render_attribute_string( 'animated_text' ).'>'.$content_text[0].'</span>';
-            } else {
-                $content_text = '<span '.$this->get_render_attribute_string( 'animated_text' ).'></span>';
-            }
-            if( '' !== $post_text ) {
-                $post_text = '<span class="wpmozo_post_svg_wrapper wpmozo_pre_post">'. $post_text .'</span>';
-            } else {
-                $post_text = '';
-            }
-            ?> 
-                <div class="wpmozo_ae_svg_animator wpmozo_animated_svg_wrapper wpmozo_svg_animator_<?php echo esc_attr( $widget_id ); ?>">                
-                        <<?php echo esc_attr( $heading_level ); ?> class="wpmozo-<?php echo esc_attr( $animation_type ); ?> wpmozo_text_heading"><?php echo wp_kses_post( $pre_text );echo wp_kses_post( $content_text );echo wp_kses_post( $post_text );?></<?php echo esc_attr( $heading_level ); ?>>
+            ?>
+        
+            <div id="wpmozo-svg-anim-<?php echo esc_attr( $widget_id ); ?>"
+                 class="dipl_svg_animator_wrapper"
+                 data-svg_anim_type="<?php echo esc_attr( $animation_type ); ?>"
+                 data-svg_anim_duration="<?php echo esc_attr( $animation_time ); ?>"
+                 data-svg_anim_curves="<?php echo esc_attr( $animation_curves ); ?>"
+                 data-re_animate_on_click="<?php echo esc_attr( $re_animate_on_click ); ?>">
+        
+                <div class="dipl_svg_animator_inner">
+                    <?php echo $svg_content; ?>
                 </div>
+        
+            </div>
+        
             <?php
         }
     }
+    if ( ! function_exists( 'wpmozo_get_svg_content' ) ) {
+
+        function wpmozo_get_svg_content( $svg_file ) {
+    
+            if ( empty( $svg_file ) ) {
+                return '';
+            }
+    
+            if ( strpos( $svg_file, '.svg' ) === false ) {
+                return '';
+            }
+    
+            if ( ini_get( 'allow_url_fopen' ) ) {
+    
+                $context = [];
+    
+                if ( strpos( $svg_file, 'https://' ) === 0 ) {
+                    $context = array(
+                        'ssl' => array(
+                            'verify_peer'      => false,
+                            'verify_peer_name' => false,
+                        ),
+                    );
+                }
+    
+                $content = @file_get_contents(
+                    $svg_file,
+                    false,
+                    stream_context_create( $context )
+                );
+    
+                if ( false !== $content ) {
+                    return $content;
+                }
+            }
+    
+            $response = wp_remote_get( $svg_file, array(
+                'timeout'   => 10,
+                'sslverify' => false,
+            ) );
+    
+            if ( is_wp_error( $response ) ) {
+                return '';
+            }
+    
+            return wp_remote_retrieve_body( $response );
+        }
+    }    
 }

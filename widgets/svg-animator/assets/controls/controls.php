@@ -6,9 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use \Elementor\Utils;
 use \Elementor\Controls_Manager;
-use \Elementor\Group_Control_Text_Shadow;
-use \Elementor\Group_Control_Typography;
-use \Elementor\Group_Control_Background;
 
 // content section starts here.  
 $this->start_controls_section( 
@@ -111,10 +108,10 @@ $this->start_controls_section(
     )
 );
 $this->add_responsive_control(
-    'tab_alignment',
+    'svg_alignment',
     array(
         'type'      => Controls_Manager::CHOOSE,
-        'label'     => esc_html__( 'Tab Alignment', 'wpmozo-addons-lite-for-elementor' ),
+        'label'     => esc_html__( 'SVG Alignment', 'wpmozo-addons-lite-for-elementor' ),
         'options'   => array(
             'left'   => array(
                 'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
@@ -132,7 +129,7 @@ $this->add_responsive_control(
         'default'   => 'center',
         'toggle'    => true,
         'selectors' => array(
-            '{{WRAPPER}} .wpmozo_tabs_controls' => 'justify-content: {{VALUE}};',
+            '{{WRAPPER}} .dipl_svg_animator_inner' => 'text-align: {{VALUE}};',
         ),
     )
 );
@@ -167,7 +164,7 @@ $this->add_responsive_control(
 		),
 		'render_type'    => 'template',
 		'selectors'      => array(
-			'{{WRAPPER}} .wpmozo_wavy_gallery_items .wpmozo_wavy_gallery_item' => 'width: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .dipl_svg_animator_wrapper svg' => 'width: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -197,6 +194,9 @@ $this->add_responsive_control(
 			'unit' => 'px',
 		),
 		'render_type'    => 'template',
+		'selectors'      => array(
+			'{{WRAPPER}} .dipl_svg_animator_wrapper svg *' => 'stroke-width: {{SIZE}}{{UNIT}};',
+		),
 	)
 );
 $this->start_controls_tabs( 'svg_styling_tabs' );
@@ -214,7 +214,7 @@ $this->add_responsive_control(
         'type'        => Controls_Manager::COLOR,
         'default'     => '',
         'selectors'   => array( 
-            '{{WRAPPER}} .wpmozo_ae_text_animator' => 'color: {{VALUE}};',
+            '{{WRAPPER}} .dipl_svg_animator_wrapper svg *' => 'stroke: {{VALUE}};',
         ),
     )
 );
@@ -233,7 +233,7 @@ $this->add_responsive_control(
         'type'        => Controls_Manager::COLOR,
         'default'     => '',
         'selectors'   => array( 
-            '{{WRAPPER}} .wpmozo_ae_text_animator' => 'color: {{VALUE}};',
+            '{{WRAPPER}} .dipl_svg_animator_wrapper svg:hover *' => 'stroke: {{VALUE}};transition:all 300ms;',
         ),
     )
 );          

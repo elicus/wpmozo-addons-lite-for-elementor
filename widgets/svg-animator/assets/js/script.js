@@ -1,20 +1,25 @@
-jQuery( window ).on( "elementor/frontend/init", function () {
-    var e = elementorModules.frontend.handlers.Base.extend( {
-        bindEvents: function () {
-            this.change();
+jQuery(window).on("elementor/frontend/init", function () {
+
+    var SvgAnimatorHandler = elementorModules.frontend.handlers.Base.extend({
+
+        onInit: function () {
+            this.runAnimation();
         },
-        change: function () {
-            // Easing map.
+
+        runAnimation: function () {
+            var $wrapper = this.$element.find('.dipl_svg_animator_wrapper');
+
+            if (!$wrapper.length) return;
+
+            // ---- Easing Map ----
             function diplMapCurve(curve) {
-                curve = ( curve || 'linear' ).toLowerCase();
+                curve = (curve || 'linear').toLowerCase();
                 var map = {
                     'linear': 'linear',
                     'ease': 'ease',
                     'ease-in': 'ease-in',
                     'ease-out': 'ease-out',
                     'ease-in-out': 'ease-in-out',
-
-                    // stronger visible effects.
                     'bounce': 'cubic-bezier(.34, 1.56, .64, 1)',
                     'back': 'cubic-bezier(.36, -0.55, .27, 1.55)',
                     'elastic': 'cubic-bezier(.5, -0.8, .25, 1.65)'
@@ -22,20 +27,29 @@ jQuery( window ).on( "elementor/frontend/init", function () {
                 return map[curve] || 'linear';
             }
 
-            // Element length calculator.
-            function diplGetElementLength( el ) {
-                switch ( el.tagName.toLowerCase() ) {
-                    case 'circle'   : return 2 * Math.PI * el.r.baseVal.value;
-                    case 'rect'     : return 2 * (el.width.baseVal.value + el.height.baseVal.value);
-                    case 'ellipse'  : return 2 * Math.PI * Math.sqrt((el.rx.baseVal.value ** 2 + el.ry.baseVal.value ** 2) / 2);
-                    case 'line'     : return Math.hypot(el.x2.baseVal.value - el.x1.baseVal.value, el.y2.baseVal.value - el.y1.baseVal.value);
-                    case 'polygon'  :
-                    case 'polyline' :
+            // ---- Length Calculator ----
+            function diplGetElementLength(el) {
+                switch (el.tagName.toLowerCase()) {
+                    case 'circle':
+                        return 2 * Math.PI * el.r.baseVal.value;
+                    case 'rect':
+                        return 2 * (el.width.baseVal.value + el.height.baseVal.value);
+                    case 'ellipse':
+                        return 2 * Math.PI * Math.sqrt(
+                            (el.rx.baseVal.value ** 2 + el.ry.baseVal.value ** 2) / 2
+                        );
+                    case 'line':
+                        return Math.hypot(
+                            el.x2.baseVal.value - el.x1.baseVal.value,
+                            el.y2.baseVal.value - el.y1.baseVal.value
+                        );
+                    case 'polygon':
+                    case 'polyline':
                         var pts = el.points, len = 0;
-                        for ( var i = 0; i < pts.numberOfItems - 1; i++ ) {
+                        for (var i = 0; i < pts.numberOfItems - 1; i++) {
                             let p1 = pts.getItem(i);
                             let p2 = pts.getItem(i + 1);
-                            len += Math.hypot( p2.x - p1.x, p2.y - p1.y );
+                            len += Math.hypot(p2.x - p1.x, p2.y - p1.y);
                         }
                         return len;
                     default:
@@ -43,79 +57,82 @@ jQuery( window ).on( "elementor/frontend/init", function () {
                 }
             }
 
-            // Animation.
-            function diplAnimateSVG( $wrapper ) {
-                var animType  = $wrapper.data( 'svg_anim_type' ) || 'delayed';
-                var duration  = parseInt( $wrapper.data( 'svg_anim_duration' ) ) || 100;
-                var curve     = diplMapCurve( $wrapper.data( 'svg_anim_curves' ) );
+            // ---- Animate SVG ----
+            function diplAnimateSVG($wrap) {
 
-                var $svg      = $wrapper.find( 'svg' );
-                var $elements = $svg.find( 'path, rect, circle, ellipse, polygon, polyline, line' );
+                var animType = $wrap.data('svg_anim_type') || 'delayed';
+                var duration = parseInt($wrap.data('svg_anim_duration')) || 1000;
+                var curve = diplMapCurve($wrap.data('svg_anim_curves'));
 
-                // Minimum readable animation speed.
-                var baseTime = Math.max( duration / 100, 0.1 ); // never less than 0.1s
+                var $svg = $wrap.find('svg');
+                if (!$svg.length) return;
 
-                // Reset all strokes before animation.
-                $elements.each( function (i, el) {
-                    var len = diplGetElementLength( el );
-                    $( el ).css( {
+                var $elements = $svg.find('path, rect, circle, ellipse, polygon, polyline, line');
+
+                var baseTime = Math.max(duration / 1000, 0.1);
+
+                $elements.each(function (i, el) {
+                    var len = diplGetElementLength(el);
+                    jQuery(el).css({
                         'stroke-dasharray': len,
                         'stroke-dashoffset': len,
                         'transition': 'none'
-                    } );
-                } );
+                    });
+                });
 
                 let totalDelay = 0;
-                $elements.each( function( index, el ) {
-                    let $el   = $(el);
+
+                $elements.each(function (index, el) {
+
+                    let $el = jQuery(el);
                     let delay = 0;
-                    if ( animType === 'sync' ) {
+
+                    if (animType === 'sync') {
                         delay = 0;
-                    } else if ( animType === 'delayed' ) {
-                        delay = index * ( baseTime * 0.15 );
-                    } else if ( animType === 'onebyone' ) {
+                    } else if (animType === 'delayed') {
+                        delay = index * (baseTime * 0.15);
+                    } else if (animType === 'onebyone') {
                         delay = totalDelay;
-                        totalDelay += ( baseTime - 0.3 );
+                        totalDelay += (baseTime - 0.3);
                     }
 
-                    setTimeout( () => {
-                        $el.css( {
+                    setTimeout(function () {
+                        $el.css({
                             'transition': 'stroke-dashoffset ' + baseTime + 's ' + curve,
                             'stroke-dashoffset': 0
-                        } );
-                    }, delay * 1000 );
-                } );
+                        });
+                    }, delay * 1000);
+
+                });
             }
 
-            // Viewport check.
-            function diplIsFullyInViewport( el ) {
+            // ---- Viewport Detection ----
+            function diplIsInViewport(el) {
                 let rect = el.getBoundingClientRect();
-                return rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight);
+                return rect.top < window.innerHeight && rect.bottom > 0;
             }
 
-            // Viewport checker, and init the animation.
-            function diplCheckSVGAnimator() {
-                $( '.dipl_svg_animator_wrapper' ).each( function() {
-                    var $wrapper = $( this );
-
-                    // Auto-animate on first view.
-                    if ( diplIsFullyInViewport( $wrapper[0] ) && ! $wrapper.hasClass( 'dipl-animated' ) ) {
-                        diplAnimateSVG( $wrapper );
-                        $wrapper.addClass( 'dipl-animated' );
-                    }
-                } );
+            function diplCheckAndAnimate() {
+                if (diplIsInViewport($wrapper[0]) && !$wrapper.hasClass('dipl-animated')) {
+                    diplAnimateSVG($wrapper);
+                    $wrapper.addClass('dipl-animated');
+                }
             }
 
-            // Click to reanimate.
-            $( document ).on( 'click', '.dipl_svg_animator_wrapper[data-re_animate_on_click="on"] svg', function() {
-                const $wrapper = $(this).closest( '.dipl_svg_animator_wrapper' );
-                $wrapper.addClass( 'dipl-animated' );
-                diplAnimateSVG( $wrapper );
-            } );
+            diplCheckAndAnimate();
 
-            // Init event actions.
-            $( window ).on( 'scroll resize load', diplCheckSVGAnimator );
-        },
-    } );
-    elementorFrontend.elementsHandler.attachHandler( "wpmozo_ae_svg_animator", e );
-} );
+            jQuery(window).on('scroll resize', diplCheckAndAnimate);
+
+            // ---- Click Reanimate ----
+            if ($wrapper.data('re_animate_on_click') === 'on') {
+                $wrapper.on('click', 'svg', function () {
+                    $wrapper.removeClass('dipl-animated');
+                    diplAnimateSVG($wrapper);
+                    $wrapper.addClass('dipl-animated');
+                });
+            }
+        }
+    });
+
+    elementorFrontend.elementsHandler.attachHandler("wpmozo_ae_svg_animator", SvgAnimatorHandler);
+});
