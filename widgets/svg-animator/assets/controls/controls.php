@@ -129,7 +129,7 @@ $this->add_responsive_control(
         'default'   => 'center',
         'toggle'    => true,
         'selectors' => array(
-            '{{WRAPPER}} .dipl_svg_animator_inner' => 'text-align: {{VALUE}};',
+            '{{WRAPPER}} .wpmozo_svg_animator_inner' => 'text-align: {{VALUE}};',
         ),
     )
 );
@@ -164,7 +164,7 @@ $this->add_responsive_control(
 		),
 		'render_type'    => 'template',
 		'selectors'      => array(
-			'{{WRAPPER}} .dipl_svg_animator_wrapper svg' => 'width: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_svg_animator_wrapper svg' => 'width: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -195,7 +195,7 @@ $this->add_responsive_control(
 		),
 		'render_type'    => 'template',
 		'selectors'      => array(
-			'{{WRAPPER}} .dipl_svg_animator_wrapper svg *' => 'stroke-width: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_svg_animator_wrapper svg *' => 'stroke-width: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -214,7 +214,7 @@ $this->add_responsive_control(
         'type'        => Controls_Manager::COLOR,
         'default'     => '',
         'selectors'   => array( 
-            '{{WRAPPER}} .dipl_svg_animator_wrapper svg *' => 'stroke: {{VALUE}};',
+            '{{WRAPPER}} .wpmozo_svg_animator_wrapper svg *' => 'stroke: {{VALUE}};',
         ),
     )
 );
@@ -233,7 +233,7 @@ $this->add_responsive_control(
         'type'        => Controls_Manager::COLOR,
         'default'     => '',
         'selectors'   => array( 
-            '{{WRAPPER}} .dipl_svg_animator_wrapper svg:hover *' => 'stroke: {{VALUE}};transition:all 300ms;',
+            '{{WRAPPER}} .wpmozo_svg_animator_wrapper svg:hover *' => 'stroke: {{VALUE}};transition:all 300ms;',
         ),
     )
 );          

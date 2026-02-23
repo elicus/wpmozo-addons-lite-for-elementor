@@ -7,12 +7,12 @@ jQuery(window).on("elementor/frontend/init", function () {
         },
 
         runAnimation: function () {
-            var $wrapper = this.$element.find('.dipl_svg_animator_wrapper');
+            var $wrapper = this.$element.find('.wpmozo_svg_animator_wrapper');
 
             if (!$wrapper.length) return;
 
             // ---- Easing Map ----
-            function diplMapCurve(curve) {
+            function wpmozoMapCurve(curve) {
                 curve = (curve || 'linear').toLowerCase();
                 var map = {
                     'linear': 'linear',
@@ -28,7 +28,7 @@ jQuery(window).on("elementor/frontend/init", function () {
             }
 
             // ---- Length Calculator ----
-            function diplGetElementLength(el) {
+            function wpmozoGetElementLength(el) {
                 switch (el.tagName.toLowerCase()) {
                     case 'circle':
                         return 2 * Math.PI * el.r.baseVal.value;
@@ -58,11 +58,11 @@ jQuery(window).on("elementor/frontend/init", function () {
             }
 
             // ---- Animate SVG ----
-            function diplAnimateSVG($wrap) {
+            function wpmozoAnimateSVG($wrap) {
 
                 var animType = $wrap.data('svg_anim_type') || 'delayed';
                 var duration = parseInt($wrap.data('svg_anim_duration')) || 1000;
-                var curve = diplMapCurve($wrap.data('svg_anim_curves'));
+                var curve = wpmozoMapCurve($wrap.data('svg_anim_curves'));
 
                 var $svg = $wrap.find('svg');
                 if (!$svg.length) return;
@@ -72,7 +72,7 @@ jQuery(window).on("elementor/frontend/init", function () {
                 var baseTime = Math.max(duration / 1000, 0.1);
 
                 $elements.each(function (i, el) {
-                    var len = diplGetElementLength(el);
+                    var len = wpmozoGetElementLength(el);
                     jQuery(el).css({
                         'stroke-dasharray': len,
                         'stroke-dashoffset': len,
@@ -107,28 +107,28 @@ jQuery(window).on("elementor/frontend/init", function () {
             }
 
             // ---- Viewport Detection ----
-            function diplIsInViewport(el) {
+            function wpmozoIsInViewport(el) {
                 let rect = el.getBoundingClientRect();
                 return rect.top < window.innerHeight && rect.bottom > 0;
             }
 
-            function diplCheckAndAnimate() {
-                if (diplIsInViewport($wrapper[0]) && !$wrapper.hasClass('dipl-animated')) {
-                    diplAnimateSVG($wrapper);
-                    $wrapper.addClass('dipl-animated');
+            function wpmozoCheckAndAnimate() {
+                if (wpmozoIsInViewport($wrapper[0]) && !$wrapper.hasClass('wpmozo-animated')) {
+                    wpmozoAnimateSVG($wrapper);
+                    $wrapper.addClass('wpmozo-animated');
                 }
             }
 
-            diplCheckAndAnimate();
+            wpmozoCheckAndAnimate();
 
-            jQuery(window).on('scroll resize', diplCheckAndAnimate);
+            jQuery(window).on('scroll resize', wpmozoCheckAndAnimate);
 
             // ---- Click Reanimate ----
             if ($wrapper.data('re_animate_on_click') === 'on') {
                 $wrapper.on('click', 'svg', function () {
-                    $wrapper.removeClass('dipl-animated');
-                    diplAnimateSVG($wrapper);
-                    $wrapper.addClass('dipl-animated');
+                    $wrapper.removeClass('wpmozo-animated');
+                    wpmozoAnimateSVG($wrapper);
+                    $wrapper.addClass('wpmozo-animated');
                 });
             }
         }
