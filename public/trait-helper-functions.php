@@ -228,4 +228,49 @@ trait Wpmozo_Ae_Helper_Functions {
 			// Example: "1920 / 1279"
 			return sprintf( '%d / %d', $w, $h );
 		}
+
+
+	/**
+	 * Retrieve SVG file contents from URL.
+	 *
+	 * @param string $svg_file SVG file URL.
+	 * @return string
+	 */
+	
+		public static function wpmozo_get_svg_content( $svg_file ) {
+		if ( empty( $svg_file ) ) {
+			return '';
+		}
+		if ( strpos( $svg_file, '.svg' ) === false ) {
+			return '';
+		}
+		$response = wp_remote_get(
+			$svg_file,
+			array(
+				'timeout'     => 10,
+				'redirection' => 5,
+				'sslverify'   => true,
+			)
+		);
+
+		// Request fail?
+		if ( is_wp_error( $response ) ) {
+			return false;
+		}
+
+		// HTTP status check.
+		$status_code = wp_remote_retrieve_response_code( $response );
+		if ( 200 !== $status_code ) {
+			return false;
+		}
+
+		// Body retrieve.
+		$content = wp_remote_retrieve_body( $response );
+
+		if ( empty( $content ) ) {
+			return false;
+		}
+
+		return $content;
+	}
 }

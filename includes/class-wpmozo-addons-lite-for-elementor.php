@@ -85,6 +85,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 			$this->set_locale();
 			$this->define_admin_hooks();
 			$this->define_public_hooks();
+			add_filter( 'upload_mimes', array( $this, 'wpmozo_mime_types' ) );
 		}
 
 		/**
@@ -142,6 +143,21 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 
 			$this->loader = new WPMOZO_Addons_Lite_For_Elementor_Loader();
 		}
+		/**
+	 * add JSON to allowed file uploads.
+	 *
+	 * @since 1.5.2
+	 */
+	public function wpmozo_mime_types( $mimes ) {
+		// $mimes['json'] = 'application/json';
+		// $mimes['pdf']  = 'application/pdf';
+
+		// For safe side, Allow SVG only if user logged in.
+		if ( is_user_logged_in() ) {
+			$mimes['svg'] = 'image/svg+xml';
+		}
+		return $mimes;
+	}
 
 		/**
 		 * Define the locale for this plugin for internationalization.

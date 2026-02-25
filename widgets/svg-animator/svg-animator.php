@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Elementor\Widget_Base;
+use Elementor\Core\Utils\Svg\Svg_Sanitizer;
 if ( ! class_exists( 'WPMOZO_AE_Svg_Animator' ) ) {
 	class WPMOZO_AE_Svg_Animator extends Widget_Base {
 		/**
@@ -110,7 +111,7 @@ if ( ! class_exists( 'WPMOZO_AE_Svg_Animator' ) ) {
 		 * @return array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-			wp_register_script( 'wpmozo-ae-svg-animator', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
+			wp_register_script( 'wpmozo-ae-svg-animator', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
 			return array( 'wpmozo-ae-svg-animator' );
 		}
 
@@ -153,12 +154,11 @@ if ( ! class_exists( 'WPMOZO_AE_Svg_Animator' ) ) {
 			}
 
 			// Try fetching SVG content.
-			$svg_content = wpmozo_get_svg_content( $svg_image );
+			$svg_content = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_get_svg_content( $svg_image );
 
 			if ( empty( $svg_content ) ) {
 				return;
 			}
-
 			?>
 		
 			<div id="wpmozo-svg-anim-<?php echo esc_attr( $widget_id ); ?>"
@@ -168,59 +168,13 @@ if ( ! class_exists( 'WPMOZO_AE_Svg_Animator' ) ) {
 				data-svg_anim_curves="<?php echo esc_attr( $animation_curves ); ?>"
 				data-re_animate_on_click="<?php echo esc_attr( $re_animate_on_click ); ?>">
 				<div class="wpmozo_svg_animator_inner">
-					<?php echo $svg_content; ?>
+					<?php
+						$svg_html = ( new Svg_Sanitizer() )->sanitize( $svg_content );
+						echo $svg_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					?>
 				</div>
 			</div>
 			<?php
-		}
-	}
-	/**
-	 * Retrieve SVG file contents from URL.
-	 *
-	 * @param string $svg_file SVG file URL.
-	 * @return string
-	 */
-	if ( ! function_exists( 'wpmozo_get_svg_content' ) ) {
-		function wpmozo_get_svg_content( $svg_file ) {
-			if ( empty( $svg_file ) ) {
-				return '';
-			}
-			if ( strpos( $svg_file, '.svg' ) === false ) {
-				return '';
-			}
-			if ( ini_get( 'allow_url_fopen' ) ) {
-				$context = array();
-				if ( strpos( $svg_file, 'https://' ) === 0 ) {
-					$context = array(
-						'ssl' => array(
-							'verify_peer'      => false,
-							'verify_peer_name' => false,
-						),
-					);
-				}
-				$content = @file_get_contents(
-					$svg_file,
-					false,
-					stream_context_create( $context )
-				);
-				if ( false !== $content ) {
-					return $content;
-				}
-			}
-
-			$response = wp_remote_get(
-				$svg_file,
-				array(
-					'timeout'   => 10,
-					'sslverify' => false,
-				)
-			);
-
-			if ( is_wp_error( $response ) ) {
-				return '';
-			}
-
-			return wp_remote_retrieve_body( $response );
 		}
 	}
 }
