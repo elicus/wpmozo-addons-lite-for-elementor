@@ -138,6 +138,7 @@ if ( ! class_exists( 'WPMOZO_AE_Scrolling_Svg' ) ) {
 		 * @access protected
 		 */
 		protected function render() {
+
 			$settings  = $this->get_settings_for_display();
 			$widget_id = $this->get_id();
 
@@ -149,7 +150,6 @@ if ( ! class_exists( 'WPMOZO_AE_Scrolling_Svg' ) ) {
 				return;
 			}
 
-			// Try fetching SVG content.
 			$svg_content = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_get_svg_content( $svg_image );
 
 			if ( empty( $svg_content ) ) {
@@ -160,13 +160,40 @@ if ( ! class_exists( 'WPMOZO_AE_Scrolling_Svg' ) ) {
 			<div id="wpmozo_scrolling_svg-<?php echo esc_attr( $widget_id ); ?>"
 				class="wpmozo_scrolling_svg_wrapper"
 				data-re_animate_on_click="<?php echo esc_attr( $re_animate_on_click ); ?>">
+		
+				<div class="wpmozo_scrolling_svg_spacer"></div>
+		
 				<div class="wpmozo_scrolling_svg_inner">
 					<?php
-						$svg_html = ( new Svg_Sanitizer() )->sanitize( $svg_content );
+					$svg_html = ( new Svg_Sanitizer() )->sanitize( $svg_content );
+
+					if ( ! empty( $svg_html ) ) {
+
+						// Append animated-svg class safely.
+						$svg_html = preg_replace(
+							'/<svg\b([^>]*)class="([^"]*)"/',
+							'<svg $1class="$2 animated-svg"',
+							$svg_html,
+							1,
+							$count
+						);
+
+						if ( 0 === $count ) {
+							$svg_html = preg_replace(
+								'/<svg\b([^>]*)>/',
+								'<svg class="animated-svg" $1>',
+								$svg_html,
+								1
+							);
+						}
+
 						echo $svg_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					}
 					?>
 				</div>
+		
 			</div>
+		
 			<?php
 		}
 	}

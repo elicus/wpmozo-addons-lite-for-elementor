@@ -1,23 +1,25 @@
-/* SVG position & scaling */
+/* Wrapper */
 .elementor-widget-wpmozo_ae_scrolling_svg .wpmozo_scrolling_svg_wrapper {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
+    position: relative;
+}
+/* Sticky SVG container */
+.elementor-widget-wpmozo_ae_scrolling_svg .wpmozo_scrolling_svg_inner {
+    position: sticky;
+    top: 0;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
+/* SVG scaling */
 .elementor-widget-wpmozo_ae_scrolling_svg .animated-svg {
     width: 100%;
     max-width: 500px;
 }
-
-/* Universal stroke/fill animation preparation */
+/* Stroke preparation */
 .elementor-widget-wpmozo_ae_scrolling_svg .animated-svg * {
     stroke: currentColor;
     stroke-width: 2;
     fill: none;
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    transition: stroke-dashoffset 0.2s linear;
+    transition: stroke-dashoffset 0.15s linear;
 }

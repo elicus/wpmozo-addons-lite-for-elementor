@@ -14,7 +14,7 @@ use Elementor\Controls_Manager;
 $this->start_controls_section(
 	'content_section',
 	array(
-		'label' => __( 'Content', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Content', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
 	)
 );
@@ -36,7 +36,7 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'animation_section',
 	array(
-		'label' => __( 'Animation', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Animation', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
 	)
 );
