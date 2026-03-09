@@ -15,14 +15,18 @@ jQuery(window).on("elementor/frontend/init", function () {
             if (!$svg.length) return;
 
             var $elements = $svg.find('path, rect, circle, ellipse, polygon, polyline, line');
+            if (!$elements.length) return;
 
             var section = $wrapper[0];
             var ticking = false;
 
-            // ---- Setup stroke lengths ----
+            // control value
+            // var reAnimate = $wrapper.data('re_animate_on_click') === 'yes';
+
+            // ---- Cache Stroke Lengths ----
             $elements.each(function () {
 
-                let length;
+                var length;
 
                 try {
                     length = this.getTotalLength();
@@ -30,77 +34,64 @@ jQuery(window).on("elementor/frontend/init", function () {
                     length = 400;
                 }
 
-                jQuery(this).css({
-                    "stroke-dasharray": length,
-                    "stroke-dashoffset": length
-                });
+                jQuery(this)
+                    .attr('data-length', length)
+                    .css({
+                        "stroke-dasharray": length,
+                        "stroke-dashoffset": length
+                    });
+
             });
 
+
+            // ---- Scroll Animation ----
             function updateAnimation() {
 
                 var rect = section.getBoundingClientRect();
                 var windowHeight = window.innerHeight;
 
-                var sectionHeight = rect.height;
-                var visible = Math.min(Math.max(windowHeight - rect.top, 0), sectionHeight);
+                var progress = (windowHeight - rect.top) / (windowHeight + rect.height);
 
-                var progress = visible / sectionHeight;
-                progress = Math.min(Math.max(progress, 0), 1);
+                progress = Math.max(0, Math.min(progress, 1));
 
                 $elements.each(function () {
 
-                    let length;
-
-                    try {
-                        length = this.getTotalLength();
-                    } catch (e) {
-                        length = 400;
-                    }
+                    var length = parseFloat(jQuery(this).attr('data-length'));
 
                     var draw = length * progress;
-                    jQuery(this).css("stroke-dashoffset", length - draw);
+
+                    jQuery(this).css(
+                        "stroke-dashoffset",
+                        length - draw
+                    );
+
                 });
 
                 ticking = false;
             }
 
+
             function requestTick() {
+
                 if (!ticking) {
                     requestAnimationFrame(updateAnimation);
                     ticking = true;
                 }
+
             }
 
             jQuery(window).on('scroll resize', requestTick);
 
             requestTick();
 
-            // ---- Click Reanimate ----
-            if ($wrapper.data('re_animate_on_click') === 'on') {
-
-                $wrapper.on('click', 'svg', function () {
-
-                    $elements.each(function () {
-
-                        let length;
-
-                        try {
-                            length = this.getTotalLength();
-                        } catch (e) {
-                            length = 400;
-                        }
-
-                        jQuery(this).css("stroke-dashoffset", length);
-                    });
-
-                    setTimeout(requestTick, 50);
-                });
-            }
         }
+
     });
+
 
     elementorFrontend.elementsHandler.attachHandler(
         "wpmozo_ae_scrolling_svg",
         ScrollingSvgHandler
     );
+
 });

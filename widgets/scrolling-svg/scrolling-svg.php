@@ -159,7 +159,8 @@ if ( ! class_exists( 'WPMOZO_AE_Scrolling_Svg' ) ) {
 		
 			<div id="wpmozo_scrolling_svg-<?php echo esc_attr( $widget_id ); ?>"
 				class="wpmozo_scrolling_svg_wrapper"
-				data-re_animate_on_click="<?php echo esc_attr( $re_animate_on_click ); ?>">
+				data-animation_distance="<?php echo esc_attr( $settings['scroll_animation_distance']['size'] ); ?>"
+    			data-animation_speed="<?php echo esc_attr( $settings['draw_animation_speed']['size'] ); ?>">
 		
 				<div class="wpmozo_scrolling_svg_spacer"></div>
 		
