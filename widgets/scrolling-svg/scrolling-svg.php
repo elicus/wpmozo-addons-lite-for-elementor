@@ -111,8 +111,8 @@ if ( ! class_exists( 'WPMOZO_AE_Scrolling_Svg' ) ) {
 		 * @return array Element scripts dependencies.
 		 */
 		public function get_script_depends() {
-			wp_register_script( 'wpmozo-ae-scrolling-svg', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
-			return array( 'wpmozo-ae-scrolling-svg' );
+			wp_register_script( 'wpmozo-ae-scrolling-svg', plugins_url( 'assets/js/script.min.js', __FILE__ ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
+			return array( 'wpmozo-ae-scrolling-svg', 'wpmozo-ae-gsap', 'wpmozo-ae-scrollTrigger' );
 		}
 
 		/**
@@ -144,8 +144,6 @@ if ( ! class_exists( 'WPMOZO_AE_Scrolling_Svg' ) ) {
 
 			$svg_image = ! empty( $settings['svg_image']['url'] ) ? esc_url( $settings['svg_image']['url'] ) : '';
 
-			$re_animate_on_click = ( isset( $settings['re_animate_on_click'] ) && 'yes' === $settings['re_animate_on_click'] ) ? 'on' : 'off';
-
 			if ( empty( $svg_image ) ) {
 				return;
 			}
@@ -157,12 +155,13 @@ if ( ! class_exists( 'WPMOZO_AE_Scrolling_Svg' ) ) {
 			}
 			?>
 		
-			<div id="wpmozo_scrolling_svg-<?php echo esc_attr( $widget_id ); ?>"
-				class="wpmozo_scrolling_svg_wrapper"
-				data-animation_distance="<?php echo esc_attr( $settings['scroll_animation_distance']['size'] ); ?>"
-    			data-animation_speed="<?php echo esc_attr( $settings['draw_animation_speed']['size'] ); ?>">
-		
-				<div class="wpmozo_scrolling_svg_spacer"></div>
+		<div
+			class="wpmozo_scrolling_svg_wrapper"
+
+			data-animation_distance="<?php echo esc_attr( $settings['scroll_animation_distance']['size'] ); ?>"
+
+			data-reverse_draw="<?php echo esc_attr( $settings['reverse_draw'] ); ?>"
+			>
 		
 				<div class="wpmozo_scrolling_svg_inner">
 					<?php

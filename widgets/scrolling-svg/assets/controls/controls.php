@@ -52,13 +52,24 @@ $this->add_responsive_control(
 				'max' => 600,
 			),
 		),
-		'default' => array(
+		'default'    => array(
 			'size' => 200,
 			'unit' => 'vh',
 		),
-		'selectors' => array(
+		'selectors'  => array(
 			'{{WRAPPER}} .wpmozo_scrolling_svg_wrapper' => 'min-height: {{SIZE}}{{UNIT}};',
 		),
+	)
+);
+$this->add_control(
+	'reverse_draw',
+	array(
+		'label'        => esc_html__( 'Reverse Draw', 'wpmozo-addons-lite-for-elementor' ),
+		'type'         => Controls_Manager::SWITCHER,
+		'label_on'     => esc_html__( 'Yes', 'wpmozo-addons-lite-for-elementor' ),
+		'label_off'    => esc_html__( 'No', 'wpmozo-addons-lite-for-elementor' ),
+		'return_value' => 'yes',
+		'default'      => 'no',
 	)
 );
 $this->end_controls_section();
@@ -77,15 +88,15 @@ $this->add_responsive_control(
 		'type'      => Controls_Manager::CHOOSE,
 		'label'     => esc_html__( 'SVG Alignment', 'wpmozo-addons-lite-for-elementor' ),
 		'options'   => array(
-			'flex-start'   => array(
+			'flex-start' => array(
 				'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 				'icon'  => 'eicon-h-align-left',
 			),
-			'center' => array(
+			'center'     => array(
 				'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 				'icon'  => 'eicon-h-align-center',
 			),
-			'flex-end'  => array(
+			'flex-end'   => array(
 				'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 				'icon'  => 'eicon-h-align-right',
 			),
@@ -159,28 +170,6 @@ $this->add_responsive_control(
 		'render_type'    => 'template',
 		'selectors'      => array(
 			'{{WRAPPER}} .wpmozo_scrolling_svg_wrapper svg *' => 'stroke-width: {{SIZE}}{{UNIT}};',
-		),
-	)
-);
-$this->add_responsive_control(
-	'draw_animation_speed',
-	array(
-		'label'      => esc_html__( 'Draw Animation Speed', 'wpmozo-addons-lite-for-elementor' ),
-		'type'       => Controls_Manager::SLIDER,
-		'size_units' => array( 's' ),
-		'range'      => array(
-			's' => array(
-				'min' => 0.05,
-				'max' => 10,
-				'step' => 0.05,
-			),
-		),
-		'default' => array(
-			'size' => 3,
-			'unit' => 's',
-		),
-		'selectors' => array(
-			'{{WRAPPER}} .wpmozo_scrolling_svg_wrapper svg *' => 'transition: stroke-dashoffset {{SIZE}}{{UNIT}} linear;',
 		),
 	)
 );
