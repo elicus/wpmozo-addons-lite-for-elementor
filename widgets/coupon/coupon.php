@@ -144,8 +144,7 @@ if ( ! class_exists( 'WPMOZO_AE_Coupon' ) ) {
 			if ( 'yes' === $show_expiry_date && ! empty( $expiry_date ) ) {
 
 				// Convert expiry date to timestamp.
-				$expiry_timestamp = strtotime( $expiry_date );
-				// $current_timestamp = current_time( 'timestamp' );
+				$expiry_timestamp  = strtotime( $expiry_date );
 				$current_timestamp = strtotime( current_time( 'mysql' ) );
 
 				// Fallback date format.
