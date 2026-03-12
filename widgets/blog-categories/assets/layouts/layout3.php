@@ -13,14 +13,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php
 	foreach ( $categories as $category ) :
 
-		$cat_id    = $category->term_id;
+		$term_id   = $category->term_id;
 		$cat_name  = $category->name;
 		$cat_slug  = $category->slug;
 		$cat_link  = get_term_link( $category );
 		$cat_count = $category->count;
 
 		// Category Thumbnail.
-		$thumbnail_id = get_term_meta( $cat_id, 'wpmozo_category_thumbnail', true );
+		$thumbnail_id = get_term_meta( $term_id, 'wpmozo_category_thumbnail', true );
 		$image_html   = '';
 
 		if ( $thumbnail_id ) {
@@ -37,14 +37,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
 
 		<div
-			id="wpmozo_blog_category_<?php echo esc_attr( $cat_id ); ?>"
+			id="wpmozo_blog_category_<?php echo esc_attr( $term_id ); ?>"
 			class="wpmozo_blog_category_item category_<?php echo esc_attr( $cat_slug ); ?>"
 		>
 			<div class="wpmozo_blog_category_item_inner">
 
 				<?php if ( ! empty( $image_html ) ) : ?>
 					<div class="wpmozo_category_image_wrapper">
-						<?php echo $image_html; ?>
+						<?php
+							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							echo $image_html;
+						?>
 					</div>
 				<?php endif; ?>
 

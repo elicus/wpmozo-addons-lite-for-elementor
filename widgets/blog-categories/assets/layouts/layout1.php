@@ -13,14 +13,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php
 foreach ( $categories as $category ) :
 
-	$cat_id    = $category->term_id;
+	$term_id   = $category->term_id;
 	$cat_name  = $category->name;
 	$cat_slug  = $category->slug;
 	$cat_link  = get_term_link( $category );
 	$cat_count = $category->count;
 
 	// Category Thumbnail (Featured Image).
-	$thumbnail_id = get_term_meta( $cat_id, 'wpmozo_category_thumbnail', true );
+	$thumbnail_id = get_term_meta( $term_id, 'wpmozo_category_thumbnail', true );
 	$image_url    = '';
 
 	if ( $thumbnail_id ) {
@@ -33,7 +33,7 @@ foreach ( $categories as $category ) :
 	?>
 
 	<div
-		id="wpmozo_blog_category_<?php echo esc_attr( $cat_id ); ?>"
+		id="wpmozo_blog_category_<?php echo esc_attr( $term_id ); ?>"
 		class="wpmozo_blog_category_item category_<?php echo esc_attr( $cat_slug ); ?>"
 		<?php if ( ! empty( $image_url ) ) : ?>
 			style="background-image: url('<?php echo esc_url( $image_url ); ?>');"
