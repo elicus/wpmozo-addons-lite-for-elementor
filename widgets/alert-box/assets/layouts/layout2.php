@@ -7,8 +7,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<div class="dipl_alert_box_inner">
-	<div class="dipl_alert_box_image_wrap <?php echo esc_attr( $use_alert_box_image ); ?>">
+<div class="wpmozo_alert_box_inner">
+	<div class="wpmozo_alert_box_image_wrap <?php echo esc_attr( $use_alert_box_image ); ?>">
 		<?php if ( ! empty( $settings['alert_box_image']['url'] ) ) { ?>
 			<img decoding="async" src="<?php echo esc_url( $alert_box_image ); ?>" alt="<?php echo esc_attr( $alert_box_image_alt ); ?>">
 		<?php } else { ?>
@@ -25,9 +25,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</span>
 		<?php } ?>
 	</div>
-	<div class="dipl_alert_box_content">
-		<<?php echo esc_html( $title_heading_level ); ?> class="dipl_alert_box_title"><?php echo esc_html( $alert_title ); ?></<?php echo esc_html( $title_heading_level ); ?>>
-		<div class="dipl_alert_box_description"><?php echo esc_html( $alert_description ); ?></div>
+	<div class="wpmozo_alert_box_content">
+		<<?php echo esc_html( $title_heading_level ); ?> class="wpmozo_alert_box_title"><?php echo esc_html( $alert_title ); ?></<?php echo esc_html( $title_heading_level ); ?>>
+		<div class="wpmozo_alert_box_description"><?php echo esc_html( $alert_description ); ?></div>
 		<?php if ( 'yes' === $show_alert_button && '' !== $button_url ) { ?>
 		<div class="wpmozo_button_wrapper">
 			<a class="wpmozo_button" href="<?php echo esc_url( $button_url ); ?>"><?php echo esc_html( $button_text ); ?>
@@ -45,7 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php } ?>
 	</div>
 	<?php if ( 'yes' === $show_close_button ) { ?>
-		<a href="#" class="dipl-alert-box-close-btn">
+		<a href="#" class="wpmozo_alert_box_close_btn">
 		<span class="wpmozo_close_icon">x</span>
 		</a>
 	<?php } ?>	

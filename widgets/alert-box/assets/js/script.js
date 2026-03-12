@@ -5,12 +5,12 @@
                 this.change();
             },
             change: function () {
-                const $this = this.$element.find('.dipl_alert_box');
+                const $this = this.$element.find('.wpmozo_alert_box');
 
                 if (!$this.length) {
                     return;
                 }
-                $this.on('click', '.dipl-alert-box-close-btn', function (e) {
+                $this.on('click', '.wpmozo_alert_box_close_btn', function (e) {
                     e.preventDefault();
                     $this.fadeOut();
                 });          

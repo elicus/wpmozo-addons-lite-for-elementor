@@ -142,7 +142,7 @@ if ( ! class_exists( 'WPMOZO_AE_Alert_Box' ) ) {
 			$settings            = $this->get_settings_for_display();
 			$alert_title         = isset( $settings['alert_title'] ) ? $settings['alert_title'] : '';
 			$alert_description   = isset( $settings['alert_description'] ) ? $settings['alert_description'] : '';
-			$use_alert_box_image = 'yes' === $settings['use_alert_box_image'] ? 'dipl-used-image' : '';
+			$use_alert_box_image = 'yes' === $settings['use_alert_box_image'] ? 'wpmozo_used_image' : '';
 			$alert_box_image     = isset( $settings['alert_box_image']['url'] ) ? $settings['alert_box_image']['url'] : '';
 			$alert_box_image_alt = isset( $settings['alert_box_image_alt'] ) ? $settings['alert_box_image_alt'] : '';
 			$layout              = esc_attr( $settings['layout'] );
@@ -154,8 +154,8 @@ if ( ! class_exists( 'WPMOZO_AE_Alert_Box' ) ) {
 			$button_url          = isset( $settings['button_url']['url'] ) ? $settings['button_url']['url'] : '';
 
 			?>
-			<div class="dipl_alert_box">
-				<div class="dipl_alert_box_wrapper <?php echo esc_attr( $layout ); ?> icon_<?php echo esc_attr( $settings['button_icon_placement'] ); ?>">
+			<div class="wpmozo_alert_box">
+				<div class="wpmozo_alert_box_wrapper <?php echo esc_attr( $layout ); ?> icon_<?php echo esc_attr( $settings['button_icon_placement'] ); ?>">
 				<?php
 					$layout_file = plugin_dir_path( __DIR__ ) . "alert-box/assets/layouts/{$layout}.php";
 

@@ -222,7 +222,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Title Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_alert_box_title' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -239,7 +239,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_alert_box_title' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -250,7 +250,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'title_text_typography',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_title',
+		'selector'    => '{{WRAPPER}} .wpmozo_alert_box_title',
 	)
 );
 $this->add_group_control(
@@ -259,7 +259,7 @@ $this->add_group_control(
 		'label'       => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'title_text_shadow',
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_title',
+		'selector'    => '{{WRAPPER}} .wpmozo_alert_box_title',
 	)
 );
 $this->end_controls_tab();
@@ -275,7 +275,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Title Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title:hover' => 'color: {{VALUE}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_alert_box_title:hover' => 'color: {{VALUE}}; transition: all 300ms;',
 		),
 	)
 );
@@ -292,7 +292,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_alert_box_title:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 		),
 	)
 );
@@ -303,7 +303,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'title_text_typography_hover',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_title:hover',
+		'selector'    => '{{WRAPPER}} .wpmozo_alert_box_title:hover',
 	)
 );
 $this->add_group_control(
@@ -312,7 +312,7 @@ $this->add_group_control(
 		'label'       => esc_html__( 'Title Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'title_text_shadow_hover',
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_title:hover',
+		'selector'    => '{{WRAPPER}} .wpmozo_alert_box_title:hover',
 	)
 );
 $this->end_controls_tab();
@@ -338,7 +338,7 @@ $this->add_responsive_control(
 		),
 		'toggle'    => true,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_title' => 'text-align: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_alert_box_title' => 'text-align: {{VALUE}};',
 		),
 	)
 );
@@ -363,7 +363,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Description Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_description' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_alert_box_description' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -384,7 +384,7 @@ $this->add_responsive_control(
 			'size' => 14,
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_description' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_alert_box_description' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -395,7 +395,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'description_text_typography',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_description',
+		'selector'    => '{{WRAPPER}} .wpmozo_alert_box_description',
 	)
 );
 $this->add_group_control(
@@ -404,7 +404,7 @@ $this->add_group_control(
 		'label'       => esc_html__( 'Description Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'description_text_shadow',
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_description',
+		'selector'    => '{{WRAPPER}} .wpmozo_alert_box_description',
 	)
 );
 $this->end_controls_tab();
@@ -420,7 +420,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Description Text Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_description:hover' => 'color: {{VALUE}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_alert_box_description:hover' => 'color: {{VALUE}}; transition: all 300ms;',
 		),
 	)
 );
@@ -437,7 +437,7 @@ $this->add_responsive_control(
 			),
 		),
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_description:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_alert_box_description:hover' => 'font-size: {{SIZE}}{{UNIT}}; transition: all 300ms;',
 		),
 	)
 );
@@ -448,7 +448,7 @@ $this->add_group_control(
 		'label_block' => true,
 		'name'        => 'description_text_typography_hover',
 		'exclude'     => array( 'font_size' ),
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_description:hover',
+		'selector'    => '{{WRAPPER}} .wpmozo_alert_box_description:hover',
 	)
 );
 $this->add_group_control(
@@ -457,7 +457,7 @@ $this->add_group_control(
 		'label'       => esc_html__( 'Description Text Shadow', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
 		'name'        => 'description_text_shadow_hover',
-		'selector'    => '{{WRAPPER}} .dipl_alert_box_description:hover',
+		'selector'    => '{{WRAPPER}} .wpmozo_alert_box_description:hover',
 	)
 );
 $this->end_controls_tab();
@@ -483,7 +483,7 @@ $this->add_responsive_control(
 		),
 		'toggle'    => true,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_description' => 'text-align: {{VALUE}}',
+			'{{WRAPPER}} .wpmozo_alert_box_description' => 'text-align: {{VALUE}}',
 		),
 	)
 );
@@ -1024,7 +1024,7 @@ $this->add_responsive_control(
 			'left'   => 5,
 		),
 		'selectors'  => array(
-			'{{WRAPPER}} .dipl_alert_box_image_wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_alert_box_image_wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
 	)
 );
@@ -1049,8 +1049,8 @@ $this->add_responsive_control(
 			'size' => 16,
 		),
 		'selectors'  => array(
-			'{{WRAPPER}} .dipl_alert_box_image_wrap .wpmozo_alert_box_icon' => 'font-size: {{SIZE}}{{UNIT}};',
-			'{{WRAPPER}} .dipl_alert_box_image_wrap .wpmozo_alert_box_icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_alert_box_image_wrap .wpmozo_alert_box_icon' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_alert_box_image_wrap .wpmozo_alert_box_icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 		),
 		'condition'  => array(
 			'use_alert_box_image!' => 'yes',
@@ -1074,7 +1074,7 @@ $this->add_responsive_control(
 			'unit' => 'px',
 		),
 		'selectors'  => array(
-			'{{WRAPPER}} .dipl_alert_box_image_wrap.dipl-used-image img' => 'width: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_alert_box_image_wrap.wpmozo_used_image img' => 'width: {{SIZE}}{{UNIT}};',
 		),
 		'condition'  => array(
 			'use_alert_box_image' => 'yes',
@@ -1096,8 +1096,8 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_image_wrap .wpmozo_alert_box_icon' => 'color: {{VALUE}}; transition: all 300ms;',
-			'{{WRAPPER}} .dipl_alert_box_image_wrap .wpmozo_alert_box_icon svg' => 'fill: {{VALUE}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_alert_box_image_wrap .wpmozo_alert_box_icon' => 'color: {{VALUE}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_alert_box_image_wrap .wpmozo_alert_box_icon svg' => 'fill: {{VALUE}}; transition: all 300ms;',
 		),
 		'condition' => array(
 			'use_alert_box_image!' => 'yes',
@@ -1110,7 +1110,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Background Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_image_wrap' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_alert_box_image_wrap' => 'background-color: {{VALUE}};',
 		),
 	)
 );
@@ -1118,7 +1118,7 @@ $this->add_group_control(
 	Group_Control_Border::get_type(),
 	array(
 		'name'     => 'icon_image_border',
-		'selector' => '{{WRAPPER}} .dipl_alert_box_image_wrap',
+		'selector' => '{{WRAPPER}} .wpmozo_alert_box_image_wrap',
 	)
 );
 $this->add_responsive_control(
@@ -1128,7 +1128,7 @@ $this->add_responsive_control(
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', 'em', '%' ),
 		'selectors'  => array(
-			'{{WRAPPER}} .dipl_alert_box_image_wrap' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_alert_box_image_wrap' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 		),
 	)
 );
@@ -1145,8 +1145,8 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_image_wrap .wpmozo_alert_box_icon:hover' => 'color: {{VALUE}}; transition: all 300ms;',
-			'{{WRAPPER}} .dipl_alert_box_image_wrap .wpmozo_alert_box_icon svg:hover' => 'fill: {{VALUE}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_alert_box_image_wrap .wpmozo_alert_box_icon:hover' => 'color: {{VALUE}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_alert_box_image_wrap .wpmozo_alert_box_icon svg:hover' => 'fill: {{VALUE}}; transition: all 300ms;',
 		),
 		'condition' => array(
 			'use_alert_box_image!' => 'yes',
@@ -1159,7 +1159,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Background Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl_alert_box_image_wrap:hover' => 'background-color: {{VALUE}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_alert_box_image_wrap:hover' => 'background-color: {{VALUE}}; transition: all 300ms;',
 		),
 	)
 );
@@ -1167,7 +1167,7 @@ $this->add_group_control(
 	Group_Control_Border::get_type(),
 	array(
 		'name'     => 'icon_image_hover_border',
-		'selector' => '{{WRAPPER}} .dipl_alert_box_image_wrap:hover',
+		'selector' => '{{WRAPPER}} .wpmozo_alert_box_image_wrap:hover',
 	)
 );
 $this->add_responsive_control(
@@ -1177,7 +1177,7 @@ $this->add_responsive_control(
 		'type'       => Controls_Manager::DIMENSIONS,
 		'size_units' => array( 'px', 'em', '%' ),
 		'selectors'  => array(
-			'{{WRAPPER}} .dipl_alert_box_image_wrap:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_alert_box_image_wrap:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; transition: all 300ms;',
 		),
 	)
 );
@@ -1212,7 +1212,7 @@ $this->add_responsive_control(
 			'size' => 16,
 		),
 		'selectors'  => array(
-			'{{WRAPPER}} .dipl-alert-box-close-btn .wpmozo_close_icon' => 'font-size: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_alert_box_close_btn .wpmozo_close_icon' => 'font-size: {{SIZE}}{{UNIT}};',
 		),
 	)
 );
@@ -1231,7 +1231,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl-alert-box-close-btn .wpmozo_close_icon' => 'color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_alert_box_close_btn .wpmozo_close_icon' => 'color: {{VALUE}};',
 		),
 	)
 );
@@ -1248,7 +1248,7 @@ $this->add_responsive_control(
 		'label'     => esc_html__( 'Icon Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
-			'{{WRAPPER}} .dipl-alert-box-close-btn .wpmozo_close_icon:hover' => 'color: {{VALUE}}; transition: all 300ms;',
+			'{{WRAPPER}} .wpmozo_alert_box_close_btn .wpmozo_close_icon:hover' => 'color: {{VALUE}}; transition: all 300ms;',
 		),
 	)
 );
