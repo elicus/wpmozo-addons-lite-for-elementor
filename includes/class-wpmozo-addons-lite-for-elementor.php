@@ -181,13 +181,24 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 			$this->loader->add_action( 'wp_ajax_wpmozo_ae_lite_panel_save_settings', $plugin_admin, 'save_options' );
-			if ( ! $plugin_admin->wpmozo_is_team_disabled() ) {
+			if ( ! $plugin_admin->wpmozo_is_widget_disabled('team-slider,team-grid') ) {
 				// Hook to add meta box.
 				$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'wpmozo_add_team_member_metabox' );
 				// Hook to save meta box data.
 				$this->loader->add_action( 'save_post', $plugin_admin, 'wpmozo_save_team_member_meta_fields' );
 			}
-			if ( ! $plugin_admin->wpmozo_is_testimonial_disabled() ) {
+			if ( ! $plugin_admin->wpmozo_is_widget_disabled('blog-categories') ) {
+				// Hook to add meta box.
+				$this->loader->add_action( 'category_add_form_fields', $plugin_admin, 'wpmozo_add_post_category_image_field', 10 );
+				// Hook to save meta box data.
+				$this->loader->add_action( 'category_edit_form_fields', $plugin_admin, 'wpmozo_edit_post_category_image_field', 10, 2 );
+				$this->loader->add_action( 'created_category', $plugin_admin, 'wpmozo_save_post_category_image', 10, 2 );
+				$this->loader->add_action( 'edited_category', $plugin_admin, 'wpmozo_save_post_category_image', 10, 2 );
+				$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'wpmozo_blog_category_enqueue_scripts' );
+				$this->loader->add_filter( 'manage_edit-category_columns', $plugin_admin, 'wpmozo_category_image_columns' );
+				$this->loader->add_filter( 'manage_category_custom_column', $plugin_admin, 'wpmozo_category_image_column', 10, 3 );
+			}
+			if ( ! $plugin_admin->wpmozo_is_widget_disabled('testimonial-slider,testimonial-grid') ) {
 				// Hook to add meta box.
 				$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'wpmozo_add_testimonial_metabox' );
 				// Hook to save meta box data.
@@ -215,10 +226,10 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 			$this->loader->add_action( 'elementor/controls/controls_registered', $plugin_public, 'register_custom_controls' );
 			$this->loader->add_action( 'wp_ajax_wpmozo_get_testimonials', $plugin_public, 'wpmozo_get_testimonials' );
 			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_get_testimonials', $plugin_public, 'wpmozo_get_testimonials' );
-			$this->loader->add_action( 'wp_ajax_wpmozo_ae_select2_search_post', $plugin_public, 'wpmozo_ae_select2_ajax_posts' );
-			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_ae_select2_search_post', $plugin_public, 'wpmozo_ae_select2_ajax_posts' );
-			$this->loader->add_action( 'wp_ajax_wpmozo_ae_select2_get_title', $plugin_public, 'wpmozo_ae_select2_ajax_get_title' );
-			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_ae_select2_get_title', $plugin_public, 'wpmozo_ae_select2_ajax_get_title' );
+			$this->loader->add_action( 'wp_ajax_wpmozo_ae_select2_ajax_posts', $plugin_public, 'wpmozo_ae_select2_ajax_posts' );
+			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_ae_select2_ajax_posts', $plugin_public, 'wpmozo_ae_select2_ajax_posts' );
+			$this->loader->add_action( 'wp_ajax_wpmozo_ae_select2_get_title', $plugin_public, 'wpmozo_ae_select2_get_title' );
+			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_ae_select2_get_title', $plugin_public, 'wpmozo_ae_select2_get_title' );
 			/*$plugin_public->help_me();*/
 		}
 

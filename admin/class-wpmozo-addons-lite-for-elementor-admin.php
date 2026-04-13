@@ -279,49 +279,185 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 			}
 			return $links;
 		}
-
-		/**
-		 * Check if team related widgets are disabled in pro version.
-		 *
-		 * @since    1.1.0
-		 */
-		public function wpmozo_is_team_disabled() {
-	        $plugin_options = get_option( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION );
-	        if ( defined( 'WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION' ) && isset( $plugin_options['wpmozo_inactive_widgets'] ) ) {
-	            $widgets = explode( ',', $plugin_options['wpmozo_inactive_widgets'] );
-	            if (
-	                in_array( 'team-slider', $widgets ) &&
-	                in_array( 'team-grid', $widgets )
-	            ) {
-	                return true;
-	            }
-	        } else {
-	            return false;
-	        }
-
-	        return false;
-	    }
-
         /**
-    	 * Check if testimonials related widgets are disabled.
+    	 * Check if blog categories related widgets are disabled.
     	 *
-    	 * @since    1.3.0
+    	 * @since    1.1.0
     	 */
-    	public function wpmozo_is_testimonial_disabled() {
+    	public function wpmozo_is_widget_disabled( $widgets ) {
+    		$widgets = explode(',',$widgets);
             $plugin_options = get_option( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION );
             if ( isset( $plugin_options['wpmozo_inactive_widgets'] ) ) {
-                $widgets = explode( ',', $plugin_options['wpmozo_inactive_widgets'] );
+                $all_widgets = explode( ',', $plugin_options['wpmozo_inactive_widgets'] );
                 if (
-                    in_array( 'testimonial-slider', $widgets ) &&
-                    in_array( 'testimonial-grid', $widgets )
+                    count( array_intersect($widgets, $all_widgets) ) === count( $widgets ) 
                 ) {
                     return true;
                 }
             } else {
-                return true;
+                return false;
             }
 
             return false;
+        }
+        /**
+         * Add image field for category,
+         * for add category form.
+         * 
+         * @since 1.19.0
+         */
+        public function wpmozo_add_post_category_image_field( $taxonomy ) {
+        	// Placeholder image.
+        	$placeholder_image = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_URL . "admin/assets/images/wpmozo-placeholder-300.png";
+        	?>
+        	<div class="form-field term-group">
+        		<label for="wpmozo_category_thumbnail"><?php esc_html_e( 'Category Image', 'wpmozo-addons-lite-for-elementor' ); ?></label>
+        		<div id="wpmozo_category_thumbnail_preview" style="float:left; margin-right:10px;">
+        			<img src="<?php echo esc_url( $placeholder_image ); ?>" width="60px" height="60px" />
+        		</div>
+        		<div style="line-height:60px;">
+        			<input type="hidden" id="wpmozo_category_thumbnail" name="wpmozo_category_thumbnail" value="" />
+        			<button type="button" class="wpmozo_upload_category_image_button button"><?php esc_html_e( 'Upload/Add image', 'wpmozo-addons-lite-for-elementor' ); ?></button>
+        			<button type="button" class="wpmozo_remove_category_image_button button" style="display: none;"><?php esc_html_e( 'Remove image', 'wpmozo-addons-lite-for-elementor' ); ?></button>
+        		</div>
+
+        		<?php
+        		// Nonce for security — action/field names can be anything unique.
+        		wp_nonce_field( 'wpmozo_save_category_image', 'wpmozo_category_image_nonce' ); ?>
+        		<div class="clear"></div>
+        	</div>
+        	<?php
+        }
+
+        /**
+         * Add image field for category,
+         * for edit category form.
+         * 
+         * @since 1.19.0
+         */
+        public function wpmozo_edit_post_category_image_field( $term, $taxonomy ) {
+        	$image_id  = get_term_meta( $term->term_id, 'wpmozo_category_thumbnail', true );
+        	$image_url = $image_id ? wp_get_attachment_thumb_url( $image_id ) : WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_URL . "admin/assets/images/wpmozo-placeholder-300.png";
+        	?>
+        	<tr class="form-field term-group-wrap">
+        		<th scope="row"><label><?php esc_html_e( 'Category Image', 'wpmozo-addons-lite-for-elementor' ); ?></label></th>
+        		<td>
+        			<div id="wpmozo_category_thumbnail_preview" style="float:left; margin-right:10px;">
+        				<img src="<?php echo esc_url( $image_url ); ?>" width="60px" height="60px" />
+        			</div>
+        			<div style="line-height:60px;">
+        				<input type="hidden" id="wpmozo_category_thumbnail" name="wpmozo_category_thumbnail" value="<?php echo esc_attr( $image_id ); ?>" />
+        				<button type="button" class="wpmozo_upload_category_image_button button"><?php esc_html_e( 'Upload/Add image', 'wpmozo-addons-lite-for-elementor' ); ?></button>
+        				<button type="button" class="wpmozo_remove_category_image_button button"
+        					style="<?php echo ( empty( $image_id ) ) ? 'display: none' : ''; ?>"
+        				><?php esc_html_e( 'Remove image', 'wpmozo-addons-lite-for-elementor' ); ?></button>
+        			</div>
+        			<?php
+        			// Nonce for security — action/field names can be anything unique.
+        			wp_nonce_field( 'wpmozo_save_category_image', 'wpmozo_category_image_nonce' ); ?>
+        			<div class="clear"></div>
+        		</td>
+        	</tr>
+        	<?php
+        }
+
+        /**
+         * Save post category image.
+         * 
+         * @since 1.19.0
+         */
+        public function wpmozo_save_post_category_image( $term_id, $tt_id ) {
+        	// Verify nonce — use wp_verify_nonce so function doesn't die (safer in hooks).
+        	if (
+        		! isset( $_POST['wpmozo_category_image_nonce'] ) ||
+        		! wp_verify_nonce(
+        			sanitize_text_field( wp_unslash( $_POST['wpmozo_category_image_nonce'] ) ),
+        			'wpmozo_save_category_image'
+        		)
+        	) {
+        		return;
+        	}
+
+        	// Optional: capability check (extra safety).
+        	if ( ! current_user_can( 'manage_categories' ) ) {
+        		return;
+        	}
+        	
+        	if ( isset( $_POST['wpmozo_category_thumbnail'] ) ) {
+        		update_term_meta( $term_id, 'wpmozo_category_thumbnail', absint( $_POST['wpmozo_category_thumbnail'] ) );
+        	}
+        }
+
+        /**
+         * Category Image column.
+         * 
+         * @param mixed $columns Columns array.
+         * @return array
+         * 
+         * @since 1.19.0
+         */
+        public function wpmozo_category_image_columns( $columns ) {
+        	$new_columns = array();
+        	if ( isset( $columns['cb'] ) ) {
+        		$new_columns['cb'] = $columns['cb'];
+        		unset( $columns['cb'] );
+        	}
+
+        	$new_columns['wpmozo_image'] = __( 'Image', 'woocommerce' );
+
+        	$columns           = array_merge( $new_columns, $columns );
+        	$columns['handle'] = '';
+
+        	return $columns;
+        }
+
+        /**
+         * Category image column value added.
+         *
+         * @param string $columns Column HTML output.
+         * @param string $column Column name.
+         * @param int    $id Product ID.
+         *
+         * @return string
+         * 
+         * @since 1.19.0
+         */
+        public function wpmozo_category_image_column( $columns, $column, $id ) {
+        	if ( 'wpmozo_image' === $column ) {
+
+        		// Get image url.
+        		$image_id  = get_term_meta( $id, 'wpmozo_category_thumbnail', true );
+        		$image_url = $image_id ? wp_get_attachment_thumb_url( $image_id ) : WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_URL . "admin/assets/images/wpmozo-placeholder-300.png";
+        		
+        		// Final Image.
+        		$columns = '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr__( 'Category Image', 'wpmozo-addons-lite-for-elementor' ) . '" class="wp-post-image" height="48" width="48" />';
+        	}
+        	return $columns;
+        }
+
+        /**
+         * Add category upload image.
+         * 
+         * @since 1.19.0
+         */
+        public function wpmozo_blog_category_enqueue_scripts( $hook ) {
+        	// Load only on category edit/add pages.
+        	if ( 'edit-tags.php' !== $hook && 'term.php' !== $hook ) {
+        		return;
+        	}
+
+        	wp_enqueue_media();
+        	wp_enqueue_script( 'jquery' );
+
+        	// Load image upload field script.
+        	wp_enqueue_script( 'wpmozo-category-media-upload-script', WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_URL . "admin/assets/js/category-media-upload.min.js", array('jquery'), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, true );
+
+        	// Localize variables.
+        	wp_localize_script( 'wpmozo-category-media-upload-script', 'wpmozoMediaUploadObj', array(
+        		'frame_title'        => esc_html__( 'Select or Upload Image', 'wpmozo-addons-lite-for-elementor' ),
+        		'upload_button_text' => esc_html__( 'Use this image', 'wpmozo-addons-lite-for-elementor' ),
+        		'placeholder_image'  => WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_URL . "admin/assets/images/wpmozo-placeholder-300.png",
+        	) );
         }
 
 		// Team member post type registration.
@@ -332,7 +468,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		 */
 		public function wpmozo_register_post_types() {
 
-			if ( ! $this->wpmozo_is_team_disabled() ) {
+			if ( ! $this->wpmozo_is_widget_disabled('team-slider,team-grid') ) {
 				$team_labels = array(
 					'name'                  => esc_html__( 'WPMozo Team Members', 'wpmozo-addons-lite-for-elementor' ),
 					'singular_name'         => esc_html__( 'WPMozo Team Member', 'wpmozo-addons-lite-for-elementor' ),
@@ -372,7 +508,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 				);
 				register_post_type( 'wpmozoae-team-member', $team_args );
 			}
-			if ( ! $this->wpmozo_is_testimonial_disabled() ) {
+			if ( ! $this->wpmozo_is_widget_disabled('testimonial-slider,testimonial-grid') ) {
 				$testimonial_labels = array(
 					'name'                  => esc_html__( 'WPMozo Testimonials', 'wpmozo-addons-lite-for-elementor' ),
 					'singular_name'         => esc_html__( 'WPMozo Testimonial', 'wpmozo-addons-lite-for-elementor' ),
@@ -421,7 +557,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		 * @since    1.0.0
 		 */
 		public function wpmozo_register_taxonomies() {
-			if ( ! $this->wpmozo_is_team_disabled() ) {
+			if ( ! $this->wpmozo_is_widget_disabled('team-slider,team-grid') ) {
 				$team_labels = array(
 					'name'                       => esc_html_x( 'Categories', 'Taxonomy General Name', 'wpmozo-addons-lite-for-elementor' ),
 					'singular_name'              => esc_html_x( 'Category', 'Taxonomy Singular Name', 'wpmozo-addons-lite-for-elementor' ),
@@ -455,7 +591,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 				);
 				register_taxonomy( 'wpmozo-ae-team-member-category', array( 'wpmozoae-team-member' ), $team_args );
 			}
-			if ( ! $this->wpmozo_is_testimonial_disabled() ) {
+			if ( ! $this->wpmozo_is_widget_disabled('testimonial-slider,testimonial-grid') ) {
 				$testimonial_labels = array(
 					'name'                       => esc_html_x( 'Categories', 'Taxonomy General Name', 'wpmozo-addons-lite-for-elementor' ),
 					'singular_name'              => esc_html_x( 'Category', 'Taxonomy Singular Name', 'wpmozo-addons-lite-for-elementor' ),
