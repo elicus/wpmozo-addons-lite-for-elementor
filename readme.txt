@@ -15,7 +15,7 @@ A feature-packed plugin designed to complement your Elementor page-building expe
 
 ### [View Demo](https://wpmozoaddons.com "View Demo")
 ## Key Features of the Plugin
-- **60 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
+- **59 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
 - **Enhanced Design Options**: Customize your website design with intuitive controls and a wide array of styling options.
 - **Interactive Elements**: Engage your audience with interactive elements like Interactive Image Card, Flip Box, and Fancy Text.
 - **Responsive and Lightweight**: Ensure a seamless user experience across all devices without compromising on performance.
@@ -125,7 +125,7 @@ A feature-packed plugin designed to complement your Elementor page-building expe
 
 51. [Facebook Embedded Video](https://wpmozoaddons.com/elementor-facebook-widgets/) - Embed Facebook videos directly into your website using the WPMozo Facebook Embedded Video widget for Elementor.
 
-52. [Sticky Video](https://wpmozoaddons.com/elementor-sticky-video/) - Keep videos visible while scrolling with the WPMozo Sticky Video widget for Elementor, enhancing user engagement effortlessly.
+52. [Scrolling SVG](https://wpmozoaddons.com/elementor-scrolling-svg/) - Create scroll-based SVG animations easily with the WPMozo Scrolling SVG widget for Elementor.
 
 53. [Blog Categories](https://wpmozoaddons.com/elementor-blog-categories/) - Organize and showcase post categories beautifully using the WPMozo Blog Categories widget for Elementor.
 
@@ -141,7 +141,6 @@ A feature-packed plugin designed to complement your Elementor page-building expe
 
 59. [SVG Animator](https://wpmozoaddons.com/elementor-svg-animator/) - Bring vector graphics to life with smooth animations using the WPMozo SVG Animator widget for Elementor.
 
-60. [Scrolling SVG](https://wpmozoaddons.com/elementor-scrolling-svg/) - Create scroll-based SVG animations easily with the WPMozo Scrolling SVG widget for Elementor.
 
 ## Premium Version Available
 Upgrade to the premium version [WPMozo Addons for Elementor](https://wpmozo.com/product/wpmozo-addons-for-elementor/) and unlock additional features, dedicated support, and exclusive widgets. 
@@ -276,7 +275,6 @@ For a detailed list of server requirements, please refer to the official WordPre
 
 == Changelog ==
 2026-04-14 - Version 1.9.0
-- NEW: New widget Sticky Video.
 - NEW: New widget Blog Categories.
 - NEW: New widget Alert Box.
 - NEW: New widget Text Hover Effect.

@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		$cat_count = $category->count;
 
 		// Category Thumbnail.
-		$thumbnail_id = get_term_meta( $term_id, 'wpmozo_category_thumbnail', true );
+		$thumbnail_id = get_term_meta( $term_id, $term_key, true );
 		$image_html   = '';
 
 		if ( $thumbnail_id ) {

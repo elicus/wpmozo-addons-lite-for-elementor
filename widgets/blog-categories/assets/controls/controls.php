@@ -113,7 +113,7 @@ $this->start_controls_section(
 			'default'     => 'layout1',
 		)
 	);
-	$this->add_control(
+	$this->add_responsive_control(
 		'number_of_columns',
 		array(
 			'label'       => __( 'Number of Columns', 'wpmozo-addons-lite-for-elementor' ),
@@ -335,6 +335,7 @@ $this->start_controls_section(
 					'icon'  => 'eicon-text-align-right',
 				),
 			),
+			'condition' => array('layout!' => 'layout3'),
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_blog_category_name' => 'text-align: {{VALUE}};',
 			),
@@ -549,6 +550,7 @@ $this->start_controls_section(
 			'selectors' => array(
 				'{{WRAPPER}} .wpmozo_blog_category_count_wrap' => 'text-align: {{VALUE}};',
 			),
+			'condition' => array('layout!' => 'layout3'),
 			'separator' => 'before',
 		)
 	);

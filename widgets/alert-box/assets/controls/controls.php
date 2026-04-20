@@ -120,7 +120,7 @@ $this->add_control(
 		'label_on'     => esc_html__( 'Show', 'wpmozo-addons-lite-for-elementor' ),
 		'label_off'    => esc_html__( 'Hide', 'wpmozo-addons-lite-for-elementor' ),
 		'return_value' => 'yes',
-		'default'      => '',
+		'default'      => 'yes',
 	)
 );
 $this->add_control(
@@ -131,7 +131,7 @@ $this->add_control(
 		'label_on'     => esc_html__( 'Show', 'wpmozo-addons-lite-for-elementor' ),
 		'label_off'    => esc_html__( 'Hide', 'wpmozo-addons-lite-for-elementor' ),
 		'return_value' => 'yes',
-		'default'      => '',
+		'default'      => 'yes',
 	)
 );
 $this->add_control(
@@ -153,7 +153,7 @@ $this->add_control(
 		'type'        => Controls_Manager::URL,
 		'options'     => array( 'url', 'is_external', 'nofollow' ),
 		'default'     => array(
-			'url'         => '',
+			'url'         => '#',
 			'is_external' => true,
 			'nofollow'    => true,
 		),
@@ -1163,5 +1163,93 @@ $this->add_responsive_control(
 );
 $this->end_controls_tab();
 $this->end_controls_tabs();
+$this->end_controls_section();
+$this->start_controls_section(
+	'alert_box_tab',
+	array(
+		'label'     => esc_html__( 'Alert Box', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'       => Controls_Manager::TAB_STYLE,
+	)
+);
+$this->start_controls_tabs(
+	'alert_box_styling_tabs'
+);
+$this->start_controls_tab(
+	'alert_box_styling_normal',
+	array(
+		'label' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
+	)
+);
+$this->add_group_control(
+	Group_Control_Border::get_type(),
+	array(
+		'name'     => 'alert_box_border',
+		'selector' => '{{WRAPPER}} .wpmozo_alert_box',
+	)
+);
+$this->add_responsive_control(
+	'alert_box_border_radius',
+	array(
+		'label'      => esc_html__( 'Border Radius', 'wpmozo-addons-lite-for-elementor' ),
+		'type'       => Controls_Manager::DIMENSIONS,
+		'size_units' => array( 'px', 'em', '%' ),
+		'selectors'  => array(
+			'{{WRAPPER}} .wpmozo_alert_box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+		),
+	)
+);
+$this->add_group_control(
+	Group_Control_Box_Shadow::get_type(),
+	array(
+		'name'           => 'alert_box_box_shadow',
+		'selector'       => '{{WRAPPER}} .wpmozo_alert_box',
+	)
+);
+$this->end_controls_tab();
+$this->start_controls_tab(
+	'alert_box_styling_hover',
+	array(
+		'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
+	)
+);
+$this->add_group_control(
+	Group_Control_Border::get_type(),
+	array(
+		'name'     => 'alert_box_border_hover',
+		'selector' => '{{WRAPPER}} .wpmozo_alert_box:hover',
+	)
+);
+$this->add_responsive_control(
+	'alert_box_border_radius_hover',
+	array(
+		'label'      => esc_html__( 'Border Radius', 'wpmozo-addons-lite-for-elementor' ),
+		'type'       => Controls_Manager::DIMENSIONS,
+		'size_units' => array( 'px', 'em', '%' ),
+		'selectors'  => array(
+			'{{WRAPPER}} .wpmozo_alert_box:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+		),
+	)
+);
+$this->add_group_control(
+	Group_Control_Box_Shadow::get_type(),
+	array(
+		'name'           => 'alert_box_box_shadow_hover',
+		'selector'       => '{{WRAPPER}} .wpmozo_alert_box:hover',
+	)
+);
+$this->end_controls_tab();
+$this->end_controls_tabs();
+$this->add_responsive_control(
+	'alert_box_padding',
+	array(
+		'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
+		'type'       => Controls_Manager::DIMENSIONS,
+		'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
+		'separator'  => 'before',
+		'selectors'  => array(
+			'{{WRAPPER}} .wpmozo_alert_box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+		),
+	)
+);
 $this->end_controls_section();
 // End Style Tab.

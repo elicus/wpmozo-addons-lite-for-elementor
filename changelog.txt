@@ -1,7 +1,6 @@
 Changelog for WPMozo Addons Lite for Elementor
 
 2026-04-14 - Version 1.9.0
-- NEW: New widget Sticky Video.
 - NEW: New widget Blog Categories.
 - NEW: New widget Alert Box.
 - NEW: New widget Text Hover Effect.

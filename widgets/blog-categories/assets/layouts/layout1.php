@@ -20,7 +20,7 @@ foreach ( $categories as $category ) :
 	$cat_count = $category->count;
 
 	// Category Thumbnail (Featured Image).
-	$thumbnail_id = get_term_meta( $term_id, 'wpmozo_category_thumbnail', true );
+	$thumbnail_id = get_term_meta( $term_id, $term_key, true );
 	$image_url    = '';
 
 	if ( $thumbnail_id ) {

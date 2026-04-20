@@ -1,16 +1,13 @@
-( function ( $ ) {
-    $( window ).on( "elementor/frontend/init", function () {
-
-        var WPMOZOPieChart = elementorModules.frontend.handlers.Base.extend( {
-
-            onInit: function () {
-                elementorModules.frontend.handlers.Base.prototype.onInit.apply( this, arguments );
-                this.initPieChart();
+(function ($) {
+    $(window).on("elementor/frontend/init", function () {
+        var WPMOZOPieChart = elementorModules.frontend.handlers.Base.extend({
+            bindEvents: function () {
+                this.change();
             },
+            change: function () {
+                const $this = this.$element.find(".wpmozo_pie_chart");
 
-            initPieChart: function () {
-
-                var self     = this;
+                var self     = $this;
                 const $wrapper = this.$element.find( '.wpmozo_pie_chart_wrapper' );
                 const $canvas  = $wrapper.find( 'canvas' )[0];
 
@@ -46,17 +43,12 @@
                     return;
                 }
 
-                chartData.datasets.forEach( function ( dataset ) {
+                /*chartData.datasets.forEach( function ( dataset ) {
 
                     if ( typeof dataset.backgroundColor === 'undefined' && dataset.backgroundcolor ) {
                         dataset.backgroundColor = dataset.backgroundcolor;
                     }
-
-                    if ( typeof dataset.borderColor === 'undefined' && dataset.bordercolor ) {
-                        dataset.borderColor = dataset.bordercolor;
-                        dataset.borderWidth = 1;
-                    }
-                } );
+                } );*/
 
                 const height = getChartHeight();
                 $wrapper.css( 'height', height + 'px' );
@@ -73,8 +65,29 @@
                                 labels: {
                                     font: {
                                         size: getFontSize()
+                                    },
+                                    generateLabels: function(chart) {
+                                        console.log((Chart.overrides.pie.plugins.legend.labels.generateLabels(chart)));
+                                        const original = Chart.overrides.pie.plugins.legend.labels.generateLabels;
+                                        const labels = original(chart);
+
+                                        labels.forEach(label => {
+                                            label.lineWidth = 0;
+                                        });
+
+                                        return labels;
                                     }
                                 }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    labelColor: function(context) {
+                                        return {
+                                            backgroundColor:context.element.options.backgroundColor,
+                                            borderWidth: 0,
+                                        };
+                                    },
+                                },
                             }
                         }
                     }
@@ -91,14 +104,9 @@
                     $canvas.chartInstance.resize();
                     $canvas.chartInstance.update();
                 } );
-            }
+            },
+        });
+        elementorFrontend.elementsHandler.attachHandler( "wpmozo_ae_pie_chart", WPMOZOPieChart );
+    });
+})(jQuery);
 
-        } );
-
-        elementorFrontend.elementsHandler.attachHandler(
-            'wpmozo_ae_pie_chart',
-            WPMOZOPieChart
-        );
-
-    } );
-} )( jQuery );

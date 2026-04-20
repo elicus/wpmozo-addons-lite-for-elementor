@@ -106,6 +106,15 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		private $proactive;
 
 		/**
+		 * Check if divi plus is active.
+		 *
+		 * @since    1.6.1
+		 * @access   public
+		 * @var      Object
+		 */
+		public $diviplus_active;
+
+		/**
 		 * Initialize the class and set its properties.
 		 *
 		 * @since    1.0.0
@@ -122,6 +131,32 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 			if( defined( 'WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION' ) ){
 				$this->proactive = 'proactive';
 			}
+			if( 'Divi' === wp_get_theme()->Name && defined( 'ELICUS_DIVI_PLUS_VERSION' ) ){
+				$this->diviplus_active = true;
+			}
+		}
+		/**
+		 *
+		 * Modifies the "Thank you" text displayed in the admin footer.
+		 *
+		 * @since 1.9.0
+		 * @param string $footer_text.
+		 * @return string
+		 */
+		public function admin_footer_text( $footer_text ) {
+			$current_screen = get_current_screen();
+			$is_wpmozo_screen = ( $current_screen && false !== strpos( $current_screen->id, 'wpmozo-addons' ) );
+
+			if ( $is_wpmozo_screen ) {
+				$footer_text = sprintf(
+					/* translators: 1: WPMozo Addons Lite for Elementor, 2: Link to plugin review */
+					__( 'Help us grow! If you like our work Rate %1$s %2$s and support us.', 'wpmozo-addons-lite-for-elementor' ),
+					'<strong>' . esc_html__( 'WPMozo Addons Lite for Elementor', 'wpmozo-addons-lite-for-elementor' ) . '</strong>',
+					'<a href="https://wordpress.org/support/plugin/wpmozo-addons-lite-for-elementor/reviews/#new-post" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
+				);
+			}
+
+			return $footer_text;
 		}
 
 

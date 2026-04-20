@@ -13,8 +13,8 @@
  * Requires at least: 5.3
  * Requires PHP: 5.6
  * Tested up to: 6.9
- * Elementor tested up to: 4.0.1
- * Elementor Pro tested up to: 4.0.1
+ * Elementor tested up to: 4.0.3
+ * Elementor Pro tested up to: 4.0.2
  *
  * WPMozo Addons Lite for Elementor - A plugin for WordPress and Elementor.
  * Copyright © 2026 Elicus Technologies Private Limited

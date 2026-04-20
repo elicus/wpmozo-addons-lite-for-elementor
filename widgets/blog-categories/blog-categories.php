@@ -128,6 +128,8 @@ if ( ! class_exists( 'WPMOZO_AE_Blog_Categories' ) ) {
 		 * @access protected
 		 */
 		protected function render() {
+			$diviplus_active = ('Divi' === wp_get_theme()->Name && defined('ELICUS_DIVI_PLUS_VERSION'));
+			$term_key  = $diviplus_active ? 'dipl_category_thumbnail' : 'wpmozo_category_thumbnail';
 
 			$settings             = $this->get_settings_for_display();
 			$number               = ! empty( $settings['number_of_categories'] ) ? intval( $settings['number_of_categories'] ) : 10;
@@ -135,7 +137,6 @@ if ( ! class_exists( 'WPMOZO_AE_Blog_Categories' ) ) {
 			$order                = ! empty( $settings['category_order'] ) ? $settings['category_order'] : 'desc';
 			$order_by             = ! empty( $settings['category_order_by'] ) ? $settings['category_order_by'] : 'name';
 			$hide_empty           = ( 'yes' === $settings['hide_empty'] );
-			$columns              = ! empty( $settings['number_of_columns'] ) ? intval( $settings['number_of_columns'] ) : 3;
 			$post_count_text      = ! empty( $settings['post_count_text'] ) ? $settings['post_count_text'] : 'Articles';
 			$show_as_super_number = ( 'yes' === $settings['show_as_super_number'] );
 

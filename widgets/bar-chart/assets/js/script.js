@@ -19,6 +19,12 @@
                     return;
                 }
 
+                try {
+                    chartTitleData = JSON.parse( $wrapper.attr( 'data-chart-title' ) );
+                } catch ( e ) {
+                    console.error( 'Invalid chart data for:', self.$element );
+                    return;
+                }
                 function getFontSize() {
                     if ( window.innerWidth <= 480 ) return 10; // Mobile
                     if ( window.innerWidth <= 768 ) return 14; // Tablet
@@ -63,6 +69,7 @@
                 $wrapper.css( 'height', height + 'px' );
                 $canvas.height = height;
 
+                console.log(chartTitleData.title);
                 $canvas.chartInstance = new Chart( $canvas.getContext( '2d' ), {
                     type: 'bar',
                     data: chartData,
@@ -86,12 +93,47 @@
                             }
                         },
                         plugins: {
+                            title: {
+                                display: '' !== chartTitleData.title.content,
+                                text: chartTitleData.title.content,
+                                align: chartTitleData.title.align,
+                                color:chartTitleData.title.color,
+                                padding: chartTitleData.title.padding,
+                                position: chartTitleData.title.position,
+                                font: {
+                                    size:   chartTitleData.title.font.size,
+                                    weight: chartTitleData.title.font.weight,
+                                    style:  chartTitleData.title.font.style,
+                                },
+                            },
                             legend: {
                                 labels: {
+                                    color: chartTitleData.color,
                                     font: {
-                                        size: getFontSize()
+                                        size:   chartTitleData.size,
+                                        weight: chartTitleData.weight,
+                                        style:  chartTitleData.style
+                                    },
+                                    generateLabels: function(chart) {
+                                        const original = Chart.Legend.defaults.labels.generateLabels;
+                                        const labels = original(chart);
+                                        labels.forEach(label => {
+                                            label.lineWidth = 0;
+                                        });
+
+                                        return labels;
                                     }
-                                }
+                                },
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    labelColor: function(context) {
+                                        return {
+                                            backgroundColor:context.element.options.backgroundColor,
+                                            borderWidth: 0,
+                                        };
+                                    },
+                                },
                             }
                         }
                     }

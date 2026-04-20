@@ -175,7 +175,7 @@ if ( ! class_exists( 'WPMOZO_AE_Pie_Chart' ) ) {
 
 			$border_width = ! empty( $settings['pie_chart_border_size']['size'] )
 				? intval( $settings['pie_chart_border_size']['size'] )
-				: 1;
+				: 0;
 
 			$chart_data = array(
 				'labels'   => $labels,

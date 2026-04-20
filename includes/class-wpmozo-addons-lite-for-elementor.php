@@ -85,6 +85,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 			$this->set_locale();
 			$this->define_admin_hooks();
 			$this->define_public_hooks();
+			add_filter( 'upload_mimes', array( $this, 'wpmozo_mime_types' ) );
 		}
 
 		/**
@@ -144,6 +145,18 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 		}
 
 		/**
+		 * add JSON to allowed file uploads.
+		 *
+		 * @since 1.5.2
+		 */
+		public function wpmozo_mime_types( $mimes ) {
+			if ( is_user_logged_in() ) {
+				$mimes['svg'] = 'image/svg+xml';
+			}
+			return $mimes;
+		}
+
+		/**
 		 * Define the locale for this plugin for internationalization.
 		 *
 		 * Uses the WPMOZO_Addons_Lite_For_Elementor_i18n class in order to set the domain and to register the hook
@@ -189,14 +202,22 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 			}
 			if ( ! $plugin_admin->wpmozo_is_widget_disabled('blog-categories') ) {
 				// Hook to add meta box.
-				$this->loader->add_action( 'category_add_form_fields', $plugin_admin, 'wpmozo_add_post_category_image_field', 10 );
-				// Hook to save meta box data.
-				$this->loader->add_action( 'category_edit_form_fields', $plugin_admin, 'wpmozo_edit_post_category_image_field', 10, 2 );
+				if(! $plugin_admin->diviplus_active){
+					$this->loader->add_action( 'category_add_form_fields', $plugin_admin, 'wpmozo_add_post_category_image_field', 10 );
+					// Hook to save meta box data.
+				
+					$this->loader->add_action( 'category_edit_form_fields', $plugin_admin, 'wpmozo_edit_post_category_image_field', 10, 2 );
+				
 				$this->loader->add_action( 'created_category', $plugin_admin, 'wpmozo_save_post_category_image', 10, 2 );
+				
 				$this->loader->add_action( 'edited_category', $plugin_admin, 'wpmozo_save_post_category_image', 10, 2 );
+				
 				$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'wpmozo_blog_category_enqueue_scripts' );
+				
 				$this->loader->add_filter( 'manage_edit-category_columns', $plugin_admin, 'wpmozo_category_image_columns' );
+				
 				$this->loader->add_filter( 'manage_category_custom_column', $plugin_admin, 'wpmozo_category_image_column', 10, 3 );
+				}
 			}
 			if ( ! $plugin_admin->wpmozo_is_widget_disabled('testimonial-slider,testimonial-grid') ) {
 				// Hook to add meta box.
@@ -204,6 +225,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 				// Hook to save meta box data.
 				$this->loader->add_action( 'save_post', $plugin_admin, 'wpmozo_save_testimonial_meta_fields' );
 			}
+			$this->loader->add_action( 'admin_footer_text', $plugin_admin, 'admin_footer_text' );
 		}
 
 		/**

@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 use Elementor\Controls_Manager;
+use \Elementor\Group_Control_Typography;
 
 $this->start_controls_section(
 	'content_section',
@@ -128,6 +129,187 @@ $this->add_control(
 			'unit' => 'px',
 			'size' => 1,
 		),
+	)
+);
+$this->end_controls_section();
+
+$this->start_controls_section(
+	'chart_legend_styling',
+	array(
+		'label' => esc_html__( 'Legend', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'   => Controls_Manager::TAB_STYLE,
+	)
+);
+$this->add_control(
+	'chart_legend_color',
+	array(
+		'label' => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
+		'type'  => Controls_Manager::COLOR,
+	)
+);
+$this->add_control(
+	'chart_legend_size',
+	array(
+		'label'      => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
+		'type'       => Controls_Manager::SLIDER,
+		'size_units' => array( 'px' ),
+		'range'      => array(
+			'px' => array(
+				'min' => 1,
+				'max' => 100,
+			),
+		),
+		'render_type' => 'template',
+	)
+);
+$this->add_control(
+	'chart_legend_font_weight',
+	array(
+		'label'      => esc_html__( 'Font Weight', 'wpmozo-addons-lite-for-elementor' ),
+		'type'       => Controls_Manager::SLIDER,
+		'size_units' => array( 'px' ),
+		'range'      => array(
+			'px' => array(
+				'min' => 100,
+				'max' => 900,
+				'step' => 100,
+			),
+		),
+		'render_type' => 'template',
+	)
+);
+$this->add_control( 
+	'chart_legend_font_style',
+	array( 
+		'label'       => esc_html__( 'Font Style', 'wpmozo-addons-lite-for-elementor' ),
+		'type'        => Controls_Manager::SELECT,
+		'default'     => 'normal',
+		'options'     => array( 
+			'normal' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
+			'italic' => esc_html__( 'Italic', 'wpmozo-addons-lite-for-elementor' ),
+			'oblique' => esc_html__( 'Oblique', 'wpmozo-addons-lite-for-elementor' ),
+		 ),
+		'render_type' => 'template',
+	 )
+);
+$this->end_controls_section();
+
+$this->start_controls_section(
+	'chart_title_styling',
+	array(
+		'label' => esc_html__( 'Title', 'wpmozo-addons-lite-for-elementor' ),
+		'tab'   => Controls_Manager::TAB_STYLE,
+	)
+);
+$this->add_control(
+	'title_color',
+	array(
+		'label' => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
+		'type'  => Controls_Manager::COLOR,
+	)
+);
+$this->add_control(
+	'title_size',
+	array(
+		'label'      => esc_html__( 'Font Size', 'wpmozo-addons-lite-for-elementor' ),
+		'type'       => Controls_Manager::SLIDER,
+		'size_units' => array( 'px' ),
+		'range'      => array(
+			'px' => array(
+				'min' => 1,
+				'max' => 100,
+			),
+		),
+		'render_type' => 'template',
+	)
+);
+$this->add_control(
+	'title_font_weight',
+	array(
+		'label'      => esc_html__( 'Font Weight', 'wpmozo-addons-lite-for-elementor' ),
+		'type'       => Controls_Manager::SLIDER,
+		'size_units' => array( 'px' ),
+		'range'      => array(
+			'px' => array(
+				'min' => 100,
+				'max' => 900,
+				'step' => 100,
+			),
+		),
+		'render_type' => 'template',
+	)
+);
+$this->add_control( 
+	'title_font_style',
+	array( 
+		'label'       => esc_html__( 'Font Style', 'wpmozo-addons-lite-for-elementor' ),
+		'type'        => Controls_Manager::SELECT,
+		'default'     => 'normal',
+		'options'     => array( 
+			'normal' => esc_html__( 'Normal', 'wpmozo-addons-lite-for-elementor' ),
+			'italic' => esc_html__( 'Italic', 'wpmozo-addons-lite-for-elementor' ),
+			'oblique' => esc_html__( 'Oblique', 'wpmozo-addons-lite-for-elementor' ),
+		 ),
+		'render_type' => 'template',
+	 )
+);
+$this->add_control( 
+	'title_position',
+	array( 
+		'label'       => esc_html__( 'Position', 'wpmozo-addons-lite-for-elementor' ),
+		'type'        => Controls_Manager::SELECT,
+		'default'     => 'top',
+		'options'     => array( 
+			'top' => esc_html__( 'Top', 'wpmozo-addons-lite-for-elementor' ),
+			'left' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+			'right' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+			'bottom' => esc_html__( 'Bottom', 'wpmozo-addons-lite-for-elementor' ),
+		 ),
+		'render_type' => 'template',
+	 )
+);
+$this->add_responsive_control( 
+	'title_alignment',
+	array( 
+		'label'       => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
+		'type'        => Controls_Manager::CHOOSE,
+		'label_block' => true,
+		'options'     => array( 
+			'start'   =>
+				array( 
+					'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-left',
+				 ),
+			'center' =>
+				array( 
+					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-center',
+				 ),
+			'end'  =>
+				array( 
+					'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+					'icon'  => 'eicon-text-align-right',
+				 ),
+		 ),
+		'default'     => 'center',
+		'toggle'      => true,
+		'render_type' => 'template'
+	)
+);
+$this->add_control(
+	'title_padding',
+	array(
+		'label'      => esc_html__( 'Padding', 'wpmozo-addons-lite-for-elementor' ),
+		'type'       => Controls_Manager::SLIDER,
+		'size_units' => array( 'px' ),
+		'range'      => array(
+			'px' => array(
+				'min' => 0,
+				'max' => 100,
+				'step' => 1,
+			),
+		),
+		'render_type' => 'template',
 	)
 );
 $this->end_controls_section();
