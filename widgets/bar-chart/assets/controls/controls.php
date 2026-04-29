@@ -131,6 +131,25 @@ $this->add_control(
 		),
 	)
 );
+$this->add_control(
+	'chart_orientation',
+	array(
+		'label' => esc_html__( 'Orientation', 'wpmozo-addons-lite-for-elementor' ),
+		'type' => Controls_Manager::CHOOSE,
+		'options' => array(
+			'x' => array(
+				'title' => esc_html__( 'Vertical', 'wpmozo-addons-lite-for-elementor' ),
+				'icon' => 'eicon-align-end-v',
+			),
+			'y' => array(
+				'title' => esc_html__( 'Horizontal', 'wpmozo-addons-lite-for-elementor' ),
+				'icon' => 'eicon-align-start-h',
+			),
+		),
+		'default' => 'x',
+		'toggle' => false
+	)
+);
 $this->end_controls_section();
 
 $this->start_controls_section(

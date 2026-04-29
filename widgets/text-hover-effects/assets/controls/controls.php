@@ -63,13 +63,41 @@ $this->add_control(
 		'type'      => Controls_Manager::COLOR,
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect1 .wpmozo_text_hover_effects_text>span::after' => 'background-color: {{VALUE}};',
-			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect2 .wpmozo_text_hover_effects_text>span::before' => 'background-color: {{VALUE}};',
+			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect2 .wpmozo_text_hover_effects_text>span::after' => 'background-color: {{VALUE}};',
 			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect3 .wpmozo_text_hover_effects_text>span::before, {{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect3 .wpmozo_text_hover_effects_text>span::after' => 'background-color: {{VALUE}};',
 			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect4 .wpmozo_text_hover_effects_text>span::after' => 'background-color: {{VALUE}};',
 			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect5 .wpmozo_text_hover_effects_text>span::before' => 'border-color: {{VALUE}};',
 			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect6 .wpmozo_text_hover_effects_text>span::before' => 'background-color: {{VALUE}};',
 			'{{WRAPPER}} .wpmozo_text_hover_effects .wpmozo_text_effect7 .wpmozo_text_hover_effects_text>span::before' => 'background-color: {{VALUE}};',
 		),
+	)
+);
+$this->add_responsive_control( 
+	'effect3_bar_height',
+	array( 
+		'label'       => esc_html__( 'Bar/Line Height', 'wpmozo-addons-lite-for-elementor' ),
+		'type'        => Controls_Manager::SLIDER,
+		'size_units'  => array( 'px', '%' ),
+		'range'       => array( 
+			'px' => array( 
+				'min'  => 1,
+				'max'  => 500,
+				'step' => 1,
+			),
+			'%' => array( 
+				'min'  => 1,
+				'max'  => 100,
+				'step' => 1,
+			)
+		),
+		'default' => array( 
+			'size' => 3,
+		),
+		'selectors' => array(
+			'{{WRAPPER}} .wpmozo_text_effect3 .wpmozo_text_hover_effects_text>span::before, {{WRAPPER}} .wpmozo_text_effect3 .wpmozo_text_hover_effects_text>span::after' => 'height: {{SIZE}}{{UNIT}};',
+			'{{WRAPPER}} .wpmozo_text_effect5 .wpmozo_text_hover_effects_text>span::before' => 'border-width: {{SIZE}}{{UNIT}} 0px;',
+		),
+		'condition' => array( 'text_effect' => array( 'effect3','effect5'))
 	)
 );
 $this->start_controls_tabs( 'title_text_tabs' );
@@ -174,6 +202,35 @@ $this->add_responsive_control(
 		'selectors' => array(
 			'{{WRAPPER}} .wpmozo_text_hover_effects_text' => 'text-align: {{VALUE}};',
 		),
+	)
+);
+$this->add_responsive_control( 
+	'effect1_transition',
+	array( 
+		'label'   => esc_html__( 'Transition', 'wpmozo-addons-lite-for-elementor' ),
+		'type'    => Controls_Manager::SLIDER,
+		'range'   => array( 
+			'px' => array( 
+				'min'  => 0,
+				'max'  => 5,
+				'step' => 0.1,
+			),
+		),
+		'default' => array( 
+			'size' => 0.4,
+		),
+		'selectors' => array(
+			'{{WRAPPER}} .wpmozo_text_effect1 .wpmozo_text_hover_effects_text > span::before' => 'transition: clip-path {{SIZE}}s calc( {{SIZE}}s - 0.1s);',
+			'{{WRAPPER}} .wpmozo_text_effect4 .wpmozo_text_hover_effects_text > span > span::before' => 'transition: clip-path {{SIZE}}s;',
+			'{{WRAPPER}} .wpmozo_text_effect7 .wpmozo_text_hover_effects_text > span ' => 'transition: color {{SIZE}}s;',
+			'{{WRAPPER}} .wpmozo_text_effect1 .wpmozo_text_hover_effects_text > span::after, 
+			{{WRAPPER}} .wpmozo_text_effect2 .wpmozo_text_hover_effects_text > span::after,
+			{{WRAPPER}} .wpmozo_text_effect4 .wpmozo_text_hover_effects_text > span::after,
+			{{WRAPPER}} .wpmozo_text_effect6 .wpmozo_text_hover_effects_text > span::before,
+			{{WRAPPER}} .wpmozo_text_effect7 .wpmozo_text_hover_effects_text > span::before,
+			{{WRAPPER}} .wpmozo_text_effect6 .wpmozo_text_hover_effects_text > span > span::before' => 'transition: transform {{SIZE}}s;',
+		),
+		'condition' => array( 'text_effect!' => array( 'effect3','effect5'))
 	)
 );
 $this->end_controls_section();

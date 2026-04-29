@@ -20,7 +20,7 @@
                 }
 
                 try {
-                    chartTitleData = JSON.parse( $wrapper.attr( 'data-chart-title' ) );
+                    var chartTitleData = JSON.parse( $wrapper.attr( 'data-chart-title' ) );
                 } catch ( e ) {
                     console.error( 'Invalid chart data for:', self.$element );
                     return;
@@ -69,13 +69,13 @@
                 $wrapper.css( 'height', height + 'px' );
                 $canvas.height = height;
 
-                console.log(chartTitleData.title);
                 $canvas.chartInstance = new Chart( $canvas.getContext( '2d' ), {
                     type: 'bar',
                     data: chartData,
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
+                        indexAxis: chartData.indexAxis,
                         scales: {
                             x: {
                                 ticks: {

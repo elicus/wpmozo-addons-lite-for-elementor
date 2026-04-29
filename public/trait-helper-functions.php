@@ -10,6 +10,41 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 trait Wpmozo_Ae_Helper_Functions {
 	/**
+	 * Get reading time
+	 *
+	 * @since  1.0.0
+	 * @return string
+	 */
+	public static function wpmozo_ae_reading_time() {
+		global $post;
+		$content     = get_post_field( 'post_content', $post->ID );
+		$word_count  = str_word_count( wp_strip_all_tags( $content ) );
+		$readingtime = ceil( $word_count / 260 );
+		return $readingtime;
+	}
+    /**
+	 * Function to get a list of pages as options.
+	 *
+	 * @since    1.0.0
+	 */
+	public static function wpmozo_ae_get_pages_as_options() {
+		$pages        = get_pages();
+		$page_options = array();
+		global $post;
+
+		$current_post_id = $post->ID;
+
+		// Add the "Select Page" option with an empty value as the first item.
+		$page_options[0] = esc_html__( 'Select Page', 'wpmozo-addons-lite-for-elementor' );
+
+		foreach ( $pages as $page ) {
+			if ( $current_post_id !== $page->ID ) {
+				$page_options[ $page->ID ] = $page->post_title;
+			}
+		}
+		return $page_options;
+	}
+	/**
 	 * Get blog category list.
 	 *
 	 * @since 1.9.0

@@ -1181,6 +1181,20 @@ $this->start_controls_tab(
 	)
 );
 $this->add_group_control(
+	Group_Control_Background::get_type(),
+	array(
+		'name'           => 'alert_box_background',
+		'types'          => array( 'classic', 'gradient' ),
+		'fields_options' => array(
+			'background' => array(
+				'default' => 'classic',
+			),
+		),
+		'toggle'         => false,
+		'selector'       => '{{WRAPPER}} .wpmozo_alert_box',
+	)
+);
+$this->add_group_control(
 	Group_Control_Border::get_type(),
 	array(
 		'name'     => 'alert_box_border',
@@ -1210,6 +1224,20 @@ $this->start_controls_tab(
 	'alert_box_styling_hover',
 	array(
 		'label' => esc_html__( 'Hover', 'wpmozo-addons-lite-for-elementor' ),
+	)
+);
+$this->add_group_control(
+	Group_Control_Background::get_type(),
+	array(
+		'name'           => 'alert_box_background_hover',
+		'types'          => array( 'classic', 'gradient' ),
+		'fields_options' => array(
+			'background' => array(
+				'default' => 'classic',
+			),
+		),
+		'toggle'         => false,
+		'selector'       => '{{WRAPPER}} .wpmozo_alert_box:hover',
 	)
 );
 $this->add_group_control(

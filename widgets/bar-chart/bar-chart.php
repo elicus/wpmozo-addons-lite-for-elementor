@@ -135,6 +135,8 @@ if ( ! class_exists( 'WPMOZO_AE_Bar_Chart' ) ) {
 
 			$legend_font_color = isset($settings['chart_legend_color']) && !empty($settings['chart_legend_color']) ? $settings['chart_legend_color'] : '#666';
 
+			$chart_orientation = isset($settings['chart_orientation']) && !empty($settings['chart_orientation']) ? $settings['chart_orientation'] : 'x';
+			
 			$legend_font_style = isset($settings['chart_legend_font_style']) && !empty($settings['chart_legend_font_style']) ? $settings['chart_legend_font_style'] : 'normal';
 			
 			$legend_font_weight = isset($settings['chart_legend_font_weight']) && '' !== $settings['chart_legend_font_weight']['size'] ? $settings['chart_legend_font_weight']['size'] : '400';
@@ -202,11 +204,12 @@ if ( ! class_exists( 'WPMOZO_AE_Bar_Chart' ) ) {
 					'data'            => isset( $values[$index] ) ? [$values[$index]] : array(),
 					'backgroundColor' => isset( $bg_colors[$index] ) ? $bg_colors[$index] : '',
 					'borderColor'     => isset( $border_colors[$index] ) ? $border_colors[$index] : '',
-					'borderWidth'     => $border_width,
+					'borderWidth'     => $border_width
 				);
 			}
 
 			$chart_data['labels'] = [''];
+			$chart_data['indexAxis'] = $chart_orientation;
 
 			$height_desktop = ! empty( $settings['bar_chart_height']['size'] )
 				? intval( $settings['bar_chart_height']['size'] )
