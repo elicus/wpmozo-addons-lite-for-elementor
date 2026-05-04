@@ -169,7 +169,7 @@ if ( ! class_exists( 'WPMOZO_AE_Text_Hover_Effects' ) ) {
 
 				foreach ( $words as $word ) {
 
-					$chars      = str_split( $word );
+					$chars      = mb_str_split( $word );
 					$char_spans = array();
 
 					foreach ( $chars as $ch ) {
@@ -210,9 +210,9 @@ if ( ! class_exists( 'WPMOZO_AE_Text_Hover_Effects' ) ) {
 
 			} elseif ( 'effect3' === $text_effect ) {
 
-				$len   = strlen( $text );
-				$left  = substr( $text, 0, ceil( $len / 2 ) );
-				$right = substr( $text, ceil( $len / 2 ) );
+				$len   = mb_strlen( $text );
+				$left  = mb_substr( $text, 0, ceil( $len / 2 ) );
+				$right = mb_substr( $text, ceil( $len / 2 ) );
 
 				$text_parts[] = '<span>';
 				$text_parts[] = '<span data-text-left="' . esc_attr( $left ) . '" data-text-right="' . esc_attr( $right ) . '">';

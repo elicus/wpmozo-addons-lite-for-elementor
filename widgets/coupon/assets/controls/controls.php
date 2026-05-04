@@ -30,6 +30,9 @@ $this->add_control(
 		'default'     => esc_html__( 'COUPON-50', 'wpmozo-addons-lite-for-elementor' ),
 		'placeholder' => esc_html__( 'COUPON-50', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
+		'dynamic' => array( 
+			'active' => true,
+		)
 	)
 );
 $this->add_control(
@@ -40,6 +43,9 @@ $this->add_control(
 		'default'     => esc_html__( 'Your title goes here', 'wpmozo-addons-lite-for-elementor' ),
 		'placeholder' => esc_html__( 'Your title goes here', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => true,
+		'dynamic' => array( 
+			'active' => true,
+		)
 	)
 );
 $this->add_control(
@@ -50,6 +56,9 @@ $this->add_control(
 		'rows'        => 10,
 		'default'     => esc_html__( 'Default description', 'wpmozo-addons-lite-for-elementor' ),
 		'placeholder' => esc_html__( 'Type your description here', 'wpmozo-addons-lite-for-elementor' ),
+		'dynamic' => array( 
+			'active' => true,
+		)
 	)
 );
 $this->add_control(
@@ -432,6 +441,31 @@ $this->add_group_control(
 	array(
 		'name'           => 'coupon_code_box_shadow',
 		'selector'       => '{{WRAPPER}} .wpmozo_coupon_code',
+	)
+);
+$this->add_responsive_control(
+	'coupon_code_alignment',
+	array(
+		'type'      => Controls_Manager::CHOOSE,
+		'label'     => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
+		'options'   => array(
+			'start'   => array(
+				'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
+				'icon'  => 'eicon-text-align-left',
+			),
+			'center' => array(
+				'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
+				'icon'  => 'eicon-text-align-center',
+			),
+			'end'  => array(
+				'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
+				'icon'  => 'eicon-text-align-right',
+			),
+		),
+		'toggle'    => true,
+		'selectors' => array(
+			'{{WRAPPER}} .wpmozo_coupon_wrapper .wpmozo_coupon_code_wrapper' => 'align-items: {{VALUE}};',
+		),
 	)
 );
 $this->end_controls_tab();

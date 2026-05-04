@@ -3,15 +3,16 @@
 		'wpmozo_elementor_select_init',
 		function (event, obj) {
 			var ID = '#elementor-control-default-' + obj.data._cid;
-
 			setTimeout(
 				function () {
 					var IDSelect2 = $( ID ).select2(
 						{
 							minimumInputLength: 1,
 							ajax: {
-								url: wpmozo_select_localize.ajaxurl + "?action=wpmozo_ae_select2_search_post&post_type=" + obj.data.source_type + '&source_name=' + obj.data.source_name,
+								url: wpmozo_select_localize.ajaxurl + "?action=wpmozo_ae_select2_ajax_posts&post_type=" + obj.data.source_type + '&source_name=' + obj.data.source_name,
 								dataType: 'json',
+								type: 'POST',
+								data: {wpmozo_ae_select_nonce: wpmozo_select_localize.nonce}
 							},
 							initSelection: function (element, callback) {
 								if ( ! obj.multiple) {
@@ -41,6 +42,7 @@
 										}
 									).done(
 										function (response) {
+											console.log(response);
 											if (response.success && typeof response.data.results != 'undefined') {
 												let wpmozoOptions = '';
 												ids.forEach(
@@ -48,14 +50,21 @@
 														if (typeof response.data.results[item] != 'undefined') {
 															const key      = item;
 															const value    = response.data.results[item];
-															wpmozoOptions += ` < option selected = "selected" value = "${key}" > ${value} < / option > `;
+															/*console.log(key);
+															console.log(value);*/
+															wpmozoOptions += `<option selected="selected" value="${key}">${value}</option>`;
 														}
 													}
 												)
-
 												element.append( wpmozoOptions );
+												console.log(element);
 											}
 											label.siblings( '.elementor-control-spinner' ).remove();
+										}
+									).error(
+										function(error){
+											console.log("Error Reported");
+											console.error(error);
 										}
 									);
 								}

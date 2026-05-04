@@ -6,9 +6,10 @@
             },
             change: function () {
                 const $this = this.$element.find('.wpmozo_coupon');
+                const uniqueId = this.$element.data('id');
                 
-                const $toast = $this.find('#wpmozo_coupon_tooltip');
-                $(document).on('click', '.wpmozo_coupon_code', function(e) {
+                const $toast = $this.find('#wpmozo_coupon_tooltip_'+uniqueId);
+                $($this).on('click', '.wpmozo_coupon_code', function(e) {
                     const $box = $(this);
                     const code = $box.find('.wpmozo_coupon_code_text').text();
 

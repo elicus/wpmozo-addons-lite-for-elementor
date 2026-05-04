@@ -142,6 +142,8 @@ if ( ! class_exists( 'WPMOZO_AE_Scrolling_Svg' ) ) {
 			$settings  = $this->get_settings_for_display();
 			$widget_id = $this->get_id();
 			$scroll_distance = isset($settings['scroll_distance']) ? $settings['scroll_distance']['size'] : '';
+			$svg_top_size = isset($settings['svg_position']) && '' !== $settings['svg_position'] ? $settings['svg_position']['size'] : '';
+			$svg_top_unit = isset($settings['svg_position']) && '' !== $settings['svg_position'] ? $settings['svg_position']['unit'] : '';
 
 			$svg_image = ! empty( $settings['svg_image']['url'] ) ? esc_url( $settings['svg_image']['url'] ) : '';
 
@@ -162,6 +164,7 @@ if ( ! class_exists( 'WPMOZO_AE_Scrolling_Svg' ) ) {
 			data-animation_distance="<?php echo esc_attr( $scroll_distance ); ?>"
 
 			data-reverse_draw="<?php echo esc_attr( $settings['reverse_draw'] ); ?>"
+			data-position_top="<?php echo esc_attr( $svg_top_size . $svg_top_unit ); ?>"
 			>
 		
 				<div class="wpmozo_scrolling_svg_inner">

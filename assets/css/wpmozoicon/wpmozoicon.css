@@ -11,8 +11,7 @@
 .elementor-panel .elementor-element-wrapper [class*="wpmozo-ae-icon-"],
 #wpmozo_ae_panel_general_section .wpmozo_ae_panel_multiple_checkboxes [class*="wpmozo-ae-icon-"],
 .elementor-control-wpmozo_extension_select_actions [data-collapse_id="wpmozo_extension_select_actions"] + .elementor-section-title:before {
-    font-family: wpmozo !important;
-    speak: never;
+    font-family: wpmozo;
     font-style: normal;
     font-weight: 400;
     font-variant: normal;
@@ -80,7 +79,7 @@
 .wpmozo-ae-icon-business-hours:before {
   content: "\e95f";
 }
-.wpmozo-ae-icon-progress-bar:before {
+.wpmozo-ae-icon-scroll-progress:before {
   content: "\e95c";
 }
 .wpmozo-ae-icon-wavy-gallery:before {
@@ -239,7 +238,7 @@
 .wpmozo-ae-icon-image-mask:before {
   content: "\e927";
 }
-.wpmozo-ae-icon-blog-slider:before {
+.wpmozo-ae-icon-advanced-blog-slider:before {
   content: "\e91c";
 }
 .wpmozo-ae-icon-instagram-feed-carousel:before {
@@ -248,7 +247,7 @@
 .wpmozo-ae-icon-instagram-feed:before {
   content: "\e91d";
 }
-.wpmozo-ae-icon-form-styler:before {
+.wpmozo-ae-icon-gravity-form-styler:before {
   content: "\e926";
 }
 .wpmozo-ae-icon-testimonial-slider:before {
@@ -266,7 +265,7 @@
 .wpmozo-ae-icon-team-grid:before {
   content: "\e914";
 }
-.wpmozo-ae-icon-advanced-tab:before {
+.wpmozo-ae-icon-advanced-tabs:before {
   content: "\e919";
 }
 .wpmozo-ae-icon-filterable-gallery:before {

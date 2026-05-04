@@ -40,7 +40,7 @@ foreach ( $categories as $category ) :
 		<?php endif; ?>
 	>
 		<a href="<?php echo esc_url( $cat_link ); ?>" class="wpmozo_abs_link">
-		<div class="wpmozo_blog_category_item_inner" href="<?php echo esc_url( $cat_link ); ?>">
+		<div class="wpmozo_blog_category_item_inner">
 			<div class="wpmozo_blog_category_content">
 
 				<<?php echo esc_html( $title_heading_level ); ?>

@@ -129,7 +129,17 @@ if ( ! class_exists( 'WPMOZO_AE_Pie_Chart' ) ) {
 		protected function render() {
 
 			$settings = $this->get_settings_for_display();
+			$chart_spacing = isset($settings['legend_and_chart_gap']['size']) && '' !== $settings['legend_and_chart_gap']['size'] ? $settings['legend_and_chart_gap']['size'] : 0;
 
+			$legend_font_size = isset($settings['chart_legend_size']) && '' !== ($settings['chart_legend_size']['size']) ? $settings['chart_legend_size']['size'] : '16';
+
+			$legend_font_color = isset($settings['chart_legend_color']) && !empty($settings['chart_legend_color']) ? $settings['chart_legend_color'] : '#666';
+
+			
+			$legend_font_style = isset($settings['chart_legend_font_style']) && !empty($settings['chart_legend_font_style']) ? $settings['chart_legend_font_style'] : 'normal';
+			
+			$legend_font_weight = isset($settings['chart_legend_font_weight']) && '' !== $settings['chart_legend_font_weight']['size'] ? $settings['chart_legend_font_weight']['size'] : '400';
+			
 			$render_empty_message = function () {
 				?>
 				<div class="wpmozo_pie_chart wpmozo_pie_chart_empty">
@@ -188,6 +198,21 @@ if ( ! class_exists( 'WPMOZO_AE_Pie_Chart' ) ) {
 					),
 				),
 			);
+			$chart_legend_data = array(
+				'size'   => $legend_font_size,
+				'color'  => $legend_font_color,
+				'weight' => $legend_font_weight,
+				'style'  => $legend_font_style,
+			);
+			$chart_legend_styling = array(
+				'spacing'   => $chart_spacing,
+				'legend' =>array(
+					'size'   => $legend_font_size,
+					'color'  => $legend_font_color,
+					'weight' => $legend_font_weight,
+					'style'  => $legend_font_style,
+				),
+			);
 
 			$height_desktop = ! empty( $settings['pie_chart_height']['size'] )
 				? intval( $settings['pie_chart_height']['size'] )
@@ -207,7 +232,8 @@ if ( ! class_exists( 'WPMOZO_AE_Pie_Chart' ) ) {
 					data-chart="<?php echo esc_attr( wp_json_encode( $chart_data ) ); ?>"
 					data-chart_height="<?php echo esc_attr( $height_desktop ); ?>"
 					data-chart_height_tablet="<?php echo esc_attr( $height_tablet ); ?>"
-					data-chart_height_phone="<?php echo esc_attr( $height_mobile ); ?>" >
+					data-chart_height_phone="<?php echo esc_attr( $height_mobile ); ?>"
+					data-chart_styling="<?php echo esc_attr( wp_json_encode( $chart_legend_styling ) ); ?>" >
 					<div class="wpmozo_pie_chart_inner">
 						<canvas></canvas>
 					</div>

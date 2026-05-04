@@ -11,7 +11,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
+use Elementor\Settings;
+use Elementor\Utils;
 if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 	class WPMOZO_Addons_Lite_For_Elementor_Admin {
 
@@ -295,11 +296,30 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		 *
 		 * @since    1.6.1
 		 */
-		public function plugin_action_links( $actions ) {
-			$links = array(
-				'<a href="' . esc_url( admin_url( '?page=' . $this->plugin_name ) ) . '">' . esc_html__( 'Settings', 'wpmozo-addons-lite-for-elementor' ) . '</a>',
-			);
-			return array_merge( $links, $actions );
+		public function plugin_action_links( $links ) {
+			$links['wpmozo_settings'] = '<a href="' . esc_url( admin_url( 'admin.php?page=wpmozo-addons-for-elementor' ) ) . '">' . esc_html__( 'Settings', 'wpmozo-addons-lite-for-elementor' ) . '</a>';
+			
+			$upgrade_text = esc_html__( 'Upgrade To Pro', 'wpmozo-addons-lite-for-elementor' );
+
+			$links['wpmozo_upgrade_to_pro'] = sprintf( '<a href="%1$s" target="_blank" class="wpmozo_addons_upgrade">%2$s</a>', 'https://wpmozo.com/product/wpmozo-addons-for-elementor/', $upgrade_text );
+			
+			return $links;
+		}
+		/**
+		 * Remove Plugin action links.
+		 *
+		 * Removew upgrade action links from the plugin list table
+		 *
+		 * @since 2.0.0
+		 * @access public
+		 *
+		 * @param array $links An array of plugin action links.
+		 *
+		 * @return array An array of plugin action links.
+		 */
+		public function wpmozo_remove_upgrade_action_links( $links ) {
+			unset($links['wpmozo_upgrade_to_pro']);
+			return $links;
 		}
 
 		/**

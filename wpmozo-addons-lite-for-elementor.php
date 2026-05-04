@@ -13,8 +13,8 @@
  * Requires at least: 5.3
  * Requires PHP: 5.6
  * Tested up to: 6.9
- * Elementor tested up to: 4.0.3
- * Elementor Pro tested up to: 4.0.2
+ * Elementor tested up to: 4.0.5
+ * Elementor Pro tested up to: 4.0.4
  *
  * WPMozo Addons Lite for Elementor - A plugin for WordPress and Elementor.
  * Copyright © 2026 Elicus Technologies Private Limited
@@ -36,6 +36,7 @@
 defined( 'ABSPATH' ) || die( 'No script kiddies please!' );
 add_action('admin_notices', 'wpmozo_lite_check_dependencies');
 require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME', plugin_basename( __FILE__ ) );
 
 if ( ! function_exists( 'wpmozo_addons_lite_for_elementor_activate' ) ) {
 	/**
@@ -154,7 +155,6 @@ function wpmozo_lite_handle_plugin_activation() {
     define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION', '1.9.0' );
     define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_URL', plugin_dir_url( __FILE__ ) );
     define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_PATH', plugin_dir_path( __FILE__ ) );
-    define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME', plugin_basename( __FILE__ ) );
     define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION', 'wpmozo-addons-for-elementor-option' );
 
     // Load the plugin's main files once dependency is active

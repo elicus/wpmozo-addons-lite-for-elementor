@@ -56,7 +56,7 @@ jQuery(window).on("elementor/frontend/init", function () {
             var tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: wrapper,
-                    start: "top top",
+                    start: "top "+$wrapper.data('position_top'),
                     end: "bottom bottom",
                     scrub: 1,
                     pin: inner,

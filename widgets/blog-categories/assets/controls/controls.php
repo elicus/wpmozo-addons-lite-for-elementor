@@ -577,7 +577,7 @@ $this->start_controls_section(
 				'auto'     => esc_html__( 'Auto', 'wpmozo-addons-lite-for-elementor' ),
 				'cover'    => esc_html__( 'Cover', 'wpmozo-addons-lite-for-elementor' ),
 				'contain'  => esc_html__( 'Contain', 'wpmozo-addons-lite-for-elementor' ),
-				' '        => esc_html__( 'Custom', 'wpmozo-addons-lite-for-elementor' ),
+				'cover '    => esc_html__( 'Custom', 'wpmozo-addons-lite-for-elementor' ),
 			),
 			'default'     => '',
 			'selectors' => array(
@@ -602,7 +602,7 @@ $this->start_controls_section(
 				'unit' => 'px',
 			),
 			'condition'  => array(
-				'thumbnail_fit' => ' ',
+				'thumbnail_fit' => 'cover ',
 			),
 			'selectors'  => array(
 				'{{WRAPPER}} .wpmozo_category_image_wrapper img' => 'width: {{SIZE}}{{UNIT}};min-width: {{SIZE}}{{UNIT}};',
@@ -626,7 +626,7 @@ $this->start_controls_section(
 				'unit' => 'px',
 			),
 			'condition'  => array(
-				'thumbnail_fit' => ' ',
+				'thumbnail_fit' => 'cover ',
 			),
 			'selectors'  => array(
 				'{{WRAPPER}} .wpmozo_category_image_wrapper img' => 'height: {{SIZE}}{{UNIT}};',
@@ -727,38 +727,38 @@ $this->start_controls_section(
 	$this->add_responsive_control(
 		'category_item_justify_content',
 		array(
-			'label'       => esc_html__( 'Justify Content', 'wpmozo-addons-for-elementor' ),
+			'label'       => esc_html__( 'Justify Content', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => true,
 			'condition'   => array( 'layout' => 'layout3' ),
 			'options'     => array(
 				'flex-start'   => array(
-					'title' => esc_html__( 'Start', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Start', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-justify-start-h',
 				),
 				'center' => array(
-					'title' => esc_html__( 'Center', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-justify-center-h',
 				),
 				'flex-end'  => array(
-					'title' => esc_html__( 'End', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'End', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-justify-end-h',
 				),
 				'space-evenly'  => array(
-					'title' => esc_html__( 'Space Evenly', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Space Evenly', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-justify-space-evenly-h',
 				),
 				'space-around'  => array(
-					'title' => esc_html__( 'Space Around', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Space Around', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-justify-space-around-h',
 				),
 				'space-between'  => array(
-					'title' => esc_html__( 'Space Between', 'wpmozo-addons-for-elementor' ),
+					'title' => esc_html__( 'Space Between', 'wpmozo-addons-lite-for-elementor' ),
 					'icon'  => 'eicon-justify-space-between-h',
 				),
 			),
 			'selectors' => array(
-				'{{WRAPPER}} .wpmozo_blog_categories_wrapper .wpmozo_blog_categories_inner .wpmozo_blog_category_item_inner' => 'Justify-content: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_blog_categories_wrapper .wpmozo_blog_categories_inner .wpmozo_blog_category_item_inner' => 'justify-content: {{VALUE}};',
 			),
 		)
 	);

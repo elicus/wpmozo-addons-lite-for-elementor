@@ -144,6 +144,29 @@ $this->add_responsive_control(
 		),
 	)
 );
+$this->add_control(
+	'svg_position',
+	array(
+		'label'          => esc_html__( 'SVG Position (Top)', 'wpmozo-addons-lite-for-elementor' ),
+		'type'           => Controls_Manager::SLIDER,
+		'size_units'     => array( 'px', '%' ),
+		'range'          => array(
+			'px' => array(
+				'min' => 1,
+				'max' => 1500,
+			),
+			'%'  => array(
+				'min' => 1,
+				'max' => 100,
+			),
+		),
+		'devices'        => array( 'desktop', 'tablet', 'mobile' ),
+		'default'        => array(
+			'size' => 100,
+			'unit' => 'px',
+		),
+	)
+);
 $this->add_responsive_control(
 	'svg_stroke_line_width',
 	array(

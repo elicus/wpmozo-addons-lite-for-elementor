@@ -116,6 +116,8 @@ jQuery(window).on("elementor/frontend/init", function () {
                 if (wpmozoIsInViewport($wrapper[0]) && !$wrapper.hasClass('wpmozo-animated')) {
                     wpmozoAnimateSVG($wrapper);
                     $wrapper.addClass('wpmozo-animated');
+                } else if ($wrapper.hasClass('wpmozo-animated')){
+                    jQuery(window).off('scroll resize', wpmozoCheckAndAnimate);
                 }
             }
 

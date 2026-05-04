@@ -184,8 +184,6 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 
 			$settings     = new WPMOZO_Addons_Lite_For_Elementor_Settings( $this->get_plugin_option() );
 			$plugin_admin = new WPMOZO_Addons_Lite_For_Elementor_Admin( $settings );
-
-
 			$this->loader->add_action( 'wp_loaded', $plugin_admin, 'wp_loaded' );
 			$plugin_admin->wpmozo_register_post_types();
 			$plugin_admin->wpmozo_register_taxonomies();
@@ -194,6 +192,10 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 			$this->loader->add_action( 'wp_ajax_wpmozo_ae_lite_panel_save_settings', $plugin_admin, 'save_options' );
+			$this->loader->add_filter( 'plugin_action_links_' . WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME,  $plugin_admin, 'plugin_action_links' );
+			if(defined('WPMOZO_ADDONS_FOR_ELEMENTOR_BASENAME')){
+				$this->loader->add_filter( 'plugin_action_links_' . WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME, $plugin_admin, 'wpmozo_remove_upgrade_action_links', 50 );
+			}
 			if ( ! $plugin_admin->wpmozo_is_widget_disabled('team-slider,team-grid') ) {
 				// Hook to add meta box.
 				$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'wpmozo_add_team_member_metabox' );

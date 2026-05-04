@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php if ( ! empty( $coupon_code ) ) { ?>
 		<div class="wpmozo_coupon_code">
-			<?php if ( 'yes' === ( $settings['copy_on_click'] ) ) { ?><span id="wpmozo_coupon_tooltip">Copied!</span><?php } ?>
+			<?php if ( 'yes' === ( $settings['copy_on_click'] ) ) { ?><span id="wpmozo_coupon_tooltip_<?php echo $this->get_id();?>">Copied!</span><?php } ?>
 			<span class="wpmozo_coupon_code_text"><?php echo esc_html( $coupon_code ); ?></span>
 		</div>
 	<?php } ?>

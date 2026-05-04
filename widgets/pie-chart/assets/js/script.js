@@ -42,6 +42,13 @@
                     console.error( 'Invalid chart data for pie chart', self.$element );
                     return;
                 }
+                
+                try {
+                    var chartLegendData = JSON.parse( $wrapper.attr( 'data-chart_styling' ) );
+                } catch ( e ) {
+                    console.error( 'Invalid chart styling data for:', self.$element );
+                    return;
+                }
 
                 /*chartData.datasets.forEach( function ( dataset ) {
 
@@ -49,25 +56,40 @@
                         dataset.backgroundColor = dataset.backgroundcolor;
                     }
                 } );*/
+                let spacing = parseInt(chartLegendData.spacing);
 
                 const height = getChartHeight();
                 $wrapper.css( 'height', height + 'px' );
                 $canvas.height = height;
+                const legendSpacingPlugin = {
+                    id: 'legendSpacing',
+                    beforeInit(chart) {
+                        const originalFit = chart.legend.fit;
+
+                        chart.legend.fit = function fit() {
+                            originalFit.bind(chart.legend)();
+                            this.height += spacing;
+                        };
+                    }
+                };
 
                 $canvas.chartInstance = new Chart( $canvas.getContext( '2d' ), {
                     type: 'pie',
                     data: chartData,
+                    plugins: [legendSpacingPlugin],
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
                             legend: {
                                 labels: {
+                                    color: chartLegendData.legend.color,
                                     font: {
-                                        size: getFontSize()
+                                        size:   chartLegendData.legend.size,
+                                        weight: chartLegendData.legend.weight,
+                                        style:  chartLegendData.legend.style
                                     },
                                     generateLabels: function(chart) {
-                                        console.log((Chart.overrides.pie.plugins.legend.labels.generateLabels(chart)));
                                         const original = Chart.overrides.pie.plugins.legend.labels.generateLabels;
                                         const labels = original(chart);
 

@@ -72,9 +72,6 @@ $this->add_responsive_control(
 			'size' => 1000,
 		),
 		'render_type' => 'template',
-		'selectors'   => array(
-			'{{WRAPPER}} .wpmozo_animated_text_wrapper .wpmozo_animated_text' => 'animation-duration: {{SIZE}}{{UNIT}};',
-		),
 	)
 );
 $this->add_control(
