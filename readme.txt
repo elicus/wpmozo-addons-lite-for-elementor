@@ -274,7 +274,7 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
-2026-04-14 - Version 1.9.0
+2026-05-05 - Version 1.9.0
 - NEW: New widget Blog Categories.
 - NEW: New widget Alert Box.
 - NEW: New widget Text Hover Effect.
