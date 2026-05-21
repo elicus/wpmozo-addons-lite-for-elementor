@@ -48,3 +48,17 @@ if ( ! function_exists( 'wpmozo_ae_get_pages_as_options' ) ) {
 		return $page_options;
 	}
 }
+
+/**
+ * Function to validate a givin layout.
+ *
+ * @since    1.1.1
+ */
+if ( ! function_exists( 'wpmozo_ae_validate_layout' ) ) {
+	function wpmozo_ae_validate_layout( $layout, $layouts = array() ) {
+		if ( in_array( $layout, $layouts, true ) ) {
+			return sanitize_file_name( $layout );
+		}
+		return sanitize_file_name( $layouts[0] );
+	}
+}

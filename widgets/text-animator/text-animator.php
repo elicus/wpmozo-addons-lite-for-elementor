@@ -53,7 +53,7 @@ if ( ! class_exists( 'WPMOZO_AE_Text_Animator' ) ) {
          * @return string Widget icon.
          */
         public function get_icon() {
-            return 'wpmozo-ae-icon-text-animator1 wpmozo-ae-brandicon';
+            return 'wpmozo-ae-icon-text-animator wpmozo-ae-brandicon';
         }
 
         /**

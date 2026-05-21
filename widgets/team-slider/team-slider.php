@@ -327,7 +327,6 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 			$slide_effect                        = $settings[ 'slide_effect' ];
 			$cards_per_slide                     = $settings[ 'cards_per_slide' ];
 			$enable_coverflow_shadow             = $settings[ 'enable_coverflow_shadow' ];
-			$coverflow_shadow_color              = $settings[ 'coverflow_shadow_color' ];
 			$coverflow_rotate                    = $settings[ 'coverflow_rotate' ];
 			$coverflow_depth                     = $settings[ 'coverflow_depth' ];
 			$equalize_slides_height              = $settings[ 'equalize_slides_height' ];
@@ -344,6 +343,7 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 			$order_class                         = 'elementor-element-'.$this->get_id();
 
 			$layout 							 = esc_attr( $settings[ 'layout' ] );
+			$layout 							 = wpmozo_ae_validate_layout( $layout, array( 'layout1', 'layout2' ) );
 			$number_of_members 					 = esc_attr( $settings[ 'number_of_members' ] );
 			$team_order 						 = esc_attr( $settings[ 'team_order' ] );
 			$team_order_by 						 = esc_attr( $settings[ 'team_order_by' ] );
@@ -397,7 +397,6 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 									if ( file_exists( plugin_dir_path( dirname( __FILE__ ) ) . "team-slider/assets/layouts/$layout.php" ) ) {
 										include plugin_dir_path( dirname( __FILE__ ) ) . "team-slider/assets/layouts/$layout.php";
 									}
-							
 								?>
 							</div> <!-- swiper-wrapper -->
 				</div> <!-- swiper-container -->
@@ -410,31 +409,6 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 							'data-next_slide_arrow' => $settings[ 'next_slide_arrow' ][ 'value' ]
 						 ) 
 					 );				
-					/*if( 'svg' !== $settings[ 'next_slide_arrow' ][ 'library' ] ) {
-						$next = Icons_Manager::try_get_icon_html( 
-							$settings[ 'next_slide_arrow' ],
-							array( 
-								'aria-hidden' => 'true',
-								'class' => array( 'wpmozo_swiper_layout_icon_next', 'swiper-button-next' ),
-								'data-next_slide_arrow' => $settings[ 'next_slide_arrow' ][ 'value' ]
-							 ),
-							'i'
-						 );
-						
-					}
-					if( 'svg' === $settings[ 'next_slide_arrow' ][ 'library' ] ) {	
-						$next = '<div ' . $this->get_render_attribute_string( 'swiper_arrow_next' ) . '>'
-								. Icons_Manager::try_get_icon_html( 
-									$settings[ 'next_slide_arrow' ],
-									array( 
-										'aria-hidden' => 'true',
-										'class' => array( 'wpmozo_swiper_layout_icon_next', 'swiper-button-next' ),
-										'data-next_slide_arrow' => $settings[ 'next_slide_arrow' ][ 'value' ]
-									 ),
-									'i'
-								 )
-								. '</div>';
-					}*/
 					$this->add_render_attribute( 'swiper_arrow_prev', 
 						array( 
 							'class' => array( 'wpmozo_swiper_layout_icon_prev', 'swiper-button-prev' ),
@@ -442,31 +416,6 @@ if ( ! class_exists( 'WPMOZO_AE_Team_Slider' ) ) {
 							'data-previous_slide_arrow' => $settings[ 'previous_slide_arrow' ][ 'value' ]
 						 ) 
 					 );
-					/*if( 'svg' !== $settings[ 'previous_slide_arrow' ][ 'library' ] ) {
-						$prev = Icons_Manager::try_get_icon_html( 
-							$settings[ 'previous_slide_arrow' ],
-							array( 
-								'aria-hidden' => 'true',
-								'class' => array( 'wpmozo_swiper_layout_icon_prev', 'swiper-button-prev' ),
-								'data-next_slide_arrow' => $settings[ 'previous_slide_arrow' ][ 'value' ]
-							 ),
-							'i'
-						 );
-						
-					}
-					if( 'svg' === $settings[ 'previous_slide_arrow' ][ 'library' ] ) {	
-						$prev = '<div ' . $this->get_render_attribute_string( 'swiper_arrow_prev' ) . '>'
-								. Icons_Manager::try_get_icon_html( 
-									$settings[ 'previous_slide_arrow' ],
-									array( 
-										'aria-hidden' => 'true',
-										'class' => array( 'wpmozo_swiper_layout_icon_prev', 'swiper-button-prev' ),
-										'data-previous_slide_arrow' => $settings[ 'previous_slide_arrow' ][ 'value' ]
-									 ),
-									'i'
-								 )
-								. '</div>';
-					}*/
 					if ( ! empty( $arrows_position ) ) {
 						$this->add_render_attribute( 'data-arrow', 'data-arrows', $arrows_position );
 						$arrows_position_data = '';

@@ -136,8 +136,8 @@ if ( !class_exists( 'WPMOZO_AE_Scroll_Image' ) ) {
 			$image_alt_tag       = $settings[ 'scroll_image_alt_text' ];
 			$image_title         = $settings[ 'scroll_image_title' ];
 			$scroll_direction    = $settings[ 'scroll_direction' ];
-			$module_link         = $settings[ 'scroll_image_link' ];
-			$module_link_target  = $settings[ 'scroll_image_link_target' ];
+			$widget_link         = $settings[ 'scroll_image_link' ];
+			$widget_link_target  = $settings[ 'scroll_image_link_target' ];
 			$img_container_align = $settings[ 'scroll_image_alignment' ];
 			
 			?>
@@ -146,12 +146,12 @@ if ( !class_exists( 'WPMOZO_AE_Scroll_Image' ) ) {
 				<div class="wpmozo_ae_scroll_image_wrapper <?php if ( !empty( $img_container_align ) ) { echo esc_attr( $img_container_align ); } ?>">
 					<div class="wpmozo_ae_scroll_image_inner_wrapper" data-direction="<?php echo esc_attr( $scroll_direction ); ?>">
 						<?php if ( !empty( $scroll_image ) ) { ?>
-							<?php if ( !empty( $module_link ) ) { ?>
-								<a href="<?php echo esc_url( $module_link ); ?>" target="<?php echo esc_attr( $module_link_target ); ?>">
+							<?php if ( !empty( $widget_link ) ) { ?>
+								<a href="<?php echo esc_url( $widget_link ); ?>" target="<?php echo esc_attr( $widget_link_target ); ?>">
 								<?php } ?>
 								<img decoding="async" src="<?php echo esc_url( $scroll_image ); ?>" class="scroll_image"
 									alt="<?php echo esc_attr( $image_alt_tag ); ?>" title="<?php echo esc_attr( $image_title ); ?>">
-								<?php if ( !empty( $module_link ) ) { ?>
+								<?php if ( !empty( $widget_link ) ) { ?>
 								</a>
 							<?php }
 						} ?>
