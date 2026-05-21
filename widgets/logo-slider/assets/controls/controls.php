@@ -270,7 +270,7 @@ $this->start_controls_section(
 	$this->add_control( 
 		'logo_list',
 		array( 
-			'label'       => __( 'Logo List', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => __( 'Logos', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::REPEATER,
 			'fields'      => $repeater->get_controls(),
 			'default'     => array( 
@@ -311,7 +311,7 @@ $this->start_controls_section( 'slider_settings',
  );    
     $this->add_control( 'slide_effect',
         array( 
-            'label'       => __( 'Slider Effect', 'wpmozo-addons-lite-for-elementor' ),
+            'label'       => __( 'Effect', 'wpmozo-addons-lite-for-elementor' ),
             'label_block' => false,
             'type'        => Controls_Manager::SELECT,
             'separator'   => 'after',
@@ -328,7 +328,7 @@ $this->start_controls_section( 'slider_settings',
     );
     $this->add_responsive_control( 'cards_per_slide',
         array( 
-            'label'     => esc_html__( 'Number of Cards Per Slide', 'wpmozo-addons-lite-for-elementor' ),
+            'label'     => esc_html__( 'Cards Per Slide', 'wpmozo-addons-lite-for-elementor' ),
             'type'      => Controls_Manager::NUMBER,
             'min'       => 1,
             'max'       => 15,
@@ -339,7 +339,7 @@ $this->start_controls_section( 'slider_settings',
     );
     $this->add_responsive_control( 'slides_per_group',
         array( 
-            'label'     => esc_html__( 'Number of Slides Per Group', 'wpmozo-addons-lite-for-elementor' ),
+            'label'     => esc_html__( 'Slides Per Group', 'wpmozo-addons-lite-for-elementor' ),
             'type'      => Controls_Manager::NUMBER,
             'min'       => 1,
             'max'       => 15,
@@ -567,11 +567,11 @@ $this->start_controls_section( 'slider_settings',
     );
     $this->add_control( 'show_arrow',
         array( 
-            'label'        => esc_html__( 'Show Arrows', 'wpmozo-addons-lite-for-elementor' ),
+            'label'        => esc_html__( 'Arrows', 'wpmozo-addons-lite-for-elementor' ),
             'separator'	   => 'before',
             'type'         => Controls_Manager::SWITCHER,
-            'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-            'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
+            'label_off'    => esc_html__( 'Hide', 'wpmozo-addons-lite-for-elementor' ),
+            'label_on'     => esc_html__( 'Show', 'wpmozo-addons-lite-for-elementor' ),
             'return_value' => 'yes',
             'default'      => 'yes',
             'selectors_dictionary' 	=> array( 
@@ -638,11 +638,11 @@ $this->start_controls_section( 'slider_settings',
     );
     $this->add_control( 'show_control_dot',
         array( 
-            'label'        => esc_html__( 'Show Dots Pagination', 'wpmozo-addons-lite-for-elementor' ),
+            'label'        => esc_html__( 'Dots Pagination', 'wpmozo-addons-lite-for-elementor' ),
             'separator'	   => 'before',
             'type'         => Controls_Manager::SWITCHER,
-            'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-            'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
+            'label_off'    => esc_html__( 'Hide', 'wpmozo-addons-lite-for-elementor' ),
+            'label_on'     => esc_html__( 'Show', 'wpmozo-addons-lite-for-elementor' ),
             'return_value' => 'yes',
             'default'      => 'no',
             'selectors_dictionary' 	=> array( 
@@ -978,7 +978,7 @@ $this->start_controls_section(
 	$this->add_responsive_control( 
 		'logo_width',
 		array( 
-			'label'      => esc_html__( 'Logo Width', 'wpmozo-addons-lite-for-elementor' ),
+			'label'      => esc_html__( 'Width', 'wpmozo-addons-lite-for-elementor' ),
 			'type'       => \Elementor\Controls_Manager::SLIDER,
 			'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 			'range'      => array( 
@@ -1031,10 +1031,9 @@ $this->start_controls_section(
 	$this->add_responsive_control( 
 		'logo_align',
 		array( 
-			'label'       => __( 'Logo Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => __( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::SELECT,
-			'separator'   => 'after',
 			'options'     => array( 
 				'flex-start' => esc_html__( 'Top', 'wpmozo-addons-lite-for-elementor' ),
 				'center'     => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),

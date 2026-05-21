@@ -36,7 +36,7 @@ $this->start_controls_section(
 	$this->add_control( 
 		'image_alt_text',
 		array( 
-			'label'       => __( 'Image Alt Text', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => __( 'Alt Text', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::TEXT,
 			'label_block' => true,
 		 )
@@ -47,14 +47,14 @@ $this->end_controls_section();
 $this->start_controls_section( 
 	'image_alignment_section',
 	array( 
-		'label' => esc_html__( 'Image Settings', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Image', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	 )
  );
 	$this->add_responsive_control( 
 		'image_alignment',
 		array( 
-			'label'       => esc_html__( 'Image Alignment', 'wpmozo-addons-lite-for-elementor' ),
+			'label'       => esc_html__( 'Alignment', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::CHOOSE,
 			'label_block' => true,
 			'options'     => array( 
@@ -85,7 +85,7 @@ $this->end_controls_section();
 $this->start_controls_section( 
 	'magnifier_settings',
 	array( 
-		'label' => esc_html__( 'Lens Settings', 'wpmozo-addons-lite-for-elementor' ),
+		'label' => esc_html__( 'Lens', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	 )
  );

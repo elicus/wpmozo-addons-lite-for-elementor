@@ -3,7 +3,7 @@
  * @author    Elicus <hello@elicus.com>
  * @link      https://www.elicus.com/
  * @copyright 2025 Elicus Technologies Private Limited
- * @version   1.0.0
+ * @version   1.0.1
  */
 
 // if this file is called directly, abort.
@@ -184,11 +184,10 @@ if ( ! class_exists( 'WPMOZO_AE_Horizontal_Scrolling_Posts' ) ) {
 
 			$all_post_ids = array();
 
-			$is_editor        = \Elementor\Plugin::$instance->editor->is_edit_mode();
 			$is_ignore_sticky = ( 'yes' === $ignore_sticky_posts );
 
 			// Editor mode fix for sticky behavior.
-			if ( $is_editor && ! $is_ignore_sticky && ! empty( $sticky_posts ) ) {
+			if ( ! $is_ignore_sticky && ! empty( $sticky_posts ) ) {
 				// Remove excluded sticky posts.
 				$valid_sticky_ids = array_diff( $sticky_posts, $exclude_posts_array );
 
