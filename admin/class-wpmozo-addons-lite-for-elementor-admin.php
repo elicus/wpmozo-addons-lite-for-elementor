@@ -81,6 +81,8 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		public function enqueue_styles( $hook_suffix ) {
 
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/css/admin.min.css', array(), $this->plugin_version );
+
+			wp_enqueue_style( $this->plugin_name."-icons", plugin_dir_url( __DIR__ ) . 'assets/css/wpmozoicon/wpmozoicon.min.css', array(), $this->plugin_version );
 		}
 
 		/**
@@ -102,7 +104,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 	        if ( defined( 'WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION' ) && isset( $plugin_options['wpmozo_inactive_widgets'] ) ) {
 	            $widgets = explode( ',', $plugin_options['wpmozo_inactive_widgets'] );
 	            if (
-	                in_array( 'team-slider', $widgets ) ||
+	                in_array( 'team-slider', $widgets ) &&
 	                in_array( 'team-grid', $widgets )
 	            ) {
 	                return true;
@@ -124,7 +126,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
             if ( isset( $plugin_options['wpmozo_inactive_widgets'] ) ) {
                 $widgets = explode( ',', $plugin_options['wpmozo_inactive_widgets'] );
                 if (
-                    in_array( 'testimonial-slider', $widgets ) ||
+                    in_array( 'testimonial-slider', $widgets ) &&
                     in_array( 'testimonial-grid', $widgets )
                 ) {
                     return true;

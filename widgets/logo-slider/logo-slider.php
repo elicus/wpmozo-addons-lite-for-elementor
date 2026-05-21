@@ -354,8 +354,12 @@ if ( ! class_exists( 'WPMOZO_AE_Logo_Slider' ) ) {
 			$show_arrow_on_hover     = $settings[ 'show_arrow_on_hover' ];
 			$show_control_dot        = $settings[ 'show_control_dot' ];
 			$control_dot_style       = $settings[ 'control_dot_style' ];
-			$arrows_position         = $settings[ 'arrows_position' ];
 			$order_class             = 'elementor-element-' . $this->get_id();
+
+			$arrows_position         = $settings[ 'arrows_position' ];
+
+			$arrows_position_tablet = isset( $settings[ 'arrows_position_tablet' ] ) && !empty( $settings[ 'arrows_position_tablet' ] ) ? $settings[ 'arrows_position_tablet' ] : $arrows_position;
+			$arrows_position_mobile = isset( $settings[ 'arrows_position_mobile' ] ) && !empty( $settings[ 'arrows_position_mobile' ] ) ? $settings[ 'arrows_position_mobile' ] : $arrows_position;
 
 			$this->add_render_attribute( 'wpmozo_ae_swiper_layout_title', 'class', 'wpmozo_ae_swiper_layout_title' );
 			$this->add_render_attribute( 'wpmozo_ae_swiper_layout_description', 'class', 'wpmozo_ae_swiper_layout_description' );
@@ -410,7 +414,7 @@ if ( ! class_exists( 'WPMOZO_AE_Logo_Slider' ) ) {
 						 ) 
 					 );
 					if ( ! empty( $arrows_position ) ) {
-						$this->add_render_attribute( 'data-arrow', 'data-arrows', $arrows_position );
+						$this->add_render_attribute( 'data-arrow', array( 'data-arrows_desktop' => $arrows_position, 'data-arrows_tablet' => $arrows_position_tablet, 'data-arrows_phone' => $arrows_position_mobile ) );
 						$arrows_position_data = '';
 							$arrows_position_data .= $this->get_render_attribute_string( 'data-arrow' );
 					}

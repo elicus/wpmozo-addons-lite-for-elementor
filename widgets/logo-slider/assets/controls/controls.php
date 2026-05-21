@@ -619,7 +619,7 @@ $this->start_controls_section( 'slider_settings',
     );
     $this->add_responsive_control( 'arrows_position',
         array( 
-            'label'       => __( 'Arrows Position', 'wpmozo-addons-lite-for-elementor' ),
+            'label'       => esc_html__( 'Arrows Position', 'wpmozo-addons-lite-for-elementor' ),
             'label_block' => false,
             'type'        => Controls_Manager::SELECT,
             'options'     => array( 

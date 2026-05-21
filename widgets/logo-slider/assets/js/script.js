@@ -7,32 +7,25 @@
             change: function () {
                 let $winWidth = $( window ).width();
                 let $this = this.$element;
-                if ( $this.find( ".elementor-widget-wpmozo_ae_logo_slider" ).length > 0 ) {
-                    $this.find( ".elementor-widget-wpmozo_ae_logo_slider" ).each( function () {
-                        let $arrows = $( this ).find( ".wpmozo_swiper_navigation" ).data();
+                if ( $this.length > 0 ) {
+                    $this.each( function () {
+                        let $arrows = $this.find( ".wpmozo_swiper_navigation" ).data();
                         if ( $arrows ) {
                             if ( $winWidth > 980 && typeof $arrows.arrows_desktop !== "undefined" ) {
-                                wpmozo_ae_remove_arrows_classes( $( this ).find( ".wpmozo_swiper_navigation" ) );
-                                $( this )
-                                    .find( ".wpmozo_swiper_navigation" )
-                                    .addClass( "wpmozo_arrows_" + $arrows.arrows_desktop );
-                            }
-                            if ( $winWidth < 981 && typeof $arrows.arrows_tablet !== "undefined" ) {
-                                wpmozo_ae_remove_arrows_classes( $( this ).find( ".wpmozo_swiper_navigation" ) );
-                                $( this )
-                                    .find( ".wpmozo_swiper_navigation" )
-                                    .addClass( "wpmozo_arrows_" + $arrows.arrows_tablet );
-                            }
+                                wpmozo_ae_remove_arrows_classes( $this.find( ".wpmozo_swiper_navigation" ) );
+                                $this.find( ".wpmozo_swiper_navigation" ).addClass( "wpmozo_arrows_" + $arrows.arrows_desktop );
+                            } else
+                            if ( $winWidth < 981 && $winWidth > 769 && typeof $arrows.arrows_tablet !== "undefined" ) {
+                                wpmozo_ae_remove_arrows_classes( $this.find( ".wpmozo_swiper_navigation" ) );
+                                $this.find( ".wpmozo_swiper_navigation" ).addClass( "wpmozo_arrows_" + $arrows.arrows_tablet );
+                            } else
                             if ( $winWidth < 768 && typeof $arrows.arrows_phone !== "undefined" ) {
-                                wpmozo_ae_remove_arrows_classes( $( this ).find( ".wpmozo_swiper_navigation" ) );
-                                $( this )
-                                    .find( ".wpmozo_swiper_navigation" )
-                                    .addClass( "wpmozo_arrows_" + $arrows.arrows_phone );
+                                wpmozo_ae_remove_arrows_classes( $this.find( ".wpmozo_swiper_navigation" ) );
+                                $this.find( ".wpmozo_swiper_navigation" ).addClass( "wpmozo_arrows_" + $arrows.arrows_phone );
+                            } else {
+                                wpmozo_ae_remove_arrows_classes( $this.find( ".wpmozo_swiper_navigation" ) );
+                                $this.find( ".wpmozo_swiper_navigation" ).addClass( "wpmozo_arrows_" + $arrows.arrows_desktop );
                             }
-                            wpmozo_ae_remove_arrows_classes( $( this ).find( ".wpmozo_swiper_navigation" ) );
-                            $( this )
-                                .find( ".wpmozo_swiper_navigation" )
-                                .addClass( "wpmozo_arrows_" + $arrows.arrows );
                         }
                     } );
                 }
