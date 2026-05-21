@@ -142,7 +142,7 @@ if ( ! class_exists( 'WPMOZO_AE_Text_Highlighter' ) ) {
             $post_text              = $settings[ 'post' ];
             $widget_id              = $this->get_id();
             $content_text           = $settings[ 'content' ];
-            $heading_level          = wpmozo_ae_validate_heading_level( $settings[ 'global_heading_level' ] ); 
+            $heading_level          = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings[ 'global_heading_level' ] ); 
             $highlighter_shape      = $settings[ 'highlighter_shape' ];   
             $display_in_stack_class = "";
             if ( 'yes' === $settings[ 'display_in_stack' ] ) {

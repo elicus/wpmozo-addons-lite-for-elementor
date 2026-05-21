@@ -135,7 +135,7 @@ if ( !class_exists( 'WPMOZO_AE_Star_Rating' ) ) {
 			$description_text    = $settings[ 'description_text' ];
 			$star_rating_scale   = $settings[ 'star_rating_scale' ];
 			$show_rating_number  = $settings[ 'show_rating_number_switcher' ];
-			$title_heading_level = wpmozo_ae_validate_heading_level( $settings[ 'title_heading_level' ] );
+			$title_heading_level = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings[ 'title_heading_level' ] );
 			if ( !empty( $settings[ 'image' ][ 'url' ] ) ) {
 				$image = $settings[ 'image' ][ 'url' ];
 			}

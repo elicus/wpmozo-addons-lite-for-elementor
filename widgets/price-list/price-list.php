@@ -131,8 +131,8 @@ if ( ! class_exists( 'WPMOZO_AE_Price_List' ) ) {
 		protected function render() {
 			$settings                 = $this->get_settings_for_display();
 			$items_content            = isset( $settings['wpmozo_items_content'] ) ? $settings['wpmozo_items_content'] : array();
-			$layout                   = wpmozo_ae_validate_layout( $settings['price_list_layout'], array( 'layout1', 'layout2' ) );
-			$heading_level            = wpmozo_ae_validate_heading_level( $settings['heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
+			$layout                   = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_layout( $settings['price_list_layout'], array( 'layout1', 'layout2' ) );
+			$heading_level            = wpmozo_addons_lite_for_elementor()::$public_instance->wpmozo_ae_validate_heading_level( $settings['heading_level'], array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) );
 			$currency_symbol_position = $settings['currency_symbol_position'];
 			$icon_shape               = isset( $settings['icon_shape'] ) ? $settings['icon_shape'] : '';
 			$number_of_columns        = isset( $settings['number_of_columns'] ) ? $settings['number_of_columns'] : '';

@@ -1,0 +1,262 @@
+( function ( $ ) {
+    $( window ).on( "elementor/frontend/init", function () {
+        var WPMOZOScrollStackCards = elementorModules.frontend.handlers.Base.extend( {
+            bindEvents: function () {
+                this.change();
+            },
+            change: function () {
+				jQuery( document ).ready( function($) {
+					if ( $( '.wpmozo_scroll_stack_cards' ).length > 0 ) {
+						$( document ).find('.wpmozo_scroll_stack_cards').each( function() {
+							let thisObj = $( this );
+							let wrapObj = thisObj.find( '.wpmozo_scroll_stack_cards_wrapper' );
+							if ( 'horizontal' === wrapObj.data( 'layout' ) ) {
+								if ( wpmozoIsLargeScreen() ) {
+									wpmozoInitHorizontalScrollStackCards( thisObj );
+								} else {
+									wrapObj.find( '.wpmozo_scroll_stack_cards_item' ).css( {
+										width    : '100%',
+										position : 'relative',
+										left     : 'auto'
+									} );
+								}
+							} else {
+								if ( wpmozoIsLargeScreen() ) {
+									wpmozoInitVerticalScrollStackCards( thisObj );
+								}
+							}
+						} );
+				
+						// On windows resize.
+						$( window ).on( 'resize', () => {
+							$( document ).find('.wpmozo_scroll_stack_cards').each( function() {
+								let thisObj = $( this );
+								let wrapObj = thisObj.find( '.wpmozo_scroll_stack_cards_wrapper' );
+								if ( 'horizontal' === wrapObj.data( 'layout' ) ) {
+									if ( wpmozoIsLargeScreen() ) {
+										wpmozoInitHorizontalScrollStackCards( thisObj );
+									} else {
+										wrapObj.find( '.wpmozo_scroll_stack_cards_item' ).css( {
+											width    : '100%',
+											position : 'relative',
+											left     : 'auto'
+										} );
+									}
+								} else {
+									if ( wpmozoIsLargeScreen() ) {
+										wpmozoInitVerticalScrollStackCards( thisObj );
+									} else {
+										// Kill if already init.
+										ScrollTrigger.getAll().forEach( trigger => {
+											if ( trigger.trigger === wrapObj[0] ) {
+												trigger.kill();
+											}
+										} );
+										wrapObj.css( {
+											height: 'auto'
+										} );
+									}
+									ScrollTrigger.refresh();
+								}
+							} );
+						} );
+				
+						// Refresh after a while.
+						setTimeout( () => ScrollTrigger.refresh(), 300 );
+					}
+				} ); // Document ready over.
+				
+				// Init vertical scroll stack cards.
+				function wpmozoInitVerticalScrollStackCards( thisObj ) {
+				
+					let viewportHeight = window.innerHeight;
+					let $wrapper    = thisObj.find( '.wpmozo_scroll_stack_cards_wrapper' )
+					let items       = $wrapper.find( '.wpmozo_scroll_stack_cards_item' );
+				
+					// Kill if already init.
+					ScrollTrigger.getAll().forEach( trigger => {
+						if ( trigger.trigger === $wrapper[0] ) {
+							trigger.kill();
+						}
+					} );
+				
+					gsap.registerPlugin( ScrollTrigger );
+				
+					let fullHeights = items.map( (index, element ) => element.scrollHeight ).get();
+				
+					let targetHeights = items.map((i, item) => {
+						let icon           = item.querySelector( '.wpmozo_scroll_stack_cards_icon_wrapper' );
+						let title          = item.querySelector( '.wpmozo_scroll_stack_cards_title_wrap' );
+						let contentWrapper = item.querySelector( '.wpmozo_scroll_stack_cards_content_wrapper' );
+
+						let iconHeight        = ( icon ) ? icon.offsetHeight : 0;
+						let titleHeight       = ( title ) ? $(title).find('.wpmozo_scroll_stack_cards_title').outerHeight(true) : 0;
+						let itemPaddingTop    = parseFloat( window.getComputedStyle( item ).paddingTop ) || 0;
+						let contentPaddingTop = contentWrapper
+							? parseFloat( window.getComputedStyle( contentWrapper ).paddingTop ) || 0
+							: 0;
+						let contentMarginTop = contentWrapper
+							? parseFloat( window.getComputedStyle( contentWrapper ).marginTop ) || 0
+							: 0;
+
+						return iconHeight + titleHeight + itemPaddingTop + contentPaddingTop + contentMarginTop;
+					}).get();
+
+					let collapsedHeights = fullHeights.map((h, i) => i === items.length - 1 ? h : targetHeights[i]);
+
+				
+					let collapsedTotal = collapsedHeights.reduce((acc, h) => acc + h, 0);
+					let fullTotal = fullHeights.reduce((acc, h) => acc + h, 0);
+					let totalScroll = fullTotal - collapsedTotal;
+					if (totalScroll < viewportHeight * 1.5) {
+						totalScroll = viewportHeight * 1.5;
+					}
+				
+					let sectionHeight = collapsedTotal + totalScroll;
+						$wrapper.css( 'height', `${sectionHeight}px` );
+				
+					const startPosition    = $wrapper.data( 'animation_start_element_pos' ) || 'top';
+					const viewportPosition = $wrapper.data( 'animation_start_viewport_pos' ) || 'top';
+				
+					let tl = gsap.timeline( {
+						scrollTrigger: {
+							trigger: $wrapper[0], // 🔧 Pass DOM element to GSAP
+							start: `${startPosition} ${viewportPosition}`,
+							end: `+=${totalScroll}`,
+							scrub: 1.1,
+							pin: $wrapper.find( '.wpmozo_scroll_stack_cards_items' ),
+							pinSpacing: true,
+						}
+					} );
+				
+					items.each( ( i, item ) => {
+						if ( i !== items.length - 1 ) {
+							let icon           = item.querySelector( '.wpmozo_scroll_stack_cards_icon_wrapper' );
+							let title          = item.querySelector( '.wpmozo_scroll_stack_cards_title_wrap' );
+							let contentWrapper = item.querySelector( '.wpmozo_scroll_stack_cards_content_wrapper' );
+				
+							let targetHeight = 60;
+							if ( title ) {
+								let iconHeight        = ( icon ) ? icon.offsetHeight : 0;
+								let titleHeight       = ( title ) ? $(title).find('.wpmozo_scroll_stack_cards_title').outerHeight(true) : 0;
+								let itemPaddingTop    = parseFloat( window.getComputedStyle( item ).paddingTop ) || 0;
+								let contentPaddingTop = contentWrapper
+									? parseFloat( window.getComputedStyle( contentWrapper ).paddingTop ) || 0
+								: 0;
+
+								let contentMarginTop = contentWrapper
+									? parseFloat( window.getComputedStyle( contentWrapper ).marginTop ) || 0
+								: 0;
+				
+								targetHeight = iconHeight + titleHeight + itemPaddingTop + contentPaddingTop + contentMarginTop;
+							}
+				
+							tl.fromTo( item,
+								{ height: fullHeights[i] },
+								{ height: targetHeight, duration: 1.1 }
+							);
+							// For smoothness in firefox.
+							// tl.set( item, { height: fullHeights[i] } );
+							// tl.to( item, {
+							// 	height: targetHeight,
+							// 	duration: 1.1,
+							// 	ease: 'none'
+							// } );
+						}
+					} );
+				}
+				
+				// Init horizontal scroll stack cards.
+				function wpmozoInitHorizontalScrollStackCards( thisObj ) {
+					let $wrapper        = thisObj.find( '.wpmozo_scroll_stack_cards_wrapper' ),
+						$cardsContainer = $wrapper.find( '.wpmozo_scroll_stack_cards_items' ),
+						$panels         = $cardsContainer.find( '.wpmozo_scroll_stack_cards_item' ),
+						totalPanels     = $panels.length,
+						initialVisible  = 3,
+						wrapperWidth    = $wrapper.outerWidth(),
+						fullPanelWidth  = wrapperWidth / initialVisible;
+				
+					// Kill if already init.
+					ScrollTrigger.getAll().forEach( trigger => {
+						if ( trigger.trigger === $wrapper[0] ) {
+							trigger.kill();
+						}
+					} );
+				
+					gsap.registerPlugin( ScrollTrigger );
+				
+					$cardsContainer.css( {
+						display  : "flex",
+						position : "relative",
+						width    : "max-content"
+					} );
+				
+					$panels.each( ( i, el ) => {
+						gsap.set( el, {
+							maxWidth: fullPanelWidth,
+							flexShrink: 0
+						} );
+					} );	
+					
+					const scrollLength     = ( totalPanels - initialVisible + 1 ) * fullPanelWidth;
+					const startPosition    = $wrapper.data( 'animation_start_element_pos' ) || 'top';
+					const viewportPosition = $wrapper.data( 'animation_start_viewport_pos' ) || 'top';
+					const collapsedWidth   = parseInt( $wrapper.data( 'collapsed_width' ), 10 ) || 200;
+				
+					const tl = gsap.timeline( {
+						ease: "none",
+						scrollTrigger: {
+							trigger: $wrapper[0],
+							start: `${startPosition} ${viewportPosition}`,
+							end: `+=${scrollLength}`,
+							scrub: 1.5,
+							pin: true,
+							anticipatePin: 1,
+							markers: false
+						}
+					} );
+				
+					for ( let step = 1; step <= totalPanels - initialVisible; step++ ) {
+						tl.addLabel( `step${step}` );
+						$panels.each((index, el) => {
+							let newWidth;
+							if ( index < step ) {
+								newWidth = collapsedWidth;
+							} else if ( index >= step && index < step + initialVisible ) {
+								newWidth = fullPanelWidth;
+							} else {
+								newWidth = collapsedWidth;
+							}
+				
+							tl.to( el, { width: newWidth, ease: "none" }, `step${step}` );
+						} );
+					}
+				
+					tl.addLabel("finalExpand");
+					$panels.each( (index, el) => {
+						let newWidth;
+						if ( index === totalPanels - 1 ) {
+							const collapsedTotal = ( totalPanels - 1 ) * collapsedWidth;
+							newWidth = wrapperWidth - collapsedTotal;
+							if ( newWidth < collapsedWidth ) newWidth = collapsedWidth;
+						} else {
+							newWidth = collapsedWidth;
+						}
+				
+						tl.to( el, {
+							width: newWidth,
+							duration: 0.8,
+							ease: "power2.out"
+						}, "finalExpand" );
+					} );
+				}
+				
+				// Check is large screen.
+				function wpmozoIsLargeScreen() {
+					return window.innerWidth > 980;
+				}				
+			},
+		} );
+		elementorFrontend.elementsHandler.attachHandler( "wpmozo_ae_scroll_stack_cards", WPMOZOScrollStackCards );
+	} );
+} )( jQuery );

@@ -3,7 +3,7 @@
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
  * @copyright   2025 Elicus Technologies Private Limited
- * @version     1.0.1
+ * @version     1.0.2
  */
 
 // if this file is called directly, abort.
@@ -122,6 +122,11 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wpmozo-addons-lite-for-elementor-admin.php';
 
 			/**
+			 * The class responsible for defining all settings that occur on the settings page in the admin area.
+			 */
+			require_once plugin_dir_path( __DIR__ ) . 'admin/partials/settings/class-wpmozo-addons-lite-for-elementor-settings.php';
+
+			/**
 			 * The trait containing helper functions.
 			 */
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/trait-helper-functions.php';
@@ -164,14 +169,18 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 		private function define_admin_hooks() {
 			global $wp_version;
 
-			$plugin_admin = new WPMOZO_Addons_Lite_For_Elementor_Admin();
+			$settings     = new WPMOZO_Addons_Lite_For_Elementor_Settings( $this->get_plugin_option() );
+			$plugin_admin = new WPMOZO_Addons_Lite_For_Elementor_Admin( $settings );
+
 
 			$this->loader->add_action( 'wp_loaded', $plugin_admin, 'wp_loaded' );
-			$this->loader->add_action( 'init', $plugin_admin, 'wpmozo_register_post_types' );
-			$this->loader->add_action( 'init', $plugin_admin, 'wpmozo_register_taxonomies' );
+			$plugin_admin->wpmozo_register_post_types();
+			$plugin_admin->wpmozo_register_taxonomies();
+			$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
 			$this->loader->add_action( 'save_post', $plugin_admin, 'wpmozo_save_team_member_meta_fields' );
 			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+			$this->loader->add_action( 'wp_ajax_wpmozo_ae_lite_panel_save_settings', $plugin_admin, 'save_options' );
 			if ( ! $plugin_admin->wpmozo_is_team_disabled() ) {
 				// Hook to add meta box.
 				$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'wpmozo_add_team_member_metabox' );

@@ -52,6 +52,33 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		private $plugin_option;
 
 		/**
+		 * Setting page title.
+		 *
+		 * @since    1.6.1
+		 * @access   private
+		 * @var      string
+		 */
+		private $page_title;
+
+		/**
+		 * Admin menu title.
+		 *
+		 * @since    1.6.1
+		 * @access   private
+		 * @var      string
+		 */
+		private $menu_title;
+
+		/**
+		 * Settings page slug.
+		 *
+		 * @since    1.6.1
+		 * @access   private
+		 * @var      string
+		 */
+		private $menu_slug;
+
+		/**
 		 * Plugin option page hook.
 		 *
 		 * @since    1.0.0
@@ -61,15 +88,40 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		private $hook_suffix;
 
 		/**
+		 * Settings Class Object.
+		 *
+		 * @since    1.6.1
+		 * @access   private
+		 * @var      Object
+		 */
+		private $settings;
+
+		/**
+		 * Add Class if pro version active.
+		 *
+		 * @since    1.6.1
+		 * @access   private
+		 * @var      Object
+		 */
+		private $proactive;
+
+		/**
 		 * Initialize the class and set its properties.
 		 *
 		 * @since    1.0.0
 		 */
-		public function __construct() {
+		public function __construct( $settings ) {
+			$this->page_title      = esc_html__( 'WPMozo Addons Lite for Elementor', 'wpmozo-addons-for-elementor' );
+			$this->menu_title      = esc_html__( 'Addons for Elementor', 'wpmozo-addons-for-elementor' );
+			$this->menu_slug       = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_SLUG;
 			$this->plugin_name     = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_SLUG;
 			$this->plugin_version  = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION;
 			$this->plugin_option   = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION;
 			$this->plugin_basename = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME;
+			$this->settings        = $settings;
+			if( defined( 'WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION' ) ){
+				$this->proactive = 'proactive';
+			}
 		}
 
 
@@ -92,8 +144,135 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		 */
 		public function enqueue_scripts( $hook_suffix ) {
 			$nonce = wp_create_nonce( $this->plugin_name . '-admin-nonce' );
+			wp_register_script( 'wpmozo-ae-popper', plugins_url( 'assets/js/popper/popper.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+
+			wp_enqueue_script( 'wpmozo-ae-popper');
+
+			wp_register_script( 'wpmozo-ae-tippy', plugins_url( 'assets/js/tippyBundle/tippy-bundle.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+
+			wp_enqueue_script( 'wpmozo-ae-tippy');
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/js/admin.min.js', array( 'jquery' ), $this->plugin_version, false );
+
+
+			wp_localize_script(
+				$this->plugin_name,
+				'admin_ajax_object',
+				array(
+					'ajaxurl'    => admin_url( 'admin-ajax.php' ),
+					'ajax_nonce' => $nonce,
+				)
+			);
 		}
+
+		/**
+		 * Register the admin menu for the plugin.
+		 *
+		 * @since    1.6.1
+		 */
+		public function admin_menu() {
+			$svg_path          = WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_PATH . 'admin/assets/images/brandicon.svg';
+			$this->hook_suffix = add_menu_page($this->page_title, $this->menu_title, 'manage_options', 'wpmozo-addons-for-elementor', array( $this, 'plugin_settings' ), 'data:image/svg+xml;base64,' . base64_encode( file_get_contents( $svg_path ) ), 85 );
+		}
+
+		/**
+		 * Display settings in the admin area.
+		 *
+		 * @since    1.6.1
+		 */
+		public function plugin_settings() {
+			?>
+				<div class="wpmozo_ae_panel_wrapper <?php echo esc_attr($this->proactive)?>">
+					<div class="wpmozo_ae_panel_header">
+						<div class="wpmozo_ae_panel_logo">
+							<img src="<?php echo esc_url( 'https://wpmozoaddons.com/wp-content/uploads/2023/12/wpmozo-addons-for-elementor-logo.webp' ); ?>" />
+						</div>
+						<ul class="wpmozo_ae_panel_menu">
+							<?php if (!defined('WPMOZO_ADDONS_FOR_ELEMENTOR_VERSION')){ ?>
+							<span class="wpmozo_ae_upgrade_to_pro"><a href="https://wpmozoaddons.com/pricing/" target="_blank">Upgrade to Pro</a></span>
+
+							<?php }
+							?>
+							<li class="wpmozo_ae_panel_menu_item wpmozo_ae_panel_active_menu_item" data-href="#wpmozo_ae_panel_general_section">
+								<?php echo esc_html__( 'General', 'wpmozo-addons-lite-for-elementor' ); ?>
+									
+							</li>
+							<?php
+						    /**
+						     * Allow pro version to add more tabs to the menu.
+						     *
+						     * @since 1.6.1
+						     */
+						    echo apply_filters( 'wpmozo_ae_settings_tabs', '' );
+						    ?>
+						</ul>
+					</div>
+					<div class="wpmozo_ae_panel_section_wrapper" >
+						<?php include_once plugin_dir_path( __FILE__ ) . 'partials/admin-display.php'; ?>
+						<?php
+					    /**
+					     * Allow Pro version to add more tab sections.
+					     *
+					     * @since 1.6.1
+					     */
+					    do_action( 'wpmozo_ae_settings_tab_content' );
+					    ?>
+						<div class="wpmozo_ae_panel_ajax_processor wpmozo_ae_panel_loader">
+							<div class="wpmozo_ae_panel_processor"></div>
+						</div>
+					</div>
+				</div>
+			<?php
+		}
+
+		/**
+		 * Save settings in the database.
+		 *
+		 * @since    1.6.1
+		 */
+		public function save_options() {
+			$nonce = $this->plugin_name . '-admin-nonce';
+			check_ajax_referer( $nonce, 'security', true );
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$options       = isset( $_POST['options'] ) ? $_POST['options'] : array();
+			$plugin_option = get_option( $this->plugin_option, array() );
+			if ( is_array( $options ) && ! empty( $options ) ) {
+				foreach ( $options as $option ) {
+					$name                   = sanitize_text_field( $option['name'] );
+					$value                  = sanitize_text_field( $option['value'] );
+					$plugin_option[ $name ] = $value;
+				}
+			}
+
+			update_option( $this->plugin_option, $plugin_option );
+			echo 'success';
+			exit;
+		}
+
+		/**
+		 * Displays Settings link on plugin page
+		 *
+		 * @since    1.6.1
+		 */
+		public function plugin_action_links( $actions ) {
+			$links = array(
+				'<a href="' . esc_url( admin_url( '?page=' . $this->plugin_name ) ) . '">' . esc_html__( 'Settings', 'wpmozo-addons-lite-for-elementor' ) . '</a>',
+			);
+			return array_merge( $links, $actions );
+		}
+
+		/**
+		 * Displays custom links in plugin row
+		 *
+		 * @since    1.6.1
+		 */
+		public function plugin_row_meta( $links, $plugin_file, $plugin_data, $status ) {
+			if ( strpos( $plugin_file, $this->plugin_name . '.php' ) !== false ) {
+				$links[] = '<a href="' . esc_url( admin_url( '?page=' . $this->plugin_name ) ) . '">' . esc_html__( 'Settings', 'wpmozo-addons-lite-for-elementor' ) . '</a>';
+				$links[] = '<a href="' . esc_url( 'https://documentation.wpmozo.com/' . $this->plugin_name ) . '">' . esc_html__( 'Documentation', 'wpmozo-addons-lite-for-elementor' ) . '</a>';
+			}
+			return $links;
+		}
+
 		/**
 		 * Check if team related widgets are disabled in pro version.
 		 *
