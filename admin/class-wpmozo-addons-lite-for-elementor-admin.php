@@ -4,7 +4,7 @@
  *
  * @since      1.0.0
  * @author     Elicus <hello@elicus.com>
- * @copyright  2024 Elicus Technologies Private Limited
+ * @copyright  2025 Elicus Technologies Private Limited
  */
 
 // if this file is called directly, abort.
@@ -117,7 +117,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
         /**
     	 * Check if testimonials related widgets are disabled.
     	 *
-    	 * @since    1.4.0
+    	 * @since    1.3.0
     	 */
     	public function wpmozo_is_testimonial_disabled() {
             $plugin_options = get_option( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION );
@@ -510,7 +510,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		/**
 		 * Add metabox for custom post of testimonials.
 		 *
-		 * @since    1.0.0
+		 * @since    1.3.0
 		 */
 		public function wpmozo_ae_testimonial_metabox_callback( $post ) {
 	        wp_nonce_field( 'wpmozo_ae_metaboxes_nonce', 'wpmozo_ae_testimonial_metabox_nonce' );
@@ -527,37 +527,37 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 			
 	        <div class="wpmozo_meta_fields">
 	            <label for="wpmozo_ae_testimonial_author_name">
-	                <?php esc_html_e( 'Author Name', 'divi-plus' ); ?>
+	                <?php esc_html_e( 'Author Name', 'wpmozo-addons-lite-for-elementor' ); ?>
 	            </label>
 	            <input type="text" id="wpmozo_ae_testimonial_author_name" name="wpmozo_ae_testimonial_author_name" value="<?php echo esc_attr( $author_name ); ?>" />
 	        </div>
 	        <div class="wpmozo_meta_fields">
 	            <label for="wpmozo_ae_testimonial_author_email">
-	                <?php esc_html_e( 'Author Email', 'divi-plus' ); ?>
+	                <?php esc_html_e( 'Author Email', 'wpmozo-addons-lite-for-elementor' ); ?>
 	            </label>
 	            <input type="email" id="wpmozo_ae_testimonial_author_email" name="wpmozo_ae_testimonial_author_email" value="<?php echo esc_attr( $author_email ); ?>" />
 	        </div>
 	        <div class="wpmozo_meta_fields">
 	            <label for="wpmozo_ae_testimonial_author_designation">
-	                <?php esc_html_e( 'Author Designation', 'divi-plus' ); ?>
+	                <?php esc_html_e( 'Author Designation', 'wpmozo-addons-lite-for-elementor' ); ?>
 	            </label>
 	            <input type="text" id="wpmozo_ae_testimonial_author_designation" name="wpmozo_ae_testimonial_author_designation" value="<?php echo esc_attr( $author_designation ); ?>" />
 	        </div>
 	        <div class="wpmozo_meta_fields">
 	            <label for="wpmozo_ae_testimonial_author_company">
-	                <?php esc_html_e( 'Author Company', 'divi-plus' ); ?>
+	                <?php esc_html_e( 'Author Company', 'wpmozo-addons-lite-for-elementor' ); ?>
 	            </label>
 	            <input type="text" id="wpmozo_ae_testimonial_author_company" name="wpmozo_ae_testimonial_author_company" value="<?php echo esc_attr( $author_company ); ?>" />
 	        </div>
 	        <div class="wpmozo_meta_fields">
 	            <label for="wpmozo_ae_testimonial_author_company_url">
-	                <?php esc_html_e( 'Author Company Url', 'divi-plus' ); ?>
+	                <?php esc_html_e( 'Author Company Url', 'wpmozo-addons-lite-for-elementor' ); ?>
 	            </label>
 	            <input type="text" id="wpmozo_ae_testimonial_author_company_url" name="wpmozo_ae_testimonial_author_company_url" value="<?php echo esc_attr( $author_company_url ); ?>" />
 	        </div>
 	        <div class="wpmozo_meta_fields">
 	            <label for="wpmozo_ae_testimonial_author_rating">
-	                <?php esc_html_e( 'Author Rating', 'divi-plus' ); ?>
+	                <?php esc_html_e( 'Author Rating', 'wpmozo-addons-lite-for-elementor' ); ?>
 	            </label>
 	            <select id="wpmozo_ae_testimonial_author_rating" name="wpmozo_ae_testimonial_author_rating">
 	                <?php
@@ -685,7 +685,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		/**
 		 * Save data from the meta fields fo custom post for team members.
 		 *
-		 * @since    1.0.0
+		 * @since    1.3.0
 		 */
 		public function wpmozo_save_testimonial_meta_fields( $post_id ) {
 	        // doing an auto save.
@@ -739,7 +739,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Admin' ) ) {
 		/**
 		 * Callback function to render the meta box.
 		 *
-		 * @since    1.0.0
+		 * @since    1.3.0
 		 */
 		public function wpmozo_add_testimonial_metabox() {
 			add_meta_box(

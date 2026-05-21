@@ -1,4 +1,8 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
 use \Elementor\Controls_Manager;
 use \Elementor\Utils;

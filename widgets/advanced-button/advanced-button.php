@@ -2,8 +2,8 @@
 /**
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
- * @version     1.0.0
+ * @copyright   2025 Elicus Technologies Private Limited
+ * @version     1.0.1
  */
 
 // if this file is called directly, abort.
@@ -23,7 +23,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Button' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since 1.0.0
+		 * @since 1.2.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -37,7 +37,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Button' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since 1.0.0
+		 * @since 1.2.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -47,11 +47,25 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Button' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz advanced buttons','wpmozo advanced buttons' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since 1.0.0
+		 * @since 1.2.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -65,7 +79,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Button' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since 1.0.0
+		 * @since 1.2.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -79,7 +93,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Button' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since 1.0.0
+		 * @since 1.2.0
 		 * @access public
 		 *
 		 * @return style handle.
@@ -96,7 +110,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Button' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since 1.3.0
+		 * @since 1.2.0
 		 * @access public
 		 *
 		 * @return array Element scripts dependencies.
@@ -113,7 +127,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Button' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since 1.0.0
+		 * @since 1.2.0
 		 * @access protected
 		 */
 		protected function register_controls() {
@@ -133,7 +147,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Button' ) ) {
 		 * Written in PHP and used to generate the final HTML.
 		 * ( 
 		 *
-		 * @since 1.0.0
+		 * @since 1.2.0
 		 * @access protected
 		 */
 		protected function render() {
@@ -204,11 +218,11 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Button' ) ) {
 			
 					$button_classes = implode( ' ', $button_classes );
 					?>
-					<div class="wpmozo_button_item wpmozo_button_item_<?php echo $index; ?> elementor-repeater-item-<?php echo $item['_id']. ' ' . $vertical_or_horizonal_fill_class . ' '.$icon_position. ' '.$icon_sizing  ; ?>">
-						<div class="wpmozo_button_wrapper wpmozo_button_<?php echo $button_type; ?>">
-							<a class="<?php echo $button_classes; ?>" href="<?php echo $button_link; ?>" target="<?php echo $item['url_new_window']; ?>" >
+					<div class="wpmozo_button_item wpmozo_button_item_<?php echo esc_attr( $index ); ?> elementor-repeater-item-<?php echo esc_attr( $item['_id']. ' ' . $vertical_or_horizonal_fill_class . ' '.$icon_position. ' '.$icon_sizing  ); ?>">
+						<div class="wpmozo_button_wrapper wpmozo_button_<?php echo esc_attr( $button_type ); ?>">
+							<a class="<?php echo esc_attr( $button_classes ); ?>" href="<?php echo esc_url( $button_link ); ?>" target="<?php echo esc_attr( $item['url_new_window'] ); ?>" >
 								<span class="wpmozo_primary_text_with_icon">
-									<span class="wpmozo_button_text <?php echo $custom_button_icon_class; ?>"><?php echo $button_text; ?></span>
+									<span class="wpmozo_button_text <?php echo esc_attr( $custom_button_icon_class ); ?>"><?php echo esc_html( $button_text ); ?></span>
 									<?php 
 										if( '' !== $item[ 'button_icon' ] ) {
 											Icons_Manager::render_icon( 
@@ -224,7 +238,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Button' ) ) {
 									?>
 								</span>
 								<?php if('' !== $secondary_text && 'conversion' === $button_type): ?>
-									<span <?php $this->print_render_attribute_string( 'button_secondary_text' ); ?>><?php echo $secondary_text; ?></span>
+									<span <?php $this->print_render_attribute_string( 'button_secondary_text' ); ?>><?php echo esc_html( $secondary_text ); ?></span>
 								<?php endif; ?>
 								<?php if ( 'default_fill' !== $background_fill_style ): ?>
 									<span <?php $this->print_render_attribute_string( 'background_effect_wrap' ); ?>></span>
@@ -240,7 +254,7 @@ if ( ! class_exists( 'WPMOZO_AE_Advanced_Button' ) ) {
 				if('on' === $inline_buttons) {
 				?>
 					<style> 
-					.<?php echo $order_class; ?> .wpmozo_button_item { 
+					.<?php echo esc_html( $order_class ); ?> .wpmozo_button_item { 
 						display:inline-block;
 					} 
 					</style>

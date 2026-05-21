@@ -1,4 +1,9 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 use \Elementor\Controls_Manager;
 use \Elementor\Utils;
 use \Elementor\Group_Control_Typography;
@@ -63,8 +68,9 @@ $repeater->add_control(
 	array(
 		'label'   => esc_html__( 'Item Thumbnail', 'wpmozo-addons-lite-for-elementor' ),
 		'type'    => Controls_Manager::MEDIA,
-		'default' => array(
-			'url' => ' ',
+		'default' => array( 
+			'url' => Utils::get_placeholder_image_src(),
+			'id'  => 'thisistheimage',
 		),
 		'condition' => array(
 			'wpmozo_thumbnail_type' => array( 'use_image' ),

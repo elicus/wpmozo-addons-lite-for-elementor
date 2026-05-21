@@ -1,4 +1,9 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 use \Elementor\Utils;
 use \Elementor\Plugin;
 use \Elementor\Controls_Manager;
@@ -642,7 +647,7 @@ $this->start_controls_section(
 		'icon_color',
 		array( 
 			'label'       => esc_html__( 'Color', 'wpmozo-addons-lite-for-elementor' ),
-			'label_block' => true,
+			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '',
 			'selectors'   => array( 
@@ -770,7 +775,7 @@ $this->start_controls_section(
 		'icon_border_color',
 		array( 
 			'label'       => esc_html__( 'Border Color', 'wpmozo-addons-lite-for-elementor' ),
-			'label_block' => true,
+			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '',
 			'selectors'   => array( 

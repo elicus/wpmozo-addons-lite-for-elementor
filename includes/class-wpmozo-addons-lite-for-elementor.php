@@ -1,9 +1,9 @@
 <?php
 /**
- * @author      Elicus Technologies <hello@elicus.com>
+ * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
- * @version     1.0.0
+ * @copyright   2025 Elicus Technologies Private Limited
+ * @version     1.0.1
  */
 
 // if this file is called directly, abort.
@@ -174,13 +174,13 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 			$this->loader->add_action( 'elementor/frontend/after_register_styles', $plugin_public, 'register_frontend_styles' );
 			$this->loader->add_action( 'elementor/frontend/after_register_scripts', $plugin_public, 'register_frontend_scripts' );
 			$this->loader->add_action( 'elementor/editor/before_enqueue_scripts', $plugin_public, 'wpmozo_ale_editor_enqueue_scripts' );
+			$this->loader->add_action( 'elementor/controls/controls_registered', $plugin_public, 'register_custom_controls' );
+			$this->loader->add_action( 'wp_ajax_wpmozo_get_testimonials', $plugin_public, 'wpmozo_get_testimonials' );
+			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_get_testimonials', $plugin_public, 'wpmozo_get_testimonials' );
 			$this->loader->add_action( 'wp_ajax_wpmozo_ae_select2_search_post', $plugin_public, 'wpmozo_ae_select2_ajax_posts' );
 			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_ae_select2_search_post', $plugin_public, 'wpmozo_ae_select2_ajax_posts' );
 			$this->loader->add_action( 'wp_ajax_wpmozo_ae_select2_get_title', $plugin_public, 'wpmozo_ae_select2_ajax_get_title' );
 			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_ae_select2_get_title', $plugin_public, 'wpmozo_ae_select2_ajax_get_title' );
-			$this->loader->add_action( 'elementor/controls/controls_registered', $plugin_public, 'register_custom_controls' );
-			$this->loader->add_action( 'wp_ajax_wpmozo_get_testimonials', $plugin_public, 'wpmozo_get_testimonials' );
-			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_get_testimonials', $plugin_public, 'wpmozo_get_testimonials' );
 		}
 
 		/**

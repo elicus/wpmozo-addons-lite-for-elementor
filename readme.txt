@@ -1,9 +1,9 @@
 === WPMozo Addons Lite for Elementor ===
 Contributors: elicus
 Tags: elementor, page builder, addons, elementor extension, elementor addon
-Requires at least: 6.0
-Tested up to: 6.7.1
-Stable tag: 1.3.0
+Requires at least: 5.3
+Tested up to: 6.7
+Stable tag: 1.4.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@ A feature-packed plugin designed to complement your Elementor page-building expe
 
 ### [View Demo](https://wpmozoaddons.com "View Demo")
 ## Key Features of the Plugin
-- **28 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
+- **33 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
 - **Enhanced Design Options**: Customize your website design with intuitive controls and a wide array of styling options.
 - **Interactive Elements**: Engage your audience with interactive elements like Interactive Image Card, Flip Box, and Fancy Text.
 - **Responsive and Lightweight**: Ensure a seamless user experience across all devices without compromising on performance.
@@ -62,7 +62,7 @@ Create captivating visual effects with floating images.
 Enable users to zoom in on images for a closer look, enhancing the viewing experience for visuals on your Elementor-powered WordPress website.
 
 - ### [Team Slider](https://wpmozoaddons.com/elementor-team-slider/ "Elementor Team Slider")
-Showcase team members or staff in. Perfect for introducing your team or personnel on your website.
+Showcase team members or staff in an amazing slider. Perfect for introducing your team or personnel on your website.
 
 - ### [Breadcrumb](https://wpmozoaddons.com/elementor-breadcrumbs/ "Elementor Breadcrumb")
 Display navigational breadcrumbs on your page using the Breadcrumb widget for Elementor.
@@ -92,7 +92,7 @@ Show interactive animations with customizable controls, triggers, and responsive
 Show testimonials with amazing sliders on your Elementor website in style and make an impression on you users with the Testimonial Slider Widget.
 
 - ### [Twitter Embedded Tweet](https://wpmozoaddons.com/elementor-twitter-widgets/ "Elementor Twitter Embedded Tweet Widget")
-Embed your Tweets an show than on you Elementor wibsite pages with a number of customization options with the Twitter Embedded Tweet Widget.
+Embed your Tweets an show than on you Elementor website pages with a number of customization options with the Twitter Embedded Tweet Widget.
 
 - ### [Twitter Follow Button](https://wpmozoaddons.com/elementor-twitter-widgets/ "Elementor Twitter Follow Widget")
 Use the Twitter Follow Button Widget to make users follow you on your twitter account right from your Elementor website page.
@@ -101,10 +101,25 @@ Use the Twitter Follow Button Widget to make users follow you on your twitter ac
 Make users share post on their accounts containing your content right from your Elementor website page with the Twitter Share Button Widget.
 
 - ### [Blog Timeline](https://wpmozoaddons.com/elementor-blog-timeline/ "Elementor Blog Timeline")
-Showcase your blogs in a stylish and user friendly timline and make you Elementor website stunning with the Blog Timeline Widget.
+Showcase your blogs in a stylish and user friendly timeline and make you Elementor website stunning with the Blog Timeline Widget.
 
 - ### [List](https://wpmozoaddons.com/elementor-list/ "Elementor List")
 Show lists on your Elementor website in style using the List Widget.
+
+- ### [Price List](https://wpmozoaddons.com/elementor-price-list/ "Elementor Price List")
+Display pricing elegantly on your Elementor website with the Price List Widget.
+
+- ### [Facebook Like](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Like")
+Add a Facebook Like button to your Elementor website, allowing users to like your content directly from your page.
+
+- ### [Facebook Share](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Share")
+Enable users to share your content on Facebook with their facebook accounts using the Facebook Share Widget for Elementor.
+
+- ### [Facebook Comments](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Comments")
+Integrate Facebook Comments into your Elementor website with the Facebook Comments Widget enabling users to comment on your content using their Facebook accounts.
+
+- ### [Facebook Embedded Video](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Embedded Video")
+Embed Facebook videos directly into your Elementor website with customizable controls and responsive design using the Facebook Embedded Video Widget.
 
 
 ## Premium Version Available
@@ -155,14 +170,29 @@ Make it easier for your users to go through blogs by showing them in a slider in
 - ### [Team Grid](https://wpmozoaddons.com/elementor-team-grid/ "Elementor Team Grid")
 Display team members, their skills and much more in a grid on you Elementor website with masonry support using the Team Grid Widget.
 
-- ### [Twitter Timeline](https://wpmozoaddons.com/elementor-twitter-timeline/ "Elementor Twitter Timeline")
-Showcase all posts from you Twitter account on your Elementor website page with the Twitte Timeline Widget.
+- ### [Twitter Timeline](https://wpmozoaddons.com/elementor-twitter-widgets/ "Elementor Twitter Timeline")
+Showcase all posts from you Twitter account on your Elementor website page with the Twitter Timeline Widget.
 
 - ### [WooComerce Product Categories](https://wpmozoaddons.com/elementor-product-categories/ "Elementor Product Categories")
 Display all your shop products according to categories in Elementor using the Product Categories Widget.
 
 - ### [Gravity Form Styler](https://wpmozoaddons.com/elementor-gravity-form-styler/ "Elementor Gravity Form Styler")
 Get amazing customization options to style and make your gravity forms elegant and showcase them on your Elementor website using the Gravity Form Styler Widget.
+
+- ### [Product Gallery](https://wpmozoaddons.com/elementor-product-gallery/ "Elementor Product Gallery")
+Show products with multiple images in a superb gallery on your Elementor website using the Product Gallery Widget.
+
+- ### [Product Accordion](https://wpmozoaddons.com/elementor-product-accordion/ "Elementor Product Accordion")
+Organize and showcase products in a user friendly way while displaying product details in a sleek, collapsible accordion format on your Elementor website using the Product Accordion Widget.
+
+- ### [Image Carousel](https://wpmozoaddons.com/elementor-image-carousel/ "Elementor Image Carousel")
+Showcase your images in a dynamic and interactive carousel on your Elementor website using the Image Carousel Widget.
+
+- ### [Facebook Embedded Post](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Embedded Post")
+Easily integrate and display Facebook posts directly on your Elementor website using the Facebook Embedded Post Widget, allowing you to share social content seamlessly while maintaining engagement and authenticity.
+
+- ### [Facebook Page](https://wpmozoaddons.com/elementor-facebook-widgets/ "Elementor Facebook Page")
+Effortlessly embed and showcase your Facebook page on your Elementor website using the Facebook Page Widget.
 
 == Documentation and Support ==
 - For detailed usage instructions, check out the [plugin documentation](https://wpmozo.com/documentation/wpmozo-addons-for-elementor/).
@@ -177,7 +207,24 @@ Do you like our plugin?
 - Rate us on [WordPress](https://wordpress.org/support/plugin/wpmozo-product-carousel-for-woocommerce/reviews/?rate=5#new-post "Rate our plugin").
 
 == Screenshots ==
-1. Main image of the plugin
+1. The WPMozo Addons Lite for Elementor plugin.
+2. Masonry gallery widget for Elementor.
+3. Instagram widget for Elementor.
+4. Gravity Forms styler for Elementor.
+5. Pricing table widget.
+6. WooCommerce product grid widget for Elementor.
+7. Timeline widget for Elementor.
+8. Flipbox widget for Elementor.
+9. Image hostspot widget for Elementor.
+10. Ajax search widget for Elementor.
+11. Content toggle and switch for Elementor.
+12. Bar counter widget for Elementor.
+13. Fancy text widget for Elementor.
+14. Advanced blog widget for Elementor.
+15. Modal popup widget for Elementor.
+16. Before after image slider widget for Elementor.
+17. Image magnifier widget for Elementor.
+18. Star rating widget for Elementor.
 
 == Frequently Asked Questions ==
 = How do I install WPMozo Addons Lite for Elementor? =
@@ -223,9 +270,11 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
-2024-12-02 - Version 1.3.0
-- NEW: New widget Testimonial Slider.
-- NEW: New widget Twitter Embedded Tweet.
-- NEW: New widget Twitter Follow Button.
-- NEW: New widget Twitter Share Button.
-- FIXED: Security issue with title heading level in all widget.
+2025-02-05 - Version 1.4.0
+- NEW: New widget Price List.
+- NEW: New widget Facebook Like.
+- NEW: New widget Facebook Share.
+- NEW: New widget Facebook Comments.
+- NEW: New widget Facebook Embedded Video.
+
+[See changelog for all versions](https://plugins.svn.wordpress.org/wpmozo-addons-lite-for-elementor/trunk/changelog.txt).

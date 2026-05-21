@@ -1,10 +1,9 @@
 <?php
-
 /**
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
- * @version     1.0.0
+ * @copyright   2025 Elicus Technologies Private Limited
+ * @version     1.0.1
  */
 
 // If this file is called directly, abort.
@@ -22,7 +21,7 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Follow_Button' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -36,7 +35,7 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Follow_Button' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -46,11 +45,25 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Follow_Button' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz twitter follow button','wpmozo twitter follow button','wpmz x follow button','wpmozo x follow button','wpmz social media widgets','wpmozo social media widgets' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -64,7 +77,7 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Follow_Button' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -78,7 +91,7 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Follow_Button' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return style handle.
@@ -94,7 +107,7 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Follow_Button' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return array Element scripts dependencies.
@@ -111,7 +124,7 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Follow_Button' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access protected
 		 */
 		protected function register_controls() {
@@ -125,7 +138,7 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Follow_Button' ) ) {
 		 *
 		 * Written in PHP and used to generate the final HTML.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access protected
 		 */
 		protected function render() {
@@ -139,12 +152,12 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Follow_Button' ) ) {
 			<div class="wpmozo_twitter_follow_button">
 				<div class="wpmozo_twitter_embedded_follow_button">
 					<a class="wpmozo_twitter_embed_follow_button" 
-					href="https://twitter.com/<?php echo $twitter_username; ?>" 
-					data-show-screen-name="<?php echo $show_username; ?>" 
-					data-size="<?php echo $button_size; ?>" 
-					data-dnt="<?php echo $do_not_track; ?>" 
-					data-name="<?php echo $twitter_username; ?>">
-					Follow @<?php echo $twitter_username; ?>
+					href="https://twitter.com/<?php echo esc_attr( $twitter_username ); ?>" 
+					data-show-screen-name="<?php echo esc_attr( $show_username ); ?>" 
+					data-size="<?php echo esc_attr( $button_size ); ?>" 
+					data-dnt="<?php echo esc_attr( $do_not_track ); ?>" 
+					data-name="<?php echo esc_attr( $twitter_username ); ?>">
+					Follow @<?php echo esc_html( $twitter_username ); ?>
 					</a>
 				</div>
 			</div>

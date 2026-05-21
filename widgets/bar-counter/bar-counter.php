@@ -2,8 +2,8 @@
 /**
  * @author    Elicus <hello@elicus.com>
  * @link      https://www.elicus.com/
- * @copyright 2024 Elicus Technologies Private Limited
- * @version   1.0.0
+ * @copyright 2025 Elicus Technologies Private Limited
+ * @version   1.0.1
  */
 
 // if this file is called directly, abort.
@@ -42,6 +42,20 @@ if ( ! class_exists( 'WPMOZO_AE_Bar_Counter' ) ) {
 		 */
 		public function get_title() {
 			return esc_html__( 'Bar Counter', 'wpmozo-addons-lite-for-elementor' );
+		}
+
+		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz bar counter','wpmozo bar counter','wpmz progress bar','wpmozo progress bar' );
 		}
 
 		/**

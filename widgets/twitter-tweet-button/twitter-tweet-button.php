@@ -1,10 +1,9 @@
 <?php
-
 /**
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
- * @version     1.0.0
+ * @copyright   2025 Elicus Technologies Private Limited
+ * @version     1.0.1
  */
 
 // If this file is called directly, abort.
@@ -22,7 +21,7 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Tweet_Button' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -36,7 +35,7 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Tweet_Button' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -46,11 +45,25 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Tweet_Button' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz twitter tweet button','wpmozo twitter tweet button','wpmz x tweet button','wpmozo x tweet button','wpmz social media widgets','wpmozo social media widgets' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -64,7 +77,7 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Tweet_Button' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -78,7 +91,7 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Tweet_Button' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return style handle.
@@ -94,7 +107,7 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Tweet_Button' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return array Element scripts dependencies.
@@ -111,7 +124,7 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Tweet_Button' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access protected
 		 */
 		protected function register_controls() {
@@ -125,7 +138,7 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Tweet_Button' ) ) {
 		 *
 		 * Written in PHP and used to generate the final HTML.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access protected
 		 */
 		protected function render() {
@@ -144,13 +157,13 @@ if ( !class_exists( 'WPMOZO_AE_Twitter_Tweet_Button' ) ) {
 				<div class="wpmozo_twitter_embedded_tweet_button">
 					<a class="wpmozo_twitter_embed_tweet_button" 
 					   href="https://twitter.com/intent/tweet" 
-					   data-text="<?php echo $custom_text; ?>" 
-					   data-url="<?php echo $custom_url; ?>" 
-					   data-size="<?php echo $button_size; ?>" 
-					   data-dnt="<?php echo $do_not_track; ?>" 
-					   data-hashtags="<?php echo $hashtags; ?>" 
-					   data-via="<?php echo $via; ?>" 
-					   data-related="<?php echo $related; ?>">
+					   data-text="<?php echo esc_attr( $custom_text ); ?>" 
+					   data-url="<?php echo esc_attr( $custom_url ); ?>" 
+					   data-size="<?php echo esc_attr( $button_size ); ?>" 
+					   data-dnt="<?php echo esc_attr( $do_not_track ); ?>" 
+					   data-hashtags="<?php echo esc_attr( $hashtags ); ?>" 
+					   data-via="<?php echo esc_attr( $via ); ?>" 
+					   data-related="<?php echo esc_attr( $related ); ?>">
 						Tweet
 					</a>
 				</div>

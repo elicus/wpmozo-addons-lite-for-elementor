@@ -1,9 +1,9 @@
 <?php
 /**
- * @author    Elicus <hello@elicus.com>
- * @link      https://www.elicus.com/
- * @copyright 2024 Elicus Technologies Private Limited
- * @version   1.0.0
+ * @author      Elicus <hello@elicus.com>
+ * @link        https://www.elicus.com/
+ * @copyright   2025 Elicus Technologies Private Limited
+ * @version     1.0.1
  */
 
 // if this file is called directly, abort.
@@ -45,6 +45,20 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Magnifier' ) ) {
 		 */
 		public function get_title() {
 			return esc_html__( 'Image Magnifier', 'wpmozo-addons-lite-for-elementor' );
+		}
+
+		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz image magnifier','wpmozo image magnifier','wpmz magnify image','wpmozo magnify image' );
 		}
 
 		/**
@@ -95,7 +109,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Magnifier' ) ) {
 		 *
 		 * Retrieve the list of script dependencies the element requires.
 		 *
-		 * @since  1.3.0
+		 * @since  1.0.0
 		 * @access public
 		 *
 		 * @return array Element scripts dependencies.

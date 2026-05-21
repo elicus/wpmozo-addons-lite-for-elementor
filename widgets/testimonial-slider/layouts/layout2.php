@@ -1,4 +1,9 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 /**
  * The Template for displaying Layout 2
  *
@@ -11,8 +16,8 @@
  *
  * @author      Elicus Technologies <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2023 Elicus Technologies Private Limited
- * @version     1.9.6
+ * @copyright   2025 Elicus Technologies Private Limited
+ * @version     1.0.0
  */
 ?>
 <div id="wpmozo_single_testimonial_<?php echo esc_attr( $testimonial_id ); ?>" class="wpmozo_single_testimonial_card">
@@ -48,7 +53,7 @@
 		<?php if ( 'yes' === $show_opening_quote_icon ): ?>
 			<span class="wpmozo_testimonial_quote_icon wpmozo_testimonial_opening_quote_icon eicon-editor-quote"></span>
 		<?php endif; ?>
-		<?php echo apply_filters( 'the_content', do_shortcode( get_the_content( null, false, $testimonial_id ) ) ); ?>
+		<?php echo wp_kses_post( apply_filters( 'the_content', do_shortcode( get_the_content( null, false, $testimonial_id ) ) ) ); ?>
 		<?php if ( 'yes' === $show_closing_quote_icon ): ?>
 			<span class="wpmozo_testimonial_quote_icon wpmozo_testimonial_closing_quote_icon eicon-editor-quote"></span>
 		<?php endif; ?>

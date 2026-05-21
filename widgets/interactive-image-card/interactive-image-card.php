@@ -2,8 +2,8 @@
 /**
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
- * @version     1.0.0
+ * @copyright   2025 Elicus Technologies Private Limited
+ * @version     1.0.1
  */
 
 // if this file is called directly, abort.
@@ -44,6 +44,20 @@ if ( ! class_exists( 'WPMOZO_AE_Interactive_Image_Card' ) ) {
 		 */
 		public function get_title() {
 			return esc_html__( 'Interactive Image Card', 'wpmozo-addons-lite-for-elementor' );
+		}
+
+		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz interactive image card','wpmozo interactive image card','wpmz interactive imagecard','wpmozo interactive imagecard' );
 		}
 
 		/**

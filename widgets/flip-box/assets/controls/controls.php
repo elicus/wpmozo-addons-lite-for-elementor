@@ -1,4 +1,8 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Background;
@@ -550,7 +554,7 @@ $this->start_controls_section(
 				'left'    => 20,
 			 ),
 			'selectors'   => array( 
-				'{{WRAPPER}} .wpmozo_ae_flipbox_wrapper .wpmozo_ae_flipbox_front, {{WRAPPER}} .wpmozo_ae_filpbox_wrapper .wpmozo_ae_flipbox_back' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'{{WRAPPER}} .wpmozo_ae_flipbox_wrapper .wpmozo_ae_flipbox_front, {{WRAPPER}} .wpmozo_ae_flipbox_wrapper .wpmozo_ae_flipbox_back' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			 ),
 		 )
 	 );
@@ -1332,7 +1336,7 @@ $this->start_controls_section(
 		$this->start_controls_tab( 
 			'flipbox_border_global',
 			array( 
-				'label' => esc_html__( 'Global', 'wpmozo-addons-lite-for-elementor' ),
+				'label' => esc_html__( 'Flipbox', 'wpmozo-addons-lite-for-elementor' ),
 			 )
 		 );
 
@@ -1388,9 +1392,9 @@ $this->start_controls_section(
 
 		// Front/back image border.
 		$this->start_controls_tab( 
-			'flipbox_border_image',
+			'flipbox_border_front_image',
 			array( 
-				'label'     => esc_html__( 'Image', 'wpmozo-addons-lite-for-elementor' ),
+				'label'     => esc_html__( 'Front Image', 'wpmozo-addons-lite-for-elementor' ),
 				'condition' => array( 
 					'front_use_icon_image' => 'image',
 				 ),
@@ -1465,6 +1469,19 @@ $this->start_controls_section(
 					 ),
 				 )
 			 );
+
+		$this->end_controls_tab();
+
+		// Front/back image border.
+		$this->start_controls_tab( 
+			'flipbox_border_back_image',
+			array( 
+				'label'     => esc_html__( 'Back Image', 'wpmozo-addons-lite-for-elementor' ),
+				'condition' => array( 
+					'back_use_icon_image' => 'image',
+				 ),
+			 )
+		 );
 
 			// Back image border.
 			$this->add_control( 

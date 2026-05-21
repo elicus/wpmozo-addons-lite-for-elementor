@@ -1,4 +1,9 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 use \Elementor\Utils;
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Text_Shadow;
@@ -376,7 +381,6 @@ $this->start_controls_section(
 			'label'       => esc_html__( 'Label Text Color', 'wpmozo-addons-lite-for-elementor' ),
 			'label_block' => false,
 			'type'        => Controls_Manager::COLOR,
-			'separator'   => 'after',
 			'default'     => '#fff',
 			'selectors'   => array( '{{WRAPPER}} .twentytwenty-before-label:before, {{WRAPPER}} .twentytwenty-after-label:before' => 'color : {{VALUE}};' ),
 		 )

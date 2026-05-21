@@ -1,4 +1,8 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Typography;
@@ -229,7 +233,7 @@ $this->start_controls_section(
 			'separator'   => 'before',
 			'options'     =>
 			array( 
-				'flex-start' =>
+				'start' =>
 					array( 
 						'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-left',
@@ -239,7 +243,7 @@ $this->start_controls_section(
 						'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-center',
 					 ),
-				'flex-end'   =>
+				'end'   =>
 					array( 
 						'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-right',
@@ -247,7 +251,7 @@ $this->start_controls_section(
 			 ),
 			'default'     => 'none',
 			'toggle'      => true,
-			'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_pre_text' => 'align-self: {{VALUE}};' ),
+			'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_pre_text' => 'align-self: {{VALUE}};text-align: {{VALUE}};' ),
 			'condition'   => array( 'display_inline' => 'column' ),
 		 )
 	 );
@@ -290,13 +294,6 @@ $this->start_controls_section(
 					'selector' => '{{WRAPPER}} .wpmozo_ae_pre_text',
 				 )
 			 );
-			$this->add_control( 
-				'pre_normal_tab_divider',
-				array( 
-					'type'  => Controls_Manager::DIVIDER,
-					'style' => 'thin',
-				 )
-			 );
 			$this->add_group_control( 
 				Group_Control_Text_Shadow::get_type(),
 				array( 
@@ -334,13 +331,6 @@ $this->start_controls_section(
 					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
 					'types'    => array( 'classic', 'gradient' ),
 					'selector' => '{{WRAPPER}} .wpmozo_ae_pre_text:hover',
-				 )
-			 );
-			$this->add_control( 
-				'pre_hover_tab_divider',
-				array( 
-					'type'  => Controls_Manager::DIVIDER,
-					'style' => 'thin',
 				 )
 			 );
 			$this->add_group_control( 
@@ -452,7 +442,7 @@ $this->start_controls_section(
 			'separator'   => 'before',
 			'options'     =>
 			array( 
-				'flex-start' =>
+				'start' =>
 					array( 
 						'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-left',
@@ -462,7 +452,7 @@ $this->start_controls_section(
 						'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-center',
 					 ),
-				'flex-end'   =>
+				'end'   =>
 					array( 
 						'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-right',
@@ -471,7 +461,7 @@ $this->start_controls_section(
 			'default'     => 'none',
 			'toggle'      => true,
 			'selectors'   => array( 
-				'{{WRAPPER}} .wpmozo_ae_main_text' => 'align-self: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ae_main_text' => 'align-self: {{VALUE}};text-align: {{VALUE}};',
 			 ),
 			'condition'   => array( 'display_inline' => 'column' ),
 		 )
@@ -516,13 +506,6 @@ $this->start_controls_section(
 					'selector' => '{{WRAPPER}} .wpmozo_ae_main_text',
 				 )
 			 );
-			$this->add_control( 
-				'main_normal_tab_divider',
-				array( 
-					'type'  => Controls_Manager::DIVIDER,
-					'style' => 'thin',
-				 )
-			 );
 			$this->add_group_control( 
 				Group_Control_Text_Shadow::get_type(),
 				array( 
@@ -560,13 +543,6 @@ $this->start_controls_section(
 					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
 					'types'    => array( 'classic', 'gradient' ),
 					'selector' => '{{WRAPPER}} .wpmozo_ae_main_text:hover',
-				 )
-			 );
-			$this->add_control( 
-				'main_hover_tab_divider',
-				array( 
-					'type'  => Controls_Manager::DIVIDER,
-					'style' => 'thin',
 				 )
 			 );
 			$this->add_group_control( 
@@ -681,7 +657,7 @@ $this->start_controls_section(
 			'separator'   => 'before',
 			'options'     =>
 			array( 
-				'flex-start' =>
+				'start' =>
 					array( 
 						'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-left',
@@ -691,7 +667,7 @@ $this->start_controls_section(
 						'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-center',
 					 ),
-				'flex-end'   =>
+				'end'   =>
 					array( 
 						'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-right',
@@ -700,7 +676,7 @@ $this->start_controls_section(
 			'default'     => 'none',
 			'toggle'      => true,
 			'selectors'   => array( 
-				'{{WRAPPER}} .wpmozo_ae_post_text' => 'align-self: {{VALUE}};',
+				'{{WRAPPER}} .wpmozo_ae_post_text' => 'align-self: {{VALUE}}; text-align: {{VALUE}};',
 			 ),
 			'condition'   => array( 'display_inline' => 'column' ),
 		 )
@@ -745,13 +721,6 @@ $this->start_controls_section(
 					'selector' => '{{WRAPPER}} .wpmozo_ae_post_text',
 				 )
 			 );
-			$this->add_control( 
-				'post_normal_tab_divider',
-				array( 
-					'type'  => Controls_Manager::DIVIDER,
-					'style' => 'thin',
-				 )
-			 );
 			$this->add_group_control( 
 				Group_Control_Text_Shadow::get_type(),
 				array( 
@@ -789,13 +758,6 @@ $this->start_controls_section(
 					'label'    => esc_html__( 'Background', 'wpmozo-addons-lite-for-elementor' ),
 					'types'    => array( 'classic', 'gradient' ),
 					'selector' => '{{WRAPPER}} .wpmozo_ae_post_text:hover',
-				 )
-			 );
-			$this->add_control( 
-				'post_hover_tab_divider',
-				array( 
-					'type'  => Controls_Manager::DIVIDER,
-					'style' => 'thin',
 				 )
 			 );
 			$this->add_group_control( 

@@ -1,10 +1,9 @@
 <?php
-
 /**
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
- * @version     1.0.0
+ * @copyright   2025 Elicus Technologies Private Limited
+ * @version     1.0.1
  */
 
 // If this file is called directly, abort.
@@ -22,7 +21,7 @@ if ( !class_exists( 'WPMOZO_AE_List' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -36,7 +35,7 @@ if ( !class_exists( 'WPMOZO_AE_List' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -46,11 +45,25 @@ if ( !class_exists( 'WPMOZO_AE_List' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz list','wpmozo list' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -64,7 +77,7 @@ if ( !class_exists( 'WPMOZO_AE_List' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -78,7 +91,7 @@ if ( !class_exists( 'WPMOZO_AE_List' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return style handle.
@@ -93,7 +106,7 @@ if ( !class_exists( 'WPMOZO_AE_List' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access protected
 		 */
 		protected function register_controls() {
@@ -106,7 +119,7 @@ if ( !class_exists( 'WPMOZO_AE_List' ) ) {
 		 *
 		 * Written in PHP and used to generate the final HTML.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access protected
 		 */
 		protected function render() {

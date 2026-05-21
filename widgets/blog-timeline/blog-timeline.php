@@ -3,8 +3,8 @@
 /**
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
- * @version     1.1.0
+ * @copyright   2025 Elicus Technologies Private Limited
+ * @version     1.0.1
  */
 
 // If this file is called directly, abort.
@@ -23,7 +23,7 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -37,7 +37,7 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -47,11 +47,25 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz blog timeline','wpmozo blog timeline','wpmz blog posts','wpmozo blog posts' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -65,7 +79,7 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -79,7 +93,7 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access public
 		 *
 		 * @return style handle.
@@ -122,7 +136,7 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access protected
 		 */
 		protected function register_controls() {
@@ -130,26 +144,13 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 			// Seprate file containing all the code for registering controls.
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'blog-timeline/assets/controls/controls.php';
 		}
-		protected function printObjectWithPageBreak($obj) {
-		    // Convert object properties to an array
-		    $properties = get_object_vars($obj);
-
-		    // Loop through each property
-		    foreach ($properties as $key => $value) {
-		        echo "<pre>";
-		        echo "<strong>$key:</strong><br>";
-		        print_r($value);
-		        echo "</pre>";
-		        echo "<hr style='page-break-after: always;'>"; // Adds a page break
-		    }
-		}
 
 		/**
 		 * Render widget output on the frontend.
 		 *
 		 * Written in PHP and used to generate the final HTML.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.0
 		 * @access protected
 		 */
 		protected function render() {
@@ -241,6 +242,14 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 			wp_reset_postdata();
 		}
 
+		/**
+		 * Render the widget's post output on the frontend.
+		 *
+		 * Renders a single blog post within a custom timeline layout.
+		 *
+		 * @since 1.3.0
+		 * @access protected
+		 */
 		private function render_post( $settings ) {
 			?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class( 'wpmozo_blog_timeline_post' ); ?>>
@@ -251,7 +260,7 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 					<div class="wpmozo_blog_timeline_content_wrapper icon_<?php echo esc_attr( $settings[ 'button_icon_placement' ] ); ?>">
 						<?php if ( 'layout1' === $settings[ 'timeline_layout' ] && 'yes' === $settings[ 'show_date' ] ) : ?>
 							<div class="wpmozo_blog_timeline_meta_date">
-								<span class="published"><?php if ( $settings[ 'meta_date' ] ) : echo date_i18n( $settings[ 'meta_date' ], get_the_time( 'U' ) );
+								<span class="published"><?php if ( $settings[ 'meta_date' ] ) : echo esc_html( date_i18n( $settings[ 'meta_date' ], get_the_time( 'U' ) ) );
 														endif; ?></span>
 							</div>
 						<?php endif; ?>
@@ -279,9 +288,9 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 						</div>
 						<div class="wpmozo_blog_timeline_post_content_inner">
 							<?php if ( 'excerpt' === $settings[ 'show_content' ] ) { ?>
-								<p><?php echo wp_trim_words( get_the_content(), $settings[ 'excerpt_length' ] ); ?></p>
+								<p><?php echo wp_kses_post( wp_trim_words( get_the_content(), $settings[ 'excerpt_length' ] ) ); ?></p>
 							<?php } else {
-								echo get_the_content();
+								echo wp_kses_post( get_the_content() );
 							} ?>
 						</div>
 						<?php if ( $settings[ 'show_more' ] ) : ?>
@@ -298,7 +307,7 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 				<div class="wpmozo_blog_timeline_outer_container">
 					<?php if ( 'layout2' === $settings[ 'timeline_layout' ] && 'yes' === $settings[ 'show_date' ] ) : ?>
 						<div class="wpmozo_blog_timeline_meta_date">
-							<span class="published"><?php if ( $settings[ 'meta_date' ] ) : echo date_i18n( $settings[ 'meta_date' ], get_the_time( 'U' ) );
+							<span class="published"><?php if ( $settings[ 'meta_date' ] ) : echo esc_html( date_i18n( $settings[ 'meta_date' ], get_the_time( 'U' ) ) );
 													endif; ?></span>
 						</div>
 					<?php endif; ?>

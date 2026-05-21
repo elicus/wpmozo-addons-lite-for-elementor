@@ -1,4 +1,8 @@
 <?php
+// if this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
 use \Elementor\Utils;
 use \Elementor\Controls_Manager;
@@ -127,13 +131,13 @@ $this->start_controls_section(
                     'label'       => esc_html__( 'Button Typography', 'wpmozo-addons-lite-for-elementor' ),
                     'label_block' => true,
                     'name'        => 'button_typography',
-                    'selector'    => '{{WRAPPER}} {{CURRENT_ITEM}} .wpmozo_primary_text_with_icon .wpmozo_button_text, 
-                    {{WRAPPER}} {{CURRENT_ITEM}} .wpmozo_button_link:hover .wpmozo_primary_text_with_icon .wpmozo_button_text',
+                    'selector'    => '{{WRAPPER}} {{CURRENT_ITEM}} .wpmozo_primary_text_with_icon .wpmozo_button_text',
                     'fields_options' => array(
                         'font_size' => array(
                             'selectors' => array(
                                 '{{WRAPPER}} {{CURRENT_ITEM}} .wpmozo_primary_text_with_icon svg.wpmozo_ae_button_icon' => 'width:{{SIZE}}{{UNIT}}; height:{{SIZE}}{{UNIT}};',
-                                '{{WRAPPER}} {{CURRENT_ITEM}} .wpmozo_primary_text_with_icon .wpmozo_button_text, {{WRAPPER}} {{CURRENT_ITEM}} .wpmozo_button_link:hover .wpmozo_primary_text_with_icon .wpmozo_button_text' => 'font-size:{{SIZE}}{{UNIT}};',
+                                '{{WRAPPER}} {{CURRENT_ITEM}} .wpmozo_primary_text_with_icon .wpmozo_button_text, {{WRAPPER}} {{CURRENT_ITEM}} .wpmozo_button_link .wpmozo_primary_text_with_icon .wpmozo_ae_button_icon' => 'font-size:{{SIZE}}{{UNIT}};',
+                                '{{WRAPPER}} {{CURRENT_ITEM}} .wpmozo_button_link .wpmozo_primary_text_with_icon i.wpmozo_ae_button_icon' => 'width:auto; height: auto;',
                             ),
                             'default' => array('size' => '18', 'unit' => 'px'),
                             'render_type' => 'template',
@@ -208,6 +212,7 @@ $this->start_controls_section(
                 array( 
                     'label'     => esc_html__( 'Button Alignment', 'wpmozo-addons-lite-for-elementor' ),
                     'type'      => Controls_Manager::CHOOSE,
+                    'separator' => 'before',
                     'options'   => array( 
                         'left' => array( 
                             'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
@@ -480,6 +485,11 @@ $this->start_controls_section(
 			'label'       => esc_html__( 'Button', 'wpmozo-addons-lite-for-elementor' ),
 			'type'        => Controls_Manager::REPEATER,
 			'fields'      => $repeater->get_controls(),
+            'default'     => array( 
+                array( 
+                    'button_text'          => esc_html__( 'Click Here', 'wpmozo-addons-lite-for-elementor' ),
+                 )
+             ),
 			'title_field' => '{{{ button_text }}}',
             ),
 	 );

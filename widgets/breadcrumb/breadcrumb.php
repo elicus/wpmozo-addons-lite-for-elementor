@@ -2,8 +2,8 @@
 /**
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2024 Elicus Technologies Private Limited
- * @version     1.0.0
+ * @copyright   2025 Elicus Technologies Private Limited
+ * @version     1.0.1
  */
 
 // If this file is called directly, abort.
@@ -21,7 +21,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 		 *
 		 * Retrieve widget name.
 		 *
-		 * @since 1.0.0
+		 * @since 1.1.0
 		 * @access public
 		 *
 		 * @return string Widget name.
@@ -35,7 +35,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 		 *
 		 * Retrieve widget title.
 		 *
-		 * @since 1.0.0
+		 * @since 1.1.0
 		 * @access public
 		 *
 		 * @return string Widget title.
@@ -45,11 +45,25 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 		}
 
 		/**
+		 * Get widget keyword list.
+		 *
+		 * Retrieve widget keywords.
+		 *
+		 * @since 1.4.0
+		 * @access public
+		 *
+		 * @return array Widget keywords.
+		 */
+		public function get_keywords() {
+			return array( 'wpmz breadcrumb navigation','wpmozo breadcrumb navigation' );
+		}
+
+		/**
 		 * Get widget icon.
 		 *
 		 * Retrieve widget icon.
 		 *
-		 * @since 1.0.0
+		 * @since 1.1.0
 		 * @access public
 		 *
 		 * @return string Widget icon.
@@ -63,7 +77,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 		 *
 		 * Retrieve the list of categories the widget belongs to.
 		 *
-		 * @since 1.0.0
+		 * @since 1.1.0
 		 * @access public
 		 *
 		 * @return array Widget categories.
@@ -77,7 +91,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 		 *
 		 * Define the CSS files required to run the widget.
 		 *
-		 * @since 1.0.0
+		 * @since 1.1.0
 		 * @access public
 		 *
 		 * @return style handle.
@@ -92,7 +106,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 		 *
 		 * Adds different input fields to allow the user to change and customize the widget settings.
 		 *
-		 * @since 1.0.0
+		 * @since 1.1.0
 		 * @access protected
 		 */
 		protected function register_controls() {
@@ -105,7 +119,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 		 *
 		 * Written in PHP and used to generate the final HTML.
 		 *
-		 * @since 1.0.0
+		 * @since 1.1.0
 		 * @access protected
 		 */
 		protected function render() {
@@ -132,7 +146,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 		/**
 		 * Get breadcrumb data for output.
 		 *
-		 * @since 1.0.0
+		 * @since 1.1.0
 		 * @access private
 		 */
 		private function get_breadcrumb( $separator, $separator_icon, $breadcrumb_layout, $open_link, $opacity_range, $home_link_text, $home_link_icon, $display_icon_only ) {
@@ -179,7 +193,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 						            if ( $index == 0 && !empty( $home_link_text ) ) {
 						                // This is the first <li>, include the home link icon
 						                ?>
-						                <li style="opacity: <?php echo $current_opacity; ?>;">
+						                <li style="opacity: <?php echo esc_attr( $current_opacity ); ?>;">
 						                    <a <?php $this->print_render_attribute_string( 'breadcrumb_item' ); ?>>
 						                        <span class="breadcrumb_page">
 						                        	<span class="breadcrumb_home_icon">
@@ -193,7 +207,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 							                    	<?php if( !empty( $separator_icon ) ){ 
 							                    		Icons_Manager::render_icon( $separator_icon, [ 'aria-hidden' => 'true', 'class' => 'wpmozo_separator_icon' ] ); 
 							                    	} else { 
-							                    		echo $separator; 
+							                    		echo esc_html( $separator ); 
 							                    	} ?>
 							                    </span>
 						                	<?php } ?>
@@ -202,7 +216,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 						            } elseif ( $index == 0 && !empty( $home_link_icon ) ) {
 						                // This is the first <li>, include the home link icon
 						                ?>
-						                <li style="opacity: <?php echo $current_opacity; ?>;">
+						                <li style="opacity: <?php echo esc_attr( $current_opacity ); ?>;">
 						                    <a <?php $this->print_render_attribute_string( 'breadcrumb_item' ); ?>>
 						                        <span class="breadcrumb_page">
 						                        	<span class="breadcrumb_home_icon">
@@ -216,7 +230,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 							                    	<?php if( !empty( $separator_icon ) ){ 
 							                    		Icons_Manager::render_icon( $separator_icon, [ 'aria-hidden' => 'true', 'class' => 'wpmozo_separator_icon' ] ); 
 							                    	} else{ 
-							                    		echo $separator; 
+							                    		echo esc_html( $separator ); 
 							                    	} ?>
 							                    </span>
 						                	<?php } ?>
@@ -225,7 +239,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 						            } else {
 						                // For other <li>s, render without the icon
 						                ?>
-						                <li style="opacity: <?php echo $current_opacity; ?>;">
+						                <li style="opacity: <?php echo esc_attr( $current_opacity ); ?>;">
 						                    <a <?php $this->print_render_attribute_string( 'breadcrumb_item' ); ?>>
 						                        <span class="breadcrumb_page">
 						                        	<?php echo esc_html( get_the_title( $page ) ); ?>
@@ -236,7 +250,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 							                    	<?php if( !empty( $separator_icon ) ){ 
 							                    		Icons_Manager::render_icon( $separator_icon, [ 'aria-hidden' => 'true', 'class' => 'wpmozo_separator_icon' ] ); 
 							                    	} else{ 
-							                    		echo $separator; 
+							                    		echo esc_html( $separator ); 
 							                    	} ?>
 						                    	</span>
 					                    	<?php } ?>
@@ -248,7 +262,7 @@ if ( !class_exists( 'WPMOZO_AE_Breadcrumb' ) ) {
 
 						    // Add current page ( last page )
 						    ?>
-						    <li style="opacity: <?php echo $current_opacity; ?>;">
+						    <li style="opacity: <?php echo esc_attr( $current_opacity ); ?>;">
 						        <a class="breadcrumb_item wpmozo_last_page">
 						            <span class="breadcrumb_page wpmozo_breadcrumb_last_page">
 						            	<?php echo esc_html( get_the_title( $post ) ); ?>
