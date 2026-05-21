@@ -118,7 +118,7 @@ if ( ! class_exists( 'WPMOZO_AE_Fancy_Heading' ) ) {
 			$heading              = '' !== $settings[ 'heading' ] ? $settings[ 'heading' ] : '';
 			$post_heading         = '' !== $settings[ 'post_heading' ] ? $settings[ 'post_heading' ] : '';
 			$display_inline       = $settings[ 'display_inline' ];
-			$global_heading_level = $settings[ 'global_heading_level' ];
+			$global_heading_level = wpmozo_ae_validate_heading_level( $settings[ 'global_heading_level' ] );
 			$display_inline       = $settings[ 'display_inline' ];
 
 			$this->add_render_attribute( 'heading_wrapper', 'class', 'wpmozo_ae_text_wrapper' );
@@ -152,11 +152,11 @@ if ( ! class_exists( 'WPMOZO_AE_Fancy_Heading' ) ) {
 
 			?>
 			<div <?php $this->print_render_attribute_string( 'heading_wrapper' ); ?> >
-				<<?php echo esc_html( ( '' !== $global_heading_level ? $global_heading_level : 'h2' ) ); ?> <?php $this->print_render_attribute_string( 'heading_wrapper_inner' ); ?> >
+				<<?php echo esc_html( $global_heading_level ); ?> <?php $this->print_render_attribute_string( 'heading_wrapper_inner' ); ?> >
 					<?php echo wp_kses_post( $pre_heading ); ?>
 					<?php echo wp_kses_post( $heading ); ?>
 					<?php echo wp_kses_post( $post_heading ); ?>
-				</<?php echo esc_html( ( '' !== $global_heading_level ? $global_heading_level : 'h2' ) ); ?>>
+				</<?php echo esc_html( $global_heading_level ); ?>>
 			</div>
 			<?php
 		}

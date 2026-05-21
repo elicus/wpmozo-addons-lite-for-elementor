@@ -129,7 +129,7 @@ if ( ! class_exists( 'WPMOZO_AE_Text_Animator' ) ) {
             $content_text    = explode( '|',$settings[ 'animated_text' ] );
             $post_text       = $settings[ 'postfix_text' ];
             $animation_type  = $settings[ 'animation_type' ];   
-            $heading_level   = $settings[ 'display_tag' ];      
+            $heading_level   = 'p' !== $settings[ 'display_tag' ] ? wpmozo_ae_validate_heading_level( $settings[ 'display_tag' ] ) : 'p';      
             $animation_delay = '' !== $settings[ 'animations_delay' ] ? $settings[ 'animations_delay' ][ 'size' ] : 0;
             $animation_time  = ( isset( $settings[ 'animation_time' ] ) && '' !== $settings[ 'animation_time' ] ) ? $settings[ 'animation_time' ][ 'size' ] : 500;
             $typing_speed    = ( isset( $settings[ 'typing_time' ] ) && '' !== $settings[ 'typing_time' ] ) ? $settings[ 'typing_time' ][ 'size' ] : 100;

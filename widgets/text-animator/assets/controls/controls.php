@@ -46,7 +46,7 @@ $this->start_controls_section(
         array( 
             'label'   => esc_html__( 'Select Display Tag', 'wpmozo-addons-lite-for-elementor' ),
             'type'    => Controls_Manager::SELECT,
-            'default' => 'h2',
+            'default' => 'p',
             'options' => array( 
                 'h1'   => esc_html__( 'H1', 'wpmozo-addons-lite-for-elementor' ),
                 'h2'   => esc_html__( 'H2', 'wpmozo-addons-lite-for-elementor' ),

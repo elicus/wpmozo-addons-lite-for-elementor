@@ -117,7 +117,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Card' ) ) {
 			$settings               = $this->get_settings_for_display();
 			$image                  = array_map( 'esc_attr', $settings[ 'image_card_image' ] );
 			$title_text             = $settings[ 'title_text' ];
-			$title_heading_level    = $settings[ 'title_heading_level' ];
+			$title_heading_level    = wpmozo_ae_validate_heading_level( $settings[ 'title_heading_level' ] );
 			$content_text           = $settings[ 'content_text' ];
 			$button_text            = $settings[ 'button_text' ];
 			$icon_shape             = $settings[ 'select_icon_shape' ];

@@ -117,7 +117,7 @@ if ( ! class_exists( 'WPMOZO_AE_Bar_Counter' ) ) {
 			$percentage          = $settings[ 'percentage' ][ 'size' ];
 			$display_empty_bar   = $settings[ 'display_empty_bar' ];
 			$use_strip_class     = isset( $settings[ 'use_stripes' ] ) && 'yes' === $settings[ 'use_stripes' ] ? 'wpmozo_bar_counter_animated_striped_bar' : '';
-			$title_heading_level = $settings[ 'title_heading_level' ];
+			$title_heading_level = wpmozo_ae_validate_heading_level( $settings[ 'title_heading_level' ] );
 			$chunks_count        = intval( $percentage / 10 );
 			$widget_alignment    = isset( $settings[ 'widget_alignment' ] ) ? $settings[ 'widget_alignment' ] : '';
 			$stripe_color        = $settings[ 'stripe_color' ];

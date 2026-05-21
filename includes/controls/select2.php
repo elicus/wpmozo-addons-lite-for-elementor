@@ -6,8 +6,8 @@ use Elementor\Base_Data_Control;
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-if ( ! class_exists( 'WPMOZO_ALE_Select2' ) ) {
-	class WPMOZO_ALE_Select2 extends Base_Data_Control {
+if ( ! class_exists( 'WPMOZO_AE_Select2' ) ) {
+	class WPMOZO_AE_Select2 extends Base_Data_Control {
 
 		/**
 		 * Set control type.

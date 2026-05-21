@@ -327,7 +327,6 @@ if ( ! class_exists( 'WPMOZO_AE_Logo_Slider' ) ) {
 			$slide_effect            = $settings[ 'slide_effect' ];
 			$cards_per_slide         = $settings[ 'cards_per_slide' ];
 			$enable_coverflow_shadow = $settings[ 'enable_coverflow_shadow' ];
-			$coverflow_shadow_color  = $settings[ 'coverflow_shadow_color' ];
 			$coverflow_rotate        = $settings[ 'coverflow_rotate' ];
 			$coverflow_depth         = $settings[ 'coverflow_depth' ];
 			$equalize_slides_height  = $settings[ 'equalize_slides_height' ];

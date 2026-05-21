@@ -145,7 +145,7 @@ if ( ! class_exists( 'WPMOZO_AE_Pricing_Table' ) ) {
 			$settings = $this->get_settings_for_display();
 
 			$table_title            = $settings[ 'table_title_text' ];
-			$title_heading_level    = $settings[ 'title_heading_level' ];
+			$title_heading_level    = wpmozo_ae_validate_heading_level( $settings[ 'title_heading_level' ] );
 			$currency_symbol        = $settings[ 'currency_symbol' ];
 			$currency_symbol_custom = $settings[ 'currency_symbol_custom' ];
 			$table_price            = $settings[ 'table_price' ];

@@ -128,6 +128,234 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		}
 
 		/**
+		 * Select2 Ajax Posts
+		 * Fetch post/taxonomy data and render in select2 ajax search box
+		 *
+		 * @access public
+		 * @return void
+		 * @since 1.0.0
+		 */
+		public function wpmozo_ae_select2_ajax_posts() {
+			/*if ( ! isset( $_POST['wpmozo_ae_select_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['wpmozo_ae_select_nonce'] ) ), 'wpmozo-select-nonce' ) ) {
+				return;
+			}*/
+
+			$post_type   = 'post';
+			$post_type   = ! empty( $_GET['post_type'] ) ? sanitize_text_field( wp_unslash( $_GET['post_type'] ) ) : '';
+			$source_name = ! empty( $_GET['source_name'] ) ? sanitize_text_field( wp_unslash( $_GET['source_name'] ) ) : '';
+			$search      = ! empty( $_GET['term'] ) ? sanitize_text_field( wp_unslash( $_GET['term'] ) ) : '';
+			$results     = array();
+			$post_list   = array();
+
+			if ( 'taxonomy' === $source_name ) {
+				$post_list = wp_list_pluck(
+					get_terms(
+						$post_type,
+						array(
+							'hide_empty' => false,
+							'orderby'    => 'name',
+							'order'      => 'ASC',
+							'search'     => $search,
+						)
+					),
+					'name',
+					'term_id'
+				);
+			}
+
+			if ( ! empty( $post_list ) ) {
+				foreach ( $post_list as $key => $value ) {
+					$results[] = array(
+						'text' => $value,
+						'id'   => $key,
+					);
+				}
+			}
+			wp_send_json( array( 'results' => $results ) );
+		}
+		/**
+		 * Select2 Ajax Get Posts Value Titles
+		 * get selected value to show elementor editor panel in select2 ajax search box
+		 *
+		 * @access public
+		 * @return void
+		 * @since 1.0.0
+		 */
+		public function wpmozo_ae_select2_ajax_get_title() {
+
+			/*if ( ! isset( $_POST['wpmozo_ae_select_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['wpmozo_ae_select_nonce'] ) ), 'wpmozo-select-nonce' ) ) {
+				return;
+			}*/
+
+			if ( empty( $_POST['id'] ) ) {
+				wp_send_json_error( array() );
+			}
+
+			if ( empty( array_filter( sanitize_key( wp_unslash( $_POST['id'] ) ) ) ) ) {
+				wp_send_json_error( array() );
+			}
+
+			$ids         = array_map( 'intval', $_POST['id'] );
+			$post_type   = ! empty( $_POST['post_type'] ) ? sanitize_text_field( wp_unslash( $_POST['post_type'] ) ) : '';
+			$source_name = ! empty( $_POST['source_name'] ) ? sanitize_text_field( wp_unslash( $_POST['source_name'] ) ) : '';
+
+			if ( 'taxonomy' === $source_name ) {
+				$result = wp_list_pluck(
+					get_terms(
+						$post_type,
+						array(
+							'hide_empty' => false,
+							'orderby'    => 'name',
+							'order'      => 'ASC',
+							'include'    => implode( ',', $ids ),
+						)
+					),
+					'name',
+					'term_id'
+				);
+			}
+
+			if ( ! empty( $result ) ) {
+				wp_send_json_success( array( 'results' => $result ) );
+			} else {
+				wp_send_json_error( array() );
+			}
+
+		}
+
+		public function register_custom_controls() {
+
+			require_once plugin_dir_path( __DIR__ ) . 'includes/controls/select2.php';
+			\Elementor\Plugin::instance()->controls_manager->register( new WPMOZO_AE_Select2() );
+		}
+
+		public function wpmozo_get_testimonials() {
+			
+	        if ( ! isset( $_POST['wpmozo_get_testimonials_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['wpmozo_get_testimonials_nonce'] ) ), 'wpmozo-testimonial-grid-nonce' ) ) {
+	            return;
+	        }
+
+	        if ( ! isset( $_POST['props'] ) || '' === $_POST['props'] ) {
+	            return;
+	        }
+			ob_start();
+	        $defaults = array(
+	            'testimonial_layout'        => 'layout1',
+	            'testimonial_number'        => '10',
+	            'offset_number'             => '0',
+	            'testimonial_order_by'      => 'date',
+	            'testimonial_order'         => 'DESC',
+	            'include_categories'        => '',
+	            'show_author_image'         => 'yes',
+	            'author_image_size'         => 'off',
+	            'use_gravatar'              => 'off',
+	            'show_author_designation'   => 'yes',
+	            'show_author_company_name'  => 'yes',
+	            'show_opening_quote_icon'   => 'yes',
+	            'show_closing_quote_icon'   => 'off',
+	            'show_rating'               => 'yes',
+	            'page'                      => 1,
+	            'total_pages'               => 1,
+	        );
+
+	        foreach ( $defaults as $key => $default ) {
+	            // phpcs:ignore ET.Sniffs.ValidatedSanitizedInput.InputNotSanitized
+	            if ( isset( $_POST['props'][$key] ) && strpos( $_POST['props'][$key], '%' ) !== false ) {
+	                // phpcs:ignore ET.Sniffs.ValidatedSanitizedInput.InputNotSanitized
+	                $prepared_value  = preg_replace( '/%([a-f0-9]{2})/', '%_$1', $_POST['props'][$key] );
+	                ${$key} = preg_replace( '/%_([a-f0-9]{2})/', '%$1', trim( sanitize_text_field( wp_unslash( $prepared_value ) ) ) );
+	            } else {
+	                // phpcs:ignore ET.Sniffs.ValidatedSanitizedInput.InputNotSanitized
+	                // ${$key} = trim( sanitize_text_field( wp_unslash( et_()->array_get( $_POST['props'], $key, $default ) ) ) ); 
+					${$key} = trim( sanitize_text_field( wp_unslash( isset( $_POST['props'][$key] ) ? $_POST['props'][$key] : $default ) ) );
+
+	            }
+	        }
+	        $offset_number      = absint( $offset_number );
+	        $page               = absint( $page );
+	        $offset_number      = ( $testimonial_number * ( $page - 1 ) ) + $offset_number;
+
+	        $args = array(
+	            'post_type'      => 'wpmozoae-testimonial',
+	            'posts_per_page' => intval( $testimonial_number ),
+	            'offset'         => intval( $offset_number ),
+	            'post_status'    => 'publish',
+	            'orderby'        => $testimonial_order_by,
+	            'order'          => $testimonial_order,
+	        );
+
+	        if ( is_user_logged_in() ) {
+	            $args['post_status'] = array(
+	                'publish',
+	                'private',
+	            );
+	        }
+
+	        if ( '' !== $include_categories ) {
+	            $include_categories = array_map( 'intval', explode( ',', $include_categories ) );
+	            $args['tax_query'] = array(
+	                array(
+	                    'taxonomy' => 'wpmozo-ae-testimonial-category',
+	                    'field'    => 'term_id',
+	                    'terms'    => $include_categories,
+	                    'operator' => 'IN',
+	                ),
+	            );
+	        }
+
+	        $query = new WP_Query( $args );
+
+	        if ( $query->have_posts() ) {
+
+	            while ( $query->have_posts() ) {
+	                $query->the_post();
+	                $testimonial_id = esc_attr( get_the_ID() );
+	                $rating = floatval( get_post_meta( $testimonial_id, 'wpmozo_ae_testimonial_author_rating', true ) );
+
+					?>
+	                <div class="wpmozo_testimonial_isotope_item wpmozo_testimonial_isotope_item_page_<?php echo  esc_attr( $page ) ; ?> ">
+						<?php
+						if ( file_exists( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_PATH.'widgets/testimonial-grid/layouts/' . sanitize_file_name( $testimonial_layout ) . '.php' ) ) {
+							include WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_PATH.'widgets/testimonial-grid/layouts/' . sanitize_file_name( $testimonial_layout ) . '.php';
+						}
+
+						?>
+					</div>
+					<?php
+	            }
+
+				$testimonials = ob_get_clean();
+
+	            $data =  array(
+	                'success'       => true,
+	                'items'         => $testimonials,
+	            );
+
+	            if ( 1 === $page ) {
+	                if ( '' !== $args['offset'] && ! empty( $args['offset'] ) ) {
+	                    $data['total_pages'] = intval( ceil( ( $query->found_posts - $args['offset'] ) / $args['posts_per_page'] ) );
+	                } else {
+	                    $data['total_pages'] = intval( ceil( $query->found_posts / $args['posts_per_page'] ) );
+	                }
+	            }
+
+	            wp_reset_postdata();
+
+	            wp_send_json( $data );
+	            
+	        } else {
+				?>
+	         		<div class="entry">
+	                        <h1><?php echo  esc_html__( 'No Results Found', 'wpmozo-addons-lite-for-elementor' ) ; ?></h1>
+	                        <p><?php echo  esc_html__( 'The testimonials you requested could not be found. Try changing your module settings or create some new testimonials.', 'wpmozo-addons-lite-for-elementor' ) ?> </p>
+					</div>
+				<?php
+	            exit;
+
+	        }
+	    }
+
+		/**
 		 * Register widgets.
 		 *
 		 * @since    1.0.0

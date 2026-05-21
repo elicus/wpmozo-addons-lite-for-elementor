@@ -147,6 +147,8 @@ if ( ! class_exists( 'WPMOZO_AE_Flip_Box' ) ) {
 			$button_text            = $settings[ 'button_text' ];
 			$button_hover_animation = isset( $settings[ 'button_hover_animation' ] ) ? $settings[ 'button_hover_animation' ] : '';
 			$button_url             = isset( $settings[ 'button_url' ][ 'url' ] ) ? $settings[ 'button_url' ][ 'url' ]: '';
+			$front_heading_level    = wpmozo_ae_validate_heading_level( $settings[ 'front_heading_level' ] );
+			$back_heading_level    = wpmozo_ae_validate_heading_level( $settings[ 'back_heading_level' ] );
 
 
 			$this->add_render_attribute( 'wpmozo_ae_button', 'class', 'wpmozo_ae_button' );
@@ -304,9 +306,9 @@ if ( ! class_exists( 'WPMOZO_AE_Flip_Box' ) ) {
 										if ( '' !== $settings[ 'front_title' ] ) {
 											?>
 												<div <?php $this->print_render_attribute_string( 'flipbox_title' ); ?> >
-													<<?php echo esc_html( $settings[ 'front_heading_level' ] ); ?> class="wpmozo_ae_flipbox_title">
+													<<?php echo esc_html( $front_heading_level ); ?> class="wpmozo_ae_flipbox_title">
 														<?php echo wp_kses_post( $this->parse_text_editor( $settings[ 'front_title' ] ), $allowed_html_tags ); ?>
-													</<?php echo esc_html( $settings[ 'front_heading_level' ] ); ?> >
+													</<?php echo esc_html( $front_heading_level ); ?> >
 												</div>
 											<?php
 										}
@@ -410,9 +412,9 @@ if ( ! class_exists( 'WPMOZO_AE_Flip_Box' ) ) {
 									if ( '' !== $settings[ 'back_title' ] ) {
 										?>
 												<div <?php $this->print_render_attribute_string( 'flipbox_title' ); ?> >
-													<<?php echo esc_html( $settings[ 'back_heading_level' ] ); ?> class="wpmozo_ae_flipbox_title">
+													<<?php echo esc_html( $back_heading_level ); ?> class="wpmozo_ae_flipbox_title">
 													<?php echo wp_kses_post( $this->parse_text_editor( $settings[ 'back_title' ], $allowed_html_tags ), $allowed_html_tags ); ?>
-													</<?php echo esc_html( $settings[ 'back_heading_level' ] ); ?> >
+													</<?php echo esc_html( $back_heading_level ); ?> >
 												</div>
 											<?php
 									}
