@@ -6,7 +6,7 @@
             },
             change: function () {
                 const $this = this.$element.find('.wpmozo_wavy_gallery_wrapper');
-                if( !$this.find('.wpmozo_wavy_gallery_no_item').length > 0 ){
+                if( !$this.find('.wpmozo_wavy_gallery_no_item').length > 0 && $this.length > 0 ){
                     gsap.registerPlugin(ScrollTrigger);
                     ScrollTrigger.normalizeScroll(true);
                 

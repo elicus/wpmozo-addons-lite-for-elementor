@@ -10,21 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 trait Wpmozo_Ae_Helper_Functions {
 	/**
-	 * Get team members by category.
+	 * Get woocommerce category thumbnail.
 	 *
-	 * @since 1.0.0
+	 * @since  2.0.0
+	 * @return string
 	 */
-	public static function wpmozo_get_post_categories() {
-		$terms = get_terms( array( 'taxonomy'   => 'category', 'hide_empty' => false, ) );
-		$dynamic_options = array();
-		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-			foreach ( $terms as $term ) {
-				$dynamic_options[ $term->term_id ] = $term->name;
-			}
-		}
-		return $dynamic_options;
-	}
-
     public static function wpmozo_ae_woocommerce_category_thumbnail( $category, $size = 'woocommerce_thumbnail' ) {
         $dimensions           = wc_get_image_size( $size );
         $thumbnail_id         = get_term_meta( $category->term_id, 'thumbnail_id', true );
@@ -53,7 +43,6 @@ trait Wpmozo_Ae_Helper_Functions {
             }
         }
     }
-
 	/**
 	 * Get reading time
 	 *
@@ -67,7 +56,63 @@ trait Wpmozo_Ae_Helper_Functions {
 		$readingtime = ceil( $word_count / 260 );
 		return $readingtime;
 	}
+    /**
+	 * Function to get a list of pages as options.
+	 *
+	 * @since    1.0.0
+	 */
+	public static function wpmozo_ae_get_pages_as_options() {
+		$pages        = get_pages();
+		$page_options = array();
+		global $post;
 
+		$current_post_id = $post->ID;
+
+		// Add the "Select Page" option with an empty value as the first item.
+		$page_options[0] = esc_html__( 'Select Page', 'wpmozo-addons-lite-for-elementor' );
+
+		foreach ( $pages as $page ) {
+			if ( $current_post_id !== $page->ID ) {
+				$page_options[ $page->ID ] = $page->post_title;
+			}
+		}
+		return $page_options;
+	}
+	/**
+	 * Get blog category list.
+	 *
+	 * @since 1.9.0
+	 */
+	public static function wpmozo_get_blog_posts_categories() {
+		$terms           = get_terms(
+			array(
+				'taxonomy'   => 'category',
+				'hide_empty' => false,
+			)
+		);
+		$dynamic_options = array();
+		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+			foreach ( $terms as $term ) {
+				$dynamic_options[ $term->term_id ] = $term->name;
+			}
+		}
+		return $dynamic_options;
+	}
+	/**
+	 * Get team members by category.
+	 *
+	 * @since 1.0.0
+	 */
+	public static function wpmozo_get_post_categories() {
+		$terms = get_terms( array( 'taxonomy'   => 'category', 'hide_empty' => false, ) );
+		$dynamic_options = array();
+		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+			foreach ( $terms as $term ) {
+				$dynamic_options[ $term->term_id ] = $term->name;
+			}
+		}
+		return $dynamic_options;
+	}
 	/**
 	 * Post types Options
 	 *
@@ -101,29 +146,6 @@ trait Wpmozo_Ae_Helper_Functions {
 			$template_options[ $template['template_id'] ] = $template['title'];
 		}
 		return $template_options;
-	}
-
-	/**
-	 * Function to get a list of pages as options.
-	 *
-	 * @since    1.0.0
-	 */
-	public static function wpmozo_ae_get_pages_as_options() {
-		$pages        = get_pages();
-		$page_options = array();
-		global $post;
-
-		$current_post_id = $post->ID;
-
-		// Add the "Select Page" option with an empty value as the first item.
-		$page_options[0] = esc_html__( 'Select Page', 'wpmozo-addons-lite-for-elementor' );
-
-		foreach ( $pages as $page ) {
-			if ( $current_post_id !== $page->ID ) {
-				$page_options[ $page->ID ] = $page->post_title;
-			}
-		}
-		return $page_options;
 	}
 
 	/**
@@ -203,29 +225,72 @@ trait Wpmozo_Ae_Helper_Functions {
 	 * @return string|false Aspect ratio string (e.g., "16 / 9") or false on failure.
 	 */
 	public static function wpmozo_get_image_aspect_ratio( $image_id ) {
-			$image = wp_get_attachment_image_src( $image_id, 'full' );
-			if ( ! $image ) {
-				return false;
-			}
-
-			$width  = (int) $image[1];
-			$height = (int) $image[2];
-
-			if ( $width === 0 || $height === 0 ) {
-				return false;
-			}
-
-			// Get GCD (Greatest Common Divisor).
-			$gcd = function( $a, $b ) use ( &$gcd ) {
-				return $b === 0 ? $a : $gcd( $b, $a % $b );
-			};
-
-			$divisor = $gcd( $width, $height );
-
-			$w = $width / $divisor;
-			$h = $height / $divisor;
-
-			// Example: "1920 / 1279"
-			return sprintf( '%d / %d', $w, $h );
+		$image = wp_get_attachment_image_src( $image_id, 'full' );
+		if ( ! $image ) {
+			return false;
 		}
+
+		$width  = (int) $image[1];
+		$height = (int) $image[2];
+
+		if ( $width === 0 || $height === 0 ) {
+			return false;
+		}
+
+		// Get GCD (Greatest Common Divisor).
+		$gcd = function( $a, $b ) use ( &$gcd ) {
+			return $b === 0 ? $a : $gcd( $b, $a % $b );
+		};
+
+		$divisor = $gcd( $width, $height );
+
+		$w = $width / $divisor;
+		$h = $height / $divisor;
+
+		// Example: "1920 / 1279"
+		return sprintf( '%d / %d', $w, $h );
+	}
+	/**
+	 * Retrieve SVG file contents from URL.
+	 *
+	 * @param string $svg_file SVG file URL.
+	 * @return string
+	 */
+	
+		public static function wpmozo_get_svg_content( $svg_file ) {
+		if ( empty( $svg_file ) ) {
+			return '';
+		}
+		if ( strpos( $svg_file, '.svg' ) === false ) {
+			return '';
+		}
+		$response = wp_remote_get(
+			$svg_file,
+			array(
+				'timeout'     => 10,
+				'redirection' => 5,
+				'sslverify'   => true,
+			)
+		);
+
+		// Request fail?
+		if ( is_wp_error( $response ) ) {
+			return false;
+		}
+
+		// HTTP status check.
+		$status_code = wp_remote_retrieve_response_code( $response );
+		if ( 200 !== $status_code ) {
+			return false;
+		}
+
+		// Body retrieve.
+		$content = wp_remote_retrieve_body( $response );
+
+		if ( empty( $content ) ) {
+			return false;
+		}
+
+		return $content;
+	}
 }

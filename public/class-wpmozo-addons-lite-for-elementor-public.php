@@ -2,7 +2,7 @@
 /**
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2025 Elicus Technologies Private Limited
+ * @copyright   2026 Elicus Technologies Private Limited
  * @version     1.2.0
  */
 
@@ -15,26 +15,6 @@ use WPMOZO\HelperTraits;
 if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 	class WPMOZO_Addons_Lite_For_Elementor_Public {
 		use HelperTraits\Wpmozo_Ae_Helper_Functions;
-
-		/**
-		 * Initialize required files and funcitons.
-		 *
-		 * @since    1.0.0
-		 */
-		public function init() {
-
-			$this->include_files();
-		}
-
-		/**
-		 * Include file with helper funcitons.
-		 *
-		 * @since    1.0.0
-		 */
-		public function include_files() {
-			require_once plugin_dir_path( __DIR__ ) . 'includes/wpmozo-helper-functions.php';
-
-		}
 
 		/**
 		 * Register the editor styles
@@ -127,6 +107,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 
 			wp_register_script( 'wpmozo-ae-scrollToPlugin', plugins_url( 'assets/js/scrollToPlugin/scrollToPlugin.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
+			wp_register_script( 'wpmozo-ae-chart', plugins_url( 'assets/js/chart/chart.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 		}
 
 		/**
@@ -362,9 +343,9 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		 * @since  1.3.0
 		 */
 		public function wpmozo_ae_select2_ajax_posts() {
-			/*if ( ! isset( $_POST['wpmozo_ae_select_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['wpmozo_ae_select_nonce'] ) ), 'wpmozo-select-nonce' ) ) {
+			if ( ! isset( $_POST['wpmozo_ae_select_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['wpmozo_ae_select_nonce'] ) ), 'wpmozo-select-nonce' ) ) {
 				return;
-			}*/
+			}
 
 			$post_type   = 'post';
 			$post_type   = ! empty( $_GET['post_type'] ) ? sanitize_text_field( wp_unslash( $_GET['post_type'] ) ) : '';
@@ -407,19 +388,29 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 		 * @return void
 		 * @since  1.3.0
 		 */
-		public function wpmozo_ae_select2_ajax_get_title() {
+		public function wpmozo_ae_select2_get_title() {
 
-			/*if ( ! isset( $_POST['wpmozo_ae_select_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['wpmozo_ae_select_nonce'] ) ), 'wpmozo-select-nonce' ) ) {
+			if ( ! isset( $_POST['wpmozo_ae_select_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['wpmozo_ae_select_nonce'] ) ), 'wpmozo-select-nonce' ) ) {
 				return;
-			}*/
+			}
 
 			if ( empty( $_POST['id'] ) ) {
 				wp_send_json_error( array() );
 			}
+			$ids = array_map(
+			    'sanitize_key',
+			    wp_unslash( $_POST['id'] ?? array() )
+			);
 
-			if ( empty( array_filter( sanitize_key( wp_unslash( $_POST['id'] ) ) ) ) ) {
-				wp_send_json_error( array() );
+			$ids = array_filter( $ids );
+
+			if ( empty( $ids ) ) {
+			    wp_send_json_error();
 			}
+
+			/*if ( empty( array_filter( sanitize_key( wp_unslash( $_POST['id'] ) ) ) ) ) {
+				wp_send_json_error( array() );
+			}*/
 
 			$ids         = array_map( 'intval', $_POST['id'] );
 			$post_type   = ! empty( $_POST['post_type'] ) ? sanitize_text_field( wp_unslash( $_POST['post_type'] ) ) : '';

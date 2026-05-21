@@ -406,11 +406,11 @@
 				
 					let $innerWrap = $wrapper.find('.wpmozo_image_card_ticker_inner');
 				
-					let imgWidth = $wrapper.data('image_width') || '200',
-						imgHeight = $wrapper.data('image_height') || '150',
-						direction = $wrapper.data('direction') || 'left',
-						imgGap = $wrapper.data('image_gap'),
-						speed = $wrapper.data('ticker_speed') || '45',
+					let imgWidth = $wrapper.data('image_width_mobile') || '200',
+						imgHeight = $wrapper.data('image_height_mobile') || '150',
+						direction = $wrapper.data('direction_mobile') || 'left',
+						imgGap = $wrapper.data('image_gap_mobile'),
+						speed = $wrapper.data('ticker_speed_mobile') || '45',
 						pauseOnHover = $wrapper.data('pause_on_hover') || 'yes';
 				
 					let totalItemWidth = (+imgWidth + +imgGap) * $innerWrap.children().length;
@@ -485,11 +485,11 @@
 				
 					let $innerWrap = $wrapper.find('.wpmozo_image_card_ticker_inner');
 				
-					let imgWidth = $wrapper.data('image_width') || '200',
-						imgHeight = $wrapper.data('image_height') || '150',
-						direction = $wrapper.data('direction') || 'left',
-						imgGap = $wrapper.data('image_gap'),
-						speed = $wrapper.data('ticker_speed') || '45',
+					let imgWidth = $wrapper.data('image_width_tablet') || '200',
+						imgHeight = $wrapper.data('image_height_tablet') || '150',
+						direction = $wrapper.data('direction_tablet') || 'left',
+						imgGap = $wrapper.data('image_gap_tablet'),
+						speed = $wrapper.data('ticker_speed_tablet') || '45',
 						pauseOnHover = $wrapper.data('pause_on_hover') || 'yes';
 				
 					let totalItemWidth = (+imgWidth + +imgGap) * $innerWrap.children().length;

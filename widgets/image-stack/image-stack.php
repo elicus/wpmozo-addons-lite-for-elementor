@@ -2,8 +2,8 @@
 /**
  * @author    Elicus <hello@elicus.com>
  * @link      https://www.elicus.com/
- * @copyright 2025 Elicus Technologies Private Limited
- * @version   1.0.2
+ * @copyright 2026 Elicus Technologies Private Limited
+ * @version   1.0.3
  */
 
 // if this file is called directly, abort.
@@ -12,18 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Elementor\Widget_Base;
-use Elementor\Control_Media;
 use Elementor\Icons_Manager;
-use Elementor\Plugin;
-use Elementor\Utils;
-use Elementor\Controls_Manager;
-use Elementor\Group_Control_Text_Shadow;
-use Elementor\Group_Control_Typography;
-use Elementor\Group_Control_Background;
-use Elementor\Repeater;
-use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Box_Shadow;
-use Elementor\Group_Control_Css_Filter;
 
 if ( ! class_exists( 'WPMOZO_AE_Image_Stack' ) ) {
 	class WPMOZO_AE_Image_Stack extends Widget_Base {

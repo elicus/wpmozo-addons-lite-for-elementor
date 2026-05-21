@@ -9,7 +9,6 @@
                 $this.find('.wpmozo_background_switcher_item:first-child')
                     .addClass('wpmozo_bg_switcher_hover');
                 $transition = $this.find(".wpmozo_background_switcher_inner").data('transition');
-                console.log($transition);
 
                 $this.on({
                     mouseenter: function () {

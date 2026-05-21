@@ -2,7 +2,7 @@
 /**
  * @author    Elicus <hello@elicus.com>
  * @link      https://www.elicus.com/
- * @copyright 2025 Elicus Technologies Private Limited
+ * @copyright 2026 Elicus Technologies Private Limited
  * @version   1.0.0
  */
 
@@ -127,7 +127,7 @@ if ( ! class_exists( 'WPMOZO_AE_Hover_List' ) ) {
 		protected function register_controls() {
 
 			// Separate file containing all the code for registering controls.
-			include_once plugin_dir_path( __DIR__ ) . 'hover-list/assets/controls/controls.php';
+			require plugin_dir_path( __DIR__ ) . 'hover-list/assets/controls/controls.php';
 		}
 
 		/**

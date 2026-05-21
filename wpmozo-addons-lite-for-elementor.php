@@ -2,8 +2,8 @@
 /**
  * Plugin Name: WPMozo Addons Lite for Elementor
  * Plugin URI: https://wpmozo.com
- * Description: WPMozo Addons Lite for Elementor is a free multipurpose plugin that comes with a set of essential Elementor widgets. These powerful and easy-to-use widgets help you build engaging web pages and improve your site’s overall design and functionality.
- * Version: 1.8.0
+ * Description: WPMozo Addons Lite for Elementor is a free multipurpose plugin that comes with a set of essential Elementor widgets. These powerful and easy-to-use widgets help you build engaging web pages and improve your site's overall design and functionality.
+ * Version: 1.9.0
  * Author: Elicus
  * Author URI: https://elicus.com/
  * License: GPL-2.0+
@@ -12,12 +12,12 @@
  * Domain Path: /languages
  * Requires at least: 5.3
  * Requires PHP: 5.6
- * Tested up to: 6.8
- * Elementor tested up to: 3.33.0
- * Elementor Pro tested up to: 3.32.3
+ * Tested up to: 6.9
+ * Elementor tested up to: 4.0.6
+ * Elementor Pro tested up to: 4.0.4
  *
  * WPMozo Addons Lite for Elementor - A plugin for WordPress and Elementor.
- * Copyright © 2025 Elicus Technologies Private Limited
+ * Copyright © 2026 Elicus Technologies Private Limited
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,46 +36,47 @@
 defined( 'ABSPATH' ) || die( 'No script kiddies please!' );
 add_action('admin_notices', 'wpmozo_lite_check_dependencies');
 require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME', plugin_basename( __FILE__ ) );
 
 if ( ! function_exists( 'wpmozo_addons_lite_for_elementor_activate' ) ) {
-	/**
-	 * The code that runs during plugin activation.
-	 * This action is documented in includes/class-wpmozo-addons-lite-for-elementor-activator.php
-	 *
-	 * @return void
-	 * @since  1.0.0
-	 */
-	function wpmozo_addons_lite_for_elementor_activate() {
-		include_once plugin_dir_path( __FILE__ ) . 'includes/class-wpmozo-addons-lite-for-elementor-activator.php';
-		WPMOZO_Addons_Lite_For_Elementor_Activator::activate();
-	}
-	register_activation_hook( __FILE__, 'wpmozo_addons_lite_for_elementor_activate' );
+    /**
+     * The code that runs during plugin activation.
+     * This action is documented in includes/class-wpmozo-addons-lite-for-elementor-activator.php
+     *
+     * @return void
+     * @since  1.0.0
+     */
+    function wpmozo_addons_lite_for_elementor_activate() {
+        include_once plugin_dir_path( __FILE__ ) . 'includes/class-wpmozo-addons-lite-for-elementor-activator.php';
+        WPMOZO_Addons_Lite_For_Elementor_Activator::activate();
+    }
+    register_activation_hook( __FILE__, 'wpmozo_addons_lite_for_elementor_activate' );
 }
 
 if ( ! function_exists( 'wpmozo_addons_lite_for_elementor_admin_notice_minimum_elementor_version' ) ) {
-	/**
-	 * Admin notice
-	 *
-	 * Warning when the site doesn't have a minimum required Elementor version.
-	 *
-	 * @since 1.0.0
-	 */
-	function wpmozo_addons_lite_for_elementor_admin_notice_minimum_elementor_version() {
-		echo wp_kses_post(
-			'
-	        <div class="notice notice-warning is-dismissible">
-	            <p>' . __( '<strong>WPMozo Addons Lite for Elementor</strong> requires <strong>Elementor</strong> version 2.0 or greater.', 'wpmozo-addons-lite-for-elementor' ) . '
-	            </p>
-	        </div>'
-		);
+    /**
+     * Admin notice
+     *
+     * Warning when the site doesn't have a minimum required Elementor version.
+     *
+     * @since 1.0.0
+     */
+    function wpmozo_addons_lite_for_elementor_admin_notice_minimum_elementor_version() {
+        echo wp_kses_post(
+            '
+            <div class="notice notice-warning is-dismissible">
+                <p>' . __( '<strong>WPMozo Addons Lite for Elementor</strong> requires <strong>Elementor</strong> version 2.0 or greater.', 'wpmozo-addons-lite-for-elementor' ) . '
+                </p>
+            </div>'
+        );
 
-		deactivate_plugins( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME );
-	}
-	// Check for required Elementor version.
-	if ( file_exists(WP_PLUGIN_DIR . '/elementor/elementor.php') && is_plugin_active('elementor/elementor.php') && ! version_compare( ELEMENTOR_VERSION, '2.0', '>=' ) ) {
-		add_action( 'admin_notices', 'wpmozo_addons_lite_for_elementor_admin_notice_minimum_elementor_version' );
-		return;
-	}
+        deactivate_plugins( WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME );
+    }
+    // Check for required Elementor version.
+    if ( file_exists(WP_PLUGIN_DIR . '/elementor/elementor.php') && is_plugin_active('elementor/elementor.php') && ! version_compare( ELEMENTOR_VERSION, '2.0', '>=' ) ) {
+        add_action( 'admin_notices', 'wpmozo_addons_lite_for_elementor_admin_notice_minimum_elementor_version' );
+        return;
+    }
 }
 
 // Check for required plugin and manage dependencies
@@ -151,14 +152,13 @@ function wpmozo_addons_lite_for_elementor() {
  */
 function wpmozo_lite_handle_plugin_activation() {
     define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_SLUG', 'wpmozo-addons-lite-for-elementor' );
-    define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION', '1.8.0' );
+    define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION', '1.9.0' );
     define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_URL', plugin_dir_url( __FILE__ ) );
     define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_PATH', plugin_dir_path( __FILE__ ) );
-    define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME', plugin_basename( __FILE__ ) );
     define( 'WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_OPTION', 'wpmozo-addons-for-elementor-option' );
 
     // Load the plugin's main files once dependency is active
     require_once WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_DIR_PATH . 'includes/class-wpmozo-addons-lite-for-elementor.php';
     $plugin = wpmozo_addons_lite_for_elementor();
-	$plugin->run();
+    $plugin->run();
 }

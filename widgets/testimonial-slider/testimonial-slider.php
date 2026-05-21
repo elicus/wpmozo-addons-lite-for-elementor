@@ -2,8 +2,8 @@
 /**
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2025 Elicus Technologies Private Limited
- * @version     1.0.2
+ * @copyright   2026 Elicus Technologies Private Limited
+ * @version     1.0.3
  */
 
 //if this file is called directly, abort.
@@ -272,7 +272,7 @@ if ( ! class_exists( 'WPMOZO_AE_Testimonial_Slider' ) ) {
 					array(
 						'taxonomy' => 'wpmozo-ae-testimonial-category',
 						'field'    => 'term_id',
-						'terms'    => array_map( 'intval', explode( ',', $include_categories ) ),
+						'terms'    => array_map( 'intval', $include_categories ),
 						'operator' => 'IN',
 					),
 				);

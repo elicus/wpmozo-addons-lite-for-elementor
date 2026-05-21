@@ -119,10 +119,10 @@
 
             $.ajax({
                 type: "POST",
-                url: admin_ajax_object.ajaxurl,
+                url: wpmozo_ae_lite_admin_ajax_object.ajaxurl,
                 data: {
                     action: 'wpmozo_ae_lite_panel_save_settings',
-                    security: admin_ajax_object.ajax_nonce,
+                    security: wpmozo_ae_lite_admin_ajax_object.ajax_nonce,
                     options: options
                 },
                 success: function (response) {

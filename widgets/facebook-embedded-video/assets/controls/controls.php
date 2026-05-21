@@ -83,6 +83,7 @@ $this->start_controls_section( 'configuration',
 			'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
 			'return_value' => 'yes',
 			'default'      => '',
+			'render_type'  => 'template'
 		)
 	);
 	$this->add_control( 'allow_fullscreen',

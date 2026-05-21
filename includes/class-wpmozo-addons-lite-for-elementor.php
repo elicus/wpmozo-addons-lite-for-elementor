@@ -2,7 +2,7 @@
 /**
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
- * @copyright   2025 Elicus Technologies Private Limited
+ * @copyright   2026 Elicus Technologies Private Limited
  * @version     1.0.2
  */
 
@@ -85,6 +85,7 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 			$this->set_locale();
 			$this->define_admin_hooks();
 			$this->define_public_hooks();
+			add_filter( 'upload_mimes', array( $this, 'wpmozo_mime_types' ) );
 		}
 
 		/**
@@ -144,6 +145,18 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 		}
 
 		/**
+		 * add JSON to allowed file uploads.
+		 *
+		 * @since 1.5.2
+		 */
+		public function wpmozo_mime_types( $mimes ) {
+			if ( is_user_logged_in() ) {
+				$mimes['svg'] = 'image/svg+xml';
+			}
+			return $mimes;
+		}
+
+		/**
 		 * Define the locale for this plugin for internationalization.
 		 *
 		 * Uses the WPMOZO_Addons_Lite_For_Elementor_i18n class in order to set the domain and to register the hook
@@ -171,8 +184,6 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 
 			$settings     = new WPMOZO_Addons_Lite_For_Elementor_Settings( $this->get_plugin_option() );
 			$plugin_admin = new WPMOZO_Addons_Lite_For_Elementor_Admin( $settings );
-
-
 			$this->loader->add_action( 'wp_loaded', $plugin_admin, 'wp_loaded' );
 			$plugin_admin->wpmozo_register_post_types();
 			$plugin_admin->wpmozo_register_taxonomies();
@@ -181,18 +192,42 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 			$this->loader->add_action( 'wp_ajax_wpmozo_ae_lite_panel_save_settings', $plugin_admin, 'save_options' );
-			if ( ! $plugin_admin->wpmozo_is_team_disabled() ) {
+			$this->loader->add_filter( 'plugin_action_links_' . WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME,  $plugin_admin, 'plugin_action_links' );
+			if(defined('WPMOZO_ADDONS_FOR_ELEMENTOR_BASENAME')){
+				$this->loader->add_filter( 'plugin_action_links_' . WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_BASENAME, $plugin_admin, 'wpmozo_remove_upgrade_action_links', 50 );
+			}
+			if ( ! $plugin_admin->wpmozo_is_widget_disabled('team-slider,team-grid') ) {
 				// Hook to add meta box.
 				$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'wpmozo_add_team_member_metabox' );
 				// Hook to save meta box data.
 				$this->loader->add_action( 'save_post', $plugin_admin, 'wpmozo_save_team_member_meta_fields' );
 			}
-			if ( ! $plugin_admin->wpmozo_is_testimonial_disabled() ) {
+			if ( ! $plugin_admin->wpmozo_is_widget_disabled('blog-categories') ) {
+				// Hook to add meta box.
+				if(! $plugin_admin->diviplus_active){
+					$this->loader->add_action( 'category_add_form_fields', $plugin_admin, 'wpmozo_add_post_category_image_field', 10 );
+					// Hook to save meta box data.
+				
+					$this->loader->add_action( 'category_edit_form_fields', $plugin_admin, 'wpmozo_edit_post_category_image_field', 10, 2 );
+				
+				$this->loader->add_action( 'created_category', $plugin_admin, 'wpmozo_save_post_category_image', 10, 2 );
+				
+				$this->loader->add_action( 'edited_category', $plugin_admin, 'wpmozo_save_post_category_image', 10, 2 );
+				
+				$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'wpmozo_blog_category_enqueue_scripts' );
+				
+				$this->loader->add_filter( 'manage_edit-category_columns', $plugin_admin, 'wpmozo_category_image_columns' );
+				
+				$this->loader->add_filter( 'manage_category_custom_column', $plugin_admin, 'wpmozo_category_image_column', 10, 3 );
+				}
+			}
+			if ( ! $plugin_admin->wpmozo_is_widget_disabled('testimonial-slider,testimonial-grid') ) {
 				// Hook to add meta box.
 				$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'wpmozo_add_testimonial_metabox' );
 				// Hook to save meta box data.
 				$this->loader->add_action( 'save_post', $plugin_admin, 'wpmozo_save_testimonial_meta_fields' );
 			}
+			$this->loader->add_action( 'admin_footer_text', $plugin_admin, 'admin_footer_text' );
 		}
 
 		/**
@@ -215,10 +250,10 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor' ) ) {
 			$this->loader->add_action( 'elementor/controls/controls_registered', $plugin_public, 'register_custom_controls' );
 			$this->loader->add_action( 'wp_ajax_wpmozo_get_testimonials', $plugin_public, 'wpmozo_get_testimonials' );
 			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_get_testimonials', $plugin_public, 'wpmozo_get_testimonials' );
-			$this->loader->add_action( 'wp_ajax_wpmozo_ae_select2_search_post', $plugin_public, 'wpmozo_ae_select2_ajax_posts' );
-			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_ae_select2_search_post', $plugin_public, 'wpmozo_ae_select2_ajax_posts' );
-			$this->loader->add_action( 'wp_ajax_wpmozo_ae_select2_get_title', $plugin_public, 'wpmozo_ae_select2_ajax_get_title' );
-			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_ae_select2_get_title', $plugin_public, 'wpmozo_ae_select2_ajax_get_title' );
+			$this->loader->add_action( 'wp_ajax_wpmozo_ae_select2_ajax_posts', $plugin_public, 'wpmozo_ae_select2_ajax_posts' );
+			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_ae_select2_ajax_posts', $plugin_public, 'wpmozo_ae_select2_ajax_posts' );
+			$this->loader->add_action( 'wp_ajax_wpmozo_ae_select2_get_title', $plugin_public, 'wpmozo_ae_select2_get_title' );
+			$this->loader->add_action( 'wp_ajax_nopriv_wpmozo_ae_select2_get_title', $plugin_public, 'wpmozo_ae_select2_get_title' );
 			/*$plugin_public->help_me();*/
 		}
 

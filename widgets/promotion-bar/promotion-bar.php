@@ -2,7 +2,7 @@
 /**
  * @author    Elicus <hello@elicus.com>
  * @link      https://www.elicus.com/
- * @copyright 2025 Elicus Technologies Private Limited
+ * @copyright 2026 Elicus Technologies Private Limited
  * @version   1.0.1
  */
 
@@ -222,8 +222,7 @@ if ( ! class_exists( 'WPMOZO_AE_Promotion_Bar' ) ) {
 			$second_label = ( isset( $labels['seconds'][ $display_label ] ) ) ? $labels['seconds'][ $display_label ] : esc_html( '' );
 
 			?>
-			<div class="wpmozo_promotion_bar wpmozo_promotion_bar_0">
-				<?php if ( $time_left > 0 ) { ?>
+			<div class="wpmozo_promotion_bar">
 				<div class="wpmozo_promotion_bar_wrap <?php echo esc_attr( $layout ); ?> icon_<?php echo esc_attr( $settings['button_icon_placement'] ); ?>" data-timestamp="<?php echo esc_attr( strtotime( $date_time . ' ' . $gmt ) ); ?>">
 					<?php
 					$layout = 'layout3' === $layout ? 'layout1' : $layout;
@@ -232,7 +231,6 @@ if ( ! class_exists( 'WPMOZO_AE_Promotion_Bar' ) ) {
 					}
 					?>
 				</div>
-				<?php } ?>
 			</div>
 			<?php
 		}

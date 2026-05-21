@@ -2,8 +2,8 @@
 Contributors: elicus
 Tags: elementor, page builder, addons, elementor extension, elementor addon
 Requires at least: 5.3
-Tested up to: 6.8
-Stable tag: 1.8.0
+Tested up to: 6.9
+Stable tag: 1.9.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@ A feature-packed plugin designed to complement your Elementor page-building expe
 
 ### [View Demo](https://wpmozoaddons.com "View Demo")
 ## Key Features of the Plugin
-- **51 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
+- **59 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
 - **Enhanced Design Options**: Customize your website design with intuitive controls and a wide array of styling options.
 - **Interactive Elements**: Engage your audience with interactive elements like Interactive Image Card, Flip Box, and Fancy Text.
 - **Responsive and Lightweight**: Ensure a seamless user experience across all devices without compromising on performance.
@@ -125,24 +125,21 @@ A feature-packed plugin designed to complement your Elementor page-building expe
 
 51. [Facebook Embedded Video](https://wpmozoaddons.com/elementor-facebook-widgets/) - Embed Facebook videos directly into your website using the WPMozo Facebook Embedded Video widget for Elementor.
 
+52. [Scrolling SVG](https://wpmozoaddons.com/elementor-scrolling-svg/) - Create scroll-based SVG animations easily with the WPMozo Scrolling SVG widget for Elementor.
 
+53. [Blog Categories](https://wpmozoaddons.com/elementor-blog-categories/) - Organize and showcase post categories beautifully using the WPMozo Blog Categories widget for Elementor.
 
+54. [Alert Box](https://wpmozoaddons.com/elementor-alert-box/) - Highlight important messages with customizable styles using the WPMozo Alert Box widget for Elementor.
 
+55. [Text Hover Effect](https://wpmozoaddons.com/elementor-text-hover-effect/) - Add interactive hover animations to your content with the WPMozo Text Hover Effect widget for Elementor.
 
+56. [Coupon](https://wpmozoaddons.com/elementor-coupon/) - Display attractive and clickable discount coupons using the WPMozo Coupon widget for Elementor.
 
+57. [Pie Chart](https://wpmozoaddons.com/elementor-pie-chart/) - Visualize data in a clean circular format with the WPMozo Pie Chart widget for Elementor.
 
+58. [Bar Chart](https://wpmozoaddons.com/elementor-bar-chart/) - Present comparisons and statistics clearly using the WPMozo Bar Chart widget for Elementor.
 
-
-
-
-
-
-
-
-
-
-
-
+59. [SVG Animator](https://wpmozoaddons.com/elementor-svg-animator/) - Bring vector graphics to life with smooth animations using the WPMozo SVG Animator widget for Elementor.
 
 
 ## Premium Version Available
@@ -277,12 +274,14 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
-2025-11-11 - Version 1.8.0
-- NEW: New widget Image Card Ticker.
-- NEW: New widget Split Image.
-- NEW: New widget Wavy Gallery.
-- NEW: New widget Post Ticker.
-- NEW: New widget Scroll Progress.
-- NEW: New widget Hover List.
+2026-05-05 - Version 1.9.0
+- NEW: New widget Blog Categories.
+- NEW: New widget Alert Box.
+- NEW: New widget Text Hover Effect.
+- NEW: New widget Coupon.
+- NEW: New widget Pie Chart.
+- NEW: New widget Bar Chart.
+- NEW: New widget SVG Animator.
+- NEW: New widget Scrolling SVG.
 
 [See changelog for all versions](https://plugins.svn.wordpress.org/wpmozo-addons-lite-for-elementor/trunk/changelog.txt).
