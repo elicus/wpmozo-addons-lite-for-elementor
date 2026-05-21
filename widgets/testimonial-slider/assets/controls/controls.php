@@ -185,6 +185,7 @@ $this->start_controls_section( 'slider_settings',
                 'coverflow' => esc_html__( 'Coverflow', 'wpmozo-addons-lite-for-elementor' ),
                 'flip'      => esc_html__( 'Flip', 'wpmozo-addons-lite-for-elementor' ),
                 'fade'      => esc_html__( 'Fade', 'wpmozo-addons-lite-for-elementor' ),
+                // 'cards'     => esc_html__( 'Cards', 'wpmozo-addons-lite-for-elementor' ),
             ),
             'default'     => 'slide',
             'render_type' => 'template'
@@ -198,6 +199,8 @@ $this->start_controls_section( 'slider_settings',
             'max'       => 15,
             'step'      => 1,
             'default'   => 1,
+            'tablet_default'=> 1,
+            'mobile_default'=> 1,
             'condition' => array( 'slide_effect' => array( 'slide', 'coverflow' ) ),
         )
     );
@@ -209,6 +212,8 @@ $this->start_controls_section( 'slider_settings',
             'max'       => 15,
             'step'      => 1,
             'default'   => 1,
+            'tablet_default'=> 1,
+            'mobile_default'=> 1,
             'condition' => array( 'slide_effect' => array( 'slide', 'coverflow' ) ),
         )
     );
@@ -321,6 +326,7 @@ $this->start_controls_section( 'slider_settings',
             'return_value' => 'equal_height',
             'default'      => 'no',
             'render_type'  => 'template',
+            'separator'    => 'before',
             'prefix_class' => 'wpmozo_ae_',
             'selectors_dictionary' 	=> array( 
                 'yes' => 'yes',
@@ -353,6 +359,7 @@ $this->start_controls_section( 'slider_settings',
             'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
             'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
             'return_value' => 'yes',
+            'separator'    => 'before',
             'default'      => 'yes',
             'selectors_dictionary' 	=> array( 
                 'yes' => 'yes',
@@ -419,6 +426,7 @@ $this->start_controls_section( 'slider_settings',
             'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
             'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
             'return_value' => 'yes',
+            'separator'    => 'before',
             'default'      => '',
             'selectors_dictionary' 	=> array( 
                 'yes' => 'yes',
@@ -619,6 +627,12 @@ $this->start_controls_section( 'body_style_sec',
                     'label_block' => true,
                     'name'        => 'body_text_typography',
                     'selector'    => '{{WRAPPER}} .wpmozo_testimonial_desc, {{WRAPPER}} .wpmozo_testimonial_desc p',
+                    'fields_options' => array( 
+                        'font_size' => array( 'render_type' => 'template'),
+                        'line_height' => array( 'render_type' => 'template'),
+                        'letter_spacing' => array( 'render_type' => 'template'),
+                        'word_spacing' => array( 'render_type' => 'template')
+                    )
                 )
             );
         $this->end_controls_tab();
@@ -695,6 +709,7 @@ $this->start_controls_section( 'star_rating_style_sec',
             'selectors'    =>  array( 
                 '{{WRAPPER}} .wpmozo_testimonial_rating .wpmozo_testimonial_star' => 'font-size: {{SIZE}}{{UNIT}};',
             ),
+            'render_type' => 'template'
         )
     );
     $this->add_responsive_control( 
@@ -765,6 +780,12 @@ $this->start_controls_section( 'author_style_sec',
                         'label_block' => true,
                         'name'        => 'author_name_text_typography',
                         'selector'    => '{{WRAPPER}} .wpmozo_testimonial_author_name',
+                        'fields_options' => array( 
+                            'font_size' => array( 'render_type' => 'template'),
+                            'line_height' => array( 'render_type' => 'template'),
+                            'letter_spacing' => array( 'render_type' => 'template'),
+                            'word_spacing' => array( 'render_type' => 'template')
+                        )
                     )
                 );
             $this->end_controls_tab();
@@ -852,6 +873,12 @@ $this->start_controls_section( 'author_style_sec',
                         'label_block' => true,
                         'name'        => 'author_designation_text_typography',
                         'selector'    => '{{WRAPPER}} .wpmozo_testimonial_author_designation',
+                        'fields_options' => array( 
+                            'font_size' => array( 'render_type' => 'template'),
+                            'line_height' => array( 'render_type' => 'template'),
+                            'letter_spacing' => array( 'render_type' => 'template'),
+                            'word_spacing' => array( 'render_type' => 'template')
+                        )
                     )
                 );
             $this->end_controls_tab();
@@ -938,6 +965,12 @@ $this->start_controls_section( 'author_style_sec',
                     'label_block' => true,
                     'name'        => 'author_company_text_typography',
                     'selector'    => '{{WRAPPER}} .wpmozo_testimonial_author_company, {{WRAPPER}} .wpmozo_testimonial_author_company a',
+                    'fields_options' => array( 
+                        'font_size' => array( 'render_type' => 'template'),
+                        'line_height' => array( 'render_type' => 'template'),
+                        'letter_spacing' => array( 'render_type' => 'template'),
+                        'word_spacing' => array( 'render_type' => 'template')
+                    )
                 )
             );
         $this->end_controls_tab();
@@ -1443,6 +1476,7 @@ $this->start_controls_section( 'spacing_sec',
             'selectors'   => array( 
                 '{{WRAPPER}} .wpmozo_single_testimonial_card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             ),
+            'render_type' => 'template'
         )
     );
 $this->end_controls_section();

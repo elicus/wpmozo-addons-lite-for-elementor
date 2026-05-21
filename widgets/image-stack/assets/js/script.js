@@ -1,46 +1,41 @@
-jQuery( window ).on( "elementor/frontend/init", function () {    
-    var e = elementorModules.frontend.handlers.Base.extend( {
-        bindEvents: function () {
-            this.change();
-        },     
-        change: function () {
-            jQuery( document ).ready( function ( $ ) {  
-              
-                var dynamicVariables = {};   
-                document.querySelectorAll( ".wpmozo_image_stack_wrap" ).forEach( function ( element ) {
-                    var singleId            = element.getAttribute( "data-tooltip-id" ).replace( 'elementor-','' );
-                    var dataTrigger         = element.getAttribute( "data-trigger" );
-                    var speechBubble        = element.getAttribute( "data-speech-bubble" );
-                    var dataAnimationName   = element.getAttribute( 'data-animation-name' );  
-                    var animationDuration   = element.getAttribute( 'data-animation-duration' );  
-                    
-                    dynamicVariables[ 'tippyOptions_'+singleId ] = {
+( function ( $ ) {
+    $( window ).on( "elementor/frontend/init", function () {    
+        var ImageStackTooltipHandler = elementorModules.frontend.handlers.Base.extend( {
+            bindEvents: function () {
+                this.change();
+            },     
+            change: function () {
+                const $this  = this.$element.find('.wpmozo_image_stack_wrap');
+                if (!$this.length) return;
+
+                const {
+                    tooltipId,
+                    trigger,
+                    speechBubble,
+                    animationName,
+                    animationDuration
+                } = $this.data();
+
+                const singleId = tooltipId.replace( 'elementor-','' ),
+                    options    = {
                         allowHTML: true,
                         placement: 'top',
-                        theme: 'light',                                               
-                        content: function ( reference ) {                            
-                            var id = reference.getAttribute( 'data-template' );                           
-                            var template = document.getElementById( id );
-                            return '<div class="wpmozo-floating-container wpmozo-wrapper-'+singleId+'">'+template.innerHTML+'</div>';
-                        },
+                        theme: 'light',
+                        trigger: 'click' === trigger ? trigger : 'mouseenter focus',
+                        arrow: '' === speechBubble ? false : true,
+                        duration: animationDuration,
+                        animation: animationName,
+                        content: function( element ){
+                            let id          = element.getAttribute( 'data-template' ),
+                                template    = $( '#'+id );
+                            return '<div class="wpmozo-floating-container wpmozo-wrapper-'+singleId+'">'+template.html()+'</div>';
+                        }
                     };
-                    if ( dataTrigger === 'click' ) {
-                        dynamicVariables[ 'tippyOptions_'+singleId ].trigger = 'click';
-                    }
-                    if ( '' === speechBubble ) {
-                        dynamicVariables[ 'tippyOptions_'+singleId ].arrow = false;
-                    }
-                    if ( '' !== animationDuration ) {
-                        dynamicVariables[ 'tippyOptions_'+singleId ].duration = animationDuration;
-                    }
-                    if ( '' !== dataAnimationName ) {
-                        dynamicVariables[ 'tippyOptions_'+singleId ].animation = dataAnimationName;
-                    }
-                    tippy( '.elementor-' + singleId + ' .wpmozo_image_stack_item', dynamicVariables[ 'tippyOptions_'+singleId ] );
-                } );  
-                           
-            } );
-        },
-    } );    
-    elementorFrontend.elementsHandler.attachHandler( "wpmozo_ae_image_stack", e );
-} );
+                if( trigger ) {
+                    tippy( '.elementor-' + singleId + ' .wpmozo_image_stack_item', options );
+                }
+            },
+        } );    
+        elementorFrontend.elementsHandler.attachHandler( "wpmozo_ae_image_stack", ImageStackTooltipHandler );
+    } );
+} )( jQuery );

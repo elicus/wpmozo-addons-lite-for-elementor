@@ -3,7 +3,7 @@
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
  * @copyright   2025 Elicus Technologies Private Limited
- * @version     1.0.1
+ * @version     1.0.2
  */
 
 // if this file is called directly, abort.
@@ -124,7 +124,7 @@ if ( ! class_exists( 'WPMOZO_AE_Text_Animator' ) ) {
          */
         protected function register_controls() {
             // Seprate file containing all the code for registering controls.
-            include_once plugin_dir_path( __DIR__ ) . 'text-animator/assets/controls/controls.php';
+            require plugin_dir_path( __DIR__ ) . 'text-animator/assets/controls/controls.php';
         }
 
         /**
@@ -170,11 +170,7 @@ if ( ! class_exists( 'WPMOZO_AE_Text_Animator' ) ) {
             }
             ?> 
                 <div class="wpmozo_ae_text_animator wpmozo_animated_text_wrapper wpmozo_text_animator_<?php echo esc_attr( $widget_id ); ?>">                
-                        <<?php echo esc_attr( $heading_level ); ?> class="wpmozo-<?php echo esc_attr( $animation_type ); ?> wpmozo_text_heading">
-                            <?php echo wp_kses_post( $pre_text );
-                            echo wp_kses_post( $content_text );
-                            echo wp_kses_post( $post_text );?>
-                        </<?php echo esc_attr( $heading_level ); ?>>
+                        <<?php echo esc_attr( $heading_level ); ?> class="wpmozo-<?php echo esc_attr( $animation_type ); ?> wpmozo_text_heading"><?php echo wp_kses_post( $pre_text );echo wp_kses_post( $content_text );echo wp_kses_post( $post_text );?></<?php echo esc_attr( $heading_level ); ?>>
                 </div>
             <?php
         }

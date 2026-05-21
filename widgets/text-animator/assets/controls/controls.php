@@ -104,7 +104,7 @@ $this->start_controls_section(
             'return_value'  => 'yes',
             'prefix_class'  => 'display_in_stack_',
             'selectors'     =>  array( 
-                '{{WRAPPER}}.display_in_stack_yes .wpmozo_animated_text_wrapper .wpmozo_text_heading' => 'flex-direction: column;',
+                '{{WRAPPER}}.display_in_stack_yes .wpmozo_animated_text_wrapper .wpmozo_text_heading' => ' display:flex; flex-wrap:wrap;flex-direction: column;',
             ),                
         )
     );
@@ -242,7 +242,7 @@ $this->start_controls_section(
                     'label'       => esc_html__( 'Global Typography', 'wpmozo-addons-lite-for-elementor' ),
                     'label_block' => true,
                     'name'        => 'global_text_typography',
-                    'selector'    => '{{WRAPPER}} .wpmozo_ae_text_animator *',
+                    'selector'    => '{{WRAPPER}} .wpmozo_ae_text_animator .wpmozo_text_heading',
                 )
             );
 
@@ -278,7 +278,7 @@ $this->start_controls_section(
                     'separator'    => 'before',
                     'options'      =>
                     array( 
-                        'flex-start' =>
+                        'left' =>
                             array( 
                                 'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
                                 'icon'  => 'eicon-text-align-left',
@@ -288,7 +288,7 @@ $this->start_controls_section(
                                 'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
                                 'icon'  => 'eicon-text-align-center',
                             ),
-                        'flex-end'   =>
+                        'right'   =>
                             array( 
                                 'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
                                 'icon'  => 'eicon-text-align-right',
@@ -297,8 +297,7 @@ $this->start_controls_section(
                     'default'     => 'flex-start',
                     'toggle'      => true,
                     'selectors'   => array( 
-                        '{{WRAPPER}}.display_in_stack_yes .wpmozo_ae_text_animator .wpmozo_text_heading' => 'place-items: {{VALUE}};',
-                        '{{WRAPPER}}:not(.display_in_stack_yes) .wpmozo_ae_text_animator .wpmozo_text_heading' => 'justify-content: {{VALUE}};',
+                        '{{WRAPPER}} .wpmozo_ae_text_animator .wpmozo_text_heading' => 'text-align: {{VALUE}};',
                     ),
                 )
             );

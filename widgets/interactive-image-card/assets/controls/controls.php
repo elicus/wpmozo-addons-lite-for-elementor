@@ -210,7 +210,7 @@ $this->start_controls_section(
 				 ),
 			 ),
 			'default'   => array( 
-				'size' => '0.7',
+				'size' => '1',
 				'unit' => '%',
 			 ),
 			'selectors' =>
@@ -252,7 +252,15 @@ $this->start_controls_section(
 						 ),
 					 ),
 					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} figure.effect-lily, {{WRAPPER}} figure.effect-sadie figcaption::before, {{WRAPPER}} figure.effect-roxy, {{WRAPPER}} figure.effect-bubba, {{WRAPPER}} figure.effect-layla, {{WRAPPER}} figure.effect-oscar, {{WRAPPER}} figure.effect-ruby, {{WRAPPER}} figure.effect-milo',
+					'selector' => '
+					{{WRAPPER}} figure.effect-lily figcaption::before, 
+					{{WRAPPER}} figure.effect-sadie figcaption::before, 
+					{{WRAPPER}} figure.effect-roxy::before, 
+					{{WRAPPER}} figure.effect-bubba::before, 
+					{{WRAPPER}} figure.effect-layla::before, 
+					{{WRAPPER}} figure.effect-oscar::before, 
+					{{WRAPPER}} figure.effect-ruby::before, 
+					{{WRAPPER}} figure.effect-milo::before',
 				 )
 			 );
 		$this->end_controls_tab();
@@ -273,7 +281,15 @@ $this->start_controls_section(
 						 ),
 					 ),
 					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} figure.effect-lily:hover, {{WRAPPER}} figure.effect-sadie figcaption:hover::before, {{WRAPPER}} figure.effect-roxy:hover, {{WRAPPER}} figure.effect-bubba:hover, {{WRAPPER}} figure.effect-layla:hover, {{WRAPPER}} figure.effect-oscar:hover, {{WRAPPER}} figure.effect-ruby:hover, {{WRAPPER}} figure.effect-milo:hover',
+					'selector' => '
+					{{WRAPPER}} figure.effect-lily figcaption:hover::before, 
+					{{WRAPPER}} figure.effect-sadie figcaption:hover::before, 
+					{{WRAPPER}} figure.effect-roxy:hover::before, 
+					{{WRAPPER}} figure.effect-bubba:hover::before, 
+					{{WRAPPER}} figure.effect-layla:hover::before, 
+					{{WRAPPER}} figure.effect-oscar:hover::before, 
+					{{WRAPPER}} figure.effect-ruby:hover::before, 
+					{{WRAPPER}} figure.effect-milo:hover::before',
 				 )
 			 );
 		$this->end_controls_tab();

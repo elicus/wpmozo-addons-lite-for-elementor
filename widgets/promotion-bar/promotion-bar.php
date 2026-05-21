@@ -3,7 +3,7 @@
  * @author    Elicus <hello@elicus.com>
  * @link      https://www.elicus.com/
  * @copyright 2025 Elicus Technologies Private Limited
- * @version   1.0.0
+ * @version   1.0.1
  */
 
 // If this file is called directly, abort.
@@ -42,7 +42,7 @@ if ( ! class_exists( 'WPMOZO_AE_Promotion_Bar' ) ) {
 		 * @return string Widget title.
 		 */
 		public function get_title() {
-			return esc_html__( 'Promotion Bar', 'wpmozo-addons-for-elementor' );
+			return esc_html__( 'Promotion Bar', 'wpmozo-addons-lite-for-elementor' );
 		}
 
 		/**
@@ -131,7 +131,7 @@ if ( ! class_exists( 'WPMOZO_AE_Promotion_Bar' ) ) {
 		protected function register_controls() {
 
 			// Seprate file containing all the code for registering controls.
-			require_once plugin_dir_path( __DIR__ ) . 'promotion-bar/assets/controls/controls.php';
+			require plugin_dir_path( __DIR__ ) . 'promotion-bar/assets/controls/controls.php';
 		}
 
 		/**
@@ -194,24 +194,24 @@ if ( ! class_exists( 'WPMOZO_AE_Promotion_Bar' ) ) {
 			// Get labels.
 			$labels = array(
 				'days'    => array(
-					'full'   => esc_html__( 'Days', 'wpmozo-addons-for-elementor' ),
-					'short'  => esc_html__( 'Days', 'wpmozo-addons-for-elementor' ),
-					'single' => esc_html__( 'D', 'wpmozo-addons-for-elementor' ),
+					'full'   => esc_html__( 'Days', 'wpmozo-addons-lite-for-elementor' ),
+					'short'  => esc_html__( 'Days', 'wpmozo-addons-lite-for-elementor' ),
+					'single' => esc_html__( 'D', 'wpmozo-addons-lite-for-elementor' ),
 				),
 				'hours'   => array(
-					'full'   => esc_html__( 'Hours', 'wpmozo-addons-for-elementor' ),
-					'short'  => esc_html__( 'Hrs', 'wpmozo-addons-for-elementor' ),
-					'single' => esc_html__( 'H', 'wpmozo-addons-for-elementor' ),
+					'full'   => esc_html__( 'Hours', 'wpmozo-addons-lite-for-elementor' ),
+					'short'  => esc_html__( 'Hrs', 'wpmozo-addons-lite-for-elementor' ),
+					'single' => esc_html__( 'H', 'wpmozo-addons-lite-for-elementor' ),
 				),
 				'minutes' => array(
-					'full'   => esc_html__( 'Minutes', 'wpmozo-addons-for-elementor' ),
-					'short'  => esc_html__( 'Min', 'wpmozo-addons-for-elementor' ),
-					'single' => esc_html__( 'M', 'wpmozo-addons-for-elementor' ),
+					'full'   => esc_html__( 'Minutes', 'wpmozo-addons-lite-for-elementor' ),
+					'short'  => esc_html__( 'Min', 'wpmozo-addons-lite-for-elementor' ),
+					'single' => esc_html__( 'M', 'wpmozo-addons-lite-for-elementor' ),
 				),
 				'seconds' => array(
-					'full'   => esc_html__( 'Seconds', 'wpmozo-addons-for-elementor' ),
-					'short'  => esc_html__( 'Sec', 'wpmozo-addons-for-elementor' ),
-					'single' => esc_html__( 'S', 'wpmozo-addons-for-elementor' ),
+					'full'   => esc_html__( 'Seconds', 'wpmozo-addons-lite-for-elementor' ),
+					'short'  => esc_html__( 'Sec', 'wpmozo-addons-lite-for-elementor' ),
+					'single' => esc_html__( 'S', 'wpmozo-addons-lite-for-elementor' ),
 				),
 			);
 

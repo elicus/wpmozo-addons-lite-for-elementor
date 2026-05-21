@@ -51,20 +51,37 @@ $this->start_controls_section(
 			'placeholder' => esc_html__( 'Post Heading', 'wpmozo-addons-lite-for-elementor' ),
 		 )
 	 );
-	$this->add_control( 
+
+	$this->add_responsive_control( 
 		'display_inline',
 		array( 
-			'label'        => esc_html__( 'Display In Stack', 'wpmozo-addons-lite-for-elementor' ),
-			'type'         => Controls_Manager::SWITCHER,
-			'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
-			'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
-			'return_value' => 'column',
-			'default'      => '',
-			'selectors'    => array( 
-				'{{WRAPPER}} .wpmozo_ae_text_wrapper_inner' => 'flex-direction: {{VALUE}};',
+			'label'       => esc_html__( 'Display In Stack', 'wpmozo-addons-lite-for-elementor' ),
+			'type'        => Controls_Manager::CHOOSE,
+			'label_block' => false,
+			'separator'   => 'before',
+			'options'     =>
+			array( 
+				'block' =>
+					array( 
+						'title' => esc_html__( 'No', 'wpmozo-addons-lite-for-elementor' ),
+						'icon'  => 'eicon-ban',
+					 ),
+				'flex'     =>
+					array( 
+						'title' => esc_html__( 'Yes', 'wpmozo-addons-lite-for-elementor' ),
+						'icon'  => 'eicon-check',
+					 ),
 			 ),
-		 )
-	 );
+			'default'     => 'block',
+			'tablet_default' => 'block',
+			'mobile_default' => 'block',
+			'toggle'      => false,
+			'selectors'   => array( 
+				'{{WRAPPER}} .wpmozo_ae_text_wrapper_inner' => 'display: {{VALUE}};',
+			),
+			'render_type' => 'template'
+		)
+	);
 $this->end_controls_section();
 
 // Style tab starts here.
@@ -149,7 +166,7 @@ $this->start_controls_section(
 			'default'     => 'center',
 			'toggle'      => true,
 			'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_text_wrapper_inner' => 'align-items: {{VALUE}};' ),
-			'condition'   => array( 'display_inline' => 'column' ),
+			'condition'   => array( 'display_inline' => 'flex' ),
 		 )
 	 );
 	$this->add_responsive_control( 
@@ -161,7 +178,7 @@ $this->start_controls_section(
 			'separator'   => 'before',
 			'options'     =>
 			array( 
-				'flex-start' =>
+				'left' =>
 					array( 
 						'title' => esc_html__( 'Left', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-left',
@@ -171,7 +188,7 @@ $this->start_controls_section(
 						'title' => esc_html__( 'Center', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-center',
 					 ),
-				'flex-end'   =>
+				'right'   =>
 					array( 
 						'title' => esc_html__( 'Right', 'wpmozo-addons-lite-for-elementor' ),
 						'icon'  => 'eicon-text-align-right',
@@ -179,8 +196,8 @@ $this->start_controls_section(
 			 ),
 			'default'     => 'center',
 			'toggle'      => true,
-			'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_text_wrapper_inner' => 'justify-content: {{VALUE}};' ),
-			'condition'   => array( 'display_inline' => '' ),
+			'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_text_wrapper_inner' => 'text-align: {{VALUE}};' ),
+			'condition'   => array( 'display_inline' => 'block' ),
 		 )
 	 );
 	$this->add_responsive_control( 
@@ -252,7 +269,7 @@ $this->start_controls_section(
 			'default'     => 'none',
 			'toggle'      => true,
 			'selectors'   => array( '{{WRAPPER}} .wpmozo_ae_pre_text' => 'align-self: {{VALUE}};text-align: {{VALUE}};' ),
-			'condition'   => array( 'display_inline' => 'column' ),
+			'condition'   => array( 'display_inline' => 'flex' ),
 		 )
 	 );
 	$this->add_control( 
@@ -463,7 +480,7 @@ $this->start_controls_section(
 			'selectors'   => array( 
 				'{{WRAPPER}} .wpmozo_ae_main_text' => 'align-self: {{VALUE}};text-align: {{VALUE}};',
 			 ),
-			'condition'   => array( 'display_inline' => 'column' ),
+			'condition'   => array( 'display_inline' => 'flex' ),
 		 )
 	 );
 	$this->add_control( 
@@ -678,7 +695,7 @@ $this->start_controls_section(
 			'selectors'   => array( 
 				'{{WRAPPER}} .wpmozo_ae_post_text' => 'align-self: {{VALUE}}; text-align: {{VALUE}};',
 			 ),
-			'condition'   => array( 'display_inline' => 'column' ),
+			'condition'   => array( 'display_inline' => 'flex' ),
 		 )
 	 );
 	$this->add_control( 

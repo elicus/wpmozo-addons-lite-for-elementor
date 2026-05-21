@@ -3,7 +3,7 @@
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
  * @copyright   2025 Elicus Technologies Private Limited
- * @version     1.0.1
+ * @version     1.0.2
  */
 
 // if this file is called directly, abort.
@@ -127,7 +127,7 @@ if ( ! class_exists( 'WPMOZO_AE_Floating_Image' ) ) {
 		protected function register_controls() {
 
 			// Seprate file containing all the code for registering controls.
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'floating-image/assets/controls/controls.php';
+			require plugin_dir_path( dirname( __FILE__ ) ) . 'floating-image/assets/controls/controls.php';
 		}
 
 		/**
@@ -159,7 +159,7 @@ if ( ! class_exists( 'WPMOZO_AE_Floating_Image' ) ) {
 								<?php endif; ?>									
 									<div class="wpmozo_floating_images_wrapper">
 										<div class="wpmozo_floating_image_item elementor-repeater-item-<?php echo esc_attr( $single_item[ '_id' ] ); ?>">				
-												<img decoding="async" class="wpmozo_floating_img" src="<?php echo esc_attr( $single_item[ 'image' ][ 'url' ] ); ?>" alt="<?php echo esc_attr( $single_item[ 'image_alt_text' ] ); ?>" >	
+												<img decoding="async" class="wpmozo_floating_img" src="<?php echo esc_attr( $single_item[ 'image' ][ 'url' ] ); ?>" alt="<?php echo '' !== $settings[ 'image_alt_text' ] ? esc_attr( $settings[ 'image_alt_text' ] ) : esc_attr( $settings[ 'image' ]['alt'] ) ; ; ?>" >	
 										</div>					
 									</div>	
 								<?php

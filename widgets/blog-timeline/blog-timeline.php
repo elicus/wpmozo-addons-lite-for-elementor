@@ -4,7 +4,7 @@
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
  * @copyright   2025 Elicus Technologies Private Limited
- * @version     1.0.1
+ * @version     1.0.2
  */
 
 // If this file is called directly, abort.
@@ -142,7 +142,7 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 		protected function register_controls() {
 
 			// Seprate file containing all the code for registering controls.
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'blog-timeline/assets/controls/controls.php';
+			require plugin_dir_path( dirname( __FILE__ ) ) . 'blog-timeline/assets/controls/controls.php';
 		}
 
 		/**
@@ -155,6 +155,7 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 		 */
 		protected function render() {
 			$settings = $this->get_settings_for_display();
+			/*Wpmozo_Ae_Helper_Functions::help_me();*/
 
 			$posts_number           = intval($settings[ 'posts_number' ]);
 			$ignore_sticky_posts    = $settings[ 'ignore_sticky_posts' ];
@@ -168,7 +169,7 @@ if ( !class_exists( 'WPMOZO_AE_Blog_Timeline' )) {
 			$posts_number = isset( $posts_number ) && $posts_number > -1 ? $posts_number : -1;
 
 			// Get the selected category IDs
-			$category_ids = isset( $settings[ 'category_ids' ] ) ? $settings[ 'category_ids' ] : [];
+			$category_ids = isset( $settings[ 'select_categories' ] ) ? $settings[ 'select_categories' ] : [];
 
 			// Fetch sticky posts if not ignoring them
 			$sticky_posts = [];

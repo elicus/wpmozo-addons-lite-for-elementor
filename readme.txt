@@ -3,7 +3,7 @@ Contributors: elicus
 Tags: elementor, page builder, addons, elementor extension, elementor addon
 Requires at least: 5.3
 Tested up to: 6.8
-Stable tag: 1.5.0
+Stable tag: 1.6.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,13 +15,25 @@ A feature-packed plugin designed to complement your Elementor page-building expe
 
 ### [View Demo](https://wpmozoaddons.com "View Demo")
 ## Key Features of the Plugin
-- **37 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
+- **41 Widgets for Elementor**: Unlock a collection of free Elementor widgets ranging from Fancy Heading and Pricing Table to Image Card and Before After Slider.
 - **Enhanced Design Options**: Customize your website design with intuitive controls and a wide array of styling options.
 - **Interactive Elements**: Engage your audience with interactive elements like Interactive Image Card, Flip Box, and Fancy Text.
 - **Responsive and Lightweight**: Ensure a seamless user experience across all devices without compromising on performance.
 
 
 ## Widgets Included in WPMozo Addons Lite for Elementor
+- ### [Horizontal Scrolling Posts](https://wpmozoaddons.com/elementor-horizontal-scrolling-posts/ "Elementor Horizontal Scrolling Posts")
+Display your blog posts in a stylish side-scroll layout and grab visitors' attention with the WPMozo Horizontal Scrolling Posts widget for Elementor.
+
+- ### [Rotating Text](https://wpmozoaddons.com/elementor-rotating-text/ "Elementor Rotating Text")
+Highlight key words or phrases with smooth rotating effects using the WPMozo Rotating Text widget for Elementor—perfect for drawing attention and boosting engagement.
+
+- ### [Scroll Text](https://wpmozoaddons.com/elementor-scroll-text/ "Elementor Scroll Text")
+Add animated scrolling text to your WordPress site with the WPMozo Scroll Text widget for Elementor—perfect for highlighting important messages with smooth scroll effects.
+
+- ### [Scrolling Zoom Gallery](https://wpmozoaddons.com/elementor-scrolling-zoom-gallery/ "Elementor Scrolling Zoom Gallery")
+Showcase your images with stylish scroll and zoom effects using the WPMozo Scrolling Zoom Gallery widget for Elementor—ideal for creating interactive, eye-catching image galleries.
+
 - ### [Image Stack](https://wpmozoaddons.com/elementor-image-stack/ "Elementor Image Stack")
 Showcase images and icons in an expandable stack and make your WordPress website amazing with the WPMozo Image Stack widget for Elementor.
 
@@ -282,10 +294,10 @@ For a detailed list of server requirements, please refer to the official WordPre
 == Upgrade Notice ==
 
 == Changelog ==
-2025-04-23 - Version 1.5.0
-- NEW: New widget Promotion Bar.
-- NEW: New widget Mystery Image.
-- NEW: New widget Background Switcher.
-- NEW: New widget Image Stack.
+2025-07-11 - Version 1.6.0
+- NEW: New widget Horizontal Scrolling Posts.
+- NEW: New widget Rotating Text.
+- NEW: New widget Scroll Text.
+- NEW: New widget Scrolling Zoom Gallery.
 
 [See changelog for all versions](https://plugins.svn.wordpress.org/wpmozo-addons-lite-for-elementor/trunk/changelog.txt).

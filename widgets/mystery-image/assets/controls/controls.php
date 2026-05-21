@@ -13,14 +13,14 @@ use Elementor\Controls_Manager;
 $this->start_controls_section(
 	'content_tab',
 	array(
-		'label' => esc_html__( 'Content', 'wpmozo-addons-for-elementor' ),
+		'label' => esc_html__( 'Content', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
 	)
 );
 $this->add_control(
 	'mystery_images',
 	array(
-		'label'      => esc_html__( 'Select Images', 'wpmozo-addons-for-elementor' ),
+		'label'      => esc_html__( 'Select Images', 'wpmozo-addons-lite-for-elementor' ),
 		'type'       => Controls_Manager::GALLERY,
 		'show_label' => false,
 		'default'    => array(),
@@ -30,14 +30,14 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'link_tab',
 	array(
-		'label' => esc_html__( 'Link', 'wpmozo-addons-for-elementor' ),
+		'label' => esc_html__( 'Link', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_CONTENT,
 	)
 );
 $this->add_control(
 	'image_link',
 	array(
-		'label'       => esc_html__( 'Image Link', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Image Link', 'wpmozo-addons-lite-for-elementor' ),
 		'type'        => Controls_Manager::URL,
 		'options'     => array( 'url', 'is_external', 'nofollow' ),
 		'default'     => array(
@@ -55,10 +55,10 @@ $this->add_control(
 $this->add_control(
 	'open_lightbox',
 	array(
-		'label'        => esc_html__( 'Open in Lightbox', 'wpmozo-addons-for-elementor' ),
+		'label'        => esc_html__( 'Open in Lightbox', 'wpmozo-addons-lite-for-elementor' ),
 		'type'         => Controls_Manager::SWITCHER,
-		'label_off'    => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
-		'label_on'     => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
+		'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
+		'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
 		'return_value' => 'yes',
 		'default'      => '',
 	)
@@ -66,13 +66,13 @@ $this->add_control(
 $this->add_control(
 	'lightbox_effect',
 	array(
-		'label'       => esc_html__( 'Lightbox Effect', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Lightbox Effect', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => false,
 		'type'        => Controls_Manager::SELECT,
 		'options'     => array(
-			'none' => esc_html__( 'None', 'wpmozo-addons-for-elementor' ),
-			'zoom' => esc_html__( 'Zoom', 'wpmozo-addons-for-elementor' ),
-			'fade' => esc_html__( 'Fade', 'wpmozo-addons-for-elementor' ),
+			'none' => esc_html__( 'None', 'wpmozo-addons-lite-for-elementor' ),
+			'zoom' => esc_html__( 'Zoom', 'wpmozo-addons-lite-for-elementor' ),
+			'fade' => esc_html__( 'Fade', 'wpmozo-addons-lite-for-elementor' ),
 		),
 		'default'     => 'none',
 		'condition'   => array( 'open_lightbox' => 'yes' ),
@@ -82,7 +82,7 @@ $this->add_responsive_control(
 	'transition_duration',
 	array(
 		'type'        => Controls_Manager::SLIDER,
-		'label'       => esc_html__( 'Transition Duration', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Transition Duration', 'wpmozo-addons-lite-for-elementor' ),
 		'render_type' => 'template',
 		'range'       => array(
 			'ms' => array(
@@ -109,17 +109,17 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'overlay_tab',
 	array(
-		'label' => esc_html__( 'Overlay', 'wpmozo-addons-for-elementor' ),
+		'label' => esc_html__( 'Overlay', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'   => Controls_Manager::TAB_STYLE,
 	)
 );
 $this->add_control(
 	'enable_overlay',
 	array(
-		'label'        => esc_html__( 'Enable Overlay', 'wpmozo-addons-for-elementor' ),
+		'label'        => esc_html__( 'Enable Overlay', 'wpmozo-addons-lite-for-elementor' ),
 		'type'         => Controls_Manager::SWITCHER,
-		'label_off'    => esc_html__( 'NO', 'wpmozo-addons-for-elementor' ),
-		'label_on'     => esc_html__( 'YES', 'wpmozo-addons-for-elementor' ),
+		'label_off'    => esc_html__( 'NO', 'wpmozo-addons-lite-for-elementor' ),
+		'label_on'     => esc_html__( 'YES', 'wpmozo-addons-lite-for-elementor' ),
 		'return_value' => 'yes',
 		'default'      => '',
 	)
@@ -127,7 +127,7 @@ $this->add_control(
 $this->add_responsive_control(
 	'overlay_background_color',
 	array(
-		'label'       => esc_html__( 'Overlay Background Color', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Overlay Background Color', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => false,
 		'type'        => Controls_Manager::COLOR,
 		'default'     => '#0000006E',
@@ -141,7 +141,7 @@ $this->add_responsive_control(
 	'overlay_icon_size',
 	array(
 		'type'       => Controls_Manager::SLIDER,
-		'label'      => esc_html__( 'Icon Size', 'wpmozo-addons-for-elementor' ),
+		'label'      => esc_html__( 'Icon Size', 'wpmozo-addons-lite-for-elementor' ),
 		'range'      => array(
 			'px' => array(
 				'min'  => 0,
@@ -176,7 +176,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'overlay_icon_color',
 	array(
-		'label'       => esc_html__( 'Overlay Icon Color', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Overlay Icon Color', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => false,
 		'type'        => Controls_Manager::COLOR,
 		'default'     => '#ffffff',
@@ -190,7 +190,7 @@ $this->add_responsive_control(
 $this->add_responsive_control(
 	'overlay_icon_select',
 	array(
-		'label'     => esc_html__( 'Overlay Icon', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Overlay Icon', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::ICONS,
 		'default'   => array(
 			'value'   => 'fas fa-image',
@@ -203,7 +203,7 @@ $this->end_controls_section();
 $this->start_controls_section(
 	'lightbox_tab',
 	array(
-		'label'     => esc_html__( 'Lightbox', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Lightbox', 'wpmozo-addons-lite-for-elementor' ),
 		'tab'       => Controls_Manager::TAB_STYLE,
 		'condition' => array( 'open_lightbox' => 'yes' ),
 	)
@@ -211,7 +211,7 @@ $this->start_controls_section(
 $this->add_control(
 	'lightbox_background_color',
 	array(
-		'label'     => esc_html__( 'Lightbox Background Color', 'wpmozo-addons-for-elementor' ),
+		'label'     => esc_html__( 'Lightbox Background Color', 'wpmozo-addons-lite-for-elementor' ),
 		'type'      => Controls_Manager::COLOR,
 		'default'   => '#0000006E',
 		'selectors' => array(
@@ -222,7 +222,7 @@ $this->add_control(
 $this->add_control(
 	'close_icon_color',
 	array(
-		'label'       => esc_html__( 'Close Icon Color', 'wpmozo-addons-for-elementor' ),
+		'label'       => esc_html__( 'Close Icon Color', 'wpmozo-addons-lite-for-elementor' ),
 		'label_block' => false,
 		'type'        => Controls_Manager::COLOR,
 		'default'     => '#ffffff',

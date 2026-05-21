@@ -3,7 +3,7 @@
  * @author    Elicus <hello@elicus.com>
  * @link      https://www.elicus.com/
  * @copyright 2025 Elicus Technologies Private Limited
- * @version   1.0.1
+ * @version   1.0.2
  */
 
 // if this file is called directly, abort.
@@ -15,6 +15,15 @@ use Elementor\Widget_Base;
 use Elementor\Control_Media;
 use Elementor\Icons_Manager;
 use Elementor\Plugin;
+use Elementor\Utils;
+use Elementor\Controls_Manager;
+use Elementor\Group_Control_Text_Shadow;
+use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Background;
+use Elementor\Repeater;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Box_Shadow;
+use Elementor\Group_Control_Css_Filter;
 
 if ( ! class_exists( 'WPMOZO_AE_Image_Stack' ) ) {
 	class WPMOZO_AE_Image_Stack extends Widget_Base {
@@ -44,7 +53,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Stack' ) ) {
 		 * @return string Widget title.
 		 */
 		public function get_title() {
-			return esc_html__( 'Image Stack', 'wpmozo-addons-for-elementor' );
+			return esc_html__( 'Image Stack', 'wpmozo-addons-lite-for-elementor' );
 		}
 
 		/**
@@ -132,7 +141,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Stack' ) ) {
 		protected function register_controls() {
 
 			// Separate file containing all the code for registering controls.
-			require_once plugin_dir_path( __DIR__ ) . 'image-stack/assets/controls/controls.php';
+			require plugin_dir_path( __DIR__ ) . 'image-stack/assets/controls/controls.php';
 		}
 
 		/**
@@ -145,11 +154,12 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Stack' ) ) {
 		 */
 		protected function render() {
 			$settings           = $this->get_settings_for_display();
+			/*var_dump($settings);*/
 			$widget_id          = $this->get_id();
 			$stack_item_list    = isset( $settings['stack_item_list'] ) ? $settings['stack_item_list'] : array();
-			$show_tooltip_on    = $settings['show_tooltip_on'];
-			$show_speech_bubble = $settings['show_speech_bubble'];
-			$enable_tooltip     = $settings['enable_tooltip'];
+			$show_tooltip_on    = $settings['show_tooltip_on'] ?? '';
+			$show_speech_bubble = $settings['show_speech_bubble'] ?? '';
+			$enable_tooltip     = $settings['enable_tooltip'] ?? '';
 			$animation_duration = isset( $settings['tooltip_animation_duration']['size'] ) && ! empty( $settings['tooltip_animation_duration']['size'] ) ? $settings['tooltip_animation_duration']['size'] : '300';
 
 			$animation_name = '';
@@ -170,7 +180,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Stack' ) ) {
 					'class'                   => 'wpmozo_image_stack_wrap elementor-' . $widget_id,
 					'id'                      => 'wpmozo-' . $widget_id,
 					'data-speech-bubble'      => $show_speech_bubble,
-					'data-animation-type'     => $settings['tooltip_animation_type'],
+					'data-animation-type'     => $settings['tooltip_animation_type'] ?? '',
 					'data-animation-duration' => $animation_duration,
 					'data-animation-name'     => $animation_name,
 					'data-tooltip-id'         => 'elementor-' . $widget_id,
@@ -185,7 +195,7 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Stack' ) ) {
 					<div class="wpmozo_image_stack_inner">
 						<?php
 						foreach ( $stack_item_list as $index => $single_item ) {
-							$stack_item_type       = esc_attr( $single_item['stack_item_type'] );
+							$stack_item_type       = esc_attr( $single_item['stack_item_type'] ?? '' );
 							$stack_item_icon_shape = isset( $single_item['stack_item_shape'] ) && 'null' === $single_item['stack_item_shape'] ? 'icon_shape_' . $single_item['stack_item_shape'] : '';
 							?>
 							<div class="wpmozo_image_stack_item elementor-repeater-item-<?php echo esc_attr( $single_item['_id'] ) . ' ' . esc_attr( $stack_item_icon_shape ); ?>" data-repeater-id="elementor-repeater-item-<?php echo esc_attr( $single_item['_id'] ); ?>" data-template="tooltip-content-<?php echo esc_attr( $widget_id ); ?>-<?php echo esc_attr( $index ); ?>">
@@ -201,8 +211,9 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Stack' ) ) {
 											);
 											?>
 										<?php endif; ?>
-									<?php if ( 'image' === $stack_item_type ) : ?>									
-											<img src="<?php echo esc_attr( $single_item['stack_item_image']['url'] ); ?>">
+									<?php if ( 'image' === $stack_item_type ) : 
+										$this->add_render_attribute( 'image'.$index, array( 'src' => $single_item['stack_item_image']['url'], 'alt' => isset($single_item['stack_item_image']['alt']) ? $single_item['stack_item_image']['alt'] : '' )); ?>									
+											<img <?php $this->print_render_attribute_string( 'image'.$index );?>>
 										<?php endif; ?>
 								</span>
 							</div>
@@ -222,8 +233,6 @@ if ( ! class_exists( 'WPMOZO_AE_Image_Stack' ) ) {
 						</div>
 					</div>
 				</div>
-			</div>
-			
 			<?php
 		}
 	}

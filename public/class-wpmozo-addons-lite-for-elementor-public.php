@@ -10,9 +10,12 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+use WPMOZO\HelperTraits;
 
 if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 	class WPMOZO_Addons_Lite_For_Elementor_Public {
+		use HelperTraits\Wpmozo_Ae_Helper_Functions;
+		
 
 		/**
 		 * Initialize required files and funcitons.
@@ -114,6 +117,10 @@ if ( ! class_exists( 'WPMOZO_Addons_Lite_For_Elementor_Public' ) ) {
 			wp_register_script( 'wpmozo-ae-twbspagination', plugins_url( 'assets/js/twbsPagination/twbsPagination.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
 			wp_register_script( 'wpmozo-ae-justifiedGallery', plugins_url( 'assets/js/justifiedGallery/justifiedGallery.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+
+			wp_register_script( 'wpmozo-ae-gsap', plugins_url( 'assets/js/gsap/gsap.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
+
+			wp_register_script( 'wpmozo-ae-scrollTrigger', plugins_url( 'assets/js/scrollTrigger/scrollTrigger.min.js', plugin_dir_path( __FILE__ ) ), array( 'jquery' ), WPMOZO_ADDONS_LITE_FOR_ELEMENTOR_VERSION, false );
 
 		}
 

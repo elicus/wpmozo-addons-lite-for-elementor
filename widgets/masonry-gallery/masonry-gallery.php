@@ -3,7 +3,7 @@
  * @author      Elicus <hello@elicus.com>
  * @link        https://www.elicus.com/
  * @copyright   2025 Elicus Technologies Private Limited
- * @version     1.0.1
+ * @version     1.0.2
  */
 
 // if this file is called directly, abort.
@@ -131,7 +131,7 @@ if ( ! class_exists( 'WPMOZO_AE_Masonry_Gallery' ) ) {
 		protected function register_controls() {
 
 			// Seprate file containing all the code for registering controls.
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'masonry-gallery/assets/controls/controls.php';
+			require plugin_dir_path( dirname( __FILE__ ) ) . 'masonry-gallery/assets/controls/controls.php';
 		}
 
 		/**
